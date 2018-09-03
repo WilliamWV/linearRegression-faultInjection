@@ -5,14 +5,7 @@
 #include<cmath>
 
 /*
-	Specifications
-	It must receive an input file formated as follows:
-	1° Line : one integer T -> number of test cases
-	2° to 5° repeat to all test case	
-	2° Line : method parameters
-	3° Line : inputs x of the training set
-	4° Line : values y of the training set
-	5° Line : set z of new inputs to predict
+	Specification
 	 
 	The objective of the agent is to predict the function f 
 	that maps x to y minimizing the mean squared error, such that
@@ -91,8 +84,11 @@ void adjust(double alpha){
 	vector<double> temp = T; // uses temp to guarantee that the 
 							 // evaluation order of Ts wont cause 
 							 // different adjustments
+	double PD;
 	for(int i = 0; i<T.size(); i++){
-		temp[i]= T[i] - (alpha * partialDerivate(i));
+		PD = partialDerivate(i);
+		// alpha is different from the canonical version because this works better
+		temp[i]= T[i] - ((alpha / (sqrt(fabs(PD)))) * PD); 
 	}
 	T = temp;
 }
@@ -103,6 +99,11 @@ void adjust(double alpha){
 	* alpha: the learning rate to adjust Ts
 	* N : number of Ts used
 	* stopsWhenStable: stops if T are unchanged
+
+	P.S.: After experimental conclusions I understood that it would be better
+		  if alpha was smaller to greater derivates, such that a step is not so 
+		  catastrophic in local steps. So the new alpha are calculated as
+			N_Alpha = alpha / (sqrt(PD))
 */
 void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 	/**
@@ -120,7 +121,7 @@ void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 	for(int i = 0; i<iterations; i++){
 		prevT = T; 	
 		adjust(alpha);
-		MSE = meanSquaredError();	
+		MSE = meanSquaredError();
 		if (MSE < bestMSE){
 			bestMSE = MSE;
 			bestT = T; 
@@ -133,10 +134,12 @@ void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 }
 
 void saveTs(ofstream& out){
-	for (vector<double>::iterator it = T.begin(); it != T.end(); ++it){
-		out<<*it<<'\t';
+	out<<"Thetas: "<<endl;
+	for (int i = 0; i<T.size(); i ++){
+		out<<'\t'<<'T'<<i<<" = "<<T[i];
 	}
 	out<<endl;
+	out<<"Mean Squared Error: " << meanSquaredError()<<endl;
 }
 /*
 It must receive an input file formated as follows:
@@ -147,6 +150,8 @@ It must receive an input file formated as follows:
 	3° Line : inputs x of the training set
 	4° Line : values y of the training set
 	5° Line : set z of new inputs to predict*/
+
+
 int main(int argc, char* argv[]){
 	
 	if (argc != 3) {
@@ -180,9 +185,10 @@ int main(int argc, char* argv[]){
 		train(iterations, alpha, N);
 		saveTs(out); // Save the training results		
 		//PREDICTING
+		out<<"Predictions:"<<endl;
 		for (int j = 0; j < predictions; j++){
 			inp >> temp;
-			out << predict(temp);
+			out << "f("<<temp<<") = "<<predict(temp)<< endl;
 		}
 			
 	}
