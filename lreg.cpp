@@ -6,7 +6,7 @@
 
 /*
 	Specifications
-	It must receive an imput file formated as follows:
+	It must receive an input file formated as follows:
 	1° Line : one integer T -> number of test cases
 	2° to 5° repeat to all test case	
 	2° Line : method parameters
@@ -132,6 +132,60 @@ void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 	T = bestT;
 }
 
-int main(){
+void saveTs(ofstream& out){
+	for (vector<double>::iterator it = T.begin(); it != T.end(); ++it){
+		out<<*it<<'\t';
+	}
+	out<<endl;
+}
+/*
+It must receive an input file formated as follows:
+	1° Line : one integer T -> number of test cases
+	2° to 5° repeat to all test case	
+	2° Line : method parameters -> alpha, iterations, N, size of 
+		      training set, predictions
+	3° Line : inputs x of the training set
+	4° Line : values y of the training set
+	5° Line : set z of new inputs to predict*/
+int main(int argc, char* argv[]){
+	
+	if (argc != 3) {
+		cout << "Wrong number of arguments" <<endl;
+		cout <<"  Use as : " << endl; 
+		cout <<'\t'<<argv[0]<<" <input file> "<<"<output file>"<<endl;
+		return 1;
+	}
+	
+	ifstream inp (argv[1]);
+	ofstream out (argv[2]);
+		
+	int testCases;	
+	inp >> testCases;
+	
+	for (int i = 0; i<testCases; i++){
+		double alpha, temp;
+		int iterations, N, sizeOfTraining, predictions;
+		inp >> alpha >> iterations >> N >> sizeOfTraining >> predictions;
+		
+		//READING DATA
+		for (int j = 0; j<sizeOfTraining; j++){
+			inp >> temp;
+			x.push_back(temp);
+		} 
+		for (int j = 0; j<sizeOfTraining; j++){
+			inp >> temp;
+			y.push_back(temp);
+		} 
+		//TRAINING
+		train(iterations, alpha, N);
+		saveTs(out); // Save the training results		
+		//PREDICTING
+		for (int j = 0; j < predictions; j++){
+			inp >> temp;
+			out << predict(temp);
+		}
+			
+	}
+	
 	return 0;
 }
