@@ -40,7 +40,13 @@ vector<double> x; // input of training set
 vector<double> y; // observed values of training set inputs
 vector<double> T; // the adjustment variables
 
-double bestMSE;
+bool equals(vector<double> a, vector<double> b){
+	if (a.size() != b.size()) return false;
+	for (int i = 0; i<a.size(); i++){
+		if(a[i] != b[i]) return false;
+	}
+	return true;
+}
 
 /**
 	Predicts the value related to v using the Ts variables
@@ -82,21 +88,48 @@ double partialDerivate(int pos){
 	Adjusts the values of T 
 */
 void adjust(double alpha){
+	vector<double> temp = T; // uses temp to guarantee that the 
+							 // evaluation order of Ts wont cause 
+							 // different adjustments
 	for(int i = 0; i<T.size(); i++){
-		T[i]-=(alpha * partialDerivate(i));
+		temp[i]= T[i] - (alpha * partialDerivate(i));
 	}
+	T = temp;
 }
 
-void train(){
+/**
+	Trains the linear regression model
+	* iterations: max number of iterations
+	* alpha: the learning rate to adjust Ts
+	* N : number of Ts used
+	* stopsWhenStable: stops if T are unchanged
+*/
+void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 	/**
 		This will suppose the initial values of T as zeros
-		1) Compute current predictions to X
-		2) Compute the meanSquaredError 
-		3) Update the values of T using gradient descendent
-		4) Repeat until the meanSquaredError stop decreasing or until 			   
-		   reach the maximun number of iterations
+		1) Compute the meanSquaredError of current predictions
+		2) Update the values of T using gradient descendent
+		3) Repeat until reach the maximum number of iterations, or
+		   if stopsWhenStable = true also when T stops changing 
 	*/
-	
+	T = vector<double>(N, 0);
+	vector<double> prevT = T; 
+	vector<double> bestT = T; 
+	double bestMSE = meanSquaredError();
+	double MSE;	
+	for(int i = 0; i<iterations; i++){
+		prevT = T; 	
+		adjust(alpha);
+		MSE = meanSquaredError();	
+		if (MSE < bestMSE){
+			bestMSE = MSE;
+			bestT = T; 
+		}
+		if (equals(T, prevT) && stopsWhenStable){ // implement equals
+			break;		
+		}
+	}
+	T = bestT;
 }
 
 int main(){
