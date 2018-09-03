@@ -83,7 +83,7 @@ double partialDerivate(int pos){
 */
 void adjust(double alpha){
 	for(int i = 0; i<T.size(); i++){
-		T[i]-=(alpha * partialDerivate(i))
+		T[i]-=(alpha * partialDerivate(i));
 	}
 }
 
