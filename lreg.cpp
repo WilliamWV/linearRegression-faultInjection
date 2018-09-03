@@ -2,6 +2,7 @@
 #include<iostream>
 #include<fstream>
 #include<vector>
+#include<cmath>
 
 /*
 	Specifications
@@ -37,24 +38,54 @@ using namespace std;
 
 vector<double> x; // input of training set
 vector<double> y; // observed values of training set inputs
+vector<double> T; // the adjustment variables
 
 double bestMSE;
+
 /**
-	Calculates the mean squared error of 
-	the input vector T considering x and y as the training set
+	Predicts the value related to v using the Ts variables
 */
-double meanSquaredError(vector<double> T);
+double predict(double v){
+	double val = 0;
+	for(int i = 0; i<T.size(); i++){
+		val+= (T[i] * pow(v, i));
+	}
+	return val;
+	
+}
+/**
+	Calculates the mean squared error of T
+*/
+double meanSquaredError(){
+	double error = 0;
+	for(int i = 0; i<x.size(); i++){
+		error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
+	}
+	error /= x.size();
+	return error;
+
+}
 /**
 	Calculates the partial derivate of the meanSquaredError function 
 	to the adjustment variable whose position in T is passed in pos
 */
-double partialDerivate(vector<double> T, int pos);
+double partialDerivate(int pos){
+	double pD = 0;
+	for(int i = 0; i<x.size(); i++){
+		pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+	}
+	pD *= (2.0/x.size());
+	return pD;
+}
 
 /**
-	Adjusts the value of Theta of position pos using alpha as learning 
-	rate
+	Adjusts the values of T 
 */
-vector<double> adjust(vector<double> T, int pos, double alpha);
+void adjust(double alpha){
+	for(int i = 0; i<T.size(); i++){
+		T[i]-=(alpha * partialDerivate(i))
+	}
+}
 
 void train(){
 	/**
@@ -62,7 +93,8 @@ void train(){
 		1) Compute current predictions to X
 		2) Compute the meanSquaredError 
 		3) Update the values of T using gradient descendent
-		4) Repeat until the meanSquaredError stop decreasing or until 			   reach the maximun number of iterations
+		4) Repeat until the meanSquaredError stop decreasing or until 			   
+		   reach the maximun number of iterations
 	*/
 	
 }
