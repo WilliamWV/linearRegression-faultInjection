@@ -7,7 +7,7 @@ EXEC = lreg
 EXEC_INP_GEN = genInp
 INPUT = randInput
 REPORT = reportInput
-OUTPUT = output
+OUTPUT = goldOutput
 LASTRUN = lastDataCreated
 
 destDir = /tmp/lreg
