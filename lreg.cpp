@@ -81,16 +81,13 @@ double partialDerivate(int pos){
 	Adjusts the values of T 
 */
 void adjust(double alpha){
-	vector<double> temp = T; // uses temp to guarantee that the 
-							 // evaluation order of Ts wont cause 
-							 // different adjustments
+	
 	double PD;
 	for(int i = 0; i<T.size(); i++){
 		PD = partialDerivate(i);
 		// alpha is different from the canonical version because this works better
-		temp[i]= T[i] - ((alpha / (sqrt(fabs(PD)))) * PD); 
+		T[i]= T[i] - ((alpha / (sqrt( fabs(PD) ))) * PD); 
 	}
-	T = temp;
 }
 
 /**

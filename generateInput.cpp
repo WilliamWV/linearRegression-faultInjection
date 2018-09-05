@@ -20,13 +20,13 @@ int main(int argc, char* argv[]){
 	out<<testCases<<endl;	
 	for (int i = 0; i<3; i++){
 		//Alpha: decreases with increases of degree
-		double alpha = pow(0.05, i + 1);
+		double alpha = 0.0002 / pow(i + 1, 2);
 		//Iterations: increase with increase of degree		
-		int iterations = 5000 * (i + 1);
+		int iterations = 30000 * (i + 1);
 		//N: the degree representations;
 		int N = i + 2;
 		//size of training set: increases with the degree
-		int sizeOfTrainingSet = 5 * (i+2);
+		int sizeOfTrainingSet = 4 * (i+2);
 		//predictions : increases with the degree
 		int predictions = 2 * (i+2);
 		out<<alpha<<' '<<iterations<<' '<<N<<' '<<sizeOfTrainingSet<<' '<<predictions<<endl;
