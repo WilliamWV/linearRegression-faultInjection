@@ -1,0 +1,60 @@
+[INFO -- 2018-09-29 16:02:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-29 16:02:23]
+Initialization strings:
+[INFO -- 2018-09-29 16:02:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-29 16:02:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-29 16:02:23]
+initSignal:0
+[INFO -- 2018-09-29 16:02:23]
+endSignal:2
+[INFO -- 2018-09-29 16:02:23]
+faultModel:0
+[INFO -- 2018-09-29 16:02:24]
+Backtrace BEGIN:
+#0  0x0000555555555199 in equals (a=std::vector of length 3, capacity 3 = {...}, b=std::vector of length 3, capacity 3 = {...}) at lreg.cpp:39
+#1  0x0000555555555744 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#2  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+34	vector<double> T; // the adjustment variables
+35	
+36	bool equals(vector<double> a, vector<double> b){
+37		if (a.size() != b.size()) return false;
+38		for (int i = 0; i<a.size(); i++){
+39			if(a[i] != b[i]) return false;
+40		}
+41		return true;
+42	}
+43	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x170x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a170 
+address max offset: 8
+Memory content after  bitflip:0x500x170x770x550x570x550x000x00
+frame name: train
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 20, capacity 1073741856 = {-8, 0, 14, 10, -12, -20, -14, -28, 319, 1280, 1632, 132, 20, 1679, 224, 704, 799, 1364, 84, 0}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-29 16:02:24]
+Fault Injection Successful after 1.6958529949188232s
+[INFO -- 2018-09-29 16:02:34]
+event type: exit
+[EXCEPTION -- 2018-09-29 16:02:34]
+exit code: no exit code available

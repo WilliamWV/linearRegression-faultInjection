@@ -1,0 +1,63 @@
+[INFO -- 2018-09-14 23:47:28]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-14 23:47:28]
+Initialization strings:
+[INFO -- 2018-09-14 23:47:28]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-14 23:47:28]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-14 23:47:28]
+initSignal:0
+[INFO -- 2018-09-14 23:47:28]
+endSignal:2
+[INFO -- 2018-09-14 23:47:28]
+faultModel:1
+[EXCEPTION -- 2018-09-14 23:47:28]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-09-14 23:47:29]
+Backtrace BEGIN:
+#0  0x00005555555577b1 in std::__copy_move_a<false, double const*, double*> (__first=0x555555771340, __last=0x555555771350, __result=0x555555771450) at /usr/include/c++/7/bits/stl_algobase.h:386
+#1  0x00005555555572bf in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-0.98052424963745888, __last=0, __result=-0.98048477925203503) at /usr/include/c++/7/bits/stl_algobase.h:422
+#2  0x0000555555556ae5 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-0.98052424963745888, __last=0, __result=-0.98048477925203503) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x0000555555556427 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd870, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#4  0x00005555555556f2 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:124
+#5  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+381		                     && __is_pointer<_II>::__value
+382		                     && __is_pointer<_OI>::__value
+383				     && __are_same<_ValueTypeI, _ValueTypeO>::__value);
+384	
+385	      return std::__copy_move<_IsMove, __simple,
+386		                      _Category>::__copy_m(__first, __last, __result);
+387	    }
+388	
+389	  // Helpers for streambuf iterators (either istream or ostream).
+390	  // NB: avoid including <iosfwd>, relatively large.
+
+Backtrace END
+Fliping value of field: _M_current
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x140x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0x720x140x770x550x550x550x000x00
+frame name: std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > >
+symbol name: __result
+symbol filename: /usr/include/c++/7/bits/stl_algobase.h
+symbol line: 446
+value: 5.9623503543362333e+133
+value address: 0x7fffffffd788
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_current
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-09-14 23:47:29]
+Fault Injection Successful after 1.1504335403442383s
+[INFO -- 2018-09-14 23:47:36]
+event type: exit
+[INFO -- 2018-09-14 23:47:36]
+exit code: 0

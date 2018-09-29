@@ -1,0 +1,61 @@
+[INFO -- 2018-09-15 12:39:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 12:39:43]
+Initialization strings:
+[INFO -- 2018-09-15 12:39:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 12:39:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 12:39:43]
+initSignal:0
+[INFO -- 2018-09-15 12:39:43]
+endSignal:2
+[INFO -- 2018-09-15 12:39:43]
+faultModel:1
+[INFO -- 2018-09-15 12:39:44]
+Backtrace BEGIN:
+#0  0x00005555555577ca in std::_Destroy_aux<true>::__destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > () at /usr/include/c++/7/bits/stl_construct.h:117
+#1  0x000055555555731a in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0, __last=0) at /usr/include/c++/7/bits/stl_construct.h:137
+#2  0x0000555555556b5f in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=0, __last=0) at /usr/include/c++/7/bits/stl_construct.h:206
+#3  0x0000555555556435 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd870, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#4  0x00005555555556f2 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:124
+#5  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+112	  template<>
+113	    struct _Destroy_aux<true>
+114	    {
+115	      template<typename _ForwardIterator>
+116	        static void
+117	        __destroy(_ForwardIterator, _ForwardIterator) { }
+118	    };
+119	
+120	  /**
+121	   * Destroy a range of objects.  If the value_type of the object has
+
+Backtrace END
+Fliping value of field: _M_current
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771460
+address max offset: 8
+Memory content after  bitflip:0x240x000x000x000x000x000x000x00
+frame name: std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > >
+symbol name: __first
+symbol filename: /usr/include/c++/7/bits/stl_construct.h
+symbol line: 127
+value: 1.7786363250284876e-322
+value address: 0x7fffffffd778
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_current
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-09-15 12:39:44]
+Fault Injection Successful after 1.3704876899719238s
+[INFO -- 2018-09-15 12:39:51]
+event type: exit
+[INFO -- 2018-09-15 12:39:51]
+exit code: 0

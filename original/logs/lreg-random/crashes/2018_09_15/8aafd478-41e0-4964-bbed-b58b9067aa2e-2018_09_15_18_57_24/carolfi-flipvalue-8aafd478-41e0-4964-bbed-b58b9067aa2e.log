@@ -1,0 +1,65 @@
+[INFO -- 2018-09-15 18:57:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 18:57:22]
+Initialization strings:
+[INFO -- 2018-09-15 18:57:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 18:57:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 18:57:22]
+initSignal:0
+[INFO -- 2018-09-15 18:57:22]
+endSignal:2
+[INFO -- 2018-09-15 18:57:22]
+faultModel:2
+[EXCEPTION -- 2018-09-15 18:57:23]
+gdbException: Cannot access memory at address 0xe1fcec6b763aca9c
+[EXCEPTION -- 2018-09-15 18:57:23]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-15 18:57:23]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec1801 in __GI_abort () at abort.c:79
+#2  0x00007ffff7ad38fb in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7ad9d3a in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7ad9d95 in std::terminate() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7ad9fe8 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7ada594 in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x00005555555579cc in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd8b0, __n=270335949968738583) at /usr/include/c++/7/ext/new_allocator.h:111
+#8  0x0000555555557755 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=270335949968738583) at /usr/include/c++/7/bits/alloc_traits.h:436
+#9  0x000055555555722c in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd8b0, __n=270335949968738583) at /usr/include/c++/7/bits/stl_vector.h:172
+#10 0x0000555555556f4d in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd8b0, __n=270335949968738583) at /usr/include/c++/7/bits/stl_vector.h:187
+#11 0x000055555555663d in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8b0, __n=270335949968738583, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#12 0x000055555555610f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8b0, __x=std::vector of length 270335949968738583, capacity 270335949968738583 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#13 0x0000555555555713 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#14 0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: __val
+Fliping array at pos: 2
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd430
+address max offset: 8
+Memory content after  bitflip:0xc10x390x150x400x500x290x730x77
+frame name: __GI_raise
+symbol name: set
+symbol filename: ../sysdeps/unix/sysv/linux/raise.c
+symbol line: 39
+value: {__val = {0, 140737339905056, 8607268737484405185, 0 <repeats 13 times>}}
+value address: 0x7fffffffd420
+Type: The type is a structure.
+Type sizeof: 128
+Field name: __val
+Field Type: The type is an array.
+Field Type sizeof: 128
+
+[INFO -- 2018-09-15 18:57:23]
+Fault Injection Successful after 1.7341406345367432s
+[INFO -- 2018-09-15 18:57:23]
+event type: exit
+[EXCEPTION -- 2018-09-15 18:57:23]
+exit code: no exit code available

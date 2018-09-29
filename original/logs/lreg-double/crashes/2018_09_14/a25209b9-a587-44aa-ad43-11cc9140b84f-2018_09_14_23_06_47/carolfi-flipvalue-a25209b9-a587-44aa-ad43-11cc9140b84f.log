@@ -1,0 +1,56 @@
+[INFO -- 2018-09-14 23:06:45]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-14 23:06:45]
+Initialization strings:
+[INFO -- 2018-09-14 23:06:45]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-14 23:06:45]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-14 23:06:45]
+initSignal:0
+[INFO -- 2018-09-14 23:06:45]
+endSignal:2
+[INFO -- 2018-09-14 23:06:45]
+faultModel:1
+[EXCEPTION -- 2018-09-14 23:06:46]
+gdbException: Cannot access memory at address 0x555555631340
+[INFO -- 2018-09-14 23:06:46]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator[] (this=0x7fffffffd8b0, __n=0) at /usr/include/c++/7/bits/stl_vector.h:798
+#1  0x0000555555555190 in equals (a=std::vector of length 2, capacity 2 = {...}, b=std::vector of length 2, capacity 2 = {...}) at lreg.cpp:39
+#2  0x0000555555555744 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+
+Backtrace END
+Memory content before bitflip:0x130x6b0x9a0xca0x290x130xdf0x3d
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd840
+address max offset: 8
+Memory content after  bitflip:0x130x6b0x9a0xca0x6b0x130xdf0x3d
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: 1.1305333288517881e-10
+value address: 0x7fffffffd840
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-14 23:06:46]
+Fault Injection Successful after 1.9553008079528809s
+[INFO -- 2018-09-14 23:06:47]
+event type: exit
+[EXCEPTION -- 2018-09-14 23:06:47]
+exit code: no exit code available

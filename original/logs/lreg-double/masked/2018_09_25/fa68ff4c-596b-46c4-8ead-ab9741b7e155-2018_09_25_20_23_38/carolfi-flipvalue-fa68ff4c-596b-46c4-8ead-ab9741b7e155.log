@@ -1,0 +1,55 @@
+[INFO -- 2018-09-25 20:23:29]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-25 20:23:29]
+Initialization strings:
+[INFO -- 2018-09-25 20:23:29]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-25 20:23:29]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-25 20:23:29]
+initSignal:0
+[INFO -- 2018-09-25 20:23:29]
+endSignal:2
+[INFO -- 2018-09-25 20:23:29]
+faultModel:1
+[INFO -- 2018-09-25 20:23:30]
+Backtrace BEGIN:
+#0  0x0000555555555edb in std::vector<double, std::allocator<double> >::size (this=0x55555575a180 <T>) at /usr/include/c++/7/bits/stl_vector.h:671
+#1  0x00005555555551f9 in predict (v=-13) at lreg.cpp:49
+#2  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#3  0x00005555555556b1 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+675	      max_size() const _GLIBCXX_NOEXCEPT
+
+Backtrace END
+Memory content before bitflip:0x250x8b0x350x750x790x930xf90x40
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7e8
+address max offset: 8
+Memory content after  bitflip:0x250x8b0x350x750x790x930xf90x70
+frame name: meanSquaredError
+symbol name: error
+symbol filename: lreg.cpp
+symbol line: 59
+value: 1.6264116054886353e+236
+value address: 0x7fffffffd7e8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-25 20:23:30]
+Fault Injection Successful after 1.786067008972168s
+[INFO -- 2018-09-25 20:23:37]
+event type: exit
+[INFO -- 2018-09-25 20:23:37]
+exit code: 0

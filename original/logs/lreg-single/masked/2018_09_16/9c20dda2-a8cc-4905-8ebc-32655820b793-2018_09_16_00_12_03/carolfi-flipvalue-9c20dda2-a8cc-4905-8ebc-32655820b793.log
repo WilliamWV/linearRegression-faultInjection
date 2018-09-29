@@ -1,0 +1,52 @@
+[INFO -- 2018-09-16 00:11:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 00:11:54]
+Initialization strings:
+[INFO -- 2018-09-16 00:11:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 00:11:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 00:11:54]
+initSignal:0
+[INFO -- 2018-09-16 00:11:54]
+endSignal:2
+[INFO -- 2018-09-16 00:11:54]
+faultModel:0
+[INFO -- 2018-09-16 00:11:55]
+Backtrace BEGIN:
+#0  0x000055555555577b in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#1  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+121			MSE = meanSquaredError();
+122			if (MSE < bestMSE){
+123				bestMSE = MSE;
+124				bestT = T; 
+125			}
+126			if (equals(T, prevT) && stopsWhenStable){ // implement equals
+127				break;		
+128			}
+129		}
+130		T = bestT;
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd81c
+address max offset: 1
+Memory content after  bitflip:0x41
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 105
+value: 65
+value address: 0x7fffffffd81c
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-09-16 00:11:55]
+Fault Injection Successful after 1.4472074508666992s
+[INFO -- 2018-09-16 00:12:02]
+event type: exit
+[INFO -- 2018-09-16 00:12:02]
+exit code: 0

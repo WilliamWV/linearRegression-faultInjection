@@ -1,0 +1,57 @@
+[INFO -- 2018-09-15 18:06:40]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 18:06:40]
+Initialization strings:
+[INFO -- 2018-09-15 18:06:40]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 18:06:40]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 18:06:40]
+initSignal:0
+[INFO -- 2018-09-15 18:06:40]
+endSignal:2
+[INFO -- 2018-09-15 18:06:40]
+faultModel:2
+[INFO -- 2018-09-15 18:06:41]
+Backtrace BEGIN:
+#0  0x00007ffff76b4990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76b7b14 in __pow (x=-8, y=0) at w_pow_compat.c:30
+#2  0x0000555555555f39 in std::pow<double, int> (__x=-8, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555451 in partialDerivate (pos=0) at lreg.cpp:74
+#4  0x0000555555555503 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#5  0x00005555555556ac in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+138		out<<endl;
+139		out<<"Mean Squared Error: " << meanSquaredError()<<endl;
+140	}
+141	/*
+142	It must receive an input file formated as follows:
+143		1° Line : one integer T -> number of test cases
+144		2° to 5° repeat to all test case	
+145		2° Line : method parameters -> alpha, iterations, N, size of 
+146			      training set, predictions
+147		3° Line : inputs x of the training set
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd728
+address max offset: 8
+Memory content after  bitflip:0x4e0xe10xf40x410xb10x880x380x9c
+frame name: __pow
+symbol name: y
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: -9.9195062923348147e-173
+value address: 0x7fffffffd728
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-15 18:06:41]
+Fault Injection Successful after 1.220712661743164s
+[INFO -- 2018-09-15 18:06:47]
+event type: exit
+[INFO -- 2018-09-15 18:06:47]
+exit code: 0

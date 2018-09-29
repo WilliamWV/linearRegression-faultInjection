@@ -1,0 +1,65 @@
+[INFO -- 2018-09-06 18:47:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-06 18:47:43]
+Initialization strings:
+[INFO -- 2018-09-06 18:47:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-06 18:47:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-06 18:47:43]
+initSignal:0
+[INFO -- 2018-09-06 18:47:43]
+endSignal:2
+[INFO -- 2018-09-06 18:47:43]
+faultModel:2
+[EXCEPTION -- 2018-09-06 18:47:45]
+gdbException: Cannot access memory at address 0x1e14a562ca05779b
+[EXCEPTION -- 2018-09-06 18:47:45]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-06 18:47:45]
+Backtrace BEGIN:
+#0  0x00005555555553eb in partialDerivate (pos=1) at lreg.cpp:74
+#1  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000xf00x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771650
+address max offset: 8
+Memory content after  bitflip:0x850xb90x420x390x130x360x440xc2
+frame name: train
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 20, capacity 32 = {-173613150853.44937, -5, -8, 7, 0, 4, -14, 7, 49, 71, 967, 1151, 161, 161, 1057, 647, 511, 31, 49, 449}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-06 18:47:45]
+Fault Injection Successful after 2.3607017993927s
+[INFO -- 2018-09-06 18:47:45]
+event type: exit
+[EXCEPTION -- 2018-09-06 18:47:45]
+exit code: no exit code available

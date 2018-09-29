@@ -1,0 +1,55 @@
+[INFO -- 2018-09-15 23:39:01]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 23:39:01]
+Initialization strings:
+[INFO -- 2018-09-15 23:39:01]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 23:39:01]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 23:39:01]
+initSignal:0
+[INFO -- 2018-09-15 23:39:01]
+endSignal:2
+[INFO -- 2018-09-15 23:39:01]
+faultModel:2
+[EXCEPTION -- 2018-09-15 23:39:02]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-09-15 23:39:02]
+Backtrace BEGIN:
+#0  0x00005555555564cd in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd850, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:230
+#1  0x0000555555555691 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#2  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+225		      std::__uninitialized_copy_a(__x._M_impl._M_start + size(),
+226						  __x._M_impl._M_finish,
+227						  this->_M_impl._M_finish,
+228						  _M_get_Tp_allocator());
+229		    }
+230		  this->_M_impl._M_finish = this->_M_impl._M_start + __xlen;
+231		}
+232	      return *this;
+233	    }
+234	
+
+Backtrace END
+Memory content before bitflip:0x020x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd934
+address max offset: 4
+Memory content after  bitflip:0x0b0xa40x520x26
+frame name: main
+symbol name: N
+symbol filename: lreg.cpp
+symbol line: 169
+value: 642950155
+value address: 0x7fffffffd934
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-15 23:39:02]
+Fault Injection Successful after 1.6778953075408936s
+[INFO -- 2018-09-15 23:39:09]
+event type: exit
+[INFO -- 2018-09-15 23:39:09]
+exit code: 0

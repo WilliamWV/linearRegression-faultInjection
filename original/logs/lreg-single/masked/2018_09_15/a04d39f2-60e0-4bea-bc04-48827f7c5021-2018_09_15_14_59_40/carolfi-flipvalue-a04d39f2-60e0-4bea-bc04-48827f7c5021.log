@@ -1,0 +1,56 @@
+[INFO -- 2018-09-15 14:59:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 14:59:32]
+Initialization strings:
+[INFO -- 2018-09-15 14:59:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 14:59:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 14:59:32]
+initSignal:0
+[INFO -- 2018-09-15 14:59:32]
+endSignal:2
+[INFO -- 2018-09-15 14:59:32]
+faultModel:0
+[EXCEPTION -- 2018-09-15 14:59:32]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-15 14:59:32]
+Backtrace BEGIN:
+#0  0x0000555555555217 in predict (v=12) at lreg.cpp:50
+#1  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#2  0x00005555555556b1 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Memory content before bitflip:0x510x540xed0x140x000x000xf00xbf
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7a8
+address max offset: 8
+Memory content after  bitflip:0x510x540xed0x140x200x000xf00xbf
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 48
+value: -1.0000305955375277
+value address: 0x7fffffffd7a8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-15 14:59:32]
+Fault Injection Successful after 0.8293423652648926s
+[INFO -- 2018-09-15 14:59:39]
+event type: exit
+[INFO -- 2018-09-15 14:59:39]
+exit code: 0

@@ -1,0 +1,55 @@
+[INFO -- 2018-09-25 20:27:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-25 20:27:00]
+Initialization strings:
+[INFO -- 2018-09-25 20:27:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-25 20:27:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-25 20:27:00]
+initSignal:0
+[INFO -- 2018-09-25 20:27:00]
+endSignal:2
+[INFO -- 2018-09-25 20:27:00]
+faultModel:0
+[INFO -- 2018-09-25 20:27:02]
+Backtrace BEGIN:
+#0  0x0000555555557312 in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.6304166312761136e-322, __last=1.6304166312761136e-322) at /usr/include/c++/7/bits/stl_construct.h:137
+#1  0x0000555555556b5f in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=1.6304166312761136e-322, __last=1.6304166312761136e-322) at /usr/include/c++/7/bits/stl_construct.h:206
+#2  0x0000555555556435 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd850, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x0000555555555691 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:119
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+132	      // A deleted destructor is trivial, this ensures we reject such types:
+133	      static_assert(is_destructible<_Value_type>::value,
+134			    "value type is destructible");
+135	#endif
+136	      std::_Destroy_aux<__has_trivial_destructor(_Value_type)>::
+137		__destroy(__first, __last);
+138	    }
+139	
+140	  template<bool>
+141	    struct _Destroy_n_aux
+
+Backtrace END
+Memory content before bitflip:0xfb0x080xaa0xae0x9c0x220xb40x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd848
+address max offset: 8
+Memory content after  bitflip:0xfb0x080xab0xae0x9c0x220xb40x40
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 5154.6120402237821
+value address: 0x7fffffffd848
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-25 20:27:02]
+Fault Injection Successful after 2.2137815952301025s
+[INFO -- 2018-09-25 20:27:08]
+event type: exit
+[INFO -- 2018-09-25 20:27:08]
+exit code: 0

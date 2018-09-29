@@ -1,0 +1,56 @@
+[INFO -- 2018-09-15 12:56:25]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 12:56:25]
+Initialization strings:
+[INFO -- 2018-09-15 12:56:25]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 12:56:25]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 12:56:25]
+initSignal:0
+[INFO -- 2018-09-15 12:56:25]
+endSignal:2
+[INFO -- 2018-09-15 12:56:25]
+faultModel:0
+[EXCEPTION -- 2018-09-15 12:56:26]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-15 12:56:26]
+Backtrace BEGIN:
+#0  0x00007ffff76b7b0a in __pow (x=-9, y=2) at w_pow_compat.c:30
+#1  0x0000555555555f39 in std::pow<double, int> (__x=-9, __y=2) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555237 in predict (v=-9) at lreg.cpp:50
+#3  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#4  0x00005555555556b1 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#5  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+25	in w_pow_compat.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x2a0xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771650
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x400x2a0xc0
+frame name: train
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 20, capacity 32 = {-13.125, 1, -17, 14, 3, -14, 7, -7, 768, 331, 66, 1461, 883, 1461, 913, 408, 796, 262, 408, 687}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-15 12:56:26]
+Fault Injection Successful after 1.3551661968231201s
+[INFO -- 2018-09-15 12:56:33]
+event type: exit
+[INFO -- 2018-09-15 12:56:33]
+exit code: 0

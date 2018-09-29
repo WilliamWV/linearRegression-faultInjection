@@ -1,0 +1,63 @@
+[INFO -- 2018-09-15 18:43:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 18:43:56]
+Initialization strings:
+[INFO -- 2018-09-15 18:43:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 18:43:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 18:43:56]
+initSignal:0
+[INFO -- 2018-09-15 18:43:56]
+endSignal:2
+[INFO -- 2018-09-15 18:43:56]
+faultModel:1
+[EXCEPTION -- 2018-09-15 18:43:56]
+gdbException: Cannot access memory at address 0x425555557712f0
+[INFO -- 2018-09-15 18:43:57]
+Backtrace BEGIN:
+#0  0x00005555555566d5 in std::_Destroy<double*, double> (__first=0x555555771470, __last=0x555555771480) at /usr/include/c++/7/bits/stl_construct.h:206
+#1  0x0000555555556021 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd8b0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:434
+#2  0x0000555555555780 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+201	  template<typename _ForwardIterator, typename _Tp>
+202	    inline void
+203	    _Destroy(_ForwardIterator __first, _ForwardIterator __last,
+204		     allocator<_Tp>&)
+205	    {
+206	      _Destroy(__first, __last);
+207	    }
+208	
+209	#if __cplusplus > 201402L
+210	  template <typename _Tp>
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x5555557713f0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x300x000x00
+frame name: std::vector<double, std::allocator<double> >::~vector
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 8, capacity 8 = {8, -20, 10, 10, -20, 14, -28, -14}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-15 18:43:57]
+Fault Injection Successful after 1.1334924697875977s
+[INFO -- 2018-09-15 18:43:57]
+event type: exit
+[EXCEPTION -- 2018-09-15 18:43:57]
+exit code: no exit code available

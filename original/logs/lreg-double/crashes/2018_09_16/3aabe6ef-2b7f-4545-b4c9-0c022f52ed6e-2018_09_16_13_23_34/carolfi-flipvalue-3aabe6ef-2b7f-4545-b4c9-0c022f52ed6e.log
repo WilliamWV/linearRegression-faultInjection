@@ -1,0 +1,68 @@
+[INFO -- 2018-09-16 13:23:28]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 13:23:28]
+Initialization strings:
+[INFO -- 2018-09-16 13:23:28]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 13:23:28]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 13:23:28]
+initSignal:0
+[INFO -- 2018-09-16 13:23:28]
+endSignal:2
+[INFO -- 2018-09-16 13:23:28]
+faultModel:1
+[INFO -- 2018-09-16 13:23:29]
+Backtrace BEGIN:
+#0  malloc (n=14) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  malloc (n=14) at dl-minimal.c:50
+#3  <function called from gdb>
+#4  malloc (n=14) at dl-minimal.c:50
+#5  <function called from gdb>
+#6  malloc (n=14) at dl-minimal.c:50
+#7  <function called from gdb>
+#8  malloc (n=14) at dl-minimal.c:50
+#9  <function called from gdb>
+#10 __GI___libc_malloc (bytes=16) at malloc.c:3042
+#11 0x00007ffff7ada54c in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#12 0x00005555555579cc in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd8b0, __n=2) at /usr/include/c++/7/ext/new_allocator.h:111
+#13 0x0000555555557755 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=2) at /usr/include/c++/7/bits/alloc_traits.h:436
+#14 0x000055555555722c in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd8b0, __n=2) at /usr/include/c++/7/bits/stl_vector.h:172
+#15 0x0000555555556f4d in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd8b0, __n=2) at /usr/include/c++/7/bits/stl_vector.h:187
+#16 0x000055555555663d in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8b0, __n=2, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#17 0x000055555555610f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8b0, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#18 0x0000555555555713 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#19 0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+45	in dl-minimal.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0xf00x130x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a170 
+address max offset: 8
+Memory content after  bitflip:0xf00x130x770x530x550x550x000x00
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_create_storage
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 8, capacity -4194296 = {1, 5, 3, -5, -7, -15, -31, -9}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-16 13:23:29]
+Fault Injection Successful after 1.9751737117767334s
+[INFO -- 2018-09-16 13:23:33]
+event type: exit
+[EXCEPTION -- 2018-09-16 13:23:33]
+exit code: no exit code available

@@ -1,0 +1,55 @@
+[INFO -- 2018-09-25 19:08:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-25 19:08:54]
+Initialization strings:
+[INFO -- 2018-09-25 19:08:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-25 19:08:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-25 19:08:54]
+initSignal:0
+[INFO -- 2018-09-25 19:08:54]
+endSignal:2
+[INFO -- 2018-09-25 19:08:54]
+faultModel:0
+[EXCEPTION -- 2018-09-25 19:08:55]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-09-25 19:08:55]
+gdbException: Cannot access memory at address 0x5555d5771360
+[EXCEPTION -- 2018-09-25 19:08:55]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-25 19:08:55]
+Backtrace BEGIN:
+#0  0x00007ffff76d55b0 in __ieee754_pow_sse2 (x=22, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:79
+#1  0x00007ffff76b7b14 in __pow (x=22, y=0) at w_pow_compat.c:30
+#2  0x0000555555555f39 in std::pow<double, int> (__x=22, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555237 in predict (v=22) at lreg.cpp:50
+#4  0x00005555555553fc in partialDerivate (pos=1) at lreg.cpp:74
+#5  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#6  0x00005555555556ac in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+74	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Memory content before bitflip:0x700x850xfd0x480x1e0x420x9e0xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd798
+address max offset: 8
+Memory content after  bitflip:0x700x850xfd0x480x1c0x420x9e0xc0
+frame name: partialDerivate
+symbol name: pD
+symbol filename: lreg.cpp
+symbol line: 72
+value: -1936.527622185964
+value address: 0x7fffffffd798
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-25 19:08:55]
+Fault Injection Successful after 1.636251449584961s
+[INFO -- 2018-09-25 19:08:55]
+event type: exit
+[EXCEPTION -- 2018-09-25 19:08:55]
+exit code: no exit code available

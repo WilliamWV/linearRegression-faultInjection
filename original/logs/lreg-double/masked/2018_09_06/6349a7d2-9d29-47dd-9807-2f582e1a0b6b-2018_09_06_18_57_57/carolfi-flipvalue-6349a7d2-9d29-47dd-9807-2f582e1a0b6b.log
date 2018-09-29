@@ -1,0 +1,54 @@
+[INFO -- 2018-09-06 18:57:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-06 18:57:48]
+Initialization strings:
+[INFO -- 2018-09-06 18:57:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-06 18:57:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-06 18:57:48]
+initSignal:0
+[INFO -- 2018-09-06 18:57:48]
+endSignal:2
+[INFO -- 2018-09-06 18:57:48]
+faultModel:0
+[INFO -- 2018-09-06 18:57:49]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_M_get_Tp_allocator (this=0x7fffffffd890) at /usr/include/c++/7/bits/stl_vector.h:116
+#1  0x0000555555556127 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:333
+#2  0x000055555555572b in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+111	    public:
+112	      typedef _Alloc allocator_type;
+113	
+114	      _Tp_alloc_type&
+115	      _M_get_Tp_allocator() _GLIBCXX_NOEXCEPT
+116	      { return *static_cast<_Tp_alloc_type*>(&this->_M_impl); }
+117	
+118	      const _Tp_alloc_type&
+119	      _M_get_Tp_allocator() const _GLIBCXX_NOEXCEPT
+120	      { return *static_cast<const _Tp_alloc_type*>(&this->_M_impl); }
+
+Backtrace END
+Memory content before bitflip:0xb00x970xde0xa30x440x9c0xb50x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd848
+address max offset: 8
+Memory content after  bitflip:0xb00x930xde0xa30x440x9c0xb50x40
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 5532.2681254492345
+value address: 0x7fffffffd848
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-06 18:57:49]
+Fault Injection Successful after 1.1758294105529785s
+[INFO -- 2018-09-06 18:57:55]
+event type: exit
+[INFO -- 2018-09-06 18:57:55]
+exit code: 0

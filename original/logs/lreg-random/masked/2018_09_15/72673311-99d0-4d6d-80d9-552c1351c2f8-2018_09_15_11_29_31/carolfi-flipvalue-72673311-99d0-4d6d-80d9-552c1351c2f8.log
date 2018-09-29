@@ -1,0 +1,61 @@
+[INFO -- 2018-09-15 11:29:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 11:29:23]
+Initialization strings:
+[INFO -- 2018-09-15 11:29:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 11:29:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 11:29:23]
+initSignal:0
+[INFO -- 2018-09-15 11:29:23]
+endSignal:2
+[INFO -- 2018-09-15 11:29:23]
+faultModel:2
+[EXCEPTION -- 2018-09-15 11:29:23]
+gdbException: A syntax error in expression, near `...'.
+[INFO -- 2018-09-15 11:29:23]
+Backtrace BEGIN:
+#0  malloc (n=10) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  0x00007ffff6f189ff in _int_free (have_lock=0, p=0x555555771460, av=0x7ffff726cc40 <main_arena>) at malloc.c:4169
+#3  __GI___libc_free (mem=0x555555771470) at malloc.c:3124
+#4  0x000055555555772a in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd8b0, __p=0x555555771470) at /usr/include/c++/7/ext/new_allocator.h:125
+#5  0x00005555555571f0 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555771470, __n=2) at /usr/include/c++/7/bits/alloc_traits.h:462
+#6  0x0000555555556944 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd8b0, __p=0x555555771470, __n=2) at /usr/include/c++/7/bits/stl_vector.h:180
+#7  0x00005555555565db in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd8b0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#8  0x000055555555602d in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd8b0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#9  0x0000555555555780 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#10 0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+45	in dl-minimal.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x5555557713f0
+address max offset: 8
+Memory content after  bitflip:0x350x8f0x480xec0x520x1b0x100x65
+frame name: __gnu_cxx::new_allocator<double>::deallocate
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 8, capacity 8 = {-13, 1, -17, 14, 3, -14, 7, -7}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-15 11:29:23]
+Fault Injection Successful after 0.7381603717803955s
+[INFO -- 2018-09-15 11:29:30]
+event type: exit
+[INFO -- 2018-09-15 11:29:30]
+exit code: 0

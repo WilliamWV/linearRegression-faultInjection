@@ -1,0 +1,68 @@
+[INFO -- 2018-09-05 20:10:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-05 20:10:55]
+Initialization strings:
+[INFO -- 2018-09-05 20:10:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-05 20:10:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-05 20:10:55]
+initSignal:0
+[INFO -- 2018-09-05 20:10:55]
+endSignal:2
+[INFO -- 2018-09-05 20:10:55]
+faultModel:2
+[EXCEPTION -- 2018-09-05 20:10:56]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-09-05 20:10:56]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-09-05 20:10:57]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-05 20:10:57]
+Backtrace BEGIN:
+#0  0x0000555555555f2f in std::pow<double, int> (__x=-9, __y=2) at /usr/include/c++/7/cmath:418
+#1  0x0000555555555451 in partialDerivate (pos=2) at lreg.cpp:74
+#2  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x00005555555556ac in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde78) at lreg.cpp:182
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x900x1a0x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a168 
+address max offset: 8
+Memory content after  bitflip:0xfe0xf70xd20x510xdd0x790x880xd9
+frame name: std::pow<double, int>
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length -346490675521684526, capacity 63 = {4.0729056712839695e-312, 4.0729056712839695e-312, 4.0729056712839695e-312, 4.0729056712839695e-312, 4.0729056712839695e-312, 4.0729056712839695e-312, 4.0729056712839695e-312, 4.0729056712839695e-312, 4.0798684699730743e-312, 4.0808631555000893e-312, 1.3597351154294659e-312, 1.3597351154294659e-312, 4.0804901484274587e-312, 1.3580773062177743e-312, 1.3607298009564809e-312, 4.0809253233455278e-312, 1.3635066313860643e-312, 4.0782106607613827e-312, 4.0810496590364046e-312, 1.3621389387864187e-312, 1.3771251940797062e-312, 4.0951362411836451e-312, 0, 1.3771251940797062e-312, 4.0790395653672285e-312, 1.3763377347041527e-312, 4.0916509765856816e-312, 1.3732381657332111e-312, 4.0878758179818895e-312, 0, 1.3756835152681717e-312, 1.3721408385030504e-312, 4.0864103405420231e-312, 1.3771251940797062e-312, 4.0931230917382121e-312, 1.3727806492456876e-312, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.6618315201868376e-310, -1.1271501330061424e+114, -2.3224691810606237e-15, -7.1258193205170669e-268, 1.4769162191197244e-104, 4.0749483806868745e-312, 2.6618315201868376e-310, -1.1271501330061424e+114, -2.3224691810606237e-15, -7.1258193205170669e-268, 1.4769162191197244e-104, 4.0749483806868745e-312, 2.6618315201868376e-310, 5.6553898925760673e+265, 3765760.0026041665, 1.2603158655632625e+39, -1.2070512756647411e+162, 4.07493123748346e-312, 2.6618315201868376e-310, 0, -2.3223610534639505e-15, -7.1258193205170669e-268, 1.4769162191197244e-104, 4.0749483806868745e-312, 1.4109749605258791e-305, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-05 20:10:57]
+Fault Injection Successful after 2.91287899017334s
+[INFO -- 2018-09-05 20:11:06]
+event type: exit
+[EXCEPTION -- 2018-09-05 20:11:06]
+exit code: no exit code available

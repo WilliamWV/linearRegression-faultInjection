@@ -1,0 +1,55 @@
+[INFO -- 2018-09-16 12:54:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 12:54:03]
+Initialization strings:
+[INFO -- 2018-09-16 12:54:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 12:54:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 12:54:03]
+initSignal:0
+[INFO -- 2018-09-16 12:54:03]
+endSignal:2
+[INFO -- 2018-09-16 12:54:03]
+faultModel:1
+[INFO -- 2018-09-16 12:54:04]
+Backtrace BEGIN:
+#0  std::allocator_traits<std::allocator<double> >::select_on_container_copy_construction (__rhs=...) at /usr/include/c++/7/bits/alloc_traits.h:504
+#1  0x00005555555567d8 in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:95
+#2  0x00005555555560ee in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8b0, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x0000555555555713 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+499	       *  @brief  Obtain an allocator to use when copying a container.
+500	       *  @param  __rhs  An allocator.
+501	       *  @return @c __rhs
+502	      */
+503	      static allocator_type
+504	      select_on_container_copy_construction(const allocator_type& __rhs)
+505	      { return __rhs; }
+506	    };
+507	
+508	
+
+Backtrace END
+Memory content before bitflip:0x1f0x0f0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd83c
+address max offset: 4
+Memory content after  bitflip:0x1f0x0f0x000x11
+frame name: train
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 118
+value: 285216543
+value address: 0x7fffffffd83c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-16 12:54:04]
+Fault Injection Successful after 1.572108268737793s
+[INFO -- 2018-09-16 12:54:11]
+event type: exit
+[INFO -- 2018-09-16 12:54:11]
+exit code: 0

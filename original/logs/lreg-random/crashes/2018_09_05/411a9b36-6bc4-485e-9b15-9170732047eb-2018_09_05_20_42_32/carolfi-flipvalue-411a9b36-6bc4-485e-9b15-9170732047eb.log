@@ -1,0 +1,57 @@
+[INFO -- 2018-09-05 20:42:31]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-05 20:42:31]
+Initialization strings:
+[INFO -- 2018-09-05 20:42:31]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-05 20:42:31]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-05 20:42:31]
+initSignal:0
+[INFO -- 2018-09-05 20:42:31]
+endSignal:2
+[INFO -- 2018-09-05 20:42:31]
+faultModel:2
+[EXCEPTION -- 2018-09-05 20:42:31]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-05 20:42:31]
+Backtrace BEGIN:
+#0  0x00007ffff76d5512 in __ieee754_pow_sse2 (x=-2, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:65
+#1  0x00007ffff76b7b14 in __pow (x=-2, y=0) at w_pow_compat.c:30
+#2  0x0000555555555f39 in std::pow<double, int> (__x=-2, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555237 in predict (v=-2) at lreg.cpp:50
+#4  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#5  0x00005555555556b1 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:121
+#6  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde78) at lreg.cpp:182
+
+60	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771330
+address max offset: 8
+Memory content after  bitflip:0x660xa50xf40x8e0x2e0x120x1e0xe5
+frame name: meanSquaredError
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 38, capacity 38 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4.001931731314097e-322, 7, 12, -3, -7, 13, 10, -2, -12}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-05 20:42:31]
+Fault Injection Successful after 0.8054890632629395s
+[INFO -- 2018-09-05 20:42:32]
+event type: exit
+[EXCEPTION -- 2018-09-05 20:42:32]
+exit code: no exit code available

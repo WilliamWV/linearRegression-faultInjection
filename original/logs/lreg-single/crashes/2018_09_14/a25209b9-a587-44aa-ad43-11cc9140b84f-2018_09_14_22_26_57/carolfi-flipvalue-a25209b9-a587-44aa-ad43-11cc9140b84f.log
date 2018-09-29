@@ -1,0 +1,61 @@
+[INFO -- 2018-09-14 22:26:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-14 22:26:55]
+Initialization strings:
+[INFO -- 2018-09-14 22:26:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-14 22:26:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-14 22:26:55]
+initSignal:0
+[INFO -- 2018-09-14 22:26:55]
+endSignal:2
+[INFO -- 2018-09-14 22:26:55]
+faultModel:0
+[EXCEPTION -- 2018-09-14 22:26:56]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-14 22:26:56]
+Backtrace BEGIN:
+#0  0x0000555555555f01 in std::vector<double, std::allocator<double> >::operator[] (this=0x7fffffffd8b0, __n=0) at /usr/include/c++/7/bits/stl_vector.h:798
+#1  0x0000555555555190 in equals (a=std::vector of length 3, capacity 3 = {...}, b=std::vector of length 3, capacity 3 = {...}) at lreg.cpp:39
+#2  0x0000555555555744 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x320x540x630x830x450x5c0xd40x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771470
+address max offset: 8
+Memory content after  bitflip:0x320x540x630x830x450x1c0xd40x3f
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd8b0
+value address: 0x7fffffffd7a8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-09-14 22:26:56]
+Fault Injection Successful after 1.3457212448120117s
+[INFO -- 2018-09-14 22:26:56]
+event type: exit
+[EXCEPTION -- 2018-09-14 22:26:56]
+exit code: no exit code available

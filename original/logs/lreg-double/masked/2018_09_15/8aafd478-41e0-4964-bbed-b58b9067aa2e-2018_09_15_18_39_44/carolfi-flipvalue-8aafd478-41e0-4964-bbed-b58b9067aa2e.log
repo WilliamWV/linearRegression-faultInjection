@@ -1,0 +1,57 @@
+[INFO -- 2018-09-15 18:39:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 18:39:36]
+Initialization strings:
+[INFO -- 2018-09-15 18:39:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 18:39:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 18:39:36]
+initSignal:0
+[INFO -- 2018-09-15 18:39:36]
+endSignal:2
+[INFO -- 2018-09-15 18:39:36]
+faultModel:1
+[INFO -- 2018-09-15 18:39:37]
+Backtrace BEGIN:
+#0  __gnu_cxx::new_allocator<double>::new_allocator (this=0x555555771340) at /usr/include/c++/7/ext/new_allocator.h:81
+#1  0x000055555555712f in std::allocator<double>::allocator (this=0x7fffffffd7d7, __a=...) at /usr/include/c++/7/bits/allocator.h:134
+#2  0x0000555555557105 in std::allocator_traits<std::allocator<double> >::select_on_container_copy_construction (__rhs=...) at /usr/include/c++/7/bits/alloc_traits.h:505
+#3  0x00005555555567d8 in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:95
+#4  0x00005555555560ee in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#5  0x000055555555572b in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#6  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+76	      typedef std::true_type propagate_on_container_move_assignment;
+77	#endif
+78	
+79	      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+80	
+81	      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+82	
+83	      template<typename _Tp1>
+84		new_allocator(const new_allocator<_Tp1>&) _GLIBCXX_USE_NOEXCEPT { }
+85	
+
+Backtrace END
+Memory content before bitflip:0x030x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd91c
+address max offset: 4
+Memory content after  bitflip:0x030x000x000xc0
+frame name: main
+symbol name: argc
+symbol filename: lreg.cpp
+symbol line: 152
+value: -1073741821
+value address: 0x7fffffffd91c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-15 18:39:37]
+Fault Injection Successful after 1.3585362434387207s
+[INFO -- 2018-09-15 18:39:43]
+event type: exit
+[INFO -- 2018-09-15 18:39:43]
+exit code: 0

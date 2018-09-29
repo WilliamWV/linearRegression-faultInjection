@@ -1,0 +1,62 @@
+[INFO -- 2018-09-16 13:32:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 13:32:13]
+Initialization strings:
+[INFO -- 2018-09-16 13:32:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 13:32:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 13:32:13]
+initSignal:0
+[INFO -- 2018-09-16 13:32:13]
+endSignal:2
+[INFO -- 2018-09-16 13:32:13]
+faultModel:2
+[EXCEPTION -- 2018-09-16 13:32:14]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-09-16 13:32:15]
+Backtrace BEGIN:
+#0  0x0000555555555ef2 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a140 <x>, __n=8589934603) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x00005555555553eb in partialDerivate (pos=2) at lreg.cpp:74
+#2  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#3  0x00005555555556ac in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xe00x150x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a148 
+address max offset: 8
+Memory content after  bitflip:0x3d0x7d0xba0x880xed0x580x520xf8
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x55555575a140 <x>
+value address: 0x7fffffffd758
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-09-16 13:32:15]
+Fault Injection Successful after 2.076301097869873s
+[INFO -- 2018-09-16 13:32:15]
+event type: exit
+[EXCEPTION -- 2018-09-16 13:32:15]
+exit code: no exit code available

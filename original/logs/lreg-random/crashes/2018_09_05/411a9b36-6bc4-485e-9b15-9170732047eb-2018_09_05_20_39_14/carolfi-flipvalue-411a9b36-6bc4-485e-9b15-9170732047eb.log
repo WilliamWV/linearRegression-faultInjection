@@ -1,0 +1,61 @@
+[INFO -- 2018-09-05 20:39:05]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-05 20:39:05]
+Initialization strings:
+[INFO -- 2018-09-05 20:39:05]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-05 20:39:05]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-05 20:39:05]
+initSignal:0
+[INFO -- 2018-09-05 20:39:05]
+endSignal:2
+[INFO -- 2018-09-05 20:39:05]
+faultModel:2
+[INFO -- 2018-09-05 20:39:06]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd8c0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#1  0x000055555555602d in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd8c0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#2  0x0000555555555780 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde78) at lreg.cpp:182
+
+157		  }
+158	      }
+159	#endif
+160	
+161	      ~_Vector_base() _GLIBCXX_NOEXCEPT
+162	      { _M_deallocate(this->_M_impl._M_start, this->_M_impl._M_end_of_storage
+163			      - this->_M_impl._M_start); }
+164	
+165	    public:
+166	      _Vector_impl _M_impl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x310x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771378
+address max offset: 8
+Memory content after  bitflip:0x890x200x8d0xf20xcc0x900x990x72
+frame name: train
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 3, capacity 3 = {0.58107703606054084, 1.4227701765941709, -0.071801517887345956}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-05 20:39:06]
+Fault Injection Successful after 1.4998302459716797s
+[INFO -- 2018-09-05 20:39:13]
+event type: exit
+[EXCEPTION -- 2018-09-05 20:39:13]
+exit code: no exit code available

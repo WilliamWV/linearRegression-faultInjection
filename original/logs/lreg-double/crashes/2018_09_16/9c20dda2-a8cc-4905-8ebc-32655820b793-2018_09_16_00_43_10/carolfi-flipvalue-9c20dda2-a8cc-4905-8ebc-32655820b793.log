@@ -1,0 +1,55 @@
+[INFO -- 2018-09-16 00:43:08]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 00:43:08]
+Initialization strings:
+[INFO -- 2018-09-16 00:43:08]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 00:43:08]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 00:43:08]
+initSignal:0
+[INFO -- 2018-09-16 00:43:08]
+endSignal:2
+[INFO -- 2018-09-16 00:43:08]
+faultModel:1
+[EXCEPTION -- 2018-09-16 00:43:09]
+gdbException: Cannot access memory at address 0x551155771360
+[INFO -- 2018-09-16 00:43:09]
+Backtrace BEGIN:
+#0  0x00005555555561dd in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd870, __x=std::vector of length -5864062013503, capacity 567795348112903495 = {...}) at /usr/include/c++/7/bits/vector.tcc:179
+#1  0x00005555555556f2 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:124
+#2  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+174	      return __first;
+175	    }
+176	
+177	  template<typename _Tp, typename _Alloc>
+178	    vector<_Tp, _Alloc>&
+179	    vector<_Tp, _Alloc>::
+180	    operator=(const vector<_Tp, _Alloc>& __x)
+181	    {
+182	      if (&__x != this)
+183		{
+
+Backtrace END
+Memory content before bitflip:0x030x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd92c
+address max offset: 4
+Memory content after  bitflip:0x0f0x000x000x00
+frame name: main
+symbol name: testCases
+symbol filename: lreg.cpp
+symbol line: 164
+value: 15
+value address: 0x7fffffffd92c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-16 00:43:09]
+Fault Injection Successful after 1.7134473323822021s
+[INFO -- 2018-09-16 00:43:09]
+event type: exit
+[EXCEPTION -- 2018-09-16 00:43:09]
+exit code: no exit code available

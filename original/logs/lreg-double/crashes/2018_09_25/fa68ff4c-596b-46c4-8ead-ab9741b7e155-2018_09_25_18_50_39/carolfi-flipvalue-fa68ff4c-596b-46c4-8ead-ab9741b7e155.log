@@ -1,0 +1,63 @@
+[INFO -- 2018-09-25 18:50:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-25 18:50:37]
+Initialization strings:
+[INFO -- 2018-09-25 18:50:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-25 18:50:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-25 18:50:37]
+initSignal:0
+[INFO -- 2018-09-25 18:50:37]
+endSignal:2
+[INFO -- 2018-09-25 18:50:37]
+faultModel:1
+[EXCEPTION -- 2018-09-25 18:50:38]
+gdbException: Cannot access memory at address 0xf55555771360
+[INFO -- 2018-09-25 18:50:38]
+Backtrace BEGIN:
+#0  0x00005555555577ca in std::_Destroy_aux<true>::__destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > () at /usr/include/c++/7/bits/stl_construct.h:117
+#1  0x000055555555731a in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.6304166312761136e-322, __last=1.6304166312761136e-322) at /usr/include/c++/7/bits/stl_construct.h:137
+#2  0x0000555555556b5f in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=1.6304166312761136e-322, __last=1.6304166312761136e-322) at /usr/include/c++/7/bits/stl_construct.h:206
+#3  0x0000555555556435 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd870, __x=std::vector of length -21990232555517, capacity -21990232555517 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#4  0x00005555555556f2 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:124
+#5  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+112	  template<>
+113	    struct _Destroy_aux<true>
+114	    {
+115	      template<typename _ForwardIterator>
+116	        static void
+117	        __destroy(_ForwardIterator, _ForwardIterator) { }
+118	    };
+119	
+120	  /**
+121	   * Destroy a range of objects.  If the value_type of the object has
+
+Backtrace END
+Fliping value of field: _M_current
+Fliping a bit of the pointer
+Memory content before bitflip:0x680x140x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd778
+address max offset: 8
+Memory content after  bitflip:0x680x140x710x550x550x550x000x00
+frame name: std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > >
+symbol name: __first
+symbol filename: /usr/include/c++/7/bits/stl_construct.h
+symbol line: 127
+value: <error reading variable: Cannot access memory at address 0x555555711468>
+value address: 0x7fffffffd778
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_current
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-09-25 18:50:38]
+Fault Injection Successful after 1.4718976020812988s
+[INFO -- 2018-09-25 18:50:38]
+event type: exit
+[EXCEPTION -- 2018-09-25 18:50:38]
+exit code: no exit code available

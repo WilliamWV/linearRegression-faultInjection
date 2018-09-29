@@ -1,0 +1,62 @@
+[INFO -- 2018-09-15 22:53:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 22:53:56]
+Initialization strings:
+[INFO -- 2018-09-15 22:53:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 22:53:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 22:53:56]
+initSignal:0
+[INFO -- 2018-09-15 22:53:56]
+endSignal:2
+[INFO -- 2018-09-15 22:53:56]
+faultModel:0
+[INFO -- 2018-09-15 22:53:57]
+Backtrace BEGIN:
+#0  std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-0.018488902169572836, __last=2.4209216646221081e-322, __result=-0.018236420357294933) at /usr/include/c++/7/bits/stl_algobase.h:420
+#1  0x0000555555556ae5 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-0.018488902169572836, __last=2.4209216646221081e-322, __result=-0.018236420357294933) at /usr/include/c++/7/bits/stl_algobase.h:456
+#2  0x0000555555556427 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd870, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x00005555555556f2 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:124
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+415	    __copy_move_a2(istreambuf_iterator<_CharT, char_traits<_CharT> >,
+416			   istreambuf_iterator<_CharT, char_traits<_CharT> >, _CharT*);
+417	
+418	  template<bool _IsMove, typename _II, typename _OI>
+419	    inline _OI
+420	    __copy_move_a2(_II __first, _II __last, _OI __result)
+421	    {
+422	      return _OI(std::__copy_move_a<_IsMove>(std::__niter_base(__first),
+423						     std::__niter_base(__last),
+424						     std::__niter_base(__result)));
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x160x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a160 
+address max offset: 8
+Memory content after  bitflip:0x510x160x770x550x550x550x000x00
+frame name: std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > >
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 19, capacity 31 = {4.6014527393928925e-305, 4.5836521485248348e-305, 4.5836521485248348e-305, 1.7965733068493692e-307, 4.5480509667887196e-305, 1.7939657984214311e-307, 4.5658515576567772e-305, 4.5792020008078204e-305, 1.8332685556633735e-307, 1.8137394039999619e-307, 1.8311499550656738e-307, 1.8263966844939116e-307, 1.8039612473951939e-307, 1.8321820938183993e-307, 1.8311499550656738e-307, 1.808089802406096e-307, 1.8221594832985121e-307, 1.8321820938183993e-307, 1.8362699065101148e-307, 1.8039612473951939e-307, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.131959884853339e-72, 8.3003028501329419e-322, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-15 22:53:57]
+Fault Injection Successful after 1.4866712093353271s
+[INFO -- 2018-09-15 22:53:58]
+event type: exit
+[EXCEPTION -- 2018-09-15 22:53:58]
+exit code: no exit code available

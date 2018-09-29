@@ -1,0 +1,63 @@
+[INFO -- 2018-09-15 18:48:44]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 18:48:44]
+Initialization strings:
+[INFO -- 2018-09-15 18:48:44]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 18:48:44]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 18:48:44]
+initSignal:0
+[INFO -- 2018-09-15 18:48:44]
+endSignal:2
+[INFO -- 2018-09-15 18:48:44]
+faultModel:0
+[INFO -- 2018-09-15 18:48:45]
+Backtrace BEGIN:
+#0  0x0000555555555f2f in std::pow<double, int> (__x=-6, __y=0) at /usr/include/c++/7/cmath:418
+#1  0x0000555555555237 in predict (v=-6) at lreg.cpp:50
+#2  0x00005555555553fc in partialDerivate (pos=0) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x400x150x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a140 
+address max offset: 8
+Memory content after  bitflip:0x420x150x770x550x550x550x000x00
+frame name: partialDerivate
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 19, capacity 31 = {1.0434277703334437e-309, 3.4838926896067841e-310, 1.0435126501650823e-309, 1.0435126501650823e-309, 3.4838926896067841e-310, 1.0436824098283595e-309, 3.4855902862395563e-310, 3.4817706938158188e-310, 0, 3.4766779039175022e-310, 3.4851658870813633e-310, 1.0438946094074561e-309, 3.4732827106519577e-310, 1.0441704688602815e-309, 3.4864390845559424e-310, 1.0435975299967209e-309, 1.0435126501650823e-309, 3.483468290448591e-310, 3.4847414879231702e-310, 3.4843170887649771e-310, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.5493634291557345e-303, 0, 3.483468290448591e-310, 1.0441068089865526e-309, 3.4843170887649771e-310, 3.4843170887649771e-310, 1.0441068089865526e-309, 3.4860146853977494e-310, 1.0442765686498298e-309, 1.0439370493232754e-309, 1.0431731308385279e-309, 3.4838926896067841e-310, 3.504084805805188e-310, 3.505079491332203e-310, 1.0426638518486962e-309, 3.5108138533954443e-310, 3.5061935391224597e-310, 3.499144534354347e-310, 3.4977121871954454e-310, 3.499940282775959e-310, 3.5031365389361004e-310, 3.5020490160932307e-310, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.1045122875997705e-112, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-15 18:48:45]
+Fault Injection Successful after 1.0665388107299805s
+[INFO -- 2018-09-15 18:48:48]
+event type: exit
+[EXCEPTION -- 2018-09-15 18:48:48]
+exit code: no exit code available

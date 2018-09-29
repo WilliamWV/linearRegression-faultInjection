@@ -1,0 +1,53 @@
+[INFO -- 2018-09-16 11:19:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 11:19:21]
+Initialization strings:
+[INFO -- 2018-09-16 11:19:21]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 11:19:21]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 11:19:21]
+initSignal:0
+[INFO -- 2018-09-16 11:19:21]
+endSignal:2
+[INFO -- 2018-09-16 11:19:21]
+faultModel:2
+[INFO -- 2018-09-16 11:19:22]
+Backtrace BEGIN:
+#0  0x000055555555512c in equals (a=std::vector of length 2, capacity 2 = {...}, b=std::vector of length 2, capacity 2 = {...}) at lreg.cpp:37
+#1  0x0000555555555744 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#2  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+32	vector<double> x; // input of training set
+33	vector<double> y; // observed values of training set inputs
+34	vector<double> T; // the adjustment variables
+35	
+36	bool equals(vector<double> a, vector<double> b){
+37		if (a.size() != b.size()) return false;
+38		for (int i = 0; i<a.size(); i++){
+39			if(a[i] != b[i]) return false;
+40		}
+41		return true;
+
+Backtrace END
+Memory content before bitflip:0x030x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd91c
+address max offset: 4
+Memory content after  bitflip:0xfc0x030xb60x82
+frame name: main
+symbol name: argc
+symbol filename: lreg.cpp
+symbol line: 152
+value: -2102000644
+value address: 0x7fffffffd91c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-16 11:19:22]
+Fault Injection Successful after 1.5565319061279297s
+[INFO -- 2018-09-16 11:19:29]
+event type: exit
+[INFO -- 2018-09-16 11:19:29]
+exit code: 0

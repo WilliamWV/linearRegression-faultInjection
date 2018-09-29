@@ -1,0 +1,58 @@
+[INFO -- 2018-09-14 22:57:38]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-14 22:57:38]
+Initialization strings:
+[INFO -- 2018-09-14 22:57:38]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-14 22:57:38]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-14 22:57:38]
+initSignal:0
+[INFO -- 2018-09-14 22:57:38]
+endSignal:2
+[INFO -- 2018-09-14 22:57:38]
+faultModel:2
+[EXCEPTION -- 2018-09-14 22:57:41]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-14 22:57:41]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=1, y=2) at ../sysdeps/ieee754/dbl-64/e_pow.c:76
+#1  0x00007ffff76b7b14 in __pow (x=1, y=2) at w_pow_compat.c:30
+#2  0x0000555555555f39 in std::pow<double, int> (__x=1, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555237 in predict (v=1) at lreg.cpp:50
+#4  0x00005555555553fc in partialDerivate (pos=1) at lreg.cpp:74
+#5  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#6  0x00005555555556ac in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+71	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x1b0x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a170 
+address max offset: 8
+Memory content after  bitflip:0x3b0xd50x3b0x0a0x560xa80xe10xa6
+frame name: partialDerivate
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 41, capacity -802720041394464897 = {0, 0, 0, 0, 4.3849053649243322e-314, 0, 6.2228556224996685e-317, 2.076561861995926e-317, 6.2147608509582055e-317, 2.0742852074998895e-317, 2.0742852074998895e-317, 2.0752970539425724e-317, 6.2215908144463149e-317, 0, 2.0809254497799958e-317, 2.0799768437399807e-317, 2.0811784113906666e-317, 6.2276302729010783e-317, 6.2268397678677323e-317, 2.0784590740759563e-317, 6.225321998203708e-317, 2.0806724881693251e-317, 6.2272508304850722e-317, 6.2277567537064136e-317, 6.2268397678677323e-317, 2.0000000055976841, 2.681561588519099e+154, -2.0000000056151515, 3.1050361933136243e+231, 1.4916681504287771e-154, -2.0000000056143681, -1.4916681476470966e-154, -2.6815615885211222e+154, 2.6815615885221297e+154, 2.1007715727077929e-317, 2.0854945688727357e-317, 1.2882297575235686e-231, -1.7272337158696401e-77, -6.2478973397591321e-317, 2.0983679433407752e-317, -6.2359325520137946e-317, 2.0976792158304725e-317, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4.0616325686444665e-315, 8.1656277329239214e+31, -1.8570507657759077e+292, 1.657033837487256e+194, -6.6764202745516168e+155, 6.218861101753042e-317, 4.0616325686444665e-315, 8.1656277329239214e+31, -1.8570507657759077e+292, 1.657033837487256e+194, -6.6764202745516168e+155, 6.218861101753042e-317, 4.0616325686444665e-315, 1.2019182497227433e+103, -3.2324166713196585e+50, 7.0236932221457855e-277, -5.832295921688266e+230, 6.2188373866020416e-317, 4.0616325686444665e-315, 0, -1.8570507648428459e+292, 1.657033837487256e+194, -6.6764202745516168e+155, 6.218861101753042e-317, 3.4761772455355713e-312, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-14 22:57:41]
+Fault Injection Successful after 3.7320053577423096s
+[INFO -- 2018-09-14 22:57:46]
+event type: exit
+[EXCEPTION -- 2018-09-14 22:57:46]
+exit code: no exit code available

@@ -1,0 +1,67 @@
+[INFO -- 2018-09-06 21:05:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-06 21:05:15]
+Initialization strings:
+[INFO -- 2018-09-06 21:05:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-06 21:05:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-06 21:05:15]
+initSignal:0
+[INFO -- 2018-09-06 21:05:15]
+endSignal:2
+[INFO -- 2018-09-06 21:05:15]
+faultModel:2
+[EXCEPTION -- 2018-09-06 21:05:16]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-06 21:05:16]
+Backtrace BEGIN:
+#0  0x0000555555557994 in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd750, __n=140737488344904) at /usr/include/c++/7/ext/new_allocator.h:99
+#1  0x0000555555557755 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=3) at /usr/include/c++/7/bits/alloc_traits.h:436
+#2  0x000055555555722c in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd8b0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#3  0x0000555555556f4d in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd8b0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#4  0x000055555555663d in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8b0, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#5  0x000055555555610f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8b0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#6  0x0000555555555713 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#7  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+94	      { return std::__addressof(__x); }
+95	
+96	      // NB: __n is permitted to be 0.  The C++ standard says nothing
+97	      // about what the return value is when __n == 0.
+98	      pointer
+99	      allocate(size_type __n, const void* = static_cast<const void*>(0))
+100	      {
+101		if (__n > this->max_size())
+102		  std::__throw_bad_alloc();
+103	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x020xe40xc70xff0xc50x170x0b0x40
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771360
+address max offset: 8
+Memory content after  bitflip:0x990x470x1f0x220x9d0x590x7b0x42
+frame name: std::_Vector_base<double, std::allocator<double> >::_Vector_base
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 3, capacity 3 = {1879481393652.4749, 7.9800206980357924, -2.5023190267185162}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-06 21:05:16]
+Fault Injection Successful after 1.8515071868896484s
+[INFO -- 2018-09-06 21:05:18]
+event type: exit
+[EXCEPTION -- 2018-09-06 21:05:18]
+exit code: no exit code available

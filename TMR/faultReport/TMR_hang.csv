@@ -1,0 +1,4 @@
+Variable Name;Variable File;Variable Line;Fault Injection Time(s);Injection Time Interval;Fault Model
+testCases;lreg.cpp;164;2.2669081687927246;0-2;Single bit-flip
+testCases;lreg.cpp;164;2.096087694168091;0-2;Random bit-flip
+iterations;lreg.cpp;105;0.9603977203369141;0-2;Random bit-flip

@@ -1,0 +1,60 @@
+[INFO -- 2018-09-15 17:16:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 17:16:19]
+Initialization strings:
+[INFO -- 2018-09-15 17:16:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 17:16:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 17:16:19]
+initSignal:0
+[INFO -- 2018-09-15 17:16:19]
+endSignal:2
+[INFO -- 2018-09-15 17:16:19]
+faultModel:1
+[EXCEPTION -- 2018-09-15 17:16:20]
+gdbException: Cannot access memory at address 0x555571771650
+[EXCEPTION -- 2018-09-15 17:16:20]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-09-15 17:16:21]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-09-15 17:16:21]
+Backtrace BEGIN:
+#0  0x0000555555555415 in partialDerivate (pos=1) at lreg.cpp:74
+#1  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7d8
+address max offset: 8
+Memory content after  bitflip:0x240x430x1c0xeb0xe20x360x0a0x3f
+frame name: adjust
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 83
+value: 4.9999999999999941e-05
+value address: 0x7fffffffd7d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-15 17:16:21]
+Fault Injection Successful after 2.1383707523345947s
+[INFO -- 2018-09-15 17:16:21]
+event type: exit
+[EXCEPTION -- 2018-09-15 17:16:21]
+exit code: no exit code available

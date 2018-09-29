@@ -1,0 +1,55 @@
+[INFO -- 2018-09-15 12:59:25]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 12:59:25]
+Initialization strings:
+[INFO -- 2018-09-15 12:59:25]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 12:59:25]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 12:59:25]
+initSignal:0
+[INFO -- 2018-09-15 12:59:25]
+endSignal:2
+[INFO -- 2018-09-15 12:59:25]
+faultModel:1
+[INFO -- 2018-09-15 12:59:26]
+Backtrace BEGIN:
+#0  0x00007ffff76d5a35 in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:215
+#1  0x00007ffff76b7b14 in __pow (x=-13, y=0) at w_pow_compat.c:30
+#2  0x0000555555555f39 in std::pow<double, int> (__x=-13, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555237 in predict (v=-13) at lreg.cpp:50
+#4  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#5  0x00005555555556b1 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#6  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+210	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x400x160x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a150 
+address max offset: 8
+Memory content after  bitflip:0x400x160x770x550x500x550x000x00
+frame name: std::pow<double, int>
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 20, capacity -2684354528 = {-12, 2, -16, 15, 4, -13, 8, -6, 14, -9, -4, -19, 15, -19, -15, -10, -14, -8, -10, -13}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-15 12:59:26]
+Fault Injection Successful after 1.2253551483154297s
+[INFO -- 2018-09-15 12:59:26]
+event type: exit
+[EXCEPTION -- 2018-09-15 12:59:26]
+exit code: no exit code available

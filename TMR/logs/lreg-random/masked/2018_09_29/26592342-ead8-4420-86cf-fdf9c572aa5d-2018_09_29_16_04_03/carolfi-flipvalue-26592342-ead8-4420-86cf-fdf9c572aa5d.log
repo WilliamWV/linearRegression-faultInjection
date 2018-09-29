@@ -1,0 +1,69 @@
+[INFO -- 2018-09-29 16:03:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-29 16:03:54]
+Initialization strings:
+[INFO -- 2018-09-29 16:03:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-29 16:03:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-29 16:03:54]
+initSignal:0
+[INFO -- 2018-09-29 16:03:54]
+endSignal:2
+[INFO -- 2018-09-29 16:03:54]
+faultModel:2
+[INFO -- 2018-09-29 16:03:54]
+Backtrace BEGIN:
+#0  strcmp () at ../sysdeps/x86_64/strcmp.S:2211
+#1  0x00007ffff7de6715 in _dl_name_match_p (name=0x7ffff6e9875a "ld-linux-x86-64.so.2", map=map@entry=0x7ffff7ffe170) at dl-misc.c:283
+#2  0x00007ffff7ddf34c in do_lookup_x (undef_name=undef_name@entry=0x7ffff6e9709a "__libc_enable_secure", new_hash=new_hash@entry=4027880617, old_hash=old_hash@entry=0x7fffffffd9a0, ref=0x7ffff6e84f18, result=result@entry=0x7fffffffd9b0, scope=<optimized out>, i=<optimized out>, version=0x7ffff7fddcd0, flags=1, skip=0x0, type_class=4, undef_map=0x7ffff7fe03d0) at dl-lookup.c:541
+#3  0x00007ffff7de01ef in _dl_lookup_symbol_x (undef_name=0x7ffff6e9709a "__libc_enable_secure", undef_map=undef_map@entry=0x7ffff7fe03d0, ref=ref@entry=0x7fffffffdad0, symbol_scope=symbol_scope@entry=0x7ffff7fe0728, version=0x7ffff7fddcd0, type_class=4, flags=1, skip_map=<optimized out>) at dl-lookup.c:813
+#4  0x00007ffff7de1af9 in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x7ffff726be20, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff6ea15f0, map=0x7ffff7fe03d0) at ../sysdeps/x86_64/dl-machine.h:308
+#5  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7fe03d0) at do-rel.h:137
+#6  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#7  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#8  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde60, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#9  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde60) at rtld.c:414
+#10 _dl_start (arg=0x7fffffffde60) at rtld.c:521
+#11 0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#12 0x0000000000000003 in ?? ()
+#13 0x00007fffffffe203 in ?? ()
+#14 0x00007fffffffe212 in ?? ()
+#15 0x00007fffffffe226 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2206	../sysdeps/x86_64/strcmp.S: No such file or directory.
+
+Backtrace END
+Fliping value of field: name
+Fliping a bit of the pointer
+Memory content before bitflip:0x380x420x550x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff7ffe030 
+address max offset: 8
+Memory content after  bitflip:0x200x690xb70x650xb60x360x2d0x7e
+frame name: _dl_start
+symbol name: _dl_rtld_libname
+symbol filename: rtld.c
+symbol line: 301
+value: {name = 0x7e2d36b665b76920 <error: Cannot access memory at address 0x7e2d36b665b76920>, next = 0x7ffff7ffdfe0 <newname>, dont_free = 0}
+value address: 0x7ffff7ffe030 <_dl_rtld_libname>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: name
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: next
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: dont_free
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+
+[INFO -- 2018-09-29 16:03:54]
+Fault Injection Successful after 0.2751336097717285s
+[INFO -- 2018-09-29 16:04:02]
+event type: exit
+[INFO -- 2018-09-29 16:04:02]
+exit code: 0

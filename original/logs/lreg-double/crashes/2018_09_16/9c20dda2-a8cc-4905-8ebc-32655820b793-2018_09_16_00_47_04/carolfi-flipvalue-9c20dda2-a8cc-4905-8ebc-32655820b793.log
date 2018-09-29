@@ -1,0 +1,61 @@
+[INFO -- 2018-09-16 00:47:02]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 00:47:02]
+Initialization strings:
+[INFO -- 2018-09-16 00:47:02]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 00:47:02]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 00:47:02]
+initSignal:0
+[INFO -- 2018-09-16 00:47:02]
+endSignal:2
+[INFO -- 2018-09-16 00:47:02]
+faultModel:1
+[INFO -- 2018-09-16 00:47:03]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd890, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:163
+#1  0x000055555555602d in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd890, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#2  0x0000555555555770 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+158	      }
+159	#endif
+160	
+161	      ~_Vector_base() _GLIBCXX_NOEXCEPT
+162	      { _M_deallocate(this->_M_impl._M_start, this->_M_impl._M_end_of_storage
+163			      - this->_M_impl._M_start); }
+164	
+165	    public:
+166	      _Vector_impl _M_impl;
+167	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x300x130x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a148 
+address max offset: 8
+Memory content after  bitflip:0xb40x130x770x550x550x550x000x00
+frame name: std::_Vector_base<double, std::allocator<double> >::~_Vector_base
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 24, capacity 8 = {-10, -4, -4, 13, 1, 10, -1, -3, 0, 1.6304166312761136e-322, -2.0000000824430684, 0.99999897040036467, 0, 1.6304166312761136e-322, -1.9999999175569314, 1.0000010295996353, 0, 2.4209216646221081e-322, 0, -6, -6, 11, 0, 4.001931731314097e-322, -12, -6, -6, 11, -1, 8, -3, -5, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 6.7257156368368892e-320, 0, 0, 0, 0, 0, 1.6304166312761136e-322, -2.0000000171137025, 0.99999897008327054, 0, 1.6304166312761136e-322, -1.9999999175569314, 1.0000010295996353, 0, 1.6304166312761136e-322, 0, 0.99999897040036467, 0, 2.167614207999301e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-16 00:47:03]
+Fault Injection Successful after 1.9853556156158447s
+[INFO -- 2018-09-16 00:47:04]
+event type: exit
+[EXCEPTION -- 2018-09-16 00:47:04]
+exit code: no exit code available

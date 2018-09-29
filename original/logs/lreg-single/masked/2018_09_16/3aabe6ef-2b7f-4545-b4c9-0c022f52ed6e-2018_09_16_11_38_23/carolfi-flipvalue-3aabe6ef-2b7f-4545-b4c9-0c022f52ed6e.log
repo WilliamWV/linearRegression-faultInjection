@@ -1,0 +1,61 @@
+[INFO -- 2018-09-16 11:38:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 11:38:15]
+Initialization strings:
+[INFO -- 2018-09-16 11:38:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 11:38:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 11:38:15]
+initSignal:0
+[INFO -- 2018-09-16 11:38:15]
+endSignal:2
+[INFO -- 2018-09-16 11:38:15]
+faultModel:0
+[INFO -- 2018-09-16 11:38:16]
+Backtrace BEGIN:
+#0  0x000055555555541e in partialDerivate (pos=0) at lreg.cpp:74
+#1  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771880
+address max offset: 8
+Memory content after  bitflip:0x040x000x000x000x000x000x000x00
+frame name: train
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 36, capacity 64 = {0, 2, 1, -3, -4, -8, -16, -5, 20, -19, 14, 0, -20, -19, -20, 10, -13, -21, 24, -9, -20, 15, 9, -1, -17, -21, 3, -16, 31, -3, 5, 1, -7, -17, -1, -9}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-16 11:38:16]
+Fault Injection Successful after 1.7153327465057373s
+[INFO -- 2018-09-16 11:38:22]
+event type: exit
+[INFO -- 2018-09-16 11:38:22]
+exit code: 0

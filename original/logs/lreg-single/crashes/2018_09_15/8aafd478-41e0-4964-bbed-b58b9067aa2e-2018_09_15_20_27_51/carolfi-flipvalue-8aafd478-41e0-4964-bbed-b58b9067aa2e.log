@@ -1,0 +1,54 @@
+[INFO -- 2018-09-15 20:27:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 20:27:48]
+Initialization strings:
+[INFO -- 2018-09-15 20:27:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 20:27:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 20:27:48]
+initSignal:0
+[INFO -- 2018-09-15 20:27:48]
+endSignal:2
+[INFO -- 2018-09-15 20:27:48]
+faultModel:0
+[EXCEPTION -- 2018-09-15 20:27:49]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-09-15 20:27:49]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-15 20:27:50]
+Backtrace BEGIN:
+#0  0x00007ffff6f18ac2 in __GI___libc_free (mem=<optimized out>) at malloc.c:3125
+#1  0x000055555555772a in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd890, __p=0x555555771490) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x00005555555571f0 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555771490, __n=3) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x0000555555556944 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd890, __p=0x555555771490, __n=3) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x00005555555565db in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd890, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#5  0x000055555555602d in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd890, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#6  0x0000555555555770 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#7  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+3120	in malloc.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x900xd80xff0xff0xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0x900xd80xff0xdf0xff0x7f0x000x00
+frame name: std::vector<double, std::allocator<double> >::~vector
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd890
+value address: 0x7fffffffd7f8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-09-15 20:27:50]
+Fault Injection Successful after 2.094268560409546s
+[INFO -- 2018-09-15 20:27:50]
+event type: exit
+[EXCEPTION -- 2018-09-15 20:27:50]
+exit code: no exit code available

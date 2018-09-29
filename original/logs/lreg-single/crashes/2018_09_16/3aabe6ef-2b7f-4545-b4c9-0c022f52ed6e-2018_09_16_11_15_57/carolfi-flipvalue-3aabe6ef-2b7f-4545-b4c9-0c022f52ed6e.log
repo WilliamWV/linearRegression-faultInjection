@@ -1,0 +1,60 @@
+[INFO -- 2018-09-16 11:15:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 11:15:53]
+Initialization strings:
+[INFO -- 2018-09-16 11:15:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 11:15:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 11:15:53]
+initSignal:0
+[INFO -- 2018-09-16 11:15:53]
+endSignal:2
+[INFO -- 2018-09-16 11:15:53]
+faultModel:0
+[EXCEPTION -- 2018-09-16 11:15:54]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-09-16 11:15:54]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-16 11:15:54]
+Backtrace BEGIN:
+#0  0x0000555555555f39 in std::pow<double, int> (__x=4.0748950423379995e-312, __y=1) at /usr/include/c++/7/cmath:418
+#1  0x0000555555555237 in predict (v=4.0748950423379995e-312) at lreg.cpp:50
+#2  0x00005555555553fc in partialDerivate (pos=2) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd950
+address max offset: 8
+Memory content after  bitflip:0x2d0x430x1c0xeb0xe20x360x080x3f
+frame name: main
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 168
+value: 4.6185302734375002e-05
+value address: 0x7fffffffd950
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-16 11:15:54]
+Fault Injection Successful after 1.9995949268341064s
+[INFO -- 2018-09-16 11:15:57]
+event type: exit
+[EXCEPTION -- 2018-09-16 11:15:57]
+exit code: no exit code available

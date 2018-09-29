@@ -1,0 +1,60 @@
+[INFO -- 2018-09-15 18:09:16]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 18:09:16]
+Initialization strings:
+[INFO -- 2018-09-15 18:09:16]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 18:09:16]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 18:09:16]
+initSignal:0
+[INFO -- 2018-09-15 18:09:16]
+endSignal:2
+[INFO -- 2018-09-15 18:09:16]
+faultModel:1
+[INFO -- 2018-09-15 18:09:19]
+Backtrace BEGIN:
+#0  0x00007ffff76b4990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76b7b14 in __pow (x=15, y=1) at w_pow_compat.c:30
+#2  0x0000555555555f39 in std::pow<double, int> (__x=15, __y=1) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555451 in partialDerivate (pos=1) at lreg.cpp:74
+#4  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#5  0x00005555555556ac in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+138		out<<endl;
+139		out<<"Mean Squared Error: " << meanSquaredError()<<endl;
+140	}
+141	/*
+142	It must receive an input file formated as follows:
+143		1° Line : one integer T -> number of test cases
+144		2° to 5° repeat to all test case	
+145		2° Line : method parameters -> alpha, iterations, N, size of 
+146			      training set, predictions
+147		3° Line : inputs x of the training set
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x130x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a188 
+address max offset: 8
+Memory content after  bitflip:0xa00x190x770x550x550x550x000x00
+frame name: main
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 196, capacity 4 = {18.636164901141704, 81.959434427716758, -7.2293500328089371, -2.8301801519355663, 0, 4.001931731314097e-322, 4.6355706478057827e-310, 1.5810100666919889e-322, 10.000007629394529, 3.2869227096664788e+178, -20.00000001238384, 14, -28, -14, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 1.1286510821455804e-312, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 4.6355706478247548e-310, -8.219986251275504, 3.6155449486824147, 1.6304166312761136e-322, 4.6355706478263358e-310, -8.2199967005593209, 3.6156008058773228, 1.6304166312761136e-322, 0, -8.219986251275504, 3.6155449486824147, 7.1639518646980749e-322, 0, -20, 10, 10, -20, 14, -28, -14, -3, 9, 549, 699, -1, 2159, 867, 207, 0, 1.3487992131466031e-321, 0, 9, -6, -6, 9, -8, 13, 6, 0, 2, 12, -13, 1, -23, 15, -7, -6, 8, 11, 10, 4, 12, 6, 17, 18, 6, 7, -21, -2, -12, -24, 3, 0, 1.3487992131466031e-321, 4.6355706478350314e-310, -20, 10, 10, -20, 14, -28, -14, -3, 9, 549, 699, -1, 2159, 867, 207, 153, 237, 459, 377, -256, -5864, -806, -16129, -19058, -806, -1249, 25519, 2, 4432, 38524, -113, 0, 2.6136072665001942e-321, -5, 9, -6, -6, 9, -8, 13, 6, 0, 2, 12, -13, 1, -23, 15, -7, -6, 8, 11, 10, 4, 12, 6, 17, 18, 6, 7, -21, -2, -12, -24, 3, -27, -23, 27, -12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.6136072665001942e-321, 8, -20, 10, 10, -20, 14}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-15 18:09:19]
+Fault Injection Successful after 3.709998846054077s

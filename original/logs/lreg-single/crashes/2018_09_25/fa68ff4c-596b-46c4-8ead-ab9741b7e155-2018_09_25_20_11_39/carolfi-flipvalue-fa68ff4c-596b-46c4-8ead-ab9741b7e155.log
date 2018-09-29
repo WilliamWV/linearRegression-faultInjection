@@ -1,0 +1,53 @@
+[INFO -- 2018-09-25 20:11:38]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-25 20:11:38]
+Initialization strings:
+[INFO -- 2018-09-25 20:11:38]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-25 20:11:38]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-25 20:11:38]
+initSignal:0
+[INFO -- 2018-09-25 20:11:38]
+endSignal:2
+[INFO -- 2018-09-25 20:11:38]
+faultModel:0
+[INFO -- 2018-09-25 20:11:38]
+Backtrace BEGIN:
+#0  0x00007ffff7df0ec9 in __brk (addr=addr@entry=0x0) at ../sysdeps/unix/sysv/linux/x86_64/brk.c:31
+#1  0x00007ffff7defc71 in frob_brk () at ../sysdeps/unix/sysv/linux/dl-sysdep.c:35
+#2  _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde60, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:227
+#3  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde60) at rtld.c:414
+#4  _dl_start (arg=0x7fffffffde60) at rtld.c:521
+#5  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#6  0x0000000000000003 in ?? ()
+#7  0x00007fffffffe205 in ?? ()
+#8  0x00007fffffffe214 in ?? ()
+#9  0x00007fffffffe228 in ?? ()
+#10 0x0000000000000000 in ?? ()
+
+26	../sysdeps/unix/sysv/linux/x86_64/brk.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff7ffc688 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x020x000x000x00
+frame name: _dl_start
+symbol name: preloadlist
+symbol filename: rtld.c
+symbol line: 825
+value: 0x0
+value address: 0x7ffff7ffc688 <preloadlist>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-09-25 20:11:38]
+Fault Injection Successful after 0.5636138916015625s
+[INFO -- 2018-09-25 20:11:38]
+event type: exit
+[EXCEPTION -- 2018-09-25 20:11:38]
+exit code: no exit code available

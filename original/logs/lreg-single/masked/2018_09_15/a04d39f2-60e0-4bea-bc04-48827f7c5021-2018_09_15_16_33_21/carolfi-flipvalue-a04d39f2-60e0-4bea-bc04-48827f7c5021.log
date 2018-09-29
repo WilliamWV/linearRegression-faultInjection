@@ -1,0 +1,61 @@
+[INFO -- 2018-09-15 16:33:11]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 16:33:11]
+Initialization strings:
+[INFO -- 2018-09-15 16:33:11]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 16:33:11]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 16:33:11]
+initSignal:0
+[INFO -- 2018-09-15 16:33:11]
+endSignal:2
+[INFO -- 2018-09-15 16:33:11]
+faultModel:0
+[INFO -- 2018-09-15 16:33:13]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::size (this=0xc0ef0f83cda2be46) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x00005555555562db in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd870, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:203
+#2  0x00005555555556f2 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:124
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771b70
+address max offset: 8
+Memory content after  bitflip:0x200x000x000x000x000x000x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 36, capacity 64 = {-1, -1, -1, -1, -1, -1, -1, -1, -553, -73, -241, -307, -241, -7, -43, -1, -601, -3, -1, -211, 9959, -1, -33935, 59, -1021, 11, 18161, -5891, 114271, 103415, 34781, 671, 125861, 75011, -65545, -91639}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-15 16:33:13]
+Fault Injection Successful after 2.6671035289764404s
+[INFO -- 2018-09-15 16:33:19]
+event type: exit
+[INFO -- 2018-09-15 16:33:19]
+exit code: 0

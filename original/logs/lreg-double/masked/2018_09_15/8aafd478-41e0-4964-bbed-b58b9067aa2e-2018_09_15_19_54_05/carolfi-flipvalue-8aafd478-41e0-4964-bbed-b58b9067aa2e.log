@@ -1,0 +1,49 @@
+[INFO -- 2018-09-15 19:53:57]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 19:53:57]
+Initialization strings:
+[INFO -- 2018-09-15 19:53:57]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 19:53:57]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 19:53:57]
+initSignal:0
+[INFO -- 2018-09-15 19:53:57]
+endSignal:2
+[INFO -- 2018-09-15 19:53:57]
+faultModel:1
+[INFO -- 2018-09-15 19:53:58]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:447
+#1  __ieee754_pow_sse2 (x=2, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:97
+#2  0x00007ffff76b7b14 in __pow (x=2, y=3) at w_pow_compat.c:30
+#3  0x0000555555555f39 in std::pow<double, int> (__x=2, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x0000555555555237 in predict (v=2) at lreg.cpp:50
+#5  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#6  0x00005555555556b1 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#7  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+442	../sysdeps/i386/fpu/fenv_private.h: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x1d0xac0x200x300x0b0xa20x8c0x41
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7e8
+address max offset: 8
+Memory content after  bitflip:0x9c0xac0x200x300x0b0xa20x8c0x41
+frame name: meanSquaredError
+symbol name: error
+symbol filename: lreg.cpp
+symbol line: 59
+value: 60047718.015954226
+value address: 0x7fffffffd7e8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-15 19:53:58]
+Fault Injection Successful after 1.8355822563171387s
+[INFO -- 2018-09-15 19:54:04]
+event type: exit
+[INFO -- 2018-09-15 19:54:04]
+exit code: 0

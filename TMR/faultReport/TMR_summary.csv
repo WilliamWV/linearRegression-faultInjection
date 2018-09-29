@@ -1,0 +1,37 @@
+Faults Injected:;30
+
+Fault Effect;#Effect;PVF
+Masked;22;0.7333333333333333
+SDCs;2;0.06666666666666667
+Crashes;3;0.1
+Hangs;3;0.1
+
+FaultModels SDCs:
+FaultModel ;#SDCs;percentage
+Random bit-flip;1;50.0
+Double bit-flip;1;50.0
+
+FaultModels Crashes:
+FaultModel ;#Crashes;percentage
+Single bit-flip;3;100.0
+
+FaultModels Hangs:
+FaultModel ;#Hangs;percentage
+Random bit-flip;2;66.66666666666666
+Single bit-flip;1;33.33333333333333
+
+Variables that caused SDCs:
+PVF ;#flips ;#SDCs ;Var name ;file ;line number
+33.33333333333333;3;1;x;lreg.cpp;32
+100.0;1;1;i;lreg.cpp;167
+
+Variables that caused Crash:
+PVF ;#flips ;#SDCs ;Var name ;file ;line number
+100.0;1;1;i;lreg.cpp;86
+33.33333333333333;3;1;x;lreg.cpp;32
+100.0;1;1;y;lreg.cpp;33
+
+Variables that caused Hang:
+PVF ;#flips ;#SDCs ;Var name ;file ;line number
+100.0;2;2;testCases;lreg.cpp;164
+100.0;1;1;iterations;lreg.cpp;105

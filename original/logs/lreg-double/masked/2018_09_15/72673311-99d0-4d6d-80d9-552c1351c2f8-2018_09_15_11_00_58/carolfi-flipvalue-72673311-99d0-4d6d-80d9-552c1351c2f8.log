@@ -1,0 +1,59 @@
+[INFO -- 2018-09-15 11:00:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 11:00:49]
+Initialization strings:
+[INFO -- 2018-09-15 11:00:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 11:00:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 11:00:49]
+initSignal:0
+[INFO -- 2018-09-15 11:00:49]
+endSignal:2
+[INFO -- 2018-09-15 11:00:49]
+faultModel:1
+[EXCEPTION -- 2018-09-15 11:00:50]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-09-15 11:00:50]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-09-15 11:00:50]
+Backtrace BEGIN:
+#0  std::_Destroy<double*> (__first=0x555555771470, __last=0x555555771488) at /usr/include/c++/7/bits/stl_construct.h:137
+#1  0x00005555555566dd in std::_Destroy<double*, double> (__first=0x555555771470, __last=0x555555771488) at /usr/include/c++/7/bits/stl_construct.h:206
+#2  0x0000555555556021 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd8b0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:434
+#3  0x0000555555555780 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+132	      // A deleted destructor is trivial, this ensures we reject such types:
+133	      static_assert(is_destructible<_Value_type>::value,
+134			    "value type is destructible");
+135	#endif
+136	      std::_Destroy_aux<__has_trivial_destructor(_Value_type)>::
+137		__destroy(__first, __last);
+138	    }
+139	
+140	  template<bool>
+141	    struct _Destroy_n_aux
+
+Backtrace END
+Memory content before bitflip:0x600xea0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd930
+address max offset: 4
+Memory content after  bitflip:0x600xea0x000x14
+frame name: main
+symbol name: iterations
+symbol filename: lreg.cpp
+symbol line: 169
+value: 335604320
+value address: 0x7fffffffd930
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-15 11:00:50]
+Fault Injection Successful after 1.9282779693603516s
+[INFO -- 2018-09-15 11:00:57]
+event type: exit
+[INFO -- 2018-09-15 11:00:57]
+exit code: 0

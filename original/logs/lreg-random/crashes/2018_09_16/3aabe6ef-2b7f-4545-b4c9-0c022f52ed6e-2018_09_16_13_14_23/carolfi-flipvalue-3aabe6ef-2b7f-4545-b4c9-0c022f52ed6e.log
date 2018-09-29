@@ -1,0 +1,57 @@
+[INFO -- 2018-09-16 13:14:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 13:14:21]
+Initialization strings:
+[INFO -- 2018-09-16 13:14:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 13:14:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 13:14:22]
+initSignal:0
+[INFO -- 2018-09-16 13:14:22]
+endSignal:2
+[INFO -- 2018-09-16 13:14:22]
+faultModel:2
+[EXCEPTION -- 2018-09-16 13:14:22]
+gdbException: Cannot access memory at address 0x9edb582e1a8f9a93
+[INFO -- 2018-09-16 13:14:23]
+Backtrace BEGIN:
+#0  0x0000555555556fc0 in std::_Destroy<double*> (__first=0x555555771470, __last=0x7fffffffd7c0) at /usr/include/c++/7/bits/stl_construct.h:127
+#1  0x00005555555566dd in std::_Destroy<double*, double> (__first=0x555555771470, __last=0x555555771488) at /usr/include/c++/7/bits/stl_construct.h:206
+#2  0x0000555555556021 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd8b0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:434
+#3  0x0000555555555780 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+122	   * a trivial destructor, the compiler should optimize all of this
+123	   * away, otherwise the objects' destructors must be invoked.
+124	   */
+125	  template<typename _ForwardIterator>
+126	    inline void
+127	    _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+128	    {
+129	      typedef typename iterator_traits<_ForwardIterator>::value_type
+130	                       _Value_type;
+131	#if __cplusplus >= 201103L
+
+Backtrace END
+Memory content before bitflip:0x060x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd93c
+address max offset: 4
+Memory content after  bitflip:0x320x080x7a0xe4
+frame name: main
+symbol name: predictions
+symbol filename: lreg.cpp
+symbol line: 169
+value: -461764558
+value address: 0x7fffffffd93c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-16 13:14:23]
+Fault Injection Successful after 1.0148742198944092s
+[INFO -- 2018-09-16 13:14:23]
+event type: exit
+[EXCEPTION -- 2018-09-16 13:14:23]
+exit code: no exit code available

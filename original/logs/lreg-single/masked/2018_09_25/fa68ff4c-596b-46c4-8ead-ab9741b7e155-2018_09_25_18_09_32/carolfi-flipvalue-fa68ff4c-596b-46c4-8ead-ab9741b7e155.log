@@ -1,0 +1,60 @@
+[INFO -- 2018-09-25 18:09:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-25 18:09:23]
+Initialization strings:
+[INFO -- 2018-09-25 18:09:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-25 18:09:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-25 18:09:23]
+initSignal:0
+[INFO -- 2018-09-25 18:09:23]
+endSignal:2
+[INFO -- 2018-09-25 18:09:23]
+faultModel:0
+[INFO -- 2018-09-25 18:09:24]
+Backtrace BEGIN:
+#0  0x0000555555555107 in equals (a=std::vector of length 2, capacity 2 = {...}, b=<error reading variable: Cannot access memory at address 0x7ff8000000000000>) at lreg.cpp:36
+#1  0x0000555555555744 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#2  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+31	
+32	vector<double> x; // input of training set
+33	vector<double> y; // observed values of training set inputs
+34	vector<double> T; // the adjustment variables
+35	
+36	bool equals(vector<double> a, vector<double> b){
+37		if (a.size() != b.size()) return false;
+38		for (int i = 0; i<a.size(); i++){
+39			if(a[i] != b[i]) return false;
+40		}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000xf80xff
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771490
+address max offset: 8
+Memory content after  bitflip:0x020x000x000x000x000x000xf80xff
+frame name: equals
+symbol name: a
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 2, capacity 2 = {-nan(0x8000000000002), nan(0x8000000000000)}
+value address: 0x7fffffffd890
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-25 18:09:24]
+Fault Injection Successful after 1.271453619003296s
+[INFO -- 2018-09-25 18:09:31]
+event type: exit
+[INFO -- 2018-09-25 18:09:31]
+exit code: 0

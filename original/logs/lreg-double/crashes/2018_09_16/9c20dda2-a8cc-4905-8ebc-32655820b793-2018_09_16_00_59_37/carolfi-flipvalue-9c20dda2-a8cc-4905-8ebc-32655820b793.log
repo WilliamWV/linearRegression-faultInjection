@@ -1,0 +1,61 @@
+[INFO -- 2018-09-16 00:59:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 00:59:35]
+Initialization strings:
+[INFO -- 2018-09-16 00:59:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 00:59:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 00:59:35]
+initSignal:0
+[INFO -- 2018-09-16 00:59:35]
+endSignal:2
+[INFO -- 2018-09-16 00:59:35]
+faultModel:1
+[INFO -- 2018-09-16 00:59:36]
+Backtrace BEGIN:
+#0  0x00005555555567dc in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:95
+#1  0x00005555555560ee in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8b0, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x0000555555555713 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+90	      static typename std::enable_if<__is_custom_pointer<_Ptr>::value>::type
+91	      destroy(_Alloc& __a, _Ptr __p)
+92	      { _Base_type::destroy(__a, std::addressof(*__p)); }
+93	
+94	    static _Alloc _S_select_on_copy(const _Alloc& __a)
+95	    { return _Base_type::select_on_container_copy_construction(__a); }
+96	
+97	    static void _S_on_swap(_Alloc& __a, _Alloc& __b)
+98	    { std::__alloc_on_swap(__a, __b); }
+99	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0xb00x130x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a160 
+address max offset: 8
+Memory content after  bitflip:0xb00x910x770x550x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length -4024, capacity -4024 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-16 00:59:36]
+Fault Injection Successful after 1.0709872245788574s
+[INFO -- 2018-09-16 00:59:36]
+event type: exit
+[EXCEPTION -- 2018-09-16 00:59:36]
+exit code: no exit code available

@@ -1,0 +1,54 @@
+[INFO -- 2018-09-25 18:21:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-25 18:21:22]
+Initialization strings:
+[INFO -- 2018-09-25 18:21:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-25 18:21:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-25 18:21:22]
+initSignal:0
+[INFO -- 2018-09-25 18:21:22]
+endSignal:2
+[INFO -- 2018-09-25 18:21:22]
+faultModel:0
+[INFO -- 2018-09-25 18:21:23]
+Backtrace BEGIN:
+#0  0x0000555555555409 in partialDerivate (pos=2) at lreg.cpp:74
+#1  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Memory content before bitflip:0xcd0xc00x5c0xfb0x950x2e0xd30xbf
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7e8
+address max offset: 8
+Memory content after  bitflip:0xcd0xc00x580xfb0x950x2e0xd30xbf
+frame name: adjust
+symbol name: PD
+symbol filename: lreg.cpp
+symbol line: 85
+value: -0.29971837564063436
+value address: 0x7fffffffd7e8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-25 18:21:23]
+Fault Injection Successful after 1.5073211193084717s
+[INFO -- 2018-09-25 18:21:31]
+event type: exit
+[INFO -- 2018-09-25 18:21:31]
+exit code: 0

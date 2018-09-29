@@ -1,0 +1,62 @@
+[INFO -- 2018-09-15 18:42:20]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 18:42:20]
+Initialization strings:
+[INFO -- 2018-09-15 18:42:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 18:42:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 18:42:20]
+initSignal:0
+[INFO -- 2018-09-15 18:42:20]
+endSignal:2
+[INFO -- 2018-09-15 18:42:20]
+faultModel:2
+[EXCEPTION -- 2018-09-15 18:42:20]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-09-15 18:42:20]
+Backtrace BEGIN:
+#0  std::__miter_base<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > > > (__it=0) at /usr/include/c++/7/bits/cpp_type_traits.h:408
+#1  0x0000555555556ad0 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-1.9999997911104337, __last=0, __result=-2.0000002088895652) at /usr/include/c++/7/bits/stl_algobase.h:455
+#2  0x0000555555556427 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd850, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x0000555555555691 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+403	
+404	  // Fallback implementation of the function in bits/stl_iterator.h used to
+405	  // remove the move_iterator wrapper.
+406	  template<typename _Iterator>
+407	    inline _Iterator
+408	    __miter_base(_Iterator __it)
+409	    { return __it; }
+410	
+411	_GLIBCXX_END_NAMESPACE_VERSION
+412	} // namespace
+
+Backtrace END
+Fliping value of field: _M_current
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x0c0x640x090x1c0x000x000x000xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771360
+address max offset: 8
+Memory content after  bitflip:0x960x960x420xf70x670x300xfa0x3d
+frame name: std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > >
+symbol name: __result
+symbol filename: /usr/include/c++/7/bits/stl_algobase.h
+symbol line: 446
+value: 3.8110136510112318e-10
+value address: 0x7fffffffd788
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_current
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-09-15 18:42:20]
+Fault Injection Successful after 0.8230147361755371s
+[INFO -- 2018-09-15 18:42:27]
+event type: exit
+[INFO -- 2018-09-15 18:42:27]
+exit code: 0

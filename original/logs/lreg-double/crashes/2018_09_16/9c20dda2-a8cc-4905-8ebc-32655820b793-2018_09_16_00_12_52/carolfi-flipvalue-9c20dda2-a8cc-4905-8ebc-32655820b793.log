@@ -1,0 +1,59 @@
+[INFO -- 2018-09-16 00:12:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-16 00:12:49]
+Initialization strings:
+[INFO -- 2018-09-16 00:12:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-16 00:12:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-16 00:12:49]
+initSignal:0
+[INFO -- 2018-09-16 00:12:49]
+endSignal:2
+[INFO -- 2018-09-16 00:12:49]
+faultModel:1
+[EXCEPTION -- 2018-09-16 00:12:50]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-16 00:12:50]
+Backtrace BEGIN:
+#0  std::allocator<double>::allocator (this=0x7fffffffd7d7, __a=...) at /usr/include/c++/7/bits/allocator.h:134
+#1  0x0000555555557105 in std::allocator_traits<std::allocator<double> >::select_on_container_copy_construction (__rhs=...) at /usr/include/c++/7/bits/alloc_traits.h:505
+#2  0x00005555555567d8 in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:95
+#3  0x00005555555560ee in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8b0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#4  0x0000555555555713 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+129	#endif
+130	
+131	      allocator() throw() { }
+132	
+133	      allocator(const allocator& __a) throw()
+134	      : __allocator_base<_Tp>(__a) { }
+135	
+136	      template<typename _Tp1>
+137		allocator(const allocator<_Tp1>&) throw() { }
+138	
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xb00xd80xff0xff0xff0x7f0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7c8
+address max offset: 8
+Memory content after  bitflip:0xb00xd80xff0xff0xff0x7f0x140x00
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd8b0
+value address: 0x7fffffffd7c8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-09-16 00:12:50]
+Fault Injection Successful after 1.776313304901123s
+[INFO -- 2018-09-16 00:12:51]
+event type: exit
+[EXCEPTION -- 2018-09-16 00:12:51]
+exit code: no exit code available

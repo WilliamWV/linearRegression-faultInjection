@@ -1,0 +1,57 @@
+[INFO -- 2018-09-14 23:45:08]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-14 23:45:08]
+Initialization strings:
+[INFO -- 2018-09-14 23:45:08]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-14 23:45:08]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-14 23:45:08]
+initSignal:0
+[INFO -- 2018-09-14 23:45:08]
+endSignal:2
+[INFO -- 2018-09-14 23:45:08]
+faultModel:2
+[EXCEPTION -- 2018-09-14 23:45:09]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-09-14 23:45:09]
+Backtrace BEGIN:
+#0  __pow (x=1, y=0) at w_pow_compat.c:55
+#1  0x0000555555555f39 in std::pow<double, int> (__x=1, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555237 in predict (v=1) at lreg.cpp:50
+#3  0x00005555555553fc in partialDerivate (pos=0) at lreg.cpp:74
+#4  0x0000555555555503 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#5  0x00005555555556ac in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+50	in w_pow_compat.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x5555557713f0
+address max offset: 8
+Memory content after  bitflip:0xbd0x7d0x570x740x100xaa0x960x6c
+frame name: partialDerivate
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 8, capacity 8 = {-16, 9, -1, 4, 4, 6, -11, 0}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-14 23:45:09]
+Fault Injection Successful after 1.4007723331451416s
+[INFO -- 2018-09-14 23:45:16]
+event type: exit
+[INFO -- 2018-09-14 23:45:16]
+exit code: 0

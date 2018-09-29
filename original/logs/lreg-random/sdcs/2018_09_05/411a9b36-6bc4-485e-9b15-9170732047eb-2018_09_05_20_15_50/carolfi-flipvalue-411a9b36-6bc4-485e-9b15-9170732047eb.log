@@ -1,0 +1,55 @@
+[INFO -- 2018-09-05 20:15:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-05 20:15:41]
+Initialization strings:
+[INFO -- 2018-09-05 20:15:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-05 20:15:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-05 20:15:41]
+initSignal:0
+[INFO -- 2018-09-05 20:15:41]
+endSignal:2
+[INFO -- 2018-09-05 20:15:41]
+faultModel:2
+[EXCEPTION -- 2018-09-05 20:15:42]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-09-05 20:15:42]
+Backtrace BEGIN:
+#0  adjust (alpha=0.00020000000000000001) at lreg.cpp:86
+#1  0x00005555555556ac in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#2  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde78) at lreg.cpp:182
+
+81		Adjusts the values of T 
+82	*/
+83	void adjust(double alpha){
+84		
+85		double PD;
+86		for(int i = 0; i<T.size(); i++){
+87			PD = partialDerivate(i);
+88			// alpha is different from the canonical version because this works better
+89			T[i]= T[i] - ((alpha / (sqrt( fabs(PD) ))) * PD); 
+90		}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7f4
+address max offset: 4
+Memory content after  bitflip:0x850xa80x230x77
+frame name: adjust
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 86
+value: 1998825605
+value address: 0x7fffffffd7f4
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-05 20:15:42]
+Fault Injection Successful after 1.1220476627349854s
+[INFO -- 2018-09-05 20:15:48]
+event type: exit
+[INFO -- 2018-09-05 20:15:48]
+exit code: 0

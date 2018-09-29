@@ -1,0 +1,49 @@
+[INFO -- 2018-09-14 22:40:33]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-14 22:40:33]
+Initialization strings:
+[INFO -- 2018-09-14 22:40:33]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-14 22:40:33]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-14 22:40:33]
+initSignal:0
+[INFO -- 2018-09-14 22:40:33]
+endSignal:2
+[INFO -- 2018-09-14 22:40:33]
+faultModel:2
+[INFO -- 2018-09-14 22:40:34]
+Backtrace BEGIN:
+#0  __GI___libc_free (mem=<optimized out>) at malloc.c:3125
+#1  0x000055555555772a in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd890, __p=0x555555771490) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x00005555555571f0 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555771490, __n=2) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x0000555555556944 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd890, __p=0x555555771490, __n=2) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x00005555555565db in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd890, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#5  0x000055555555602d in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd890, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#6  0x0000555555555770 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#7  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+3120	malloc.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x2a0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd950
+address max offset: 8
+Memory content after  bitflip:0x890x260xca0x4f0xc80xe20xa50x09
+frame name: main
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 168
+value: 3.4751822151208131e-262
+value address: 0x7fffffffd950
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-14 22:40:34]
+Fault Injection Successful after 1.2252659797668457s
+[INFO -- 2018-09-14 22:40:40]
+event type: exit
+[INFO -- 2018-09-14 22:40:40]
+exit code: 0

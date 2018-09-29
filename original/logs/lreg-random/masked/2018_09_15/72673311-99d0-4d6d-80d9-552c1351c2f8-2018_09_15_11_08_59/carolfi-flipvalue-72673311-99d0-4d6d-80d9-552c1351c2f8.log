@@ -1,0 +1,55 @@
+[INFO -- 2018-09-15 11:08:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 11:08:51]
+Initialization strings:
+[INFO -- 2018-09-15 11:08:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 11:08:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 11:08:51]
+initSignal:0
+[INFO -- 2018-09-15 11:08:51]
+endSignal:2
+[INFO -- 2018-09-15 11:08:51]
+faultModel:2
+[INFO -- 2018-09-15 11:08:52]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_Vector_impl::~_Vector_impl (this=0x7fffffffd8b0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:81
+#1  0x00005555555565e7 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd8b0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:163
+#2  0x000055555555602d in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd8b0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#3  0x0000555555555780 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+76	      typedef typename __gnu_cxx::__alloc_traits<_Alloc>::template
+77		rebind<_Tp>::other _Tp_alloc_type;
+78	      typedef typename __gnu_cxx::__alloc_traits<_Tp_alloc_type>::pointer
+79	       	pointer;
+80	
+81	      struct _Vector_impl
+82	      : public _Tp_alloc_type
+83	      {
+84		pointer _M_start;
+85		pointer _M_finish;
+
+Backtrace END
+Memory content before bitflip:0x150xbd0x120x980xce0x4e0xf90x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd848
+address max offset: 8
+Memory content after  bitflip:0xa60xbd0x660x9d0x3c0x390x010x8c
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: -7.5175630011119485e-251
+value address: 0x7fffffffd848
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-15 11:08:52]
+Fault Injection Successful after 1.0715734958648682s
+[INFO -- 2018-09-15 11:08:58]
+event type: exit
+[INFO -- 2018-09-15 11:08:58]
+exit code: 0

@@ -1,0 +1,64 @@
+[INFO -- 2018-09-15 13:11:46]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 13:11:46]
+Initialization strings:
+[INFO -- 2018-09-15 13:11:46]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 13:11:46]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 13:11:46]
+initSignal:0
+[INFO -- 2018-09-15 13:11:46]
+endSignal:2
+[INFO -- 2018-09-15 13:11:46]
+faultModel:0
+[EXCEPTION -- 2018-09-15 13:11:48]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-09-15 13:11:48]
+Backtrace BEGIN:
+#0  std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-19.730915386249603, __last=1.6304166312761136e-322, __result=0x555555771470) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#1  0x00005555555568d7 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=-19.730915386249603, __last=1.6304166312761136e-322, __result=0x555555771470) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#2  0x000055555555615d in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8b0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#3  0x0000555555555713 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+129	#endif
+130	
+131	      return std::__uninitialized_copy<__is_trivial(_ValueType1)
+132					       && __is_trivial(_ValueType2)
+133					       && __assignable>::
+134		__uninit_copy(__first, __last, __result);
+135	    }
+136	
+137	
+138	  template<bool _TrivialValueType>
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x170x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a170 
+address max offset: 8
+Memory content after  bitflip:0x500x170x770x550x550x450x000x00
+frame name: std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double>
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 20, capacity -2199023255520 = {-13, 1, -17, 14, 3, -14, 7, -7, 768, 331, 66, 1461, 883, 1461, 913, 408, 796, 262, 408, 687}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-15 13:11:48]
+Fault Injection Successful after 2.539651393890381s
+[INFO -- 2018-09-15 13:11:54]
+event type: exit
+[EXCEPTION -- 2018-09-15 13:11:54]
+exit code: no exit code available

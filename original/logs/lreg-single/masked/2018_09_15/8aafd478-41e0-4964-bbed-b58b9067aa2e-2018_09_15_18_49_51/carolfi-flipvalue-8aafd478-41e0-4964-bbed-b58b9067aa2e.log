@@ -1,0 +1,52 @@
+[INFO -- 2018-09-15 18:49:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 18:49:43]
+Initialization strings:
+[INFO -- 2018-09-15 18:49:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 18:49:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 18:49:43]
+initSignal:0
+[INFO -- 2018-09-15 18:49:43]
+endSignal:2
+[INFO -- 2018-09-15 18:49:43]
+faultModel:0
+[EXCEPTION -- 2018-09-15 18:49:43]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-09-15 18:49:44]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-15 18:49:44]
+Backtrace BEGIN:
+#0  0x00007ffff76b4990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76b7b14 in __pow (x=6, y=2) at w_pow_compat.c:30
+#2  0x0000555555555f39 in std::pow<double, int> (__x=6, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555451 in partialDerivate (pos=2) at lreg.cpp:74
+#4  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#5  0x00005555555556ac in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+2284	in rtld.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd728
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x080x000x000x000x40
+frame name: __pow
+symbol name: y
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 2.0000000596046448
+value address: 0x7fffffffd728
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-15 18:49:44]
+Fault Injection Successful after 1.1523172855377197s
+[INFO -- 2018-09-15 18:49:50]
+event type: exit
+[INFO -- 2018-09-15 18:49:50]
+exit code: 0

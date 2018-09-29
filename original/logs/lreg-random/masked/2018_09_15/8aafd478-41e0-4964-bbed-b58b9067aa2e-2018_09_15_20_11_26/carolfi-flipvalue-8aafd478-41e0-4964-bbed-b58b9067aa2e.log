@@ -1,0 +1,56 @@
+[INFO -- 2018-09-15 20:11:17]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 20:11:17]
+Initialization strings:
+[INFO -- 2018-09-15 20:11:17]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 20:11:17]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 20:11:17]
+initSignal:0
+[INFO -- 2018-09-15 20:11:17]
+endSignal:2
+[INFO -- 2018-09-15 20:11:17]
+faultModel:2
+[EXCEPTION -- 2018-09-15 20:11:18]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-15 20:11:19]
+Backtrace BEGIN:
+#0  0x0000555555555f01 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a140 <x>, __n=12) at /usr/include/c++/7/bits/stl_vector.h:798
+#1  0x00005555555552f9 in meanSquaredError () at lreg.cpp:61
+#2  0x00005555555556b1 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+
+Backtrace END
+Memory content before bitflip:0x030x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd828
+address max offset: 4
+Memory content after  bitflip:0xdc0xa80xd70xbd
+frame name: train
+symbol name: N
+symbol filename: lreg.cpp
+symbol line: 105
+value: -1109940004
+value address: 0x7fffffffd828
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-15 20:11:19]
+Fault Injection Successful after 2.237534284591675s
+[INFO -- 2018-09-15 20:11:25]
+event type: exit
+[INFO -- 2018-09-15 20:11:25]
+exit code: 0

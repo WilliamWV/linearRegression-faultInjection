@@ -1,0 +1,56 @@
+[INFO -- 2018-09-29 16:02:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-29 16:02:58]
+Initialization strings:
+[INFO -- 2018-09-29 16:02:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-29 16:02:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-29 16:02:58]
+initSignal:0
+[INFO -- 2018-09-29 16:02:58]
+endSignal:2
+[INFO -- 2018-09-29 16:02:58]
+faultModel:1
+[EXCEPTION -- 2018-09-29 16:02:59]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-09-29 16:03:00]
+Backtrace BEGIN:
+#0  0x0000555555556613 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8b0, __n=2, __a=...) at /usr/include/c++/7/bits/stl_vector.h:136
+#1  0x000055555555610f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8b0, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x0000555555555713 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+131	
+132	      _Vector_base(size_t __n)
+133	      : _M_impl()
+134	      { _M_create_storage(__n); }
+135	
+136	      _Vector_base(size_t __n, const allocator_type& __a)
+137	      : _M_impl(__a)
+138	      { _M_create_storage(__n); }
+139	
+140	#if __cplusplus >= 201103L
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd940
+address max offset: 4
+Memory content after  bitflip:0x000x000x500x00
+frame name: main
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 167
+value: 5242880
+value address: 0x7fffffffd940
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-29 16:03:00]
+Fault Injection Successful after 2.0880820751190186s
+[INFO -- 2018-09-29 16:03:00]
+event type: exit
+[INFO -- 2018-09-29 16:03:00]
+exit code: 0

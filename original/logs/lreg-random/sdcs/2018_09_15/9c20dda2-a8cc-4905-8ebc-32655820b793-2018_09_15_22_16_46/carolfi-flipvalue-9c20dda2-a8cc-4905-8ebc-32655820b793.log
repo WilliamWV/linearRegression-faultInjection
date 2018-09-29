@@ -1,0 +1,61 @@
+[INFO -- 2018-09-15 22:16:38]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 22:16:38]
+Initialization strings:
+[INFO -- 2018-09-15 22:16:38]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 22:16:38]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 22:16:38]
+initSignal:0
+[INFO -- 2018-09-15 22:16:38]
+endSignal:2
+[INFO -- 2018-09-15 22:16:38]
+faultModel:2
+[EXCEPTION -- 2018-09-15 22:16:38]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-09-15 22:16:39]
+Backtrace BEGIN:
+#0  0x00005555555577bb in std::__copy_move_a<false, double const*, double*> (__first=0x555555771360, __last=0x555555771378, __result=0x555555771490) at /usr/include/c++/7/bits/stl_algobase.h:386
+#1  0x0000555555557b2e in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-11.933244105964656, __last=2.4209216646221081e-322, __result=0x555555771490) at /usr/include/c++/7/bits/stl_algobase.h:424
+#2  0x0000555555557985 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-11.933244105964656, __last=2.4209216646221081e-322, __result=0x555555771490) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x0000555555557708 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-11.933244105964656, __last=2.4209216646221081e-322, __result=0x555555771490) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#4  0x000055555555717e in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-11.933244105964656, __last=2.4209216646221081e-322, __result=0x555555771490) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#5  0x00005555555568d7 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=-11.933244105964656, __last=2.4209216646221081e-322, __result=0x555555771490) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#6  0x000055555555615d in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#7  0x000055555555572b in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#8  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+381		                     && __is_pointer<_II>::__value
+382		                     && __is_pointer<_OI>::__value
+383				     && __are_same<_ValueTypeI, _ValueTypeO>::__value);
+384	
+385	      return std::__copy_move<_IsMove, __simple,
+386		                      _Category>::__copy_m(__first, __last, __result);
+387	    }
+388	
+389	  // Helpers for streambuf iterators (either istream or ostream).
+390	  // NB: avoid including <iosfwd>, relatively large.
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd820
+address max offset: 8
+Memory content after  bitflip:0x9a0x650x5c0x5f0x260xb10x2c0x69
+frame name: train
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 105
+value: 4.2895117071982284e+198
+value address: 0x7fffffffd820
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-15 22:16:39]
+Fault Injection Successful after 1.6216027736663818s
+[INFO -- 2018-09-15 22:16:45]
+event type: exit
+[INFO -- 2018-09-15 22:16:45]
+exit code: 0

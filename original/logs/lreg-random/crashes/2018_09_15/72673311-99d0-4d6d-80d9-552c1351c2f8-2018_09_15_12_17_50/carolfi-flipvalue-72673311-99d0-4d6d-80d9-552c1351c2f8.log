@@ -1,0 +1,50 @@
+[INFO -- 2018-09-15 12:17:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 12:17:47]
+Initialization strings:
+[INFO -- 2018-09-15 12:17:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 12:17:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 12:17:47]
+initSignal:0
+[INFO -- 2018-09-15 12:17:47]
+endSignal:2
+[INFO -- 2018-09-15 12:17:47]
+faultModel:2
+[EXCEPTION -- 2018-09-15 12:17:47]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-15 12:17:47]
+Backtrace BEGIN:
+#0  0x00007ffff76b7b0f in __pow (x=-10, y=1) at w_pow_compat.c:30
+#1  0x0000555555555f39 in std::pow<double, int> (__x=-10, __y=1) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555237 in predict (v=-10) at lreg.cpp:50
+#3  0x00005555555553fc in partialDerivate (pos=1) at lreg.cpp:74
+#4  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#5  0x00005555555556ac in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+25	in w_pow_compat.c
+
+Backtrace END
+Memory content before bitflip:0x0b0xfd0xe80x1a0xc40x4f0x130xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd748
+address max offset: 8
+Memory content after  bitflip:0xc50xc10x6d0x3e0x700x930xb00xa1
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 48
+value: -2.0741495096128556e-146
+value address: 0x7fffffffd748
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-15 12:17:47]
+Fault Injection Successful after 0.952195405960083s
+[INFO -- 2018-09-15 12:17:49]
+event type: exit
+[EXCEPTION -- 2018-09-15 12:17:49]
+exit code: no exit code available

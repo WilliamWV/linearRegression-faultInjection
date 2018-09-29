@@ -1,0 +1,49 @@
+[INFO -- 2018-09-15 22:51:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 22:51:43]
+Initialization strings:
+[INFO -- 2018-09-15 22:51:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 22:51:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 22:51:43]
+initSignal:0
+[INFO -- 2018-09-15 22:51:43]
+endSignal:2
+[INFO -- 2018-09-15 22:51:43]
+faultModel:1
+[INFO -- 2018-09-15 22:51:45]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:447
+#1  __ieee754_pow_sse2 (x=18, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:97
+#2  0x00007ffff76b7b14 in __pow (x=18, y=3) at w_pow_compat.c:30
+#3  0x0000555555555f39 in std::pow<double, int> (__x=18, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x0000555555555451 in partialDerivate (pos=3) at lreg.cpp:74
+#5  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#6  0x00005555555556ac in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+442	../sysdeps/i386/fpu/fenv_private.h: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x620x2e0xbb0xb50x9e0xfb0xad0x41
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd840
+address max offset: 8
+Memory content after  bitflip:0x620x2e0x3a0xb50x9e0xfb0xad0x41
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: 251514714.61363512
+value address: 0x7fffffffd840
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-15 22:51:45]
+Fault Injection Successful after 2.5411696434020996s
+[INFO -- 2018-09-15 22:51:51]
+event type: exit
+[INFO -- 2018-09-15 22:51:51]
+exit code: 0

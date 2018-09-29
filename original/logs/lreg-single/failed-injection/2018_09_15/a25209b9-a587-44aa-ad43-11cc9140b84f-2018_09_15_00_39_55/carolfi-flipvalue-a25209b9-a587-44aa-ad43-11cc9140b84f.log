@@ -1,0 +1,27 @@
+[INFO -- 2018-09-15 00:39:52]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 00:39:52]
+Initialization strings:
+[INFO -- 2018-09-15 00:39:52]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 00:39:52]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 00:39:52]
+initSignal:0
+[INFO -- 2018-09-15 00:39:52]
+endSignal:2
+[INFO -- 2018-09-15 00:39:52]
+faultModel:0
+[EXCEPTION -- 2018-09-15 00:39:53]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-09-15 00:39:53]
+gdbException: Cannot access memory at address 0x100555555771360
+[EXCEPTION -- 2018-09-15 00:39:54]
+gdbException: Cannot access memory at address 0x555555671650
+[EXCEPTION -- 2018-09-15 00:39:54]
+gdbException: Cannot access memory at address 0x100555555771360
+[INFO -- 2018-09-15 00:39:54]
+event type: exit
+[EXCEPTION -- 2018-09-15 00:39:54]
+exit code: no exit code available

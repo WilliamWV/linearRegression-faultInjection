@@ -1,0 +1,57 @@
+[INFO -- 2018-09-15 23:47:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-15 23:47:13]
+Initialization strings:
+[INFO -- 2018-09-15 23:47:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-15 23:47:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-15 23:47:13]
+initSignal:0
+[INFO -- 2018-09-15 23:47:13]
+endSignal:2
+[INFO -- 2018-09-15 23:47:13]
+faultModel:2
+[INFO -- 2018-09-15 23:47:14]
+Backtrace BEGIN:
+#0  0x00007ffff76d5528 in __ieee754_pow_sse2 (x=10, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:65
+#1  0x00007ffff76b7b14 in __pow (x=10, y=0) at w_pow_compat.c:30
+#2  0x0000555555555f39 in std::pow<double, int> (__x=10, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555237 in predict (v=10) at lreg.cpp:50
+#4  0x00005555555553fc in partialDerivate (pos=1) at lreg.cpp:74
+#5  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#6  0x00005555555556ac in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:182
+
+60	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0x420x2e0xe60x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779a5cc 
+address max offset: 4
+Memory content after  bitflip:0xaa0x200x860xa1
+frame name: __ieee754_pow_sse2
+symbol name: ln2a
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 50
+value: {i = {-17156096, -1585045334}, x = -3.4610400234436978e-147}
+value address: 0x7ffff779a5c8 <ln2a>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-09-15 23:47:14]
+Fault Injection Successful after 1.5581164360046387s
+[INFO -- 2018-09-15 23:47:21]
+event type: exit
+[INFO -- 2018-09-15 23:47:21]
+exit code: 0
