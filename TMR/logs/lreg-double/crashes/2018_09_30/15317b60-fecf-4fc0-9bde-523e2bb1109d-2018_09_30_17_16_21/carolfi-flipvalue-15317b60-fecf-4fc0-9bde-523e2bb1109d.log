@@ -1,0 +1,65 @@
+[INFO -- 2018-09-30 17:15:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 17:15:42]
+Initialization strings:
+[INFO -- 2018-09-30 17:15:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 17:15:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 17:15:42]
+initSignal:0
+[INFO -- 2018-09-30 17:15:42]
+endSignal:30
+[INFO -- 2018-09-30 17:15:42]
+faultModel:1
+[EXCEPTION -- 2018-09-30 17:15:56]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-30 17:15:57]
+Backtrace BEGIN:
+#0  0x000055555555668a in std::pow<double, unsigned int> (__x=16, __y=1) at /usr/include/c++/7/cmath:418
+#1  0x000055555555535a in predict (v=16) at lreg.cpp:73
+#2  0x0000555555555492 in meanSquaredError () at lreg.cpp:93
+#3  0x0000555555555827 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:153
+#4  0x0000555555555dc9 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:213
+#5  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x280x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b150 
+address max offset: 8
+Memory content after  bitflip:0x700x280x770x350x550x550x000x00
+frame name: lreg
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 17, capacity -67108846 = {6.0522008951395878e-306, 0, 3.4868634837141355e-310, 3.4817706938158188e-310, 1.0442129087761009e-309, 1.0443402285235588e-309, 3.4826194921322049e-310, 0, 1.0438097295758175e-309, 1.0434277703334437e-309, 3.4879244816096181e-310, 3.4872878828723285e-310, 3.487075683293232e-310, 3.4894098786632938e-310, 3.4868634837141355e-310, 1.0438946094074561e-309, 1.0426638518486962e-309, 3.4887732799260042e-310, 6.0522008951395878e-306, 0, 3.5120373165936727e-310, 3.4938130199295467e-310, 1.0474687217321723e-309, 1.0477771778586227e-309, 3.4972082131950912e-310, 3.4732827106519577e-310, 1.0463793338539395e-309, 1.0454038789137801e-309, 3.5165664513600142e-310, 3.514196613091901e-310, 3.5131264972457541e-310, 3.5211861439545444e-310, 3.5120373165936727e-310, 1.0465739606553921e-309, 1.0437672896599981e-309, 3.5192579046151955e-310, 9.4565638986556059e-308, 3.3343871844805825e+140, 1.975508930593738e-224, -2.1349675271276263e+131, -7.1014861919114295e+217, 3.4733999530563887e-310, 9.4565638986556059e-308, 655360, 1.2652213893627692e+140, 5.0912878269685196e+21, -5.3526718356273174e+267, 3.4730995380834008e-310, 9.4565638986556059e-308, -3.9748992734916002e+133, -1.442606838646283e-126, -2.5340710554663876e+65, -2.9264321584957731e-277, 3.4734050767605622e-310, 9.4565638986556059e-308, 2.7250942976052165e-107, 5.7184916010999054e+20, 1.6012569479199314e-213, 4.4347489911677183e+104, 3.4730995386852716e-310, 9.4565638986556059e-308, 0, -1.431111685756789e-126, -2.5340710554663876e+65, -2.9264321584957731e-277, 3.4734050767605622e-310, -2.5113701840377201e-125, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-30 17:15:57]
+Fault Injection Successful after 15.180097579956055s
+[INFO -- 2018-09-30 17:16:20]
+event type: exit
+[EXCEPTION -- 2018-09-30 17:16:20]
+exit code: no exit code available

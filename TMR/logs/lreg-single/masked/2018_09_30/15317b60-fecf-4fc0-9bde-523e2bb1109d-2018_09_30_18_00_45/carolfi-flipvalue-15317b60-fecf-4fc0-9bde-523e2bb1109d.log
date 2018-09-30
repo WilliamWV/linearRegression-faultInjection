@@ -1,0 +1,57 @@
+[INFO -- 2018-09-30 18:00:06]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 18:00:06]
+Initialization strings:
+[INFO -- 2018-09-30 18:00:06]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 18:00:06]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 18:00:06]
+initSignal:0
+[INFO -- 2018-09-30 18:00:06]
+endSignal:30
+[INFO -- 2018-09-30 18:00:06]
+faultModel:0
+[INFO -- 2018-09-30 18:00:08]
+Backtrace BEGIN:
+#0  0x0000555555556610 in std::vector<double, std::allocator<double> >::size (this=0x4010000000000000) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x00005555555552aa in predict (v=4) at lreg.cpp:64
+#2  0x000055555555557d in partialDerivate (pos=0) at lreg.cpp:106
+#3  0x000055555555567d in adjust (alpha=0.00020000000000000001) at lreg.cpp:119
+#4  0x0000555555555822 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:152
+#5  0x0000555555555e39 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:222
+#6  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Memory content before bitflip:0x350x520x0f0x0f0x020x000x1c0xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd5a8
+address max offset: 8
+Memory content after  bitflip:0x350x520x0f0x0f0x020x000x1c0xd0
+frame name: predict
+symbol name: val1
+symbol filename: lreg.cpp
+symbol line: 53
+value: -8.1054553406955871e+77
+value address: 0x7fffffffd5a8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-30 18:00:08]
+Fault Injection Successful after 2.667546033859253s
+[INFO -- 2018-09-30 18:00:43]
+event type: exit
+[INFO -- 2018-09-30 18:00:43]
+exit code: 0

@@ -1,0 +1,56 @@
+[INFO -- 2018-09-30 16:51:28]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 16:51:28]
+Initialization strings:
+[INFO -- 2018-09-30 16:51:28]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 16:51:28]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 16:51:28]
+initSignal:0
+[INFO -- 2018-09-30 16:51:28]
+endSignal:30
+[INFO -- 2018-09-30 16:51:28]
+faultModel:0
+[INFO -- 2018-09-30 16:51:31]
+Backtrace BEGIN:
+#0  0x00007ffff76d5528 in __ieee754_pow_sse2 (x=9, y=2) at ../sysdeps/ieee754/dbl-64/e_pow.c:65
+#1  0x00007ffff76b7b14 in __pow (x=9, y=2) at w_pow_compat.c:30
+#2  0x00005555555566d7 in std::pow<double, int> (__x=9, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x00005555555555ce in partialDerivate (pos=2) at lreg.cpp:106
+#4  0x000055555555567d in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:119
+#5  0x0000555555555822 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:152
+#6  0x0000555555555d59 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:205
+#7  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+60	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x210x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x5555557724b8
+address max offset: 8
+Memory content after  bitflip:0x210x000x000x000x000x000x200x00
+frame name: adjust
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 3, capacity 3 = {-0.00021103783766347658, 0.99998341209565289, -2.9999034371196358}
+value address: 0x55555575b180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-30 16:51:31]
+Fault Injection Successful after 3.2497482299804688s
+[INFO -- 2018-09-30 16:51:32]
+event type: exit
+[EXCEPTION -- 2018-09-30 16:51:32]
+exit code: no exit code available

@@ -1,0 +1,55 @@
+[INFO -- 2018-09-30 16:59:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 16:59:00]
+Initialization strings:
+[INFO -- 2018-09-30 16:59:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 16:59:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 16:59:00]
+initSignal:0
+[INFO -- 2018-09-30 16:59:00]
+endSignal:30
+[INFO -- 2018-09-30 16:59:00]
+faultModel:1
+[INFO -- 2018-09-30 16:59:13]
+Backtrace BEGIN:
+#0  0x0000555555555343 in predict (v=-25) at lreg.cpp:73
+#1  0x0000555555555446 in meanSquaredError () at lreg.cpp:93
+#2  0x0000555555555827 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:153
+#3  0x0000555555555d59 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:205
+#4  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+68			crashV2 = true;
+69		}
+70		try{
+71			val3 = 0;
+72			for(unsigned int i = 0; i<T.size(); i++){
+73				val3+= (T[i] * pow(v, i));
+74			}
+75		}catch(exception& e){
+76			crashV3 = true;
+77		}
+
+Backtrace END
+Memory content before bitflip:0x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd5f9
+address max offset: 1
+Memory content after  bitflip:0x18
+frame name: predict
+symbol name: crashV1
+symbol filename: lreg.cpp
+symbol line: 51
+value: 24
+value address: 0x7fffffffd5f9
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-09-30 16:59:13]
+Fault Injection Successful after 13.766473531723022s
+[INFO -- 2018-09-30 16:59:32]
+event type: exit
+[INFO -- 2018-09-30 16:59:32]
+exit code: 0

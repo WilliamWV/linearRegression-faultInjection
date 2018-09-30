@@ -1,0 +1,65 @@
+[INFO -- 2018-09-30 17:16:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 17:16:51]
+Initialization strings:
+[INFO -- 2018-09-30 17:16:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 17:16:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 17:16:51]
+initSignal:0
+[INFO -- 2018-09-30 17:16:51]
+endSignal:30
+[INFO -- 2018-09-30 17:16:51]
+faultModel:0
+[INFO -- 2018-09-30 17:16:58]
+Backtrace BEGIN:
+#0  0x0000555555554f10 in pow@plt ()
+#1  0x000055555555669c in std::pow<double, unsigned int> (__x=7, __y=2) at /usr/include/c++/7/cmath:418
+#2  0x000055555555535a in predict (v=7) at lreg.cpp:73
+#3  0x000055555555557d in partialDerivate (pos=0) at lreg.cpp:106
+#4  0x000055555555567d in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:119
+#5  0x0000555555555822 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:152
+#6  0x0000555555555d59 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:205
+#7  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+254	
+255	/*
+256	It must receive an input file formated as follows:
+257		1° Line : one integer T -> number of test cases
+258		2° to 5° repeat to all test case	
+259		2° Line : method parameters -> alpha, iterations, N, size of 
+260			      training set, predictions
+261		3° Line : inputs x of the training set
+262		4° Line : values y of the training set
+263		5° Line : set z of new inputs to predict*/
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x230x260x6f0x670x200x8b0x910x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772380
+address max offset: 8
+Memory content after  bitflip:0x230x260x6f0x670x200x890x910x3f
+frame name: train
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 4, capacity 4 = {0.017124658883210252, 1.2058839892786528, -4.9720994269727008, 1.0369059578345998}
+value address: 0x55555575b180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-30 17:16:58]
+Fault Injection Successful after 7.739154577255249s
+[INFO -- 2018-09-30 17:17:15]
+event type: exit
+[INFO -- 2018-09-30 17:17:15]
+exit code: 0

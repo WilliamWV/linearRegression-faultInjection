@@ -1,0 +1,60 @@
+[INFO -- 2018-09-30 17:48:31]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 17:48:31]
+Initialization strings:
+[INFO -- 2018-09-30 17:48:31]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 17:48:31]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 17:48:31]
+initSignal:0
+[INFO -- 2018-09-30 17:48:31]
+endSignal:30
+[INFO -- 2018-09-30 17:48:31]
+faultModel:2
+[EXCEPTION -- 2018-09-30 17:48:40]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-09-30 17:48:40]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-09-30 17:48:40]
+Backtrace BEGIN:
+#0  0x0000555555555252 in predict (v=16) at lreg.cpp:57
+#1  0x000055555555557d in partialDerivate (pos=2) at lreg.cpp:106
+#2  0x000055555555567d in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:119
+#3  0x0000555555555822 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:152
+#4  0x0000555555555d59 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:205
+#5  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+52		//ALSO TRIPLICATED
+53		double val1, val2, val3;	
+54		try{
+55			val1 = 0;
+56			for(unsigned int i = 0; i<T.size(); i++){
+57				val1+= (T[i] * pow(v, i));
+58			}
+59		}catch (exception& e){
+60			crashV1 = true;
+61		}
+
+Backtrace END
+Memory content before bitflip:0x020x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd654
+address max offset: 4
+Memory content after  bitflip:0x4f0xb90x7a0xd0
+frame name: adjust
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 118
+value: 3497703759
+value address: 0x7fffffffd654
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-30 17:48:40]
+Fault Injection Successful after 9.66699504852295s
+[INFO -- 2018-09-30 17:48:40]
+event type: exit
+[EXCEPTION -- 2018-09-30 17:48:40]
+exit code: no exit code available

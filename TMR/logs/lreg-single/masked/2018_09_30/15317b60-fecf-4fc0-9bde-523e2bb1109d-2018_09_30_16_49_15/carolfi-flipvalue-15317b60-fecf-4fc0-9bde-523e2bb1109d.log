@@ -1,0 +1,59 @@
+[INFO -- 2018-09-30 16:48:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 16:48:48]
+Initialization strings:
+[INFO -- 2018-09-30 16:48:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 16:48:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 16:48:48]
+initSignal:0
+[INFO -- 2018-09-30 16:48:48]
+endSignal:30
+[INFO -- 2018-09-30 16:48:48]
+faultModel:0
+[INFO -- 2018-09-30 16:49:08]
+Backtrace BEGIN:
+#0  std::pow<double, unsigned int> (__x=18, __y=2) at /usr/include/c++/7/cmath:419
+#1  0x000055555555535a in predict (v=18) at lreg.cpp:73
+#2  0x000055555555557d in partialDerivate (pos=2) at lreg.cpp:106
+#3  0x000055555555567d in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:119
+#4  0x0000555555555822 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:152
+#5  0x0000555555555e39 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:222
+#6  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+423	#ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the pointer
+Memory content before bitflip:0x010xe20xff0xff0xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffde68
+address max offset: 8
+Memory content after  bitflip:0x010xe20xff0xff0xff0x7f0x000x40
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 266
+value: 0x7fffffffde68
+value address: 0x7fffffffdd70
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-09-30 16:49:08]
+Fault Injection Successful after 20.408955335617065s
+[INFO -- 2018-09-30 16:49:13]
+event type: exit
+[INFO -- 2018-09-30 16:49:13]
+exit code: 0

@@ -1,0 +1,56 @@
+[INFO -- 2018-09-30 17:40:14]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 17:40:14]
+Initialization strings:
+[INFO -- 2018-09-30 17:40:14]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 17:40:14]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 17:40:14]
+initSignal:0
+[INFO -- 2018-09-30 17:40:14]
+endSignal:30
+[INFO -- 2018-09-30 17:40:14]
+faultModel:2
+[INFO -- 2018-09-30 17:40:16]
+Backtrace BEGIN:
+#0  0x000055555555535f in predict (v=-19) at lreg.cpp:73
+#1  0x000055555555557d in partialDerivate (pos=1) at lreg.cpp:106
+#2  0x000055555555567d in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:119
+#3  0x0000555555555822 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:152
+#4  0x0000555555555d59 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:205
+#5  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+68			crashV2 = true;
+69		}
+70		try{
+71			val3 = 0;
+72			for(unsigned int i = 0; i<T.size(); i++){
+73				val3+= (T[i] * pow(v, i));
+74			}
+75		}catch(exception& e){
+76			crashV3 = true;
+77		}
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd654
+address max offset: 4
+Memory content after  bitflip:0x170xd20x360xce
+frame name: adjust
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 118
+value: 3459699223
+value address: 0x7fffffffd654
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-30 17:40:16]
+Fault Injection Successful after 2.2219889163970947s
+[INFO -- 2018-09-30 17:40:16]
+event type: exit
+[EXCEPTION -- 2018-09-30 17:40:16]
+exit code: no exit code available

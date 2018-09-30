@@ -1,0 +1,62 @@
+[INFO -- 2018-09-30 17:18:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 17:18:07]
+Initialization strings:
+[INFO -- 2018-09-30 17:18:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 17:18:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 17:18:07]
+initSignal:0
+[INFO -- 2018-09-30 17:18:07]
+endSignal:30
+[INFO -- 2018-09-30 17:18:07]
+faultModel:0
+[INFO -- 2018-09-30 17:18:15]
+Backtrace BEGIN:
+#0  0x0000555555555343 in predict (v=6) at lreg.cpp:73
+#1  0x0000555555555492 in meanSquaredError () at lreg.cpp:93
+#2  0x0000555555555827 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:153
+#3  0x0000555555555d59 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:205
+#4  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+68			crashV2 = true;
+69		}
+70		try{
+71			val3 = 0;
+72			for(unsigned int i = 0; i<T.size(); i++){
+73				val3+= (T[i] * pow(v, i));
+74			}
+75		}catch(exception& e){
+76			crashV3 = true;
+77		}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0xb70x960xd10x350x4c0x020xbc0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772380
+address max offset: 8
+Memory content after  bitflip:0xb70x960xd10x350x4c0x020xb40x3f
+frame name: meanSquaredError
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 4, capacity 4 = {0.078160060061771883, 1.7534168736959019, -4.9739932832071307, 0.97310817211310352}
+value address: 0x55555575b180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-30 17:18:15]
+Fault Injection Successful after 8.838373184204102s
+[INFO -- 2018-09-30 17:18:35]
+event type: exit
+[INFO -- 2018-09-30 17:18:35]
+exit code: 0

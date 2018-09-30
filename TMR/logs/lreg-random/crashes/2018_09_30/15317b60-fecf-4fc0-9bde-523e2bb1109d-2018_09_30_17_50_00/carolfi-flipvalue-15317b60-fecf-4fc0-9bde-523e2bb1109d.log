@@ -1,0 +1,60 @@
+[INFO -- 2018-09-30 17:49:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 17:49:54]
+Initialization strings:
+[INFO -- 2018-09-30 17:49:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 17:49:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 17:49:54]
+initSignal:0
+[INFO -- 2018-09-30 17:49:54]
+endSignal:30
+[INFO -- 2018-09-30 17:49:54]
+faultModel:2
+[EXCEPTION -- 2018-09-30 17:49:59]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-09-30 17:49:59]
+Backtrace BEGIN:
+#0  0x00007ffff76d55b0 in __ieee754_pow_sse2 (x=4, y=1) at ../sysdeps/ieee754/dbl-64/e_pow.c:79
+#1  0x00007ffff76b7b14 in __pow (x=4, y=1) at w_pow_compat.c:30
+#2  0x000055555555669c in std::pow<double, unsigned int> (__x=4, __y=1) at /usr/include/c++/7/cmath:418
+#3  0x000055555555535a in predict (v=4) at lreg.cpp:73
+#4  0x000055555555557d in partialDerivate (pos=1) at lreg.cpp:106
+#5  0x000055555555567d in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:119
+#6  0x0000555555555822 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:152
+#7  0x0000555555555e39 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:222
+#8  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+74	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0xff0xff0x970x42
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779a5bc 
+address max offset: 4
+Memory content after  bitflip:0x1c0x4b0xf80x13
+frame name: __ieee754_pow_sse2
+symbol name: bigu
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 52
+value: {i = {-724, 335039260}, x = 1.8040624708278414e-212}
+value address: 0x7ffff779a5b8 <bigu>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-09-30 17:49:59]
+Fault Injection Successful after 5.4661970138549805s
+[INFO -- 2018-09-30 17:49:59]
+event type: exit
+[EXCEPTION -- 2018-09-30 17:49:59]
+exit code: no exit code available

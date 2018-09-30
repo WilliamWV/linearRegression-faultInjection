@@ -1,0 +1,58 @@
+[INFO -- 2018-09-30 16:51:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 16:51:48]
+Initialization strings:
+[INFO -- 2018-09-30 16:51:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 16:51:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 16:51:48]
+initSignal:0
+[INFO -- 2018-09-30 16:51:48]
+endSignal:30
+[INFO -- 2018-09-30 16:51:48]
+faultModel:1
+[EXCEPTION -- 2018-09-30 16:51:57]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-30 16:51:57]
+Backtrace BEGIN:
+#0  std::pow<double, unsigned int> (__x=-25, __y=2) at /usr/include/c++/7/cmath:419
+#1  0x0000555555555272 in predict (v=-25) at lreg.cpp:57
+#2  0x0000555555555446 in meanSquaredError () at lreg.cpp:93
+#3  0x0000555555555827 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:153
+#4  0x0000555555555d59 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:205
+#5  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+423	#ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+
+Backtrace END
+Memory content before bitflip:0x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd793
+address max offset: 1
+Memory content after  bitflip:0x12
+frame name: lreg
+symbol name: crashT3
+symbol filename: lreg.cpp
+symbol line: 200
+value: 18
+value address: 0x7fffffffd793
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-09-30 16:51:57]
+Fault Injection Successful after 9.342110395431519s
+[INFO -- 2018-09-30 16:51:57]
+event type: exit
+[EXCEPTION -- 2018-09-30 16:51:57]
+exit code: no exit code available

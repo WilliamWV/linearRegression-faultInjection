@@ -1,0 +1,51 @@
+[INFO -- 2018-09-30 17:11:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 17:11:21]
+Initialization strings:
+[INFO -- 2018-09-30 17:11:21]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 17:11:21]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 17:11:21]
+initSignal:0
+[INFO -- 2018-09-30 17:11:21]
+endSignal:30
+[INFO -- 2018-09-30 17:11:21]
+faultModel:1
+[INFO -- 2018-09-30 17:11:27]
+Backtrace BEGIN:
+#0  __exp1 (x=9.1335673131702695, xx=-4.9652053605021401e-16, error=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_exp.c:260
+#1  0x00007ffff76d58dc in __ieee754_pow_sse2 (x=21, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76b7b14 in __pow (x=21, y=3) at w_pow_compat.c:30
+#3  0x000055555555669c in std::pow<double, unsigned int> (__x=21, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x0000555555555272 in predict (v=21) at lreg.cpp:57
+#5  0x000055555555557d in partialDerivate (pos=3) at lreg.cpp:106
+#6  0x000055555555567d in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:119
+#7  0x0000555555555822 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:152
+#8  0x0000555555555d59 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:205
+#9  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+255	../sysdeps/ieee754/dbl-64/e_exp.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x140x040x050x210x300x030xa10xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd5a8
+address max offset: 8
+Memory content after  bitflip:0x140x040x050x330x300x030xa10xc0
+frame name: predict
+symbol name: val1
+symbol filename: lreg.cpp
+symbol line: 53
+value: -2177.5941392486075
+value address: 0x7fffffffd5a8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-30 17:11:27]
+Fault Injection Successful after 6.039494037628174s
+[INFO -- 2018-09-30 17:11:44]
+event type: exit
+[INFO -- 2018-09-30 17:11:44]
+exit code: 0

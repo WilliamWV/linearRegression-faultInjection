@@ -1,0 +1,58 @@
+[INFO -- 2018-09-30 17:21:26]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 17:21:26]
+Initialization strings:
+[INFO -- 2018-09-30 17:21:26]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 17:21:26]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 17:21:26]
+initSignal:0
+[INFO -- 2018-09-30 17:21:26]
+endSignal:30
+[INFO -- 2018-09-30 17:21:26]
+faultModel:0
+[EXCEPTION -- 2018-09-30 17:21:37]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-30 17:21:37]
+Backtrace BEGIN:
+#0  0x000055555555662c in std::vector<double, std::allocator<double> >::size (this=0x55555575b180 <T>) at /usr/include/c++/7/bits/stl_vector.h:671
+#1  0x0000555555555236 in predict (v=18) at lreg.cpp:56
+#2  0x0000555555555492 in meanSquaredError () at lreg.cpp:93
+#3  0x0000555555555827 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:153
+#4  0x0000555555555d59 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:205
+#5  0x00005555555564e2 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:276
+
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+675	      max_size() const _GLIBCXX_NOEXCEPT
+
+Backtrace END
+Memory content before bitflip:0x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd5fa
+address max offset: 1
+Memory content after  bitflip:0x40
+frame name: predict
+symbol name: crashV2
+symbol filename: lreg.cpp
+symbol line: 51
+value: 64
+value address: 0x7fffffffd5fa
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-09-30 17:21:37]
+Fault Injection Successful after 11.490575551986694s
+[INFO -- 2018-09-30 17:22:06]
+event type: exit
+[EXCEPTION -- 2018-09-30 17:22:06]
+exit code: no exit code available

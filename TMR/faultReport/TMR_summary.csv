@@ -1,37 +1,74 @@
-Faults Injected:;30
+Faults Injected:;192
 
 Fault Effect;#Effect;PVF
-Masked;22;0.7333333333333333
-SDCs;2;0.06666666666666667
-Crashes;3;0.1
-Hangs;3;0.1
+Masked;132;0.6875
+SDCs;6;0.03125
+Crashes;42;0.21875
+Hangs;12;0.0625
 
 FaultModels SDCs:
 FaultModel ;#SDCs;percentage
-Random bit-flip;1;50.0
-Double bit-flip;1;50.0
+Random bit-flip;3;50.0
+Double bit-flip;2;33.33333333333333
+Single bit-flip;1;16.666666666666664
 
 FaultModels Crashes:
 FaultModel ;#Crashes;percentage
-Single bit-flip;3;100.0
+Single bit-flip;19;45.23809523809524
+Random bit-flip;12;28.57142857142857
+Double bit-flip;11;26.190476190476193
 
 FaultModels Hangs:
 FaultModel ;#Hangs;percentage
-Random bit-flip;2;66.66666666666666
-Single bit-flip;1;33.33333333333333
+Double bit-flip;6;50.0
+Random bit-flip;5;41.66666666666667
+Single bit-flip;1;8.333333333333332
 
 Variables that caused SDCs:
 PVF ;#flips ;#SDCs ;Var name ;file ;line number
+100.0;2;2;ln2a;../sysdeps/ieee754/dbl-64/upow.h;50
+50.0;2;1;iterations;lreg.cpp;183
 33.33333333333333;3;1;x;lreg.cpp;32
 100.0;1;1;i;lreg.cpp;167
+7.142857142857142;14;1;x;lreg.cpp;35
 
 Variables that caused Crash:
 PVF ;#flips ;#SDCs ;Var name ;file ;line number
+60.0;10;6;T;lreg.cpp;37
+42.857142857142854;14;6;x;lreg.cpp;35
+100.0;4;4;i;lreg.cpp;118
+75.0;4;3;bigu;../sysdeps/ieee754/dbl-64/upow.h;52
+40.0;5;2;argc;lreg.cpp;266
+14.285714285714285;14;2;y;lreg.cpp;36
+100.0;2;2;i;lreg.cpp;92
 100.0;1;1;i;lreg.cpp;86
 33.33333333333333;3;1;x;lreg.cpp;32
 100.0;1;1;y;lreg.cpp;33
+100.0;1;1;crashV2;lreg.cpp;51
+100.0;1;1;i;lreg.cpp;105
+100.0;1;1;prevT;lreg.cpp;125
+100.0;1;1;set;../sysdeps/unix/sysv/linux/raise.c;39
+100.0;1;1;i;lreg.cpp;84
+50.0;2;1;crashT1;lreg.cpp;200
+100.0;1;1;_dl_skip_args;rtld.c;84
+14.285714285714285;7;1;x;w_pow_compat.c;28
+50.0;2;1;T;lreg.cpp;36
+33.33333333333333;3;1;iterations;lreg.cpp;137
+100.0;1;1;new_mxcsr;../sysdeps/i386/fpu/fenv_private.h;444
+50.0;2;1;alpha;lreg.cpp;137
+50.0;2;1;crashV3;lreg.cpp;51
+33.33333333333333;3;1;crashT3;lreg.cpp;200
 
 Variables that caused Hang:
 PVF ;#flips ;#SDCs ;Var name ;file ;line number
 100.0;2;2;testCases;lreg.cpp;164
 100.0;1;1;iterations;lreg.cpp;105
+50.0;2;1;iterations;lreg.cpp;183
+50.0;2;1;input;lreg.cpp;175
+100.0;1;1;predictions;lreg.cpp;183
+50.0;2;1;crashV3;lreg.cpp;51
+50.0;2;1;i;lreg.cpp;181
+50.0;2;1;N;lreg.cpp;183
+100.0;1;1;testCases;lreg.cpp;178
+50.0;2;1;_rtld_global_ro;rtld.c;259
+33.33333333333333;3;1;iterations;lreg.cpp;137

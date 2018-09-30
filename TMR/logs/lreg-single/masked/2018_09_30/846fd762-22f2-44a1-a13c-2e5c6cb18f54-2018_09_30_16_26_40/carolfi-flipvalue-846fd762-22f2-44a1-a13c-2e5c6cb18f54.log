@@ -1,0 +1,59 @@
+[INFO -- 2018-09-30 16:26:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 16:26:07]
+Initialization strings:
+[INFO -- 2018-09-30 16:26:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 16:26:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 16:26:07]
+initSignal:0
+[INFO -- 2018-09-30 16:26:07]
+endSignal:30
+[INFO -- 2018-09-30 16:26:07]
+faultModel:0
+[INFO -- 2018-09-30 16:26:15]
+Backtrace BEGIN:
+#0  0x00007ffff76b4990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76b7b14 in __pow (x=19, y=3) at w_pow_compat.c:30
+#2  0x000055555555643a in std::pow<double, unsigned int> (__x=19, __y=3) at /usr/include/c++/7/cmath:418
+#3  0x000055555555530e in predict (v=19) at lreg.cpp:61
+#4  0x00005555555554e2 in partialDerivate (pos=2) at lreg.cpp:85
+#5  0x00005555555555e2 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:98
+#6  0x0000555555555787 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:131
+#7  0x0000555555555ca9 in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput", output=0x7fffffffe224 "/tmp/lreg/output") at lreg.cpp:183
+#8  0x0000555555556280 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:233
+
+211	
+212	/*
+213	It must receive an input file formated as follows:
+214		1° Line : one integer T -> number of test cases
+215		2° to 5° repeat to all test case	
+216		2° Line : method parameters -> alpha, iterations, N, size of 
+217			      training set, predictions
+218		3° Line : inputs x of the training set
+219		4° Line : values y of the training set
+220		5° Line : set z of new inputs to predict*/
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x080x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd538
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x040x000x080x40
+frame name: __pow
+symbol name: y
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 3.0000076293945312
+value address: 0x7fffffffd538
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-30 16:26:15]
+Fault Injection Successful after 8.776891231536865s
+[INFO -- 2018-09-30 16:26:32]
+event type: exit
+[INFO -- 2018-09-30 16:26:32]
+exit code: 0
