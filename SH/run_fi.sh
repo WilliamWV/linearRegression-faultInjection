@@ -1,4 +1,4 @@
-FOLDER=par
+FOLDER=SH
 make > dump
 cd ../../carol-fi
 rm -rf logs

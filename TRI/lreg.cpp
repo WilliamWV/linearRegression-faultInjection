@@ -1,6 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// THIS VERSION OF THE CODE USES TRIPLICATION TO AVOID FAILURES             ///
 ////////////////////////////////////////////////////////////////////////////////
+/*
+
+	MELHORIAS NECESSÁRIAS:
+		* Reduzir quantidade de SPOFS realizando três execuções semelhantes a
+		  execução original que retorne os valores correspondentes às previsões
+		  os thetas correspondentes e se deu crash ou não. Nesse caso os SPOFs
+		  se reduziriam a comparação e escolha do resultado correto
+*/
 #include<iostream>
 #include<fstream>
 #include<vector>

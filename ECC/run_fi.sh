@@ -1,4 +1,4 @@
-FOLDER=CRC
+FOLDER=ECC
 make > dump
 cd ../../carol-fi
 rm -rf logs

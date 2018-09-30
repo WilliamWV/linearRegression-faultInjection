@@ -1,4 +1,4 @@
-FOLDER=TMR
+FOLDER=TRI
 make > dump
 cd ../../carol-fi
 rm -rf logs
