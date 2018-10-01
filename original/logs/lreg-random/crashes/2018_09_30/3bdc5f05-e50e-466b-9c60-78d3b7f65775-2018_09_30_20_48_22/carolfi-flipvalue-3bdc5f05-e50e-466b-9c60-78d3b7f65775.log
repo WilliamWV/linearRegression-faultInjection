@@ -1,0 +1,63 @@
+[INFO -- 2018-09-30 20:48:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 20:48:19]
+Initialization strings:
+[INFO -- 2018-09-30 20:48:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 20:48:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 20:48:19]
+initSignal:0
+[INFO -- 2018-09-30 20:48:19]
+endSignal:10
+[INFO -- 2018-09-30 20:48:19]
+faultModel:2
+[INFO -- 2018-09-30 20:48:20]
+Backtrace BEGIN:
+#0  0x000055555555722c in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd880, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#1  0x0000555555556f4d in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd880, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#2  0x000055555555663d in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd880, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#3  0x000055555555610f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd880, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#4  0x000055555555572b in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:182
+
+167	
+168	      pointer
+169	      _M_allocate(size_t __n)
+170	      {
+171		typedef __gnu_cxx::__alloc_traits<_Tp_alloc_type> _Tr;
+172		return __n != 0 ? _Tr::allocate(_M_impl, __n) : pointer();
+173	      }
+174	
+175	      void
+176	      _M_deallocate(pointer __p, size_t __n)
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xf00x160x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a168 
+address max offset: 8
+Memory content after  bitflip:0xac0x280x9e0xd30x8e0x7c0x340xb0
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_create_storage
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length -718740962045271476, capacity 32 = {1, 1, 1, 1, 1, 1, 1, 1, 1101, 417, -3, 837, -3, 141, 21, 261, 37, 541, 1, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.1336224915654232e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-30 20:48:20]
+Fault Injection Successful after 1.6446902751922607s
+[INFO -- 2018-09-30 20:48:21]
+event type: exit
+[EXCEPTION -- 2018-09-30 20:48:21]
+exit code: no exit code available

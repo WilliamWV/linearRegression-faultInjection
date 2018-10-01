@@ -1,19 +1,8 @@
-////////////////////////////////////////////////////////////////////////////////
-/// THIS VERSION OF THE CODE USES TRIPLICATION TO AVOID FAILURES             ///
-////////////////////////////////////////////////////////////////////////////////
-/*
 
-	MELHORIAS NECESSÁRIAS:
-		* Reduzir quantidade de SPOFS realizando três execuções semelhantes a
-		  execução original que retorne os valores correspondentes às previsões
-		  os thetas correspondentes e se deu crash ou não. Nesse caso os SPOFs
-		  se reduziriam a comparação e escolha do resultado correto
-*/
 #include<iostream>
 #include<fstream>
 #include<vector>
 #include<cmath>
-#include<exception>
 
 /*
 	Specification
@@ -38,58 +27,40 @@
 	
 
 */
+
+//struct that holds all elements of the answer, each one of the execution
+//of the triplification will returns one of these 
+typedef struct answer{
+	//all elements are inside a vector because will return one to each test case
+	vector<vector <double>> predictions;	//results of the values to predict
+	vector<vector <bool>> crashes;			//says if there is crash on some prediction
+	vector<vector <double>> thetas;			//thetas trained
+	vector<bool> crashOnTrain;				//there is crash on train?
+}ANS;
+
 using namespace std;
 
 vector<double> x; // input of training set
 vector<double> y; // observed values of training set inputs
 vector<double> T; // the adjustment variables
 
-int equals(vector<double> a, vector<double> b){
-	if (a.size() != b.size()) return 0;
-	for (unsigned int i = 0; i<a.size(); i++){
-		if(a[i] != b[i]) return 0;
+bool equals(vector<double> a, vector<double> b){
+	if (a.size() != b.size()) return false;
+	for (int i = 0; i<a.size(); i++){
+		if(a[i] != b[i]) return false;
 	}
-	return 1;
+	return true;
 }
 
 /**
 	Predicts the value related to v using the Ts variables
 */
 double predict(double v){
-	bool crashV1 = false, crashV2 = false, crashV3 = false;
-	//ALSO TRIPLICATED
-	double val1 = 0, val2 = 0, val3 = 0;	
-	try{
-		val1 = 0;
-		for(unsigned int i = 0; i<T.size(); i++){
-			val1+= (T[i] * pow(v, i));
-		}
-	}catch (exception& e){
-		crashV1 = true;
+	double val = 0;
+	for(int i = 0; i<T.size(); i++){
+		val+= (T[i] * pow(v, i));
 	}
-	try{
-		val2 = 0;
-		for(unsigned int i = 0; i<T.size(); i++){
-			val2+= (T[i] * pow(v, i));
-		}
-	}catch(exception& e){
-		crashV2 = true;
-	}
-	try{
-		val3 = 0;
-		for(unsigned int i = 0; i<T.size(); i++){
-			val3+= (T[i] * pow(v, i));
-		}
-	}catch(exception& e){
-		crashV3 = true;
-	}
-	if (crashV1 || crashV2 || crashV3){
-		if (!crashV1) return val1;
-		else if(!crashV2) return val2;
-		else if(!crashV3) return val3;
-		else return 0;	
-	}	
-	else return (val1 == val2)?val1:val3;
+	return val;
 	
 }
 /**
@@ -97,7 +68,7 @@ double predict(double v){
 */
 double meanSquaredError(){
 	double error = 0;
-	for(unsigned int i = 0; i<x.size(); i++){
+	for(int i = 0; i<x.size(); i++){
 		error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
 	}
 	error /= x.size();
@@ -110,7 +81,7 @@ double meanSquaredError(){
 */
 double partialDerivate(int pos){
 	double pD = 0;
-	for(unsigned int i = 0; i<x.size(); i++){
+	for(int i = 0; i<x.size(); i++){
 		pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
 	}
 	pD *= (2.0/x.size());
@@ -123,7 +94,7 @@ double partialDerivate(int pos){
 void adjust(double alpha){
 	
 	double PD;
-	for(unsigned int i = 0; i<T.size(); i++){
+	for(int i = 0; i<T.size(); i++){
 		PD = partialDerivate(i);
 		// alpha is different from the canonical version because this works better
 		T[i]= T[i] - ((alpha / (sqrt( fabs(PD) ))) * PD); 
@@ -155,7 +126,7 @@ void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 	vector<double> bestT = T; 
 	double bestMSE = meanSquaredError();
 	double MSE;	
-	for(unsigned int i = 0; i<iterations; i++){
+	for(int i = 0; i<iterations; i++){
 		prevT = T; 	
 		adjust(alpha);
 		MSE = meanSquaredError();
@@ -172,93 +143,52 @@ void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 
 void saveTs(ofstream& out){
 	out<<"Thetas: "<<endl;
-	for (unsigned int i = 0; i<T.size(); i ++){
+	for (int i = 0; i<T.size(); i ++){
 		out<<'\t'<<'T'<<i<<" = "<<T[i];
 	}
 	out<<endl;
 	out<<"Mean Squared Error: " << meanSquaredError()<<endl;
 }
 
-
-void lreg(char* input, char* output){
+ANS lreg(char* input, char* output){
+	ANS *answer;
+	
 	ifstream inp (input);
-	ofstream out (output);	
-	int testCases;	
+	ifstream out (output);
+	unsigned int testCases;	
 	inp >> testCases;
 	
-	for (unsigned int i = 0; i<testCases; i++){
-		double alpha, temp;
-		int iterations, N, sizeOfTraining, predictions;
-		inp >> alpha >> iterations >> N >> sizeOfTraining >> predictions;
-		//Auxiliar vector for redundancy		
-		vector<double> readedX;
-		vector<double> readedY;
-		vector<double> T1;
-		vector<double> T2;
-		vector<double> T3;
-		//READING DATA
-		for (unsigned int j = 0; j<sizeOfTraining; j++){
-			inp >> temp;
-			readedX.push_back(temp);
-		} 
-		for (unsigned int j = 0; j<sizeOfTraining; j++){
-			inp >> temp;
-			readedY.push_back(temp);
-		}
-		bool crashT1 = false, crashT2 = false, crashT3 = false;
-		//TRAINING
+	for (int i = 0; i<testCases; i++){
 		try{
-			x = readedX;
-			y = readedY;
+			double alpha, temp;
+			int iterations, N, sizeOfTraining, predictions;
+			inp >> alpha >> iterations >> N >> sizeOfTraining >> predictions;
+			
+			//READING DATA
+			for (int j = 0; j<sizeOfTraining; j++){
+				inp >> temp;
+				x.push_back(temp);
+			} 
+			for (int j = 0; j<sizeOfTraining; j++){
+				inp >> temp;
+				y.push_back(temp);
+			} 
+			//TRAINING
 			train(iterations, alpha, N);
-			T1 = T;
-		}catch(exception& e){
-			crashT1 = true;
+			answer->thetas.push_back(T);
+			answer->crashOnTrain.push_back(false);
+		}catch (exception& e){
+			//error on training
+			answer->crashOnTrain.push_back(true);
 		}
-		try{
-			x = readedX;
-			y = readedY;
-			train(iterations, alpha, N);
-			T2 = T;
-		}
-		catch(exception& e){
-			crashT2 = true;
-		}
-		try{
-		x = readedX;
-		y = readedY;
-		train(iterations, alpha, N);
-		T3 = T;
-		}
-		catch(exception& e){
-			crashT3 = true;
-		}
-		if (crashT3 || crashT2 || crashT1){
-			//uses anyone that avoided crash			
-			if (!crashT1) T = T1;
-			else if (!crashT2) T = T2;
-			else if (!crashT3) T = T3;
-			else T = vector<double>(N, 0);
-		}	
-		else{
-			//if (T1 = T2) T = T1; else T = T3; 
-			//triplicates comparission	
-			if (equals(T1, T2) + equals(T1, T2) + equals(T1, T2) >= 2)
-				T = T1;
-			else 
-				T = T3;
-		}
-		saveTs(out); // Save the training results		
-		//PREDICTING
-		out<<"Predictions:"<<endl;
-		for (unsigned int j = 0; j < predictions; j++){
+		for (int j = 0; j < predictions; j++){
 			inp >> temp;
 			out << "f("<<temp<<") = "<<predict(temp)<< endl;
 		}
 	}
+	return answer;
+	
 }
-
-
 
 /*
 It must receive an input file formated as follows:
@@ -279,10 +209,6 @@ int main(int argc, char* argv[]){
 		cout <<'\t'<<argv[0]<<" <input file> "<<"<output file>"<<endl;
 		return 1;
 	}
-	
-	
-	lreg(argv[1], argv[2]);
-	
 	
 	
 	return 0;

@@ -1,0 +1,55 @@
+[INFO -- 2018-09-30 19:22:29]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 19:22:29]
+Initialization strings:
+[INFO -- 2018-09-30 19:22:29]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 19:22:29]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 19:22:29]
+initSignal:0
+[INFO -- 2018-09-30 19:22:29]
+endSignal:10
+[INFO -- 2018-09-30 19:22:29]
+faultModel:0
+[INFO -- 2018-09-30 19:22:29]
+Backtrace BEGIN:
+#0  elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x7ffff726bf68, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff6ea1968, map=0x7ffff7fe03d0) at ../sysdeps/x86_64/dl-machine.h:335
+#1  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7fe03d0) at do-rel.h:137
+#2  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#3  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#4  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde50, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#5  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde50) at rtld.c:414
+#6  _dl_start (arg=0x7fffffffde50) at rtld.c:521
+#7  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#8  0x0000000000000003 in ?? ()
+#9  0x00007fffffffe1fc in ?? ()
+#10 0x00007fffffffe20b in ?? ()
+#11 0x00007fffffffe21f in ?? ()
+#12 0x0000000000000000 in ?? ()
+
+330	../sysdeps/x86_64/dl-machine.h: No such file or directory.
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff726bf68
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x800x00
+frame name: elf_machine_rela
+symbol name: reloc_addr
+symbol filename: ../sysdeps/x86_64/dl-machine.h
+symbol line: 272
+value: 0x7ffff726bf68
+value address: 0x7fffffffdaa0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-09-30 19:22:29]
+Fault Injection Successful after 0.514610767364502s
+[INFO -- 2018-09-30 19:22:37]
+event type: exit
+[INFO -- 2018-09-30 19:22:37]
+exit code: 0

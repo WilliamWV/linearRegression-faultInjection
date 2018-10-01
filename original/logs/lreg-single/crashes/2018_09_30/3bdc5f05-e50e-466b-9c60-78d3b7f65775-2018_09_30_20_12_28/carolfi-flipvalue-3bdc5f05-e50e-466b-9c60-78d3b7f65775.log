@@ -1,0 +1,64 @@
+[INFO -- 2018-09-30 20:12:17]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 20:12:17]
+Initialization strings:
+[INFO -- 2018-09-30 20:12:17]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 20:12:17]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 20:12:17]
+initSignal:0
+[INFO -- 2018-09-30 20:12:17]
+endSignal:10
+[INFO -- 2018-09-30 20:12:17]
+faultModel:0
+[EXCEPTION -- 2018-09-30 20:12:19]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-09-30 20:12:19]
+Backtrace BEGIN:
+#0  0x0000555555555f0d in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a160 <y>, __n=18) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x0000555555555415 in partialDerivate (pos=2) at lreg.cpp:74
+#2  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x00005555555556ac in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:182
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x190x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a160 
+address max offset: 8
+Memory content after  bitflip:0x720x190x770x550x550x550x000x00
+frame name: adjust
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 35, capacity 63 = {3.4732827106519577e-310, 3.4732827106519577e-310, 3.4732827106519577e-310, 3.4732827106519577e-310, 3.4732827106519577e-310, 3.4732827106519577e-310, 3.4732827106519577e-310, 3.4732827106519577e-310, 3.5074899459260026e-310, 3.502579515040972e-310, 1.0431731308385279e-309, 3.5059946020170568e-310, 1.0431731308385279e-309, 3.4973938878268006e-310, 3.4879244816096181e-310, 3.5005105691447809e-310, 3.4907891759274212e-310, 3.5040317559104139e-310, 3.4732827106519577e-310, 3.4879244816096181e-310, 1.0475984867482175e-309, 3.5156438805337078e-310, 1.0464567535441255e-309, 1.0461011534682176e-309, 1.0442341287340105e-309, 3.5008819184081998e-310, 3.5208340667232114e-310, 1.0482813176398981e-309, 1.0475251908584456e-309, 1.0466004856027791e-309, 3.4920623734020004e-310, 1.0452951266294931e-309, 1.0466004856027791e-309, 3.5156438805337078e-310, 1.04818977548749e-309, 3.5197548329264001e-310, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9.4565638986556059e-308, -2.0495425951429258e+74, -1.2776549321138963e+112, 1.002262347126944e+93, -5.2337348593522103e-279, 3.4771624800218061e-310, 9.4565638986556059e-308, -2.0495425951429258e+74, -1.2776549321138963e+112, 1.002262347126944e+93, -5.2337348593522103e-279, 3.4771624800218061e-310, 9.4565638986556059e-308, 1.617269844780878e-173, -9.3945411785044929e-294, 1.662758115197415e-137, -9.1294363718062245e+259, 3.4772161330808139e-310, 9.4565638986556059e-308, 0, -1.2625764924992127e+112, 1.002262347126944e+93, -5.2337348593522103e-279, 3.4771624800218061e-310, -3.6545246025164963e-136, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-30 20:12:19]
+Fault Injection Successful after 2.9531962871551514s
+[INFO -- 2018-09-30 20:12:27]
+event type: exit
+[EXCEPTION -- 2018-09-30 20:12:27]
+exit code: no exit code available

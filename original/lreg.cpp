@@ -130,14 +130,6 @@ void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 	T = bestT;
 }
 
-void saveTs(ofstream& out){
-	out<<"Thetas: "<<endl;
-	for (int i = 0; i<T.size(); i ++){
-		out<<'\t'<<'T'<<i<<" = "<<T[i];
-	}
-	out<<endl;
-	out<<"Mean Squared Error: " << meanSquaredError()<<endl;
-}
 /*
 It must receive an input file formated as follows:
 	1° Line : one integer T -> number of test cases
@@ -180,12 +172,9 @@ int main(int argc, char* argv[]){
 		} 
 		//TRAINING
 		train(iterations, alpha, N);
-		saveTs(out); // Save the training results		
-		//PREDICTING
-		out<<"Predictions:"<<endl;
 		for (int j = 0; j < predictions; j++){
 			inp >> temp;
-			out << "f("<<temp<<") = "<<predict(temp)<< endl;
+			out<<predict(temp)<< endl;
 		}
 			
 	}

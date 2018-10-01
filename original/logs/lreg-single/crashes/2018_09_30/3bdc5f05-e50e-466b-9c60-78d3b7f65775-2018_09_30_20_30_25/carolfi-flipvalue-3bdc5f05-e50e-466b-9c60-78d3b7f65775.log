@@ -1,0 +1,56 @@
+[INFO -- 2018-09-30 20:30:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 20:30:23]
+Initialization strings:
+[INFO -- 2018-09-30 20:30:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 20:30:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 20:30:23]
+initSignal:0
+[INFO -- 2018-09-30 20:30:23]
+endSignal:10
+[INFO -- 2018-09-30 20:30:23]
+faultModel:0
+[EXCEPTION -- 2018-09-30 20:30:24]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-09-30 20:30:24]
+Backtrace BEGIN:
+#0  0x0000555555555ecc in std::vector<double, std::allocator<double> >::size (this=0x7fffffffd840) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x00005555555563c6 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:216
+#2  0x0000555555555691 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:182
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Memory content before bitflip:0x050x5c0xa30x320x5b0x8f0x160x3e
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd830
+address max offset: 8
+Memory content after  bitflip:0x050x5c0xa30x320x5b0x0f0x160x3e
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: 1.2840601451504051e-09
+value address: 0x7fffffffd830
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-09-30 20:30:24]
+Fault Injection Successful after 1.626826524734497s
+[INFO -- 2018-09-30 20:30:24]
+event type: exit
+[EXCEPTION -- 2018-09-30 20:30:24]
+exit code: no exit code available

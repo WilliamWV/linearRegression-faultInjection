@@ -1,0 +1,63 @@
+[INFO -- 2018-09-30 19:14:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 19:14:43]
+Initialization strings:
+[INFO -- 2018-09-30 19:14:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 19:14:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 19:14:43]
+initSignal:0
+[INFO -- 2018-09-30 19:14:43]
+endSignal:10
+[INFO -- 2018-09-30 19:14:43]
+faultModel:0
+[EXCEPTION -- 2018-09-30 19:14:48]
+gdbException: Cannot access memory at address 0x55d555771760
+[INFO -- 2018-09-30 19:14:48]
+Backtrace BEGIN:
+#0  0x000055555555541e in partialDerivate (pos=3) at lreg.cpp:74
+#1  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:182
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0xa20x210x100x150x9c0x4d0x500x40
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771380
+address max offset: 8
+Memory content after  bitflip:0xa20x210x100x150x9c0x0d0x500x40
+frame name: adjust
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 4, capacity 4 = {64.212651506188678, -211.81457144323497, -17.509952072704991, 2.5086502630468677}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-09-30 19:14:48]
+Fault Injection Successful after 5.553590536117554s
+[INFO -- 2018-09-30 19:14:48]
+event type: exit
+[EXCEPTION -- 2018-09-30 19:14:48]
+exit code: no exit code available

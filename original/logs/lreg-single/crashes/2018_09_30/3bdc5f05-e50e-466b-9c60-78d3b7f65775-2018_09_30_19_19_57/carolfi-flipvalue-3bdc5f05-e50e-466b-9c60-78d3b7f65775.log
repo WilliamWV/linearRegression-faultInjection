@@ -1,0 +1,58 @@
+[INFO -- 2018-09-30 19:19:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-09-30 19:19:54]
+Initialization strings:
+[INFO -- 2018-09-30 19:19:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-09-30 19:19:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-09-30 19:19:54]
+initSignal:0
+[INFO -- 2018-09-30 19:19:54]
+endSignal:10
+[INFO -- 2018-09-30 19:19:54]
+faultModel:0
+[EXCEPTION -- 2018-09-30 19:19:55]
+gdbException: Cannot access memory at address 0x557555771650
+[EXCEPTION -- 2018-09-30 19:19:55]
+gdbException: Cannot access memory at address 0x557555771650
+[INFO -- 2018-09-30 19:19:55]
+Backtrace BEGIN:
+#0  0x0000555555555415 in partialDerivate (pos=0) at lreg.cpp:74
+#1  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555c26 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:182
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Memory content before bitflip:0xea0x830x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd82c
+address max offset: 4
+Memory content after  bitflip:0xea0x830x000x20
+frame name: train
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 118
+value: 536904682
+value address: 0x7fffffffd82c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-09-30 19:19:55]
+Fault Injection Successful after 1.8432691097259521s
+[INFO -- 2018-09-30 19:19:56]
+event type: exit
+[EXCEPTION -- 2018-09-30 19:19:56]
+exit code: no exit code available
