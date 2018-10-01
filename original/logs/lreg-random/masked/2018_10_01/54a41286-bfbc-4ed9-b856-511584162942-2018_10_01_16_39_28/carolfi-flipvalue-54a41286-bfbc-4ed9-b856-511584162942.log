@@ -1,0 +1,57 @@
+[INFO -- 2018-10-01 16:39:20]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 16:39:20]
+Initialization strings:
+[INFO -- 2018-10-01 16:39:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 16:39:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 16:39:20]
+initSignal:0
+[INFO -- 2018-10-01 16:39:20]
+endSignal:10
+[INFO -- 2018-10-01 16:39:20]
+faultModel:2
+[EXCEPTION -- 2018-10-01 16:39:20]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-10-01 16:39:27]
+Backtrace BEGIN:
+#0  0x0000555555555d39 in std::pow<double, int> (__x=-2, __y=1) at /usr/include/c++/7/cmath:418
+#1  0x00005555555551e7 in predict (v=-2) at lreg.cpp:50
+#2  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#3  0x0000555555555661 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0xb30x1a0x920xf40x0b0x610x640x86
+frame name: predict
+symbol name: v
+symbol filename: lreg.cpp
+symbol line: 47
+value: -7.1851984882757168e-278
+value address: 0x7fffffffd788
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-01 16:39:27]
+Fault Injection Successful after 7.209123373031616s
+[INFO -- 2018-10-01 16:39:27]
+event type: exit
+[INFO -- 2018-10-01 16:39:27]
+exit code: 0

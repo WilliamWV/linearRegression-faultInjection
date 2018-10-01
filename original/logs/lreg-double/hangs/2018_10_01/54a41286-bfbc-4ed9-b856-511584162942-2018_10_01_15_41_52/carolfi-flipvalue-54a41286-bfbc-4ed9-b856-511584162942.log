@@ -1,0 +1,56 @@
+[INFO -- 2018-10-01 15:41:31]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 15:41:31]
+Initialization strings:
+[INFO -- 2018-10-01 15:41:31]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 15:41:31]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 15:41:31]
+initSignal:0
+[INFO -- 2018-10-01 15:41:31]
+endSignal:10
+[INFO -- 2018-10-01 15:41:31]
+faultModel:1
+[INFO -- 2018-10-01 15:41:35]
+Backtrace BEGIN:
+#0  0x00005555555550d9 in equals (a=std::vector of length 4, capacity 4 = {...}, b=std::vector of length 4, capacity 4 = {...}) at lreg.cpp:37
+#1  0x00005555555556f4 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+32	vector<double> x; // input of training set
+33	vector<double> y; // observed values of training set inputs
+34	vector<double> T; // the adjustment variables
+35	
+36	bool equals(vector<double> a, vector<double> b){
+37		if (a.size() != b.size()) return false;
+38		for (int i = 0; i<a.size(); i++){
+39			if(a[i] != b[i]) return false;
+40		}
+41		return true;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x800x180x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a148 
+address max offset: 8
+Memory content after  bitflip:0x800x5a0x770x550x550x550x000x00
+frame name: equals
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 2148, capacity 64 = {11, 16, -6, -2, -6, -13, -7, 7, -6, 16, -22, 10, 8, 8, 17, -7, 0, -3, 14, 24, -20, -20, -22, 25, -22, 21, -7, 12, 19, -3, 24, -26, 27, -26, 27, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.6136072665001942e-321, 21, 31, -13, -5, -13, -27, -15, 13, -164, -956, -2020, -356, -220, -220, -1084, -220, 4, -44, -724, -2204, -29517, -29517, -39597, 66153, -39597, 39609, -1047, 7731, 29529, -39, 58659, -66141, 83001, -66141, 83001, -14781, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, -30.437061341622659, -155.92259689763659, 0.64921314603082292, 3.707634830568213, 0, 2.4209216646221081e-322, -30.437987928718233, -155.92687317706677, 0.65231530726685072, 3.7448460137819466, 0, 2.4209216646221081e-322, -30.437061341622659, -155.92259689763659, 0.64921314603082292, 3.707634830568213, 0, 2.4209216646221081e-322, -30.437987928718233, -155.92687317706677, 0.65231530726685072, 3.7448460137819466, 0, 2.0719630989644356e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-01 15:41:35]
+Fault Injection Successful after 4.4063708782196045s

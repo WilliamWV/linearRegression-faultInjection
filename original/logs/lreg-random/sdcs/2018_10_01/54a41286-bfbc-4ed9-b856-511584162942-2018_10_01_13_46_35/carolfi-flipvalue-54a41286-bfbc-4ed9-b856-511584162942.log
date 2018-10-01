@@ -1,0 +1,66 @@
+[INFO -- 2018-10-01 13:46:26]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 13:46:26]
+Initialization strings:
+[INFO -- 2018-10-01 13:46:26]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 13:46:26]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 13:46:26]
+initSignal:0
+[INFO -- 2018-10-01 13:46:26]
+endSignal:10
+[INFO -- 2018-10-01 13:46:26]
+faultModel:2
+[INFO -- 2018-10-01 13:46:27]
+Backtrace BEGIN:
+#0  0x00005555555575bf in std::__copy_move_a<false, double const*, double*> (__first=0x555555771340, __last=0x555555771358, __result=0x555555771470) at /usr/include/c++/7/bits/stl_algobase.h:386
+#1  0x000055555555793c in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=19.336841211292715, __last=1.6304166312761136e-322, __result=0x555555771470) at /usr/include/c++/7/bits/stl_algobase.h:424
+#2  0x0000555555557793 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=19.336841211292715, __last=1.6304166312761136e-322, __result=0x555555771470) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x0000555555557516 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=19.336841211292715, __last=1.6304166312761136e-322, __result=0x555555771470) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#4  0x0000555555556f8c in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=19.336841211292715, __last=1.6304166312761136e-322, __result=0x555555771470) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#5  0x00005555555566e5 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=19.336841211292715, __last=1.6304166312761136e-322, __result=0x555555771470) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#6  0x0000555555555f6b in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#7  0x00005555555556c3 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#8  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+381		                     && __is_pointer<_II>::__value
+382		                     && __is_pointer<_OI>::__value
+383				     && __are_same<_ValueTypeI, _ValueTypeO>::__value);
+384	
+385	      return std::__copy_move<_IsMove, __simple,
+386		                      _Category>::__copy_m(__first, __last, __result);
+387	    }
+388	
+389	  // Helpers for streambuf iterators (either istream or ostream).
+390	  // NB: avoid including <iosfwd>, relatively large.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x260x40
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771540
+address max offset: 8
+Memory content after  bitflip:0x370x4a0x6c0xea0xe80x320x3a0x40
+frame name: std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*>
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 20, capacity 32 = {26.198866511762585, 16, -6, -2, -6, -13, -7, 7, -6, 16, -22, 10, 8, 8, 17, -7, 0, -3, 14, 24}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-01 13:46:27]
+Fault Injection Successful after 1.8864004611968994s
+[INFO -- 2018-10-01 13:46:33]
+event type: exit
+[INFO -- 2018-10-01 13:46:33]
+exit code: 0

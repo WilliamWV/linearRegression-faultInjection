@@ -1,0 +1,57 @@
+[INFO -- 2018-10-01 13:12:29]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 13:12:29]
+Initialization strings:
+[INFO -- 2018-10-01 13:12:29]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 13:12:29]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 13:12:29]
+initSignal:0
+[INFO -- 2018-10-01 13:12:29]
+endSignal:10
+[INFO -- 2018-10-01 13:12:29]
+faultModel:2
+[EXCEPTION -- 2018-10-01 13:12:33]
+gdbException: Cannot access memory at address 0x26c8ea312ddcbf36
+[INFO -- 2018-10-01 13:12:33]
+Backtrace BEGIN:
+#0  0x00005555555551f1 in predict (v=-6) at lreg.cpp:50
+#1  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd738
+address max offset: 8
+Memory content after  bitflip:0xd90x980x0b0x690x4d0xc40x790x26
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 48
+value: 2.4361407547589787e-123
+value address: 0x7fffffffd738
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-01 13:12:33]
+Fault Injection Successful after 4.721881151199341s
+[INFO -- 2018-10-01 13:12:33]
+event type: exit
+[EXCEPTION -- 2018-10-01 13:12:33]
+exit code: no exit code available

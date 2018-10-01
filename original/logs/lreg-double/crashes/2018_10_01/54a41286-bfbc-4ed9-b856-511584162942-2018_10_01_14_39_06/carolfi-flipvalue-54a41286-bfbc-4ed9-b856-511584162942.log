@@ -1,0 +1,57 @@
+[INFO -- 2018-10-01 14:39:04]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 14:39:04]
+Initialization strings:
+[INFO -- 2018-10-01 14:39:04]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 14:39:04]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 14:39:04]
+initSignal:0
+[INFO -- 2018-10-01 14:39:04]
+endSignal:10
+[INFO -- 2018-10-01 14:39:04]
+faultModel:1
+[EXCEPTION -- 2018-10-01 14:39:04]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-01 14:39:04]
+Backtrace BEGIN:
+#0  __pow (x=-13, y=0) at w_pow_compat.c:55
+#1  0x0000555555555d47 in std::pow<double, int> (__x=-13, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x00005555555551e7 in predict (v=-13) at lreg.cpp:50
+#3  0x00005555555553ac in partialDerivate (pos=1) at lreg.cpp:74
+#4  0x00005555555554b3 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#5  0x000055555555565c in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+50	in w_pow_compat.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771350
+address max offset: 8
+Memory content after  bitflip:0x000x000x280x000x000x000x000x00
+frame name: predict
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 2, capacity 2 = {-0.52275838521412221, 1.9999982000000001}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-01 14:39:04]
+Fault Injection Successful after 0.974442720413208s
+[INFO -- 2018-10-01 14:39:05]
+event type: exit
+[EXCEPTION -- 2018-10-01 14:39:05]
+exit code: no exit code available

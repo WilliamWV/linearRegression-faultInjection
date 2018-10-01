@@ -1,0 +1,58 @@
+[INFO -- 2018-10-01 13:53:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 13:53:41]
+Initialization strings:
+[INFO -- 2018-10-01 13:53:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 13:53:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 13:53:41]
+initSignal:0
+[INFO -- 2018-10-01 13:53:41]
+endSignal:10
+[INFO -- 2018-10-01 13:53:41]
+faultModel:2
+[EXCEPTION -- 2018-10-01 13:53:44]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-01 13:53:44]
+Backtrace BEGIN:
+#0  0x0000555555555d1b in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a180 <T>, __n=1) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x00005555555551c7 in predict (v=17) at lreg.cpp:50
+#2  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#3  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Memory content before bitflip:0x890xa20xf80x5f0x000x080xb00xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0x1f0x710x770xa80x6e0xbe0x570x9e
+frame name: partialDerivate
+symbol name: pD
+symbol filename: lreg.cpp
+symbol line: 72
+value: -1.6492783794964471e-162
+value address: 0x7fffffffd788
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-01 13:53:44]
+Fault Injection Successful after 3.588059425354004s
+[INFO -- 2018-10-01 13:53:44]
+event type: exit
+[EXCEPTION -- 2018-10-01 13:53:44]
+exit code: no exit code available

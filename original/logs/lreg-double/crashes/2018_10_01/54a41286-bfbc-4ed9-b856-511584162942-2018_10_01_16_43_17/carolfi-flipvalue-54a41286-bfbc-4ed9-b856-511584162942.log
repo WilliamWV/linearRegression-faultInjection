@@ -1,0 +1,50 @@
+[INFO -- 2018-10-01 16:43:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 16:43:15]
+Initialization strings:
+[INFO -- 2018-10-01 16:43:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 16:43:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 16:43:15]
+initSignal:0
+[INFO -- 2018-10-01 16:43:15]
+endSignal:10
+[INFO -- 2018-10-01 16:43:15]
+faultModel:1
+[EXCEPTION -- 2018-10-01 16:43:16]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-01 16:43:16]
+Backtrace BEGIN:
+#0  0x00007ffff76d5528 in __ieee754_pow_sse2 (x=8, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:65
+#1  0x00007ffff76b7b14 in __pow (x=8, y=0) at w_pow_compat.c:30
+#2  0x0000555555555d47 in std::pow<double, int> (__x=8, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=8) at lreg.cpp:50
+#4  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#5  0x0000555555555661 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+60	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd80c
+address max offset: 1
+Memory content after  bitflip:0x19
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 105
+value: 25
+value address: 0x7fffffffd80c
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-10-01 16:43:16]
+Fault Injection Successful after 1.3745639324188232s
+[INFO -- 2018-10-01 16:43:16]
+event type: exit
+[EXCEPTION -- 2018-10-01 16:43:16]
+exit code: no exit code available

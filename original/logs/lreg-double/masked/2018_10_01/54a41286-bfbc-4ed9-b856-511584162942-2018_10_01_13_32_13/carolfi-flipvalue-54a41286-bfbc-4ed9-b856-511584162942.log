@@ -1,0 +1,53 @@
+[INFO -- 2018-10-01 13:32:05]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 13:32:05]
+Initialization strings:
+[INFO -- 2018-10-01 13:32:05]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 13:32:05]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 13:32:05]
+initSignal:0
+[INFO -- 2018-10-01 13:32:05]
+endSignal:10
+[INFO -- 2018-10-01 13:32:05]
+faultModel:1
+[INFO -- 2018-10-01 13:32:07]
+Backtrace BEGIN:
+#0  meanSquaredError () at lreg.cpp:60
+#1  0x0000555555555661 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+55	/**
+56		Calculates the mean squared error of T
+57	*/
+58	double meanSquaredError(){
+59		double error = 0;
+60		for(int i = 0; i<x.size(); i++){
+61			error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
+62		}
+63		error /= x.size();
+64		return error;
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd80c
+address max offset: 1
+Memory content after  bitflip:0x02
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 105
+value: 2
+value address: 0x7fffffffd80c
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-10-01 13:32:07]
+Fault Injection Successful after 2.716108560562134s
+[INFO -- 2018-10-01 13:32:12]
+event type: exit
+[INFO -- 2018-10-01 13:32:12]
+exit code: 0

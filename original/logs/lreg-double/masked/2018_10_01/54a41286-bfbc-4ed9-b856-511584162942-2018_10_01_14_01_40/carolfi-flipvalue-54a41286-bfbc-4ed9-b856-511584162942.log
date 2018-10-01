@@ -1,0 +1,65 @@
+[INFO -- 2018-10-01 14:01:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 14:01:32]
+Initialization strings:
+[INFO -- 2018-10-01 14:01:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 14:01:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 14:01:32]
+initSignal:0
+[INFO -- 2018-10-01 14:01:32]
+endSignal:10
+[INFO -- 2018-10-01 14:01:32]
+faultModel:1
+[EXCEPTION -- 2018-10-01 14:01:37]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-01 14:01:37]
+Backtrace BEGIN:
+#0  0x0000555555557035 in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd8a0, __n=4) at /usr/include/c++/7/bits/stl_vector.h:172
+#1  0x0000555555556d5b in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd8a0, __n=4) at /usr/include/c++/7/bits/stl_vector.h:187
+#2  0x000055555555644b in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8a0, __n=4, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#3  0x0000555555555f1d in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#4  0x00005555555556c3 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+167	
+168	      pointer
+169	      _M_allocate(size_t __n)
+170	      {
+171		typedef __gnu_cxx::__alloc_traits<_Tp_alloc_type> _Tr;
+172		return __n != 0 ? _Tr::allocate(_M_impl, __n) : pointer();
+173	      }
+174	
+175	      void
+176	      _M_deallocate(pointer __p, size_t __n)
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x5555557713a0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x060x00
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_create_storage
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 4, capacity 4 = {-48.832611179095018, -242.28864973244222, 0.62144748467378652, 3.8977845045218036}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-01 14:01:37]
+Fault Injection Successful after 5.280573606491089s
+[INFO -- 2018-10-01 14:01:39]
+event type: exit
+[INFO -- 2018-10-01 14:01:39]
+exit code: 0

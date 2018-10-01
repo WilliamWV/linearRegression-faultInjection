@@ -1,0 +1,59 @@
+[INFO -- 2018-10-01 15:52:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 15:52:18]
+Initialization strings:
+[INFO -- 2018-10-01 15:52:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 15:52:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 15:52:18]
+initSignal:0
+[INFO -- 2018-10-01 15:52:18]
+endSignal:10
+[INFO -- 2018-10-01 15:52:18]
+faultModel:1
+[EXCEPTION -- 2018-10-01 15:52:19]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-10-01 15:52:19]
+gdbException: Cannot access memory at address 0x41555555771340
+[INFO -- 2018-10-01 15:52:19]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec1801 in __GI_abort () at abort.c:79
+#2  0x00007ffff7ad38fb in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7ad9d3a in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7ad9d95 in std::terminate() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7ad9fe8 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7b02f26 in std::__throw_bad_alloc() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x00005555555577ca in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd840, __n=18444457089523777538) at /usr/include/c++/7/ext/new_allocator.h:102
+#8  0x0000555555557563 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=18444457089523777538) at /usr/include/c++/7/bits/alloc_traits.h:436
+#9  0x000055555555703a in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd840, __n=18444457089523777538) at /usr/include/c++/7/bits/stl_vector.h:172
+#10 0x00005555555567fa in std::vector<double, std::allocator<double> >::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > > > (this=0x7fffffffd840, __n=18444457089523777538, __first=<error reading variable: Cannot access memory at address 0x41555555771340>, __last=0) at /usr/include/c++/7/bits/stl_vector.h:1260
+#11 0x0000555555556139 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length -2286984185774078, capacity -2286984185774078 = {...}) at /usr/include/c++/7/bits/vector.tcc:206
+#12 0x0000555555555641 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#13 0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff726dd40 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x48
+frame name: __GI_abort
+symbol name: stage
+symbol filename: abort.c
+symbol line: 40
+value: 1207959552
+value address: 0x7ffff726dd40 <stage>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-01 15:52:19]
+Fault Injection Successful after 1.8132641315460205s
+[INFO -- 2018-10-01 15:52:20]
+event type: exit
+[EXCEPTION -- 2018-10-01 15:52:20]
+exit code: no exit code available

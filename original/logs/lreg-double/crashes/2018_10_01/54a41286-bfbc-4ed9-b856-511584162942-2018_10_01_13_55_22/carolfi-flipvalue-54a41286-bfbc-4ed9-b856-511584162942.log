@@ -1,0 +1,51 @@
+[INFO -- 2018-10-01 13:55:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 13:55:19]
+Initialization strings:
+[INFO -- 2018-10-01 13:55:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 13:55:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 13:55:19]
+initSignal:0
+[INFO -- 2018-10-01 13:55:19]
+endSignal:10
+[INFO -- 2018-10-01 13:55:19]
+faultModel:1
+[EXCEPTION -- 2018-10-01 13:55:22]
+gdbException: Cannot access memory at address 0x554755771970
+[INFO -- 2018-10-01 13:55:22]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:450
+#1  __ieee754_pow_sse2 (x=10, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:97
+#2  0x00007ffff76b7b14 in __pow (x=10, y=3) at w_pow_compat.c:30
+#3  0x0000555555555d47 in std::pow<double, int> (__x=10, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555551e7 in predict (v=10) at lreg.cpp:50
+#5  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#6  0x0000555555555661 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+445	in ../sysdeps/i386/fpu/fenv_private.h
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x240x40
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd720
+address max offset: 8
+Memory content after  bitflip:0x000x820x000x000x000x000x240x40
+frame name: __pow
+symbol name: x
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 10.000000000059117
+value address: 0x7fffffffd720
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-01 13:55:22]
+Fault Injection Successful after 3.3638081550598145s
+[INFO -- 2018-10-01 13:55:22]
+event type: exit
+[EXCEPTION -- 2018-10-01 13:55:22]
+exit code: no exit code available

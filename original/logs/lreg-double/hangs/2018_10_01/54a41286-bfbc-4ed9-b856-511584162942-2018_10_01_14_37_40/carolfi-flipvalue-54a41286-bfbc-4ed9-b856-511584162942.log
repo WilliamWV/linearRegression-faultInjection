@@ -1,0 +1,55 @@
+[INFO -- 2018-10-01 14:37:20]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 14:37:20]
+Initialization strings:
+[INFO -- 2018-10-01 14:37:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 14:37:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 14:37:20]
+initSignal:0
+[INFO -- 2018-10-01 14:37:20]
+endSignal:10
+[INFO -- 2018-10-01 14:37:20]
+faultModel:1
+[EXCEPTION -- 2018-10-01 14:37:23]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-01 14:37:23]
+Backtrace BEGIN:
+#0  __exp1 (x=-2134.3667738915956, xx=-5.3457116662956883e-14, error=5.699999999999999e-05) at ../sysdeps/ieee754/dbl-64/e_exp.c:294
+#1  0x00007ffff76d58dc in __ieee754_pow_sse2 (x=1.0441492489023719e-309, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76b7b14 in __pow (x=1.0441492489023719e-309, y=3) at w_pow_compat.c:30
+#3  0x0000555555555d47 in std::pow<double, int> (__x=1.0441492489023719e-309, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555551e7 in predict (v=1.0441492489023719e-309) at lreg.cpp:50
+#5  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#6  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#7  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#8  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+289	../sysdeps/ieee754/dbl-64/e_exp.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x000x380xfa0xfe0x420x2e0xe60x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff778c810 
+address max offset: 8
+Memory content after  bitflip:0x000x380xfa0xfe0x220x2e0xe60x3f
+frame name: __exp1
+symbol name: ln_two1
+symbol filename: ../sysdeps/ieee754/dbl-64/uexp.h
+symbol line: 57
+value: {i = {-17156096, 1072049698}, x = 0.69313192177082783}
+value address: 0x7ffff778c810 <ln_two1>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-01 14:37:23]
+Fault Injection Successful after 3.924551010131836s
