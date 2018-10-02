@@ -1,0 +1,61 @@
+[INFO -- 2018-10-02 20:07:34]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 20:07:34]
+Initialization strings:
+[INFO -- 2018-10-02 20:07:34]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 20:07:34]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 20:07:34]
+initSignal:0
+[INFO -- 2018-10-02 20:07:34]
+endSignal:10
+[INFO -- 2018-10-02 20:07:34]
+faultModel:0
+[INFO -- 2018-10-02 20:07:36]
+Backtrace BEGIN:
+#0  0x00005555555568ca in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=15.10524408329427, __last=0, __result=15.103928966844428) at /usr/include/c++/7/bits/stl_algobase.h:455
+#1  0x0000555555556235 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555641 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:119
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+450	      __glibcxx_function_requires(_OutputIteratorConcept<_OI,
+451		    typename iterator_traits<_II>::value_type>)
+452	      __glibcxx_requires_valid_range(__first, __last);
+453	
+454	      return (std::__copy_move_a2<__is_move_iterator<_II>::__value>
+455		      (std::__miter_base(__first), std::__miter_base(__last),
+456		       __result));
+457	    }
+458	
+459	#if __cplusplus >= 201103L
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x240x40
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771760
+address max offset: 8
+Memory content after  bitflip:0x020x000x000x000x000x000x240x40
+frame name: main
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 36, capacity 64 = {10.000000000000004, -14, 1, 3, 10, 3, 11, -10, 24, 9, 10, -11, -1, -12, -24, -16, -6, -18, 8, 20, 25, 24, 1, 10, 20, -20, -18, 31, 27, -18, 0, -10, 27, -20, 0, 14}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-02 20:07:36]
+Fault Injection Successful after 2.5927817821502686s
+[INFO -- 2018-10-02 20:07:41]
+event type: exit
+[INFO -- 2018-10-02 20:07:41]
+exit code: 0

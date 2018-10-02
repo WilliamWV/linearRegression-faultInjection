@@ -1,0 +1,60 @@
+[INFO -- 2018-10-02 19:33:12]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 19:33:12]
+Initialization strings:
+[INFO -- 2018-10-02 19:33:12]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 19:33:12]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 19:33:12]
+initSignal:0
+[INFO -- 2018-10-02 19:33:12]
+endSignal:10
+[INFO -- 2018-10-02 19:33:12]
+faultModel:2
+[EXCEPTION -- 2018-10-02 19:33:16]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-10-02 19:33:16]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-02 19:33:17]
+Backtrace BEGIN:
+#0  std::pow<double, int> (__x=4.6355706431331074e-310, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x00005555555551e7 in predict (v=20) at lreg.cpp:50
+#2  0x00005555555553ac in partialDerivate (pos=3) at lreg.cpp:74
+#3  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Memory content before bitflip:0x030x810x7c0xc60x310x410x5f0x60
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0x610xb90x2e0xe70xfe0x820xa60x44
+frame name: partialDerivate
+symbol name: pD
+symbol filename: lreg.cpp
+symbol line: 72
+value: 5.3154253526846711e+22
+value address: 0x7fffffffd788
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-02 19:33:17]
+Fault Injection Successful after 5.69936203956604s
+[INFO -- 2018-10-02 19:33:20]
+event type: exit
+[EXCEPTION -- 2018-10-02 19:33:20]
+exit code: no exit code available

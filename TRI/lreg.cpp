@@ -133,23 +133,17 @@ void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 	vector<double> bestT = T; 
 	double bestMSE = meanSquaredError();
 	double MSE;	
-	cout<<"Will start iter"<<endl;	
 	for(unsigned int i = 0; i<iterations; i++){
 		prevT = T; 	
-		cout<< " z ";
 		adjust(alpha);
-		cout<<" a ";
 		MSE = meanSquaredError();
-		cout<<" b ";
 		if (MSE < bestMSE){
 			bestMSE = MSE;
 			bestT = T; 
 		}
-		cout<<" c "<<endl;
 		if (equals(T, prevT) && stopsWhenStable){ // implement equals
 			break;		
 		}
-		cout<<"Iter "<<i<<endl;
 	}
 	T = bestT;
 }
@@ -165,7 +159,6 @@ ANS* lreg(char* input){
 		int iterations, N, sizeOfTraining, predictions;
 			
 		try{
-			cout<<"Start reading input"<<endl;
 			inp >> alpha >> iterations >> N >> sizeOfTraining >> predictions;
 			//READING DATA
 			for (unsigned int j = 0; j<sizeOfTraining; j++){
@@ -177,12 +170,8 @@ ANS* lreg(char* input){
 				y.push_back(temp);
 			} 
 			//TRAINING
-			cout<<"0"<<endl;			
 			train(iterations, alpha, N);
-			cout<<"1"<<endl;
 			ans->crashOnTrain.push_back(false);
-			cout<<"2"<<endl;			
-			cout<<"Finished reading input"<<endl;
 		}catch (exception& e){
 			//error on training
 			ans->crashOnTrain.push_back(true);

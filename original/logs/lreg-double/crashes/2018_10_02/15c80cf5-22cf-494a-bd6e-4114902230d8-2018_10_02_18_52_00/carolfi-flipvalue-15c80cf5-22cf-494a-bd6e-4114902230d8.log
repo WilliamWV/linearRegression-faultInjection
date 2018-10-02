@@ -1,0 +1,64 @@
+[INFO -- 2018-10-02 18:51:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 18:51:49]
+Initialization strings:
+[INFO -- 2018-10-02 18:51:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 18:51:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 18:51:49]
+initSignal:0
+[INFO -- 2018-10-02 18:51:49]
+endSignal:10
+[INFO -- 2018-10-02 18:51:49]
+faultModel:1
+[EXCEPTION -- 2018-10-02 18:51:51]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-02 18:51:51]
+Backtrace BEGIN:
+#0  0x0000555555555d24 in std::pow<double, int> (__x=4.6355706431299454e-310, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x0000555555555401 in partialDerivate (pos=0) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x900x1a0x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a168 
+address max offset: 8
+Memory content after  bitflip:0x900x1a0x770x550x550x550x000x0a
+frame name: std::pow<double, int>
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 90071992547409954, capacity 62 = {1.0442341287340105e-309, 3.4800730971830466e-310, 3.483468290448591e-310, 3.4881366811887146e-310, 3.483468290448591e-310, 3.4885610803469077e-310, 1.0440643690707333e-309, 1.046449459183594e-309, 1.0454980424770042e-309, 1.0456014897718138e-309, 1.0456571921613266e-309, 1.0434277703334437e-309, 1.0457480401061273e-309, 1.0464335442151618e-309, 1.046039814527385e-309, 1.0450590545977483e-309, 1.0461382883945595e-309, 1.0454052051611495e-309, 1.0462642818946481e-309, 1.048163830773327e-309, 1.0481169562178665e-309, 3.4766779039175022e-310, 1.0468161665812202e-309, 1.0478344551668866e-309, 3.5249062678255804e-310, 3.5233738304355229e-310, 1.0484840055386426e-309, 1.0482694228588042e-309, 3.5233738304355229e-310, 3.4766779039175022e-310, 3.5146433926744519e-310, 1.0482694228588042e-309, 3.5249062678255804e-310, 3.4766779039175022e-310, 1.0473112713022919e-309, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9.4565638986556059e-308, -1.4568731911509282e-257, 1.0188098545697029e+120, 6.5387913012606801e+228, -9.5608624803314957e-121, 1.0432972044534934e-309, 9.4565638986556059e-308, -1.4568731911509282e-257, 1.0188098545697029e+120, 6.5387913012606801e+228, -9.5608624803314957e-121, 1.0432972044534934e-309, 9.4565638986556059e-308, 1.617269844780878e-173, -9.4110397066811329e+33, 4.3882867530000809e-30, -2.380689830281048e-169, 1.0432905141629513e-309, 9.4565638986556059e-308, 0, 1.0086913586276987e+120, 6.5387913012606801e+228, -9.5608624803314957e-121, 1.0432972044534934e-309, -3.6545246025164963e-136, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-02 18:51:51]
+Fault Injection Successful after 2.7499935626983643s
+[INFO -- 2018-10-02 18:51:58]
+event type: exit
+[EXCEPTION -- 2018-10-02 18:51:58]
+exit code: no exit code available

@@ -1,0 +1,57 @@
+[INFO -- 2018-10-02 20:02:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 20:02:53]
+Initialization strings:
+[INFO -- 2018-10-02 20:02:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 20:02:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 20:02:53]
+initSignal:0
+[INFO -- 2018-10-02 20:02:53]
+endSignal:10
+[INFO -- 2018-10-02 20:02:53]
+faultModel:1
+[EXCEPTION -- 2018-10-02 20:02:56]
+gdbException: Cannot access memory at address 0x8100555555771380
+[INFO -- 2018-10-02 20:02:57]
+Backtrace BEGIN:
+#0  std::pow<double, int> (__x=4.6355706431331074e-310, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x00005555555551e7 in predict (v=0) at lreg.cpp:50
+#2  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#3  0x0000555555555661 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Memory content before bitflip:0x490x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd82c
+address max offset: 4
+Memory content after  bitflip:0x490xd70x000x00
+frame name: train
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 118
+value: 55113
+value address: 0x7fffffffd82c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-02 20:02:57]
+Fault Injection Successful after 4.0400731563568115s
+[INFO -- 2018-10-02 20:02:57]
+event type: exit
+[EXCEPTION -- 2018-10-02 20:02:57]
+exit code: no exit code available

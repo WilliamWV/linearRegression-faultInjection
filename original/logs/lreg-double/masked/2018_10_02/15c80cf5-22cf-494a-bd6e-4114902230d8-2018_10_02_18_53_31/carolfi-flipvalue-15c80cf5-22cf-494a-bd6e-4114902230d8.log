@@ -1,0 +1,58 @@
+[INFO -- 2018-10-02 18:53:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 18:53:23]
+Initialization strings:
+[INFO -- 2018-10-02 18:53:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 18:53:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 18:53:23]
+initSignal:0
+[INFO -- 2018-10-02 18:53:23]
+endSignal:10
+[INFO -- 2018-10-02 18:53:23]
+faultModel:1
+[EXCEPTION -- 2018-10-02 18:53:26]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-02 18:53:26]
+Backtrace BEGIN:
+#0  checkint (x=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:477
+#1  __ieee754_pow_sse2 (x=0, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:135
+#2  0x00007ffff76b7b14 in __pow (x=0, y=3) at w_pow_compat.c:30
+#3  0x0000555555555d47 in std::pow<double, int> (__x=0, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555551e7 in predict (v=0) at lreg.cpp:50
+#5  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#6  0x0000555555555661 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+472	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x000x000x000x000x000x000xf00xff
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779a5d0 
+address max offset: 8
+Memory content after  bitflip:0x000x120x000x000x000x000xf00xff
+frame name: checkint
+symbol name: nINF
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 49
+value: {i = {4608, -1048576}, x = -nan(0x000001200)}
+value address: 0x7ffff779a5d0 <nINF>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-02 18:53:26]
+Fault Injection Successful after 3.143796682357788s
+[INFO -- 2018-10-02 18:53:30]
+event type: exit
+[INFO -- 2018-10-02 18:53:30]
+exit code: 0

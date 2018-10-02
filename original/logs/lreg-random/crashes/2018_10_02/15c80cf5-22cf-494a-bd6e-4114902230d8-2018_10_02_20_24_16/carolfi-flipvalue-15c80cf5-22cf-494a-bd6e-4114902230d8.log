@@ -1,0 +1,66 @@
+[INFO -- 2018-10-02 20:24:09]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 20:24:09]
+Initialization strings:
+[INFO -- 2018-10-02 20:24:09]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 20:24:09]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 20:24:09]
+initSignal:0
+[INFO -- 2018-10-02 20:24:09]
+endSignal:10
+[INFO -- 2018-10-02 20:24:09]
+faultModel:2
+[EXCEPTION -- 2018-10-02 20:24:14]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-10-02 20:24:15]
+gdbException: Cannot access memory at address 0x5fe3ec1a3874c166
+[INFO -- 2018-10-02 20:24:15]
+Backtrace BEGIN:
+#0  0x0000555555555d29 in std::pow<double, int> (__x=24, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x00005555555551e7 in predict (v=24) at lreg.cpp:50
+#2  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#3  0x0000555555555661 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x240x40
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771760
+address max offset: 8
+Memory content after  bitflip:0xa40x800xf50x790x400x270x0a0x6b
+frame name: meanSquaredError
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 36, capacity 64 = {4.1983049730865467e+207, -14, 1, 3, 10, 3, 11, -10, 24, 9, 10, -11, -1, -12, -24, -16, -6, -18, 8, 20, 25, 24, 1, 10, 20, -20, -18, 31, 27, -18, 0, -10, 27, -20, 0, 14}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-02 20:24:15]
+Fault Injection Successful after 6.345463991165161s
+[INFO -- 2018-10-02 20:24:15]
+event type: exit
+[EXCEPTION -- 2018-10-02 20:24:15]
+exit code: no exit code available

@@ -1,0 +1,58 @@
+[INFO -- 2018-10-02 19:08:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 19:08:36]
+Initialization strings:
+[INFO -- 2018-10-02 19:08:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 19:08:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 19:08:36]
+initSignal:0
+[INFO -- 2018-10-02 19:08:36]
+endSignal:10
+[INFO -- 2018-10-02 19:08:36]
+faultModel:1
+[EXCEPTION -- 2018-10-02 19:08:37]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-02 19:08:37]
+Backtrace BEGIN:
+#0  0x0000555555556fe3 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555771490, __n=72151419030169159) at /usr/include/c++/7/bits/alloc_traits.h:461
+#1  0x0000555555556752 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd880, __p=0x555555771490, __n=2) at /usr/include/c++/7/bits/stl_vector.h:180
+#2  0x00005555555563e9 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd880, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#3  0x0000555555555e3b in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd880, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#4  0x0000555555555720 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+456	       *  @param  __n  The number of objects space was allocated for.
+457	       *
+458	       *  Calls <tt> a.deallocate(p, n) </tt>
+459	      */
+460	      static void
+461	      deallocate(allocator_type& __a, pointer __p, size_type __n)
+462	      { __a.deallocate(__p, __n); }
+463	
+464	      /**
+465	       *  @brief  Construct an object of type @a _Up
+
+Backtrace END
+Memory content before bitflip:0x470x660x550x550x550x550x000x01
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd768
+address max offset: 8
+Memory content after  bitflip:0x470x660x550x550x550x550x220x01
+frame name: std::allocator_traits<std::allocator<double> >::deallocate
+symbol name: __n
+symbol filename: /usr/include/c++/7/bits/alloc_traits.h
+symbol line: 461
+value: 81721568238331463
+value address: 0x7fffffffd768
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2018-10-02 19:08:37]
+Fault Injection Successful after 1.5446538925170898s
+[INFO -- 2018-10-02 19:08:38]
+event type: exit
+[EXCEPTION -- 2018-10-02 19:08:38]
+exit code: no exit code available

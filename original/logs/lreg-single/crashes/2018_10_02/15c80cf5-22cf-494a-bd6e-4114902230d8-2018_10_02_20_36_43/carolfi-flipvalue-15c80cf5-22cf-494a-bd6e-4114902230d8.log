@@ -1,0 +1,58 @@
+[INFO -- 2018-10-02 20:36:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 20:36:35]
+Initialization strings:
+[INFO -- 2018-10-02 20:36:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 20:36:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 20:36:35]
+initSignal:0
+[INFO -- 2018-10-02 20:36:35]
+endSignal:10
+[INFO -- 2018-10-02 20:36:35]
+faultModel:0
+[EXCEPTION -- 2018-10-02 20:36:39]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-02 20:36:39]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=25, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:76
+#1  0x00007ffff76b7b14 in __pow (x=25, y=0) at w_pow_compat.c:30
+#2  0x0000555555555d47 in std::pow<double, int> (__x=25, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=25) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=3) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+71	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x000x380xfa0xfe0x420x2e0xe60x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff779a5c8 
+address max offset: 8
+Memory content after  bitflip:0x000x380xfa0xfe0x420x2e0xe70x3f
+frame name: __ieee754_pow_sse2
+symbol name: ln2a
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 50
+value: {i = {-17156096, 1072115266}, x = 0.72439718055989033}
+value address: 0x7ffff779a5c8 <ln2a>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-02 20:36:39]
+Fault Injection Successful after 4.176433324813843s
+[INFO -- 2018-10-02 20:36:43]
+event type: exit
+[EXCEPTION -- 2018-10-02 20:36:43]
+exit code: no exit code available

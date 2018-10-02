@@ -1,0 +1,61 @@
+[INFO -- 2018-10-02 20:18:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 20:18:36]
+Initialization strings:
+[INFO -- 2018-10-02 20:18:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 20:18:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 20:18:36]
+initSignal:0
+[INFO -- 2018-10-02 20:18:36]
+endSignal:10
+[INFO -- 2018-10-02 20:18:36]
+faultModel:1
+[INFO -- 2018-10-02 20:18:38]
+Backtrace BEGIN:
+#0  0x0000555555556616 in std::vector<double, std::allocator<double> >::begin (this=0x55555575a180 <T>) at /usr/include/c++/7/bits/stl_vector.h:572
+#1  0x0000555555556227 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555641 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:119
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+567	       *  Returns a read-only (constant) iterator that points to the
+568	       *  first element in the %vector.  Iteration is done in ordinary
+569	       *  element order.
+570	       */
+571	      const_iterator
+572	      begin() const _GLIBCXX_NOEXCEPT
+573	      { return const_iterator(this->_M_impl._M_start); }
+574	
+575	      /**
+576	       *  Returns a read/write iterator that points one past the last
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771b70
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x140x000x000x00
+frame name: std::vector<double, std::allocator<double> >::begin
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 36, capacity 64 = {22, -26, 4, 8, 22, 8, 24, -18, -2355, -345, -423, -465, -5, -555, -2259, -995, -135, -1263, -275, -1643, -78598, -69550, 2, -5038, -40278, 39482, 28730, -149728, -98980, 28730, 2, 4842, -98980, 39482, 2, -13830}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-02 20:18:38]
+Fault Injection Successful after 2.9602067470550537s
+[INFO -- 2018-10-02 20:18:44]
+event type: exit
+[INFO -- 2018-10-02 20:18:44]
+exit code: 0

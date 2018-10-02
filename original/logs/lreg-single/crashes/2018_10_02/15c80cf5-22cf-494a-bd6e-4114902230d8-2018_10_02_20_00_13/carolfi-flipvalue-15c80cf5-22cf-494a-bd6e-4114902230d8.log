@@ -1,0 +1,56 @@
+[INFO -- 2018-10-02 20:00:11]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 20:00:11]
+Initialization strings:
+[INFO -- 2018-10-02 20:00:11]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 20:00:11]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 20:00:11]
+initSignal:0
+[INFO -- 2018-10-02 20:00:11]
+endSignal:10
+[INFO -- 2018-10-02 20:00:11]
+faultModel:0
+[EXCEPTION -- 2018-10-02 20:00:11]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-02 20:00:12]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::capacity (this=0x7fffffffd840) at /usr/include/c++/7/bits/stl_vector.h:751
+#1  0x00005555555560f9 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:204
+#2  0x0000555555555641 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+746	       *  Returns the total number of elements that the %vector can
+747	       *  hold before needing to allocate more memory.
+748	       */
+749	      size_type
+750	      capacity() const _GLIBCXX_NOEXCEPT
+751	      { return size_type(this->_M_impl._M_end_of_storage
+752				 - this->_M_impl._M_start); }
+753	
+754	      /**
+755	       *  Returns true if the %vector is empty.  (Thus begin() would
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x2a0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd810
+address max offset: 8
+Memory content after  bitflip:0x2d0x430x9c0xeb0xe20x360x2a0x3f
+frame name: train
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 105
+value: 0.00020000000022737369
+value address: 0x7fffffffd810
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-02 20:00:12]
+Fault Injection Successful after 1.2000446319580078s
+[INFO -- 2018-10-02 20:00:12]
+event type: exit
+[EXCEPTION -- 2018-10-02 20:00:12]
+exit code: no exit code available

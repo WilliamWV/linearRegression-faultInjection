@@ -1,0 +1,56 @@
+[INFO -- 2018-10-02 17:19:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 17:19:59]
+Initialization strings:
+[INFO -- 2018-10-02 17:19:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 17:19:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 17:19:59]
+initSignal:0
+[INFO -- 2018-10-02 17:19:59]
+endSignal:10
+[INFO -- 2018-10-02 17:19:59]
+faultModel:1
+[INFO -- 2018-10-02 17:20:01]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=31) at ../sysdeps/ieee754/dbl-64/e_pow.c:285
+#1  __ieee754_pow_sse2 (x=31, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76b7b14 in __pow (x=31, y=3) at w_pow_compat.c:30
+#3  0x0000555555555d47 in std::pow<double, int> (__x=31, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555551e7 in predict (v=31) at lreg.cpp:50
+#5  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#6  0x0000555555555661 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+280	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x300x670xc70x930x570xf30x2e0x3d
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779a5c0 
+address max offset: 8
+Memory content after  bitflip:0x300x670xd60x930x570xf30x2e0x3d
+frame name: __ieee754_pow_sse2
+symbol name: ln2b
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 51
+value: {i = {-1814665424, 1026487127}, x = 5.4979230193287566e-14}
+value address: 0x7ffff779a5c0 <ln2b>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-02 17:20:01]
+Fault Injection Successful after 2.121673822402954s
+[INFO -- 2018-10-02 17:20:06]
+event type: exit
+[INFO -- 2018-10-02 17:20:06]
+exit code: 0

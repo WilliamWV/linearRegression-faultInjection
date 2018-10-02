@@ -1,0 +1,56 @@
+[INFO -- 2018-10-02 17:07:45]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 17:07:45]
+Initialization strings:
+[INFO -- 2018-10-02 17:07:45]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 17:07:45]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 17:07:45]
+initSignal:0
+[INFO -- 2018-10-02 17:07:45]
+endSignal:10
+[INFO -- 2018-10-02 17:07:45]
+faultModel:0
+[INFO -- 2018-10-02 17:07:46]
+Backtrace BEGIN:
+#0  std::_Destroy_aux<true>::__destroy<double*> () at /usr/include/c++/7/bits/stl_construct.h:117
+#1  0x0000555555556de5 in std::_Destroy<double*> (__first=0x555555771490, __last=0x5555557714a0) at /usr/include/c++/7/bits/stl_construct.h:137
+#2  0x00005555555564eb in std::_Destroy<double*, double> (__first=0x555555771490, __last=0x5555557714a0) at /usr/include/c++/7/bits/stl_construct.h:206
+#3  0x0000555555555e2f in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd880, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:434
+#4  0x0000555555555720 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+112	  template<>
+113	    struct _Destroy_aux<true>
+114	    {
+115	      template<typename _ForwardIterator>
+116	        static void
+117	        __destroy(_ForwardIterator, _ForwardIterator) { }
+118	    };
+119	
+120	  /**
+121	   * Destroy a range of objects.  If the value_type of the object has
+
+Backtrace END
+Memory content before bitflip:0x300x750x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd920
+address max offset: 4
+Memory content after  bitflip:0x300x7d0x000x00
+frame name: main
+symbol name: iterations
+symbol filename: lreg.cpp
+symbol line: 161
+value: 32048
+value address: 0x7fffffffd920
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-02 17:07:46]
+Fault Injection Successful after 1.2360262870788574s
+[INFO -- 2018-10-02 17:07:52]
+event type: exit
+[INFO -- 2018-10-02 17:07:52]
+exit code: 0

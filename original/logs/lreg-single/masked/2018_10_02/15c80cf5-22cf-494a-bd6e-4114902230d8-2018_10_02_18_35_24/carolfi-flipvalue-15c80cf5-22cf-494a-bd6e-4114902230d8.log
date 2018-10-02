@@ -1,0 +1,60 @@
+[INFO -- 2018-10-02 18:35:16]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 18:35:16]
+Initialization strings:
+[INFO -- 2018-10-02 18:35:16]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 18:35:16]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 18:35:16]
+initSignal:0
+[INFO -- 2018-10-02 18:35:16]
+endSignal:10
+[INFO -- 2018-10-02 18:35:16]
+faultModel:0
+[INFO -- 2018-10-02 18:35:16]
+Backtrace BEGIN:
+#0  0x00005555555552fb in meanSquaredError () at lreg.cpp:60
+#1  0x0000555555555661 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:121
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+55	/**
+56		Calculates the mean squared error of T
+57	*/
+58	double meanSquaredError(){
+59		double error = 0;
+60		for(int i = 0; i<x.size(); i++){
+61			error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
+62		}
+63		error /= x.size();
+64		return error;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771350
+address max offset: 8
+Memory content after  bitflip:0x080x000x000x000x000x000x000x00
+frame name: meanSquaredError
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 2, capacity 2 = {2.0000002457117825, 2.0000015845727246}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-02 18:35:16]
+Fault Injection Successful after 0.951836109161377s
+[INFO -- 2018-10-02 18:35:23]
+event type: exit
+[INFO -- 2018-10-02 18:35:23]
+exit code: 0

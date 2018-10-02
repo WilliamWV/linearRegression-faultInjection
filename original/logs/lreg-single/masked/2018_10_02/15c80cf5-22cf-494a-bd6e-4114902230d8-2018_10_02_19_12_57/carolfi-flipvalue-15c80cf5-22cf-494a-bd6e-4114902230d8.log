@@ -1,0 +1,67 @@
+[INFO -- 2018-10-02 19:12:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 19:12:49]
+Initialization strings:
+[INFO -- 2018-10-02 19:12:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 19:12:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 19:12:49]
+initSignal:0
+[INFO -- 2018-10-02 19:12:49]
+endSignal:10
+[INFO -- 2018-10-02 19:12:49]
+faultModel:0
+[EXCEPTION -- 2018-10-02 19:12:53]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-10-02 19:12:53]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-02 19:12:56]
+Backtrace BEGIN:
+#0  0x0000555555555d56 in std::pow<double, int> (__x=-16, __y=1) at /usr/include/c++/7/cmath:419
+#1  0x00005555555551e7 in predict (v=-16) at lreg.cpp:50
+#2  0x00005555555553ac in partialDerivate (pos=3) at lreg.cpp:74
+#3  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+423	#ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x5555557713a0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x100x000x000x000x00
+frame name: partialDerivate
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 4, capacity 4 = {102.88125775105486, 334.4309963813543, -19.837651051661894, -4.1678993353137113}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-02 19:12:56]
+Fault Injection Successful after 7.480753421783447s
+[INFO -- 2018-10-02 19:12:57]
+event type: exit
+[INFO -- 2018-10-02 19:12:57]
+exit code: 0

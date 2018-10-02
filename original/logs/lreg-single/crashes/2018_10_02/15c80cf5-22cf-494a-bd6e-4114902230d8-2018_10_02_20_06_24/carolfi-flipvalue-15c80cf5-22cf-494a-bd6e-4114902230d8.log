@@ -1,0 +1,57 @@
+[INFO -- 2018-10-02 20:06:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-02 20:06:22]
+Initialization strings:
+[INFO -- 2018-10-02 20:06:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-02 20:06:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-02 20:06:22]
+initSignal:0
+[INFO -- 2018-10-02 20:06:22]
+endSignal:10
+[INFO -- 2018-10-02 20:06:22]
+faultModel:0
+[INFO -- 2018-10-02 20:06:23]
+Backtrace BEGIN:
+#0  0x0000555555556f3d in std::allocator<double>::allocator (this=0x7fffffffd8a0, __a=...) at /usr/include/c++/7/bits/allocator.h:134
+#1  0x0000555555556d11 in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::_Vector_impl (this=0x7fffffffd8a0, __a=...) at /usr/include/c++/7/bits/stl_vector.h:93
+#2  0x0000555555556438 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8a0, __n=2, __a=...) at /usr/include/c++/7/bits/stl_vector.h:137
+#3  0x0000555555555f1d in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#4  0x00005555555556c3 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+129	#endif
+130	
+131	      allocator() throw() { }
+132	
+133	      allocator(const allocator& __a) throw()
+134	      : __allocator_base<_Tp>(__a) { }
+135	
+136	      template<typename _Tp1>
+137		allocator(const allocator<_Tp1>&) throw() { }
+138	
+
+Backtrace END
+Fliping a bit of the reference
+Memory content before bitflip:0x000x000x7c0x5a0x990x5b0xf70x57
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7c7
+address max offset: 8
+Memory content after  bitflip:0x000x000x7c0x5a0x990x5b0xf70xd7
+frame name: std::_Vector_base<double, std::allocator<double> >::_Vector_base
+symbol name: __a
+symbol filename: /usr/include/c++/7/bits/stl_vector.h
+symbol line: 136
+value: @0x7fffffffd7c7
+value address: 0x7fffffffd7c7
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2018-10-02 20:06:23]
+Fault Injection Successful after 1.0439791679382324s
+[INFO -- 2018-10-02 20:06:23]
+event type: exit
+[EXCEPTION -- 2018-10-02 20:06:23]
+exit code: no exit code available
