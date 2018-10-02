@@ -1,0 +1,55 @@
+[INFO -- 2018-10-01 18:28:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 18:28:53]
+Initialization strings:
+[INFO -- 2018-10-01 18:28:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 18:28:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 18:28:53]
+initSignal:0
+[INFO -- 2018-10-01 18:28:53]
+endSignal:10
+[INFO -- 2018-10-01 18:28:53]
+faultModel:1
+[EXCEPTION -- 2018-10-01 18:28:55]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-01 18:28:55]
+Backtrace BEGIN:
+#0  0x00005555555552b0 in meanSquaredError () at lreg.cpp:61
+#1  0x0000555555555661 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+56		Calculates the mean squared error of T
+57	*/
+58	double meanSquaredError(){
+59		double error = 0;
+60		for(int i = 0; i<x.size(); i++){
+61			error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
+62		}
+63		error /= x.size();
+64		return error;
+65	
+
+Backtrace END
+Memory content before bitflip:0x050x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7d4
+address max offset: 4
+Memory content after  bitflip:0x140x000x000x00
+frame name: meanSquaredError
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 60
+value: 20
+value address: 0x7fffffffd7d4
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-01 18:28:55]
+Fault Injection Successful after 2.31219220161438s
+[INFO -- 2018-10-01 18:29:01]
+event type: exit
+[INFO -- 2018-10-01 18:29:01]
+exit code: 0

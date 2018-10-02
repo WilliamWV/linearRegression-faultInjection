@@ -1,0 +1,61 @@
+[INFO -- 2018-10-01 19:50:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 19:50:24]
+Initialization strings:
+[INFO -- 2018-10-01 19:50:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 19:50:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 19:50:24]
+initSignal:0
+[INFO -- 2018-10-01 19:50:24]
+endSignal:10
+[INFO -- 2018-10-01 19:50:24]
+faultModel:0
+[EXCEPTION -- 2018-10-01 19:50:26]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-01 19:50:26]
+Backtrace BEGIN:
+#0  0x0000555555554e90 in pow@plt ()
+#1  0x0000555555555d47 in std::pow<double, int> (__x=13, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x00005555555551e7 in predict (v=13) at lreg.cpp:50
+#3  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#4  0x0000555555555661 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+140		4° Line : values y of the training set
+141		5° Line : set z of new inputs to predict*/
+142	
+143	
+144	int main(int argc, char* argv[]){
+145		
+146		if (argc != 3) {
+147			cout << "Wrong number of arguments" <<endl;
+148			cout <<"  Use as : " << endl; 
+149			cout <<'\t'<<argv[0]<<" <input file> "<<"<output file>"<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x600x130x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a180 
+address max offset: 8
+Memory content after  bitflip:0x600x120x770x550x550x550x000x00
+frame name: predict
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 35, capacity 35 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4.001931731314097e-322, 4.6355706478192213e-310, 1.5810100666919889e-322, 13.000007629394529, 15.000001496659104, 14, 13, 3, -5, 0, 1.6304166312761136e-322, 25.797245015366023, 8.5662108512085524, -3.7935147522347048, 1.6304166312761136e-322, 25.797797070795792, 8.5661851813675582, -3.7937244734737328}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-01 19:50:26]
+Fault Injection Successful after 2.2104434967041016s

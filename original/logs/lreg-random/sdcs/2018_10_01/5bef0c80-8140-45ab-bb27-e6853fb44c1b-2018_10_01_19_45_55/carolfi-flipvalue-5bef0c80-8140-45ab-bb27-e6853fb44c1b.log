@@ -1,0 +1,63 @@
+[INFO -- 2018-10-01 19:45:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 19:45:47]
+Initialization strings:
+[INFO -- 2018-10-01 19:45:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 19:45:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 19:45:47]
+initSignal:0
+[INFO -- 2018-10-01 19:45:47]
+endSignal:10
+[INFO -- 2018-10-01 19:45:47]
+faultModel:2
+[EXCEPTION -- 2018-10-01 19:45:49]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-01 19:45:49]
+Backtrace BEGIN:
+#0  0x00005555555551d3 in predict (v=-11) at lreg.cpp:50
+#1  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#2  0x0000555555555661 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x180x40
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771540
+address max offset: 8
+Memory content after  bitflip:0xe40x660xb80xe10x680x000x280x9d
+frame name: main
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 20, capacity 32 = {-3.1798939239805694e-168, -3, 13, 15, 14, 13, 3, -5, -11, -23, 21, -23, 5, 4, 6, 15, -19, 24, 7, 22}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-01 19:45:49]
+Fault Injection Successful after 2.1964848041534424s
+[INFO -- 2018-10-01 19:45:55]
+event type: exit
+[INFO -- 2018-10-01 19:45:55]
+exit code: 0

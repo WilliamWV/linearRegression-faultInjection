@@ -1,0 +1,62 @@
+[INFO -- 2018-10-01 20:53:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 20:53:13]
+Initialization strings:
+[INFO -- 2018-10-01 20:53:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 20:53:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 20:53:13]
+initSignal:0
+[INFO -- 2018-10-01 20:53:13]
+endSignal:10
+[INFO -- 2018-10-01 20:53:13]
+faultModel:0
+[INFO -- 2018-10-01 20:53:15]
+Backtrace BEGIN:
+#0  0x0000555555555d56 in std::pow<double, int> (__x=6, __y=1) at /usr/include/c++/7/cmath:419
+#1  0x00005555555551e7 in predict (v=6) at lreg.cpp:50
+#2  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#3  0x0000555555555661 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+423	#ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x5555557716f0
+address max offset: 8
+Memory content after  bitflip:0x040x000x000x000x000x000x000x00
+frame name: meanSquaredError
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 20, capacity 32 = {-5, 4, -12, -14, -13, -12, -2, 6, -482, -2114, -1762, -2114, -98, -62, -142, -898, -1442, -2302, -194, -1934}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-01 20:53:15]
+Fault Injection Successful after 2.2953717708587646s
+[INFO -- 2018-10-01 20:53:22]
+event type: exit
+[INFO -- 2018-10-01 20:53:22]
+exit code: 0

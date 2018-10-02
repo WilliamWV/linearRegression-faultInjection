@@ -133,23 +133,29 @@ void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 	vector<double> bestT = T; 
 	double bestMSE = meanSquaredError();
 	double MSE;	
+	cout<<"Will start iter"<<endl;	
 	for(unsigned int i = 0; i<iterations; i++){
 		prevT = T; 	
+		cout<< " z ";
 		adjust(alpha);
+		cout<<" a ";
 		MSE = meanSquaredError();
+		cout<<" b ";
 		if (MSE < bestMSE){
 			bestMSE = MSE;
 			bestT = T; 
 		}
+		cout<<" c "<<endl;
 		if (equals(T, prevT) && stopsWhenStable){ // implement equals
 			break;		
 		}
+		cout<<"Iter "<<i<<endl;
 	}
 	T = bestT;
 }
 
 ANS* lreg(char* input){
-	ANS* answer = (ANS*) malloc(sizeof(ANS));
+	ANS* ans = (ANS*) malloc(sizeof(struct answer));
 	ifstream inp (input);
 	unsigned int testCases;	
 	inp >> testCases;
@@ -159,6 +165,7 @@ ANS* lreg(char* input){
 		int iterations, N, sizeOfTraining, predictions;
 			
 		try{
+			cout<<"Start reading input"<<endl;
 			inp >> alpha >> iterations >> N >> sizeOfTraining >> predictions;
 			//READING DATA
 			for (unsigned int j = 0; j<sizeOfTraining; j++){
@@ -170,11 +177,15 @@ ANS* lreg(char* input){
 				y.push_back(temp);
 			} 
 			//TRAINING
+			cout<<"0"<<endl;			
 			train(iterations, alpha, N);
-			answer->crashOnTrain.push_back(false);
+			cout<<"1"<<endl;
+			ans->crashOnTrain.push_back(false);
+			cout<<"2"<<endl;			
+			cout<<"Finished reading input"<<endl;
 		}catch (exception& e){
 			//error on training
-			answer->crashOnTrain.push_back(true);
+			ans->crashOnTrain.push_back(true);
 		}
 		vector<double> pred;
 		vector<bool> crash;
@@ -190,10 +201,10 @@ ANS* lreg(char* input){
 			}
 		}
 	
-		answer->predictions.push_back(pred);
-		answer->crashes.push_back(crash);
+		ans->predictions.push_back(pred);
+		ans->crashes.push_back(crash);
 	}
-	return answer;
+	return ans;
 	
 }
 

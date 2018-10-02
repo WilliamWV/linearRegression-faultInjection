@@ -1,0 +1,55 @@
+[INFO -- 2018-10-01 17:48:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 17:48:55]
+Initialization strings:
+[INFO -- 2018-10-01 17:48:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 17:48:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 17:48:55]
+initSignal:0
+[INFO -- 2018-10-01 17:48:55]
+endSignal:10
+[INFO -- 2018-10-01 17:48:55]
+faultModel:2
+[INFO -- 2018-10-01 17:48:59]
+Backtrace BEGIN:
+#0  0x00005555555551d0 in predict (v=-11) at lreg.cpp:50
+#1  0x00005555555553ac in partialDerivate (pos=2) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Memory content before bitflip:0xe00x9e0x290xa10xd40x120xfc0x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7d8
+address max offset: 8
+Memory content after  bitflip:0x540xe40x870x1d0xff0x0f0xa10x81
+frame name: adjust
+symbol name: PD
+symbol filename: lreg.cpp
+symbol line: 85
+value: -7.9618989464726497e-301
+value address: 0x7fffffffd7d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-01 17:48:59]
+Fault Injection Successful after 4.789909601211548s
+[INFO -- 2018-10-01 17:49:03]
+event type: exit
+[INFO -- 2018-10-01 17:49:03]
+exit code: 0

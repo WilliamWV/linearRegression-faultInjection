@@ -1,0 +1,56 @@
+[INFO -- 2018-10-01 19:12:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 19:12:42]
+Initialization strings:
+[INFO -- 2018-10-01 19:12:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 19:12:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 19:12:42]
+initSignal:0
+[INFO -- 2018-10-01 19:12:42]
+endSignal:10
+[INFO -- 2018-10-01 19:12:42]
+faultModel:0
+[INFO -- 2018-10-01 19:12:48]
+Backtrace BEGIN:
+#0  0x00007ffff76d5813 in log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=5) at ../sysdeps/ieee754/dbl-64/e_pow.c:335
+#1  __ieee754_pow_sse2 (x=5, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76b7b14 in __pow (x=5, y=3) at w_pow_compat.c:30
+#3  0x0000555555555d47 in std::pow<double, int> (__x=5, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555551e7 in predict (v=5) at lreg.cpp:50
+#5  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#6  0x0000555555555661 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+330	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0xff0x030x000x000x000x000x300x43
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff779a5a0 
+address max offset: 8
+Memory content after  bitflip:0xff0x030x000x080x000x000x300x43
+frame name: __ieee754_pow_sse2
+symbol name: two52e
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 55
+value: {i = {134218751, 1127219200}, x = 4503599761589247}
+value address: 0x7ffff779a5a0 <two52e>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-01 19:12:48]
+Fault Injection Successful after 6.199704170227051s
+[INFO -- 2018-10-01 19:12:54]
+event type: exit
+[INFO -- 2018-10-01 19:12:54]
+exit code: 0

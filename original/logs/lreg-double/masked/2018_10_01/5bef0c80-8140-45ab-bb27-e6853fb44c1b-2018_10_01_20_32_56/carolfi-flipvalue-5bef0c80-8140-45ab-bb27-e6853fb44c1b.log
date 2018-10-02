@@ -1,0 +1,56 @@
+[INFO -- 2018-10-01 20:32:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 20:32:48]
+Initialization strings:
+[INFO -- 2018-10-01 20:32:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 20:32:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 20:32:48]
+initSignal:0
+[INFO -- 2018-10-01 20:32:48]
+endSignal:10
+[INFO -- 2018-10-01 20:32:48]
+faultModel:1
+[EXCEPTION -- 2018-10-01 20:32:53]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-01 20:32:53]
+Backtrace BEGIN:
+#0  0x0000555555555d7c in std::allocator<double>::~allocator (this=0x7fffffffd880, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/allocator.h:139
+#1  0x0000555555555f29 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd880, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x00005555555556db in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+134	      : __allocator_base<_Tp>(__a) { }
+135	
+136	      template<typename _Tp1>
+137		allocator(const allocator<_Tp1>&) throw() { }
+138	
+139	      ~allocator() throw() { }
+140	
+141	      // Inherit everything else.
+142	    };
+143	
+
+Backtrace END
+Memory content before bitflip:0xa20xc00x7b0xf80x3a0x1e0xc00x41
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd830
+address max offset: 8
+Memory content after  bitflip:0xa20xc00x530xf80x3a0x1e0xc00x41
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: 540833264.65431619
+value address: 0x7fffffffd830
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-01 20:32:53]
+Fault Injection Successful after 5.928095579147339s
+[INFO -- 2018-10-01 20:32:55]
+event type: exit
+[INFO -- 2018-10-01 20:32:55]
+exit code: 0

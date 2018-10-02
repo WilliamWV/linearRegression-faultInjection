@@ -1,0 +1,58 @@
+[INFO -- 2018-10-01 17:05:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 17:05:59]
+Initialization strings:
+[INFO -- 2018-10-01 17:05:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 17:05:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 17:05:59]
+initSignal:0
+[INFO -- 2018-10-01 17:05:59]
+endSignal:10
+[INFO -- 2018-10-01 17:05:59]
+faultModel:0
+[EXCEPTION -- 2018-10-01 17:06:00]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-10-01 17:06:00]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-01 17:06:01]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec1801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0a897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff7037b9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1190a in malloc_printerr (str=str@entry=0x7ffff7035d88 "free(): invalid pointer") at malloc.c:5350
+#4  0x00007ffff6f18e1c in _int_free (have_lock=0, p=0x555555771531, av=0x7ffff726cc40 <main_arena>) at malloc.c:4157
+#5  __GI___libc_free (mem=0x555555771541) at malloc.c:3124
+#6  0x0000555555557538 in __gnu_cxx::new_allocator<double>::deallocate (this=0x55555575a140 <x>, __p=0x555555771541) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x0000555555556ffe in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555771541, __n=31) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x0000555555556752 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x55555575a140 <x>, __p=0x555555771541, __n=31) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x0000555555556bd3 in std::vector<double, std::allocator<double> >::_M_realloc_insert<double const&> (this=0x55555575a140 <x>, __position=0, __args#0=@0x7fffffffd948: -27) at /usr/include/c++/7/bits/vector.tcc:448
+#10 0x000055555555636c in std::vector<double, std::allocator<double> >::push_back (this=0x55555575a140 <x>, __x=@0x7fffffffd948: -27) at /usr/include/c++/7/bits/stl_vector.h:948
+#11 0x0000555555555a30 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:167
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the value pointed by a reference
+Memory content before bitflip:0x000x000x000x000x000x000x3b0xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd948
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x400x000x3b0xc0
+frame name: std::vector<double, std::allocator<double> >::_M_realloc_insert<double const&>
+symbol name: __args#0
+symbol filename: /usr/include/c++/7/bits/vector.tcc
+symbol line: 395
+value: @0x7fffffffd948
+value address: 0x7fffffffd948
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2018-10-01 17:06:01]
+Fault Injection Successful after 2.082127332687378s
+[INFO -- 2018-10-01 17:06:01]
+event type: exit
+[EXCEPTION -- 2018-10-01 17:06:01]
+exit code: no exit code available

@@ -1,0 +1,54 @@
+[INFO -- 2018-10-01 18:52:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-01 18:52:54]
+Initialization strings:
+[INFO -- 2018-10-01 18:52:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-01 18:52:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-01 18:52:54]
+initSignal:0
+[INFO -- 2018-10-01 18:52:54]
+endSignal:10
+[INFO -- 2018-10-01 18:52:54]
+faultModel:1
+[INFO -- 2018-10-01 18:52:56]
+Backtrace BEGIN:
+#0  0x00007ffff76b7b4d in __pow (x=-4, y=2) at w_pow_compat.c:62
+#1  0x0000555555555d47 in std::pow<double, int> (__x=-4, __y=2) at /usr/include/c++/7/cmath:418
+#2  0x00005555555551e7 in predict (v=-4) at lreg.cpp:50
+#3  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#4  0x0000555555555661 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+57	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x5555557713a0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x420x000x000x000x00
+frame name: train
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 4, capacity 4 = {-7.8183394572241909, -87.428851803395389, -8.5484805641860238, 4.8796052651500821}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-01 18:52:56]
+Fault Injection Successful after 2.1429450511932373s
+[INFO -- 2018-10-01 18:53:01]
+event type: exit
+[INFO -- 2018-10-01 18:53:01]
+exit code: 0
