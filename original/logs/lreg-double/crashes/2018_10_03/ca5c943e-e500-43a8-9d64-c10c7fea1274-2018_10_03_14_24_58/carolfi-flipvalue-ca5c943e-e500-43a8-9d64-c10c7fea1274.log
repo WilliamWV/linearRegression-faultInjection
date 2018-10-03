@@ -1,0 +1,60 @@
+[INFO -- 2018-10-03 14:24:50]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 14:24:50]
+Initialization strings:
+[INFO -- 2018-10-03 14:24:50]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 14:24:50]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 14:24:50]
+initSignal:0
+[INFO -- 2018-10-03 14:24:50]
+endSignal:10
+[INFO -- 2018-10-03 14:24:50]
+faultModel:1
+[INFO -- 2018-10-03 14:24:51]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:182
+#1  0x0000555555555641 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:119
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+177	  template<typename _Tp, typename _Alloc>
+178	    vector<_Tp, _Alloc>&
+179	    vector<_Tp, _Alloc>::
+180	    operator=(const vector<_Tp, _Alloc>& __x)
+181	    {
+182	      if (&__x != this)
+183		{
+184	#if __cplusplus >= 201103L
+185		  if (_Alloc_traits::_S_propagate_on_copy_assign())
+186		    {
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x170x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a170 
+address max offset: 8
+Memory content after  bitflip:0x500x170x770x550x550x550x600x00
+frame name: train
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 20, capacity 3377699720527904 = {-10, 1, 7, 1, 11, -8, 8, -14, 1, 1, 16, -2, -14, 13, 4, -4, -14, -20, 15, -16}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-03 14:24:51]
+Fault Injection Successful after 1.4163296222686768s
+[INFO -- 2018-10-03 14:24:57]
+event type: exit
+[EXCEPTION -- 2018-10-03 14:24:57]
+exit code: no exit code available

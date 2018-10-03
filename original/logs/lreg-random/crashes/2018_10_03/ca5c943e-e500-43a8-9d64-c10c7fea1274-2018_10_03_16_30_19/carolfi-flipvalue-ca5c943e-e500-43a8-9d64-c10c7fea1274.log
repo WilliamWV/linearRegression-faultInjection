@@ -1,0 +1,58 @@
+[INFO -- 2018-10-03 16:30:17]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 16:30:17]
+Initialization strings:
+[INFO -- 2018-10-03 16:30:17]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 16:30:17]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 16:30:17]
+initSignal:0
+[INFO -- 2018-10-03 16:30:17]
+endSignal:10
+[INFO -- 2018-10-03 16:30:17]
+faultModel:2
+[EXCEPTION -- 2018-10-03 16:30:18]
+gdbException: Cannot access memory at address 0xd57941c6b5e77ac7
+[INFO -- 2018-10-03 16:30:19]
+Backtrace BEGIN:
+#0  0x0000555555555d24 in std::pow<double, int> (__x=4.6355706431331074e-310, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x00005555555551e7 in predict (v=3) at lreg.cpp:50
+#2  0x00005555555553ac in partialDerivate (pos=3) at lreg.cpp:74
+#3  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Memory content before bitflip:0x5f0x1b0x290xba0xc30x310x480x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd838
+address max offset: 8
+Memory content after  bitflip:0x8c0x800x750x5e0x940xea0x1b0x20
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 5.2052368621407219e-154
+value address: 0x7fffffffd838
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-03 16:30:19]
+Fault Injection Successful after 2.027862787246704s
+[INFO -- 2018-10-03 16:30:19]
+event type: exit
+[EXCEPTION -- 2018-10-03 16:30:19]
+exit code: no exit code available

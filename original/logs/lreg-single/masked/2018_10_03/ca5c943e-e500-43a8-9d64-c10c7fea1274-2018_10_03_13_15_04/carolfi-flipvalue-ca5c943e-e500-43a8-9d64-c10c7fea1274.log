@@ -1,0 +1,61 @@
+[INFO -- 2018-10-03 13:14:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 13:14:56]
+Initialization strings:
+[INFO -- 2018-10-03 13:14:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 13:14:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 13:14:56]
+initSignal:0
+[INFO -- 2018-10-03 13:14:56]
+endSignal:10
+[INFO -- 2018-10-03 13:14:56]
+faultModel:0
+[INFO -- 2018-10-03 13:14:57]
+Backtrace BEGIN:
+#0  __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:94
+#1  0x0000555555555efc in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x00005555555556c3 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+89	    template<typename _Ptr>
+90	      static typename std::enable_if<__is_custom_pointer<_Ptr>::value>::type
+91	      destroy(_Alloc& __a, _Ptr __p)
+92	      { _Base_type::destroy(__a, std::addressof(*__p)); }
+93	
+94	    static _Alloc _S_select_on_copy(const _Alloc& __a)
+95	    { return _Base_type::select_on_container_copy_construction(__a); }
+96	
+97	    static void _S_on_swap(_Alloc& __a, _Alloc& __b)
+98	    { std::__alloc_on_swap(__a, __b); }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771750
+address max offset: 8
+Memory content after  bitflip:0x000x400x000x000x000x000x000x00
+frame name: __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 20, capacity 32 = {-10, 1, 7, 1, 11, -8, 8, -14, 1, 1, 16, -2, -14, 13, 4, -4, -14, -20, 15, -16}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-03 13:14:57]
+Fault Injection Successful after 1.5387191772460938s
+[INFO -- 2018-10-03 13:15:04]
+event type: exit
+[INFO -- 2018-10-03 13:15:04]
+exit code: 0

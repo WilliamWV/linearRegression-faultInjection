@@ -1,0 +1,51 @@
+[INFO -- 2018-10-03 14:02:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 14:02:19]
+Initialization strings:
+[INFO -- 2018-10-03 14:02:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 14:02:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 14:02:19]
+initSignal:0
+[INFO -- 2018-10-03 14:02:19]
+endSignal:10
+[INFO -- 2018-10-03 14:02:19]
+faultModel:2
+[EXCEPTION -- 2018-10-03 14:02:20]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-03 14:02:20]
+Backtrace BEGIN:
+#0  0x00007ffff76d55c4 in __ieee754_pow_sse2 (x=-12, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:81
+#1  0x00007ffff76b7b14 in __pow (x=-12, y=0) at w_pow_compat.c:30
+#2  0x0000555555555d47 in std::pow<double, int> (__x=-12, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=-12) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+76	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x280xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd6c0
+address max offset: 8
+Memory content after  bitflip:0x750x100x1d0xed0x260x5b0x0a0x6b
+frame name: __pow
+symbol name: x
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 4.230849356733004e+207
+value address: 0x7fffffffd6c0
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-03 14:02:20]
+Fault Injection Successful after 1.6076080799102783s
+[INFO -- 2018-10-03 14:02:21]
+event type: exit
+[EXCEPTION -- 2018-10-03 14:02:21]
+exit code: no exit code available

@@ -1,0 +1,54 @@
+[INFO -- 2018-10-03 13:53:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 13:53:35]
+Initialization strings:
+[INFO -- 2018-10-03 13:53:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 13:53:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 13:53:35]
+initSignal:0
+[INFO -- 2018-10-03 13:53:35]
+endSignal:10
+[INFO -- 2018-10-03 13:53:35]
+faultModel:1
+[INFO -- 2018-10-03 13:53:38]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd860, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:216
+#1  0x00005555555556a2 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:124
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+211				    this->_M_impl._M_end_of_storage
+212				    - this->_M_impl._M_start);
+213		      this->_M_impl._M_start = __tmp;
+214		      this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __xlen;
+215		    }
+216		  else if (size() >= __xlen)
+217		    {
+218		      std::_Destroy(std::copy(__x.begin(), __x.end(), begin()),
+219				    end(), _M_get_Tp_allocator());
+220		    }
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x600xd80xff0xff0xff0x7f0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7b8
+address max offset: 8
+Memory content after  bitflip:0x600xd80xff0xff0xff0x7f0x000x28
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd860
+value address: 0x7fffffffd7b8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-03 13:53:38]
+Fault Injection Successful after 3.0098116397857666s
+[INFO -- 2018-10-03 13:53:38]
+event type: exit
+[EXCEPTION -- 2018-10-03 13:53:38]
+exit code: no exit code available

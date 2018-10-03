@@ -27,6 +27,29 @@
 	
 
 */
+
+/**
+	Modifications to ECC:
+		* This will adds an ECC to vectors that will works as follows:
+			- To a vector of size S, it will be added 
+			2 * ceil(log2(S)) elements.
+			- This elements will be calculated by the sum of some elements
+			  of the vectos such that a redundant element Ri,j will be the sum
+			  of all elements whose position in binary has the ith bit with 
+			  value j.
+			- Ex.: if S = 4 : 
+				R[0,0] = V[0] + V[2]; 
+				R[0,1] = V[1] + V[3];
+				R[1,0] = V[0] + V[1];
+				R[1,0] = V[2] + V[3];
+			- So, each element will be on the sum of half the redundant values
+			- This allows corrections that that can apply to at least ceil(log2(S))
+			  errors on vector with appended redundancy and detection that can apply
+			  to the at least the same value, however detection won't working only if
+			  the errors will result in a state with consistent sums what is nearly
+			  impossible specially to greater values of S. 
+*/
+
 using namespace std;
 
 vector<double> x; // input of training set
@@ -130,14 +153,6 @@ void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 	T = bestT;
 }
 
-void saveTs(ofstream& out){
-	out<<"Thetas: "<<endl;
-	for (int i = 0; i<T.size(); i ++){
-		out<<'\t'<<'T'<<i<<" = "<<T[i];
-	}
-	out<<endl;
-	out<<"Mean Squared Error: " << meanSquaredError()<<endl;
-}
 /*
 It must receive an input file formated as follows:
 	1° Line : one integer T -> number of test cases
@@ -180,12 +195,10 @@ int main(int argc, char* argv[]){
 		} 
 		//TRAINING
 		train(iterations, alpha, N);
-		saveTs(out); // Save the training results		
 		//PREDICTING
-		out<<"Predictions:"<<endl;
 		for (int j = 0; j < predictions; j++){
 			inp >> temp;
-			out << "f("<<temp<<") = "<<predict(temp)<< endl;
+			out <<predict(temp)<< endl;
 		}
 			
 	}

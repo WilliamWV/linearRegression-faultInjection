@@ -1,0 +1,60 @@
+[INFO -- 2018-10-03 16:33:44]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 16:33:44]
+Initialization strings:
+[INFO -- 2018-10-03 16:33:44]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 16:33:44]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 16:33:44]
+initSignal:0
+[INFO -- 2018-10-03 16:33:44]
+endSignal:10
+[INFO -- 2018-10-03 16:33:44]
+faultModel:1
+[INFO -- 2018-10-03 16:33:45]
+Backtrace BEGIN:
+#0  0x00005555555552ee in meanSquaredError () at lreg.cpp:61
+#1  0x0000555555555661 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+56		Calculates the mean squared error of T
+57	*/
+58	double meanSquaredError(){
+59		double error = 0;
+60		for(int i = 0; i<x.size(); i++){
+61			error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
+62		}
+63		error /= x.size();
+64		return error;
+65	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x220x40
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771540
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x480x220x40
+frame name: meanSquaredError
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 20, capacity 32 = {9.140625, -2, -8, -2, -12, 7, -9, 13, -2, -2, -17, 1, 13, -14, -5, 3, 13, 19, -16, 15}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-03 16:33:45]
+Fault Injection Successful after 1.3682918548583984s
+[INFO -- 2018-10-03 16:33:51]
+event type: exit
+[INFO -- 2018-10-03 16:33:51]
+exit code: 0

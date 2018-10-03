@@ -1,0 +1,64 @@
+[INFO -- 2018-10-03 13:03:57]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 13:03:57]
+Initialization strings:
+[INFO -- 2018-10-03 13:03:57]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 13:03:57]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 13:03:57]
+initSignal:0
+[INFO -- 2018-10-03 13:03:57]
+endSignal:10
+[INFO -- 2018-10-03 13:03:57]
+faultModel:1
+[INFO -- 2018-10-03 13:04:01]
+Backtrace BEGIN:
+#0  0x0000555555554e90 in pow@plt ()
+#1  0x0000555555555d47 in std::pow<double, int> (__x=13, __y=1) at /usr/include/c++/7/cmath:418
+#2  0x00005555555551e7 in predict (v=13) at lreg.cpp:50
+#3  0x00005555555553ac in partialDerivate (pos=3) at lreg.cpp:74
+#4  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#5  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+130		T = bestT;
+131	}
+132	
+133	/*
+134	It must receive an input file formated as follows:
+135		1° Line : one integer T -> number of test cases
+136		2° to 5° repeat to all test case	
+137		2° Line : method parameters -> alpha, iterations, N, size of 
+138			      training set, predictions
+139		3° Line : inputs x of the training set
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x130x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a188 
+address max offset: 8
+Memory content after  bitflip:0xa00x130x770x550x550x140x000x00
+frame name: predict
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length -8933531975676, capacity 4 = {-16.088066570158869, 84.197547079171031, 5.0137477139545901, -1.1059640280687812, 0, 4.001931731314097e-322, 4.6355706478057827e-310, 1.5810100666919889e-322, 7.0000038146972647, 3.2419735369172747e+178, 11.00000000619192, -8, 8, -14, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 1.1286365747823864e-312, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 4.6355706478247548e-310, -1.0000024014166677, -3.1029063657885689e-05, 1.6304166312761136e-322, 4.6355706478263358e-310, -1.0000024014166677, -3.1029063657885689e-05, 1.6304166312761136e-322, 0, -0.99999740263335768, 3.0824033873526341e-05, 7.1639518646980749e-322, 0, 1, 7, 1, 11, -8, 8, -14, 1, 1, 16, -2, -14, 13, 4, -4, 0, 1.3487992131466031e-321, 0, -2, -8, -2, -12, 7, -9, 13, -2, -2, -17, 1, 13, -14, -5, 3, 13, 19, -16, 15, 12, 24, 18, 3, -9, 22, -1, -25, 24, 4, 16, 3, 0, 1.3487992131466031e-321, 4.6355706478350314e-310, 1, 7, 1, 11, -8, 8, -14, 1, 1, 16, -2, -14, 13, 4, -4, -14, -20, 15, -16, -866, -10370, -3890, 25, 1213, -7746, 5, 19373, -10370, 30, -2562, 25, 0, 2.6136072665001942e-321, 9, -2, -8, -2, -12, 7, -9, 13, -2, -2, -17, 1, 13, -14, -5, 3, 13, 19, -16, 15, 12, 24, 18, 3, -9, 22, -1, -25, 24, 4, 16, 3, 17, 25, -28, -27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.6136072665001942e-321, -10, 1, 7, 1, 11, -8, 8, -14, 1, 1...}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-03 13:04:01]
+Fault Injection Successful after 4.550243854522705s
+[INFO -- 2018-10-03 13:04:01]
+event type: exit
+[EXCEPTION -- 2018-10-03 13:04:01]
+exit code: no exit code available

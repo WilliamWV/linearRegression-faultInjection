@@ -1,0 +1,65 @@
+[INFO -- 2018-10-03 14:19:57]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 14:19:57]
+Initialization strings:
+[INFO -- 2018-10-03 14:19:57]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 14:19:57]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 14:19:57]
+initSignal:0
+[INFO -- 2018-10-03 14:19:57]
+endSignal:10
+[INFO -- 2018-10-03 14:19:57]
+faultModel:1
+[EXCEPTION -- 2018-10-03 14:20:01]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-10-03 14:20:01]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-10-03 14:20:08]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-03 14:20:08]
+Backtrace BEGIN:
+#0  std::pow<double, int> (__x=3, __y=4) at /usr/include/c++/7/cmath:418
+#1  0x00005555555551e7 in predict (v=3) at lreg.cpp:50
+#2  0x00005555555553ac in partialDerivate (pos=1) at lreg.cpp:74
+#3  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x900x1a0x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a168 
+address max offset: 8
+Memory content after  bitflip:0x900x1a0x770x550x550x550xc00x00
+frame name: predict
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 6755399441055780, capacity 64 = {-10, 1, 7, 1, 11, -8, 8, -14, 1, 1, 16, -2, -14, 13, 4, -4, -14, -20, 15, -16, -866, -10370, -3890, 25, 1213, -7746, 5, 19373, -10370, 30, -2562, 25, -3181, -11877, 26654, 24055, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, 4.6355706479188249e-310, 81.384913420863626, 5.0313056564473415, -1.0727879658402888, 0, 2.4209216646221081e-322, -15.460161754570636, 81.384913420863626, 5.0313056564473415, -1.0727879658402888, 0, 2.4209216646221081e-322, 4.6355706479211964e-310, 81.384913420863626, 5.0313056564473415, -1.0727879658402888, 0, 2.4209216646221081e-322, 0, 81.384913420863626, 5.0313056564473415, -1.0727879658402888, 0, 7.9544568980440694e-322, -7.8400742376485812e+25, 4.4560211994861547e+26, -2.1703656377135075e+27, 1.2137434691462364e+28, -6.0082172517695863e+28, 3.3175277593619538e+29, -1.6635476645552748e+30, 9.0943554805439562e+30, -4.6074215534197787e+31, 2.499215510188427e+32, -1.2765902103848878e+33, 6.8825315907692725e+33, -3.5386648223415245e+34, 1.8987643197071263e+35, -9.8137433261991791e+35, 5.2463886190870608e+36, -2.7229686546711791e+37, 1.4625640697398771e+38, 0, 7.9544568980440694e-322, 4.635570647939378e-310, -4.8491322536284766e+26, 2.0188863660561052e+27, -1.3036259111635267e+28, 5.7080398854710869e+28, -3.5249676660833685e+29, 1.6053151668158319e+30, -9.5782622060497565e+30, 4.498738842950117e+31, -2.6134764907066536e+32, 1.2577027420328396e+33, -7.1559687149677426e+33, 3.510443688970226e+34, -1.9651496468744192e+35, 9.7876787571571183e+35, -5.4099917675188038e+36, 2.7268300007280546e+37, -1.4625487035004149e+38, 0, 7.9544568980440694e-322, 0, 4.4560211994861547e+26, -2.1703656377135075e+27, 1.2137434691462364e+28, -6.0082172517695863e+28, 3.3175277593619538e+29, -1.6635476645552748e+30, 9.0943554805439562e+30, -4.6074215534197787e+31, 2.499215510188427e+32, -1.2765902103848878e+33, 6.8825315907692725e+33, -3.5386648223415245e+34, 1.8987643197071263e+35, -9.8137433261991791e+35, 5.2463886190870608e+36, -2.7229686546711791e+37, 1.4625640697398771e+38, 0, 2.0482479479640558e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-03 14:20:08]
+Fault Injection Successful after 11.563254117965698s

@@ -32,7 +32,6 @@
 	Modifications to selective hardening this code for fault tolerance:
 		* change for indexes from int to unsigned int
 		* triplicate variables 
-		* include ECC on vectors of double
 */
 
 typedef unsigned int UINT;
