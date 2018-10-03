@@ -1,0 +1,55 @@
+[INFO -- 2018-10-03 16:49:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 16:49:55]
+Initialization strings:
+[INFO -- 2018-10-03 16:49:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 16:49:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 16:49:55]
+initSignal:0
+[INFO -- 2018-10-03 16:49:55]
+endSignal:10
+[INFO -- 2018-10-03 16:49:55]
+faultModel:2
+[EXCEPTION -- 2018-10-03 16:49:57]
+gdbException: Cannot access memory at address 0x608612e57403e483
+[INFO -- 2018-10-03 16:49:57]
+Backtrace BEGIN:
+#0  0x0000555555555530 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:86
+#1  0x000055555555565c in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+81		Adjusts the values of T 
+82	*/
+83	void adjust(double alpha){
+84		
+85		double PD;
+86		for(int i = 0; i<T.size(); i++){
+87			PD = partialDerivate(i);
+88			// alpha is different from the canonical version because this works better
+89			T[i]= T[i] - ((alpha / (sqrt( fabs(PD) ))) * PD); 
+90		}
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd930
+address max offset: 4
+Memory content after  bitflip:0xad0x2e0x330x92
+frame name: main
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 159
+value: -1842139475
+value address: 0x7fffffffd930
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-03 16:49:57]
+Fault Injection Successful after 2.3191752433776855s
+[INFO -- 2018-10-03 16:49:57]
+event type: exit
+[EXCEPTION -- 2018-10-03 16:49:57]
+exit code: no exit code available

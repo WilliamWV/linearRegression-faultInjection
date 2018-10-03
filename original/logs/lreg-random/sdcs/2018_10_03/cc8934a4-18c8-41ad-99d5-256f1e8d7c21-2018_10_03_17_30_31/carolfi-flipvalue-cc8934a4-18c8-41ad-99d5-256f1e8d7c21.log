@@ -1,0 +1,62 @@
+[INFO -- 2018-10-03 17:30:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 17:30:23]
+Initialization strings:
+[INFO -- 2018-10-03 17:30:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 17:30:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 17:30:23]
+initSignal:0
+[INFO -- 2018-10-03 17:30:23]
+endSignal:10
+[INFO -- 2018-10-03 17:30:23]
+faultModel:2
+[INFO -- 2018-10-03 17:30:24]
+Backtrace BEGIN:
+#0  0x00005555555551fe in predict (v=23) at lreg.cpp:49
+#1  0x00005555555553ac in partialDerivate (pos=1) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+44	/**
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x2e0x40
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771970
+address max offset: 8
+Memory content after  bitflip:0xb10x570xdc0x2d0x220xe00x2d0x51
+frame name: main
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 36, capacity 64 = {1.1335594984354718e+83, -9, 5, 1, -21, -9, 3, 3, -1194, -34, -706, -556, -1264, -510, -1984, -16, -1810, -94, -510, -1126, 1931, -85255, 90661, -66889, -159841, -66889, 125395, -131491, -5, 101411, 101411, -118669, -44605, 35795, 35795, 63019}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-03 17:30:24]
+Fault Injection Successful after 1.743797779083252s
+[INFO -- 2018-10-03 17:30:30]
+event type: exit
+[INFO -- 2018-10-03 17:30:30]
+exit code: 0

@@ -1,0 +1,51 @@
+[INFO -- 2018-10-03 19:34:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 19:34:58]
+Initialization strings:
+[INFO -- 2018-10-03 19:34:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 19:34:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 19:34:58]
+initSignal:0
+[INFO -- 2018-10-03 19:34:58]
+endSignal:10
+[INFO -- 2018-10-03 19:34:58]
+faultModel:0
+[EXCEPTION -- 2018-10-03 19:35:02]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-03 19:35:02]
+Backtrace BEGIN:
+#0  0x00007ffff76d55c6 in __ieee754_pow_sse2 (x=26, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:81
+#1  0x00007ffff76b7b14 in __pow (x=26, y=0) at w_pow_compat.c:30
+#2  0x0000555555555d47 in std::pow<double, int> (__x=26, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=26) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=3) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+76	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd80c
+address max offset: 1
+Memory content after  bitflip:0x41
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 105
+value: 65
+value address: 0x7fffffffd80c
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-10-03 19:35:02]
+Fault Injection Successful after 4.2482054233551025s
+[INFO -- 2018-10-03 19:35:05]
+event type: exit
+[INFO -- 2018-10-03 19:35:05]
+exit code: 0

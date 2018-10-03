@@ -1,0 +1,55 @@
+[INFO -- 2018-10-03 20:11:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 20:11:03]
+Initialization strings:
+[INFO -- 2018-10-03 20:11:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 20:11:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 20:11:03]
+initSignal:0
+[INFO -- 2018-10-03 20:11:03]
+endSignal:10
+[INFO -- 2018-10-03 20:11:03]
+faultModel:2
+[INFO -- 2018-10-03 20:11:09]
+Backtrace BEGIN:
+#0  0x0000555555555d56 in std::pow<double, int> (__x=17, __y=1) at /usr/include/c++/7/cmath:419
+#1  0x00005555555551e7 in predict (v=17) at lreg.cpp:50
+#2  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#3  0x0000555555555661 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+423	#ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd794
+address max offset: 4
+Memory content after  bitflip:0xbc0xae0x840x4e
+frame name: predict
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 49
+value: 1317318332
+value address: 0x7fffffffd794
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-03 20:11:09]
+Fault Injection Successful after 6.492121458053589s
+[INFO -- 2018-10-03 20:11:11]
+event type: exit
+[INFO -- 2018-10-03 20:11:11]
+exit code: 0

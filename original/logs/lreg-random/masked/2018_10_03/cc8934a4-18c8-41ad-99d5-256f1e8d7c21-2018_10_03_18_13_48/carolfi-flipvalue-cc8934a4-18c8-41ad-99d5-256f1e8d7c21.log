@@ -1,0 +1,57 @@
+[INFO -- 2018-10-03 18:13:40]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 18:13:40]
+Initialization strings:
+[INFO -- 2018-10-03 18:13:40]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 18:13:40]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 18:13:40]
+initSignal:0
+[INFO -- 2018-10-03 18:13:40]
+endSignal:10
+[INFO -- 2018-10-03 18:13:40]
+faultModel:2
+[INFO -- 2018-10-03 18:13:45]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=29) at ../sysdeps/ieee754/dbl-64/e_pow.c:334
+#1  __ieee754_pow_sse2 (x=29, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76b7b14 in __pow (x=29, y=3) at w_pow_compat.c:30
+#3  0x0000555555555d47 in std::pow<double, int> (__x=29, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555551e7 in predict (v=29) at lreg.cpp:50
+#5  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#6  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#7  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#8  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+329	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x6a0x010xf80xff0xff0xff0x070x42
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779a5b0 
+address max offset: 8
+Memory content after  bitflip:0x350xfb0x300xf50xae0x940x830x8a
+frame name: log1
+symbol name: bigv
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 53
+value: {i = {-181339339, -1971088210}, x = -5.0940597817930355e-258}
+value address: 0x7ffff779a5b0 <bigv>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-03 18:13:45]
+Fault Injection Successful after 5.2422919273376465s
+[INFO -- 2018-10-03 18:13:47]
+event type: exit
+[INFO -- 2018-10-03 18:13:47]
+exit code: 0

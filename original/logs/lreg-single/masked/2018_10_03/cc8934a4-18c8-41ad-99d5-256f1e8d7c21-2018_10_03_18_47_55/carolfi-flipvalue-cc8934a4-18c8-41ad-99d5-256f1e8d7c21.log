@@ -1,0 +1,70 @@
+[INFO -- 2018-10-03 18:47:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 18:47:48]
+Initialization strings:
+[INFO -- 2018-10-03 18:47:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 18:47:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 18:47:48]
+initSignal:0
+[INFO -- 2018-10-03 18:47:48]
+endSignal:10
+[INFO -- 2018-10-03 18:47:48]
+faultModel:0
+[INFO -- 2018-10-03 18:47:48]
+Backtrace BEGIN:
+#0  0x00007ffff76e0340 in ?? ()
+#1  0x00007ffff7de1b73 in elf_machine_lazy_rel (skip_ifunc=<optimized out>, reloc=0x7ffff76b45f8, l_addr=140737344344064, map=0x7ffff7fde4f0) at ../sysdeps/x86_64/dl-machine.h:577
+#2  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7fde4f0) at do-rel.h:77
+#3  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#4  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#5  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde50, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#6  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde50) at rtld.c:414
+#7  _dl_start (arg=0x7fffffffde50) at rtld.c:521
+#8  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#9  0x0000000000000003 in ?? ()
+#10 0x00007fffffffe1fb in ?? ()
+#11 0x00007fffffffe20a in ?? ()
+#12 0x00007fffffffe21e in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+130		T = bestT;
+131	}
+132	
+133	/*
+134	It must receive an input file formated as follows:
+135		1° Line : one integer T -> number of test cases
+136		2° to 5° repeat to all test case	
+137		2° Line : method parameters -> alpha, iterations, N, size of 
+138			      training set, predictions
+139		3° Line : inputs x of the training set
+
+Backtrace END
+Fliping array at pos: 0
+Fliping value of field: lazy
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffdae8
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x02
+frame name: elf_machine_lazy_rel
+symbol name: ranges
+symbol filename: dl-reloc.c
+symbol line: 258
+value: {{start = 140737344389952, size = 312, nrelative = 3, lazy = 33554432}, {start = 140737344390264, size = 888, nrelative = 0, lazy = 1}}
+value address: 0x7fffffffdad0
+Type: The type is an array.
+Type sizeof: 64
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0, 1)
+
+[INFO -- 2018-10-03 18:47:48]
+Fault Injection Successful after 0.3358743190765381s
+[INFO -- 2018-10-03 18:47:55]
+event type: exit
+[INFO -- 2018-10-03 18:47:55]
+exit code: 0

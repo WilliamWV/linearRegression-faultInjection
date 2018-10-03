@@ -1,0 +1,55 @@
+[INFO -- 2018-10-03 17:39:14]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 17:39:14]
+Initialization strings:
+[INFO -- 2018-10-03 17:39:14]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 17:39:14]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 17:39:14]
+initSignal:0
+[INFO -- 2018-10-03 17:39:14]
+endSignal:10
+[INFO -- 2018-10-03 17:39:14]
+faultModel:0
+[INFO -- 2018-10-03 17:39:14]
+Backtrace BEGIN:
+#0  0x00005555555570cd in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-0.99999993734955661, __last=0, __result=-0.99999993734955661) at /usr/include/c++/7/bits/stl_algobase.h:422
+#1  0x00005555555568f3 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-0.99999993734955661, __last=0, __result=-0.99999993734955661) at /usr/include/c++/7/bits/stl_algobase.h:456
+#2  0x0000555555556235 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x0000555555555641 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+417	
+418	  template<bool _IsMove, typename _II, typename _OI>
+419	    inline _OI
+420	    __copy_move_a2(_II __first, _II __last, _OI __result)
+421	    {
+422	      return _OI(std::__copy_move_a<_IsMove>(std::__niter_base(__first),
+423						     std::__niter_base(__last),
+424						     std::__niter_base(__result)));
+425	    }
+426	
+
+Backtrace END
+Memory content before bitflip:0x150x200x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd82c
+address max offset: 4
+Memory content after  bitflip:0x550x200x000x00
+frame name: train
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 118
+value: 8277
+value address: 0x7fffffffd82c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-03 17:39:14]
+Fault Injection Successful after 0.9341552257537842s
+[INFO -- 2018-10-03 17:39:21]
+event type: exit
+[INFO -- 2018-10-03 17:39:21]
+exit code: 0

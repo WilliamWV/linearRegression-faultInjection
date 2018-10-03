@@ -1,0 +1,57 @@
+[INFO -- 2018-10-03 20:19:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 20:19:21]
+Initialization strings:
+[INFO -- 2018-10-03 20:19:21]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 20:19:21]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 20:19:21]
+initSignal:0
+[INFO -- 2018-10-03 20:19:21]
+endSignal:10
+[INFO -- 2018-10-03 20:19:21]
+faultModel:0
+[INFO -- 2018-10-03 20:19:24]
+Backtrace BEGIN:
+#0  __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >::__normal_iterator (this=0x7fffffffd790, __i=@0x7fffffffd788: 0x555555771b80) at /usr/include/c++/7/bits/stl_iterator.h:779
+#1  0x0000555555556647 in std::vector<double, std::allocator<double> >::begin (this=0x7fffffffd840) at /usr/include/c++/7/bits/stl_vector.h:573
+#2  0x0000555555555f5a in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#3  0x00005555555556c3 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+774	
+775	      _GLIBCXX_CONSTEXPR __normal_iterator() _GLIBCXX_NOEXCEPT
+776	      : _M_current(_Iterator()) { }
+777	
+778	      explicit
+779	      __normal_iterator(const _Iterator& __i) _GLIBCXX_NOEXCEPT
+780	      : _M_current(__i) { }
+781	
+782	      // Allow iterator to const_iterator conversion
+783	      template<typename _Iter>
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffe1fb 
+address max offset: 1
+Memory content after  bitflip:0x6f
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 144
+value: 0x7fffffffde58
+value address: 0x7fffffffd900
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-03 20:19:24]
+Fault Injection Successful after 3.257972002029419s
+[INFO -- 2018-10-03 20:19:28]
+event type: exit
+[INFO -- 2018-10-03 20:19:28]
+exit code: 0

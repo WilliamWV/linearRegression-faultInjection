@@ -1,0 +1,62 @@
+[INFO -- 2018-10-03 18:47:38]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-03 18:47:38]
+Initialization strings:
+[INFO -- 2018-10-03 18:47:38]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-03 18:47:38]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-03 18:47:38]
+initSignal:0
+[INFO -- 2018-10-03 18:47:38]
+endSignal:10
+[INFO -- 2018-10-03 18:47:38]
+faultModel:2
+[INFO -- 2018-10-03 18:47:40]
+Backtrace BEGIN:
+#0  std::pow<double, int> (__x=21, __y=0) at /usr/include/c++/7/cmath:418
+#1  0x00005555555551e7 in predict (v=21) at lreg.cpp:50
+#2  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#3  0x0000555555555661 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x2e0x40
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771650
+address max offset: 8
+Memory content after  bitflip:0xbe0x050xe30x8b0xbb0xb60x340x8c
+frame name: std::pow<double, int>
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 20, capacity 32 = {-7.2327486032367373e-250, -9, 5, 1, -21, -9, 3, 3, -1194, -34, -706, -556, -1264, -510, -1984, -16, -1810, -94, -510, -1126}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-03 18:47:40]
+Fault Injection Successful after 2.015103340148926s
+[INFO -- 2018-10-03 18:47:45]
+event type: exit
+[INFO -- 2018-10-03 18:47:45]
+exit code: 0
