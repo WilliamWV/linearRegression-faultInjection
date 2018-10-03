@@ -938,6 +938,7 @@ i;lreg.cpp;86;1.4106416702270508;0-10;Single bit-flip
 user_entry;../elf/dl-sysdep.c;91;0.7698009014129639;0-10;Single bit-flip
 T;lreg.cpp;34;1.3923461437225342;0-10;Single bit-flip
 i;lreg.cpp;86;5.589087724685669;0-10;Single bit-flip
+t52;../sysdeps/ieee754/dbl-64/upow.h;54;2.6336753368377686;0-10;Single bit-flip
 x;lreg.cpp;32;2.3953845500946045;0-10;Single bit-flip
 i;lreg.cpp;86;2.408946990966797;0-10;Single bit-flip
 i;lreg.cpp;60;1.6884772777557373;0-10;Single bit-flip
@@ -980,6 +981,7 @@ i;lreg.cpp;159;3.1155970096588135;0-10;Single bit-flip
 add;../sysdeps/ieee754/dbl-64/e_pow.c;251;6.703734874725342;0-10;Single bit-flip
 prevT;lreg.cpp;114;2.8314995765686035;0-10;Single bit-flip
 set;../sysdeps/unix/sysv/linux/raise.c;39;2.9987759590148926;0-10;Single bit-flip
+bestMSE;lreg.cpp;116;6.287301301956177;0-10;Single bit-flip
 i;lreg.cpp;60;4.282274961471558;0-10;Single bit-flip
 x;lreg.cpp;32;5.520440340042114;0-10;Single bit-flip
 __first;/usr/include/c++/7/bits/stl_uninitialized.h;287;2.1280202865600586;0-10;Single bit-flip
@@ -2166,6 +2168,7 @@ i;lreg.cpp;73;1.7931280136108398;0-10;Random bit-flip
 __GI__dl_argv;rtld.c;83;1.415013313293457;0-10;Random bit-flip
 i;lreg.cpp;86;5.0684967041015625;0-10;Random bit-flip
 i;lreg.cpp;86;2.398847818374634;0-10;Random bit-flip
+x;lreg.cpp;32;4.4273717403411865;0-10;Random bit-flip
 temp;lreg.cpp;160;1.5759313106536865;0-10;Random bit-flip
 __y;/usr/include/c++/7/cmath;415;3.4792754650115967;0-10;Random bit-flip
 y;lreg.cpp;33;2.0736031532287598;0-10;Random bit-flip
@@ -3304,6 +3307,7 @@ T;lreg.cpp;34;4.552073001861572;0-10;Double bit-flip
 i;lreg.cpp;86;2.314725875854492;0-10;Double bit-flip
 y;lreg.cpp;33;2.4148552417755127;0-10;Double bit-flip
 i;lreg.cpp;60;2.2828876972198486;0-10;Double bit-flip
+pD;lreg.cpp;72;2.3239753246307373;0-10;Double bit-flip
 i;lreg.cpp;60;1.2977588176727295;0-10;Double bit-flip
 x;lreg.cpp;32;1.8179919719696045;0-10;Double bit-flip
 x;lreg.cpp;32;4.4908411502838135;0-10;Double bit-flip

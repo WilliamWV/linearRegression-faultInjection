@@ -43,6 +43,7 @@ vector<double> x; // input of training set
 vector<double> y; // observed values of training set inputs
 vector<double> T; // the adjustment variables
 
+double a1, a2, a3; // triplication of alpha
 
 UINT selectTriUInt(UINT a, UINT b, UINT c){
 	return (a == b)? a : c;
@@ -113,7 +114,7 @@ double partialDerivate(UINT pos){
 /**
 	Adjusts the values of T 
 */
-void adjust(double alpha){
+void adjust(){
 	
 	double PD;
 	for(UINT i1 = 0, i2 = 0, i3 = 0; 
@@ -122,7 +123,7 @@ void adjust(double alpha){
 	{
 		PD = partialDerivate(selectTriUInt(i1, i2, i3));
 		// alpha is different from the canonical version because this works better
-		T[selectTriUInt(i1, i2, i3)]= T[selectTriUInt(i1, i2, i3)] - ((alpha / (sqrt( fabs(PD) ))) * PD); 
+		T[selectTriUInt(i1, i2, i3)]= T[selectTriUInt(i1, i2, i3)] - ((selectTriDouble(a1, a2, a3) / (sqrt( fabs(PD) ))) * PD); 
 	}
 }
 
@@ -138,7 +139,7 @@ void adjust(double alpha){
 		  catastrophic in local steps. So the new alpha are calculated as
 			N_Alpha = alpha / (sqrt(PD))
 */
-void train(UINT iterations, double alpha, int N, bool stopsWhenStable = true){
+void train(UINT iterations, int N, bool stopsWhenStable = true){
 	/**
 		This will suppose the initial values of T as zeros
 		1) Compute the meanSquaredError of current predictions
@@ -156,7 +157,7 @@ void train(UINT iterations, double alpha, int N, bool stopsWhenStable = true){
 		i1++, i2++, i3++)
 	{
 		prevT = T; 	
-		adjust(alpha);
+		adjust();
 		MSE = meanSquaredError();
 		if (MSE < bestMSE){
 			bestMSE = MSE;
@@ -202,7 +203,10 @@ int main(int argc, char* argv[]){
 		double alpha, temp;
 		UINT iterations, N, sizeOfTraining, predictions;
 		inp >> alpha >> iterations >> N >> sizeOfTraining >> predictions;
-		
+		//triplication of alpha		
+		a1 = alpha;
+		a2 = alpha;
+		a3 = alpha;
 		//READING DATA
 		for (UINT j1 = 0, j2 = 0, j3 = 0; 
 			 selectTriUInt(j1, j2, j3)<sizeOfTraining; 
@@ -219,7 +223,7 @@ int main(int argc, char* argv[]){
 			y.push_back(temp);
 		} 
 		//TRAINING
-		train(iterations, alpha, N);
+		train(iterations, N);
 		//PREDICTING
 		for (UINT j1 = 0, j2 = 0, j3 = 0; 
 			 selectTriUInt(j1, j2, j3) < predictions; 
