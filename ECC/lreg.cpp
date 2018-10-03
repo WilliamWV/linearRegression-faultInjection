@@ -56,6 +56,8 @@ vector<double> x; // input of training set
 vector<double> y; // observed values of training set inputs
 vector<double> T; // the adjustment variables
 
+
+
 bool equals(vector<double> a, vector<double> b){
 	if (a.size() != b.size()) return false;
 	for (int i = 0; i<a.size(); i++){
@@ -63,6 +65,42 @@ bool equals(vector<double> a, vector<double> b){
 	}
 	return true;
 }
+
+bool bitOn(UINT val, UINT bit){
+	while(bit>0){
+		val/=2;
+		bit--;
+	}
+	return val%2 == 1;
+}
+
+//calculates all the redundancy elements
+vector<double> getECC(vector<double> vec){
+	UINT redundantEl = 2 * ceil(log2(vec.size()));
+	vector<double> red (redundantEL);
+	for(UINT i = 0; i<redundantEl/2; i++){
+		for (UINT j = 0; j< vec.size(); j++){
+			if (bitOn(j, i)) red[2*i] = red[2*i] + vec[j];
+			else red[2*i+1] = red[2*i+1] + vec[j];
+		}
+	}
+	return red;
+}
+//call when a value of the vector is updated to update the ECC
+vector<double> updateECC(vector<double> prevECC, double newVal, UINT pos){
+	for (UINT i = 0; i<prevECC.size()/2; i++){
+		if(bitOn(pos, i)) prevECC[2*i] = prevECC[2*i] + newVal;
+		else prevECC[2*i+1] = prevECC[2*i+1] + newValue;
+	}
+	return prevECC;
+}
+
+// 0 -> no error
+// 1 -> error that can be corrected
+// 2 -> error that cannot be corrected
+UINT checkECC(vector<double> data, vector<double> ecc);
+
+vector<double> correctData(vector<double> data, vector<double> ecc);
 
 /**
 	Predicts the value related to v using the Ts variables
