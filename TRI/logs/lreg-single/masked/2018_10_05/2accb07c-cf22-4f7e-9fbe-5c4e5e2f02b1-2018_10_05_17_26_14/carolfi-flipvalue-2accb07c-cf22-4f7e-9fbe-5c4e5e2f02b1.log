@@ -1,0 +1,66 @@
+[INFO -- 2018-10-05 17:25:28]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-05 17:25:28]
+Initialization strings:
+[INFO -- 2018-10-05 17:25:28]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-05 17:25:28]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-05 17:25:28]
+initSignal:0
+[INFO -- 2018-10-05 17:25:28]
+endSignal:30
+[INFO -- 2018-10-05 17:25:28]
+faultModel:0
+[EXCEPTION -- 2018-10-05 17:25:34]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-05 17:25:35]
+Backtrace BEGIN:
+#0  0x0000555555557709 in std::vector<double, std::allocator<double> >::operator[] (this=0x555555761180 <T>, __n=2) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x00005555555552e6 in predict (v=-32) at lreg.cpp:68
+#2  0x00005555555554bb in partialDerivate (pos=1) at lreg.cpp:92
+#3  0x00005555555555bb in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:105
+#4  0x0000555555555760 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:138
+#5  0x0000555555555acb in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput") at lreg.cpp:173
+#6  0x0000555555555e26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:220
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x3c0x830xec0xae0x4f0x5a0x200xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x555555776b40
+address max offset: 8
+Memory content after  bitflip:0x3c0x830xec0xa60x4f0x5a0x200xc0
+frame name: train
+symbol name: bestT
+symbol filename: lreg.cpp
+symbol line: 133
+value: std::vector of length 4, capacity 4 = {-8.1763889468871795, -518.10427946092477, 3.1446079669541867, 5.112144963502149}
+value address: 0x7fffffffd740
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-05 17:25:35]
+Fault Injection Successful after 7.19979453086853s
+[INFO -- 2018-10-05 17:26:11]
+event type: exit
+[INFO -- 2018-10-05 17:26:11]
+exit code: 0

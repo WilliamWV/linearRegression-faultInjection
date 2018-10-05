@@ -1,0 +1,55 @@
+[INFO -- 2018-10-05 18:29:31]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-05 18:29:31]
+Initialization strings:
+[INFO -- 2018-10-05 18:29:31]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-05 18:29:31]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-05 18:29:31]
+initSignal:0
+[INFO -- 2018-10-05 18:29:31]
+endSignal:30
+[INFO -- 2018-10-05 18:29:31]
+faultModel:0
+[INFO -- 2018-10-05 18:29:53]
+Backtrace BEGIN:
+#0  0x0000555555555402 in meanSquaredError () at lreg.cpp:79
+#1  0x0000555555555765 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:139
+#2  0x0000555555555acb in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput") at lreg.cpp:173
+#3  0x0000555555555e60 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:222
+
+74		Calculates the mean squared error of T
+75	*/
+76	double meanSquaredError(){
+77		double error = 0;
+78		for(unsigned int i = 0; i<x.size(); i++){
+79			error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
+80		}
+81		error /= x.size();
+82		return error;
+83	
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x100xe20xff0xff0xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7d8
+address max offset: 8
+Memory content after  bitflip:0x100xe20xff0xff0xff0x7f0x000x20
+frame name: lreg
+symbol name: input
+symbol filename: lreg.cpp
+symbol line: 151
+value: 0x7fffffffe210 "/tmp/lreg/randInput"
+value address: 0x7fffffffd7d8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-05 18:29:53]
+Fault Injection Successful after 22.115846872329712s
+[INFO -- 2018-10-05 18:30:13]
+event type: exit
+[INFO -- 2018-10-05 18:30:13]
+exit code: 0

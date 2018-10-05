@@ -1,0 +1,57 @@
+[INFO -- 2018-10-05 19:07:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-05 19:07:55]
+Initialization strings:
+[INFO -- 2018-10-05 19:07:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-05 19:07:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-05 19:07:55]
+initSignal:0
+[INFO -- 2018-10-05 19:07:55]
+endSignal:30
+[INFO -- 2018-10-05 19:07:55]
+faultModel:2
+[INFO -- 2018-10-05 19:07:59]
+Backtrace BEGIN:
+#0  0x0000555555557717 in std::pow<double, unsigned int> (__x=21, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x0000555555555306 in predict (v=21) at lreg.cpp:68
+#2  0x00005555555554bb in partialDerivate (pos=2) at lreg.cpp:92
+#3  0x00005555555555bb in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:105
+#4  0x0000555555555760 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:138
+#5  0x0000555555555acb in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput") at lreg.cpp:173
+#6  0x0000555555555e26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:220
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Memory content before bitflip:0xa40x030x100x700x090x6c0xb00x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd718
+address max offset: 8
+Memory content after  bitflip:0x710xac0xaa0xfc0xe50xb90xee0x31
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 135
+value: 3.5615525728026281e-68
+value address: 0x7fffffffd718
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-05 19:07:59]
+Fault Injection Successful after 4.261572599411011s
+[INFO -- 2018-10-05 19:08:37]
+event type: exit
+[INFO -- 2018-10-05 19:08:37]
+exit code: 0

@@ -1,0 +1,65 @@
+[INFO -- 2018-10-05 18:31:01]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-05 18:31:01]
+Initialization strings:
+[INFO -- 2018-10-05 18:31:01]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-05 18:31:01]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-05 18:31:01]
+initSignal:0
+[INFO -- 2018-10-05 18:31:01]
+endSignal:30
+[INFO -- 2018-10-05 18:31:01]
+faultModel:2
+[EXCEPTION -- 2018-10-05 18:31:09]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-05 18:31:09]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd760, __n=140737488344743) at /usr/include/c++/7/bits/stl_vector.h:185
+#1  0x0000555555558227 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd760, __n=2, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#2  0x0000555555557965 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd760, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x00005555555557df in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:144
+#4  0x0000555555555acb in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput") at lreg.cpp:173
+#5  0x0000555555555e43 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:221
+
+180		  _Tr::deallocate(_M_impl, __p, __n);
+181	      }
+182	
+183	    private:
+184	      void
+185	      _M_create_storage(size_t __n)
+186	      {
+187		this->_M_impl._M_start = this->_M_allocate(__n);
+188		this->_M_impl._M_finish = this->_M_impl._M_start;
+189		this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x800x680x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555761148 
+address max offset: 8
+Memory content after  bitflip:0xb10x180xb40xd10x950xd40x4a0x8e
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 50
+value: std::vector of length -1024199582138526157, capacity 64 = {-16, 0, 9, -7, -16, 5, 11, -2, 15, -2, 22, -21, -4, -19, 13, -12, -22, 14, 14, 21, 24, -5, 21, 17, 27, -10, -20, 27, -14, -32, 17, -28, -6, -8, -18, 27, -16, 0, 9, -7, -16, 5, 11, -2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.6136072665001942e-321, 33, 1, -17, 15, 33, -9, -21, 5, -494, -1, -1033, -818, -19, -664, -376, -251, -901, -433, -433, -944, 69117, -628, 46302, 24562, 98412, -5003, -40003, 98412, -13723, -163843, 24562, -109763, -1083, -2563, -29163, 98412, 33, 1, -17, 15, 33, -9, -21, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, 4.6355706489251378e-310, -657.6321221668868, 3.5781038908522569, 5.3251154726368881, 0, 2.4209216646221081e-322, 4.6355706489275093e-310, -657.62643970204545, 3.578960068632421, 5.2748259440226626, 0, 2.4209216646221081e-322, 0, -657.6321221668868, 3.5781038908522569, 5.3251154726368881, 0, 5.5829417980060859e-322, 4.6355706488160481e-310, 4.6355706488176291e-310, 4.6355706488176291e-310, 4.6355706488626879e-310, 4.6355706488650594e-310, 4.6355706488650594e-310, 4.635570648793914e-310, 4.635570648797076e-310, 4.635570648797076e-310, 0, 0, 0, 0, 8.7449619313900638e-322, 4.6355706488113051e-310, 0, 4.6355706488113051e-310, 1.9762625833649862e-323, 4.6355706488117003e-310, 4.6355706488144671e-310, 0, 4.6355706488144671e-310, 2.9643938750474793e-323, 4.6355706488148623e-310, 4.6355706488563639e-310, 0, 4.6355706488563639e-310, 3.9525251667299724e-323, 4.6355706488567591e-310, 0, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 0, 1783.7060391214452, 0, 2.4664251106040869e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x555555761140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-05 18:31:09]
+Fault Injection Successful after 8.792764902114868s
+[INFO -- 2018-10-05 18:31:10]
+event type: exit
+[EXCEPTION -- 2018-10-05 18:31:10]
+exit code: no exit code available

@@ -1,0 +1,45 @@
+[INFO -- 2018-10-05 18:54:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-05 18:54:47]
+Initialization strings:
+[INFO -- 2018-10-05 18:54:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-05 18:54:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-05 18:54:47]
+initSignal:0
+[INFO -- 2018-10-05 18:54:47]
+endSignal:30
+[INFO -- 2018-10-05 18:54:47]
+faultModel:2
+[INFO -- 2018-10-05 18:54:54]
+Backtrace BEGIN:
+#0  0x00007ffff76b7b20 in __pow (x=27, y=0) at w_pow_compat.c:31
+#1  0x0000555555557754 in std::pow<double, unsigned int> (__x=27, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555306 in predict (v=27) at lreg.cpp:68
+#3  0x0000555555555384 in meanSquaredError () at lreg.cpp:79
+#4  0x0000555555555765 in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:139
+#5  0x0000555555555acb in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput") at lreg.cpp:173
+#6  0x0000555555555e43 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:221
+
+26	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffe210 
+address max offset: 1
+Memory content after  bitflip:0x81
+frame name: lreg
+symbol name: input
+symbol filename: lreg.cpp
+symbol line: 151
+value: 0x7fffffffe210 "\201tmp/lreg/randInput"
+value address: 0x7fffffffd7d8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-05 18:54:54]
+Fault Injection Successful after 7.593443155288696s

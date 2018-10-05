@@ -1,0 +1,53 @@
+[INFO -- 2018-10-05 19:16:44]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-05 19:16:44]
+Initialization strings:
+[INFO -- 2018-10-05 19:16:44]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-05 19:16:44]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-05 19:16:44]
+initSignal:0
+[INFO -- 2018-10-05 19:16:44]
+endSignal:30
+[INFO -- 2018-10-05 19:16:44]
+faultModel:2
+[EXCEPTION -- 2018-10-05 19:16:50]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-05 19:16:50]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=6, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:110
+#1  0x00007ffff76d66be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#2  0x00007ffff76b7b14 in __pow (x=-6, y=3) at w_pow_compat.c:30
+#3  0x0000555555557754 in std::pow<double, unsigned int> (__x=-6, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x0000555555555306 in predict (v=-6) at lreg.cpp:68
+#5  0x00005555555554bb in partialDerivate (pos=1) at lreg.cpp:92
+#6  0x00005555555555bb in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:105
+#7  0x0000555555555760 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:138
+#8  0x0000555555555acb in lreg (input=0x7fffffffe210 "/tmp/lreg/randInput") at lreg.cpp:173
+#9  0x0000555555555e26 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:220
+
+105	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Memory content before bitflip:0xf80xe20xd20x1a0x8d0xce0x3d0x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd668
+address max offset: 8
+Memory content after  bitflip:0x3f0x830xe30x5f0xfc0xf00xff0x4f
+frame name: partialDerivate
+symbol name: pD
+symbol filename: lreg.cpp
+symbol line: 90
+value: 2.3115973482979643e+77
+value address: 0x7fffffffd668
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-05 19:16:50]
+Fault Injection Successful after 6.296833038330078s
+[INFO -- 2018-10-05 19:17:02]
+event type: exit
+[EXCEPTION -- 2018-10-05 19:17:02]
+exit code: no exit code available
