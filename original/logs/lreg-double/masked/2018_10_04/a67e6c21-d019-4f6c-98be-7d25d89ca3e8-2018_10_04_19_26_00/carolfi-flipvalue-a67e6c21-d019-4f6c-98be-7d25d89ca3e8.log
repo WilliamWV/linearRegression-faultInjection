@@ -1,0 +1,63 @@
+[INFO -- 2018-10-04 19:25:52]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-04 19:25:52]
+Initialization strings:
+[INFO -- 2018-10-04 19:25:52]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-04 19:25:52]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-04 19:25:52]
+initSignal:0
+[INFO -- 2018-10-04 19:25:52]
+endSignal:10
+[INFO -- 2018-10-04 19:25:52]
+faultModel:1
+[EXCEPTION -- 2018-10-04 19:25:52]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-10-04 19:25:57]
+Backtrace BEGIN:
+#0  0x0000555555555452 in partialDerivate (pos=3) at lreg.cpp:76
+#1  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#2  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+79	
+80	/**
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x3d0x40
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771970
+address max offset: 8
+Memory content after  bitflip:0x000x000x060x000x000x000x3d0x40
+frame name: train
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 36, capacity 64 = {29.000000001396984, 9, -11, -13, -13, 21, 1, 23, -15, 33, 53, 33, -7, -15, -79, -23, -27, -47, -23, 61, 90597, -30909, 80037, 111, -121719, -2299, 9633, 297, -17433, -2299, 70331, -11079, -873, 114423, -69, 617}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-04 19:25:57]
+Fault Injection Successful after 5.632398843765259s
+[INFO -- 2018-10-04 19:25:59]
+event type: exit
+[INFO -- 2018-10-04 19:25:59]
+exit code: 0

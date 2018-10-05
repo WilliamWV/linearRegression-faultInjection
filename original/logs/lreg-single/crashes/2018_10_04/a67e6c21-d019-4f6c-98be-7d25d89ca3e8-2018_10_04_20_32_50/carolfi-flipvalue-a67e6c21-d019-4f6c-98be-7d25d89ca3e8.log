@@ -1,0 +1,63 @@
+[INFO -- 2018-10-04 20:32:44]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-04 20:32:44]
+Initialization strings:
+[INFO -- 2018-10-04 20:32:44]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-04 20:32:44]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-04 20:32:44]
+initSignal:0
+[INFO -- 2018-10-04 20:32:44]
+endSignal:10
+[INFO -- 2018-10-04 20:32:44]
+faultModel:0
+[EXCEPTION -- 2018-10-04 20:32:47]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-10-04 20:32:47]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-10-04 20:32:49]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-10-04 20:32:49]
+gdbException: Cannot access memory at address 0x5555d5771380
+[INFO -- 2018-10-04 20:32:49]
+Backtrace BEGIN:
+#0  0x00005555555551c7 in predict (v=-13) at lreg.cpp:50
+#1  0x00005555555553ac in partialDerivate (pos=2) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Memory content before bitflip:0x180x530x310x870x070xd00xaa0xc8
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0x180x530x310x870x050xd00xaa0xc8
+frame name: partialDerivate
+symbol name: pD
+symbol filename: lreg.cpp
+symbol line: 72
+value: -1.1678527573228989e+42
+value address: 0x7fffffffd788
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-04 20:32:49]
+Fault Injection Successful after 5.894318580627441s
+[INFO -- 2018-10-04 20:32:50]
+event type: exit
+[EXCEPTION -- 2018-10-04 20:32:50]
+exit code: no exit code available

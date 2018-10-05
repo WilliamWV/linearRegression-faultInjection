@@ -1,0 +1,60 @@
+[INFO -- 2018-10-04 19:02:28]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-04 19:02:28]
+Initialization strings:
+[INFO -- 2018-10-04 19:02:28]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-04 19:02:28]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-04 19:02:28]
+initSignal:0
+[INFO -- 2018-10-04 19:02:28]
+endSignal:10
+[INFO -- 2018-10-04 19:02:28]
+faultModel:2
+[INFO -- 2018-10-04 19:02:30]
+Backtrace BEGIN:
+#0  0x0000555555555d00 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a160 <y>, __n=15) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x00005555555553eb in partialDerivate (pos=1) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x160x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a160 
+address max offset: 8
+Memory content after  bitflip:0x210x1c0x530x7d0xb00xce0xfd0x2a
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x55555575a160 <y>
+value address: 0x7fffffffd748
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-04 19:02:30]
+Fault Injection Successful after 2.4123332500457764s
+[INFO -- 2018-10-04 19:02:30]
+event type: exit
+[EXCEPTION -- 2018-10-04 19:02:30]
+exit code: no exit code available

@@ -1,0 +1,57 @@
+[INFO -- 2018-10-04 20:19:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-04 20:19:47]
+Initialization strings:
+[INFO -- 2018-10-04 20:19:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-04 20:19:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-04 20:19:47]
+initSignal:0
+[INFO -- 2018-10-04 20:19:47]
+endSignal:10
+[INFO -- 2018-10-04 20:19:47]
+faultModel:0
+[INFO -- 2018-10-04 20:19:50]
+Backtrace BEGIN:
+#0  0x0000555555555d13 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a140 <x>, __n=10) at /usr/include/c++/7/bits/stl_vector.h:798
+#1  0x00005555555553eb in partialDerivate (pos=0) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffe1fc 
+address max offset: 1
+Memory content after  bitflip:0x27
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 144
+value: 0x7fffffffde58
+value address: 0x7fffffffd900
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-04 20:19:50]
+Fault Injection Successful after 3.292081117630005s
+[INFO -- 2018-10-04 20:19:54]
+event type: exit
+[INFO -- 2018-10-04 20:19:54]
+exit code: 0

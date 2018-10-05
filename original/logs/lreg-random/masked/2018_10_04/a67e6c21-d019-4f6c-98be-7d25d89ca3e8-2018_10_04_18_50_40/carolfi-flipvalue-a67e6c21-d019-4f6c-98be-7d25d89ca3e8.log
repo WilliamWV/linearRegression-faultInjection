@@ -1,0 +1,58 @@
+[INFO -- 2018-10-04 18:50:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-04 18:50:32]
+Initialization strings:
+[INFO -- 2018-10-04 18:50:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-04 18:50:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-04 18:50:32]
+initSignal:0
+[INFO -- 2018-10-04 18:50:32]
+endSignal:10
+[INFO -- 2018-10-04 18:50:32]
+faultModel:2
+[INFO -- 2018-10-04 18:50:36]
+Backtrace BEGIN:
+#0  0x00007ffff76b4990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76b7b14 in __pow (x=1, y=2) at w_pow_compat.c:30
+#2  0x0000555555555d47 in std::pow<double, int> (__x=1, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=1) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+130		T = bestT;
+131	}
+132	
+133	/*
+134	It must receive an input file formated as follows:
+135		1° Line : one integer T -> number of test cases
+136		2° to 5° repeat to all test case	
+137		2° Line : method parameters -> alpha, iterations, N, size of 
+138			      training set, predictions
+139		3° Line : inputs x of the training set
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000xf00x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd6c0
+address max offset: 8
+Memory content after  bitflip:0x6f0x140x360xf20xab0x270x460xbc
+frame name: __pow
+symbol name: x
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: -2.4020463829625739e-18
+value address: 0x7fffffffd6c0
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-04 18:50:36]
+Fault Injection Successful after 4.384077787399292s
+[INFO -- 2018-10-04 18:50:39]
+event type: exit
+[INFO -- 2018-10-04 18:50:39]
+exit code: 0

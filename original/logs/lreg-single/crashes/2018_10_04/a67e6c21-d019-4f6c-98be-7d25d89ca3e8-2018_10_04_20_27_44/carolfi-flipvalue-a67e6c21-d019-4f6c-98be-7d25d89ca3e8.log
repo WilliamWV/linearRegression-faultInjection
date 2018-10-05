@@ -1,0 +1,55 @@
+[INFO -- 2018-10-04 20:27:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-04 20:27:42]
+Initialization strings:
+[INFO -- 2018-10-04 20:27:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-04 20:27:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-04 20:27:42]
+initSignal:0
+[INFO -- 2018-10-04 20:27:42]
+endSignal:10
+[INFO -- 2018-10-04 20:27:42]
+faultModel:0
+[INFO -- 2018-10-04 20:27:43]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_M_get_Tp_allocator (this=0x7fffffffd880) at /usr/include/c++/7/bits/stl_vector.h:116
+#1  0x0000555555555f35 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd880, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:333
+#2  0x00005555555556db in train (iterations=30000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+111	    public:
+112	      typedef _Alloc allocator_type;
+113	
+114	      _Tp_alloc_type&
+115	      _M_get_Tp_allocator() _GLIBCXX_NOEXCEPT
+116	      { return *static_cast<_Tp_alloc_type*>(&this->_M_impl); }
+117	
+118	      const _Tp_alloc_type&
+119	      _M_get_Tp_allocator() const _GLIBCXX_NOEXCEPT
+120	      { return *static_cast<const _Tp_alloc_type*>(&this->_M_impl); }
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x800xd80xff0xff0xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7b8
+address max offset: 8
+Memory content after  bitflip:0x800xd80xff0x7f0xff0x7f0x000x00
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd880
+value address: 0x7fffffffd7b8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-04 20:27:43]
+Fault Injection Successful after 1.3756911754608154s
+[INFO -- 2018-10-04 20:27:43]
+event type: exit
+[EXCEPTION -- 2018-10-04 20:27:43]
+exit code: no exit code available

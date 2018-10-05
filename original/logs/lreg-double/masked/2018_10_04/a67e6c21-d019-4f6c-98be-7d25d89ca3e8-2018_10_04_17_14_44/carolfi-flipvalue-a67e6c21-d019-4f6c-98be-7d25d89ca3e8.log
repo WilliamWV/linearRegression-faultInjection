@@ -1,0 +1,55 @@
+[INFO -- 2018-10-04 17:14:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-04 17:14:36]
+Initialization strings:
+[INFO -- 2018-10-04 17:14:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-04 17:14:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-04 17:14:36]
+initSignal:0
+[INFO -- 2018-10-04 17:14:36]
+endSignal:10
+[INFO -- 2018-10-04 17:14:36]
+faultModel:1
+[INFO -- 2018-10-04 17:14:37]
+Backtrace BEGIN:
+#0  0x0000555555556dca in std::_Destroy<double*> (__first=0x7fffffffd8a0, __last=0x0) at /usr/include/c++/7/bits/stl_construct.h:127
+#1  0x00005555555564eb in std::_Destroy<double*, double> (__first=0x555555771490, __last=0x5555557714a8) at /usr/include/c++/7/bits/stl_construct.h:206
+#2  0x0000555555555e2f in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd880, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:434
+#3  0x0000555555555720 in train (iterations=60000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+122	   * a trivial destructor, the compiler should optimize all of this
+123	   * away, otherwise the objects' destructors must be invoked.
+124	   */
+125	  template<typename _ForwardIterator>
+126	    inline void
+127	    _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+128	    {
+129	      typedef typename iterator_traits<_ForwardIterator>::value_type
+130	                       _Value_type;
+131	#if __cplusplus >= 201103L
+
+Backtrace END
+Memory content before bitflip:0x030x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd90c
+address max offset: 4
+Memory content after  bitflip:0x030x440x000x00
+frame name: main
+symbol name: argc
+symbol filename: lreg.cpp
+symbol line: 144
+value: 17411
+value address: 0x7fffffffd90c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-04 17:14:37]
+Fault Injection Successful after 1.2995078563690186s
+[INFO -- 2018-10-04 17:14:43]
+event type: exit
+[INFO -- 2018-10-04 17:14:43]
+exit code: 0

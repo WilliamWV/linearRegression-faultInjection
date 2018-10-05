@@ -1,0 +1,53 @@
+[INFO -- 2018-10-04 19:43:50]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-04 19:43:50]
+Initialization strings:
+[INFO -- 2018-10-04 19:43:50]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-04 19:43:50]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-04 19:43:50]
+initSignal:0
+[INFO -- 2018-10-04 19:43:50]
+endSignal:10
+[INFO -- 2018-10-04 19:43:50]
+faultModel:0
+[INFO -- 2018-10-04 19:43:52]
+Backtrace BEGIN:
+#0  malloc (n=10) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  0x00007ffff6f18a10 in _int_free (have_lock=0, p=0x555555771c00, av=0x7ffff726cc40 <main_arena>) at malloc.c:4170
+#3  __GI___libc_free (mem=0x555555771c10) at malloc.c:3124
+#4  0x0000555555557538 in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd880, __p=0x555555771c10) at /usr/include/c++/7/ext/new_allocator.h:125
+#5  0x0000555555556ffe in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555771c10, __n=4) at /usr/include/c++/7/bits/alloc_traits.h:462
+#6  0x0000555555556752 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd880, __p=0x555555771c10, __n=4) at /usr/include/c++/7/bits/stl_vector.h:180
+#7  0x00005555555563e9 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd880, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#8  0x0000555555555e3b in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd880, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#9  0x0000555555555720 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#10 0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+45	dl-minimal.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x100x1c0x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7a0
+address max offset: 8
+Memory content after  bitflip:0x100x1e0x770x550x550x550x000x00
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_deallocate
+symbol name: __p
+symbol filename: /usr/include/c++/7/bits/stl_vector.h
+symbol line: 176
+value: 0x555555771c10
+value address: 0x7fffffffd7a0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-04 19:43:52]
+Fault Injection Successful after 2.7793924808502197s
+[INFO -- 2018-10-04 19:43:57]
+event type: exit
+[INFO -- 2018-10-04 19:43:57]
+exit code: 0

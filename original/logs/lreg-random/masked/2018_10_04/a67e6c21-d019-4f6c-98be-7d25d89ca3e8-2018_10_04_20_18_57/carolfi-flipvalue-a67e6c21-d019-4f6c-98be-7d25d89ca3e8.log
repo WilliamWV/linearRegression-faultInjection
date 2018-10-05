@@ -1,0 +1,61 @@
+[INFO -- 2018-10-04 20:18:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-04 20:18:49]
+Initialization strings:
+[INFO -- 2018-10-04 20:18:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-04 20:18:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-04 20:18:49]
+initSignal:0
+[INFO -- 2018-10-04 20:18:49]
+endSignal:10
+[INFO -- 2018-10-04 20:18:49]
+faultModel:2
+[INFO -- 2018-10-04 20:18:53]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::size (this=0x55555575a160 <y>) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x0000555555555237 in meanSquaredError () at lreg.cpp:60
+#2  0x0000555555555661 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771ba0
+address max offset: 8
+Memory content after  bitflip:0xcf0x8c0x0b0x860xe20x630xbb0x7c
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 114
+value: std::vector of length 4, capacity 4 = {10.634958086535237, 244.67240057885778, 6.7848093595596843, -5.8525945706558007}
+value address: 0x7fffffffd840
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-04 20:18:53]
+Fault Injection Successful after 4.837853908538818s
+[INFO -- 2018-10-04 20:18:56]
+event type: exit
+[INFO -- 2018-10-04 20:18:56]
+exit code: 0

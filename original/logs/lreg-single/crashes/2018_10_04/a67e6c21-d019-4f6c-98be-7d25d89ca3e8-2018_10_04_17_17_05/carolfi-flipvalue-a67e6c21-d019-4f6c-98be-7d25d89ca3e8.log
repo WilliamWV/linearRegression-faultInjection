@@ -1,0 +1,58 @@
+[INFO -- 2018-10-04 17:16:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-04 17:16:59]
+Initialization strings:
+[INFO -- 2018-10-04 17:16:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-04 17:16:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-04 17:16:59]
+initSignal:0
+[INFO -- 2018-10-04 17:16:59]
+endSignal:10
+[INFO -- 2018-10-04 17:16:59]
+faultModel:0
+[EXCEPTION -- 2018-10-04 17:17:02]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-10-04 17:17:03]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-04 17:17:04]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec1801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0a897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff7037b9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1190a in malloc_printerr (str=str@entry=0x7ffff70397a8 "munmap_chunk(): invalid pointer") at malloc.c:5350
+#4  0x00007ffff6f18ecc in munmap_chunk (p=0x555555771380) at malloc.c:2846
+#5  __GI___libc_free (mem=0x555555771390) at malloc.c:3117
+#6  0x0000555555557538 in __gnu_cxx::new_allocator<double>::deallocate (this=0x55555575a180 <T>, __p=0x555555771390) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x0000555555556ffe in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555771390, __n=2) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x0000555555556752 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x55555575a180 <T>, __p=0x555555771390, __n=2) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x000055555555619e in std::vector<double, std::allocator<double> >::operator= (this=0x55555575a180 <T>, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:210
+#10 0x0000555555555755 in train (iterations=90000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:130
+#11 0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x400xcc0x260xf70xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff7fd96e0
+address max offset: 8
+Memory content after  bitflip:0x400xcc0x260x770xff0x7f0x000x00
+frame name: malloc_printerr
+symbol name: thread_arena
+symbol filename: arena.c
+symbol line: 74
+value: 0x7ffff726cc40 <main_arena>
+value address: 0x7ffff7fd96e0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-04 17:17:04]
+Fault Injection Successful after 5.135343074798584s
+[INFO -- 2018-10-04 17:17:04]
+event type: exit
+[EXCEPTION -- 2018-10-04 17:17:04]
+exit code: no exit code available
