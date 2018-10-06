@@ -1,0 +1,55 @@
+[INFO -- 2018-10-06 14:51:34]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 14:51:34]
+Initialization strings:
+[INFO -- 2018-10-06 14:51:34]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 14:51:34]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 14:51:34]
+initSignal:0
+[INFO -- 2018-10-06 14:51:34]
+endSignal:10
+[INFO -- 2018-10-06 14:51:34]
+faultModel:0
+[INFO -- 2018-10-06 14:51:39]
+Backtrace BEGIN:
+#0  0x00005555555552cc in predict (v=-11) at lreg.cpp:77
+#1  0x000055555555551d in partialDerivate (pos=1) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+79		return val;
+80		
+81	}
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7cc
+address max offset: 4
+Memory content after  bitflip:0x010x000x040x00
+frame name: adjust
+symbol name: i1
+symbol filename: lreg.cpp
+symbol line: 119
+value: 262145
+value address: 0x7fffffffd7cc
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-06 14:51:39]
+Fault Injection Successful after 5.704660892486572s
+[INFO -- 2018-10-06 14:51:43]
+event type: exit
+[INFO -- 2018-10-06 14:51:43]
+exit code: 0

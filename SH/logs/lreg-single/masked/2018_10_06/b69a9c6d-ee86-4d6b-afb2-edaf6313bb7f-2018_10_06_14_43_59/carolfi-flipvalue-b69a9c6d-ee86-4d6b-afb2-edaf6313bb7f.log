@@ -1,0 +1,67 @@
+[INFO -- 2018-10-06 14:43:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 14:43:48]
+Initialization strings:
+[INFO -- 2018-10-06 14:43:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 14:43:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 14:43:48]
+initSignal:0
+[INFO -- 2018-10-06 14:43:48]
+endSignal:10
+[INFO -- 2018-10-06 14:43:48]
+faultModel:0
+[EXCEPTION -- 2018-10-06 14:43:53]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-06 14:43:53]
+Backtrace BEGIN:
+#0  0x00007ffff76b4990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76b7b14 in __pow (x=-2, y=2) at w_pow_compat.c:30
+#2  0x00005555555560ba in std::pow<double, unsigned int> (__x=-2, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x00005555555552c2 in predict (v=-2) at lreg.cpp:77
+#4  0x000055555555551d in partialDerivate (pos=2) at lreg.cpp:107
+#5  0x0000555555555670 in adjust () at lreg.cpp:123
+#6  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+179		4° Line : values y of the training set
+180		5° Line : set z of new inputs to predict*/
+181	
+182	
+183	int main(int argc, char* argv[]){
+184		
+185		if (argc != 3) {
+186			cout << "Wrong number of arguments" <<endl;
+187			cout <<"  Use as : " << endl; 
+188			cout <<'\t'<<argv[0]<<" <input file> "<<"<output file>"<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771bd0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x010x000x000x000x00
+frame name: train
+symbol name: bestT
+symbol filename: lreg.cpp
+symbol line: 151
+value: std::vector of length 4, capacity 4 = {-28.185495596574224, 97.57842004779404, 0.46723896964472389, -2.0646918412629907}
+value address: 0x7fffffffd850
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-06 14:43:53]
+Fault Injection Successful after 5.641458034515381s
+[INFO -- 2018-10-06 14:43:58]
+event type: exit
+[INFO -- 2018-10-06 14:43:58]
+exit code: 0

@@ -1,0 +1,64 @@
+[INFO -- 2018-10-06 15:05:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 15:05:49]
+Initialization strings:
+[INFO -- 2018-10-06 15:05:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 15:05:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 15:05:49]
+initSignal:0
+[INFO -- 2018-10-06 15:05:49]
+endSignal:10
+[INFO -- 2018-10-06 15:05:49]
+faultModel:0
+[INFO -- 2018-10-06 15:05:52]
+Backtrace BEGIN:
+#0  0x0000555555554e90 in pow@plt ()
+#1  0x00005555555560ba in std::pow<double, unsigned int> (__x=-20, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x00005555555552c2 in predict (v=-20) at lreg.cpp:77
+#3  0x000055555555551d in partialDerivate (pos=2) at lreg.cpp:107
+#4  0x0000555555555670 in adjust () at lreg.cpp:123
+#5  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#6  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+169		T = bestT;
+170	}
+171	
+172	/*
+173	It must receive an input file formated as follows:
+174		1° Line : one integer T -> number of test cases
+175		2° to 5° repeat to all test case	
+176		2° Line : method parameters -> alpha, iterations, N, size of 
+177			      training set, predictions
+178		3° Line : inputs x of the training set
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x190x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a160 
+address max offset: 8
+Memory content after  bitflip:0x600x190x770x550x550x550x000x00
+frame name: main
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 42
+value: std::vector of length 38, capacity 66 = {0, 2.6136072665001942e-321, -12, -16, -4, -22, 2, -24, -22, -4, -46, 18, -16, 42, -42, 28, -6, 36, -14, -24, -38, 46, -25882, -55954, -9130, -4534, -794, 13190, 218, -16084, -5834, -5834, 29390, -11162, -16084, -10, 218, 55240}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-06 15:05:52]
+Fault Injection Successful after 3.433412790298462s
+[INFO -- 2018-10-06 15:05:59]
+event type: exit
+[EXCEPTION -- 2018-10-06 15:05:59]
+exit code: no exit code available

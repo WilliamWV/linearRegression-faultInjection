@@ -1,0 +1,57 @@
+[INFO -- 2018-10-06 17:35:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 17:35:59]
+Initialization strings:
+[INFO -- 2018-10-06 17:35:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 17:35:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 17:35:59]
+initSignal:0
+[INFO -- 2018-10-06 17:35:59]
+endSignal:10
+[INFO -- 2018-10-06 17:35:59]
+faultModel:2
+[EXCEPTION -- 2018-10-06 17:36:00]
+gdbException: Cannot access memory at address 0x9a02355950a5be6c
+[INFO -- 2018-10-06 17:36:01]
+Backtrace BEGIN:
+#0  0x00007ffff76b7bb4 in __pow (x=0, y=2) at w_pow_compat.c:56
+#1  0x00005555555560ba in std::pow<double, unsigned int> (__x=0, __y=2) at /usr/include/c++/7/cmath:418
+#2  0x00005555555552c2 in predict (v=0) at lreg.cpp:77
+#3  0x000055555555551d in partialDerivate (pos=2) at lreg.cpp:107
+#4  0x0000555555555670 in adjust () at lreg.cpp:123
+#5  0x0000555555555881 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:159
+#6  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+51	in w_pow_compat.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x860xb40x150x460x200x390xdf0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771360
+address max offset: 8
+Memory content after  bitflip:0xcf0xbc0x4c0x2d0x4e0x7a0x0f0xfd
+frame name: partialDerivate
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 3, capacity 3 = {-2.5129829220919793e+294, 1.9771380373182559, -0.0051804977529671618}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-06 17:36:01]
+Fault Injection Successful after 2.03802752494812s
+[INFO -- 2018-10-06 17:36:01]
+event type: exit
+[EXCEPTION -- 2018-10-06 17:36:01]
+exit code: no exit code available

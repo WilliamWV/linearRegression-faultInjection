@@ -1,0 +1,58 @@
+[INFO -- 2018-10-06 16:59:57]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 16:59:57]
+Initialization strings:
+[INFO -- 2018-10-06 16:59:57]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 16:59:57]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 16:59:57]
+initSignal:0
+[INFO -- 2018-10-06 16:59:57]
+endSignal:10
+[INFO -- 2018-10-06 16:59:57]
+faultModel:1
+[INFO -- 2018-10-06 17:00:02]
+Backtrace BEGIN:
+#0  0x00007ffff76d570f in log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=15) at ../sysdeps/ieee754/dbl-64/e_pow.c:284
+#1  __ieee754_pow_sse2 (x=15, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76b7b14 in __pow (x=15, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=15, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555552c2 in predict (v=15) at lreg.cpp:77
+#5  0x000055555555551d in partialDerivate (pos=3) at lreg.cpp:107
+#6  0x0000555555555670 in adjust () at lreg.cpp:123
+#7  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#8  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+279	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0x000x000x000x80
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779a5e4 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x40
+frame name: __ieee754_pow_sse2
+symbol name: nZERO
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 47
+value: {i = {0, 1073741824}, x = 2}
+value address: 0x7ffff779a5e0 <nZERO>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-06 17:00:02]
+Fault Injection Successful after 5.403109073638916s
+[INFO -- 2018-10-06 17:00:06]
+event type: exit
+[INFO -- 2018-10-06 17:00:06]
+exit code: 0

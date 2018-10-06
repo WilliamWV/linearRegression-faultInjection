@@ -1,0 +1,61 @@
+[INFO -- 2018-10-06 18:07:30]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 18:07:30]
+Initialization strings:
+[INFO -- 2018-10-06 18:07:30]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 18:07:30]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 18:07:30]
+initSignal:0
+[INFO -- 2018-10-06 18:07:30]
+endSignal:10
+[INFO -- 2018-10-06 18:07:30]
+faultModel:0
+[INFO -- 2018-10-06 18:07:33]
+Backtrace BEGIN:
+#0  0x00005555555555bb in partialDerivate (pos=2) at lreg.cpp:109
+#1  0x0000555555555670 in adjust () at lreg.cpp:123
+#2  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+104			selectTriUInt(i1, i2, i3)<x.size(); 
+105			i1++, i2++, i3++)
+106		{
+107			pD += ((predict(x[selectTriUInt(i1, i2, i3)]) - y[selectTriUInt(i1, i2, i3)])*pow(x[selectTriUInt(i1, i2, i3)], pos));	
+108		}
+109		pD *= (2.0/x.size());
+110		return pD;
+111	}
+112	
+113	/**
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x1c0xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771760
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x080x000x000x1c0xc0
+frame name: partialDerivate
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 41
+value: std::vector of length 36, capacity 64 = {-7.0000001192092896, -9, -3, -12, 0, -13, -12, -3, -22, 10, -7, 22, -20, 15, -2, 19, -6, -11, -18, 24, 20, 26, 14, 11, 6, -17, -5, 17, 12, 12, -22, 15, 17, -1, -5, -27}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-06 18:07:33]
+Fault Injection Successful after 3.446934223175049s
+[INFO -- 2018-10-06 18:07:40]
+event type: exit
+[INFO -- 2018-10-06 18:07:40]
+exit code: 0

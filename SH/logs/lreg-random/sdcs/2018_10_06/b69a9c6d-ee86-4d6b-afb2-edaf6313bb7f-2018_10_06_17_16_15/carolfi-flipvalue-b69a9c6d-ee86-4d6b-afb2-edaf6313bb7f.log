@@ -1,0 +1,53 @@
+[INFO -- 2018-10-06 17:16:04]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 17:16:04]
+Initialization strings:
+[INFO -- 2018-10-06 17:16:04]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 17:16:04]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 17:16:04]
+initSignal:0
+[INFO -- 2018-10-06 17:16:04]
+endSignal:10
+[INFO -- 2018-10-06 17:16:04]
+faultModel:2
+[INFO -- 2018-10-06 17:16:10]
+Backtrace BEGIN:
+#0  0x00005555555556dc in adjust () at lreg.cpp:125
+#1  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#2  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+120			selectTriUInt(i1, i2, i3)<T.size(); 
+121			i1++, i2++, i3++)
+122		{
+123			PD = partialDerivate(selectTriUInt(i1, i2, i3));
+124			// alpha is different from the canonical version because this works better
+125			T[selectTriUInt(i1, i2, i3)]= T[selectTriUInt(i1, i2, i3)] - ((selectTriDouble(a1, a2, a3) / (sqrt( fabs(PD) ))) * PD); 
+126		}
+127	}
+128	
+129	/**
+
+Backtrace END
+Memory content before bitflip:0xe30xf00x9a0xc90x1f0x6b0xa30xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7d8
+address max offset: 8
+Memory content after  bitflip:0x890xaf0x3c0xe90x1b0x280xfc0x67
+frame name: adjust
+symbol name: PD
+symbol filename: lreg.cpp
+symbol line: 118
+value: 8.0289476084150451e+192
+value address: 0x7fffffffd7d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-06 17:16:10]
+Fault Injection Successful after 6.46012806892395s
+[INFO -- 2018-10-06 17:16:14]
+event type: exit
+[INFO -- 2018-10-06 17:16:14]
+exit code: 0

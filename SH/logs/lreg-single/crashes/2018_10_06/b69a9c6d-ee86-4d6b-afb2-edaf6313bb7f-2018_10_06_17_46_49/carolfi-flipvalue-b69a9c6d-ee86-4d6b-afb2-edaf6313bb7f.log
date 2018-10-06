@@ -1,0 +1,58 @@
+[INFO -- 2018-10-06 17:46:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 17:46:41]
+Initialization strings:
+[INFO -- 2018-10-06 17:46:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 17:46:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 17:46:41]
+initSignal:0
+[INFO -- 2018-10-06 17:46:41]
+endSignal:10
+[INFO -- 2018-10-06 17:46:41]
+faultModel:0
+[EXCEPTION -- 2018-10-06 17:46:48]
+gdbException: Cannot access memory at address 0x40555555771970
+[EXCEPTION -- 2018-10-06 17:46:48]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-06 17:46:48]
+Backtrace BEGIN:
+#0  0x0000555555555545 in partialDerivate (pos=2) at lreg.cpp:107
+#1  0x0000555555555670 in adjust () at lreg.cpp:123
+#2  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+102		double pD = 0;
+103		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+104			selectTriUInt(i1, i2, i3)<x.size(); 
+105			i1++, i2++, i3++)
+106		{
+107			pD += ((predict(x[selectTriUInt(i1, i2, i3)]) - y[selectTriUInt(i1, i2, i3)])*pow(x[selectTriUInt(i1, i2, i3)], pos));	
+108		}
+109		pD *= (2.0/x.size());
+110		return pD;
+111	}
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a198 
+address max offset: 8
+Memory content after  bitflip:0x460x5a0xb70xf40x390x4d0xf30x3e
+frame name: adjust
+symbol name: a1
+symbol filename: lreg.cpp
+symbol line: 45
+value: 1.8407502734374999e-05
+value address: 0x55555575a198 <a1>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-06 17:46:48]
+Fault Injection Successful after 7.857482433319092s
+[INFO -- 2018-10-06 17:46:49]
+event type: exit
+[EXCEPTION -- 2018-10-06 17:46:49]
+exit code: no exit code available
