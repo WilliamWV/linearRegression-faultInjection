@@ -1,0 +1,55 @@
+[INFO -- 2018-10-05 22:27:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-05 22:27:58]
+Initialization strings:
+[INFO -- 2018-10-05 22:27:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-05 22:27:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-05 22:27:58]
+initSignal:0
+[INFO -- 2018-10-05 22:27:58]
+endSignal:10
+[INFO -- 2018-10-05 22:27:58]
+faultModel:1
+[INFO -- 2018-10-05 22:28:00]
+Backtrace BEGIN:
+#0  0x00005555555550ae in selectTriUInt (a=1076494336, b=0, c=2) at lreg.cpp:47
+#1  0x00005555555554cd in partialDerivate (pos=2) at lreg.cpp:104
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+42	vector<double> y; // observed values of training set inputs
+43	vector<double> T; // the adjustment variables
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+
+Backtrace END
+Memory content before bitflip:0x330x020x9d0xd00xa60xf00xd00x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7d8
+address max offset: 8
+Memory content after  bitflip:0x330x020x9d0xd50xa60xf00xd00x3f
+frame name: adjust
+symbol name: PD
+symbol filename: lreg.cpp
+symbol line: 118
+value: 0.26468821392703318
+value address: 0x7fffffffd7d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-05 22:28:00]
+Fault Injection Successful after 2.1564271450042725s
+[INFO -- 2018-10-05 22:28:08]
+event type: exit
+[INFO -- 2018-10-05 22:28:08]
+exit code: 0

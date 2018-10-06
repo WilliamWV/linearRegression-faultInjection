@@ -1,0 +1,24 @@
+Variable Name;Variable File;Variable Line;Fault Injection Time(s);Injection Time Interval;Fault Model
+a3;lreg.cpp;45;1.4739210605621338;0-10;Single bit-flip
+user_entry;../elf/dl-sysdep.c;91;1.2420434951782227;0-10;Single bit-flip
+_rtld_global_ro;rtld.c;259;1.0935626029968262;0-10;Single bit-flip
+prevT;lreg.cpp;150;1.9073882102966309;0-10;Single bit-flip
+a;lreg.cpp;47;1.7475757598876953;0-10;Single bit-flip
+alpha;lreg.cpp;202;3.113396644592285;0-10;Single bit-flip
+t52;../sysdeps/ieee754/dbl-64/upow.h;54;3.874434471130371;0-10;Single bit-flip
+x;lreg.cpp;41;6.067127227783203;0-10;Single bit-flip
+y;lreg.cpp;42;1.151221513748169;0-10;Single bit-flip
+prevT;lreg.cpp;150;1.995140552520752;0-10;Random bit-flip
+T;lreg.cpp;43;5.880702257156372;0-10;Random bit-flip
+temp;lreg.cpp;202;2.33020281791687;0-10;Random bit-flip
+bigu;../sysdeps/ieee754/dbl-64/upow.h;52;5.0291643142700195;0-10;Random bit-flip
+y;lreg.cpp;42;1.3479104042053223;0-10;Random bit-flip
+a3;lreg.cpp;45;4.4435765743255615;0-10;Random bit-flip
+stopsWhenStable;lreg.cpp;141;4.41138219833374;0-10;Random bit-flip
+x;lreg.cpp;41;2.360720634460449;0-10;Random bit-flip
+argc;lreg.cpp;183;3.935811996459961;0-10;Random bit-flip
+x;lreg.cpp;41;7.965561151504517;0-10;Double bit-flip
+__x;/usr/include/c++/7/cmath;415;6.346011161804199;0-10;Double bit-flip
+N;lreg.cpp;203;3.926571846008301;0-10;Double bit-flip
+y;w_pow_compat.c;28;3.6563799381256104;0-10;Double bit-flip
+T;lreg.cpp;43;3.962644338607788;0-10;Double bit-flip

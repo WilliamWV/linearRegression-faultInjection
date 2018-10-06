@@ -1,0 +1,54 @@
+[INFO -- 2018-10-05 22:18:26]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-05 22:18:26]
+Initialization strings:
+[INFO -- 2018-10-05 22:18:26]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-05 22:18:26]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-05 22:18:26]
+initSignal:0
+[INFO -- 2018-10-05 22:18:26]
+endSignal:10
+[INFO -- 2018-10-05 22:18:26]
+faultModel:2
+[INFO -- 2018-10-05 22:18:27]
+Backtrace BEGIN:
+#0  0x000055555555673e in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd870, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:163
+#1  0x00005555555561ad in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd870, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#2  0x0000555555555945 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:165
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+158	      }
+159	#endif
+160	
+161	      ~_Vector_base() _GLIBCXX_NOEXCEPT
+162	      { _M_deallocate(this->_M_impl._M_start, this->_M_impl._M_end_of_storage
+163			      - this->_M_impl._M_start); }
+164	
+165	    public:
+166	      _Vector_impl _M_impl;
+167	
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a1a0 
+address max offset: 8
+Memory content after  bitflip:0x550x590x420x3c0xa30xa90x390x19
+frame name: std::vector<double, std::allocator<double> >::~vector
+symbol name: a2
+symbol filename: lreg.cpp
+symbol line: 45
+value: 3.6862446579390697e-187
+value address: 0x55555575a1a0 <a2>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-05 22:18:27]
+Fault Injection Successful after 1.748915672302246s
+[INFO -- 2018-10-05 22:18:36]
+event type: exit
+[INFO -- 2018-10-05 22:18:36]
+exit code: 0

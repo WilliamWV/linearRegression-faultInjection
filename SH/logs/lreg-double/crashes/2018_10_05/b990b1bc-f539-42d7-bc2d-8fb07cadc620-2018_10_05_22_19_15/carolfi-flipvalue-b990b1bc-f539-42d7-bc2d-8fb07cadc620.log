@@ -1,0 +1,49 @@
+[INFO -- 2018-10-05 22:19:11]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-05 22:19:11]
+Initialization strings:
+[INFO -- 2018-10-05 22:19:11]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-05 22:19:11]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-05 22:19:11]
+initSignal:0
+[INFO -- 2018-10-05 22:19:11]
+endSignal:10
+[INFO -- 2018-10-05 22:19:11]
+faultModel:1
+[EXCEPTION -- 2018-10-05 22:19:14]
+gdbException: Cannot access memory at address 0x551155771760
+[INFO -- 2018-10-05 22:19:14]
+Backtrace BEGIN:
+#0  0x00007ffff76b7b47 in __pow (x=-7, y=3) at w_pow_compat.c:55
+#1  0x00005555555560ba in std::pow<double, unsigned int> (__x=-7, __y=3) at /usr/include/c++/7/cmath:418
+#2  0x00005555555552c2 in predict (v=-7) at lreg.cpp:77
+#3  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#4  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#5  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+50	in w_pow_compat.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x080x40
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd708
+address max offset: 8
+Memory content after  bitflip:0x000x000x600x000x000x000x080x40
+frame name: __pow
+symbol name: y
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 3.0000000027939677
+value address: 0x7fffffffd708
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-05 22:19:14]
+Fault Injection Successful after 3.6563799381256104s
+[INFO -- 2018-10-05 22:19:14]
+event type: exit
+[EXCEPTION -- 2018-10-05 22:19:14]
+exit code: no exit code available

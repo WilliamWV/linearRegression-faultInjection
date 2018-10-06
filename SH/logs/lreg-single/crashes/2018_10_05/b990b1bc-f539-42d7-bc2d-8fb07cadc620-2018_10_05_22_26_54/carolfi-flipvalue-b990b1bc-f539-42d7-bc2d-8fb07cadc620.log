@@ -1,0 +1,65 @@
+[INFO -- 2018-10-05 22:26:50]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-05 22:26:50]
+Initialization strings:
+[INFO -- 2018-10-05 22:26:50]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-05 22:26:50]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-05 22:26:50]
+initSignal:0
+[INFO -- 2018-10-05 22:26:50]
+endSignal:10
+[INFO -- 2018-10-05 22:26:50]
+faultModel:0
+[INFO -- 2018-10-05 22:26:51]
+Backtrace BEGIN:
+#0  std::__miter_base<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > > > (__it=0.40350161349801328) at /usr/include/c++/7/bits/cpp_type_traits.h:409
+#1  0x0000555555557af0 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.40350161349801328, __last=0, __result=0x555555771490) at /usr/include/c++/7/bits/stl_algobase.h:455
+#2  0x0000555555557888 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.40350161349801328, __last=0, __result=0x555555771490) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#3  0x00005555555572fe in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.40350161349801328, __last=0, __result=0x555555771490) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#4  0x0000555555556a57 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=0.40350161349801328, __last=0, __result=0x555555771490) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#5  0x00005555555562dd in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd870, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#6  0x0000555555555900 in train (iterations=30000, N=2, stopsWhenStable=true) at lreg.cpp:165
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+404	  // Fallback implementation of the function in bits/stl_iterator.h used to
+405	  // remove the move_iterator wrapper.
+406	  template<typename _Iterator>
+407	    inline _Iterator
+408	    __miter_base(_Iterator __it)
+409	    { return __it; }
+410	
+411	_GLIBCXX_END_NAMESPACE_VERSION
+412	} // namespace
+413	} // extern "C++"
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0xf00x130x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a170 
+address max offset: 8
+Memory content after  bitflip:0xf00x130x770x550x550x550x080x00
+frame name: main
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 42
+value: std::vector of length 8, capacity 281474976710664 = {1, 1, 1, 1, 1, 1, 1, 1}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-05 22:26:51]
+Fault Injection Successful after 1.151221513748169s
+[INFO -- 2018-10-05 22:26:52]
+event type: exit
+[EXCEPTION -- 2018-10-05 22:26:52]
+exit code: no exit code available
