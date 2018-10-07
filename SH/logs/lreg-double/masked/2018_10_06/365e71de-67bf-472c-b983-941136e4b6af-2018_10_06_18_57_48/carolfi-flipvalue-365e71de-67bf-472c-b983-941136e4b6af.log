@@ -1,0 +1,56 @@
+[INFO -- 2018-10-06 18:57:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 18:57:37]
+Initialization strings:
+[INFO -- 2018-10-06 18:57:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 18:57:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 18:57:37]
+initSignal:0
+[INFO -- 2018-10-06 18:57:37]
+endSignal:10
+[INFO -- 2018-10-06 18:57:37]
+faultModel:1
+[INFO -- 2018-10-06 18:57:42]
+Backtrace BEGIN:
+#0  0x00007ffff76d090f in __exp1 (x=<optimized out>, xx=<optimized out>, error=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_exp.c:265
+#1  0x00007ffff76d58dc in __ieee754_pow_sse2 (x=7, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76b7b14 in __pow (x=7, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=7, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x0000555555555590 in partialDerivate (pos=3) at lreg.cpp:107
+#5  0x0000555555555670 in adjust () at lreg.cpp:123
+#6  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+260	../sysdeps/ieee754/dbl-64/e_exp.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0xdc0x040x000x000x000x000xe00x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff778c7f8 
+address max offset: 8
+Memory content after  bitflip:0xdc0x800x000x000x000x000xe00x3f
+frame name: __exp1
+symbol name: p2
+symbol filename: ../sysdeps/ieee754/dbl-64/uexp.h
+symbol line: 61
+value: {i = {32988, 1071644672}, x = 0.5000000000036624}
+value address: 0x7ffff778c7f8 <p2>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-06 18:57:42]
+Fault Injection Successful after 5.126813173294067s
+[INFO -- 2018-10-06 18:57:47]
+event type: exit
+[INFO -- 2018-10-06 18:57:47]
+exit code: 0

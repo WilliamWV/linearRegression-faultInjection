@@ -1,0 +1,63 @@
+[INFO -- 2018-10-06 19:54:33]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 19:54:33]
+Initialization strings:
+[INFO -- 2018-10-06 19:54:33]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 19:54:33]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 19:54:33]
+initSignal:0
+[INFO -- 2018-10-06 19:54:33]
+endSignal:10
+[INFO -- 2018-10-06 19:54:33]
+faultModel:2
+[INFO -- 2018-10-06 19:54:34]
+Backtrace BEGIN:
+#0  0x00005555555550b1 in selectTriUInt (a=1, b=1433772416, c=1) at lreg.cpp:47
+#1  0x0000555555555280 in predict (v=8) at lreg.cpp:77
+#2  0x000055555555551d in partialDerivate (pos=2) at lreg.cpp:107
+#3  0x0000555555555670 in adjust () at lreg.cpp:123
+#4  0x0000555555555881 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:159
+#5  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+42	vector<double> y; // observed values of training set inputs
+43	vector<double> T; // the adjustment variables
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x780x130x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a190 
+address max offset: 8
+Memory content after  bitflip:0xdf0x3c0x990x910x0a0xe20x5e0xeb
+frame name: partialDerivate
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 3, capacity -185824514619980496 = {-4.5725383705006504, 0.053146420534251268, 1.9616159948750296}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-06 19:54:34]
+Fault Injection Successful after 1.5370807647705078s
+[INFO -- 2018-10-06 19:54:42]
+event type: exit
+[INFO -- 2018-10-06 19:54:42]
+exit code: 0

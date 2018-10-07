@@ -95,10 +95,17 @@ vector<double> updateECC(vector<double> prevECC, double newVal, UINT pos){
 	return prevECC;
 }
 
+bool match(double ecc, int pos, int val);
 // 0 -> no error
 // 1 -> error that can be corrected
 // 2 -> error that cannot be corrected
-UINT checkECC(vector<double> data, vector<double> ecc);
+UINT checkECC(vector<double> data, vector<double> ecc)
+{
+	vector<double> expectedECC = getECC(data);
+	if (equals(expectedECC, ecc)) return 0;
+	vector<bool> v (ecc.size, false);
+	for ()
+} 
 
 vector<double> correctData(vector<double> data, vector<double> ecc);
 

@@ -1,0 +1,55 @@
+[INFO -- 2018-10-06 22:25:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 22:25:53]
+Initialization strings:
+[INFO -- 2018-10-06 22:25:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 22:25:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 22:25:53]
+initSignal:0
+[INFO -- 2018-10-06 22:25:53]
+endSignal:10
+[INFO -- 2018-10-06 22:25:53]
+faultModel:2
+[INFO -- 2018-10-06 22:25:56]
+Backtrace BEGIN:
+#0  0x00005555555552f0 in predict (v=5) at lreg.cpp:81
+#1  0x000055555555551d in partialDerivate (pos=0) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+79		return val;
+80		
+81	}
+82	/**
+83		Calculates the mean squared error of T
+84	*/
+85	double meanSquaredError(){
+
+Backtrace END
+Memory content before bitflip:0x4b0xd00xe80xe20xd60x330xa60x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd828
+address max offset: 8
+Memory content after  bitflip:0x470x860x9a0x5b0x060x600x100x1b
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 153
+value: 2.5256109813745406e-178
+value address: 0x7fffffffd828
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-06 22:25:56]
+Fault Injection Successful after 3.5128931999206543s
+[INFO -- 2018-10-06 22:26:02]
+event type: exit
+[INFO -- 2018-10-06 22:26:02]
+exit code: 0

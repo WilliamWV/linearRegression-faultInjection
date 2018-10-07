@@ -1,0 +1,57 @@
+[INFO -- 2018-10-06 21:53:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 21:53:13]
+Initialization strings:
+[INFO -- 2018-10-06 21:53:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 21:53:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 21:53:13]
+initSignal:0
+[INFO -- 2018-10-06 21:53:13]
+endSignal:10
+[INFO -- 2018-10-06 21:53:13]
+faultModel:0
+[EXCEPTION -- 2018-10-06 21:53:20]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-06 21:53:20]
+Backtrace BEGIN:
+#0  0x00007ffff76d55e4 in __ieee754_pow_sse2 (x=22, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:85
+#1  0x00007ffff76b7b14 in __pow (x=22, y=0) at w_pow_compat.c:30
+#2  0x00005555555560ba in std::pow<double, unsigned int> (__x=22, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555590 in partialDerivate (pos=0) at lreg.cpp:107
+#4  0x0000555555555670 in adjust () at lreg.cpp:123
+#5  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#6  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+80	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771960
+address max offset: 8
+Memory content after  bitflip:0x000x800x000x000x000x000x000x00
+frame name: adjust
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 41
+value: std::vector of length 36, capacity 64 = {-6, 3, 15, 5, -3, 7, 5, -5, 16, -12, 13, 7, 24, -22, 8, 16, -16, 4, 24, -12, 20, -2, 13, -30, 12, 29, 14, -8, 22, 10, 32, -11, 4, 5, -3, 26}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-06 21:53:20]
+Fault Injection Successful after 7.449390649795532s
+[INFO -- 2018-10-06 21:53:24]
+event type: exit
+[INFO -- 2018-10-06 21:53:24]
+exit code: 0
