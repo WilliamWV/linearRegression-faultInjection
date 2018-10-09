@@ -1,0 +1,59 @@
+[INFO -- 2018-10-09 17:50:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-09 17:50:15]
+Initialization strings:
+[INFO -- 2018-10-09 17:50:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-09 17:50:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-09 17:50:15]
+initSignal:0
+[INFO -- 2018-10-09 17:50:15]
+endSignal:10
+[INFO -- 2018-10-09 17:50:15]
+faultModel:2
+[INFO -- 2018-10-09 17:50:20]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:450
+#1  __ieee754_pow_sse2 (x=11, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:97
+#2  0x00007ffff76d66be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76b7b14 in __pow (x=-11, y=3) at w_pow_compat.c:30
+#4  0x00005555555560ba in std::pow<double, unsigned int> (__x=-11, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x00005555555552c2 in predict (v=-11) at lreg.cpp:77
+#6  0x000055555555551d in partialDerivate (pos=1) at lreg.cpp:107
+#7  0x0000555555555670 in adjust () at lreg.cpp:123
+#8  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#9  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+445	../sysdeps/i386/fpu/fenv_private.h: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0xff0xff0x970x42
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779a5bc 
+address max offset: 4
+Memory content after  bitflip:0xee0xea0xd50x59
+frame name: __ieee754_pow_sse2
+symbol name: bigu
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 52
+value: {i = {-724, 1507191534}, x = 5.7955330353651908e+124}
+value address: 0x7ffff779a5b8 <bigu>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-09 17:50:20]
+Fault Injection Successful after 5.949321269989014s
+[INFO -- 2018-10-09 17:50:25]
+event type: exit
+[INFO -- 2018-10-09 17:50:25]
+exit code: 0

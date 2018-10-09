@@ -1,0 +1,59 @@
+[INFO -- 2018-10-09 17:43:01]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-09 17:43:01]
+Initialization strings:
+[INFO -- 2018-10-09 17:43:01]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-09 17:43:01]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-09 17:43:01]
+initSignal:0
+[INFO -- 2018-10-09 17:43:01]
+endSignal:10
+[INFO -- 2018-10-09 17:43:01]
+faultModel:1
+[INFO -- 2018-10-09 17:43:02]
+Backtrace BEGIN:
+#0  0x0000555555556a48 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=12.149663973912883, __last=1.6304166312761136e-322, __result=0x555555771470) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#1  0x00005555555562dd in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#2  0x00005555555558e8 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:165
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+284	
+285	  template<typename _InputIterator, typename _ForwardIterator, typename _Tp>
+286	    inline _ForwardIterator
+287	    __uninitialized_copy_a(_InputIterator __first, _InputIterator __last,
+288				   _ForwardIterator __result, allocator<_Tp>&)
+289	    { return std::uninitialized_copy(__first, __last, __result); }
+290	
+291	  template<typename _InputIterator, typename _ForwardIterator,
+292		   typename _Allocator>
+293	    inline _ForwardIterator
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x900x140x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771470
+address max offset: 8
+Memory content after  bitflip:0x900x140x770x550x550x7d0x000x00
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd890
+value address: 0x7fffffffd7b8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-09 17:43:02]
+Fault Injection Successful after 1.9823408126831055s
+[INFO -- 2018-10-09 17:43:11]
+event type: exit
+[INFO -- 2018-10-09 17:43:11]
+exit code: 0

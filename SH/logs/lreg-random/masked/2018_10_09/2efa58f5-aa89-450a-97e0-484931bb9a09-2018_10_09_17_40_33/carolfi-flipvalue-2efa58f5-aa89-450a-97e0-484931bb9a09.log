@@ -1,0 +1,59 @@
+[INFO -- 2018-10-09 17:40:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-09 17:40:22]
+Initialization strings:
+[INFO -- 2018-10-09 17:40:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-09 17:40:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-09 17:40:22]
+initSignal:0
+[INFO -- 2018-10-09 17:40:22]
+endSignal:10
+[INFO -- 2018-10-09 17:40:22]
+faultModel:2
+[EXCEPTION -- 2018-10-09 17:40:24]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-10-09 17:40:25]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-09 17:40:28]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a160 <y>, __n=8) at /usr/include/c++/7/bits/stl_vector.h:798
+#1  0x0000555555555545 in partialDerivate (pos=0) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a1a0 
+address max offset: 8
+Memory content after  bitflip:0xda0xd80x5e0xab0x1c0x640xa90x44
+frame name: partialDerivate
+symbol name: a2
+symbol filename: lreg.cpp
+symbol line: 45
+value: 5.9952951164125814e+22
+value address: 0x55555575a1a0 <a2>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-09 17:40:28]
+Fault Injection Successful after 6.129604816436768s
+[INFO -- 2018-10-09 17:40:32]
+event type: exit
+[INFO -- 2018-10-09 17:40:32]
+exit code: 0

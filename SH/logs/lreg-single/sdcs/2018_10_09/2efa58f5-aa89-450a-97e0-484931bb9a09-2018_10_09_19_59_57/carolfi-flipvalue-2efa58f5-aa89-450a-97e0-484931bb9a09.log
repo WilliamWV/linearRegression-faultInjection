@@ -1,0 +1,62 @@
+[INFO -- 2018-10-09 19:59:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-09 19:59:47]
+Initialization strings:
+[INFO -- 2018-10-09 19:59:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-09 19:59:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-09 19:59:47]
+initSignal:0
+[INFO -- 2018-10-09 19:59:47]
+endSignal:10
+[INFO -- 2018-10-09 19:59:47]
+faultModel:0
+[INFO -- 2018-10-09 19:59:50]
+Backtrace BEGIN:
+#0  0x00005555555560b5 in std::pow<double, unsigned int> (__x=16, __y=0) at /usr/include/c++/7/cmath:418
+#1  0x0000555555555590 in partialDerivate (pos=0) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x060xfb0x550x3f0x050x670xf30xbf
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771380
+address max offset: 8
+Memory content after  bitflip:0x060xfb0x550x3f0x050x670xe30xbf
+frame name: train
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 4, capacity 4 = {-0.60632574434552633, 61.812030248425629, -5.3768854841436102, -1.6582119437627538}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-09 19:59:50]
+Fault Injection Successful after 3.2255918979644775s
+[INFO -- 2018-10-09 19:59:56]
+event type: exit
+[INFO -- 2018-10-09 19:59:56]
+exit code: 0
