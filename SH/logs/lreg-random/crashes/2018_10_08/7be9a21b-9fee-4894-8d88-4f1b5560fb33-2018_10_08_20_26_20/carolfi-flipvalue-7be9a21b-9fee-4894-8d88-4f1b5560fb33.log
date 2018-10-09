@@ -1,0 +1,61 @@
+[INFO -- 2018-10-08 20:26:06]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-08 20:26:06]
+Initialization strings:
+[INFO -- 2018-10-08 20:26:06]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-08 20:26:06]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-08 20:26:06]
+initSignal:0
+[INFO -- 2018-10-08 20:26:06]
+endSignal:10
+[INFO -- 2018-10-08 20:26:06]
+faultModel:2
+[INFO -- 2018-10-08 20:26:09]
+Backtrace BEGIN:
+#0  0x0000555555556063 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a160 <y>, __n=4) at /usr/include/c++/7/bits/stl_vector.h:798
+#1  0x0000555555555411 in meanSquaredError () at lreg.cpp:91
+#2  0x0000555555555886 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:160
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x310x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771378
+address max offset: 8
+Memory content after  bitflip:0x5b0xac0x980x1e0xac0xc70x850xdf
+frame name: meanSquaredError
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 3, capacity 3 = {-19.400860184422264, -1.8016631428771506, 1.5427184495989317}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-08 20:26:09]
+Fault Injection Successful after 3.3468244075775146s
+[INFO -- 2018-10-08 20:26:19]
+event type: exit
+[EXCEPTION -- 2018-10-08 20:26:19]
+exit code: no exit code available

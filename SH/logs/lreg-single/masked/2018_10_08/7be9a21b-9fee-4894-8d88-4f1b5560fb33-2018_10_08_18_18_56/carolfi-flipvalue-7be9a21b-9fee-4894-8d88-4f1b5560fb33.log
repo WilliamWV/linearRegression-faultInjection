@@ -1,0 +1,54 @@
+[INFO -- 2018-10-08 18:18:44]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-08 18:18:44]
+Initialization strings:
+[INFO -- 2018-10-08 18:18:44]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-08 18:18:44]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-08 18:18:44]
+initSignal:0
+[INFO -- 2018-10-08 18:18:44]
+endSignal:10
+[INFO -- 2018-10-08 18:18:44]
+faultModel:0
+[INFO -- 2018-10-08 18:18:46]
+Backtrace BEGIN:
+#0  0x00005555555569fb in std::vector<double, std::allocator<double> >::end (this=0x55555575a180 <T>) at /usr/include/c++/7/bits/stl_vector.h:591
+#1  0x000055555555658a in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd830, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x000055555555587c in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:158
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+586	       *  the last element in the %vector.  Iteration is done in
+587	       *  ordinary element order.
+588	       */
+589	      const_iterator
+590	      end() const _GLIBCXX_NOEXCEPT
+591	      { return const_iterator(this->_M_impl._M_finish); }
+592	
+593	      /**
+594	       *  Returns a read/write reverse iterator that points to the
+595	       *  last element in the %vector.  Iteration is done in reverse
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a1a0 
+address max offset: 8
+Memory content after  bitflip:0x2d0x430x1c0xeb0xe00x360x0a0x3f
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: a2
+symbol filename: lreg.cpp
+symbol line: 45
+value: 4.9999941792339089e-05
+value address: 0x55555575a1a0 <a2>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-08 18:18:46]
+Fault Injection Successful after 2.7422244548797607s
+[INFO -- 2018-10-08 18:18:55]
+event type: exit
+[INFO -- 2018-10-08 18:18:55]
+exit code: 0

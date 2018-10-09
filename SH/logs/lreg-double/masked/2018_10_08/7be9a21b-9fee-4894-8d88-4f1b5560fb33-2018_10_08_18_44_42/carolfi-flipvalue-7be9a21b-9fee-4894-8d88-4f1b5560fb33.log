@@ -1,0 +1,62 @@
+[INFO -- 2018-10-08 18:44:30]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-08 18:44:30]
+Initialization strings:
+[INFO -- 2018-10-08 18:44:31]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-08 18:44:31]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-08 18:44:31]
+initSignal:0
+[INFO -- 2018-10-08 18:44:31]
+endSignal:10
+[INFO -- 2018-10-08 18:44:31]
+faultModel:1
+[INFO -- 2018-10-08 18:44:33]
+Backtrace BEGIN:
+#0  0x00005555555552c2 in predict (v=-3) at lreg.cpp:77
+#1  0x000055555555551d in partialDerivate (pos=1) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+79		return val;
+80		
+81	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x6c0xf90xfa0xba0x250xd50x320xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771360
+address max offset: 8
+Memory content after  bitflip:0x280xf90xfa0xba0x250xd50x320xc0
+frame name: partialDerivate
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 3, capacity 3 = {-18.832606970093508, -1.7951108417029105, 1.5405598283276194}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-08 18:44:33]
+Fault Injection Successful after 2.065394878387451s
+[INFO -- 2018-10-08 18:44:41]
+event type: exit
+[INFO -- 2018-10-08 18:44:41]
+exit code: 0

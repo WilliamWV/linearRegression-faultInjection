@@ -1,0 +1,50 @@
+[INFO -- 2018-10-08 19:44:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-08 19:44:56]
+Initialization strings:
+[INFO -- 2018-10-08 19:44:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-08 19:44:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-08 19:44:56]
+initSignal:0
+[INFO -- 2018-10-08 19:44:56]
+endSignal:10
+[INFO -- 2018-10-08 19:44:56]
+faultModel:1
+[INFO -- 2018-10-08 19:45:01]
+Backtrace BEGIN:
+#0  0x00007ffff76d5ca2 in log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=1) at ../sysdeps/ieee754/dbl-64/e_pow.c:295
+#1  __ieee754_pow_sse2 (x=1, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76d66be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76b7b14 in __pow (x=-1, y=3) at w_pow_compat.c:30
+#4  0x00005555555560ba in std::pow<double, unsigned int> (__x=-1, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x0000555555555590 in partialDerivate (pos=3) at lreg.cpp:107
+#6  0x0000555555555670 in adjust () at lreg.cpp:123
+#7  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#8  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+290	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a198 
+address max offset: 8
+Memory content after  bitflip:0x460x5a0xb70xf40x390x4d0x7f0x3e
+frame name: adjust
+symbol name: a1
+symbol filename: lreg.cpp
+symbol line: 45
+value: 1.1660779113769531e-07
+value address: 0x55555575a198 <a1>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-08 19:45:01]
+Fault Injection Successful after 5.4939961433410645s
+[INFO -- 2018-10-08 19:45:12]
+event type: exit
+[INFO -- 2018-10-08 19:45:12]
+exit code: 0
