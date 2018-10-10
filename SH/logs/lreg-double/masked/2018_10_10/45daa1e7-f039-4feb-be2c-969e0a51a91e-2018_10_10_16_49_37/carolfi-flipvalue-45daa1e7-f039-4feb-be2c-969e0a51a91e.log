@@ -1,0 +1,55 @@
+[INFO -- 2018-10-10 16:49:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 16:49:24]
+Initialization strings:
+[INFO -- 2018-10-10 16:49:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 16:49:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 16:49:24]
+initSignal:0
+[INFO -- 2018-10-10 16:49:24]
+endSignal:10
+[INFO -- 2018-10-10 16:49:24]
+faultModel:1
+[INFO -- 2018-10-10 16:49:26]
+Backtrace BEGIN:
+#0  0x0000555555557061 in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::_Vector_impl (this=0x555555557285 <std::allocator_traits<std::allocator<double> >::select_on_container_copy_construction(std::allocator<double> const&)+35>, __a=...) at /usr/include/c++/7/bits/stl_vector.h:92
+#1  0x00005555555567aa in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd890, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:137
+#2  0x000055555555628f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x00005555555558e8 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:165
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+87	
+88		_Vector_impl()
+89		: _Tp_alloc_type(), _M_start(), _M_finish(), _M_end_of_storage()
+90		{ }
+91	
+92		_Vector_impl(_Tp_alloc_type const& __a) _GLIBCXX_NOEXCEPT
+93		: _Tp_alloc_type(__a), _M_start(), _M_finish(), _M_end_of_storage()
+94		{ }
+95	
+96	#if __cplusplus >= 201103L
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a1a0 
+address max offset: 8
+Memory content after  bitflip:0x2d0x430x1c0xeb0x420x360x0a0x3f
+frame name: train
+symbol name: a2
+symbol filename: lreg.cpp
+symbol line: 45
+value: 4.9995343387126925e-05
+value address: 0x55555575a1a0 <a2>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-10 16:49:26]
+Fault Injection Successful after 2.090866804122925s
+[INFO -- 2018-10-10 16:49:36]
+event type: exit
+[INFO -- 2018-10-10 16:49:36]
+exit code: 0

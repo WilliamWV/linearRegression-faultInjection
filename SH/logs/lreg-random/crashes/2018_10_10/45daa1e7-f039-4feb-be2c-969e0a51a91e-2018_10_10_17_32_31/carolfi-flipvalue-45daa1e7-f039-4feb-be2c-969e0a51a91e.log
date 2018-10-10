@@ -1,0 +1,60 @@
+[INFO -- 2018-10-10 17:32:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 17:32:18]
+Initialization strings:
+[INFO -- 2018-10-10 17:32:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 17:32:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 17:32:18]
+initSignal:0
+[INFO -- 2018-10-10 17:32:18]
+endSignal:10
+[INFO -- 2018-10-10 17:32:18]
+faultModel:2
+[EXCEPTION -- 2018-10-10 17:32:21]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-10 17:32:21]
+Backtrace BEGIN:
+#0  __exp1 (x=<optimized out>, xx=<optimized out>, error=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_exp.c:273
+#1  0x00007ffff76d58dc in __ieee754_pow_sse2 (x=24, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76d66be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76b7b14 in __pow (x=-24, y=3) at w_pow_compat.c:30
+#4  0x00005555555560ba in std::pow<double, unsigned int> (__x=-24, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x00005555555552c2 in predict (v=-24) at lreg.cpp:77
+#6  0x000055555555551d in partialDerivate (pos=2) at lreg.cpp:107
+#7  0x0000555555555670 in adjust () at lreg.cpp:123
+#8  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#9  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+268	in ../sysdeps/ieee754/dbl-64/e_exp.c
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x000x380xfa0xfe0x420x2e0xe60x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779a5c8 
+address max offset: 8
+Memory content after  bitflip:0xa90xcf0x280x670xe30xdb0x5d0x0b
+frame name: __ieee754_pow_sse2
+symbol name: ln2a
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 50
+value: {i = {1730727849, 190700515}, x = 6.3635291028501937e-254}
+value address: 0x7ffff779a5c8 <ln2a>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-10 17:32:21]
+Fault Injection Successful after 3.268847703933716s
+[INFO -- 2018-10-10 17:32:30]
+event type: exit
+[EXCEPTION -- 2018-10-10 17:32:30]
+exit code: no exit code available

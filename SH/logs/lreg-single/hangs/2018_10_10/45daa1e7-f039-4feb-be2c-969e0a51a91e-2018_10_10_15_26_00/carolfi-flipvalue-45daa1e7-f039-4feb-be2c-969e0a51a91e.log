@@ -1,0 +1,53 @@
+[INFO -- 2018-10-10 15:25:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 15:25:36]
+Initialization strings:
+[INFO -- 2018-10-10 15:25:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 15:25:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 15:25:36]
+initSignal:0
+[INFO -- 2018-10-10 15:25:36]
+endSignal:10
+[INFO -- 2018-10-10 15:25:36]
+faultModel:0
+[INFO -- 2018-10-10 15:25:39]
+Backtrace BEGIN:
+#0  std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555771480, __n=140737488345200) at /usr/include/c++/7/bits/alloc_traits.h:461
+#1  0x0000555555556ac4 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd890, __p=0x555555771470, __n=2) at /usr/include/c++/7/bits/stl_vector.h:180
+#2  0x000055555555675b in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd890, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#3  0x00005555555561ad in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd890, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#4  0x0000555555555955 in train (iterations=30000, N=2, stopsWhenStable=true) at lreg.cpp:165
+#5  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+456	       *  @param  __n  The number of objects space was allocated for.
+457	       *
+458	       *  Calls <tt> a.deallocate(p, n) </tt>
+459	      */
+460	      static void
+461	      deallocate(allocator_type& __a, pointer __p, size_type __n)
+462	      { __a.deallocate(__p, __n); }
+463	
+464	      /**
+465	       *  @brief  Construct an object of type @a _Up
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x140x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7a0
+address max offset: 8
+Memory content after  bitflip:0x700x140x770x550x550x550x000x80
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_deallocate
+symbol name: __p
+symbol filename: /usr/include/c++/7/bits/stl_vector.h
+symbol line: 176
+value: 0x555555771470
+value address: 0x7fffffffd7a0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-10 15:25:39]
+Fault Injection Successful after 3.1586687564849854s

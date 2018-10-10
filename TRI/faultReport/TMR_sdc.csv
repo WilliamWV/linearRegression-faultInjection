@@ -1,7 +1,0 @@
-Variable Name;Variable File;Variable Line;Fault Injection Time(s);Injection Time Interval;Fault Model
-iterations;lreg.cpp;183;2.7079684734344482;0-30;Single bit-flip
-x;lreg.cpp;32;1.57686185836792;0-2;Random bit-flip
-ln2a;../sysdeps/ieee754/dbl-64/upow.h;50;2.0189051628112793;0-30;Random bit-flip
-ln2a;../sysdeps/ieee754/dbl-64/upow.h;50;7.885591506958008;0-30;Random bit-flip
-i;lreg.cpp;167;2.0880820751190186;0-2;Double bit-flip
-x;lreg.cpp;35;12.438146114349365;0-30;Double bit-flip

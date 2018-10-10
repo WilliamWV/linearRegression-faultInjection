@@ -1,0 +1,65 @@
+[INFO -- 2018-10-10 15:03:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 15:03:49]
+Initialization strings:
+[INFO -- 2018-10-10 15:03:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 15:03:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 15:03:49]
+initSignal:0
+[INFO -- 2018-10-10 15:03:49]
+endSignal:10
+[INFO -- 2018-10-10 15:03:49]
+faultModel:1
+[EXCEPTION -- 2018-10-10 15:03:52]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-10 15:03:52]
+Backtrace BEGIN:
+#0  selectTriUInt (a=0, b=0, c=0) at lreg.cpp:49
+#1  0x0000555555555280 in predict (v=23) at lreg.cpp:77
+#2  0x000055555555551d in partialDerivate (pos=0) at lreg.cpp:107
+#3  0x0000555555555670 in adjust () at lreg.cpp:123
+#4  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#5  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+52	}
+53	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x5555557713a0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x900x00
+frame name: predict
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 4, capacity 4 = {0.23369954641024551, -3.2916071455005165, -2.1906362167448479, 0.78615478233875757}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-10 15:03:52]
+Fault Injection Successful after 3.12575364112854s
+[INFO -- 2018-10-10 15:04:02]
+event type: exit
+[INFO -- 2018-10-10 15:04:02]
+exit code: 0

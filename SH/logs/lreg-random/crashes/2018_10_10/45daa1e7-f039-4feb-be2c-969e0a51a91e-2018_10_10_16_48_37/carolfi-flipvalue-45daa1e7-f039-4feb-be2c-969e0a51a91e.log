@@ -1,0 +1,58 @@
+[INFO -- 2018-10-10 16:48:17]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 16:48:17]
+Initialization strings:
+[INFO -- 2018-10-10 16:48:17]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 16:48:17]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 16:48:17]
+initSignal:0
+[INFO -- 2018-10-10 16:48:17]
+endSignal:10
+[INFO -- 2018-10-10 16:48:17]
+faultModel:2
+[EXCEPTION -- 2018-10-10 16:48:20]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-10 16:48:21]
+Backtrace BEGIN:
+#0  selectTriUInt (a=1, b=1, c=1) at lreg.cpp:49
+#1  0x0000555555555280 in predict (v=-14) at lreg.cpp:77
+#2  0x000055555555551d in partialDerivate (pos=0) at lreg.cpp:107
+#3  0x0000555555555670 in adjust () at lreg.cpp:123
+#4  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#5  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+52	}
+53	
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x900xaf0xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd958
+address max offset: 8
+Memory content after  bitflip:0x850x0f0x630x570x580x090x370x07
+frame name: main
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 202
+value: 6.6536588607014392e-274
+value address: 0x7fffffffd958
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-10 16:48:21]
+Fault Injection Successful after 4.002276182174683s
+[INFO -- 2018-10-10 16:48:37]
+event type: exit
+[EXCEPTION -- 2018-10-10 16:48:37]
+exit code: no exit code available

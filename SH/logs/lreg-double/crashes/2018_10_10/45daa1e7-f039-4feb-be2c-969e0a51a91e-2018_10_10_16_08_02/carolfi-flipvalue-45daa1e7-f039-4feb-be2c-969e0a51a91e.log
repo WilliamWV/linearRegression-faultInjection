@@ -1,0 +1,66 @@
+[INFO -- 2018-10-10 16:07:52]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 16:07:52]
+Initialization strings:
+[INFO -- 2018-10-10 16:07:52]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 16:07:52]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 16:07:52]
+initSignal:0
+[INFO -- 2018-10-10 16:07:52]
+endSignal:10
+[INFO -- 2018-10-10 16:07:52]
+faultModel:1
+[EXCEPTION -- 2018-10-10 16:07:59]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-10-10 16:07:59]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-10 16:08:00]
+Backtrace BEGIN:
+#0  selectTriUInt (a=1077215232, b=0, c=2) at lreg.cpp:47
+#1  0x0000555555555256 in predict (v=21) at lreg.cpp:74
+#2  0x00005555555553e9 in meanSquaredError () at lreg.cpp:91
+#3  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+42	vector<double> y; // observed values of training set inputs
+43	vector<double> T; // the adjustment variables
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x600x190x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a150 
+address max offset: 8
+Memory content after  bitflip:0x600x190x560x550x550x550x000x00
+frame name: predict
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 41
+value: std::vector of length 19, capacity -270289 = {12, 0, 24, 25, -29, 21, -24, 16, 0, -12, -19, 4, 5, 23, 23, 16, -17, -14, -15}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-10 16:08:00]
+Fault Injection Successful after 8.116223573684692s
+[INFO -- 2018-10-10 16:08:01]
+event type: exit
+[EXCEPTION -- 2018-10-10 16:08:01]
+exit code: no exit code available

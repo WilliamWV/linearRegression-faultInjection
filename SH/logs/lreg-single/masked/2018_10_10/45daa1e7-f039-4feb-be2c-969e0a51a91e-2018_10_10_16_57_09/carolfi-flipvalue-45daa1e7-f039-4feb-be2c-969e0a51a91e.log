@@ -1,0 +1,62 @@
+[INFO -- 2018-10-10 16:56:57]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 16:56:57]
+Initialization strings:
+[INFO -- 2018-10-10 16:56:57]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 16:56:57]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 16:56:57]
+initSignal:0
+[INFO -- 2018-10-10 16:56:57]
+endSignal:10
+[INFO -- 2018-10-10 16:56:57]
+faultModel:0
+[INFO -- 2018-10-10 16:56:59]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator[] (this=0x0, __n=2) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x0000555555555291 in predict (v=13) at lreg.cpp:77
+#2  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#3  0x0000555555555886 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:160
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x5555557715e0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x200x000x00
+frame name: meanSquaredError
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 41
+value: std::vector of length 20, capacity 32 = {4, 3, 16, 0, -1, -6, 14, -12, -11, -24, 16, 9, -7, 13, -3, -18, 1, 12, 0, 24}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-10 16:56:59]
+Fault Injection Successful after 2.1822659969329834s
+[INFO -- 2018-10-10 16:57:07]
+event type: exit
+[INFO -- 2018-10-10 16:57:07]
+exit code: 0
