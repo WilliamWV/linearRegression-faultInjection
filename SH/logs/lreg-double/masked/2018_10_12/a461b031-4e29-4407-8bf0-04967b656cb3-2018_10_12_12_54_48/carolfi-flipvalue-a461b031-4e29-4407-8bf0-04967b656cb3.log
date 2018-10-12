@@ -1,0 +1,64 @@
+[INFO -- 2018-10-12 12:54:33]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 12:54:33]
+Initialization strings:
+[INFO -- 2018-10-12 12:54:33]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 12:54:33]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 12:54:33]
+initSignal:0
+[INFO -- 2018-10-12 12:54:33]
+endSignal:10
+[INFO -- 2018-10-12 12:54:33]
+faultModel:1
+[EXCEPTION -- 2018-10-12 12:54:34]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-10-12 12:54:38]
+Backtrace BEGIN:
+#0  selectTriUInt (a=4, b=4, c=4) at lreg.cpp:48
+#1  0x0000555555555534 in partialDerivate (pos=1) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+43	vector<double> T; // the adjustment variables
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+52	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0xc10xda0xd90x7f0x4b0xdb0x410xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771340
+address max offset: 8
+Memory content after  bitflip:0xc10xda0xcd0x7f0x4b0xdb0x410xc0
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 150
+value: std::vector of length 3, capacity 3 = {-35.713241553797623, -2.4565419955113206, 3.8142818299312915}
+value address: 0x7fffffffd830
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-12 12:54:38]
+Fault Injection Successful after 5.043197154998779s
+[INFO -- 2018-10-12 12:54:46]
+event type: exit
+[INFO -- 2018-10-12 12:54:46]
+exit code: 0
