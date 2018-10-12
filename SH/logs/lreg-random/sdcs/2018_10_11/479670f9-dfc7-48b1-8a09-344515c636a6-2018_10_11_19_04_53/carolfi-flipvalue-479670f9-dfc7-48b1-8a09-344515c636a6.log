@@ -1,0 +1,55 @@
+[INFO -- 2018-10-11 19:04:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 19:04:43]
+Initialization strings:
+[INFO -- 2018-10-11 19:04:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 19:04:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 19:04:43]
+initSignal:0
+[INFO -- 2018-10-11 19:04:43]
+endSignal:10
+[INFO -- 2018-10-11 19:04:43]
+faultModel:2
+[INFO -- 2018-10-11 19:04:51]
+Backtrace BEGIN:
+#0  selectTriUInt (a=0, b=0, c=0) at lreg.cpp:48
+#1  0x0000555555555280 in predict (v=14) at lreg.cpp:77
+#2  0x00005555555553e9 in meanSquaredError () at lreg.cpp:91
+#3  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+43	vector<double> T; // the adjustment variables
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+52	}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0x280xa00xfc0x3c0xa60xb70x0e0x73
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 72
+value: 1.6779176794079152e+246
+value address: 0x7fffffffd788
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-11 19:04:51]
+Fault Injection Successful after 8.440242767333984s
+[INFO -- 2018-10-11 19:04:53]
+event type: exit
+[INFO -- 2018-10-11 19:04:53]
+exit code: 0

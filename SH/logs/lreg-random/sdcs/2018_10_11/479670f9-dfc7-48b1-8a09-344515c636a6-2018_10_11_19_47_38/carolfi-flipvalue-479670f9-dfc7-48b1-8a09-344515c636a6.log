@@ -1,0 +1,51 @@
+[INFO -- 2018-10-11 19:47:28]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 19:47:28]
+Initialization strings:
+[INFO -- 2018-10-11 19:47:28]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 19:47:28]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 19:47:28]
+initSignal:0
+[INFO -- 2018-10-11 19:47:28]
+endSignal:10
+[INFO -- 2018-10-11 19:47:28]
+faultModel:2
+[INFO -- 2018-10-11 19:47:34]
+Backtrace BEGIN:
+#0  __exp1 (x=8.1241506033066297, xx=4.5035274717976725e-16, error=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_exp.c:268
+#1  0x00007ffff76d58dc in __ieee754_pow_sse2 (x=15, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76d66be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76b7b14 in __pow (x=-15, y=3) at w_pow_compat.c:30
+#4  0x00005555555560ba in std::pow<double, unsigned int> (__x=-15, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x00005555555552c2 in predict (v=-15) at lreg.cpp:77
+#6  0x000055555555551d in partialDerivate (pos=1) at lreg.cpp:107
+#7  0x0000555555555670 in adjust () at lreg.cpp:123
+#8  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#9  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+263	../sysdeps/ieee754/dbl-64/e_exp.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x150x830x740xf20x2b0x300x580x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd820
+address max offset: 8
+Memory content after  bitflip:0xdd0xad0x4a0xdf0x0a0x6c0xbe0xc8
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 152
+value: -2.6501335252570992e+42
+value address: 0x7fffffffd820
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-11 19:47:34]
+Fault Injection Successful after 6.740761995315552s
+[INFO -- 2018-10-11 19:47:38]
+event type: exit
+[INFO -- 2018-10-11 19:47:38]
+exit code: 0

@@ -1,0 +1,61 @@
+[INFO -- 2018-10-11 20:05:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 20:05:35]
+Initialization strings:
+[INFO -- 2018-10-11 20:05:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 20:05:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 20:05:35]
+initSignal:0
+[INFO -- 2018-10-11 20:05:35]
+endSignal:10
+[INFO -- 2018-10-11 20:05:35]
+faultModel:2
+[EXCEPTION -- 2018-10-11 20:05:38]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-10-11 20:05:38]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-11 20:05:40]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=3, y=1) at ../sysdeps/ieee754/dbl-64/e_pow.c:79
+#1  0x00007ffff76b7b14 in __pow (x=3, y=1) at w_pow_compat.c:30
+#2  0x00005555555560ba in std::pow<double, unsigned int> (__x=3, __y=1) at /usr/include/c++/7/cmath:418
+#3  0x00005555555552c2 in predict (v=3) at lreg.cpp:77
+#4  0x000055555555551d in partialDerivate (pos=3) at lreg.cpp:107
+#5  0x0000555555555670 in adjust () at lreg.cpp:123
+#6  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+74	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 0
+Memory content before bitflip:0x2c0xfd0xff0xff
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779a5b8 
+address max offset: 4
+Memory content after  bitflip:0xb00x560x6a0x6e
+frame name: __ieee754_pow_sse2
+symbol name: bigu
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 52
+value: {i = {1852462768, 1117257727}, x = 6597067381397.6719}
+value address: 0x7ffff779a5b8 <bigu>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-11 20:05:40]
+Fault Injection Successful after 5.5938215255737305s
+[INFO -- 2018-10-11 20:05:40]
+event type: exit
+[EXCEPTION -- 2018-10-11 20:05:40]
+exit code: no exit code available
