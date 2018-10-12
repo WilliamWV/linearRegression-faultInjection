@@ -1,0 +1,60 @@
+[INFO -- 2018-10-12 15:37:33]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 15:37:33]
+Initialization strings:
+[INFO -- 2018-10-12 15:37:33]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 15:37:33]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 15:37:33]
+initSignal:0
+[INFO -- 2018-10-12 15:37:33]
+endSignal:10
+[INFO -- 2018-10-12 15:37:33]
+faultModel:2
+[EXCEPTION -- 2018-10-12 15:37:38]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-10-12 15:37:38]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-12 15:37:38]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec1801 in __GI_abort () at abort.c:79
+#2  0x00007ffff7ad38fb in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7ad9d3a in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7ad9d95 in std::terminate() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7ad9fe8 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7b02f26 in std::__throw_bad_alloc() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x0000555555557b3c in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd890, __n=18446744073709551612) at /usr/include/c++/7/ext/new_allocator.h:102
+#8  0x00005555555578d5 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=18446744073709551612) at /usr/include/c++/7/bits/alloc_traits.h:436
+#9  0x00005555555573ac in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd890, __n=18446744073709551612) at /usr/include/c++/7/bits/stl_vector.h:172
+#10 0x00005555555570cd in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd890, __n=18446744073709551612) at /usr/include/c++/7/bits/stl_vector.h:187
+#11 0x00005555555567bd in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd890, __n=18446744073709551612, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#12 0x000055555555628f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length -3, capacity -3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#13 0x00005555555558e8 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:165
+#14 0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a1a0 
+address max offset: 8
+Memory content after  bitflip:0x6e0x630x1d0xf50xb70x680x570x49
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_allocate
+symbol name: a2
+symbol filename: lreg.cpp
+symbol line: 45
+value: 2.0881576591588247e+45
+value address: 0x55555575a1a0 <a2>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-12 15:37:38]
+Fault Injection Successful after 5.644318103790283s
+[INFO -- 2018-10-12 15:37:38]
+event type: exit
+[EXCEPTION -- 2018-10-12 15:37:38]
+exit code: no exit code available

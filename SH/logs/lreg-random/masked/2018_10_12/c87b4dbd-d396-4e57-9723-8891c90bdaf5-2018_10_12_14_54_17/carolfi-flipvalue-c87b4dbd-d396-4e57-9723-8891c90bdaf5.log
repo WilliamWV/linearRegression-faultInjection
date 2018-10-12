@@ -1,0 +1,63 @@
+[INFO -- 2018-10-12 14:54:04]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 14:54:04]
+Initialization strings:
+[INFO -- 2018-10-12 14:54:04]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 14:54:04]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 14:54:04]
+initSignal:0
+[INFO -- 2018-10-12 14:54:04]
+endSignal:10
+[INFO -- 2018-10-12 14:54:04]
+faultModel:2
+[INFO -- 2018-10-12 14:54:05]
+Backtrace BEGIN:
+#0  0x0000555555557771 in std::_Destroy_aux<true>::__destroy<double*> () at /usr/include/c++/7/bits/stl_construct.h:117
+#1  0x0000555555557157 in std::_Destroy<double*> (__first=0x555555771490, __last=0x5555557714a0) at /usr/include/c++/7/bits/stl_construct.h:137
+#2  0x000055555555685d in std::_Destroy<double*, double> (__first=0x555555771490, __last=0x5555557714a0) at /usr/include/c++/7/bits/stl_construct.h:206
+#3  0x00005555555561a1 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd870, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:434
+#4  0x0000555555555945 in train (iterations=30000, N=2, stopsWhenStable=true) at lreg.cpp:165
+#5  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+112	  template<>
+113	    struct _Destroy_aux<true>
+114	    {
+115	      template<typename _ForwardIterator>
+116	        static void
+117	        __destroy(_ForwardIterator, _ForwardIterator) { }
+118	    };
+119	
+120	  /**
+121	   * Destroy a range of objects.  If the value_type of the object has
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771330
+address max offset: 8
+Memory content after  bitflip:0x900xa90x760x5d0x660xf10x2c0xd1
+frame name: std::_Destroy_aux<true>::__destroy<double*>
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 41
+value: std::vector of length 8, capacity 8 = {-1, -13, -3, -16, -9, 14, 7, 8}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-12 14:54:05]
+Fault Injection Successful after 1.7788138389587402s
+[INFO -- 2018-10-12 14:54:16]
+event type: exit
+[INFO -- 2018-10-12 14:54:16]
+exit code: 0

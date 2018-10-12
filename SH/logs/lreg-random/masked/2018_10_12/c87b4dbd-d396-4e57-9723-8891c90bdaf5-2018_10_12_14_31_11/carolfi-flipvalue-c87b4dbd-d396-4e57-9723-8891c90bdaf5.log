@@ -1,0 +1,58 @@
+[INFO -- 2018-10-12 14:30:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 14:30:59]
+Initialization strings:
+[INFO -- 2018-10-12 14:30:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 14:30:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 14:30:59]
+initSignal:0
+[INFO -- 2018-10-12 14:30:59]
+endSignal:10
+[INFO -- 2018-10-12 14:30:59]
+faultModel:2
+[EXCEPTION -- 2018-10-12 14:31:00]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-12 14:31:01]
+Backtrace BEGIN:
+#0  std::allocator<double>::allocator (this=0x555555771470, __a=...) at /usr/include/c++/7/bits/allocator.h:133
+#1  0x0000555555557285 in std::allocator_traits<std::allocator<double> >::select_on_container_copy_construction (__rhs=...) at /usr/include/c++/7/bits/alloc_traits.h:505
+#2  0x0000555555556958 in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:95
+#3  0x000055555555626e in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd870, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#4  0x0000555555555900 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:165
+#5  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+128	      typedef true_type is_always_equal;
+129	#endif
+130	
+131	      allocator() throw() { }
+132	
+133	      allocator(const allocator& __a) throw()
+134	      : __allocator_base<_Tp>(__a) { }
+135	
+136	      template<typename _Tp1>
+137		allocator(const allocator<_Tp1>&) throw() { }
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a1a8 
+address max offset: 8
+Memory content after  bitflip:0x560x9a0x120x4f0xbf0xf90x6f0x53
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: a3
+symbol filename: lreg.cpp
+symbol line: 45
+value: 8.3373308719502092e+93
+value address: 0x55555575a1a8 <a3>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-12 14:31:01]
+Fault Injection Successful after 2.1967146396636963s
+[INFO -- 2018-10-12 14:31:10]
+event type: exit
+[INFO -- 2018-10-12 14:31:10]
+exit code: 0

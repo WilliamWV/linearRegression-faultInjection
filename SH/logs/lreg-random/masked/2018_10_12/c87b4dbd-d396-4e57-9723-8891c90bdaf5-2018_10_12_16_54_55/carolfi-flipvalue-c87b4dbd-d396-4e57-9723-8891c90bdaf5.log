@@ -1,0 +1,55 @@
+[INFO -- 2018-10-12 16:54:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 16:54:41]
+Initialization strings:
+[INFO -- 2018-10-12 16:54:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 16:54:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 16:54:41]
+initSignal:0
+[INFO -- 2018-10-12 16:54:41]
+endSignal:10
+[INFO -- 2018-10-12 16:54:41]
+faultModel:2
+[INFO -- 2018-10-12 16:54:42]
+Backtrace BEGIN:
+#0  0x000055555555607d in std::pow<double, unsigned int> (__x=14, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x0000555555555590 in partialDerivate (pos=1) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=30000, N=2, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Memory content before bitflip:0xfa0x220x600xd60x6d0x250xfe0x3d
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd820
+address max offset: 8
+Memory content after  bitflip:0x540x570x580xdf0x2d0xf80x440xee
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 152
+value: -1.515981296321978e+223
+value address: 0x7fffffffd820
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-12 16:54:42]
+Fault Injection Successful after 1.5976026058197021s
+[INFO -- 2018-10-12 16:54:55]
+event type: exit
+[INFO -- 2018-10-12 16:54:55]
+exit code: 0

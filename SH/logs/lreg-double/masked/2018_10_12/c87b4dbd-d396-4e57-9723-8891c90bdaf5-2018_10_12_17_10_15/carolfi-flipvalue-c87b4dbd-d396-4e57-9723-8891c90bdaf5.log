@@ -1,0 +1,47 @@
+[INFO -- 2018-10-12 17:10:02]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 17:10:02]
+Initialization strings:
+[INFO -- 2018-10-12 17:10:02]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 17:10:02]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 17:10:02]
+initSignal:0
+[INFO -- 2018-10-12 17:10:02]
+endSignal:10
+[INFO -- 2018-10-12 17:10:02]
+faultModel:1
+[EXCEPTION -- 2018-10-12 17:10:07]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-12 17:10:07]
+Backtrace BEGIN:
+#0  __sqrt (x=<optimized out>) at w_sqrt_compat.c:34
+#1  0x00005555555556ed in adjust () at lreg.cpp:125
+#2  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+29	in w_sqrt_compat.c
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a198 
+address max offset: 8
+Memory content after  bitflip:0x460x5a0xb70xf40x390x0c0xf70x3e
+frame name: main
+symbol name: a1
+symbol filename: lreg.cpp
+symbol line: 45
+value: 2.1980056130599974e-05
+value address: 0x55555575a198 <a1>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-12 17:10:07]
+Fault Injection Successful after 5.266784429550171s
+[INFO -- 2018-10-12 17:10:14]
+event type: exit
+[INFO -- 2018-10-12 17:10:14]
+exit code: 0

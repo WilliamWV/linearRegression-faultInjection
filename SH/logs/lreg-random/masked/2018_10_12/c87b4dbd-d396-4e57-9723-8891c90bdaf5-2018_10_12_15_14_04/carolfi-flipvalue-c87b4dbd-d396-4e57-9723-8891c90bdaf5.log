@@ -1,0 +1,63 @@
+[INFO -- 2018-10-12 15:13:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 15:13:51]
+Initialization strings:
+[INFO -- 2018-10-12 15:13:52]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 15:13:52]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 15:13:52]
+initSignal:0
+[INFO -- 2018-10-12 15:13:52]
+endSignal:10
+[INFO -- 2018-10-12 15:13:52]
+faultModel:2
+[EXCEPTION -- 2018-10-12 15:13:54]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-12 15:13:55]
+Backtrace BEGIN:
+#0  0x000055555555521c in predict (v=13) at lreg.cpp:71
+#1  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#2  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+66	}
+67	
+68	/**
+69		Predicts the value related to v using the Ts variables
+70	*/
+71	double predict(double v){
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x130x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a190 
+address max offset: 8
+Memory content after  bitflip:0xee0xc40x6e0xe90x580x010xf50x73
+frame name: predict
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 4, capacity 1044436542505809453 = {-5.5821633888140338, 77.61274028842611, -1.2828570714382708, -3.3701372567903829}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-12 15:13:55]
+Fault Injection Successful after 3.002103567123413s
+[INFO -- 2018-10-12 15:14:01]
+event type: exit
+[INFO -- 2018-10-12 15:14:01]
+exit code: 0
