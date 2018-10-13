@@ -1,0 +1,56 @@
+[INFO -- 2018-10-13 12:36:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 12:36:41]
+Initialization strings:
+[INFO -- 2018-10-13 12:36:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 12:36:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 12:36:41]
+initSignal:0
+[INFO -- 2018-10-13 12:36:41]
+endSignal:10
+[INFO -- 2018-10-13 12:36:41]
+faultModel:2
+[INFO -- 2018-10-13 12:36:48]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=1) at ../sysdeps/ieee754/dbl-64/e_pow.c:298
+#1  __ieee754_pow_sse2 (x=1, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76bcb14 in __pow (x=1, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=1, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555552c2 in predict (v=1) at lreg.cpp:77
+#5  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#6  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+293	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x1b0x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a170 
+address max offset: 8
+Memory content after  bitflip:0xbd0xf50xf50x620xc00x110x680xa6
+frame name: predict
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 42
+value: std::vector of length 36, capacity -806998046604797046 = {1, 4, 9, 3, 13, 2, 16, -1, 111, 611, 1103, -1, 311, 479, 23, 759, 479, 543, -1, 1103, -107, -49087, -79331, 13195, -37385, -875, -108755, -8897, 129883, 54595, -19861, -5, 5143, 793, -875, 3845}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-13 12:36:48]
+Fault Injection Successful after 7.149558067321777s
+[INFO -- 2018-10-13 12:36:50]
+event type: exit
+[INFO -- 2018-10-13 12:36:50]
+exit code: 0

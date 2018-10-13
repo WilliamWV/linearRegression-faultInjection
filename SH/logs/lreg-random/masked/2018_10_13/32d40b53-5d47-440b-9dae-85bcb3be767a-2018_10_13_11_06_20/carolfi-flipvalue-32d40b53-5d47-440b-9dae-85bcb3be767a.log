@@ -1,0 +1,54 @@
+[INFO -- 2018-10-13 11:06:09]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 11:06:09]
+Initialization strings:
+[INFO -- 2018-10-13 11:06:09]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 11:06:09]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 11:06:09]
+initSignal:0
+[INFO -- 2018-10-13 11:06:09]
+endSignal:10
+[INFO -- 2018-10-13 11:06:09]
+faultModel:2
+[INFO -- 2018-10-13 11:06:15]
+Backtrace BEGIN:
+#0  partialDerivate (pos=1) at lreg.cpp:103
+#1  0x0000555555555670 in adjust () at lreg.cpp:123
+#2  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+98		Calculates the partial derivate of the meanSquaredError function 
+99		to the adjustment variable whose position in T is passed in pos
+100	*/
+101	double partialDerivate(UINT pos){
+102		double pD = 0;
+103		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+104			selectTriUInt(i1, i2, i3)<x.size(); 
+105			i1++, i2++, i3++)
+106		{
+107			pD += ((predict(x[selectTriUInt(i1, i2, i3)]) - y[selectTriUInt(i1, i2, i3)])*pow(x[selectTriUInt(i1, i2, i3)], pos));	
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7d0
+address max offset: 4
+Memory content after  bitflip:0xc20x880x160xc3
+frame name: adjust
+symbol name: i2
+symbol filename: lreg.cpp
+symbol line: 119
+value: 3273033922
+value address: 0x7fffffffd7d0
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-13 11:06:15]
+Fault Injection Successful after 6.261423110961914s
+[INFO -- 2018-10-13 11:06:19]
+event type: exit
+[INFO -- 2018-10-13 11:06:19]
+exit code: 0

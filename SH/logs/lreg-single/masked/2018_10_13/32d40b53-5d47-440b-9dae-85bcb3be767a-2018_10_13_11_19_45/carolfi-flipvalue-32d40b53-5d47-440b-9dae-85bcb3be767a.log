@@ -1,0 +1,49 @@
+[INFO -- 2018-10-13 11:19:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 11:19:35]
+Initialization strings:
+[INFO -- 2018-10-13 11:19:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 11:19:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 11:19:35]
+initSignal:0
+[INFO -- 2018-10-13 11:19:35]
+endSignal:10
+[INFO -- 2018-10-13 11:19:35]
+faultModel:0
+[INFO -- 2018-10-13 11:19:39]
+Backtrace BEGIN:
+#0  0x00007ffff6f1d954 in __GI___libc_free (mem=0x555555771c10) at malloc.c:3086
+#1  0x00005555555578aa in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd870, __p=0x555555771c10) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x0000555555557370 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555771c10, __n=4) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x0000555555556ac4 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd870, __p=0x555555771c10, __n=4) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x000055555555675b in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd870, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#5  0x00005555555561ad in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd870, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#6  0x0000555555555945 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:165
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+3081	malloc.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a1a8 
+address max offset: 8
+Memory content after  bitflip:0x460xda0xb70xf40x390x4d0xf70x3e
+frame name: std::vector<double, std::allocator<double> >::~vector
+symbol name: a3
+symbol filename: lreg.cpp
+symbol line: 45
+value: 2.2222200000111021e-05
+value address: 0x55555575a1a8 <a3>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 11:19:39]
+Fault Injection Successful after 4.361700534820557s
+[INFO -- 2018-10-13 11:19:45]
+event type: exit
+[INFO -- 2018-10-13 11:19:45]
+exit code: 0

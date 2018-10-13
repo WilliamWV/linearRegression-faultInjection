@@ -1,0 +1,58 @@
+[INFO -- 2018-10-13 10:47:29]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 10:47:29]
+Initialization strings:
+[INFO -- 2018-10-13 10:47:29]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 10:47:29]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 10:47:29]
+initSignal:0
+[INFO -- 2018-10-13 10:47:29]
+endSignal:10
+[INFO -- 2018-10-13 10:47:29]
+faultModel:2
+[INFO -- 2018-10-13 10:47:32]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=7) at ../sysdeps/ieee754/dbl-64/e_pow.c:330
+#1  __ieee754_pow_sse2 (x=7, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-7, y=3) at w_pow_compat.c:30
+#4  0x00005555555560ba in std::pow<double, unsigned int> (__x=-7, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x0000555555555590 in partialDerivate (pos=3) at lreg.cpp:107
+#6  0x0000555555555670 in adjust () at lreg.cpp:123
+#7  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#8  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+325	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 0
+Memory content before bitflip:0x6a0x010xf80xff
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5b0 
+address max offset: 4
+Memory content after  bitflip:0x7b0x550x7e0xa8
+frame name: __ieee754_pow_sse2
+symbol name: bigv
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 53
+value: {i = {-1468115589, 1107820543}, x = 12884899087.791739}
+value address: 0x7ffff779f5b0 <bigv>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-13 10:47:32]
+Fault Injection Successful after 3.0213420391082764s
+[INFO -- 2018-10-13 10:47:39]
+event type: exit
+[INFO -- 2018-10-13 10:47:39]
+exit code: 0
