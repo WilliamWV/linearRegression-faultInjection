@@ -1,0 +1,64 @@
+[INFO -- 2018-10-12 18:40:45]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 18:40:45]
+Initialization strings:
+[INFO -- 2018-10-12 18:40:45]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 18:40:45]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 18:40:45]
+initSignal:0
+[INFO -- 2018-10-12 18:40:45]
+endSignal:10
+[INFO -- 2018-10-12 18:40:45]
+faultModel:0
+[EXCEPTION -- 2018-10-12 18:40:46]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-10-12 18:40:46]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-12 18:40:46]
+Backtrace BEGIN:
+#0  0x0000555555555649 in adjust () at lreg.cpp:120
+#1  0x0000555555555881 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:159
+#2  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+115	*/
+116	void adjust(){
+117		
+118		double PD;
+119		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+120			selectTriUInt(i1, i2, i3)<T.size(); 
+121			i1++, i2++, i3++)
+122		{
+123			PD = partialDerivate(selectTriUInt(i1, i2, i3));
+124			// alpha is different from the canonical version because this works better
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xf00x160x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a168 
+address max offset: 8
+Memory content after  bitflip:0xf00x160x770x550x750x550x000x00
+frame name: main
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 42
+value: std::vector of length 17179869204, capacity 32 = {-24, 6, -22, -24, 18, 30, 24, -22, 515, 245, 1155, 1061, 131, 803, 651, 1061, 21, 5, 515, 651, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.1336224915654232e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-12 18:40:46]
+Fault Injection Successful after 1.7654998302459717s
+[INFO -- 2018-10-12 18:40:47]
+event type: exit
+[EXCEPTION -- 2018-10-12 18:40:47]
+exit code: no exit code available
