@@ -1,0 +1,57 @@
+[INFO -- 2018-10-13 14:08:40]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 14:08:40]
+Initialization strings:
+[INFO -- 2018-10-13 14:08:40]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 14:08:40]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 14:08:40]
+initSignal:0
+[INFO -- 2018-10-13 14:08:40]
+endSignal:10
+[INFO -- 2018-10-13 14:08:40]
+faultModel:1
+[EXCEPTION -- 2018-10-13 14:08:42]
+gdbException: Cannot access memory at address 0x555505771650
+[INFO -- 2018-10-13 14:08:42]
+Backtrace BEGIN:
+#0  selectTriUInt (a=1, b=1, c=1) at lreg.cpp:48
+#1  0x0000555555555280 in predict (v=10) at lreg.cpp:77
+#2  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#3  0x0000555555555886 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:160
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+43	vector<double> T; // the adjustment variables
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+52	}
+
+Backtrace END
+Memory content before bitflip:0x300xf00x8d0xd60xc00xca0x2e0x40
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0x300xf00x8d0xd60xc00xca0x2e0x08
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 72
+value: 2.9142839042596687e-269
+value address: 0x7fffffffd788
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 14:08:42]
+Fault Injection Successful after 2.1075618267059326s
+[INFO -- 2018-10-13 14:08:42]
+event type: exit
+[EXCEPTION -- 2018-10-13 14:08:42]
+exit code: no exit code available

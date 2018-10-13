@@ -1,0 +1,61 @@
+[INFO -- 2018-10-13 14:39:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 14:39:53]
+Initialization strings:
+[INFO -- 2018-10-13 14:39:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 14:39:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 14:39:53]
+initSignal:0
+[INFO -- 2018-10-13 14:39:53]
+endSignal:10
+[INFO -- 2018-10-13 14:39:53]
+faultModel:2
+[INFO -- 2018-10-13 14:39:59]
+Backtrace BEGIN:
+#0  0x00005555555552dd in predict (v=6) at lreg.cpp:73
+#1  0x00005555555553e9 in meanSquaredError () at lreg.cpp:91
+#2  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+68	/**
+69		Predicts the value related to v using the Ts variables
+70	*/
+71	double predict(double v){
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x1b0x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a170 
+address max offset: 8
+Memory content after  bitflip:0x0f0x620x490x940x4e0x590xb10x57
+frame name: main
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 42
+value: std::vector of length 36, capacity 789854515151653139 = {-1, -1, -1, -1, -1, -1, -1, -1, -631, -1129, -1, -667, -497, -562, -11, -991, -991, -667, -211, -596, -219, 4136, -859, 9509, -157691, 91941, -4395, -116894, -143184, 5, 9509, -143184, -11, -116894, 69, 5}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-13 14:39:59]
+Fault Injection Successful after 6.14851713180542s
+[INFO -- 2018-10-13 14:40:02]
+event type: exit
+[INFO -- 2018-10-13 14:40:02]
+exit code: 0

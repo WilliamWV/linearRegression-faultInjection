@@ -1,0 +1,54 @@
+[INFO -- 2018-10-13 13:46:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 13:46:07]
+Initialization strings:
+[INFO -- 2018-10-13 13:46:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 13:46:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 13:46:07]
+initSignal:0
+[INFO -- 2018-10-13 13:46:07]
+endSignal:10
+[INFO -- 2018-10-13 13:46:07]
+faultModel:0
+[INFO -- 2018-10-13 13:46:14]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_M_get_Tp_allocator (this=0x55555575a180 <T>) at /usr/include/c++/7/bits/stl_vector.h:120
+#1  0x000055555555625c in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd870, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x0000555555555900 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:165
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+115	      _M_get_Tp_allocator() _GLIBCXX_NOEXCEPT
+116	      { return *static_cast<_Tp_alloc_type*>(&this->_M_impl); }
+117	
+118	      const _Tp_alloc_type&
+119	      _M_get_Tp_allocator() const _GLIBCXX_NOEXCEPT
+120	      { return *static_cast<const _Tp_alloc_type*>(&this->_M_impl); }
+121	
+122	      allocator_type
+123	      get_allocator() const _GLIBCXX_NOEXCEPT
+124	      { return allocator_type(_M_get_Tp_allocator()); }
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a1a8 
+address max offset: 8
+Memory content after  bitflip:0x460x5a0xb70xf40x380x4d0xf70x3e
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_get_Tp_allocator
+symbol name: a3
+symbol filename: lreg.cpp
+symbol line: 45
+value: 2.222218544808477e-05
+value address: 0x55555575a1a8 <a3>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 13:46:14]
+Fault Injection Successful after 7.757688522338867s
+[INFO -- 2018-10-13 13:46:17]
+event type: exit
+[INFO -- 2018-10-13 13:46:17]
+exit code: 0

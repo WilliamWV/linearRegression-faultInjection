@@ -1,0 +1,60 @@
+[INFO -- 2018-10-13 14:33:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 14:33:47]
+Initialization strings:
+[INFO -- 2018-10-13 14:33:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 14:33:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 14:33:47]
+initSignal:0
+[INFO -- 2018-10-13 14:33:47]
+endSignal:10
+[INFO -- 2018-10-13 14:33:47]
+faultModel:0
+[INFO -- 2018-10-13 14:33:53]
+Backtrace BEGIN:
+#0  0x00005555555562e4 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:330
+#1  0x00005555555558e8 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:165
+#2  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+325	       */
+326	      vector(const vector& __x)
+327	      : _Base(__x.size(),
+328		_Alloc_traits::_S_select_on_copy(__x._M_get_Tp_allocator()))
+329	      {
+330		this->_M_impl._M_finish =
+331		  std::__uninitialized_copy_a(__x.begin(), __x.end(),
+332					      this->_M_impl._M_start,
+333					      _M_get_Tp_allocator());
+334	      }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771880
+address max offset: 8
+Memory content after  bitflip:0x000x010x000x000x000x000x000x00
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 41
+value: std::vector of length 36, capacity 64 = {8, 8, 0, 9, -11, 6, -6, -10, -18, -24, 0, 18, -16, -17, 2, 22, 22, 18, 10, 17, -4, 9, -6, 12, -32, 26, -10, -29, -31, 0, 12, -31, -2, -29, 2, 0}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-13 14:33:53]
+Fault Injection Successful after 6.010041236877441s
+[INFO -- 2018-10-13 14:33:57]
+event type: exit
+[INFO -- 2018-10-13 14:33:57]
+exit code: 0
