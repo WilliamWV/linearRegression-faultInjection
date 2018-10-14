@@ -1,0 +1,55 @@
+[INFO -- 2018-10-13 16:16:38]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 16:16:38]
+Initialization strings:
+[INFO -- 2018-10-13 16:16:38]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 16:16:38]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 16:16:38]
+initSignal:0
+[INFO -- 2018-10-13 16:16:38]
+endSignal:10
+[INFO -- 2018-10-13 16:16:38]
+faultModel:1
+[EXCEPTION -- 2018-10-13 16:16:39]
+gdbException: Cannot access memory at address 0x5555556312f0
+[INFO -- 2018-10-13 16:16:39]
+Backtrace BEGIN:
+#0  adjust () at lreg.cpp:116
+#1  0x0000555555555881 in train (iterations=30000, N=2, stopsWhenStable=true) at lreg.cpp:159
+#2  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+111	}
+112	
+113	/**
+114		Adjusts the values of T 
+115	*/
+116	void adjust(){
+117		
+118		double PD;
+119		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+120			selectTriUInt(i1, i2, i3)<T.size(); 
+
+Backtrace END
+Memory content before bitflip:0x540xc50x510xd20x990x440xe60x3d
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd820
+address max offset: 8
+Memory content after  bitflip:0x750xc50x510xd20x990x440xe60x3d
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 152
+value: 1.6202082137708809e-10
+value address: 0x7fffffffd820
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 16:16:39]
+Fault Injection Successful after 1.4791219234466553s
+[INFO -- 2018-10-13 16:16:39]
+event type: exit
+[EXCEPTION -- 2018-10-13 16:16:39]
+exit code: no exit code available

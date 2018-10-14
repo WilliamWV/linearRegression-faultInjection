@@ -1,0 +1,54 @@
+[INFO -- 2018-10-13 18:24:28]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 18:24:28]
+Initialization strings:
+[INFO -- 2018-10-13 18:24:28]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 18:24:28]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 18:24:28]
+initSignal:0
+[INFO -- 2018-10-13 18:24:28]
+endSignal:10
+[INFO -- 2018-10-13 18:24:28]
+faultModel:0
+[INFO -- 2018-10-13 18:24:32]
+Backtrace BEGIN:
+#0  0x0000555555555291 in predict (v=-20) at lreg.cpp:77
+#1  0x00005555555553e9 in meanSquaredError () at lreg.cpp:91
+#2  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+79		return val;
+80		
+81	}
+
+Backtrace END
+Memory content before bitflip:0x190x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7d0
+address max offset: 4
+Memory content after  bitflip:0x190x000x000x20
+frame name: meanSquaredError
+symbol name: i2
+symbol filename: lreg.cpp
+symbol line: 87
+value: 536870937
+value address: 0x7fffffffd7d0
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-13 18:24:32]
+Fault Injection Successful after 4.501746892929077s
+[INFO -- 2018-10-13 18:24:38]
+event type: exit
+[INFO -- 2018-10-13 18:24:38]
+exit code: 0

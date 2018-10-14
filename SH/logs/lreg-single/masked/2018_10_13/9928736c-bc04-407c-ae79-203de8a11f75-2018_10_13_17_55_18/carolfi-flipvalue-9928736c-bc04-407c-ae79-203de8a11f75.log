@@ -1,0 +1,50 @@
+[INFO -- 2018-10-13 17:55:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 17:55:07]
+Initialization strings:
+[INFO -- 2018-10-13 17:55:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 17:55:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 17:55:07]
+initSignal:0
+[INFO -- 2018-10-13 17:55:07]
+endSignal:10
+[INFO -- 2018-10-13 17:55:07]
+faultModel:0
+[EXCEPTION -- 2018-10-13 17:55:09]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-13 17:55:09]
+Backtrace BEGIN:
+#0  0x00007ffff76daa35 in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:215
+#1  0x00007ffff76bcb14 in __pow (x=9, y=2) at w_pow_compat.c:30
+#2  0x00005555555560ba in std::pow<double, unsigned int> (__x=9, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555590 in partialDerivate (pos=2) at lreg.cpp:107
+#4  0x0000555555555670 in adjust () at lreg.cpp:123
+#5  0x0000555555555881 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:159
+#6  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+210	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd950
+address max offset: 8
+Memory content after  bitflip:0x2d0x430x1c0xeb0x620x360x0a0x3f
+frame name: main
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 202
+value: 4.999627470970154e-05
+value address: 0x7fffffffd950
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 17:55:09]
+Fault Injection Successful after 2.83353328704834s
+[INFO -- 2018-10-13 17:55:17]
+event type: exit
+[INFO -- 2018-10-13 17:55:17]
+exit code: 0

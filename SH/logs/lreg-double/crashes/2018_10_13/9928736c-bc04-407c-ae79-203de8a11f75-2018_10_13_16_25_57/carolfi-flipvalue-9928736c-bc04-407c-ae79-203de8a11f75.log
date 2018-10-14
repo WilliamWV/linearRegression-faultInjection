@@ -1,0 +1,64 @@
+[INFO -- 2018-10-13 16:25:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 16:25:53]
+Initialization strings:
+[INFO -- 2018-10-13 16:25:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 16:25:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 16:25:53]
+initSignal:0
+[INFO -- 2018-10-13 16:25:53]
+endSignal:10
+[INFO -- 2018-10-13 16:25:53]
+faultModel:1
+[EXCEPTION -- 2018-10-13 16:25:55]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-13 16:25:55]
+Backtrace BEGIN:
+#0  0x000055555555740e in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=18.602726840931787, __last=2.4209216646221081e-322, __result=18.602401697791052) at /usr/include/c++/7/bits/stl_algobase.h:422
+#1  0x0000555555556c65 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=18.602726840931787, __last=2.4209216646221081e-322, __result=18.602401697791052) at /usr/include/c++/7/bits/stl_algobase.h:456
+#2  0x00005555555565a7 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd830, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x000055555555587c in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:158
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+417	
+418	  template<bool _IsMove, typename _II, typename _OI>
+419	    inline _OI
+420	    __copy_move_a2(_II __first, _II __last, _OI __result)
+421	    {
+422	      return _OI(std::__copy_move_a<_IsMove>(std::__niter_base(__first),
+423						     std::__niter_base(__last),
+424						     std::__niter_base(__result)));
+425	    }
+426	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x780x130x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a190 
+address max offset: 8
+Memory content after  bitflip:0x780x130x770x550x550x110x000x00
+frame name: train
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 3, capacity -9345848836093 = {18.602726840931787, 5.8353219973340771, -1.9724134021967694}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-13 16:25:55]
+Fault Injection Successful after 2.879918098449707s
+[INFO -- 2018-10-13 16:25:56]
+event type: exit
+[EXCEPTION -- 2018-10-13 16:25:56]
+exit code: no exit code available

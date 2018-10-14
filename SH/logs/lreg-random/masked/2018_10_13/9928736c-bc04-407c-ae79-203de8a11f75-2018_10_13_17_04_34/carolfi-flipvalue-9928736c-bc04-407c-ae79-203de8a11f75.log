@@ -1,0 +1,51 @@
+[INFO -- 2018-10-13 17:04:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 17:04:24]
+Initialization strings:
+[INFO -- 2018-10-13 17:04:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 17:04:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 17:04:24]
+initSignal:0
+[INFO -- 2018-10-13 17:04:24]
+endSignal:10
+[INFO -- 2018-10-13 17:04:24]
+faultModel:2
+[INFO -- 2018-10-13 17:04:28]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=18) at ../sysdeps/ieee754/dbl-64/e_pow.c:335
+#1  __ieee754_pow_sse2 (x=18, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76bcb14 in __pow (x=18, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=18, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555552c2 in predict (v=18) at lreg.cpp:77
+#5  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#6  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+330	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the pointer
+Memory content before bitflip:0x030xe20xff0xff0xff0x7f0x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffde68
+address max offset: 8
+Memory content after  bitflip:0xe30x8b0x540x0c0x140xe30x5b0xfa
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 183
+value: 0x7fffffffde68
+value address: 0x7fffffffd8f0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 17:04:28]
+Fault Injection Successful after 4.877725601196289s
+[INFO -- 2018-10-13 17:04:33]
+event type: exit
+[INFO -- 2018-10-13 17:04:33]
+exit code: 0

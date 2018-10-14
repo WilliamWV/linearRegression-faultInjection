@@ -1,0 +1,59 @@
+[INFO -- 2018-10-13 18:46:12]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 18:46:12]
+Initialization strings:
+[INFO -- 2018-10-13 18:46:12]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 18:46:12]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 18:46:12]
+initSignal:0
+[INFO -- 2018-10-13 18:46:12]
+endSignal:10
+[INFO -- 2018-10-13 18:46:12]
+faultModel:1
+[INFO -- 2018-10-13 18:46:15]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_M_get_Tp_allocator (this=0x7fffffffd7c7) at /usr/include/c++/7/bits/stl_vector.h:115
+#1  0x00005555555562a7 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:333
+#2  0x00005555555558e8 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:165
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+110	
+111	    public:
+112	      typedef _Alloc allocator_type;
+113	
+114	      _Tp_alloc_type&
+115	      _M_get_Tp_allocator() _GLIBCXX_NOEXCEPT
+116	      { return *static_cast<_Tp_alloc_type*>(&this->_M_impl); }
+117	
+118	      const _Tp_alloc_type&
+119	      _M_get_Tp_allocator() const _GLIBCXX_NOEXCEPT
+
+Backtrace END
+Fliping a bit of the value pointed by a reference
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771ba0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x41
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: __x
+symbol filename: /usr/include/c++/7/bits/stl_vector.h
+symbol line: 326
+value: std::vector of length 4, capacity 4 = {3.3602028120208245, 15.419025159978919, -11.661276423475865, -1.7862738185672395}
+value address: 0x7fffffffd830
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 18:46:15]
+Fault Injection Successful after 3.4096996784210205s
+[INFO -- 2018-10-13 18:46:22]
+event type: exit
+[INFO -- 2018-10-13 18:46:22]
+exit code: 0

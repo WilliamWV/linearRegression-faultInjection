@@ -1,0 +1,62 @@
+[INFO -- 2018-10-13 17:00:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 17:00:15]
+Initialization strings:
+[INFO -- 2018-10-13 17:00:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 17:00:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 17:00:15]
+initSignal:0
+[INFO -- 2018-10-13 17:00:15]
+endSignal:10
+[INFO -- 2018-10-13 17:00:15]
+faultModel:2
+[INFO -- 2018-10-13 17:00:18]
+Backtrace BEGIN:
+#0  0x0000555555555291 in predict (v=11) at lreg.cpp:77
+#1  0x000055555555551d in partialDerivate (pos=3) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+79		return val;
+80		
+81	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x800x180x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a148 
+address max offset: 8
+Memory content after  bitflip:0x770xc70x640x720xeb0xbb0x4d0xd4
+frame name: adjust
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 41
+value: std::vector of length -393593471193205245, capacity 64 = {-8, 3, 9, -2, 6, 15, 13, -2, 24, -20, -24, -12, -6, -15, 18, 15, -17, 23, 9, 16, 26, -2, -12, -1, 28, -20, 15, -5, 9, 19, -4, -5, 24, -21, 27, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.6136072665001942e-321, 7, -4, -10, 1, -7, -16, -14, 1, -1057, -881, -1249, -337, -97, -511, -577, -391, -647, -967, -127, -449, -51916, 24, 5274, 5, -64926, 24306, -9819, 381, -2055, -20115, 194, 381, -40770, 28125, -58179, -3811, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, 7.9183135147967203, 33.453559081922712, -11.585581044866911, -1.8518203862492664, 0, 2.4209216646221081e-322, 7.9183135147967203, 33.453559081922712, -11.585581044866911, -1.8518203862492664, 0, 2.4209216646221081e-322, 4.6355706479211964e-310, 33.449417794599803, -11.58079445307342, -1.8204366613001239, 0, 2.4209216646221081e-322, 0, 33.453559081922712, -11.585581044866911, -1.8518203862492664, 0, 2.0719630989644356e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-13 17:00:18]
+Fault Injection Successful after 3.214808940887451s
+[INFO -- 2018-10-13 17:00:18]
+event type: exit
+[EXCEPTION -- 2018-10-13 17:00:18]
+exit code: no exit code available

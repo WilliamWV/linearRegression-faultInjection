@@ -1,0 +1,59 @@
+[INFO -- 2018-10-13 17:17:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 17:17:15]
+Initialization strings:
+[INFO -- 2018-10-13 17:17:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 17:17:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 17:17:15]
+initSignal:0
+[INFO -- 2018-10-13 17:17:15]
+endSignal:10
+[INFO -- 2018-10-13 17:17:15]
+faultModel:0
+[EXCEPTION -- 2018-10-13 17:17:16]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-10-13 17:17:20]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-13 17:17:20]
+Backtrace BEGIN:
+#0  0x0000555555555291 in predict (v=-4) at lreg.cpp:77
+#1  0x000055555555551d in partialDerivate (pos=1) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+79		return val;
+80		
+81	}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000xc60xad0xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd958
+address max offset: 8
+Memory content after  bitflip:0x000x020x000x000x000xc60xad0xc0
+frame name: main
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 202
+value: -3811.0000000002328
+value address: 0x7fffffffd958
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 17:17:20]
+Fault Injection Successful after 5.768563985824585s
+[INFO -- 2018-10-13 17:17:25]
+event type: exit
+[EXCEPTION -- 2018-10-13 17:17:25]
+exit code: no exit code available
