@@ -1,0 +1,54 @@
+[INFO -- 2018-10-06 16:11:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 16:11:49]
+Initialization strings:
+[INFO -- 2018-10-06 16:11:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 16:11:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 16:11:49]
+initSignal:0
+[INFO -- 2018-10-06 16:11:49]
+endSignal:10
+[INFO -- 2018-10-06 16:11:49]
+faultModel:1
+[INFO -- 2018-10-06 16:11:52]
+Backtrace BEGIN:
+#0  0x00005555555554f6 in partialDerivate (pos=0) at lreg.cpp:107
+#1  0x0000555555555670 in adjust () at lreg.cpp:123
+#2  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+102		double pD = 0;
+103		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+104			selectTriUInt(i1, i2, i3)<x.size(); 
+105			i1++, i2++, i3++)
+106		{
+107			pD += ((predict(x[selectTriUInt(i1, i2, i3)]) - y[selectTriUInt(i1, i2, i3)])*pow(x[selectTriUInt(i1, i2, i3)], pos));	
+108		}
+109		pD *= (2.0/x.size());
+110		return pD;
+111	}
+
+Backtrace END
+Memory content before bitflip:0xe40x630xac0xaf0xd20xc30x950x41
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd820
+address max offset: 8
+Memory content after  bitflip:0xe40xe70xac0xaf0xd20xc30x950x41
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 152
+value: 91288747.918853343
+value address: 0x7fffffffd820
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-06 16:11:52]
+Fault Injection Successful after 3.4607934951782227s
+[INFO -- 2018-10-06 16:11:59]
+event type: exit
+[INFO -- 2018-10-06 16:11:59]
+exit code: 0

@@ -1,0 +1,59 @@
+[INFO -- 2018-10-10 17:03:52]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 17:03:52]
+Initialization strings:
+[INFO -- 2018-10-10 17:03:52]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 17:03:52]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 17:03:52]
+initSignal:0
+[INFO -- 2018-10-10 17:03:52]
+endSignal:10
+[INFO -- 2018-10-10 17:03:52]
+faultModel:1
+[INFO -- 2018-10-10 17:03:55]
+Backtrace BEGIN:
+#0  0x00005555555578f2 in std::__niter_base<double const*, std::vector<double, std::allocator<double> > > (__it=0) at /usr/include/c++/7/bits/stl_iterator.h:984
+#1  0x0000555555557422 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.698432109137376, __last=0, __result=1.6982053956467735) at /usr/include/c++/7/bits/stl_algobase.h:422
+#2  0x0000555555556c65 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.698432109137376, __last=0, __result=1.6982053956467735) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x00005555555565a7 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd850, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#4  0x00005555555558c7 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:163
+#5  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+979	_GLIBCXX_BEGIN_NAMESPACE_VERSION
+980	
+981	  template<typename _Iterator, typename _Container>
+982	    _Iterator
+983	    __niter_base(__gnu_cxx::__normal_iterator<_Iterator, _Container> __it)
+984	    { return __it.base(); }
+985	
+986	_GLIBCXX_END_NAMESPACE_VERSION
+987	} // namespace
+988	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x130x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a188 
+address max offset: 8
+Memory content after  bitflip:0xa00x730x770x550x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 3076, capacity 4 = {1.698432109137376, -16.415818089050543, -2.1456939479549524, 0.81023369354474128, 0, 4.001931731314097e-322, 4.6355706478057827e-310, 1.5810100666919889e-322, -1.0000009536743162, 3.2419580666904993e+178, -1.00000000077399, -1, -1, -1, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 1.1246736971617397e-312, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 4.6355706478247548e-310, -4.3808936084871313, 1.8337773660181476, 1.6304166312761136e-322, 4.6355706478263358e-310, -4.3809049391841741, 1.8336474355603365, 1.6304166312761136e-322, 0, -4.3808936084871313, 1.8337773660181476, 7.1639518646980749e-322, 0, -1, -1, -1, -1, -1, -1, -1, 263, 1199, 479, 143, 111, 311, 23, 683, 0, 1.3487992131466031e-321, 0, 3, 16, 0, -1, -6, 14, -12, -11, -24, 16, 9, -7, 13, -3, -18, 1, 12, 0, 24, 25, -29, 21, -24, 16, 0, -12, -19, 4, 5, 23, 23, 0, 1.3487992131466031e-321, 4.6355706478350314e-310, -1, -1, -1, -1, -1, -1, -1, 263, 1199, 479, 143, 111, 311, 23, 683, -1, 263, -1, 1103, 13720, -26888, 7912, -15533, 3307, -5, -2153, -7928, 7, 40, 10552, 10552, 0, 2.6136072665001942e-321, 4, 3, 16, 0, -1, -6, 14, -12, -11, -24, 16, 9, -7, 13, -3, -18, 1, 12, 0, 24, 25, -29, 21, -24, 16, 0, -12, -19, 4, 5, 23, 23, 16, -17, -14, -15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.6136072665001942e-321, -1, -1, -1, -1, -1, -1, -1, -1, 263, 1199...}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-10 17:03:55]
+Fault Injection Successful after 3.3472511768341064s

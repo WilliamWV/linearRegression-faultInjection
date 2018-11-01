@@ -1,0 +1,51 @@
+[INFO -- 2018-10-10 18:09:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 18:09:48]
+Initialization strings:
+[INFO -- 2018-10-10 18:09:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 18:09:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 18:09:48]
+initSignal:0
+[INFO -- 2018-10-10 18:09:48]
+endSignal:10
+[INFO -- 2018-10-10 18:09:48]
+faultModel:1
+[INFO -- 2018-10-10 18:09:51]
+Backtrace BEGIN:
+#0  checkint (x=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:463
+#1  __ieee754_pow_sse2 (x=-17, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:153
+#2  0x00007ffff76b7b14 in __pow (x=-17, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=-17, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555552c2 in predict (v=-17) at lreg.cpp:77
+#5  0x00005555555553e9 in meanSquaredError () at lreg.cpp:91
+#6  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+458	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffe204 
+address max offset: 1
+Memory content after  bitflip:0xbf
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 183
+value: 0x7fffffffde68
+value address: 0x7fffffffd8f0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-10 18:09:51]
+Fault Injection Successful after 3.9201605319976807s
+[INFO -- 2018-10-10 18:09:57]
+event type: exit
+[INFO -- 2018-10-10 18:09:57]
+exit code: 0

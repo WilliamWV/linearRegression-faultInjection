@@ -1,0 +1,50 @@
+[INFO -- 2018-10-10 15:08:06]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 15:08:06]
+Initialization strings:
+[INFO -- 2018-10-10 15:08:06]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 15:08:06]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 15:08:06]
+initSignal:0
+[INFO -- 2018-10-10 15:08:06]
+endSignal:10
+[INFO -- 2018-10-10 15:08:06]
+faultModel:2
+[INFO -- 2018-10-10 15:08:12]
+Backtrace BEGIN:
+#0  0x0000555555556ca6 in std::vector<double, std::allocator<double> >::end (this=0x7fffffffd850) at /usr/include/c++/7/bits/stl_vector.h:582
+#1  0x000055555555656c in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd850, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x00005555555558c7 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:163
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+577	       *  element in the %vector.  Iteration is done in ordinary
+578	       *  element order.
+579	       */
+580	      iterator
+581	      end() _GLIBCXX_NOEXCEPT
+582	      { return iterator(this->_M_impl._M_finish); }
+583	
+584	      /**
+585	       *  Returns a read-only (constant) iterator that points one past
+586	       *  the last element in the %vector.  Iteration is done in
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a198 
+address max offset: 8
+Memory content after  bitflip:0xb30x7f0x9b0x8c0x230x490xab0x9f
+frame name: std::vector<double, std::allocator<double> >::end
+symbol name: a1
+symbol filename: lreg.cpp
+symbol line: 45
+value: -3.9747273028806518e-156
+value address: 0x55555575a198 <a1>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-10 15:08:12]
+Fault Injection Successful after 6.705176115036011s

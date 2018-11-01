@@ -1,0 +1,55 @@
+[INFO -- 2018-10-11 18:57:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 18:57:41]
+Initialization strings:
+[INFO -- 2018-10-11 18:57:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 18:57:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 18:57:41]
+initSignal:0
+[INFO -- 2018-10-11 18:57:41]
+endSignal:10
+[INFO -- 2018-10-11 18:57:41]
+faultModel:1
+[INFO -- 2018-10-11 18:57:46]
+Backtrace BEGIN:
+#0  0x00005555555560ac in std::pow<double, unsigned int> (__x=7, __y=3) at /usr/include/c++/7/cmath:418
+#1  0x0000555555555590 in partialDerivate (pos=3) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd804
+address max offset: 1
+Memory content after  bitflip:0xc1
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 141
+value: 193
+value address: 0x7fffffffd804
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-10-11 18:57:46]
+Fault Injection Successful after 5.220487833023071s
+[INFO -- 2018-10-11 18:57:50]
+event type: exit
+[INFO -- 2018-10-11 18:57:50]
+exit code: 0

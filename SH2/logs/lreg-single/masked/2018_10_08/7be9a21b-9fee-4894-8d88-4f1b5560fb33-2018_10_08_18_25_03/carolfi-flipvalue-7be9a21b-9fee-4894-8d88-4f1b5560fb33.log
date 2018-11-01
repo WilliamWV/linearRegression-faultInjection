@@ -1,0 +1,57 @@
+[INFO -- 2018-10-08 18:24:52]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-08 18:24:52]
+Initialization strings:
+[INFO -- 2018-10-08 18:24:52]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-08 18:24:52]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-08 18:24:52]
+initSignal:0
+[INFO -- 2018-10-08 18:24:52]
+endSignal:10
+[INFO -- 2018-10-08 18:24:52]
+faultModel:0
+[EXCEPTION -- 2018-10-08 18:24:56]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-08 18:24:56]
+Backtrace BEGIN:
+#0  0x0000555555556078 in std::pow<double, unsigned int> (__x=4.2439915829186759e-314, __y=2) at /usr/include/c++/7/cmath:415
+#1  0x00005555555552c2 in predict (v=2) at lreg.cpp:77
+#2  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#3  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd804
+address max offset: 1
+Memory content after  bitflip:0x03
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 141
+value: 3
+value address: 0x7fffffffd804
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-10-08 18:24:56]
+Fault Injection Successful after 4.992746353149414s
+[INFO -- 2018-10-08 18:25:02]
+event type: exit
+[INFO -- 2018-10-08 18:25:02]
+exit code: 0

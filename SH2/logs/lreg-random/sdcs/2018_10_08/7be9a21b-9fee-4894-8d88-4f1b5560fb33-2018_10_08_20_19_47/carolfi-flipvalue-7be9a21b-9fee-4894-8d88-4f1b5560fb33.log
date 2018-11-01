@@ -1,0 +1,58 @@
+[INFO -- 2018-10-08 20:19:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-08 20:19:36]
+Initialization strings:
+[INFO -- 2018-10-08 20:19:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-08 20:19:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-08 20:19:36]
+initSignal:0
+[INFO -- 2018-10-08 20:19:36]
+endSignal:10
+[INFO -- 2018-10-08 20:19:36]
+faultModel:2
+[INFO -- 2018-10-08 20:19:40]
+Backtrace BEGIN:
+#0  __exp1 (x=<optimized out>, xx=<optimized out>, error=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_exp.c:278
+#1  0x00007ffff76d58dc in __ieee754_pow_sse2 (x=20, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76b7b14 in __pow (x=20, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=20, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555552c2 in predict (v=20) at lreg.cpp:77
+#5  0x000055555555551d in partialDerivate (pos=2) at lreg.cpp:107
+#6  0x0000555555555670 in adjust () at lreg.cpp:123
+#7  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#8  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+273	../sysdeps/ieee754/dbl-64/e_exp.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0x000x000xe00x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff778c7fc 
+address max offset: 4
+Memory content after  bitflip:0xad0xd70x410x79
+frame name: __exp1
+symbol name: p2
+symbol filename: ../sysdeps/ieee754/dbl-64/uexp.h
+symbol line: 61
+value: {i = {1244, 2034358189}, x = 1.2354960052407296e+276}
+value address: 0x7ffff778c7f8 <p2>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-08 20:19:40]
+Fault Injection Successful after 4.983001232147217s
+[INFO -- 2018-10-08 20:19:46]
+event type: exit
+[INFO -- 2018-10-08 20:19:46]
+exit code: 0

@@ -1,0 +1,50 @@
+[INFO -- 2018-10-13 17:43:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 17:43:53]
+Initialization strings:
+[INFO -- 2018-10-13 17:43:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 17:43:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 17:43:54]
+initSignal:0
+[INFO -- 2018-10-13 17:43:54]
+endSignal:10
+[INFO -- 2018-10-13 17:43:54]
+faultModel:2
+[EXCEPTION -- 2018-10-13 17:43:55]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-10-13 17:43:59]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb0f in __pow (x=-2, y=1) at w_pow_compat.c:30
+#1  0x00005555555560ba in std::pow<double, unsigned int> (__x=-2, __y=1) at /usr/include/c++/7/cmath:418
+#2  0x00005555555552c2 in predict (v=-2) at lreg.cpp:77
+#3  0x000055555555551d in partialDerivate (pos=2) at lreg.cpp:107
+#4  0x0000555555555670 in adjust () at lreg.cpp:123
+#5  0x0000555555555881 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:159
+#6  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+25	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x850xdf0x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd814
+address max offset: 4
+Memory content after  bitflip:0x820x400xa80xeb
+frame name: train
+symbol name: i1
+symbol filename: lreg.cpp
+symbol line: 154
+value: 3953672322
+value address: 0x7fffffffd814
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-13 17:43:59]
+Fault Injection Successful after 5.57422137260437s
+[INFO -- 2018-10-13 17:44:13]
+event type: exit
+[INFO -- 2018-10-13 17:44:13]
+exit code: 0

@@ -1,0 +1,62 @@
+[INFO -- 2018-10-13 14:44:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 14:44:49]
+Initialization strings:
+[INFO -- 2018-10-13 14:44:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 14:44:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 14:44:49]
+initSignal:0
+[INFO -- 2018-10-13 14:44:49]
+endSignal:10
+[INFO -- 2018-10-13 14:44:49]
+faultModel:1
+[INFO -- 2018-10-13 14:44:54]
+Backtrace BEGIN:
+#0  0x000055555555606f in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a180 <T>, __n=3) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x0000555555555291 in predict (v=-11) at lreg.cpp:77
+#2  0x00005555555553e9 in meanSquaredError () at lreg.cpp:91
+#3  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771a90
+address max offset: 8
+Memory content after  bitflip:0x840x000x000x000x000x000x000x00
+frame name: main
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 42
+value: std::vector of length 36, capacity 64 = {-1, -1, -1, -1, -1, -1, -1, -1, -631, -1129, -1, -667, -497, -562, -11, -991, -991, -667, -211, -596, -219, 4136, -859, 9509, -157691, 91941, -4395, -116894, -143184, 5, 9509, -143184, -11, -116894, 69, 5}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-13 14:44:54]
+Fault Injection Successful after 5.90382981300354s
+[INFO -- 2018-10-13 14:44:59]
+event type: exit
+[INFO -- 2018-10-13 14:44:59]
+exit code: 0

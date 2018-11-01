@@ -1,0 +1,64 @@
+[INFO -- 2018-10-13 18:02:16]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 18:02:16]
+Initialization strings:
+[INFO -- 2018-10-13 18:02:16]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 18:02:16]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 18:02:16]
+initSignal:0
+[INFO -- 2018-10-13 18:02:16]
+endSignal:10
+[INFO -- 2018-10-13 18:02:16]
+faultModel:2
+[EXCEPTION -- 2018-10-13 18:02:18]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-13 18:02:18]
+Backtrace BEGIN:
+#0  0x0000555555557083 in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::_Vector_impl (this=0x7fffffffd870, __a=...) at /usr/include/c++/7/bits/stl_vector.h:93
+#1  0x00005555555567aa in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd870, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:137
+#2  0x000055555555628f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd870, __x=std::vector of length -9, capacity -9 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x0000555555555900 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:165
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+88		_Vector_impl()
+89		: _Tp_alloc_type(), _M_start(), _M_finish(), _M_end_of_storage()
+90		{ }
+91	
+92		_Vector_impl(_Tp_alloc_type const& __a) _GLIBCXX_NOEXCEPT
+93		: _Tp_alloc_type(__a), _M_start(), _M_finish(), _M_end_of_storage()
+94		{ }
+95	
+96	#if __cplusplus >= 201103L
+97		_Vector_impl(_Tp_alloc_type&& __a) noexcept
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771750
+address max offset: 8
+Memory content after  bitflip:0xa00xf60xdf0xd10x860xc80xdb0x14
+frame name: main
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 42
+value: std::vector of length 20, capacity 32 = {7, -4, -10, 1, -7, -16, -14, 1, -1057, -881, -1249, -337, -97, -511, -577, -391, -647, -967, -127, -449}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-13 18:02:18]
+Fault Injection Successful after 2.840301275253296s
+[INFO -- 2018-10-13 18:02:19]
+event type: exit
+[EXCEPTION -- 2018-10-13 18:02:19]
+exit code: no exit code available

@@ -1,0 +1,53 @@
+[INFO -- 2018-10-06 15:24:46]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 15:24:46]
+Initialization strings:
+[INFO -- 2018-10-06 15:24:46]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 15:24:46]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 15:24:46]
+initSignal:0
+[INFO -- 2018-10-06 15:24:46]
+endSignal:10
+[INFO -- 2018-10-06 15:24:46]
+faultModel:0
+[EXCEPTION -- 2018-10-06 15:24:51]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-10-06 15:24:51]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-06 15:24:51]
+Backtrace BEGIN:
+#0  0x00007ffff6f18c01 in __GI___libc_free (mem=0x555555771389) at malloc.c:3123
+#1  0x00005555555578aa in __gnu_cxx::new_allocator<double>::deallocate (this=0x55555575a180 <T>, __p=0x555555771389) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x0000555555557370 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555771389, __n=2) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x0000555555556ac4 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x55555575a180 <T>, __p=0x555555771389, __n=2) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x0000555555556510 in std::vector<double, std::allocator<double> >::operator= (this=0x55555575a180 <T>, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:210
+#5  0x0000555555555988 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:169
+#6  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+3118	malloc.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff726e910 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x02
+frame name: __GI___libc_free
+symbol name: aligned_heap_area
+symbol filename: arena.c
+symbol line: 446
+value: 0x0
+value address: 0x7ffff726e910 <aligned_heap_area>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-06 15:24:51]
+Fault Injection Successful after 5.55424952507019s
+[INFO -- 2018-10-06 15:24:51]
+event type: exit
+[EXCEPTION -- 2018-10-06 15:24:51]
+exit code: no exit code available

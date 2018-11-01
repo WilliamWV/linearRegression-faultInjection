@@ -1,0 +1,54 @@
+[INFO -- 2018-10-10 16:09:26]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 16:09:26]
+Initialization strings:
+[INFO -- 2018-10-10 16:09:26]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 16:09:26]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 16:09:26]
+initSignal:0
+[INFO -- 2018-10-10 16:09:26]
+endSignal:10
+[INFO -- 2018-10-10 16:09:26]
+faultModel:2
+[INFO -- 2018-10-10 16:09:28]
+Backtrace BEGIN:
+#0  0x00005555555554c1 in partialDerivate (pos=1) at lreg.cpp:104
+#1  0x0000555555555670 in adjust () at lreg.cpp:123
+#2  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+99		to the adjustment variable whose position in T is passed in pos
+100	*/
+101	double partialDerivate(UINT pos){
+102		double pD = 0;
+103		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+104			selectTriUInt(i1, i2, i3)<x.size(); 
+105			i1++, i2++, i3++)
+106		{
+107			pD += ((predict(x[selectTriUInt(i1, i2, i3)]) - y[selectTriUInt(i1, i2, i3)])*pow(x[selectTriUInt(i1, i2, i3)], pos));	
+108		}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x900xaf0xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd958
+address max offset: 8
+Memory content after  bitflip:0x6d0x6e0x8c0x430xe60x4f0x000x0c
+frame name: main
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 202
+value: 7.1197327174807456e-251
+value address: 0x7fffffffd958
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-10 16:09:28]
+Fault Injection Successful after 2.9270875453948975s
+[INFO -- 2018-10-10 16:09:36]
+event type: exit
+[INFO -- 2018-10-10 16:09:36]
+exit code: 0

@@ -1,0 +1,62 @@
+[INFO -- 2018-10-09 19:47:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-09 19:47:21]
+Initialization strings:
+[INFO -- 2018-10-09 19:47:21]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-09 19:47:21]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-09 19:47:21]
+initSignal:0
+[INFO -- 2018-10-09 19:47:21]
+endSignal:10
+[INFO -- 2018-10-09 19:47:21]
+faultModel:2
+[INFO -- 2018-10-09 19:47:25]
+Backtrace BEGIN:
+#0  0x00005555555550ae in selectTriUInt (a=3224371200, b=0, c=3) at lreg.cpp:47
+#1  0x0000555555555256 in predict (v=-16) at lreg.cpp:74
+#2  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#3  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+42	vector<double> y; // observed values of training set inputs
+43	vector<double> T; // the adjustment variables
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x2a0x40
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771760
+address max offset: 8
+Memory content after  bitflip:0x740x900xda0x580x6f0x290x4a0x10
+frame name: selectTriUInt
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 41
+value: std::vector of length 36, capacity 64 = {3.3702480378716023e-230, 13, -15, -15, -14, -16, 9, 0, -11, 1, 19, 21, 12, 23, 7, -19, -3, -21, -2, -22, -3, 2, -31, -17, 9, -23, 8, 18, 18, -6, -11, -5, 12, 16, -16, 32}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-09 19:47:25]
+Fault Injection Successful after 4.752609729766846s
+[INFO -- 2018-10-09 19:47:31]
+event type: exit
+[INFO -- 2018-10-09 19:47:31]
+exit code: 0

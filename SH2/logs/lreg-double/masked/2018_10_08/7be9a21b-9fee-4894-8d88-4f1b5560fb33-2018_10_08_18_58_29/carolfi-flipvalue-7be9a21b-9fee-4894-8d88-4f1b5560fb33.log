@@ -1,0 +1,56 @@
+[INFO -- 2018-10-08 18:58:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-08 18:58:18]
+Initialization strings:
+[INFO -- 2018-10-08 18:58:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-08 18:58:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-08 18:58:18]
+initSignal:0
+[INFO -- 2018-10-08 18:58:18]
+endSignal:10
+[INFO -- 2018-10-08 18:58:18]
+faultModel:1
+[INFO -- 2018-10-08 18:58:20]
+Backtrace BEGIN:
+#0  checkint (x=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:469
+#1  __ieee754_pow_sse2 (x=-1, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:153
+#2  0x00007ffff76b7b14 in __pow (x=-1, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=-1, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555552c2 in predict (v=-1) at lreg.cpp:77
+#5  0x00005555555553e9 in meanSquaredError () at lreg.cpp:91
+#6  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+464	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000xf00xbf
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771970
+address max offset: 8
+Memory content after  bitflip:0x000x000x030x000x000x000xf00xbf
+frame name: main
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 42
+value: std::vector of length 36, capacity 64 = {-1.0000000000436557, -1, -1, -1, -1, -1, -1, -1, 271, 736, 295, 5, 815, 320, 23, 31, 736, 1, 1, 556, -3012, 73558, 48424, 408, 784, -24332, -82388, -177812, 8122, 48424, -55142, -42, -63422, 83548, 106162, -55142}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-08 18:58:20]
+Fault Injection Successful after 2.9063668251037598s
+[INFO -- 2018-10-08 18:58:28]
+event type: exit
+[INFO -- 2018-10-08 18:58:28]
+exit code: 0

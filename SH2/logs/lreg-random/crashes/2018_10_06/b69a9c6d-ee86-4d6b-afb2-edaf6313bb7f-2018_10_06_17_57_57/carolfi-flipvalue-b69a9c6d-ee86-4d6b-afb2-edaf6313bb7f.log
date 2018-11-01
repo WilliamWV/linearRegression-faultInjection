@@ -1,0 +1,55 @@
+[INFO -- 2018-10-06 17:57:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 17:57:54]
+Initialization strings:
+[INFO -- 2018-10-06 17:57:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 17:57:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 17:57:54]
+initSignal:0
+[INFO -- 2018-10-06 17:57:54]
+endSignal:10
+[INFO -- 2018-10-06 17:57:54]
+faultModel:2
+[EXCEPTION -- 2018-10-06 17:57:56]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-06 17:57:56]
+Backtrace BEGIN:
+#0  0x000055555555542c in meanSquaredError () at lreg.cpp:91
+#1  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#2  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+86		double error = 0;
+87		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+88			selectTriUInt(i1, i2, i3)<x.size(); 
+89			i1++, i2++, i3++)
+90		{
+91			error+= ((predict(x[selectTriUInt(i1, i2, i3)]) - y[selectTriUInt(i1, i2, i3)]) * (predict(x[selectTriUInt(i1, i2, i3)]) - y[selectTriUInt(i1, i2, i3)]));	
+92		}
+93		error /= x.size();
+94		return error;
+95	
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a1a0 
+address max offset: 8
+Memory content after  bitflip:0x4a0xf90xd00x060x060x340xa60x48
+frame name: meanSquaredError
+symbol name: a2
+symbol filename: lreg.cpp
+symbol line: 45
+value: 9.67086492169431e+41
+value address: 0x55555575a1a0 <a2>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-06 17:57:56]
+Fault Injection Successful after 2.969470977783203s
+[INFO -- 2018-10-06 17:57:57]
+event type: exit
+[EXCEPTION -- 2018-10-06 17:57:57]
+exit code: no exit code available

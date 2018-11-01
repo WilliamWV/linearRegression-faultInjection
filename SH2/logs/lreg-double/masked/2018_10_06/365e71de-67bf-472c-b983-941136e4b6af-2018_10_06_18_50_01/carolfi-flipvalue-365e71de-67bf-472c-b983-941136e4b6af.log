@@ -1,0 +1,56 @@
+[INFO -- 2018-10-06 18:49:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 18:49:51]
+Initialization strings:
+[INFO -- 2018-10-06 18:49:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 18:49:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 18:49:51]
+initSignal:0
+[INFO -- 2018-10-06 18:49:51]
+endSignal:10
+[INFO -- 2018-10-06 18:49:51]
+faultModel:1
+[INFO -- 2018-10-06 18:49:57]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=15, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:112
+#1  0x00007ffff76b7b14 in __pow (x=15, y=3) at w_pow_compat.c:30
+#2  0x00005555555560ba in std::pow<double, unsigned int> (__x=15, __y=3) at /usr/include/c++/7/cmath:418
+#3  0x00005555555552c2 in predict (v=15) at lreg.cpp:77
+#4  0x000055555555551d in partialDerivate (pos=1) at lreg.cpp:107
+#5  0x0000555555555670 in adjust () at lreg.cpp:123
+#6  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+107	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x600x190x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a150 
+address max offset: 8
+Memory content after  bitflip:0x600x190x770x550x550x550x000x22
+frame name: partialDerivate
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 41
+value: std::vector of length 36, capacity 306244774661193792 = {-6, 3, 15, 5, -3, 7, 5, -5, 16, -12, 13, 7, 24, -22, 8, 16, -16, 4, 24, -12, 20, -2, 13, -30, 12, 29, 14, -8, 22, 10, 32, -11, 4, 5, -3, 26}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-06 18:49:57]
+Fault Injection Successful after 6.656988859176636s
+[INFO -- 2018-10-06 18:50:01]
+event type: exit
+[INFO -- 2018-10-06 18:50:01]
+exit code: 0

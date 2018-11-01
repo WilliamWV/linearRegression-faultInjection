@@ -1,0 +1,56 @@
+[INFO -- 2018-10-09 18:43:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-09 18:43:35]
+Initialization strings:
+[INFO -- 2018-10-09 18:43:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-09 18:43:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-09 18:43:35]
+initSignal:0
+[INFO -- 2018-10-09 18:43:35]
+endSignal:10
+[INFO -- 2018-10-09 18:43:35]
+faultModel:0
+[INFO -- 2018-10-09 18:43:37]
+Backtrace BEGIN:
+#0  0x000055555555776a in std::_Destroy_aux<true>::__destroy<double*> () at /usr/include/c++/7/bits/stl_construct.h:117
+#1  0x0000555555557157 in std::_Destroy<double*> (__first=0x555555771470, __last=0x555555771488) at /usr/include/c++/7/bits/stl_construct.h:137
+#2  0x000055555555685d in std::_Destroy<double*, double> (__first=0x555555771470, __last=0x555555771488) at /usr/include/c++/7/bits/stl_construct.h:206
+#3  0x00005555555561a1 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd890, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:434
+#4  0x0000555555555955 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:165
+#5  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+112	  template<>
+113	    struct _Destroy_aux<true>
+114	    {
+115	      template<typename _ForwardIterator>
+116	        static void
+117	        __destroy(_ForwardIterator, _ForwardIterator) { }
+118	    };
+119	
+120	  /**
+121	   * Destroy a range of objects.  If the value_type of the object has
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a198 
+address max offset: 8
+Memory content after  bitflip:0x2d0x430x1c0xeb0xe20x360x020x3f
+frame name: std::vector<double, std::allocator<double> >::~vector
+symbol name: a1
+symbol filename: lreg.cpp
+symbol line: 45
+value: 3.4741210937500002e-05
+value address: 0x55555575a198 <a1>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-09 18:43:37]
+Fault Injection Successful after 2.0889408588409424s
+[INFO -- 2018-10-09 18:43:45]
+event type: exit
+[INFO -- 2018-10-09 18:43:45]
+exit code: 0

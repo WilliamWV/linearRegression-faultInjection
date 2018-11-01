@@ -1,0 +1,57 @@
+[INFO -- 2018-10-10 18:01:16]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 18:01:16]
+Initialization strings:
+[INFO -- 2018-10-10 18:01:16]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 18:01:16]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 18:01:16]
+initSignal:0
+[INFO -- 2018-10-10 18:01:16]
+endSignal:10
+[INFO -- 2018-10-10 18:01:16]
+faultModel:0
+[EXCEPTION -- 2018-10-10 18:01:18]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-10 18:01:18]
+Backtrace BEGIN:
+#0  std::__miter_base<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > > > (__it=-10.789918889939525) at /usr/include/c++/7/bits/cpp_type_traits.h:409
+#1  0x0000555555556c50 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-10.789918889939525, __last=2.4209216646221081e-322, __result=-10.789586455936609) at /usr/include/c++/7/bits/stl_algobase.h:455
+#2  0x00005555555565a7 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd830, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x000055555555587c in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:158
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+404	  // Fallback implementation of the function in bits/stl_iterator.h used to
+405	  // remove the move_iterator wrapper.
+406	  template<typename _Iterator>
+407	    inline _Iterator
+408	    __miter_base(_Iterator __it)
+409	    { return __it; }
+410	
+411	_GLIBCXX_END_NAMESPACE_VERSION
+412	} // namespace
+413	} // extern "C++"
+
+Backtrace END
+Memory content before bitflip:0x030x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7c0
+address max offset: 8
+Memory content after  bitflip:0x070x000x000x000x000x000x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: __xlen
+symbol filename: /usr/include/c++/7/bits/vector.tcc
+symbol line: 203
+value: 7
+value address: 0x7fffffffd7c0
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2018-10-10 18:01:18]
+Fault Injection Successful after 2.4215281009674072s
+[INFO -- 2018-10-10 18:01:20]
+event type: exit
+[EXCEPTION -- 2018-10-10 18:01:20]
+exit code: no exit code available

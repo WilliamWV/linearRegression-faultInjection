@@ -1,0 +1,59 @@
+[INFO -- 2018-10-12 21:28:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 21:28:13]
+Initialization strings:
+[INFO -- 2018-10-12 21:28:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 21:28:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 21:28:13]
+initSignal:0
+[INFO -- 2018-10-12 21:28:13]
+endSignal:10
+[INFO -- 2018-10-12 21:28:13]
+faultModel:2
+[INFO -- 2018-10-12 21:28:16]
+Backtrace BEGIN:
+#0  0x0000555555556c69 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=4.3342538437474722, __last=0, __result=4.3342538437474722) at /usr/include/c++/7/bits/stl_algobase.h:457
+#1  0x00005555555565a7 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd830, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x000055555555587c in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:158
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+452	      __glibcxx_requires_valid_range(__first, __last);
+453	
+454	      return (std::__copy_move_a2<__is_move_iterator<_II>::__value>
+455		      (std::__miter_base(__first), std::__miter_base(__last),
+456		       __result));
+457	    }
+458	
+459	#if __cplusplus >= 201103L
+460	  /**
+461	   *  @brief Moves the range [first,last) into result.
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x1b0x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd838
+address max offset: 8
+Memory content after  bitflip:0x7c0xec0x930x700xff0xd30x8d0xa1
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd830
+value address: 0x7fffffffd7b8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-12 21:28:16]
+Fault Injection Successful after 3.575798511505127s
+[INFO -- 2018-10-12 21:28:23]
+event type: exit
+[INFO -- 2018-10-12 21:28:23]
+exit code: 0

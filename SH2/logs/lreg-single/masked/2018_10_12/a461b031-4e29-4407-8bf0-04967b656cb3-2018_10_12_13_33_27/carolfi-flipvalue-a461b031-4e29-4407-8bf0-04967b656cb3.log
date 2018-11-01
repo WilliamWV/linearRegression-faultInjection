@@ -1,0 +1,53 @@
+[INFO -- 2018-10-12 13:33:12]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 13:33:12]
+Initialization strings:
+[INFO -- 2018-10-12 13:33:12]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 13:33:12]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 13:33:12]
+initSignal:0
+[INFO -- 2018-10-12 13:33:12]
+endSignal:10
+[INFO -- 2018-10-12 13:33:12]
+faultModel:0
+[INFO -- 2018-10-12 13:33:13]
+Backtrace BEGIN:
+#0  malloc (n=14) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  __GI___libc_malloc (bytes=24) at malloc.c:3048
+#3  0x00007ffff7ada54c in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x0000555555557b4c in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd890, __n=3) at /usr/include/c++/7/ext/new_allocator.h:111
+#5  0x00005555555578d5 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=3) at /usr/include/c++/7/bits/alloc_traits.h:436
+#6  0x00005555555573ac in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd890, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#7  0x00005555555570cd in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd890, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#8  0x00005555555567bd in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd890, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#9  0x000055555555628f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#10 0x00005555555558e8 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:165
+#11 0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+45	dl-minimal.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff726e90c 
+address max offset: 4
+Memory content after  bitflip:0x000x020x000x00
+frame name: __GI___libc_malloc
+symbol name: using_malloc_checking
+symbol filename: hooks.c
+symbol line: 53
+value: 512
+value address: 0x7ffff726e90c <using_malloc_checking>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-12 13:33:13]
+Fault Injection Successful after 1.8208835124969482s
+[INFO -- 2018-10-12 13:33:25]
+event type: exit
+[INFO -- 2018-10-12 13:33:25]
+exit code: 0

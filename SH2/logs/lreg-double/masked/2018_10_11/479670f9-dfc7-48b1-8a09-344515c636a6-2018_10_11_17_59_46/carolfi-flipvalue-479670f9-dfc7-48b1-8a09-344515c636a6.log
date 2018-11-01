@@ -1,0 +1,55 @@
+[INFO -- 2018-10-11 17:59:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 17:59:35]
+Initialization strings:
+[INFO -- 2018-10-11 17:59:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 17:59:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 17:59:35]
+initSignal:0
+[INFO -- 2018-10-11 17:59:35]
+endSignal:10
+[INFO -- 2018-10-11 17:59:35]
+faultModel:1
+[INFO -- 2018-10-11 17:59:38]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=-13, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:151
+#1  0x00007ffff76b7b14 in __pow (x=-13, y=3) at w_pow_compat.c:30
+#2  0x00005555555560ba in std::pow<double, unsigned int> (__x=-13, __y=3) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555590 in partialDerivate (pos=3) at lreg.cpp:107
+#4  0x0000555555555670 in adjust () at lreg.cpp:123
+#5  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#6  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+146	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x950x040xf90x640x370x410x200xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771bb0
+address max offset: 8
+Memory content after  bitflip:0x950x040xf90x260x370x410x200xc0
+frame name: train
+symbol name: bestT
+symbol filename: lreg.cpp
+symbol line: 151
+value: std::vector of length 4, capacity 4 = {-8.1273739031769683, -27.858135091015196, 8.0468110319232871, 0.67171452123494457}
+value address: 0x7fffffffd850
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-11 17:59:38]
+Fault Injection Successful after 3.74100923538208s
+[INFO -- 2018-10-11 17:59:45]
+event type: exit
+[INFO -- 2018-10-11 17:59:45]
+exit code: 0

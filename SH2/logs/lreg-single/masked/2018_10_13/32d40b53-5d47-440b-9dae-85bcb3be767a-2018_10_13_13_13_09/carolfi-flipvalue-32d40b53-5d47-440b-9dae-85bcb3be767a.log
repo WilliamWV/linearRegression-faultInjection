@@ -1,0 +1,58 @@
+[INFO -- 2018-10-13 13:12:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 13:12:59]
+Initialization strings:
+[INFO -- 2018-10-13 13:12:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 13:12:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 13:12:59]
+initSignal:0
+[INFO -- 2018-10-13 13:12:59]
+endSignal:10
+[INFO -- 2018-10-13 13:12:59]
+faultModel:0
+[INFO -- 2018-10-13 13:13:01]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:450
+#1  __ieee754_pow_sse2 (x=2, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:97
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-2, y=3) at w_pow_compat.c:30
+#4  0x00005555555560ba in std::pow<double, unsigned int> (__x=-2, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x0000555555555590 in partialDerivate (pos=3) at lreg.cpp:107
+#6  0x0000555555555670 in adjust () at lreg.cpp:123
+#7  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#8  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+445	../sysdeps/i386/fpu/fenv_private.h: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 0
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff779f5e0 
+address max offset: 4
+Memory content after  bitflip:0x040x000x000x00
+frame name: __ieee754_pow_sse2
+symbol name: nZERO
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 47
+value: {i = {4, -2147483648}, x = -1.9762625833649862e-323}
+value address: 0x7ffff779f5e0 <nZERO>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-13 13:13:01]
+Fault Injection Successful after 2.7607107162475586s
+[INFO -- 2018-10-13 13:13:08]
+event type: exit
+[INFO -- 2018-10-13 13:13:08]
+exit code: 0

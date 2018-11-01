@@ -1,0 +1,56 @@
+[INFO -- 2018-10-13 13:33:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 13:33:07]
+Initialization strings:
+[INFO -- 2018-10-13 13:33:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 13:33:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 13:33:07]
+initSignal:0
+[INFO -- 2018-10-13 13:33:07]
+endSignal:10
+[INFO -- 2018-10-13 13:33:07]
+faultModel:0
+[EXCEPTION -- 2018-10-13 13:33:15]
+gdbException: Cannot access memory at address 0x557555771760
+[INFO -- 2018-10-13 13:33:15]
+Backtrace BEGIN:
+#0  0x00005555555552c7 in predict (v=0) at lreg.cpp:77
+#1  0x00005555555553e9 in meanSquaredError () at lreg.cpp:91
+#2  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+79		return val;
+80		
+81	}
+
+Backtrace END
+Memory content before bitflip:0x9e0xdb0x110x090x6f0xaf0xac0x41
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd828
+address max offset: 8
+Memory content after  bitflip:0x9e0xdb0x190x090x6f0xaf0xac0x41
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 153
+value: 240629636.55050367
+value address: 0x7fffffffd828
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 13:33:15]
+Fault Injection Successful after 8.249136447906494s
+[INFO -- 2018-10-13 13:33:15]
+event type: exit
+[EXCEPTION -- 2018-10-13 13:33:15]
+exit code: no exit code available

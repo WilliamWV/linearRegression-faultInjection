@@ -1,0 +1,59 @@
+[INFO -- 2018-10-06 19:33:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 19:33:51]
+Initialization strings:
+[INFO -- 2018-10-06 19:33:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 19:33:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 19:33:51]
+initSignal:0
+[INFO -- 2018-10-06 19:33:51]
+endSignal:10
+[INFO -- 2018-10-06 19:33:51]
+faultModel:1
+[EXCEPTION -- 2018-10-06 19:33:55]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-06 19:33:55]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:447
+#1  __ieee754_pow_sse2 (x=22, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:97
+#2  0x00007ffff76b7b14 in __pow (x=22, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=22, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555552c2 in predict (v=22) at lreg.cpp:77
+#5  0x000055555555551d in partialDerivate (pos=1) at lreg.cpp:107
+#6  0x0000555555555670 in adjust () at lreg.cpp:123
+#7  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#8  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+442	in ../sysdeps/i386/fpu/fenv_private.h
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x5555557713a0
+address max offset: 8
+Memory content after  bitflip:0x000x500x000x000x000x000x000x00
+frame name: train
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 4, capacity 4 = {-8.2337785786983169, -171.40142131484538, -5.668640968624298, 3.5782902112036132}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-06 19:33:55]
+Fault Injection Successful after 4.356718301773071s
+[INFO -- 2018-10-06 19:34:00]
+event type: exit
+[INFO -- 2018-10-06 19:34:00]
+exit code: 0

@@ -1,0 +1,55 @@
+[INFO -- 2018-10-13 15:21:31]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 15:21:31]
+Initialization strings:
+[INFO -- 2018-10-13 15:21:31]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 15:21:31]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 15:21:31]
+initSignal:0
+[INFO -- 2018-10-13 15:21:31]
+endSignal:10
+[INFO -- 2018-10-13 15:21:31]
+faultModel:1
+[INFO -- 2018-10-13 15:21:34]
+Backtrace BEGIN:
+#0  0x000055555555524a in predict (v=8) at lreg.cpp:74
+#1  0x000055555555551d in partialDerivate (pos=3) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+69		Predicts the value related to v using the Ts variables
+70	*/
+71	double predict(double v){
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd950
+address max offset: 8
+Memory content after  bitflip:0x460x5a0xb70xf40x1b0x4d0xf70x3e
+frame name: main
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 202
+value: 2.2221763442543148e-05
+value address: 0x7fffffffd950
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 15:21:34]
+Fault Injection Successful after 3.265028953552246s
+[INFO -- 2018-10-13 15:21:40]
+event type: exit
+[INFO -- 2018-10-13 15:21:40]
+exit code: 0

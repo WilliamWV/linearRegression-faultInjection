@@ -1,0 +1,59 @@
+[INFO -- 2018-10-13 16:22:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 16:22:19]
+Initialization strings:
+[INFO -- 2018-10-13 16:22:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 16:22:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 16:22:19]
+initSignal:0
+[INFO -- 2018-10-13 16:22:19]
+endSignal:10
+[INFO -- 2018-10-13 16:22:19]
+faultModel:2
+[EXCEPTION -- 2018-10-13 16:22:24]
+gdbException: Cannot access memory at address 0xf024792847744b9b
+[INFO -- 2018-10-13 16:22:24]
+Backtrace BEGIN:
+#0  0x00007ffff76da5d4 in __ieee754_pow_sse2 (x=-15, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:83
+#1  0x00007ffff76bcb14 in __pow (x=-15, y=0) at w_pow_compat.c:30
+#2  0x00005555555560ba in std::pow<double, unsigned int> (__x=-15, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555552c2 in predict (v=-15) at lreg.cpp:77
+#4  0x000055555555551d in partialDerivate (pos=0) at lreg.cpp:107
+#5  0x0000555555555670 in adjust () at lreg.cpp:123
+#6  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+78	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 0
+Memory content before bitflip:0xff0x030x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5a0 
+address max offset: 4
+Memory content after  bitflip:0xf70x240xcf0xfe
+frame name: __ieee754_pow_sse2
+symbol name: two52e
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 55
+value: {i = {-19979017, 1127219200}, x = 4503603902358775}
+value address: 0x7ffff779f5a0 <two52e>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-13 16:22:24]
+Fault Injection Successful after 5.685306787490845s
+[INFO -- 2018-10-13 16:22:24]
+event type: exit
+[EXCEPTION -- 2018-10-13 16:22:24]
+exit code: no exit code available

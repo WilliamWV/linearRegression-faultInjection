@@ -1,0 +1,53 @@
+[INFO -- 2018-10-13 13:59:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 13:59:53]
+Initialization strings:
+[INFO -- 2018-10-13 13:59:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 13:59:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 13:59:53]
+initSignal:0
+[INFO -- 2018-10-13 13:59:53]
+endSignal:10
+[INFO -- 2018-10-13 13:59:53]
+faultModel:2
+[INFO -- 2018-10-13 14:00:02]
+Backtrace BEGIN:
+#0  malloc (n=14) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  __GI___libc_malloc (bytes=32) at malloc.c:3028
+#3  0x00007ffff7adf1a8 in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x0000555555557b4c in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd890, __n=4) at /usr/include/c++/7/ext/new_allocator.h:111
+#5  0x00005555555578d5 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=4) at /usr/include/c++/7/bits/alloc_traits.h:436
+#6  0x00005555555573ac in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd890, __n=4) at /usr/include/c++/7/bits/stl_vector.h:172
+#7  0x00005555555570cd in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd890, __n=4) at /usr/include/c++/7/bits/stl_vector.h:187
+#8  0x00005555555567bd in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd890, __n=4, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#9  0x000055555555628f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#10 0x00005555555558e8 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:165
+#11 0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+45	dl-minimal.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0xa10xac0x1b0x9c0x750xb30xab0x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd828
+address max offset: 8
+Memory content after  bitflip:0xdd0x240x440xfa0x4a0x1b0xd20x36
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 153
+value: 1.2686384367585827e-44
+value address: 0x7fffffffd828
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 14:00:02]
+Fault Injection Successful after 9.64823055267334s
+[INFO -- 2018-10-13 14:00:03]
+event type: exit
+[INFO -- 2018-10-13 14:00:03]
+exit code: 0

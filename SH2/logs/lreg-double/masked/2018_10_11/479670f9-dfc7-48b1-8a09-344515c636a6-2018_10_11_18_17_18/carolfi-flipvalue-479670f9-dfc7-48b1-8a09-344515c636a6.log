@@ -1,0 +1,61 @@
+[INFO -- 2018-10-11 18:17:08]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 18:17:08]
+Initialization strings:
+[INFO -- 2018-10-11 18:17:08]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 18:17:08]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 18:17:08]
+initSignal:0
+[INFO -- 2018-10-11 18:17:08]
+endSignal:10
+[INFO -- 2018-10-11 18:17:08]
+faultModel:1
+[INFO -- 2018-10-11 18:17:09]
+Backtrace BEGIN:
+#0  0x00005555555567a2 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd870, __n=2, __a=...) at /usr/include/c++/7/bits/stl_vector.h:137
+#1  0x000055555555628f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd870, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x0000555555555900 in train (iterations=30000, N=2, stopsWhenStable=true) at lreg.cpp:165
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+132	      _Vector_base(size_t __n)
+133	      : _M_impl()
+134	      { _M_create_storage(__n); }
+135	
+136	      _Vector_base(size_t __n, const allocator_type& __a)
+137	      : _M_impl(__a)
+138	      { _M_create_storage(__n); }
+139	
+140	#if __cplusplus >= 201103L
+141	      _Vector_base(_Tp_alloc_type&& __a) noexcept
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771330
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x050x00
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 41
+value: std::vector of length 8, capacity 8 = {-8, -5, -6, -14, 1, -10, 7, -15}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-11 18:17:09]
+Fault Injection Successful after 1.0806927680969238s
+[INFO -- 2018-10-11 18:17:18]
+event type: exit
+[INFO -- 2018-10-11 18:17:18]
+exit code: 0

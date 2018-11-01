@@ -1,0 +1,65 @@
+[INFO -- 2018-10-11 18:57:14]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 18:57:14]
+Initialization strings:
+[INFO -- 2018-10-11 18:57:14]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 18:57:14]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 18:57:14]
+initSignal:0
+[INFO -- 2018-10-11 18:57:14]
+endSignal:10
+[INFO -- 2018-10-11 18:57:14]
+faultModel:2
+[EXCEPTION -- 2018-10-11 18:57:24]
+gdbException: Cannot access memory at address 0x743c369ea9c16504
+[INFO -- 2018-10-11 18:57:24]
+Backtrace BEGIN:
+#0  0x00005555555550ba in selectTriUInt (a=1, b=1, c=1) at lreg.cpp:48
+#1  0x0000555555555280 in predict (v=-22) at lreg.cpp:77
+#2  0x000055555555551d in partialDerivate (pos=3) at lreg.cpp:107
+#3  0x0000555555555670 in adjust () at lreg.cpp:123
+#4  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#5  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+43	vector<double> T; // the adjustment variables
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+52	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771ba0
+address max offset: 8
+Memory content after  bitflip:0xf80x310x940xf90x2f0x580x4e0x55
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 150
+value: std::vector of length 4, capacity 4 = {-11.623009679159793, -37.901249461397171, 7.9446697623241702, 0.69369097813448632}
+value address: 0x7fffffffd830
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-11 18:57:24]
+Fault Injection Successful after 10.442020654678345s
+[INFO -- 2018-10-11 18:57:25]
+event type: exit
+[EXCEPTION -- 2018-10-11 18:57:25]
+exit code: no exit code available

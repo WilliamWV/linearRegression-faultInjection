@@ -1,0 +1,58 @@
+[INFO -- 2018-10-08 19:07:10]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-08 19:07:10]
+Initialization strings:
+[INFO -- 2018-10-08 19:07:10]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-08 19:07:10]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-08 19:07:10]
+initSignal:0
+[INFO -- 2018-10-08 19:07:10]
+endSignal:10
+[INFO -- 2018-10-08 19:07:10]
+faultModel:1
+[INFO -- 2018-10-08 19:07:14]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=12) at ../sysdeps/ieee754/dbl-64/e_pow.c:329
+#1  __ieee754_pow_sse2 (x=12, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76d66be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76b7b14 in __pow (x=-12, y=3) at w_pow_compat.c:30
+#4  0x00005555555560ba in std::pow<double, unsigned int> (__x=-12, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x00005555555552c2 in predict (v=-12) at lreg.cpp:77
+#6  0x000055555555551d in partialDerivate (pos=1) at lreg.cpp:107
+#7  0x0000555555555670 in adjust () at lreg.cpp:123
+#8  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#9  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+324	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0xff0x030x000x000x000x000x300x43
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779a5a0 
+address max offset: 8
+Memory content after  bitflip:0xff0x030x000x000x000x000x300x13
+frame name: __ieee754_pow_sse2
+symbol name: two52e
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 55
+value: {i = {1023, 321912832}, x = 2.9008355198602168e-216}
+value address: 0x7ffff779a5a0 <two52e>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-08 19:07:14]
+Fault Injection Successful after 4.386082649230957s
+[INFO -- 2018-10-08 19:07:22]
+event type: exit
+[INFO -- 2018-10-08 19:07:22]
+exit code: 0

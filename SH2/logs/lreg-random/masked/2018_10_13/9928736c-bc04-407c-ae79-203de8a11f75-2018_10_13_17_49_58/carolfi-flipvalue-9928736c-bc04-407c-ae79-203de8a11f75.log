@@ -1,0 +1,55 @@
+[INFO -- 2018-10-13 17:49:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 17:49:48]
+Initialization strings:
+[INFO -- 2018-10-13 17:49:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 17:49:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 17:49:48]
+initSignal:0
+[INFO -- 2018-10-13 17:49:48]
+endSignal:10
+[INFO -- 2018-10-13 17:49:48]
+faultModel:2
+[INFO -- 2018-10-13 17:49:52]
+Backtrace BEGIN:
+#0  0x00005555555572c9 in __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >::__normal_iterator (this=0x7fffffffd790, __i=@0x7fffffffd788: 0x555555771380) at /usr/include/c++/7/bits/stl_iterator.h:780
+#1  0x00005555555569b9 in std::vector<double, std::allocator<double> >::begin (this=0x55555575a180 <T>) at /usr/include/c++/7/bits/stl_vector.h:573
+#2  0x00005555555562cc in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd870, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#3  0x0000555555555900 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:165
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+775	      _GLIBCXX_CONSTEXPR __normal_iterator() _GLIBCXX_NOEXCEPT
+776	      : _M_current(_Iterator()) { }
+777	
+778	      explicit
+779	      __normal_iterator(const _Iterator& __i) _GLIBCXX_NOEXCEPT
+780	      : _M_current(__i) { }
+781	
+782	      // Allow iterator to const_iterator conversion
+783	      template<typename _Iter>
+784	        __normal_iterator(const __normal_iterator<_Iter,
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a198 
+address max offset: 8
+Memory content after  bitflip:0x280x010x4c0xd10xed0x2e0x390xf5
+frame name: std::vector<double, std::allocator<double> >::begin
+symbol name: a1
+symbol filename: lreg.cpp
+symbol line: 45
+value: -4.7266042746995762e+256
+value address: 0x55555575a198 <a1>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 17:49:52]
+Fault Injection Successful after 4.92282247543335s
+[INFO -- 2018-10-13 17:49:57]
+event type: exit
+[INFO -- 2018-10-13 17:49:57]
+exit code: 0

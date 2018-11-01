@@ -1,0 +1,55 @@
+[INFO -- 2018-10-06 19:07:05]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 19:07:05]
+Initialization strings:
+[INFO -- 2018-10-06 19:07:05]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 19:07:05]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 19:07:05]
+initSignal:0
+[INFO -- 2018-10-06 19:07:05]
+endSignal:10
+[INFO -- 2018-10-06 19:07:05]
+faultModel:0
+[INFO -- 2018-10-06 19:07:06]
+Backtrace BEGIN:
+#0  std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-12.735201887848397, __last=1.6304166312761136e-322, __result=0x555555771470) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#1  0x0000555555556a57 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=-12.735201887848397, __last=1.6304166312761136e-322, __result=0x555555771470) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#2  0x00005555555562dd in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#3  0x00005555555558e8 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:165
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+129	#endif
+130	
+131	      return std::__uninitialized_copy<__is_trivial(_ValueType1)
+132					       && __is_trivial(_ValueType2)
+133					       && __assignable>::
+134		__uninit_copy(__first, __last, __result);
+135	    }
+136	
+137	
+138	  template<bool _TrivialValueType>
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a198 
+address max offset: 8
+Memory content after  bitflip:0x2d0x430x5c0xeb0xe20x360x0a0x3f
+frame name: train
+symbol name: a1
+symbol filename: lreg.cpp
+symbol line: 45
+value: 5.0000000028421712e-05
+value address: 0x55555575a198 <a1>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-06 19:07:06]
+Fault Injection Successful after 1.95749831199646s
+[INFO -- 2018-10-06 19:07:15]
+event type: exit
+[INFO -- 2018-10-06 19:07:15]
+exit code: 0

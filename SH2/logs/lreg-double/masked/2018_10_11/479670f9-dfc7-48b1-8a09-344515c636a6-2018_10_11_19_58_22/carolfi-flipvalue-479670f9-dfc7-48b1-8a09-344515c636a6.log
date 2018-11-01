@@ -1,0 +1,57 @@
+[INFO -- 2018-10-11 19:58:10]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 19:58:10]
+Initialization strings:
+[INFO -- 2018-10-11 19:58:10]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 19:58:10]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 19:58:10]
+initSignal:0
+[INFO -- 2018-10-11 19:58:10]
+endSignal:10
+[INFO -- 2018-10-11 19:58:10]
+faultModel:1
+[INFO -- 2018-10-11 19:58:13]
+Backtrace BEGIN:
+#0  0x00005555555578b9 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=140737488345031) at /usr/include/c++/7/bits/alloc_traits.h:435
+#1  0x00005555555573ac in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd890, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#2  0x00005555555570cd in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd890, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#3  0x00005555555567bd in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd890, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#4  0x000055555555628f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd890, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#5  0x00005555555558e8 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:165
+#6  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+430	       *  @param  __n  The number of objects to allocate space for.
+431	       *
+432	       *  Calls @c a.allocate(n)
+433	      */
+434	      static pointer
+435	      allocate(allocator_type& __a, size_type __n)
+436	      { return __a.allocate(__n); }
+437	
+438	      /**
+439	       *  @brief  Allocate memory.
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a198 
+address max offset: 8
+Memory content after  bitflip:0x6f0x430x1c0xeb0xe20x360x0a0x3f
+frame name: std::_Vector_base<double, std::allocator<double> >::_Vector_base
+symbol name: a1
+symbol filename: lreg.cpp
+symbol line: 45
+value: 5.000000000000045e-05
+value address: 0x55555575a198 <a1>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-11 19:58:13]
+Fault Injection Successful after 3.1105730533599854s
+[INFO -- 2018-10-11 19:58:21]
+event type: exit
+[INFO -- 2018-10-11 19:58:21]
+exit code: 0

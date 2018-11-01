@@ -1,0 +1,54 @@
+[INFO -- 2018-10-13 15:16:17]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 15:16:17]
+Initialization strings:
+[INFO -- 2018-10-13 15:16:17]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 15:16:17]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 15:16:17]
+initSignal:0
+[INFO -- 2018-10-13 15:16:17]
+endSignal:10
+[INFO -- 2018-10-13 15:16:17]
+faultModel:2
+[INFO -- 2018-10-13 15:16:18]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::capacity (this=0x7fffffffd850) at /usr/include/c++/7/bits/stl_vector.h:751
+#1  0x000055555555646b in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd850, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:204
+#2  0x00005555555558c7 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:163
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+746	       *  Returns the total number of elements that the %vector can
+747	       *  hold before needing to allocate more memory.
+748	       */
+749	      size_type
+750	      capacity() const _GLIBCXX_NOEXCEPT
+751	      { return size_type(this->_M_impl._M_end_of_storage
+752				 - this->_M_impl._M_start); }
+753	
+754	      /**
+755	       *  Returns true if the %vector is empty.  (Thus begin() would
+
+Backtrace END
+Memory content before bitflip:0x490x960x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd814
+address max offset: 4
+Memory content after  bitflip:0xc90x910x750x85
+frame name: train
+symbol name: i1
+symbol filename: lreg.cpp
+symbol line: 154
+value: 2239074761
+value address: 0x7fffffffd814
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-13 15:16:18]
+Fault Injection Successful after 1.7709214687347412s
+[INFO -- 2018-10-13 15:16:26]
+event type: exit
+[INFO -- 2018-10-13 15:16:26]
+exit code: 0

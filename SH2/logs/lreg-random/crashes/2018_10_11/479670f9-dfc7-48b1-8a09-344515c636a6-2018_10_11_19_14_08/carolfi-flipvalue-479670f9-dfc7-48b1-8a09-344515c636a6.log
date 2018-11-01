@@ -1,0 +1,57 @@
+[INFO -- 2018-10-11 19:14:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 19:14:03]
+Initialization strings:
+[INFO -- 2018-10-11 19:14:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 19:14:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 19:14:03]
+initSignal:0
+[INFO -- 2018-10-11 19:14:03]
+endSignal:10
+[INFO -- 2018-10-11 19:14:03]
+faultModel:2
+[EXCEPTION -- 2018-10-11 19:14:07]
+gdbException: Cannot access memory at address 0xaae1a60df4fca0cb
+[INFO -- 2018-10-11 19:14:07]
+Backtrace BEGIN:
+#0  0x00005555555552ae in predict (v=7) at lreg.cpp:77
+#1  0x000055555555551d in partialDerivate (pos=3) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+79		return val;
+80		
+81	}
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd804
+address max offset: 1
+Memory content after  bitflip:0x42
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 141
+value: 66
+value address: 0x7fffffffd804
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-10-11 19:14:07]
+Fault Injection Successful after 4.40734338760376s
+[INFO -- 2018-10-11 19:14:07]
+event type: exit
+[EXCEPTION -- 2018-10-11 19:14:07]
+exit code: no exit code available

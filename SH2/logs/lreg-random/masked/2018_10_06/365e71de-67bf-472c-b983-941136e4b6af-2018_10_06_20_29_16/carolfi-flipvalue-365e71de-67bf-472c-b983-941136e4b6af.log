@@ -1,0 +1,47 @@
+[INFO -- 2018-10-06 20:29:05]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 20:29:05]
+Initialization strings:
+[INFO -- 2018-10-06 20:29:05]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 20:29:05]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 20:29:05]
+initSignal:0
+[INFO -- 2018-10-06 20:29:05]
+endSignal:10
+[INFO -- 2018-10-06 20:29:05]
+faultModel:2
+[INFO -- 2018-10-06 20:29:08]
+Backtrace BEGIN:
+#0  0x00007ffff76b7b0f in __pow (x=-30, y=0) at w_pow_compat.c:30
+#1  0x00005555555560ba in std::pow<double, unsigned int> (__x=-30, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x00005555555552c2 in predict (v=-30) at lreg.cpp:77
+#3  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#4  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#5  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+25	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x170x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7d0
+address max offset: 4
+Memory content after  bitflip:0xe60xa80x8c0x55
+frame name: meanSquaredError
+symbol name: i2
+symbol filename: lreg.cpp
+symbol line: 87
+value: 1435281638
+value address: 0x7fffffffd7d0
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-06 20:29:08]
+Fault Injection Successful after 3.4409983158111572s
+[INFO -- 2018-10-06 20:29:15]
+event type: exit
+[INFO -- 2018-10-06 20:29:15]
+exit code: 0

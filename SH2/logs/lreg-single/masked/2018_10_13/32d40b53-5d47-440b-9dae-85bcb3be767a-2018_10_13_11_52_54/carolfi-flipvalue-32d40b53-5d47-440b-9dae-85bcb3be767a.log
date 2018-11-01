@@ -1,0 +1,52 @@
+[INFO -- 2018-10-13 11:52:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 11:52:42]
+Initialization strings:
+[INFO -- 2018-10-13 11:52:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 11:52:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 11:52:42]
+initSignal:0
+[INFO -- 2018-10-13 11:52:42]
+endSignal:10
+[INFO -- 2018-10-13 11:52:42]
+faultModel:0
+[INFO -- 2018-10-13 11:52:43]
+Backtrace BEGIN:
+#0  0x0000555555555968 in train (iterations=30000, N=2, stopsWhenStable=true) at lreg.cpp:154
+#1  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+149		T = vector<double>(N, 0);
+150		vector<double> prevT = T; 
+151		vector<double> bestT = T; 
+152		double bestMSE = meanSquaredError();
+153		double MSE;	
+154		for(UINT i1 = 0, i2 = 0, i3 = 0;
+155			selectTriUInt(i1, i2, i3)<iterations; 
+156			i1++, i2++, i3++)
+157		{
+158			prevT = T; 	
+
+Backtrace END
+Memory content before bitflip:0xb80x380x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd814
+address max offset: 4
+Memory content after  bitflip:0xb80x300x000x00
+frame name: train
+symbol name: i1
+symbol filename: lreg.cpp
+symbol line: 154
+value: 12472
+value address: 0x7fffffffd814
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-13 11:52:43]
+Fault Injection Successful after 1.531388759613037s
+[INFO -- 2018-10-13 11:52:52]
+event type: exit
+[INFO -- 2018-10-13 11:52:52]
+exit code: 0

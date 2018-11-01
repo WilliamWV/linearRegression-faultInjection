@@ -1,0 +1,57 @@
+[INFO -- 2018-10-08 18:39:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-08 18:39:58]
+Initialization strings:
+[INFO -- 2018-10-08 18:39:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-08 18:39:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-08 18:39:58]
+initSignal:0
+[INFO -- 2018-10-08 18:39:58]
+endSignal:10
+[INFO -- 2018-10-08 18:39:58]
+faultModel:0
+[EXCEPTION -- 2018-10-08 18:39:59]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-08 18:39:59]
+Backtrace BEGIN:
+#0  selectTriUInt (a=18, b=18, c=18) at lreg.cpp:48
+#1  0x0000555555555569 in partialDerivate (pos=0) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+43	vector<double> T; // the adjustment variables
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+52	}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7d4
+address max offset: 4
+Memory content after  bitflip:0x000x010x000x00
+frame name: adjust
+symbol name: i3
+symbol filename: lreg.cpp
+symbol line: 119
+value: 256
+value address: 0x7fffffffd7d4
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-08 18:39:59]
+Fault Injection Successful after 1.925353765487671s
+[INFO -- 2018-10-08 18:40:09]
+event type: exit
+[INFO -- 2018-10-08 18:40:09]
+exit code: 0

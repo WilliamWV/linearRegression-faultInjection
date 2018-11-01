@@ -1,0 +1,56 @@
+[INFO -- 2018-10-13 11:25:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 11:25:15]
+Initialization strings:
+[INFO -- 2018-10-13 11:25:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 11:25:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 11:25:15]
+initSignal:0
+[INFO -- 2018-10-13 11:25:15]
+endSignal:10
+[INFO -- 2018-10-13 11:25:15]
+faultModel:0
+[INFO -- 2018-10-13 11:25:18]
+Backtrace BEGIN:
+#0  0x00007ffff76dabbc in __ieee754_pow_sse2 (x=<optimized out>, y=2) at ../sysdeps/ieee754/dbl-64/e_pow.c:82
+#1  0x00007ffff76bcb14 in __pow (x=-7, y=2) at w_pow_compat.c:30
+#2  0x00005555555560ba in std::pow<double, unsigned int> (__x=-7, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x00005555555552c2 in predict (v=-7) at lreg.cpp:77
+#4  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#5  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#6  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+77	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0xff0xff0x970x42
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff779f5bc 
+address max offset: 4
+Memory content after  bitflip:0xff0xff0x970x40
+frame name: __ieee754_pow_sse2
+symbol name: bigu
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 52
+value: {i = {-724, 1083703295}, x = 1535.9999999998354}
+value address: 0x7ffff779f5b8 <bigu>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-13 11:25:18]
+Fault Injection Successful after 3.094832420349121s
+[INFO -- 2018-10-13 11:25:25]
+event type: exit
+[INFO -- 2018-10-13 11:25:25]
+exit code: 0

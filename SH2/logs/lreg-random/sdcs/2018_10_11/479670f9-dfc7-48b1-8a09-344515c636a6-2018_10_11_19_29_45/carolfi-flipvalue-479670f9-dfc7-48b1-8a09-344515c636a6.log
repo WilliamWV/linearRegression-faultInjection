@@ -1,0 +1,61 @@
+[INFO -- 2018-10-11 19:29:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 19:29:32]
+Initialization strings:
+[INFO -- 2018-10-11 19:29:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 19:29:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 19:29:32]
+initSignal:0
+[INFO -- 2018-10-11 19:29:32]
+endSignal:10
+[INFO -- 2018-10-11 19:29:32]
+faultModel:2
+[INFO -- 2018-10-11 19:29:34]
+Backtrace BEGIN:
+#0  0x00005555555550ae in selectTriUInt (a=0, b=0, c=0) at lreg.cpp:47
+#1  0x0000555555555392 in meanSquaredError () at lreg.cpp:91
+#2  0x0000555555555886 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:160
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+42	vector<double> y; // observed values of training set inputs
+43	vector<double> T; // the adjustment variables
+44	
+45	double a1, a2, a3; // triplication of alpha
+46	
+47	UINT selectTriUInt(UINT a, UINT b, UINT c){
+48		return (a == b)? a : c;
+49	}
+50	double selectTriDouble(double a, double b, double c){
+51		return (a == b)? a : c;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0xaa0xf70x270xec0x1d0x210x340xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771360
+address max offset: 8
+Memory content after  bitflip:0x220xb70x2e0x380x880x100x5b0x46
+frame name: main
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 3, capacity 3 = {8.5771073090720624e+30, 12.027060414529616, 3.6738910174579917}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-11 19:29:34]
+Fault Injection Successful after 2.272160768508911s
+[INFO -- 2018-10-11 19:29:43]
+event type: exit
+[INFO -- 2018-10-11 19:29:43]
+exit code: 0

@@ -1,0 +1,56 @@
+[INFO -- 2018-10-13 17:16:34]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 17:16:34]
+Initialization strings:
+[INFO -- 2018-10-13 17:16:34]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 17:16:34]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 17:16:34]
+initSignal:0
+[INFO -- 2018-10-13 17:16:34]
+endSignal:10
+[INFO -- 2018-10-13 17:16:34]
+faultModel:2
+[INFO -- 2018-10-13 17:16:36]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=28) at ../sysdeps/ieee754/dbl-64/e_pow.c:327
+#1  __ieee754_pow_sse2 (x=28, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76bcb14 in __pow (x=28, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=28, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555552c2 in predict (v=28) at lreg.cpp:77
+#5  0x00005555555553e9 in meanSquaredError () at lreg.cpp:91
+#6  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+322	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x200xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771760
+address max offset: 8
+Memory content after  bitflip:0x8c0xa20x690xc00x720x370xcb0x45
+frame name: predict
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 41
+value: std::vector of length 36, capacity 64 = {1.6846256168841662e+28, 3, 9, -2, 6, 15, 13, -2, 24, -20, -24, -12, -6, -15, 18, 15, -17, 23, 9, 16, 26, -2, -12, -1, 28, -20, 15, -5, 9, 19, -4, -5, 24, -21, 27, 11}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-13 17:16:36]
+Fault Injection Successful after 2.6000239849090576s
+[INFO -- 2018-10-13 17:16:43]
+event type: exit
+[INFO -- 2018-10-13 17:16:43]
+exit code: 0

@@ -1,0 +1,54 @@
+[INFO -- 2018-10-12 21:41:34]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 21:41:34]
+Initialization strings:
+[INFO -- 2018-10-12 21:41:34]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 21:41:34]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 21:41:34]
+initSignal:0
+[INFO -- 2018-10-12 21:41:34]
+endSignal:10
+[INFO -- 2018-10-12 21:41:34]
+faultModel:1
+[INFO -- 2018-10-12 21:41:39]
+Backtrace BEGIN:
+#0  0x0000555555556c31 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=23.33060322691145, __last=0, __result=4.6355706478128972e-310) at /usr/include/c++/7/bits/stl_algobase.h:446
+#1  0x00005555555565a7 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd850, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x00005555555558c7 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:163
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+441	   *  Note that the end of the output range is permitted to be contained
+442	   *  within [first,last).
+443	  */
+444	  template<typename _II, typename _OI>
+445	    inline _OI
+446	    copy(_II __first, _II __last, _OI __result)
+447	    {
+448	      // concept requirements
+449	      __glibcxx_function_requires(_InputIteratorConcept<_II>)
+450	      __glibcxx_function_requires(_OutputIteratorConcept<_OI,
+
+Backtrace END
+Memory content before bitflip:0x020x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd928
+address max offset: 4
+Memory content after  bitflip:0x020x000xc00x00
+frame name: main
+symbol name: i3
+symbol filename: lreg.cpp
+symbol line: 198
+value: 12582914
+value address: 0x7fffffffd928
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-12 21:41:39]
+Fault Injection Successful after 5.7752227783203125s
+[INFO -- 2018-10-12 21:41:45]
+event type: exit
+[INFO -- 2018-10-12 21:41:45]
+exit code: 0

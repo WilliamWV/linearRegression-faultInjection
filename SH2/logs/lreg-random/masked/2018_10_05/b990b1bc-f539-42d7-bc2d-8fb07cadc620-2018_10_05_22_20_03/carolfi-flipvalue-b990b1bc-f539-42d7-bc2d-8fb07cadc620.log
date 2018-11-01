@@ -1,0 +1,66 @@
+[INFO -- 2018-10-05 22:19:52]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-05 22:19:52]
+Initialization strings:
+[INFO -- 2018-10-05 22:19:52]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-05 22:19:52]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-05 22:19:52]
+initSignal:0
+[INFO -- 2018-10-05 22:19:52]
+endSignal:10
+[INFO -- 2018-10-05 22:19:52]
+faultModel:2
+[INFO -- 2018-10-05 22:19:55]
+Backtrace BEGIN:
+#0  0x00007ffff7ada535 in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x0000555555557b4c in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd870, __n=4) at /usr/include/c++/7/ext/new_allocator.h:111
+#2  0x00005555555578d5 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=4) at /usr/include/c++/7/bits/alloc_traits.h:436
+#3  0x00005555555573ac in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd870, __n=4) at /usr/include/c++/7/bits/stl_vector.h:172
+#4  0x00005555555570cd in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd870, __n=4) at /usr/include/c++/7/bits/stl_vector.h:187
+#5  0x00005555555567bd in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd870, __n=4, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#6  0x000055555555628f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd870, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#7  0x0000555555555900 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:165
+#8  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+169		T = bestT;
+170	}
+171	
+172	/*
+173	It must receive an input file formated as follows:
+174		1° Line : one integer T -> number of test cases
+175		2° to 5° repeat to all test case	
+176		2° Line : method parameters -> alpha, iterations, N, size of 
+177			      training set, predictions
+178		3° Line : inputs x of the training set
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771a90
+address max offset: 8
+Memory content after  bitflip:0x520x670x860xe90x6f0x410x7a0x8f
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_create_storage
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 42
+value: std::vector of length 36, capacity 64 = {1, 1, 1, 1, 1, 1, 1, 1, 70, 67, -26, -62, 73, -53, 37, -38, 37, -14, 31, 40, 35380, -18, -81788, 2632, -2349, -164, -1608, 1206, -17493, -65130, -91089, 745, 18576, -50904, 35380, -20898}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-05 22:19:55]
+Fault Injection Successful after 3.996391773223877s
+[INFO -- 2018-10-05 22:20:02]
+event type: exit
+[INFO -- 2018-10-05 22:20:02]
+exit code: 0

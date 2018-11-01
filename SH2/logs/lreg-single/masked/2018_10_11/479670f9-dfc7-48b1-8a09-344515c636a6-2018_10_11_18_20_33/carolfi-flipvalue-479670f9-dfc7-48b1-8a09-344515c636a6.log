@@ -1,0 +1,56 @@
+[INFO -- 2018-10-11 18:20:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 18:20:22]
+Initialization strings:
+[INFO -- 2018-10-11 18:20:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 18:20:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 18:20:22]
+initSignal:0
+[INFO -- 2018-10-11 18:20:22]
+endSignal:10
+[INFO -- 2018-10-11 18:20:22]
+faultModel:0
+[INFO -- 2018-10-11 18:20:25]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=6) at ../sysdeps/ieee754/dbl-64/e_pow.c:338
+#1  __ieee754_pow_sse2 (x=6, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76b7b14 in __pow (x=6, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=6, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555552c2 in predict (v=6) at lreg.cpp:77
+#5  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#6  0x0000555555555886 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:160
+#7  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+333	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x400xc90xb40x6f0x4c0x3b0x180xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771b80
+address max offset: 8
+Memory content after  bitflip:0x400xc90xb40x4f0x4c0x3b0x180xc0
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 150
+value: std::vector of length 4, capacity 4 = {-6.0579082922070597, -21.601584075261592, 8.106688663715758, 0.63436308551593701}
+value address: 0x7fffffffd830
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-11 18:20:25]
+Fault Injection Successful after 3.6285345554351807s
+[INFO -- 2018-10-11 18:20:32]
+event type: exit
+[INFO -- 2018-10-11 18:20:32]
+exit code: 0

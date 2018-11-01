@@ -1,0 +1,64 @@
+[INFO -- 2018-10-13 14:27:20]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 14:27:20]
+Initialization strings:
+[INFO -- 2018-10-13 14:27:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 14:27:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 14:27:20]
+initSignal:0
+[INFO -- 2018-10-13 14:27:20]
+endSignal:10
+[INFO -- 2018-10-13 14:27:20]
+faultModel:1
+[EXCEPTION -- 2018-10-13 14:27:22]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-13 14:27:23]
+Backtrace BEGIN:
+#0  0x000055555555524a in predict (v=17) at lreg.cpp:74
+#1  0x000055555555551d in partialDerivate (pos=0) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+69		Predicts the value related to v using the Ts variables
+70	*/
+71	double predict(double v){
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x1b0x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a170 
+address max offset: 8
+Memory content after  bitflip:0x700x930x770x550x550x550x000x00
+frame name: adjust
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 42
+value: std::vector of length 43, capacity 3911 = {0, 0, 0, 0, 0, 0, 1.1225357734206291e-311, 0, 1.5909787778453006e-314, 1.5909787778453006e-314, 1.5909787778453006e-314, 1.5909787778453006e-314, 1.5909787778453006e-314, 1.5909787778453006e-314, 1.5909787778453006e-314, 1.5909787778453006e-314, 1.5957617759798625e-314, 1.5962125535700778e-314, 1.5909787778453006e-314, 1.5957982024517991e-314, 1.5956110108599028e-314, 1.5956919585753174e-314, 1.5927272484982566e-314, 1.5961260406992284e-314, 1.5961260406992284e-314, 1.5957982024517991e-314, 1.5949411685148467e-314, 1.5957263613543686e-314, 1.5949735476010126e-314, 5.3620272613872143e-315, 1.5959924769687942e-314, 5.3679901989547498e-315, 1.5998911015498255e-314, 5.3847866127517755e-315, 1.5972333801499394e-314, 1.5996738114787845e-314, 1.5998337622672318e-314, 5.3114652946463512e-315, 5.3679901989547498e-315, 1.5998337622672318e-314, 1.5927272484982566e-314, 1.5996738114787845e-314, 5.3312974849229355e-315, 5.3114652946463512e-315, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.0397779375729834e-312, -6.5780921311371507e-213, 5.4210556839526496e-121, -5.5008851549610881e-73, -6.0916688912859409e+158, 5.309652765418018e-315, 1.0397779375729834e-312, -6.5780921311371507e-213, 5.4210556839526496e-121, -5.5008851549610881e-73, -6.0916688912859409e+158, 5.309652765418018e-315, 1.0397779375729834e-312, 5.175964796394639e+103, -1.1705260953800049e+170, 4.6844587640830613e-54, 2.5488827060538893e-08, 5.3098277980543702e-315, 1.0397779375729834e-312, 0, 5.421054758838164e-121, -5.5008851549610881e-73, -6.0916688912859409e+158, 5.309652765418018e-315, 8.8990137485710625e-310, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-13 14:27:23]
+Fault Injection Successful after 3.0382351875305176s
+[INFO -- 2018-10-13 14:27:32]
+event type: exit
+[EXCEPTION -- 2018-10-13 14:27:32]
+exit code: no exit code available

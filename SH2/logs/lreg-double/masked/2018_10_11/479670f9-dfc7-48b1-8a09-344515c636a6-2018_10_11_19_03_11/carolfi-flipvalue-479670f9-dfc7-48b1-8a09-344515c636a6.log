@@ -1,0 +1,57 @@
+[INFO -- 2018-10-11 19:03:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-11 19:03:00]
+Initialization strings:
+[INFO -- 2018-10-11 19:03:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-11 19:03:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-11 19:03:00]
+initSignal:0
+[INFO -- 2018-10-11 19:03:00]
+endSignal:10
+[INFO -- 2018-10-11 19:03:00]
+faultModel:1
+[INFO -- 2018-10-11 19:03:03]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:447
+#1  __ieee754_pow_sse2 (x=26, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:97
+#2  0x00007ffff76b7b14 in __pow (x=26, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=26, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555552c2 in predict (v=26) at lreg.cpp:77
+#5  0x000055555555551d in partialDerivate (pos=0) at lreg.cpp:107
+#6  0x0000555555555670 in adjust () at lreg.cpp:123
+#7  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#8  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+442	../sysdeps/i386/fpu/fenv_private.h: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x000x380xfa0xfe0x420x2e0xe60x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779a5c8 
+address max offset: 8
+Memory content after  bitflip:0x000x380xfa0xbf0x420x2e0xe60x3f
+frame name: __ieee754_pow_sse2
+symbol name: ln2a
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 50
+value: {i = {-1074120704, 1072049730}, x = 0.69314706321324593}
+value address: 0x7ffff779a5c8 <ln2a>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-10-11 19:03:03]
+Fault Injection Successful after 3.2419533729553223s
+[INFO -- 2018-10-11 19:03:09]
+event type: exit
+[INFO -- 2018-10-11 19:03:09]
+exit code: 0

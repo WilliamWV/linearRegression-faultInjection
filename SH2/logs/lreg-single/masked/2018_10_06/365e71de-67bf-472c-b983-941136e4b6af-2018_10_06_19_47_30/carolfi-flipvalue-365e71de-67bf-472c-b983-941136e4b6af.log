@@ -1,0 +1,54 @@
+[INFO -- 2018-10-06 19:47:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 19:47:19]
+Initialization strings:
+[INFO -- 2018-10-06 19:47:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 19:47:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 19:47:19]
+initSignal:0
+[INFO -- 2018-10-06 19:47:19]
+endSignal:10
+[INFO -- 2018-10-06 19:47:19]
+faultModel:0
+[INFO -- 2018-10-06 19:47:19]
+Backtrace BEGIN:
+#0  0x0000555555556c5a in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.9999539893202722, __last=0, __result=1.9999521136726268) at /usr/include/c++/7/bits/stl_algobase.h:456
+#1  0x00005555555565a7 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd830, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x000055555555587c in train (iterations=30000, N=2, stopsWhenStable=true) at lreg.cpp:158
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+451		    typename iterator_traits<_II>::value_type>)
+452	      __glibcxx_requires_valid_range(__first, __last);
+453	
+454	      return (std::__copy_move_a2<__is_move_iterator<_II>::__value>
+455		      (std::__miter_base(__first), std::__miter_base(__last),
+456		       __result));
+457	    }
+458	
+459	#if __cplusplus >= 201103L
+460	  /**
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x2a0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a1a0 
+address max offset: 8
+Memory content after  bitflip:0x2d0x430x1c0xeb0xe20x360x2e0x3f
+frame name: std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > >
+symbol name: a2
+symbol filename: lreg.cpp
+symbol line: 45
+value: 0.00023051757812500001
+value address: 0x55555575a1a0 <a2>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-06 19:47:19]
+Fault Injection Successful after 0.9936807155609131s
+[INFO -- 2018-10-06 19:47:28]
+event type: exit
+[INFO -- 2018-10-06 19:47:28]
+exit code: 0

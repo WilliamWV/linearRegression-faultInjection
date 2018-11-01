@@ -1,0 +1,7 @@
+Variable Name;Variable File;Variable Line;Fault Injection Time(s);Injection Time Interval;Fault Model;Detected
+pos;lreg.cpp;71;7.428308963775635;0-25;Single bit-flip;1
+T;lreg.cpp;34;2.975402593612671;0-25;Single bit-flip;1
+pos;lreg.cpp;71;4.359170198440552;0-25;Single bit-flip;1
+ln2a;../sysdeps/ieee754/dbl-64/upow.h;50;12.304167985916138;0-25;Double bit-flip;1
+iterations;lreg.cpp;105;7.335916042327881;0-25;Double bit-flip;1
+T;lreg.cpp;34;5.374075412750244;0-25;Double bit-flip;1

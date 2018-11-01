@@ -1,0 +1,55 @@
+[INFO -- 2018-10-10 16:22:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 16:22:49]
+Initialization strings:
+[INFO -- 2018-10-10 16:22:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 16:22:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 16:22:49]
+initSignal:0
+[INFO -- 2018-10-10 16:22:49]
+endSignal:10
+[INFO -- 2018-10-10 16:22:49]
+faultModel:0
+[INFO -- 2018-10-10 16:22:50]
+Backtrace BEGIN:
+#0  0x0000555555556054 in std::vector<double, std::allocator<double> >::operator[] (this=0x100000001, __n=4294967296) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x0000555555555291 in predict (v=0) at lreg.cpp:77
+#2  0x00005555555553e9 in meanSquaredError () at lreg.cpp:91
+#3  0x0000555555555886 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:160
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Memory content before bitflip:0x490x460x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd818
+address max offset: 4
+Memory content after  bitflip:0x490x460x200x00
+frame name: train
+symbol name: i2
+symbol filename: lreg.cpp
+symbol line: 154
+value: 2115145
+value address: 0x7fffffffd818
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-10-10 16:22:50]
+Fault Injection Successful after 1.5831258296966553s
+[INFO -- 2018-10-10 16:23:00]
+event type: exit
+[INFO -- 2018-10-10 16:23:00]
+exit code: 0

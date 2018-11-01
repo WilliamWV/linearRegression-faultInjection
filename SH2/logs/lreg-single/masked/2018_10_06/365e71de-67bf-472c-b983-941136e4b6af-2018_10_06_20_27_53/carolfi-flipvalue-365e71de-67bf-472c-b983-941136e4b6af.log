@@ -1,0 +1,55 @@
+[INFO -- 2018-10-06 20:27:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 20:27:42]
+Initialization strings:
+[INFO -- 2018-10-06 20:27:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 20:27:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 20:27:42]
+initSignal:0
+[INFO -- 2018-10-06 20:27:42]
+endSignal:10
+[INFO -- 2018-10-06 20:27:42]
+faultModel:0
+[INFO -- 2018-10-06 20:27:44]
+Backtrace BEGIN:
+#0  0x000055555555529a in predict (v=4) at lreg.cpp:77
+#1  0x000055555555551d in partialDerivate (pos=2) at lreg.cpp:107
+#2  0x0000555555555670 in adjust () at lreg.cpp:123
+#3  0x0000555555555881 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:159
+#4  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+79		return val;
+80		
+81	}
+
+Backtrace END
+Memory content before bitflip:0x390x2f0x770x5a0x4d0x9a0xc50x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd820
+address max offset: 8
+Memory content after  bitflip:0x390x2f0x770x7a0x4d0x9a0xc50x40
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 152
+value: 11060.605299852426
+value address: 0x7fffffffd820
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-06 20:27:44]
+Fault Injection Successful after 2.1580724716186523s
+[INFO -- 2018-10-06 20:27:51]
+event type: exit
+[INFO -- 2018-10-06 20:27:51]
+exit code: 0

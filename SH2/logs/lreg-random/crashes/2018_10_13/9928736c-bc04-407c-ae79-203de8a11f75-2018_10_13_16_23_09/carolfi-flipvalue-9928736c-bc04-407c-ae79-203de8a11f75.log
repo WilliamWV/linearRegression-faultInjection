@@ -1,0 +1,59 @@
+[INFO -- 2018-10-13 16:22:50]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 16:22:50]
+Initialization strings:
+[INFO -- 2018-10-13 16:22:50]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 16:22:50]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 16:22:50]
+initSignal:0
+[INFO -- 2018-10-13 16:22:50]
+endSignal:10
+[INFO -- 2018-10-13 16:22:50]
+faultModel:2
+[EXCEPTION -- 2018-10-13 16:22:53]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-10-13 16:22:53]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:447
+#1  __ieee754_pow_sse2 (x=6, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:97
+#2  0x00007ffff76bcb14 in __pow (x=6, y=3) at w_pow_compat.c:30
+#3  0x00005555555560ba in std::pow<double, unsigned int> (__x=6, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555552c2 in predict (v=6) at lreg.cpp:77
+#5  0x000055555555551d in partialDerivate (pos=3) at lreg.cpp:107
+#6  0x0000555555555670 in adjust () at lreg.cpp:123
+#7  0x0000555555555881 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:159
+#8  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+442	in ../sysdeps/i386/fpu/fenv_private.h
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x910x6a0x380xe50x010x470x2a0x40
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771380
+address max offset: 8
+Memory content after  bitflip:0xb70xa40xf90x420xc10x3c0xe60x25
+frame name: partialDerivate
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 4, capacity 4 = {4.1063347287857161e-126, 53.815319468781468, -11.494872588143767, -1.8590154492854145}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-13 16:22:53]
+Fault Injection Successful after 3.3797779083251953s
+[INFO -- 2018-10-13 16:23:08]
+event type: exit
+[EXCEPTION -- 2018-10-13 16:23:08]
+exit code: no exit code available

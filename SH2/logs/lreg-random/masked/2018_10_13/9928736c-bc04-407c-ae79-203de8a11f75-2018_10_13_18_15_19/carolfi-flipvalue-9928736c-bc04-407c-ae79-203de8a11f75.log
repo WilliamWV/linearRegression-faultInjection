@@ -1,0 +1,55 @@
+[INFO -- 2018-10-13 18:15:10]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-13 18:15:10]
+Initialization strings:
+[INFO -- 2018-10-13 18:15:10]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-13 18:15:10]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-13 18:15:10]
+initSignal:0
+[INFO -- 2018-10-13 18:15:10]
+endSignal:10
+[INFO -- 2018-10-13 18:15:10]
+faultModel:2
+[INFO -- 2018-10-13 18:15:10]
+Backtrace BEGIN:
+#0  0x00007ffff7de1a25 in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x7ffff7dc7108, version=0x7ffff7fdc2e8, sym=0x7ffff7a6e3c0, reloc=0x7ffff7ac1280, map=0x7ffff7fde000) at ../sysdeps/x86_64/dl-machine.h:301
+#1  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7fde000) at do-rel.h:137
+#2  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#3  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#4  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde60, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#5  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde60) at rtld.c:414
+#6  _dl_start (arg=0x7fffffffde60) at rtld.c:521
+#7  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#8  0x0000000000000003 in ?? ()
+#9  0x00007fffffffe203 in ?? ()
+#10 0x00007fffffffe212 in ?? ()
+#11 0x00007fffffffe226 in ?? ()
+#12 0x0000000000000000 in ?? ()
+
+296	../sysdeps/x86_64/dl-machine.h: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffda70
+address max offset: 8
+Memory content after  bitflip:0xd20x140x3a0x180x5e0x060x450xa7
+frame name: elf_dynamic_do_Rela
+symbol name: r2
+symbol filename: do-rel.h
+symbol line: 50
+value: 0x0
+value address: 0x7fffffffda70
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-10-13 18:15:10]
+Fault Injection Successful after 0.1209561824798584s
+[INFO -- 2018-10-13 18:15:19]
+event type: exit
+[INFO -- 2018-10-13 18:15:19]
+exit code: 0

@@ -1,0 +1,56 @@
+[INFO -- 2018-10-12 21:05:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-12 21:05:56]
+Initialization strings:
+[INFO -- 2018-10-12 21:05:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-12 21:05:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-12 21:05:56]
+initSignal:0
+[INFO -- 2018-10-12 21:05:56]
+endSignal:10
+[INFO -- 2018-10-12 21:05:56]
+faultModel:0
+[EXCEPTION -- 2018-10-12 21:05:57]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-10-12 21:05:58]
+Backtrace BEGIN:
+#0  0x000055555555526a in predict (v=-11) at lreg.cpp:74
+#1  0x000055555555537b in meanSquaredError () at lreg.cpp:91
+#2  0x0000555555555886 in train (iterations=60000, N=3, stopsWhenStable=true) at lreg.cpp:160
+#3  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+69		Predicts the value related to v using the Ts variables
+70	*/
+71	double predict(double v){
+72		double val = 0;
+73		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+74			selectTriUInt(i1, i2, i3)<T.size(); 
+75			i1++, i2++, i3++)
+76		{
+77			val+= (T[selectTriUInt(i1, i2, i3)] * pow(v, selectTriUInt(i1, i2, i3)));
+78		}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7d8
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x080x000x000x000x00
+frame name: meanSquaredError
+symbol name: error
+symbol filename: lreg.cpp
+symbol line: 86
+value: 6.631236846766476e-316
+value address: 0x7fffffffd7d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-10-12 21:05:58]
+Fault Injection Successful after 2.000544786453247s
+[INFO -- 2018-10-12 21:06:08]
+event type: exit
+[INFO -- 2018-10-12 21:06:08]
+exit code: 0

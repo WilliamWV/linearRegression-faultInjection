@@ -1,0 +1,60 @@
+[INFO -- 2018-10-06 18:20:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-06 18:20:41]
+Initialization strings:
+[INFO -- 2018-10-06 18:20:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-06 18:20:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-06 18:20:41]
+initSignal:0
+[INFO -- 2018-10-06 18:20:41]
+endSignal:10
+[INFO -- 2018-10-06 18:20:41]
+faultModel:0
+[INFO -- 2018-10-06 18:20:41]
+Backtrace BEGIN:
+#0  0x000055555555542c in meanSquaredError () at lreg.cpp:91
+#1  0x0000555555555886 in train (iterations=30000, N=2, stopsWhenStable=true) at lreg.cpp:160
+#2  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+86		double error = 0;
+87		for(UINT i1 = 0, i2 = 0, i3 = 0; 
+88			selectTriUInt(i1, i2, i3)<x.size(); 
+89			i1++, i2++, i3++)
+90		{
+91			error+= ((predict(x[selectTriUInt(i1, i2, i3)]) - y[selectTriUInt(i1, i2, i3)]) * (predict(x[selectTriUInt(i1, i2, i3)]) - y[selectTriUInt(i1, i2, i3)]));	
+92		}
+93		error /= x.size();
+94		return error;
+95	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x130x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a190 
+address max offset: 8
+Memory content after  bitflip:0x500x130x7f0x550x550x550x000x00
+frame name: meanSquaredError
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 43
+value: std::vector of length 2, capacity 65538 = {2.0000004749080151, 1.9999985353256002}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-10-06 18:20:41]
+Fault Injection Successful after 0.7513282299041748s
+[INFO -- 2018-10-06 18:20:50]
+event type: exit
+[INFO -- 2018-10-06 18:20:50]
+exit code: 0

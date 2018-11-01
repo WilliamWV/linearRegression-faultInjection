@@ -1,0 +1,53 @@
+[INFO -- 2018-10-10 16:17:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-10-10 16:17:00]
+Initialization strings:
+[INFO -- 2018-10-10 16:17:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-10-10 16:17:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-10-10 16:17:00]
+initSignal:0
+[INFO -- 2018-10-10 16:17:00]
+endSignal:10
+[INFO -- 2018-10-10 16:17:00]
+faultModel:1
+[INFO -- 2018-10-10 16:17:06]
+Backtrace BEGIN:
+#0  0x00005555555551b1 in equals (a=std::vector of length 4, capacity 4 = {...}, b=std::vector of length 4, capacity 4 = {...}) at lreg.cpp:62
+#1  0x0000555555555919 in train (iterations=90000, N=4, stopsWhenStable=true) at lreg.cpp:165
+#2  0x0000555555555dba in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:225
+
+57		if (a.size() != b.size()) return false;
+58		for (UINT i1 = 0, i2 = 0, i3 = 0; 
+59			 selectTriUInt(i1, i2, i3)<a.size(); 
+60			 i1++, i2++, i3++)
+61		{
+62			if(a[selectTriUInt(i1, i2, i3)] != b[selectTriUInt(i1, i2, i3)]) 
+63				return false;
+64		}
+65		return true;
+66	}
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd804
+address max offset: 1
+Memory content after  bitflip:0x85
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 141
+value: 133
+value address: 0x7fffffffd804
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-10-10 16:17:06]
+Fault Injection Successful after 6.982480049133301s
+[INFO -- 2018-10-10 16:17:11]
+event type: exit
+[INFO -- 2018-10-10 16:17:11]
+exit code: 0
