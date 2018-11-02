@@ -1,0 +1,59 @@
+[INFO -- 2018-11-02 01:14:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-02 01:14:55]
+Initialization strings:
+[INFO -- 2018-11-02 01:14:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-02 01:14:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-02 01:14:55]
+initSignal:0
+[INFO -- 2018-11-02 01:14:55]
+endSignal:10
+[INFO -- 2018-11-02 01:14:55]
+faultModel:0
+[EXCEPTION -- 2018-11-02 01:14:56]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-02 01:15:01]
+Backtrace BEGIN:
+#0  0x00005555555553f7 in partialDerivate (pos=0) at lreg.cpp:74
+#1  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the pointer
+Memory content before bitflip:0xe40xe10xff0xff0xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffde48
+address max offset: 8
+Memory content after  bitflip:0xe00xe10xff0xff0xff0x7f0x000x00
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 179
+value: 0x7fffffffde48
+value address: 0x7fffffffd8e0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-02 01:15:01]
+Fault Injection Successful after 6.456349611282349s
+[INFO -- 2018-11-02 01:15:04]
+event type: exit
+[INFO -- 2018-11-02 01:15:04]
+exit code: 0

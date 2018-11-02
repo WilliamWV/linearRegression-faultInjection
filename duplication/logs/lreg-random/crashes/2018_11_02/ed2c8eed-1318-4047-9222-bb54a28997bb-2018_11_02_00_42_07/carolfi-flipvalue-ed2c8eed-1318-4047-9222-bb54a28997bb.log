@@ -1,0 +1,67 @@
+[INFO -- 2018-11-02 00:42:01]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-02 00:42:01]
+Initialization strings:
+[INFO -- 2018-11-02 00:42:01]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-02 00:42:01]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-02 00:42:01]
+initSignal:0
+[INFO -- 2018-11-02 00:42:01]
+endSignal:10
+[INFO -- 2018-11-02 00:42:01]
+faultModel:2
+[EXCEPTION -- 2018-11-02 00:42:03]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-02 00:42:04]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-02 00:42:05]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-02 00:42:06]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0f897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff703cb9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1690a in malloc_printerr (str=str@entry=0x7ffff703ad88 "free(): invalid pointer") at malloc.c:5350
+#4  0x00007ffff6f1de1c in _int_free (have_lock=0, p=0x555555772679, av=0x7ffff7271c40 <main_arena>) at malloc.c:4157
+#5  __GI___libc_free (mem=0x555555772689) at malloc.c:3124
+#6  0x0000555555557cc2 in __gnu_cxx::new_allocator<double>::deallocate (this=0x55555575b160 <y>, __p=0x555555772689) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x00005555555574d1 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772689, __n=24) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x0000555555556b7c in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x55555575b160 <y>, __p=0x555555772689, __n=24) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x0000555555556ffd in std::vector<double, std::allocator<double> >::_M_realloc_insert<double const&> (this=0x55555575b160 <y>, __position=0, __args#0=@0x7fffffffd690: 8746) at /usr/include/c++/7/bits/vector.tcc:448
+#10 0x0000555555556756 in std::vector<double, std::allocator<double> >::push_back (this=0x55555575b160 <y>, __x=@0x7fffffffd690: 8746) at /usr/include/c++/7/bits/stl_vector.h:948
+#11 0x00005555555559e5 in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:154
+#12 0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x800x280x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b148 
+address max offset: 8
+Memory content after  bitflip:0x520x270x0b0x3c0x860xb70x2f0xb2
+frame name: std::vector<double, std::allocator<double> >::_M_realloc_insert<double const&>
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length -700894381110820865, capacity 64 = {-8, 8, -11, -3, -16, -7, -12, 6, 1, -23, -1, 7, -22, -13, -22, 21, 24, 22, -19, 13, 10, -10, 31, -24, 8, -28, 6, 20, 18, -20, 22, 0, -19, 17, 28, -21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.9812032398233986e-321, 4.5569512622227484e-305, 1.7835357647096786e-307, 1.8464622766932792e-307, 1.7835357647096786e-307, 1.8228113604054966e-307, 1.8455455745115822e-307, 1.8355501255378194e-307, 1.8455455745115822e-307, 1.8446696146490717e-307, 1.8474197211941627e-307, 1.8455455745115822e-307, 1.8430399218816104e-307, 1.8355501255378194e-307, 4.7001208583060712e-305, 1.8461838708455045e-307, 4.7978328907956726e-305, 1.8706318087523736e-307, 4.6762708478851971e-305, 1.8745294906212186e-307, 4.6403915319167685e-305, 4.7613538478888182e-305, 4.7535487059945234e-305, 1.8651069805110164e-307, 4.7708147576348537e-305, 8746, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.0877731996313555e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-02 00:42:06]
+Fault Injection Successful after 5.1610918045043945s
+[INFO -- 2018-11-02 00:42:06]
+event type: exit
+[EXCEPTION -- 2018-11-02 00:42:06]
+exit code: no exit code available

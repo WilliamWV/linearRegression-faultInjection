@@ -1,0 +1,61 @@
+[INFO -- 2018-11-02 00:58:01]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-02 00:58:01]
+Initialization strings:
+[INFO -- 2018-11-02 00:58:01]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-02 00:58:01]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-02 00:58:01]
+initSignal:0
+[INFO -- 2018-11-02 00:58:01]
+endSignal:10
+[INFO -- 2018-11-02 00:58:01]
+faultModel:0
+[INFO -- 2018-11-02 00:58:06]
+Backtrace BEGIN:
+#0  0x00005555555552dc in meanSquaredError () at lreg.cpp:61
+#1  0x00005555555556b1 in train (iterations=15000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:121
+#2  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#3  0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+56		Calculates the mean squared error of T
+57	*/
+58	double meanSquaredError(){
+59		double error = 0;
+60		for(int i = 0; i<x.size(); i++){
+61			error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
+62		}
+63		error /= x.size();
+64		return error;
+65	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x270x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd910
+address max offset: 8
+Memory content after  bitflip:0x500x270x770x550x550x750x000x00
+frame name: main
+symbol name: e1
+symbol filename: lreg.cpp
+symbol line: 191
+value: std::vector of length 18, capacity 4398046511136 = {4.0000137236112749, -5.0000068854522564, -4.0000045955563088, -2.0000000157644124, -17.969262638909957, 13.770860257428817, -13.602133667565115, 7.5146067782561108, -30.736300953823086, -25.123978109995285, 10475.537143166186, 15872.965575747943, 7614.5094490403208, -313.54467564696495, 20282.455922519814, 4302.0888607495162, 4.6416019903301731, 4.6416019903301731}
+value address: 0x7fffffffd900
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-02 00:58:06]
+Fault Injection Successful after 5.867893218994141s
+[INFO -- 2018-11-02 00:58:10]
+event type: exit
+[INFO -- 2018-11-02 00:58:10]
+exit code: 0

@@ -1,0 +1,58 @@
+[INFO -- 2018-11-02 00:34:09]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-02 00:34:09]
+Initialization strings:
+[INFO -- 2018-11-02 00:34:09]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-02 00:34:09]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-02 00:34:09]
+initSignal:0
+[INFO -- 2018-11-02 00:34:09]
+endSignal:10
+[INFO -- 2018-11-02 00:34:09]
+faultModel:2
+[EXCEPTION -- 2018-11-02 00:34:12]
+gdbException: Cannot access memory at address 0x1ad433f10d6ad0a6
+[INFO -- 2018-11-02 00:34:12]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=10, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:101
+#1  0x00007ffff76bcb14 in __pow (x=10, y=3) at w_pow_compat.c:30
+#2  0x0000555555556131 in std::pow<double, int> (__x=10, __y=3) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555237 in predict (v=10) at lreg.cpp:50
+#4  0x000055555555530a in meanSquaredError () at lreg.cpp:61
+#5  0x00005555555556b1 in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#6  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#7  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+96	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x000x000x000x000x000x000xf00x7f
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5d8 
+address max offset: 8
+Memory content after  bitflip:0x930x160x120x350x420x6c0x760x55
+frame name: __ieee754_pow_sse2
+symbol name: INF
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 48
+value: {i = {890377875, 1433824322}, x = 5.0221539328217589e+103}
+value address: 0x7ffff779f5d8 <INF>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-02 00:34:12]
+Fault Injection Successful after 3.568695306777954s
+[INFO -- 2018-11-02 00:34:12]
+event type: exit
+[EXCEPTION -- 2018-11-02 00:34:12]
+exit code: no exit code available

@@ -1,0 +1,63 @@
+[INFO -- 2018-11-02 00:11:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-02 00:11:55]
+Initialization strings:
+[INFO -- 2018-11-02 00:11:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-02 00:11:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-02 00:11:55]
+initSignal:0
+[INFO -- 2018-11-02 00:11:55]
+endSignal:10
+[INFO -- 2018-11-02 00:11:55]
+faultModel:2
+[INFO -- 2018-11-02 00:11:59]
+Backtrace BEGIN:
+#0  0x0000555555555241 in predict (v=-1) at lreg.cpp:50
+#1  0x00005555555553fc in partialDerivate (pos=0) at lreg.cpp:74
+#2  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x00005555555556ac in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x620xc60x1d0x840xec0xff0xff0xbf
+Fault Model: Random bit-flip
+base address to flip value: 0x5555557724b0
+address max offset: 8
+Memory content after  bitflip:0xe10x140x4b0x540x090x3d0xeb0xc9
+frame name: main
+symbol name: e1
+symbol filename: lreg.cpp
+symbol line: 191
+value: std::vector of length 10, capacity 16 = {-1.244031271707574e+48, -2.0000278557317634, -1.9999999935038695, -1.9999832761671332, 567.43647639678943, 1224.8400219367477, 791.88551713933623, 33.849385390373683, -13.685740541912041, 178.02822095008523}
+value address: 0x7fffffffd900
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-02 00:11:59]
+Fault Injection Successful after 4.039736986160278s
+[INFO -- 2018-11-02 00:12:03]
+event type: exit
+[INFO -- 2018-11-02 00:12:03]
+exit code: 0

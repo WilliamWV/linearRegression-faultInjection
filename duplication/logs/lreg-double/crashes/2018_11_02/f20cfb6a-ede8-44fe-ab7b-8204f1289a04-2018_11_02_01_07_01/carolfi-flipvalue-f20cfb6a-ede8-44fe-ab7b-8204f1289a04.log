@@ -1,0 +1,63 @@
+[INFO -- 2018-11-02 01:06:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-02 01:06:56]
+Initialization strings:
+[INFO -- 2018-11-02 01:06:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-02 01:06:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-02 01:06:56]
+initSignal:0
+[INFO -- 2018-11-02 01:06:56]
+endSignal:10
+[INFO -- 2018-11-02 01:06:56]
+faultModel:1
+[EXCEPTION -- 2018-11-02 01:07:00]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-02 01:07:00]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-02 01:07:00]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0f897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff703cb9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1690a in malloc_printerr (str=str@entry=0x7ffff703ad88 "free(): invalid pointer") at malloc.c:5350
+#4  0x00007ffff6f1de1c in _int_free (have_lock=0, p=0x555555772373, av=0x7ffff7271c40 <main_arena>) at malloc.c:4157
+#5  __GI___libc_free (mem=0x555555772383) at malloc.c:3124
+#6  0x0000555555557cc2 in __gnu_cxx::new_allocator<double>::deallocate (this=0x55555575b180 <T>, __p=0x555555772383) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x00005555555574d1 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772383, __n=3) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x0000555555556b7c in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x55555575b180 <T>, __p=0x555555772383, __n=3) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x0000555555556588 in std::vector<double, std::allocator<double> >::operator= (this=0x55555575b180 <T>, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:210
+#10 0x00005555555557a5 in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:130
+#11 0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#12 0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: __val
+Fliping array at pos: 0
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd070
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x090x000x00
+frame name: __GI_raise
+symbol name: set
+symbol filename: ../sysdeps/unix/sysv/linux/raise.c
+symbol line: 39
+value: {__val = {9895604649984, 1, 0, 140737488343352, 3, 0, 2, 140737336121354, 4, 1, 140737488343360, 140737339918688, 1, 0, 0, 140733193388038}}
+value address: 0x7fffffffd070
+Type: The type is a structure.
+Type sizeof: 128
+Field name: __val
+Field Type: The type is an array.
+Field Type sizeof: 128
+
+[INFO -- 2018-11-02 01:07:00]
+Fault Injection Successful after 4.795777082443237s
+[INFO -- 2018-11-02 01:07:00]
+event type: exit
+[EXCEPTION -- 2018-11-02 01:07:00]
+exit code: no exit code available
