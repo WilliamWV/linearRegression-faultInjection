@@ -7,6 +7,7 @@ EXEC = lreg
 EXEC_INP_GEN = genInp
 INPUT = randInput
 REPORT = reportInput
+DETECTED = /tmp/lreg/detected.log
 OUTPUT = goldOutput
 LASTRUN = lastDataCreated
 
@@ -20,7 +21,7 @@ gen_bin: $(SRC) $(INP_GEN_SRC)
 	
 gen_data: gen_bin
 	./$(EXEC_INP_GEN) $(INPUT) $(REPORT)
-	./$(EXEC) $(INPUT) $(OUTPUT)
+	./$(EXEC) $(INPUT) $(OUTPUT) $(DETECTED)
 mv_bin: gen_data
 	mkdir -p $(destDir)
 	mkdir -p $(LASTRUN)

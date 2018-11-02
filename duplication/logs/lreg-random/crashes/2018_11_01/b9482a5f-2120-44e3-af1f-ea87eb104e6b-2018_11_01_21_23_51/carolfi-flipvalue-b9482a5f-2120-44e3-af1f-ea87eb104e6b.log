@@ -1,0 +1,58 @@
+[INFO -- 2018-11-01 21:23:16]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-01 21:23:16]
+Initialization strings:
+[INFO -- 2018-11-01 21:23:16]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-01 21:23:16]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-01 21:23:16]
+initSignal:0
+[INFO -- 2018-11-01 21:23:16]
+endSignal:20
+[INFO -- 2018-11-01 21:23:16]
+faultModel:2
+[EXCEPTION -- 2018-11-01 21:23:27]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-01 21:23:27]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:215
+#1  0x00007ffff76bcb14 in __pow (x=3.1620201333839779e-322, y=3) at w_pow_compat.c:30
+#2  0x0000555555556131 in std::pow<double, int> (__x=3.1620201333839779e-322, __y=3) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555237 in predict (v=3.1620201333839779e-322) at lreg.cpp:50
+#4  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#5  0x00005555555556b1 in train (iterations=60000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#6  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#7  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+210	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x40
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772970
+address max offset: 8
+Memory content after  bitflip:0x740x150xbe0x480x270x380x410x71
+frame name: predict
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 36, capacity 64 = {3.5039938511497251e+237, 2, 2, 2, 2, 2, 2, 2, -28, -276, -3, -406, -1, -171, -1128, -465, -1176, -780, -45, -253, 105033, -5, 475, 74355, -91905, -91905, 4395, 19, 9963, -42375, 19, -91905, 5923, -57, -48925, -114431}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-01 21:23:27]
+Fault Injection Successful after 11.62192702293396s
+[INFO -- 2018-11-01 21:23:48]
+event type: exit
+[EXCEPTION -- 2018-11-01 21:23:48]
+exit code: no exit code available

@@ -4,7 +4,6 @@
 #include<vector>
 #include<cmath>
 
-using namespace std;
 /*
 	Specification
 	 
@@ -28,23 +27,6 @@ using namespace std;
 	
 
 */
-
-/**
-	MODIFICATIONS FOR FT:
-		* TRIPLICATION OF THE MAIN CODE
-		* CHANGED INDEXES OF FORS FROM INT TO UNSIGNED INT 
-		* CRASH TOLERANCE USING TRY CATCH AND BOOLEAN VARIABLES
-*/
-
-//struct that holds all elements of the answer, each one of the execution
-//of the triplification will returns one of these 
-typedef struct answer{
-	//all elements are inside a vector because will return one to each test case
-	vector<vector <double>> predictions;	//results of the values to predict
-	vector<vector <bool>> crashes;			//says if there is crash on some prediction
-	vector<bool> crashOnTrain;				//there is crash on train?
-}ANS;
-
 using namespace std;
 
 vector<double> x; // input of training set
@@ -53,7 +35,7 @@ vector<double> T; // the adjustment variables
 
 bool equals(vector<double> a, vector<double> b){
 	if (a.size() != b.size()) return false;
-	for (unsigned int i = 0; i<a.size(); i++){
+	for (int i = 0; i<a.size(); i++){
 		if(a[i] != b[i]) return false;
 	}
 	return true;
@@ -64,7 +46,7 @@ bool equals(vector<double> a, vector<double> b){
 */
 double predict(double v){
 	double val = 0;
-	for(unsigned int i = 0; i<T.size(); i++){
+	for(int i = 0; i<T.size(); i++){
 		val+= (T[i] * pow(v, i));
 	}
 	return val;
@@ -75,7 +57,7 @@ double predict(double v){
 */
 double meanSquaredError(){
 	double error = 0;
-	for(unsigned int i = 0; i<x.size(); i++){
+	for(int i = 0; i<x.size(); i++){
 		error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
 	}
 	error /= x.size();
@@ -88,7 +70,7 @@ double meanSquaredError(){
 */
 double partialDerivate(int pos){
 	double pD = 0;
-	for(unsigned int i = 0; i<x.size(); i++){
+	for(int i = 0; i<x.size(); i++){
 		pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
 	}
 	pD *= (2.0/x.size());
@@ -101,7 +83,7 @@ double partialDerivate(int pos){
 void adjust(double alpha){
 	
 	double PD;
-	for(unsigned int i = 0; i<T.size(); i++){
+	for(int i = 0; i<T.size(); i++){
 		PD = partialDerivate(i);
 		// alpha is different from the canonical version because this works better
 		T[i]= T[i] - ((alpha / (sqrt( fabs(PD) ))) * PD); 
@@ -133,7 +115,7 @@ void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 	vector<double> bestT = T; 
 	double bestMSE = meanSquaredError();
 	double MSE;	
-	for(unsigned int i = 0; i<iterations; i++){
+	for(int i = 0; i<iterations; i++){
 		prevT = T; 	
 		adjust(alpha);
 		MSE = meanSquaredError();
@@ -148,53 +130,39 @@ void train(int iterations, double alpha, int N, bool stopsWhenStable = true){
 	T = bestT;
 }
 
-ANS* lreg(char* input){
-	ANS* ans = (ANS*) malloc(sizeof(struct answer));
+
+vector <double> execute(char* input){
+	vector<double> ans;
+	
 	ifstream inp (input);
-	unsigned int testCases;	
+	
+	int testCases;	
 	inp >> testCases;
 	
-	for (unsigned int i = 0; i<testCases; i++){
+	for (int i = 0; i<testCases; i++){
 		double alpha, temp;
 		int iterations, N, sizeOfTraining, predictions;
-			
-		try{
-			inp >> alpha >> iterations >> N >> sizeOfTraining >> predictions;
-			//READING DATA
-			for (unsigned int j = 0; j<sizeOfTraining; j++){
-				inp >> temp;
-				x.push_back(temp);
-			} 
-			for (unsigned int j = 0; j<sizeOfTraining; j++){
-				inp >> temp;
-				y.push_back(temp);
-			} 
-			//TRAINING
-			train(iterations, alpha, N);
-			ans->crashOnTrain.push_back(false);
-		}catch (exception& e){
-			//error on training
-			ans->crashOnTrain.push_back(true);
-		}
-		vector<double> pred;
-		vector<bool> crash;
-		for (unsigned int j = 0; j < predictions; j++){
-			
+		inp >> alpha >> iterations >> N >> sizeOfTraining >> predictions;
+		
+		//READING DATA
+		for (int j = 0; j<sizeOfTraining; j++){
 			inp >> temp;
-			try{
-				pred.push_back(predict(temp));
-				crash.push_back(false);
-			}catch(exception& e){
-				pred.push_back(0);
-				crash.push_back(true);
-			}
+			x.push_back(temp);
+		} 
+		for (int j = 0; j<sizeOfTraining; j++){
+			inp >> temp;
+			y.push_back(temp);
+		} 
+		//TRAINING
+		train(iterations, alpha, N);
+		for (int j = 0; j < predictions; j++){
+			inp >> temp;
+			ans.push_back(predict(temp));
 		}
-	
-		ans->predictions.push_back(pred);
-		ans->crashes.push_back(crash);
+			
 	}
 	return ans;
-	
+	inp.close();
 }
 
 /*
@@ -210,75 +178,40 @@ It must receive an input file formated as follows:
 
 int main(int argc, char* argv[]){
 	
-	if (argc != 3) {
+	if (argc != 4) {
 		cout << "Wrong number of arguments" <<endl;
 		cout <<"  Use as : " << endl; 
-		cout <<'\t'<<argv[0]<<" <input file> "<<"<output file>"<<endl;
+		cout <<'\t'<<argv[0]<<" <input file> "<<"<output file> "<<"<detected log file>"<<endl;
 		return 1;
 	}
 	
-	ANS* a1 = lreg(argv[1]);
-	ANS* a2 = lreg(argv[1]);
-	ANS* a3 = lreg(argv[1]);
 	ofstream out (argv[2]);
-	
-	for(unsigned int t = 0; t<a1->crashOnTrain.size(); t++){
-		if(a1->crashOnTrain[t] || a2->crashOnTrain[t] || a3->crashOnTrain[t]){
-			if(a1->crashOnTrain[t] && !a2->crashOnTrain[t] && !a3->crashOnTrain[t]){
-				unsigned int predictions = a2->predictions[t].size();
-				for (unsigned int i = 0; i<predictions; i++){
-					if (a2->crashes[t][i]) out<<a3->predictions[t][i]<<endl;
-					else out<<a2->predictions[t][i]<<endl;
-				}
-			}
-			else if(!a1->crashOnTrain[t] && a2->crashOnTrain[t] && !a3->crashOnTrain[t]){
-				unsigned int predictions = a1->predictions[t].size();
-				for (unsigned int i = 0; i<predictions; i++){
-					if (a1->crashes[t][i]) out<<a3->predictions[t][i]<<endl;
-					else out<<a1->predictions[t][i]<<endl;
-				}
-			}
-			else if(!a1->crashOnTrain[t] && !a2->crashOnTrain[t] && a3->crashOnTrain[t]){
-				unsigned int predictions = a1->predictions[t].size();
-				for (unsigned int i = 0; i<predictions; i++){
-					if (a1->crashes[t][i]) out<<a2->predictions[t][i]<<endl;
-					else out<<a1->predictions[t][i]<<endl;
-				}
-			}
-			else if(a1->crashOnTrain[t] && a2->crashOnTrain[t] && !a3->crashOnTrain[t]){
-				for(unsigned int i = 0; i<a3->predictions[t].size(); i++) out << a3->predictions[t][i]<<endl;		
-			}
-			else if(a1->crashOnTrain[t] && !a2->crashOnTrain[t] && a3->crashOnTrain[t]){
-				for(unsigned int i = 0; i<a2->predictions[t].size(); i++) out << a2->predictions[t][i]<<endl;		
-			}
-			else if(!a1->crashOnTrain[t] && a2->crashOnTrain[t] && a3->crashOnTrain[t]){
-				for(unsigned int i = 0; i<a1->predictions[t].size(); i++) out << a1->predictions[t][i]<<endl;		
-			}
-			else{
-				for(unsigned int i = 0; i<a1->predictions[t].size(); i++) out << 0 <<endl;
-			}
 			
+	vector<double> e1 = execute(argv[1]);
+	x.clear();
+	y.clear();
+	vector<double> e2 = execute(argv[1]);
+	x.clear();
+	y.clear();
+	vector<double> e3 = execute(argv[1]);
+	for(int i = 0; i<e1.size(); i++){
+		if(e1[i] == e2[i]){
+			out<<e1[i]<<endl;
+		}
+		else if(e1[i] == e3[i]){
+			out<<e1[i]<<endl;
+		}
+		else if(e2[i] == er[i]){
+			out<<e2[i]<<endl;
 		}
 		else{
-			unsigned int predictions = a1->predictions[t].size();
-			for (unsigned int i = 0; i<predictions; i++){
-				if (a1->crashes[t][i] || a2->crashes[t][i] || a3 ->crashes[t][i]){
-					if(!a1->crashes[t][i]) out<<a1->predictions[t][i]<<endl;
-					else if (!a2->crashes[t][i]) out<<a2->predictions[t][i]<<endl;
-					else if (!a3->crashes[t][i]) out<<a3->predictions[t][i]<<endl;
-					else out <<0<<endl; //sdc caused by crash on all predictions
-				}
-				else{
-					if (a1->predictions[t][i] == a2->predictions[t][i]){
-						out<<a1->predictions[t][i]<<endl;
-					}
-					else{
-						out<<a3->predictions[t][i]<<endl;
-					}
-				}
-			}	
+			//gerar entrada no log
+			ofstream fp (argv[3], std::ofstream::app);
+			fp << "["<<i<<"]"<<": "<<e1[i]<< " "<< e2[i]<<" "<<e3[i]<<endl;
+            //fp.close();
+			out<<e1[i]<<endl; // coloca um deles como resposta    
 		}
 	}
-
+	
 	return 0;
 }

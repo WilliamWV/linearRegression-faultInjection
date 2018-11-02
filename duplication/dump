@@ -1,0 +1,9 @@
+g++ -g -fopenmp lreg.cpp -o lreg
+g++ -g -fopenmp generateInput.cpp -o genInp
+./genInp randInput reportInput
+./lreg randInput goldOutput /tmp/lreg/detected.log
+mkdir -p /tmp/lreg
+mkdir -p lastDataCreated
+cp randInput reportInput goldOutput lastDataCreated
+mv genInp lreg randInput reportInput goldOutput /tmp/lreg
+All Done, executables should be in the /tmp/lreg

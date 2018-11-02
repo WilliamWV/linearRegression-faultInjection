@@ -1,0 +1,64 @@
+[INFO -- 2018-11-01 22:45:40]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-01 22:45:40]
+Initialization strings:
+[INFO -- 2018-11-01 22:45:40]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-01 22:45:40]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-01 22:45:40]
+initSignal:0
+[INFO -- 2018-11-01 22:45:40]
+endSignal:20
+[INFO -- 2018-11-01 22:45:40]
+faultModel:1
+[INFO -- 2018-11-01 22:45:46]
+Backtrace BEGIN:
+#0  0x00005555555560e0 in std::vector<double, std::allocator<double> >::size (this=0x55555575b180 <T>) at /usr/include/c++/7/bits/stl_vector.h:671
+#1  0x00005555555551f9 in predict (v=20) at lreg.cpp:49
+#2  0x00005555555553fc in partialDerivate (pos=2) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=60000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+675	      max_size() const _GLIBCXX_NOEXCEPT
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772880
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x240x00
+frame name: adjust
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 36, capacity 64 = {11, 6, -3, 9, -7, 1, -12, -1, 4, 12, -1, -14, 1, -9, 24, -15, -24, 20, 5, -11, -28, 1, -5, -25, 26, 26, -10, -2, -13, 20, -2, 26, -11, 2, 21, 28}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-01 22:45:46]
+Fault Injection Successful after 6.167923450469971s
+[INFO -- 2018-11-01 22:45:54]
+event type: exit
+[INFO -- 2018-11-01 22:45:54]
+exit code: 0
