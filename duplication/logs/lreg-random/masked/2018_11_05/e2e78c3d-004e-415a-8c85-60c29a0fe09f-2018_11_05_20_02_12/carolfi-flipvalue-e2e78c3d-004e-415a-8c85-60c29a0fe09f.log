@@ -1,0 +1,55 @@
+[INFO -- 2018-11-05 20:02:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-05 20:02:03]
+Initialization strings:
+[INFO -- 2018-11-05 20:02:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-05 20:02:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-05 20:02:03]
+initSignal:0
+[INFO -- 2018-11-05 20:02:03]
+endSignal:10
+[INFO -- 2018-11-05 20:02:03]
+faultModel:2
+[INFO -- 2018-11-05 20:02:10]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb0f in __pow (x=29, y=3) at w_pow_compat.c:30
+#1  0x0000555555556131 in std::pow<double, int> (__x=29, __y=3) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555237 in predict (v=29) at lreg.cpp:50
+#3  0x000055555555530a in meanSquaredError () at lreg.cpp:61
+#4  0x00005555555556b1 in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+25	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x230x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b190 
+address max offset: 8
+Memory content after  bitflip:0xa20x3e0x1d0xe90x450xcb0xc20x11
+frame name: std::pow<double, int>
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 4, capacity 159964365032047460 = {-15.197593264600961, -210.20620450834809, 9.6200525239408385, 5.4350471632310224}
+value address: 0x55555575b180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-05 20:02:10]
+Fault Injection Successful after 7.333089351654053s
+[INFO -- 2018-11-05 20:02:11]
+event type: exit
+[INFO -- 2018-11-05 20:02:11]
+exit code: 0

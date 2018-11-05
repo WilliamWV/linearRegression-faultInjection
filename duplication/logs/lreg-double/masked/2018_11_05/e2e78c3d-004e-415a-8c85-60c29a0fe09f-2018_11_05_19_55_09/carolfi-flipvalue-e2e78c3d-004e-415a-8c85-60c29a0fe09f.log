@@ -1,0 +1,62 @@
+[INFO -- 2018-11-05 19:54:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-05 19:54:58]
+Initialization strings:
+[INFO -- 2018-11-05 19:54:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-05 19:54:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-05 19:54:58]
+initSignal:0
+[INFO -- 2018-11-05 19:54:58]
+endSignal:10
+[INFO -- 2018-11-05 19:54:58]
+faultModel:1
+[INFO -- 2018-11-05 19:54:59]
+Backtrace BEGIN:
+#0  0x0000555555555456 in partialDerivate (pos=1) at lreg.cpp:74
+#1  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=30000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772640
+address max offset: 8
+Memory content after  bitflip:0x000x000x050x000x000x000x000x00
+frame name: partialDerivate
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 20, capacity 32 = {3, 2, -9, 15, -9, -12, 11, -1, -20, -12, -14, 6, 24, 12, -2, 16, 4, -24, -3, 6}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-05 19:54:59]
+Fault Injection Successful after 1.820540428161621s
+[INFO -- 2018-11-05 19:55:07]
+event type: exit
+[INFO -- 2018-11-05 19:55:07]
+exit code: 0

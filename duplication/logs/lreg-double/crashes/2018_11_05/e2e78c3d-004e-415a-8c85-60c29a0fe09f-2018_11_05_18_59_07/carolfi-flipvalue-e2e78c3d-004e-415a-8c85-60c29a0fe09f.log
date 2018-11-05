@@ -1,0 +1,58 @@
+[INFO -- 2018-11-05 18:58:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-05 18:58:58]
+Initialization strings:
+[INFO -- 2018-11-05 18:58:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-05 18:58:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-05 18:58:58]
+initSignal:0
+[INFO -- 2018-11-05 18:58:58]
+endSignal:10
+[INFO -- 2018-11-05 18:58:58]
+faultModel:1
+[EXCEPTION -- 2018-11-05 18:59:05]
+gdbException: Cannot access memory at address 0xd75555772760
+[INFO -- 2018-11-05 18:59:05]
+Backtrace BEGIN:
+#0  0x00005555555560ea in std::vector<double, std::allocator<double> >::operator[] (this=0x1e, __n=30) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x0000555555555415 in partialDerivate (pos=0) at lreg.cpp:74
+#2  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x00005555555556ac in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd518
+address max offset: 8
+Memory content after  bitflip:0x460x5a0xf50xf40x390x4d0xf70x3e
+frame name: adjust
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 83
+value: 2.2222200013766764e-05
+value address: 0x7fffffffd518
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-05 18:59:05]
+Fault Injection Successful after 7.642374753952026s
+[INFO -- 2018-11-05 18:59:05]
+event type: exit
+[EXCEPTION -- 2018-11-05 18:59:05]
+exit code: no exit code available

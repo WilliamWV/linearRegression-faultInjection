@@ -1,0 +1,64 @@
+[INFO -- 2018-11-05 18:48:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-05 18:48:43]
+Initialization strings:
+[INFO -- 2018-11-05 18:48:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-05 18:48:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-05 18:48:43]
+initSignal:0
+[INFO -- 2018-11-05 18:48:43]
+endSignal:10
+[INFO -- 2018-11-05 18:48:43]
+faultModel:0
+[EXCEPTION -- 2018-11-05 18:48:46]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-05 18:48:46]
+Backtrace BEGIN:
+#0  0x0000555555556d80 in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=2.4209216646221081e-322, __last=2.4209216646221081e-322) at /usr/include/c++/7/bits/stl_construct.h:203
+#1  0x000055555555662d in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd5b0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x00005555555556f2 in train (iterations=30000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:124
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+198		__traits::destroy(__alloc, std::__addressof(*__first));
+199	    }
+200	
+201	  template<typename _ForwardIterator, typename _Tp>
+202	    inline void
+203	    _Destroy(_ForwardIterator __first, _ForwardIterator __last,
+204		     allocator<_Tp>&)
+205	    {
+206	      _Destroy(__first, __last);
+207	    }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x210x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772358
+address max offset: 8
+Memory content after  bitflip:0x210x000x200x000x000x000x000x00
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 114
+value: std::vector of length 11, capacity 11 = {-9.0000076293945295, 15.000001675588097, -9, -12, 11, -1, 0, 1.6304166312761136e-322, -13.755742905313065, -2.3754475017904353, 2.7431893509942427}
+value address: 0x7fffffffd590
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-05 18:48:46]
+Fault Injection Successful after 3.554051399230957s
+[INFO -- 2018-11-05 18:48:47]
+event type: exit
+[EXCEPTION -- 2018-11-05 18:48:47]
+exit code: no exit code available

@@ -1,0 +1,51 @@
+[INFO -- 2018-11-05 19:49:33]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-05 19:49:33]
+Initialization strings:
+[INFO -- 2018-11-05 19:49:33]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-05 19:49:33]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-05 19:49:33]
+initSignal:0
+[INFO -- 2018-11-05 19:49:33]
+endSignal:10
+[INFO -- 2018-11-05 19:49:33]
+faultModel:0
+[EXCEPTION -- 2018-11-05 19:49:40]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-05 19:49:40]
+Backtrace BEGIN:
+#0  0x00007ffff76da528 in __ieee754_pow_sse2 (x=2, y=1) at ../sysdeps/ieee754/dbl-64/e_pow.c:65
+#1  0x00007ffff76bcb14 in __pow (x=2, y=1) at w_pow_compat.c:30
+#2  0x0000555555556131 in std::pow<double, int> (__x=2, __y=1) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555451 in partialDerivate (pos=1) at lreg.cpp:74
+#4  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#5  0x00005555555556ac in train (iterations=30000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#7  0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+60	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Memory content before bitflip:0x8e0x200xde0x8c0xfd0x660x480x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd4d8
+address max offset: 8
+Memory content after  bitflip:0x0e0x200xde0x8c0xfd0x660x480x40
+frame name: partialDerivate
+symbol name: pD
+symbol filename: lreg.cpp
+symbol line: 72
+value: 48.804612740001275
+value address: 0x7fffffffd4d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-05 19:49:40]
+Fault Injection Successful after 7.483292102813721s
+[INFO -- 2018-11-05 19:49:45]
+event type: exit
+[INFO -- 2018-11-05 19:49:45]
+exit code: 0
