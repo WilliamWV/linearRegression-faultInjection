@@ -1,0 +1,61 @@
+[INFO -- 2018-11-04 21:08:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-04 21:08:53]
+Initialization strings:
+[INFO -- 2018-11-04 21:08:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-04 21:08:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-04 21:08:53]
+initSignal:0
+[INFO -- 2018-11-04 21:08:53]
+endSignal:10
+[INFO -- 2018-11-04 21:08:53]
+faultModel:2
+[INFO -- 2018-11-04 21:08:54]
+Backtrace BEGIN:
+#0  0x00005555555552bf in meanSquaredError () at lreg.cpp:61
+#1  0x00005555555556b1 in train (iterations=30000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#2  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#3  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+56		Calculates the mean squared error of T
+57	*/
+58	double meanSquaredError(){
+59		double error = 0;
+60		for(int i = 0; i<x.size(); i++){
+61			error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
+62		}
+63		error /= x.size();
+64		return error;
+65	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x310x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772378
+address max offset: 8
+Memory content after  bitflip:0x8e0x610xb60xa30x120x110x750x92
+frame name: train
+symbol name: bestT
+symbol filename: lreg.cpp
+symbol line: 115
+value: std::vector of length 3, capacity 3 = {-11.838001499545459, 3.2262336895742498, 1.8094941015197892}
+value address: 0x7fffffffd5b0
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-04 21:08:54]
+Fault Injection Successful after 1.4446344375610352s
+[INFO -- 2018-11-04 21:08:54]
+event type: exit
+[EXCEPTION -- 2018-11-04 21:08:54]
+exit code: no exit code available

@@ -1,0 +1,51 @@
+[INFO -- 2018-11-04 19:09:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-04 19:09:35]
+Initialization strings:
+[INFO -- 2018-11-04 19:09:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-04 19:09:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-04 19:09:35]
+initSignal:0
+[INFO -- 2018-11-04 19:09:35]
+endSignal:10
+[INFO -- 2018-11-04 19:09:35]
+faultModel:2
+[INFO -- 2018-11-04 19:09:37]
+Backtrace BEGIN:
+#0  __exp1 (x=<optimized out>, xx=<optimized out>, error=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_exp.c:273
+#1  0x00007ffff76da8dc in __ieee754_pow_sse2 (x=16, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-16, y=3) at w_pow_compat.c:30
+#4  0x0000555555556131 in std::pow<double, int> (__x=-16, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x0000555555555237 in predict (v=-16) at lreg.cpp:50
+#6  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#7  0x00005555555556b1 in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#8  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#9  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+268	../sysdeps/ieee754/dbl-64/e_exp.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x080x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd478
+address max offset: 8
+Memory content after  bitflip:0x330x250xa50xf50xb10x020x6a0x56
+frame name: __pow
+symbol name: y
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 1.9089635151422608e+108
+value address: 0x7fffffffd478
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-04 19:09:37]
+Fault Injection Successful after 2.9111013412475586s
+[INFO -- 2018-11-04 19:09:44]
+event type: exit
+[INFO -- 2018-11-04 19:09:44]
+exit code: 0

@@ -1,0 +1,55 @@
+[INFO -- 2018-11-04 21:03:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-04 21:03:37]
+Initialization strings:
+[INFO -- 2018-11-04 21:03:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-04 21:03:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-04 21:03:37]
+initSignal:0
+[INFO -- 2018-11-04 21:03:37]
+endSignal:10
+[INFO -- 2018-11-04 21:03:37]
+faultModel:2
+[INFO -- 2018-11-04 21:03:41]
+Backtrace BEGIN:
+#0  0x00005555555553a4 in partialDerivate (pos=1) at lreg.cpp:71
+#1  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+66	}
+67	/**
+68		Calculates the partial derivate of the meanSquaredError function 
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+
+Backtrace END
+Memory content before bitflip:0xe60x940x0b0xd50xa10x690xf30x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd528
+address max offset: 8
+Memory content after  bitflip:0xf20x250x7b0xa70xd20x7a0xb20xa9
+frame name: adjust
+symbol name: PD
+symbol filename: lreg.cpp
+symbol line: 85
+value: -7.868614758743381e-108
+value address: 0x7fffffffd528
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-04 21:03:41]
+Fault Injection Successful after 4.918204069137573s
+[INFO -- 2018-11-04 21:03:44]
+event type: exit
+[INFO -- 2018-11-04 21:03:44]
+exit code: 0

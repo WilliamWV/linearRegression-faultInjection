@@ -1,0 +1,56 @@
+[INFO -- 2018-11-04 19:15:06]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-04 19:15:06]
+Initialization strings:
+[INFO -- 2018-11-04 19:15:06]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-04 19:15:06]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-04 19:15:06]
+initSignal:0
+[INFO -- 2018-11-04 19:15:06]
+endSignal:10
+[INFO -- 2018-11-04 19:15:06]
+faultModel:2
+[INFO -- 2018-11-04 19:15:07]
+Backtrace BEGIN:
+#0  0x00005555555553fc in partialDerivate (pos=1) at lreg.cpp:74
+#1  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=30000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x480xde0xff0xff0xff0x7f0x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd8e0
+address max offset: 8
+Memory content after  bitflip:0x7a0x770xef0x280x7c0x0f0x560x5b
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 179
+value: 0x7fffffffde48
+value address: 0x7fffffffd8e0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-04 19:15:07]
+Fault Injection Successful after 1.0114085674285889s
+[INFO -- 2018-11-04 19:15:10]
+event type: exit
+[EXCEPTION -- 2018-11-04 19:15:10]
+exit code: no exit code available
