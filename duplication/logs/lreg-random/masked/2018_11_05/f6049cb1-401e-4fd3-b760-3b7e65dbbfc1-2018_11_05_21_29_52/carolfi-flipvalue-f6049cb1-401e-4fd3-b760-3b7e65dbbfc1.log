@@ -1,0 +1,62 @@
+[INFO -- 2018-11-05 21:29:44]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-05 21:29:44]
+Initialization strings:
+[INFO -- 2018-11-05 21:29:45]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-05 21:29:45]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-05 21:29:45]
+initSignal:0
+[INFO -- 2018-11-05 21:29:45]
+endSignal:10
+[INFO -- 2018-11-05 21:29:45]
+faultModel:2
+[INFO -- 2018-11-05 21:29:50]
+Backtrace BEGIN:
+#0  partialDerivate (pos=2) at lreg.cpp:73
+#1  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+68		Calculates the partial derivate of the meanSquaredError function 
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772b70
+address max offset: 8
+Memory content after  bitflip:0x750x600xaa0x7f0xce0x130xd20xd0
+frame name: execute
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 36, capacity 64 = {-24, -24, 30, -8, -22, 22, 32, -22, -77, -320, -60, -165, 4, -572, -192, -77, -32, -480, -45, -12, -5, -3541, -1495, -16301, -1495, -701, -24749, 199, -24749, 29, -60389, -11899, -8369, -13985, -1, -251}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-05 21:29:50]
+Fault Injection Successful after 5.4359657764434814s
+[INFO -- 2018-11-05 21:29:52]
+event type: exit
+[INFO -- 2018-11-05 21:29:52]
+exit code: 0

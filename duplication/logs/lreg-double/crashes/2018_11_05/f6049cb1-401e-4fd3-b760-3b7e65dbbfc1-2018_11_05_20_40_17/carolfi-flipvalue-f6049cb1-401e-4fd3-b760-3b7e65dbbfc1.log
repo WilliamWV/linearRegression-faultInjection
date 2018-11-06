@@ -1,0 +1,64 @@
+[INFO -- 2018-11-05 20:40:09]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-05 20:40:09]
+Initialization strings:
+[INFO -- 2018-11-05 20:40:09]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-05 20:40:09]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-05 20:40:09]
+initSignal:0
+[INFO -- 2018-11-05 20:40:09]
+endSignal:10
+[INFO -- 2018-11-05 20:40:09]
+faultModel:1
+[EXCEPTION -- 2018-11-05 20:40:15]
+gdbException: Cannot access memory at address 0x4400555555772760
+[INFO -- 2018-11-05 20:40:15]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::end (this=0x7fffffffd517) at /usr/include/c++/7/bits/stl_vector.h:590
+#1  0x0000555555556335 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5f0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#2  0x0000555555555713 in train (iterations=30000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+585	       *  Returns a read-only (constant) iterator that points one past
+586	       *  the last element in the %vector.  Iteration is done in
+587	       *  ordinary element order.
+588	       */
+589	      const_iterator
+590	      end() const _GLIBCXX_NOEXCEPT
+591	      { return const_iterator(this->_M_impl._M_finish); }
+592	
+593	      /**
+594	       *  Returns a read/write reverse iterator that points to the
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x100x2a0x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b168 
+address max offset: 8
+Memory content after  bitflip:0x310x2a0x770x550x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 24, capacity 64 = {-24, -24, 30, -8, -22, 22, 32, -22, -77, -320, -60, -165, 4, -572, -192, -77, -32, -480, -45, -12, -5, -3541, -1495, -16301, -1495, -701, -24749, 199, -24749, 29, -60389, -11899, -8369, -13985, -1, -251, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, 4.6355706481188227e-310, -155.56734907791534, -16.681898981919385, 1.3530830164665537, 0, 2.4209216646221081e-322, 4.6355706481211942e-310, -155.56999860819482, -16.68594033098433, 1.3768057693231102, 0, 2.4209216646221081e-322, 4.6355706481235657e-310, -155.56734907791534, -16.681898981919385, 1.3530830164665537, 0, 2.4209216646221081e-322, 0, -155.56999860819482, -16.68594033098433, 1.3768057693231102, 0, 2.0719630989644356e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-05 20:40:15]
+Fault Injection Successful after 6.701087474822998s
+[INFO -- 2018-11-05 20:40:16]
+event type: exit
+[EXCEPTION -- 2018-11-05 20:40:16]
+exit code: no exit code available

@@ -1,0 +1,66 @@
+[INFO -- 2018-11-05 20:35:11]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-05 20:35:11]
+Initialization strings:
+[INFO -- 2018-11-05 20:35:11]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-05 20:35:11]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-05 20:35:11]
+initSignal:0
+[INFO -- 2018-11-05 20:35:11]
+endSignal:10
+[INFO -- 2018-11-05 20:35:11]
+faultModel:1
+[EXCEPTION -- 2018-11-05 20:35:12]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-05 20:35:13]
+Backtrace BEGIN:
+#0  0x00005555555560c4 in std::vector<double, std::allocator<double> >::size (this=0x4028000000000000) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x00005555555551f9 in predict (v=12) at lreg.cpp:49
+#2  0x00005555555553fc in partialDerivate (pos=0) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=15000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772370
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x220x000x000x000x00
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 114
+value: std::vector of length 2, capacity 2 = {0.33470730778432289, -1.9772684825564308}
+value address: 0x7fffffffd590
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-05 20:35:13]
+Fault Injection Successful after 2.028684377670288s
+[INFO -- 2018-11-05 20:35:19]
+event type: exit
+[INFO -- 2018-11-05 20:35:19]
+exit code: 0

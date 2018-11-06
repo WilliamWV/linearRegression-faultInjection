@@ -1,0 +1,69 @@
+[INFO -- 2018-11-05 21:40:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-05 21:40:51]
+Initialization strings:
+[INFO -- 2018-11-05 21:40:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-05 21:40:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-05 21:40:51]
+initSignal:0
+[INFO -- 2018-11-05 21:40:51]
+endSignal:10
+[INFO -- 2018-11-05 21:40:51]
+faultModel:2
+[EXCEPTION -- 2018-11-05 21:40:52]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-05 21:40:56]
+gdbException: Cannot access memory at address 0xd055aceeaf8ebb84
+[EXCEPTION -- 2018-11-05 21:40:56]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-05 21:40:58]
+gdbException: Cannot access memory at address 0xdfab645f22b38179
+[INFO -- 2018-11-05 21:40:59]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff7ad88b7 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7adea06 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7adea41 in std::terminate() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7adec74 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7adf1ec in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x0000555555557fb0 in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd920, __n=582437961865423084) at /usr/include/c++/7/ext/new_allocator.h:111
+#8  0x0000555555557ced in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=582437961865423084) at /usr/include/c++/7/bits/alloc_traits.h:436
+#9  0x000055555555750e in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd920, __n=582437961865423084) at /usr/include/c++/7/bits/stl_vector.h:172
+#10 0x0000555555557950 in std::vector<double, std::allocator<double> >::_M_realloc_insert<double> (this=0x7fffffffd920, __position=0, __args#0=@0x7fffffffd698: -57180.196399047411) at /usr/include/c++/7/bits/vector.tcc:406
+#11 0x000055555555717a in std::vector<double, std::allocator<double> >::emplace_back<double> (this=0x7fffffffd920, __args#0=@0x7fffffffd698: -57180.196399047411) at /usr/include/c++/7/bits/vector.tcc:105
+#12 0x0000555555556796 in std::vector<double, std::allocator<double> >::push_back (this=0x7fffffffd920, __x=@0x7fffffffd698: -57180.196399047411) at /usr/include/c++/7/bits/stl_vector.h:954
+#13 0x0000555555555a8d in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:160
+#14 0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: __val
+Fliping array at pos: 11
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd298
+address max offset: 8
+Memory content after  bitflip:0xb60x620x070xf10x340xac0xb50xed
+frame name: __GI_raise
+symbol name: set
+symbol filename: ../sysdeps/unix/sysv/linux/raise.c
+symbol line: 39
+value: {__val = {0, 0, 13717591962318260970, 0, 4347869596288417792, 0, 4418972514053300350, 0, 0, 0, 0, 17128786101155619510, 4728779608772575232, 0, 4613937818241073152, 0}}
+value address: 0x7fffffffd240
+Type: The type is a structure.
+Type sizeof: 128
+Field name: __val
+Field Type: The type is an array.
+Field Type sizeof: 128
+
+[INFO -- 2018-11-05 21:40:59]
+Fault Injection Successful after 8.301558494567871s
+[INFO -- 2018-11-05 21:40:59]
+event type: exit
+[EXCEPTION -- 2018-11-05 21:40:59]
+exit code: no exit code available

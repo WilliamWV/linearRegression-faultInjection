@@ -1,0 +1,57 @@
+[INFO -- 2018-11-05 21:14:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-05 21:14:53]
+Initialization strings:
+[INFO -- 2018-11-05 21:14:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-05 21:14:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-05 21:14:53]
+initSignal:0
+[INFO -- 2018-11-05 21:14:53]
+endSignal:10
+[INFO -- 2018-11-05 21:14:53]
+faultModel:1
+[INFO -- 2018-11-05 21:14:54]
+Backtrace BEGIN:
+#0  0x00005555555560c4 in std::vector<double, std::allocator<double> >::size (this=0xc033000000000000) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x00005555555551f9 in predict (v=-19) at lreg.cpp:49
+#2  0x00005555555553fc in partialDerivate (pos=3) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Memory content before bitflip:0x310x350xf30xb40x830x270xe00x40
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd528
+address max offset: 8
+Memory content after  bitflip:0x310x350xf00xb40x830x270xe00x40
+frame name: adjust
+symbol name: PD
+symbol filename: lreg.cpp
+symbol line: 85
+value: 33084.115837196245
+value address: 0x7fffffffd528
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-05 21:14:54]
+Fault Injection Successful after 1.7522008419036865s
+[INFO -- 2018-11-05 21:15:00]
+event type: exit
+[INFO -- 2018-11-05 21:15:00]
+exit code: 0
