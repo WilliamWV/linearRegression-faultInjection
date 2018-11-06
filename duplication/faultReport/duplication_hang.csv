@@ -22,6 +22,7 @@ iterations;lreg.cpp;105;7.280822515487671;0-10;Single bit-flip
 two52e;../sysdeps/ieee754/dbl-64/upow.h;55;4.156183242797852;0-10;Single bit-flip
 any_debug;rtld.c;2322;1.5819921493530273;0-10;Single bit-flip
 predictions;lreg.cpp;144;3.1949448585510254;0-10;Single bit-flip
+iterations;lreg.cpp;105;4.144771099090576;0-10;Single bit-flip
 two52e;../sysdeps/ieee754/dbl-64/upow.h;55;6.089585781097412;0-20;Single bit-flip
 testCases;lreg.cpp;139;1.0542404651641846;0-20;Single bit-flip
 i;lreg.cpp;142;1.7033555507659912;0-20;Single bit-flip
@@ -75,6 +76,11 @@ iterations;lreg.cpp;105;5.364192724227905;0-10;Random bit-flip
 vj;../sysdeps/ieee754/dbl-64/upow.tbl;8010;4.7567431926727295;0-10;Random bit-flip
 v;lreg.cpp;47;2.4453253746032715;0-10;Random bit-flip
 y;lreg.cpp;33;3.807474374771118;0-10;Random bit-flip
+T;lreg.cpp;34;1.9979183673858643;0-10;Random bit-flip
+y;w_pow_compat.c;28;5.597728967666626;0-10;Random bit-flip
+i;lreg.cpp;118;4.711362361907959;0-10;Random bit-flip
+i;lreg.cpp;49;4.002094030380249;0-10;Random bit-flip
+predictions;lreg.cpp;144;7.119742393493652;0-10;Random bit-flip
 x;w_pow_compat.c;28;9.38576078414917;0-20;Random bit-flip
 iterations;lreg.cpp;105;8.436996459960938;0-20;Random bit-flip
 i;lreg.cpp;118;2.0768887996673584;0-20;Random bit-flip
@@ -118,6 +124,10 @@ input;lreg.cpp;134;4.52852725982666;0-10;Double bit-flip
 testCases;lreg.cpp;139;4.184723377227783;0-10;Double bit-flip
 testCases;lreg.cpp;139;5.29327130317688;0-10;Double bit-flip
 testCases;lreg.cpp;139;6.648123025894165;0-10;Double bit-flip
+predictions;lreg.cpp;144;3.220606565475464;0-10;Double bit-flip
+testCases;lreg.cpp;139;3.2836408615112305;0-10;Double bit-flip
+predictions;lreg.cpp;144;2.1993143558502197;0-10;Double bit-flip
+ln2b;../sysdeps/ieee754/dbl-64/upow.h;51;2.546177387237549;0-10;Double bit-flip
 testCases;lreg.cpp;139;10.328047513961792;0-20;Double bit-flip
 iterations;lreg.cpp;105;11.015068054199219;0-20;Double bit-flip
 ui;../sysdeps/ieee754/dbl-64/upow.tbl;5108;15.173403024673462;0-20;Double bit-flip

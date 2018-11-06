@@ -1,0 +1,25 @@
+[INFO -- 2018-11-06 21:25:10]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-06 21:25:10]
+Initialization strings:
+[INFO -- 2018-11-06 21:25:10]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-06 21:25:10]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-06 21:25:10]
+initSignal:0
+[INFO -- 2018-11-06 21:25:10]
+endSignal:10
+[INFO -- 2018-11-06 21:25:10]
+faultModel:2
+[EXCEPTION -- 2018-11-06 21:25:12]
+gdbException: Cannot access memory at address 0xe12799a0d26e113b
+[EXCEPTION -- 2018-11-06 21:25:12]
+gdbException: Cannot access memory at address 0xa77ec0f4e44e78cf
+[EXCEPTION -- 2018-11-06 21:25:12]
+gdbException: Cannot access memory at address 0xa77ec0f4e44e78cf
+[INFO -- 2018-11-06 21:25:13]
+event type: exit
+[EXCEPTION -- 2018-11-06 21:25:13]
+exit code: no exit code available
