@@ -1,0 +1,56 @@
+[INFO -- 2018-11-06 22:04:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-06 22:04:36]
+Initialization strings:
+[INFO -- 2018-11-06 22:04:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-06 22:04:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-06 22:04:36]
+initSignal:0
+[INFO -- 2018-11-06 22:04:36]
+endSignal:10
+[INFO -- 2018-11-06 22:04:36]
+faultModel:0
+[EXCEPTION -- 2018-11-06 22:04:36]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-06 22:04:40]
+Backtrace BEGIN:
+#0  0x0000555555555339 in meanSquaredError () at lreg.cpp:61
+#1  0x00005555555556b1 in train (iterations=30000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#2  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#3  0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+56		Calculates the mean squared error of T
+57	*/
+58	double meanSquaredError(){
+59		double error = 0;
+60		for(int i = 0; i<x.size(); i++){
+61			error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
+62		}
+63		error /= x.size();
+64		return error;
+65	
+
+Backtrace END
+Memory content before bitflip:0x680xb20x1d0x100x3f0x2d0xdc0x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd588
+address max offset: 8
+Memory content after  bitflip:0x680xb00x1d0x100x3f0x2d0xdc0x40
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 28852.98535864093
+value address: 0x7fffffffd588
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-06 22:04:40]
+Fault Injection Successful after 4.749797105789185s
+[INFO -- 2018-11-06 22:04:44]
+event type: exit
+[INFO -- 2018-11-06 22:04:44]
+exit code: 0
