@@ -1,0 +1,59 @@
+[INFO -- 2018-11-07 17:58:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-07 17:58:18]
+Initialization strings:
+[INFO -- 2018-11-07 17:58:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-07 17:58:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-07 17:58:19]
+initSignal:0
+[INFO -- 2018-11-07 17:58:19]
+endSignal:10
+[INFO -- 2018-11-07 17:58:19]
+faultModel:1
+[EXCEPTION -- 2018-11-07 17:58:25]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-07 17:58:25]
+Backtrace BEGIN:
+#0  std::pow<double, int> (__x=7, __y=3) at /usr/include/c++/7/cmath:418
+#1  0x0000555555555451 in partialDerivate (pos=3) at lreg.cpp:74
+#2  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x00005555555556ac in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffe1f2 
+address max offset: 1
+Memory content after  bitflip:0x37
+frame name: execute
+symbol name: input
+symbol filename: lreg.cpp
+symbol line: 134
+value: 0x7fffffffe1f2 "7tmp/lreg/randInput"
+value address: 0x7fffffffd650
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-07 17:58:25]
+Fault Injection Successful after 6.50316596031189s
+[INFO -- 2018-11-07 17:58:41]
+event type: exit
+[INFO -- 2018-11-07 17:58:41]
+exit code: 0
