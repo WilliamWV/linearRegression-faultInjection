@@ -8,6 +8,8 @@ x;w_pow_compat.c;28;6.524369239807129;0-10;Single bit-flip
 testCases;lreg.cpp;139;1.5240399837493896;0-10;Single bit-flip
 x;lreg.cpp;32;7.760341644287109;0-10;Single bit-flip
 bestMSE;lreg.cpp;116;7.685502052307129;0-10;Single bit-flip
+predictions;lreg.cpp;144;4.427437782287598;0-10;Single bit-flip
+x;lreg.cpp;32;4.65479850769043;0-10;Single bit-flip
 y;w_pow_compat.c;28;5.704695224761963;0-10;Single bit-flip
 iterations;lreg.cpp;105;7.234778642654419;0-10;Single bit-flip
 two52e;../sysdeps/ieee754/dbl-64/upow.h;55;5.278133153915405;0-10;Single bit-flip
@@ -54,6 +56,9 @@ i;lreg.cpp;118;4.823584079742432;0-10;Random bit-flip
 predictions;lreg.cpp;144;2.1870319843292236;0-10;Random bit-flip
 i;lreg.cpp;118;2.146851062774658;0-10;Random bit-flip
 i;lreg.cpp;142;1.9109265804290771;0-10;Random bit-flip
+i;lreg.cpp;142;1.6958818435668945;0-10;Random bit-flip
+testCases;lreg.cpp;139;1.363816738128662;0-10;Random bit-flip
+i;lreg.cpp;142;4.648100852966309;0-10;Random bit-flip
 iterations;lreg.cpp;105;3.9640533924102783;0-10;Random bit-flip
 i;lreg.cpp;49;4.662372827529907;0-10;Random bit-flip
 ln2a;../sysdeps/ieee754/dbl-64/upow.h;50;5.939825057983398;0-10;Random bit-flip
@@ -115,6 +120,7 @@ argc;lreg.cpp;179;4.610203981399536;0-10;Double bit-flip
 testCases;lreg.cpp;139;5.999631643295288;0-10;Double bit-flip
 iterations;lreg.cpp;105;1.50221586227417;0-10;Double bit-flip
 T;lreg.cpp;34;5.527027368545532;0-10;Double bit-flip
+predictions;lreg.cpp;144;3.7042770385742188;0-10;Double bit-flip
 alpha;lreg.cpp;143;5.650482654571533;0-10;Double bit-flip
 testCases;lreg.cpp;139;4.616982936859131;0-10;Double bit-flip
 testCases;lreg.cpp;139;6.786881446838379;0-10;Double bit-flip

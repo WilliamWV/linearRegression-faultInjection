@@ -1,0 +1,63 @@
+[INFO -- 2018-11-07 14:50:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-07 14:50:35]
+Initialization strings:
+[INFO -- 2018-11-07 14:50:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-07 14:50:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-07 14:50:35]
+initSignal:0
+[INFO -- 2018-11-07 14:50:35]
+endSignal:10
+[INFO -- 2018-11-07 14:50:35]
+faultModel:1
+[INFO -- 2018-11-07 14:50:38]
+Backtrace BEGIN:
+#0  0x00005555555560ea in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b180 <T>, __n=0) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x0000555555555217 in predict (v=13) at lreg.cpp:50
+#2  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#3  0x00005555555556b1 in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772b70
+address max offset: 8
+Memory content after  bitflip:0x810x000x000x000x000x000x000x00
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 36, capacity 64 = {10, -8, 24, 2, 16, -22, 0, 16, -216, -216, -216, -416, -20, -608, 4, -1100, -360, -20, -20, -176, -81806, -41972, -59693, 27283, -6717, -381, -12492, -192, -6717, 17122, 18, -10301, 2083, 168, 3, 598}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-07 14:50:38]
+Fault Injection Successful after 3.09509015083313s
+[INFO -- 2018-11-07 14:50:43]
+event type: exit
+[INFO -- 2018-11-07 14:50:43]
+exit code: 0
