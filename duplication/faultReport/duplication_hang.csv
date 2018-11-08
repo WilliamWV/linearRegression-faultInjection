@@ -16,12 +16,16 @@ temp;lreg.cpp;143;2.458038568496704;0-10;Single bit-flip
 testCases;lreg.cpp;139;7.011876583099365;0-10;Single bit-flip
 T;lreg.cpp;34;6.935323476791382;0-10;Single bit-flip
 testCases;lreg.cpp;139;6.40837550163269;0-10;Single bit-flip
+testCases;lreg.cpp;139;2.794240951538086;0-10;Single bit-flip
 x;lreg.cpp;32;3.796501874923706;0-10;Single bit-flip
 y;lreg.cpp;33;4.169713497161865;0-10;Single bit-flip
+x;lreg.cpp;32;7.78950834274292;0-10;Single bit-flip
 ln_two2;../sysdeps/ieee754/dbl-64/uexp.h;58;8.43674349784851;0-10;Single bit-flip
 __GI__dl_argv;rtld.c;83;2.236187696456909;0-10;Single bit-flip
 predictions;lreg.cpp;144;4.427437782287598;0-10;Single bit-flip
+testCases;lreg.cpp;139;2.7300658226013184;0-10;Single bit-flip
 x;lreg.cpp;32;4.65479850769043;0-10;Single bit-flip
+e1;lreg.cpp;191;3.2317538261413574;0-10;Single bit-flip
 y;w_pow_compat.c;28;5.704695224761963;0-10;Single bit-flip
 iterations;lreg.cpp;105;7.234778642654419;0-10;Single bit-flip
 two52e;../sysdeps/ieee754/dbl-64/upow.h;55;5.278133153915405;0-10;Single bit-flip
@@ -148,7 +152,9 @@ iterations;lreg.cpp;105;5.437890291213989;0-10;Double bit-flip
 testCases;lreg.cpp;139;7.302775144577026;0-10;Double bit-flip
 predictions;lreg.cpp;144;3.7042770385742188;0-10;Double bit-flip
 __y;/usr/include/c++/7/cmath;415;5.977220773696899;0-10;Double bit-flip
+iterations;lreg.cpp;105;3.2294182777404785;0-10;Double bit-flip
 iterations;lreg.cpp;105;3.7465386390686035;0-10;Double bit-flip
+testCases;lreg.cpp;139;3.5989041328430176;0-10;Double bit-flip
 alpha;lreg.cpp;143;5.650482654571533;0-10;Double bit-flip
 testCases;lreg.cpp;139;4.616982936859131;0-10;Double bit-flip
 testCases;lreg.cpp;139;6.786881446838379;0-10;Double bit-flip

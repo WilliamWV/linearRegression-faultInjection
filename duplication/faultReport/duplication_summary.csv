@@ -1,191 +1,193 @@
-Faults Injected:;5330
+Faults Injected:;5625
 
 Fault Effect;#Effect;PVF
-Masked;3179;0.5964352720450281
-SDCs;818;0.15347091932457785
-Crashes;1145;0.21482176360225141
-Hangs;188;0.03527204502814259
+Masked;3360;0.5973333333333334
+SDCs;873;0.1552
+Crashes;1198;0.21297777777777777
+Hangs;194;0.03448888888888889
 
 
-Detected SDCs:;801
-SDC Coverage (%):;97.92176039119805
+Detected SDCs:;854
+SDC Coverage (%):;97.82359679266895
 
 FaultModels SDCs:
 FaultModel ;#SDCs;percentage
-Double bit-flip;279;34.10757946210269
-Random bit-flip;278;33.98533007334964
-Single bit-flip;261;31.90709046454768
+Double bit-flip;298;34.13516609392898
+Random bit-flip;297;34.02061855670103
+Single bit-flip;278;31.844215349369986
 
 FaultModels Detected SDCs:
 FaultModel ;#SDCs Detected; percentage
-Double bit-flip;276;33.74083129584352
-Random bit-flip;269;32.88508557457212
-Single bit-flip;256;31.295843520782395
+Double bit-flip;295;33.79152348224513
+Random bit-flip;286;32.76059564719358
+Single bit-flip;273;31.27147766323024
 
 FaultModels Crashes:
 FaultModel ;#Crashes;percentage
-Random bit-flip;424;37.030567685589524
-Double bit-flip;375;32.751091703056765
-Single bit-flip;346;30.21834061135371
+Random bit-flip;446;37.228714524207014
+Double bit-flip;391;32.637729549248746
+Single bit-flip;361;30.133555926544243
 
 FaultModels Hangs:
 FaultModel ;#Hangs;percentage
-Random bit-flip;78;41.48936170212766
-Single bit-flip;55;29.25531914893617
-Double bit-flip;55;29.25531914893617
+Random bit-flip;78;40.20618556701031
+Single bit-flip;59;30.412371134020617
+Double bit-flip;57;29.381443298969074
 
 Variables that caused SDCs:
 PVF ;#flips ;#SDCs ;Var name ;file ;line number
-18.02030456852792;394;71;x;lreg.cpp;32
+17.96116504854369;412;74;x;lreg.cpp;32
+17.0;400;68;T;lreg.cpp;34
 78.2051282051282;78;61;pos;lreg.cpp;71
-16.129032258064516;372;60;T;lreg.cpp;34
-15.517241379310345;348;54;y;lreg.cpp;33
-70.58823529411765;68;48;pD;lreg.cpp;72
-85.45454545454545;55;47;alpha;lreg.cpp;105
-59.210526315789465;76;45;i;lreg.cpp;118
-51.89873417721519;79;41;iterations;lreg.cpp;105
-41.66666666666667;96;40;i;lreg.cpp;73
-68.96551724137932;58;40;alpha;lreg.cpp;83
-37.634408602150536;93;35;val;lreg.cpp;48
-88.88888888888889;36;32;ln2a;../sysdeps/ieee754/dbl-64/upow.h;50
-36.04651162790697;86;31;i;lreg.cpp;49
-51.85185185185185;54;28;predictions;lreg.cpp;144
-27.368421052631582;95;26;v;lreg.cpp;47
-35.483870967741936;62;22;input;lreg.cpp;134
-68.75;32;22;two52e;../sysdeps/ieee754/dbl-64/upow.h;55
-22.535211267605636;71;16;bestMSE;lreg.cpp;116
-17.073170731707318;82;14;i;lreg.cpp;86
-20.967741935483872;62;13;e1;lreg.cpp;191
-27.659574468085108;47;13;error;lreg.cpp;59
-33.33333333333333;39;13;ln2b;../sysdeps/ieee754/dbl-64/upow.h;51
-21.62162162162162;37;8;bigu;../sysdeps/ieee754/dbl-64/upow.h;52
-12.068965517241379;58;7;i;lreg.cpp;142
+16.260162601626014;369;60;y;lreg.cpp;33
+72.6027397260274;73;53;pD;lreg.cpp;72
+85.0;60;51;alpha;lreg.cpp;105
+60.75949367088608;79;48;i;lreg.cpp;118
+52.4390243902439;82;43;iterations;lreg.cpp;105
+42.42424242424242;99;42;i;lreg.cpp;73
+68.85245901639344;61;42;alpha;lreg.cpp;83
+38.38383838383838;99;38;val;lreg.cpp;48
+89.74358974358975;39;35;ln2a;../sysdeps/ieee754/dbl-64/upow.h;50
+37.07865168539326;89;33;i;lreg.cpp;49
+53.57142857142857;56;30;predictions;lreg.cpp;144
+27.722772277227726;101;28;v;lreg.cpp;47
+35.38461538461539;65;23;input;lreg.cpp;134
+67.64705882352942;34;23;two52e;../sysdeps/ieee754/dbl-64/upow.h;55
+22.666666666666664;75;17;bestMSE;lreg.cpp;116
+15.909090909090908;88;14;i;lreg.cpp;86
+21.21212121212121;66;14;e1;lreg.cpp;191
+34.146341463414636;41;14;ln2b;../sysdeps/ieee754/dbl-64/upow.h;51
+26.0;50;13;error;lreg.cpp;59
+13.333333333333334;60;8;i;lreg.cpp;142
+21.052631578947366;38;8;bigu;../sysdeps/ieee754/dbl-64/upow.h;52
 71.42857142857143;7;5;ln_two1;../sysdeps/ieee754/dbl-64/uexp.h;57
-7.547169811320755;53;4;testCases;lreg.cpp;139
+7.017543859649122;57;4;testCases;lreg.cpp;139
 42.857142857142854;7;3;three51;../sysdeps/ieee754/dbl-64/uexp.h;65
+8.823529411764707;34;3;ans;lreg.cpp;135
 30.0;10;3;p2;../sysdeps/ieee754/dbl-64/uexp.h;61
-2.197802197802198;91;2;PD;lreg.cpp;85
-6.451612903225806;31;2;ans;lreg.cpp;135
-6.0606060606060606;33;2;i;lreg.cpp;60
-4.081632653061225;49;2;e2;lreg.cpp;194
+2.127659574468085;94;2;PD;lreg.cpp;85
+5.88235294117647;34;2;i;lreg.cpp;60
+4.0;50;2;e2;lreg.cpp;194
 50.0;4;2;p3;../sysdeps/ieee754/dbl-64/uexp.h;62
-1.3888888888888888;72;1;__x;/usr/include/c++/7/cmath;415
+1.36986301369863;73;1;__x;/usr/include/c++/7/cmath;415
 100.0;1;1;__first;/usr/include/c++/7/bits/stl_uninitialized.h;115
+2.857142857142857;35;1;ui;../sysdeps/ieee754/dbl-64/upow.tbl;5108
 3.571428571428571;28;1;this;lreg.cpp;0
 100.0;1;1;__first;/usr/include/c++/7/bits/stl_algobase.h;446
 12.5;8;1;ln_two2;../sysdeps/ieee754/dbl-64/uexp.h;58
-20.0;5;1;log2e;../sysdeps/ieee754/dbl-64/uexp.h;59
+16.666666666666664;6;1;log2e;../sysdeps/ieee754/dbl-64/uexp.h;59
 
 Variables that caused Detected SDCs:
 PVF ;#flips ;#SDCs ;Var name ;file ;line number
-18.02030456852792;394;71;x;lreg.cpp;32
+17.96116504854369;412;74;x;lreg.cpp;32
+17.0;400;68;T;lreg.cpp;34
 78.2051282051282;78;61;pos;lreg.cpp;71
-16.129032258064516;372;60;T;lreg.cpp;34
-15.517241379310345;348;54;y;lreg.cpp;33
-70.58823529411765;68;48;pD;lreg.cpp;72
-85.45454545454545;55;47;alpha;lreg.cpp;105
-59.210526315789465;76;45;i;lreg.cpp;118
-51.89873417721519;79;41;iterations;lreg.cpp;105
-41.66666666666667;96;40;i;lreg.cpp;73
-68.96551724137932;58;40;alpha;lreg.cpp;83
-37.634408602150536;93;35;val;lreg.cpp;48
-36.04651162790697;86;31;i;lreg.cpp;49
-83.33333333333334;36;30;ln2a;../sysdeps/ieee754/dbl-64/upow.h;50
-27.368421052631582;95;26;v;lreg.cpp;47
-35.483870967741936;62;22;input;lreg.cpp;134
-68.75;32;22;two52e;../sysdeps/ieee754/dbl-64/upow.h;55
-31.48148148148148;54;17;predictions;lreg.cpp;144
-22.535211267605636;71;16;bestMSE;lreg.cpp;116
-17.073170731707318;82;14;i;lreg.cpp;86
-20.967741935483872;62;13;e1;lreg.cpp;191
-27.659574468085108;47;13;error;lreg.cpp;59
-33.33333333333333;39;13;ln2b;../sysdeps/ieee754/dbl-64/upow.h;51
-21.62162162162162;37;8;bigu;../sysdeps/ieee754/dbl-64/upow.h;52
-10.344827586206897;58;6;i;lreg.cpp;142
+16.260162601626014;369;60;y;lreg.cpp;33
+72.6027397260274;73;53;pD;lreg.cpp;72
+85.0;60;51;alpha;lreg.cpp;105
+60.75949367088608;79;48;i;lreg.cpp;118
+52.4390243902439;82;43;iterations;lreg.cpp;105
+42.42424242424242;99;42;i;lreg.cpp;73
+68.85245901639344;61;42;alpha;lreg.cpp;83
+38.38383838383838;99;38;val;lreg.cpp;48
+37.07865168539326;89;33;i;lreg.cpp;49
+84.61538461538461;39;33;ln2a;../sysdeps/ieee754/dbl-64/upow.h;50
+27.722772277227726;101;28;v;lreg.cpp;47
+35.38461538461539;65;23;input;lreg.cpp;134
+67.64705882352942;34;23;two52e;../sysdeps/ieee754/dbl-64/upow.h;55
+32.142857142857146;56;18;predictions;lreg.cpp;144
+22.666666666666664;75;17;bestMSE;lreg.cpp;116
+15.909090909090908;88;14;i;lreg.cpp;86
+21.21212121212121;66;14;e1;lreg.cpp;191
+34.146341463414636;41;14;ln2b;../sysdeps/ieee754/dbl-64/upow.h;51
+26.0;50;13;error;lreg.cpp;59
+21.052631578947366;38;8;bigu;../sysdeps/ieee754/dbl-64/upow.h;52
+10.0;60;6;i;lreg.cpp;142
 71.42857142857143;7;5;ln_two1;../sysdeps/ieee754/dbl-64/uexp.h;57
 42.857142857142854;7;3;three51;../sysdeps/ieee754/dbl-64/uexp.h;65
+8.823529411764707;34;3;ans;lreg.cpp;135
 30.0;10;3;p2;../sysdeps/ieee754/dbl-64/uexp.h;61
-2.197802197802198;91;2;PD;lreg.cpp;85
-6.451612903225806;31;2;ans;lreg.cpp;135
-6.0606060606060606;33;2;i;lreg.cpp;60
-4.081632653061225;49;2;e2;lreg.cpp;194
+2.127659574468085;94;2;PD;lreg.cpp;85
+5.88235294117647;34;2;i;lreg.cpp;60
+4.0;50;2;e2;lreg.cpp;194
 50.0;4;2;p3;../sysdeps/ieee754/dbl-64/uexp.h;62
-1.3888888888888888;72;1;__x;/usr/include/c++/7/cmath;415
+1.36986301369863;73;1;__x;/usr/include/c++/7/cmath;415
 100.0;1;1;__first;/usr/include/c++/7/bits/stl_uninitialized.h;115
+2.857142857142857;35;1;ui;../sysdeps/ieee754/dbl-64/upow.tbl;5108
 3.571428571428571;28;1;this;lreg.cpp;0
-1.8867924528301887;53;1;testCases;lreg.cpp;139
+1.7543859649122806;57;1;testCases;lreg.cpp;139
 100.0;1;1;__first;/usr/include/c++/7/bits/stl_algobase.h;446
 12.5;8;1;ln_two2;../sysdeps/ieee754/dbl-64/uexp.h;58
-20.0;5;1;log2e;../sysdeps/ieee754/dbl-64/uexp.h;59
+16.666666666666664;6;1;log2e;../sysdeps/ieee754/dbl-64/uexp.h;59
 
 Variables that caused Crash:
 PVF ;#flips ;#SDCs ;Var name ;file ;line number
-34.77157360406091;394;137;x;lreg.cpp;32
-35.483870967741936;372;132;T;lreg.cpp;34
-24.137931034482758;348;84;y;lreg.cpp;33
-82.92682926829268;82;68;i;lreg.cpp;86
-98.24561403508771;57;56;user_entry;../elf/dl-sysdep.c;91
-56.25;96;54;i;lreg.cpp;73
-45.54455445544555;101;46;argv;lreg.cpp;179
-100.0;41;41;_dl_skip_args;rtld.c;84
-78.78787878787878;33;26;i;lreg.cpp;60
-13.855421686746988;166;23;x;w_pow_compat.c;28
-42.857142857142854;42;18;prevT;lreg.cpp;114
-27.419354838709676;62;17;e1;lreg.cpp;191
-10.240963855421686;166;17;y;w_pow_compat.c;28
-34.69387755102041;49;17;e2;lreg.cpp;194
-51.61290322580645;31;16;ans;lreg.cpp;135
+34.46601941747573;412;142;x;lreg.cpp;32
+35.25;400;141;T;lreg.cpp;34
+24.119241192411923;369;89;y;lreg.cpp;33
+84.0909090909091;88;74;i;lreg.cpp;86
+98.30508474576271;59;58;user_entry;../elf/dl-sysdep.c;91
+55.55555555555556;99;55;i;lreg.cpp;73
+46.15384615384615;104;48;argv;lreg.cpp;179
+100.0;44;44;_dl_skip_args;rtld.c;84
+79.41176470588235;34;27;i;lreg.cpp;60
+13.294797687861271;173;23;x;w_pow_compat.c;28
+45.65217391304348;46;21;prevT;lreg.cpp;114
+28.78787878787879;66;19;e1;lreg.cpp;191
+36.0;50;18;e2;lreg.cpp;194
+50.0;34;17;ans;lreg.cpp;135
+9.550561797752808;178;17;y;w_pow_compat.c;28
+25.806451612903224;62;16;N;lreg.cpp;144
 20.51282051282051;78;16;pos;lreg.cpp;71
-24.59016393442623;61;15;N;lreg.cpp;144
-19.444444444444446;72;14;__x;/usr/include/c++/7/cmath;415
-37.83783783783784;37;14;bigu;../sysdeps/ieee754/dbl-64/upow.h;52
-17.105263157894736;76;13;i;lreg.cpp;118
-15.11627906976744;86;13;argc;lreg.cpp;179
-27.906976744186046;43;12;__GI__dl_argv;rtld.c;83
-20.689655172413794;58;12;i;lreg.cpp;142
-20.754716981132077;53;11;testCases;lreg.cpp;139
-20.37037037037037;54;11;predictions;lreg.cpp;144
-19.298245614035086;57;11;alpha;lreg.cpp;143
-12.087912087912088;91;11;PD;lreg.cpp;85
-10.75268817204301;93;10;val;lreg.cpp;48
+19.17808219178082;73;14;__x;/usr/include/c++/7/cmath;415
+36.84210526315789;38;14;bigu;../sysdeps/ieee754/dbl-64/upow.h;52
+16.455696202531644;79;13;i;lreg.cpp;118
+14.444444444444443;90;13;argc;lreg.cpp;179
+26.08695652173913;46;12;__GI__dl_argv;rtld.c;83
+20.0;60;12;i;lreg.cpp;142
+19.672131147540984;61;12;alpha;lreg.cpp;143
+11.11111111111111;99;11;val;lreg.cpp;48
+19.298245614035086;57;11;testCases;lreg.cpp;139
+19.642857142857142;56;11;predictions;lreg.cpp;144
+11.702127659574469;94;11;PD;lreg.cpp;85
+16.176470588235293;68;11;stopsWhenStable;lreg.cpp;105
+16.39344262295082;61;10;alpha;lreg.cpp;83
+15.873015873015872;63;10;N;lreg.cpp;105
 35.714285714285715;28;10;this;lreg.cpp;0
-10.526315789473683;95;10;v;lreg.cpp;47
-14.084507042253522;71;10;bestMSE;lreg.cpp;116
-15.384615384615385;65;10;stopsWhenStable;lreg.cpp;105
-19.148936170212767;47;9;error;lreg.cpp;59
-15.517241379310345;58;9;alpha;lreg.cpp;83
-14.516129032258066;62;9;N;lreg.cpp;105
-18.0;50;9;temp;lreg.cpp;143
-10.126582278481013;79;8;iterations;lreg.cpp;105
-9.30232558139535;86;8;i;lreg.cpp;49
-12.903225806451612;62;8;input;lreg.cpp;134
-14.000000000000002;50;7;iterations;lreg.cpp;144
-17.073170731707318;41;7;INF;../sysdeps/ieee754/dbl-64/upow.h;48
-8.235294117647058;85;7;__y;/usr/include/c++/7/cmath;415
-12.727272727272727;55;7;alpha;lreg.cpp;105
-16.666666666666664;36;6;bestT;lreg.cpp;115
-15.384615384615385;39;6;nZERO;../sysdeps/ieee754/dbl-64/upow.h;47
+9.900990099009901;101;10;v;lreg.cpp;47
+13.333333333333334;75;10;bestMSE;lreg.cpp;116
+18.51851851851852;54;10;temp;lreg.cpp;143
+18.0;50;9;error;lreg.cpp;59
+8.791208791208792;91;8;__y;/usr/include/c++/7/cmath;415
+13.333333333333334;60;8;alpha;lreg.cpp;105
+9.75609756097561;82;8;iterations;lreg.cpp;105
+8.98876404494382;89;8;i;lreg.cpp;49
+12.307692307692308;65;8;input;lreg.cpp;134
+13.461538461538462;52;7;iterations;lreg.cpp;144
+15.909090909090908;44;7;INF;../sysdeps/ieee754/dbl-64/upow.h;48
+15.0;40;6;bestT;lreg.cpp;115
+14.285714285714285;42;6;nZERO;../sysdeps/ieee754/dbl-64/upow.h;47
 100.0;6;6;set;../sysdeps/unix/sysv/linux/raise.c;39
-8.450704225352112;71;6;MSE;lreg.cpp;117
-8.823529411764707;68;6;pD;lreg.cpp;72
-7.8431372549019605;51;4;t52;../sysdeps/ieee754/dbl-64/upow.h;54
-8.88888888888889;45;4;vj;../sysdeps/ieee754/dbl-64/upow.tbl;8010
-7.6923076923076925;39;3;ln2b;../sysdeps/ieee754/dbl-64/upow.h;51
-8.333333333333332;36;3;ln2a;../sysdeps/ieee754/dbl-64/upow.h;50
-6.8181818181818175;44;3;bigv;../sysdeps/ieee754/dbl-64/upow.h;53
-7.6923076923076925;39;3;nINF;../sysdeps/ieee754/dbl-64/upow.h;49
-5.084745762711865;59;3;sizeOfTraining;lreg.cpp;144
-9.375;32;3;two52e;../sysdeps/ieee754/dbl-64/upow.h;55
+8.21917808219178;73;6;MSE;lreg.cpp;117
+8.21917808219178;73;6;pD;lreg.cpp;72
+10.416666666666668;48;5;vj;../sysdeps/ieee754/dbl-64/upow.tbl;8010
+7.6923076923076925;52;4;t52;../sysdeps/ieee754/dbl-64/upow.h;54
+11.76470588235294;34;4;two52e;../sysdeps/ieee754/dbl-64/upow.h;55
+7.317073170731707;41;3;ln2b;../sysdeps/ieee754/dbl-64/upow.h;51
+7.6923076923076925;39;3;ln2a;../sysdeps/ieee754/dbl-64/upow.h;50
+6.382978723404255;47;3;bigv;../sysdeps/ieee754/dbl-64/upow.h;53
+7.317073170731707;41;3;nINF;../sysdeps/ieee754/dbl-64/upow.h;49
+4.615384615384616;65;3;sizeOfTraining;lreg.cpp;144
 100.0;3;3;three33;../sysdeps/ieee754/dbl-64/uexp.h;64
-9.375;32;3;ui;../sysdeps/ieee754/dbl-64/upow.tbl;5108
+8.571428571428571;35;3;ui;../sysdeps/ieee754/dbl-64/upow.tbl;5108
 100.0;2;2;main_arena;malloc.c;1761
 100.0;2;2;__libc_malloc_initialized;arena.c;100
 100.0;2;2;__n;/usr/include/c++/7/bits/stl_vector.h;1257
 100.0;2;2;action;../sysdeps/posix/libc_fatal.c;67
 100.0;2;2;__GI___abort_msg;abort.c;35
-4.081632653061225;49;2;_rtld_global;rtld.c;231
+3.9215686274509802;51;2;_rtld_global;rtld.c;231
 66.66666666666666;3;2;mxcsr;../sysdeps/i386/fpu/fenv_private.h;444
-25.0;8;2;__n;/usr/include/c++/7/bits/stl_vector.h;795
+22.22222222222222;9;2;__n;/usr/include/c++/7/bits/stl_vector.h;795
 28.57142857142857;7;2;ln_two1;../sysdeps/ieee754/dbl-64/uexp.h;57
 100.0;2;2;__new_finish;/usr/include/c++/7/bits/vector.tcc;407
 100.0;2;2;ap;../sysdeps/posix/libc_fatal.c;69
@@ -194,8 +196,9 @@ PVF ;#flips ;#SDCs ;Var name ;file ;line number
 100.0;1;1;narenas;arena.c;82
 100.0;1;1;unwind_buf;../csu/libc-start.c;294
 100.0;1;1;sigs;abort.c;51
-1.8867924528301887;53;1;__GI___libc_enable_secure;../elf/dl-sysdep.c;58
+1.694915254237288;59;1;__GI___libc_enable_secure;../elf/dl-sysdep.c;58
 100.0;1;1;__a;/usr/include/c++/7/bits/alloc_traits.h;461
+100.0;1;1;__n;/usr/include/c++/7/bits/stl_vector.h;185
 100.0;1;1;using_malloc_checking;hooks.c;53
 100.0;1;1;stage;abort.c;40
 100.0;1;1;__x;/usr/include/c++/7/bits/vector.tcc;180
@@ -209,48 +212,48 @@ PVF ;#flips ;#SDCs ;Var name ;file ;line number
 
 Variables that caused Hang:
 PVF ;#flips ;#SDCs ;Var name ;file ;line number
-58.490566037735846;53;31;testCases;lreg.cpp;139
-36.708860759493675;79;29;iterations;lreg.cpp;105
-22.36842105263158;76;17;i;lreg.cpp;118
-25.925925925925924;54;14;predictions;lreg.cpp;144
-18.96551724137931;58;11;i;lreg.cpp;142
-1.881720430107527;372;7;T;lreg.cpp;34
-21.875;32;7;two52e;../sysdeps/ieee754/dbl-64/upow.h;55
-1.5228426395939088;394;6;x;lreg.cpp;32
-1.7241379310344827;348;6;y;lreg.cpp;33
-2.4096385542168677;166;4;x;w_pow_compat.c;28
-8.0;50;4;temp;lreg.cpp;143
-4.651162790697675;86;4;i;lreg.cpp;49
-1.8072289156626504;166;3;y;w_pow_compat.c;28
-4.225352112676056;71;3;MSE;lreg.cpp;117
-4.838709677419355;62;3;input;lreg.cpp;134
-7.6923076923076925;39;3;ln2b;../sysdeps/ieee754/dbl-64/upow.h;51
+59.64912280701754;57;34;testCases;lreg.cpp;139
+36.58536585365854;82;30;iterations;lreg.cpp;105
+21.518987341772153;79;17;i;lreg.cpp;118
+25.0;56;14;predictions;lreg.cpp;144
+18.333333333333332;60;11;i;lreg.cpp;142
+1.6990291262135921;412;7;x;lreg.cpp;32
+1.7500000000000002;400;7;T;lreg.cpp;34
+20.588235294117645;34;7;two52e;../sysdeps/ieee754/dbl-64/upow.h;55
+1.6260162601626018;369;6;y;lreg.cpp;33
+2.312138728323699;173;4;x;w_pow_compat.c;28
+7.4074074074074066;54;4;temp;lreg.cpp;143
+4.49438202247191;89;4;i;lreg.cpp;49
+1.6853932584269662;178;3;y;w_pow_compat.c;28
+4.10958904109589;73;3;MSE;lreg.cpp;117
+4.615384615384616;65;3;input;lreg.cpp;134
+7.317073170731707;41;3;ln2b;../sysdeps/ieee754/dbl-64/upow.h;51
 25.0;8;2;ln_two2;../sysdeps/ieee754/dbl-64/uexp.h;58
-4.651162790697675;43;2;__GI__dl_argv;rtld.c;83
-3.389830508474576;59;2;sizeOfTraining;lreg.cpp;144
-1.9801980198019802;101;2;argv;lreg.cpp;179
-3.076923076923077;65;2;stopsWhenStable;lreg.cpp;105
-4.0;50;2;iterations;lreg.cpp;144
-5.0;40;2;tls_init_tp_called;rtld.c;677
-2.7027027027027026;37;1;bigu;../sysdeps/ieee754/dbl-64/upow.h;52
-2.941176470588235;34;1;_rtld_global_ro;rtld.c;259
-1.4084507042253522;71;1;bestMSE;lreg.cpp;116
-20.0;5;1;log2e;../sysdeps/ieee754/dbl-64/uexp.h;59
-2.127659574468085;47;1;error;lreg.cpp;59
-2.2222222222222223;45;1;any_debug;rtld.c;2322
-2.380952380952381;42;1;_dl_argc;rtld.c;82
-1.4705882352941175;68;1;pD;lreg.cpp;72
-2.0408163265306123;49;1;e2;lreg.cpp;194
-2.7777777777777777;36;1;ln2a;../sysdeps/ieee754/dbl-64/upow.h;50
+4.3478260869565215;46;2;__GI__dl_argv;rtld.c;83
+3.0303030303030303;66;2;e1;lreg.cpp;191
+3.076923076923077;65;2;sizeOfTraining;lreg.cpp;144
+1.9230769230769231;104;2;argv;lreg.cpp;179
+2.941176470588235;68;2;stopsWhenStable;lreg.cpp;105
+3.8461538461538463;52;2;iterations;lreg.cpp;144
+4.761904761904762;42;2;tls_init_tp_called;rtld.c;677
+2.631578947368421;38;1;bigu;../sysdeps/ieee754/dbl-64/upow.h;52
+2.7777777777777777;36;1;_rtld_global_ro;rtld.c;259
+1.3333333333333335;75;1;bestMSE;lreg.cpp;116
+16.666666666666664;6;1;log2e;../sysdeps/ieee754/dbl-64/uexp.h;59
+2.0;50;1;error;lreg.cpp;59
+2.127659574468085;47;1;any_debug;rtld.c;2322
+2.1739130434782608;46;1;_dl_argc;rtld.c;82
+1.36986301369863;73;1;pD;lreg.cpp;72
+2.0;50;1;e2;lreg.cpp;194
+2.564102564102564;39;1;ln2a;../sysdeps/ieee754/dbl-64/upow.h;50
 12.5;8;1;x;../sysdeps/ieee754/dbl-64/e_pow.c;247
-2.2222222222222223;45;1;vj;../sysdeps/ieee754/dbl-64/upow.tbl;8010
-1.0526315789473684;95;1;v;lreg.cpp;47
-1.7241379310344827;58;1;alpha;lreg.cpp;83
-1.6129032258064515;62;1;e1;lreg.cpp;191
-2.564102564102564;39;1;version_info;rtld.c;827
-2.0;50;1;library_path;rtld.c;823
-1.1627906976744187;86;1;argc;lreg.cpp;179
+2.083333333333333;48;1;vj;../sysdeps/ieee754/dbl-64/upow.tbl;8010
+0.9900990099009901;101;1;v;lreg.cpp;47
+1.639344262295082;61;1;alpha;lreg.cpp;83
+2.380952380952381;42;1;version_info;rtld.c;827
+1.8518518518518516;54;1;library_path;rtld.c;823
+1.1111111111111112;90;1;argc;lreg.cpp;179
 3.571428571428571;28;1;this;lreg.cpp;0
-1.1764705882352942;85;1;__y;/usr/include/c++/7/cmath;415
-1.7543859649122806;57;1;alpha;lreg.cpp;143
-3.125;32;1;ui;../sysdeps/ieee754/dbl-64/upow.tbl;5108
+1.098901098901099;91;1;__y;/usr/include/c++/7/cmath;415
+1.639344262295082;61;1;alpha;lreg.cpp;143
+2.857142857142857;35;1;ui;../sysdeps/ieee754/dbl-64/upow.tbl;5108

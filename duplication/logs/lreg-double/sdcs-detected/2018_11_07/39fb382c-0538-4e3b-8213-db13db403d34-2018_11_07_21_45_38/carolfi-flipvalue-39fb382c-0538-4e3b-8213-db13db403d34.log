@@ -1,0 +1,51 @@
+[INFO -- 2018-11-07 21:45:25]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-07 21:45:25]
+Initialization strings:
+[INFO -- 2018-11-07 21:45:25]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-07 21:45:25]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-07 21:45:25]
+initSignal:0
+[INFO -- 2018-11-07 21:45:25]
+endSignal:10
+[INFO -- 2018-11-07 21:45:25]
+faultModel:1
+[EXCEPTION -- 2018-11-07 21:45:28]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-07 21:45:28]
+Backtrace BEGIN:
+#0  0x00007ffff76da9e4 in __ieee754_pow_sse2 (x=-30, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:128
+#1  0x00007ffff76bcb14 in __pow (x=-30, y=3) at w_pow_compat.c:30
+#2  0x0000555555556131 in std::pow<double, int> (__x=-30, __y=3) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555451 in partialDerivate (pos=3) at lreg.cpp:74
+#4  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#5  0x00005555555556ac in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#7  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+123	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Memory content before bitflip:0xb90x6c0xb30x840xf10x350xc60xc1
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd4d8
+address max offset: 8
+Memory content after  bitflip:0xb90x6c0xb30x840xf10x350xe40xc1
+frame name: partialDerivate
+symbol name: pD
+symbol filename: lreg.cpp
+symbol line: 72
+value: -2712636453.6070218
+value address: 0x7fffffffd4d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-07 21:45:28]
+Fault Injection Successful after 3.9191434383392334s
+[INFO -- 2018-11-07 21:45:37]
+event type: exit
+[INFO -- 2018-11-07 21:45:37]
+exit code: 0
