@@ -1,0 +1,57 @@
+[INFO -- 2018-11-08 18:09:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-08 18:09:00]
+Initialization strings:
+[INFO -- 2018-11-08 18:09:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-08 18:09:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-08 18:09:00]
+initSignal:0
+[INFO -- 2018-11-08 18:09:00]
+endSignal:10
+[INFO -- 2018-11-08 18:09:00]
+faultModel:2
+[INFO -- 2018-11-08 18:09:05]
+Backtrace BEGIN:
+#0  std::allocator<double>::allocator (this=0x7fffffffd517, __a=...) at /usr/include/c++/7/bits/allocator.h:134
+#1  0x000055555555742b in std::allocator_traits<std::allocator<double> >::select_on_container_copy_construction (__rhs=...) at /usr/include/c++/7/bits/alloc_traits.h:505
+#2  0x0000555555556a36 in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:95
+#3  0x00005555555562e6 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5d0, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#4  0x000055555555572b in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+129	#endif
+130	
+131	      allocator() throw() { }
+132	
+133	      allocator(const allocator& __a) throw()
+134	      : __allocator_base<_Tp>(__a) { }
+135	
+136	      template<typename _Tp1>
+137		allocator(const allocator<_Tp1>&) throw() { }
+138	
+
+Backtrace END
+Memory content before bitflip:0x950x160x2f0xa50x7d0xbb0xa20x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd580
+address max offset: 8
+Memory content after  bitflip:0x3d0xa20xf50x970x2e0xe10xa90x60
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: 4.4414583920141758e+157
+value address: 0x7fffffffd580
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-08 18:09:05]
+Fault Injection Successful after 5.564434289932251s
+[INFO -- 2018-11-08 18:09:11]
+event type: exit
+[INFO -- 2018-11-08 18:09:11]
+exit code: 0

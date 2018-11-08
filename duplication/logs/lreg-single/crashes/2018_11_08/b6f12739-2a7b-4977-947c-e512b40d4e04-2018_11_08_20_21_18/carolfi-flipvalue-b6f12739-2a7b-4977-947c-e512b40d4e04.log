@@ -1,0 +1,64 @@
+[INFO -- 2018-11-08 20:21:14]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-08 20:21:14]
+Initialization strings:
+[INFO -- 2018-11-08 20:21:14]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-08 20:21:14]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-08 20:21:14]
+initSignal:0
+[INFO -- 2018-11-08 20:21:14]
+endSignal:10
+[INFO -- 2018-11-08 20:21:14]
+faultModel:0
+[INFO -- 2018-11-08 20:21:16]
+Backtrace BEGIN:
+#0  0x00005555555560e0 in std::vector<double, std::allocator<double> >::size (this=0x55555575b180 <T>) at /usr/include/c++/7/bits/stl_vector.h:671
+#1  0x00005555555551f9 in predict (v=13) at lreg.cpp:49
+#2  0x00005555555553fc in partialDerivate (pos=1) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=30000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+675	      max_size() const _GLIBCXX_NOEXCEPT
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x500xc30xdc0xf70xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff7dd3040
+address max offset: 8
+Memory content after  bitflip:0x510xc30xdc0xf70xff0x7f0x000x00
+frame name: main
+symbol name: e2
+symbol filename: lreg.cpp
+symbol line: 194
+value: std::vector of length 719, capacity -5229 = {6.9533490625871739e-310, 2.9643938750474793e-323, 0, 2.0246810166574283e-320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.9525251667299724e-323, 6.9533490636006013e-310, 6.9533490639606764e-310, 0, 0, 6.9533490635116695e-310, 6.9533490638025754e-310, 6.9533490637970418e-310, 6.9533490637978323e-310, 0, 0, 6.9533490624508118e-310, 0, 6.953349062452788e-310, 2.9643938750474793e-323, 0, 2.0246810166574283e-320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.9525251667299724e-323, 6.9533490636152257e-310, 6.9533490639606764e-310, 6.953349063597044e-310, 0, 6.9533490635069265e-310, 6.9533490638025754e-310, 6.9533490637970418e-310, 6.9533490637978323e-310, 0, 6.9533490625804546e-310, 6.9533490625824308e-310, 2.9643938750474793e-323, 0, 2.0246810166574283e-320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.9525251667299724e-323, 6.9533490636290595e-310, 6.9533490639606764e-310, 0, 0, 6.9533490635543568e-310, 6.9533490638863689e-310, 6.9533490638808354e-310, 6.9533490638816259e-310, 0, 0, 6.9533490625804546e-310, 6.9533490625824308e-310, 2.9643938750474793e-323, 0, 6.07206678738892e-320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.9525251667299724e-323, 6.9533490636432886e-310, 6.9533490639606764e-310, 4.6355706433180856e-310, 0, 6.9533490635543568e-310, 6.9533490638863689e-310, 6.9533490638808354e-310, 6.9533490638816259e-310, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6.9533490624460687e-310, 0, 6.953349062448045e-310, 2.9643938750474793e-323, 0, 2.0246810166574283e-320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x7fffffffd920
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-08 20:21:16]
+Fault Injection Successful after 2.2347609996795654s
+[INFO -- 2018-11-08 20:21:17]
+event type: exit
+[EXCEPTION -- 2018-11-08 20:21:17]
+exit code: no exit code available

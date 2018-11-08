@@ -1,0 +1,67 @@
+[INFO -- 2018-11-08 20:10:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-08 20:10:47]
+Initialization strings:
+[INFO -- 2018-11-08 20:10:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-08 20:10:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-08 20:10:47]
+initSignal:0
+[INFO -- 2018-11-08 20:10:47]
+endSignal:10
+[INFO -- 2018-11-08 20:10:47]
+faultModel:2
+[INFO -- 2018-11-08 20:10:49]
+Backtrace BEGIN:
+#0  0x0000555555557cf7 in std::__niter_base<double const*, std::vector<double, std::allocator<double> > > (__it=1.6304166312761136e-322) at /usr/include/c++/7/bits/stl_iterator.h:983
+#1  0x0000555555558104 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-5.3730551132651305, __last=1.6304166312761136e-322, __result=0x555555772490) at /usr/include/c++/7/bits/stl_algobase.h:422
+#2  0x0000555555557f69 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-5.3730551132651305, __last=1.6304166312761136e-322, __result=0x555555772490) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x0000555555557ca0 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-5.3730551132651305, __last=1.6304166312761136e-322, __result=0x555555772490) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#4  0x00005555555574a4 in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-5.3730551132651305, __last=1.6304166312761136e-322, __result=0x555555772490) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#5  0x0000555555556b35 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=-5.3730551132651305, __last=1.6304166312761136e-322, __result=0x555555772490) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#6  0x0000555555556355 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5d0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#7  0x000055555555572b in train (iterations=30000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#8  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#9  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+978	{
+979	_GLIBCXX_BEGIN_NAMESPACE_VERSION
+980	
+981	  template<typename _Iterator, typename _Container>
+982	    _Iterator
+983	    __niter_base(__gnu_cxx::__normal_iterator<_Iterator, _Container> __it)
+984	    { return __it.base(); }
+985	
+986	_GLIBCXX_END_NAMESPACE_VERSION
+987	} // namespace
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x5555557725e0
+address max offset: 8
+Memory content after  bitflip:0xce0xf80x610x980xd80x110x860xee
+frame name: std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*>
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 20, capacity 32 = {8, -6, 5, -13, 9, 1, -9, -11, 11, 24, 13, 16, -7, -21, 18, 20, -18, 1, -12, 5}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-08 20:10:49]
+Fault Injection Successful after 2.461329936981201s
+[INFO -- 2018-11-08 20:10:57]
+event type: exit
+[INFO -- 2018-11-08 20:10:57]
+exit code: 0

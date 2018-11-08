@@ -1,0 +1,58 @@
+[INFO -- 2018-11-08 20:18:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-08 20:18:36]
+Initialization strings:
+[INFO -- 2018-11-08 20:18:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-08 20:18:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-08 20:18:36]
+initSignal:0
+[INFO -- 2018-11-08 20:18:36]
+endSignal:10
+[INFO -- 2018-11-08 20:18:36]
+faultModel:2
+[INFO -- 2018-11-08 20:18:42]
+Backtrace BEGIN:
+#0  0x00007ffff76b9990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76bcb14 in __pow (x=-9, y=2) at w_pow_compat.c:30
+#2  0x0000555555556131 in std::pow<double, int> (__x=-9, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555237 in predict (v=-9) at lreg.cpp:50
+#4  0x000055555555530a in meanSquaredError () at lreg.cpp:61
+#5  0x00005555555556b1 in train (iterations=30000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#6  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#7  0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+165		inp.close();
+166	}
+167	
+168	/*
+169	It must receive an input file formated as follows:
+170		1° Line : one integer T -> number of test cases
+171		2° to 5° repeat to all test case	
+172		2° Line : method parameters -> alpha, iterations, N, size of 
+173			      training set, predictions
+174		3° Line : inputs x of the training set
+
+Backtrace END
+Memory content before bitflip:0xd80x150xf80x7d0x5c0x1a0xe30x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd528
+address max offset: 8
+Memory content after  bitflip:0x970xfe0xa70x740x1d0xfe0x910x29
+frame name: meanSquaredError
+symbol name: error
+symbol filename: lreg.cpp
+symbol line: 59
+value: 1.9152981395897239e-108
+value address: 0x7fffffffd528
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-08 20:18:42]
+Fault Injection Successful after 6.171231269836426s
+[INFO -- 2018-11-08 20:18:46]
+event type: exit
+[INFO -- 2018-11-08 20:18:46]
+exit code: 0
