@@ -1,0 +1,59 @@
+[INFO -- 2018-11-09 15:26:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-09 15:26:13]
+Initialization strings:
+[INFO -- 2018-11-09 15:26:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-09 15:26:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-09 15:26:13]
+initSignal:0
+[INFO -- 2018-11-09 15:26:13]
+endSignal:10
+[INFO -- 2018-11-09 15:26:13]
+faultModel:0
+[EXCEPTION -- 2018-11-09 15:26:18]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-09 15:26:18]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::size (this=0x0) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x00005555555551f9 in predict (v=6) at lreg.cpp:49
+#2  0x00005555555553fc in partialDerivate (pos=1) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd560
+address max offset: 8
+Memory content after  bitflip:0x460x5a0xb70xf40x390x5d0xf70x3e
+frame name: train
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 105
+value: 2.2281804644775389e-05
+value address: 0x7fffffffd560
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-09 15:26:18]
+Fault Injection Successful after 5.53575325012207s
+[INFO -- 2018-11-09 15:26:19]
+event type: exit
+[EXCEPTION -- 2018-11-09 15:26:19]
+exit code: no exit code available

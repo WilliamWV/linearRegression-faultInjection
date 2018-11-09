@@ -1,0 +1,50 @@
+[INFO -- 2018-11-09 12:50:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-09 12:50:54]
+Initialization strings:
+[INFO -- 2018-11-09 12:50:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-09 12:50:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-09 12:50:54]
+initSignal:0
+[INFO -- 2018-11-09 12:50:54]
+endSignal:10
+[INFO -- 2018-11-09 12:50:54]
+faultModel:1
+[INFO -- 2018-11-09 12:50:58]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb20 in __pow (x=4, y=1) at w_pow_compat.c:31
+#1  0x0000555555556131 in std::pow<double, int> (__x=4, __y=1) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555237 in predict (v=4) at lreg.cpp:50
+#3  0x000055555555530a in meanSquaredError () at lreg.cpp:61
+#4  0x00005555555556b1 in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+26	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the pointer
+Memory content before bitflip:0xe40xe10xff0xff0xff0x7f0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffde48
+address max offset: 8
+Memory content after  bitflip:0xc50xe10xff0xff0xff0x7f0x000x00
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 179
+value: 0x7fffffffde48
+value address: 0x7fffffffd8e0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-09 12:50:58]
+Fault Injection Successful after 4.665110111236572s
+[INFO -- 2018-11-09 12:51:13]
+event type: exit
+[INFO -- 2018-11-09 12:51:13]
+exit code: 0

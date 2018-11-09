@@ -1,0 +1,67 @@
+[INFO -- 2018-11-09 14:15:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-09 14:15:58]
+Initialization strings:
+[INFO -- 2018-11-09 14:15:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-09 14:15:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-09 14:15:58]
+initSignal:0
+[INFO -- 2018-11-09 14:15:58]
+endSignal:10
+[INFO -- 2018-11-09 14:15:58]
+faultModel:2
+[EXCEPTION -- 2018-11-09 14:15:59]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-09 14:15:59]
+gdbException: Cannot access memory at address 0x0
+[INFO -- 2018-11-09 14:16:00]
+Backtrace BEGIN:
+#0  0x0000555555557ef0 in __gnu_cxx::new_allocator<double>::construct<double, double> (this=0x7fffffffd900, __p=0xbe5ac74dd86caeb, __args#0=@0x7fffffffd698: -31.000024147655623) at /usr/include/c++/7/ext/new_allocator.h:136
+#1  0x00005555555578d0 in std::allocator_traits<std::allocator<double> >::construct<double, double> (__a=..., __p=0xbe5ac74dd86caeb, __args#0=@0x7fffffffd698: -31.000024147655623) at /usr/include/c++/7/bits/alloc_traits.h:475
+#2  0x0000555555557134 in std::vector<double, std::allocator<double> >::emplace_back<double> (this=0x7fffffffd900, __args#0=@0x7fffffffd698: -31.000024147655623) at /usr/include/c++/7/bits/vector.tcc:100
+#3  0x0000555555556796 in std::vector<double, std::allocator<double> >::push_back (this=0x7fffffffd900, __x=@0x7fffffffd698: -31.000024147655623) at /usr/include/c++/7/bits/stl_vector.h:954
+#4  0x0000555555555a8d in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:160
+#5  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+131	
+132	#if __cplusplus >= 201103L
+133	      template<typename _Up, typename... _Args>
+134		void
+135		construct(_Up* __p, _Args&&... __args)
+136		{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+137	
+138	      template<typename _Up>
+139		void
+140		destroy(_Up* __p) { __p->~_Up(); }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772350
+address max offset: 8
+Memory content after  bitflip:0xea0xcc0xe60xcd0xf10x0d0xab0xf2
+frame name: std::allocator_traits<std::allocator<double> >::construct<double, double>
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 2, capacity 2 = {1.000000004499952, 2.0000015095097234}
+value address: 0x55555575b180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-09 14:16:00]
+Fault Injection Successful after 2.2342419624328613s
+[INFO -- 2018-11-09 14:16:00]
+event type: exit
+[EXCEPTION -- 2018-11-09 14:16:00]
+exit code: no exit code available

@@ -1,0 +1,56 @@
+[INFO -- 2018-11-09 14:36:33]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-09 14:36:33]
+Initialization strings:
+[INFO -- 2018-11-09 14:36:33]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-09 14:36:33]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-09 14:36:33]
+initSignal:0
+[INFO -- 2018-11-09 14:36:33]
+endSignal:10
+[INFO -- 2018-11-09 14:36:33]
+faultModel:1
+[INFO -- 2018-11-09 14:36:34]
+Backtrace BEGIN:
+#0  0x000055555555729e in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd5f0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:189
+#1  0x000055555555689b in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd5f0, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#2  0x0000555555556307 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5f0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x0000555555555713 in train (iterations=30000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+184	      void
+185	      _M_create_storage(size_t __n)
+186	      {
+187		this->_M_impl._M_start = this->_M_allocate(__n);
+188		this->_M_impl._M_finish = this->_M_impl._M_start;
+189		this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+190	      }
+191	    };
+192	
+193	
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd55c
+address max offset: 1
+Memory content after  bitflip:0x04
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 105
+value: 4
+value address: 0x7fffffffd55c
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-09 14:36:34]
+Fault Injection Successful after 1.456629753112793s
+[INFO -- 2018-11-09 14:36:42]
+event type: exit
+[INFO -- 2018-11-09 14:36:42]
+exit code: 0

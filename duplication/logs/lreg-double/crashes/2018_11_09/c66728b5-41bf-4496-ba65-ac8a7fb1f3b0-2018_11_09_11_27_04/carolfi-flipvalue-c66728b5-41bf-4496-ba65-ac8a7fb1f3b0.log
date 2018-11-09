@@ -1,0 +1,62 @@
+[INFO -- 2018-11-09 11:27:01]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-09 11:27:01]
+Initialization strings:
+[INFO -- 2018-11-09 11:27:01]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-09 11:27:01]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-09 11:27:01]
+initSignal:0
+[INFO -- 2018-11-09 11:27:01]
+endSignal:10
+[INFO -- 2018-11-09 11:27:01]
+faultModel:1
+[EXCEPTION -- 2018-11-09 11:27:02]
+gdbException: Cannot access memory at address 0x42555555772340
+[EXCEPTION -- 2018-11-09 11:27:03]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-09 11:27:03]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff7ad88b7 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7adea06 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7adea41 in std::terminate() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7adec74 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7b06ed2 in std::__throw_bad_alloc() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x0000555555557fa0 in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd590, __n=18444421905151688706) at /usr/include/c++/7/ext/new_allocator.h:102
+#8  0x0000555555557ced in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=18444421905151688706) at /usr/include/c++/7/bits/alloc_traits.h:436
+#9  0x000055555555750e in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd590, __n=18444421905151688706) at /usr/include/c++/7/bits/stl_vector.h:172
+#10 0x0000555555556c24 in std::vector<double, std::allocator<double> >::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > > > (this=0x7fffffffd590, __n=18444421905151688706, __first=<error reading variable: Cannot access memory at address 0x42555555772340>, __last=0) at /usr/include/c++/7/bits/stl_vector.h:1260
+#11 0x0000555555556523 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd590, __x=std::vector of length -2322168557862910, capacity -2322168557862910 = {...}) at /usr/include/c++/7/bits/vector.tcc:206
+#12 0x0000555555555691 in train (iterations=15000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#13 0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#14 0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffe1e4 
+address max offset: 1
+Memory content after  bitflip:0xab
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 179
+value: 0x7fffffffde48
+value address: 0x7fffffffd8e0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-09 11:27:03]
+Fault Injection Successful after 2.253685474395752s
+[INFO -- 2018-11-09 11:27:03]
+event type: exit
+[EXCEPTION -- 2018-11-09 11:27:03]
+exit code: no exit code available

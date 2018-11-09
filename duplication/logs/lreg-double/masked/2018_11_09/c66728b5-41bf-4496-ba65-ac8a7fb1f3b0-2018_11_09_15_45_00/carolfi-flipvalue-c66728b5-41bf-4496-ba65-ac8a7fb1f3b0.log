@@ -1,0 +1,51 @@
+[INFO -- 2018-11-09 15:44:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-09 15:44:51]
+Initialization strings:
+[INFO -- 2018-11-09 15:44:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-09 15:44:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-09 15:44:51]
+initSignal:0
+[INFO -- 2018-11-09 15:44:51]
+endSignal:10
+[INFO -- 2018-11-09 15:44:51]
+faultModel:1
+[INFO -- 2018-11-09 15:44:56]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:447
+#1  __ieee754_pow_sse2 (x=-5, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:183
+#2  0x00007ffff76bcb14 in __pow (x=-5, y=3) at w_pow_compat.c:30
+#3  0x0000555555556131 in std::pow<double, int> (__x=-5, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x0000555555555237 in predict (v=-5) at lreg.cpp:50
+#5  0x00005555555553fc in partialDerivate (pos=0) at lreg.cpp:74
+#6  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#7  0x00005555555556ac in train (iterations=45000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#8  0x0000555555555a1c in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:157
+#9  0x0000555555555c98 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:194
+
+442	../sysdeps/i386/fpu/fenv_private.h: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x140xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd448
+address max offset: 8
+Memory content after  bitflip:0x210x000x000x000x000x000x140xc0
+frame name: std::pow<double, int>
+symbol name: __x
+symbol filename: /usr/include/c++/7/cmath
+symbol line: 415
+value: -5.0000000000000293
+value address: 0x7fffffffd448
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-09 15:44:56]
+Fault Injection Successful after 5.47471022605896s
+[INFO -- 2018-11-09 15:44:59]
+event type: exit
+[INFO -- 2018-11-09 15:44:59]
+exit code: 0

@@ -1,0 +1,67 @@
+[INFO -- 2018-11-09 13:28:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-09 13:28:59]
+Initialization strings:
+[INFO -- 2018-11-09 13:28:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-09 13:28:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-09 13:28:59]
+initSignal:0
+[INFO -- 2018-11-09 13:28:59]
+endSignal:10
+[INFO -- 2018-11-09 13:28:59]
+faultModel:2
+[EXCEPTION -- 2018-11-09 13:29:00]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-09 13:29:01]
+gdbException: Cannot access memory at address 0x96168edbbaf133ff
+[INFO -- 2018-11-09 13:29:01]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff7ad88b7 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7adea06 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7adea41 in std::terminate() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7adec74 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7adf1ec in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x0000555555557fb0 in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd900, __n=1907962317285456872) at /usr/include/c++/7/ext/new_allocator.h:111
+#8  0x0000555555557ced in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=1907962317285456872) at /usr/include/c++/7/bits/alloc_traits.h:436
+#9  0x000055555555750e in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd900, __n=1907962317285456872) at /usr/include/c++/7/bits/stl_vector.h:172
+#10 0x0000555555557950 in std::vector<double, std::allocator<double> >::_M_realloc_insert<double> (this=0x7fffffffd900, __position=0, __args#0=@0x7fffffffd698: -919.99046102511443) at /usr/include/c++/7/bits/vector.tcc:406
+#11 0x000055555555717a in std::vector<double, std::allocator<double> >::emplace_back<double> (this=0x7fffffffd900, __args#0=@0x7fffffffd698: -919.99046102511443) at /usr/include/c++/7/bits/vector.tcc:105
+#12 0x0000555555556796 in std::vector<double, std::allocator<double> >::push_back (this=0x7fffffffd900, __x=@0x7fffffffd698: -919.99046102511443) at /usr/include/c++/7/bits/stl_vector.h:954
+#13 0x0000555555555a8d in execute (input=0x7fffffffe1f3 "/tmp/lreg/randInput") at lreg.cpp:160
+#14 0x0000555555555c60 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:191
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xe00x250x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b148 
+address max offset: 8
+Memory content after  bitflip:0x200x1b0x7d0x530xef0x600xbc0xde
+frame name: std::allocator_traits<std::allocator<double> >::allocate
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length -299628518206030148, capacity 32 = {15, 15, 0, 10, -7, 0, -2, 1, -3, 4, -23, -17, -8, -13, 2, 6, -5, 19, -20, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.3487992131466031e-321, 31, 31, 1, 21, -13, 1, -3, 3, -19, -68, -1499, -803, -164, -459, -24, -136, -59, -1163, -1124, -411, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.1336224915654232e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-09 13:29:01]
+Fault Injection Successful after 2.4028565883636475s
+[INFO -- 2018-11-09 13:29:01]
+event type: exit
+[EXCEPTION -- 2018-11-09 13:29:01]
+exit code: no exit code available
