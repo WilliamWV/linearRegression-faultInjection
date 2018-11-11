@@ -35,6 +35,9 @@ vector<double> x; // input of training set
 vector<double> y; // observed values of training set inputs
 vector<double> T; // the adjustment variables
 
+double xChecksum = 0;
+double yChecksum = 0;
+
 /**
 	Alterações na duplicação seletiva
 		* Duplica variáveis de laço,pois a maioria dos laços é usado para calcular
@@ -44,18 +47,22 @@ vector<double> T; // the adjustment variables
 			- pos : indica qual dos parâmetros está sendo atualizado
 			- alpha : indica a taca de aprendizado do algoritmo
 			- iterations : indica quantidade de iterações no cálculo dos parâmetros
+		* Ideias:
+			- Proteger x e y com checksums e verificar no final da execução
+			- Ver se encontra invariantes simples mas próximos do ideal nos laços com cálculos
+			- Verificar se uma duplicação de T vale a pena
 	
 */
 
 int detected = 0;
+
 
 UINT verifyUintDup(UINT a, UINT b){
 	if (a != b && detected != 1){
 		//gerar entrada no log
 		ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
 		fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
-        out<<e1[i]<<endl; // coloca um deles como resposta	
-		detected = 1;	
+        detected = 1;	
 	}
 	return a;
 }
@@ -64,10 +71,25 @@ double verifyDoubleDup(double a, double b){
 		//gerar entrada no log
 		ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
 		fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
-        out<<e1[i]<<endl; // coloca um deles como resposta	
-		detected = 1;	
+        detected = 1;	
 	}	
 	return a;
+}
+
+
+void verifyChecksum(vector<double> vec, double check){
+	if(detected!=1){
+		double temp = 0;		
+		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<vec.size(); i1++, i2++){
+			temp+= vec[verifyUintDup(i1, i2)];
+		}
+		if(temp!=check){
+			//gerar entrada no log
+			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+			fp << "checksum failed"<<endl;
+		    detected = 1;
+		}
+	}
 }
 
 bool equals(vector<double> a, vector<double> b){
@@ -85,6 +107,7 @@ bool equals(vector<double> a, vector<double> b){
 */
 double predict(double v){
 	double val = 0;
+	
 	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T.size(); i1++, i2++){
 		val+= (T[verifyUintDup(i1, i2)] * pow(v, verifyUintDup(i1, i2)));
 	}
@@ -96,6 +119,7 @@ double predict(double v){
 */
 double meanSquaredError(){
 	double error = 0;
+	
 	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<x.size(); i1++, i2++){
 		error+= ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)]) * (predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)]));	
 	}
@@ -109,6 +133,7 @@ double meanSquaredError(){
 */
 double partialDerivate(UINT pos1, UINT pos2){
 	double pD = 0;
+	
 	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<x.size(); i1++, i2++){
 		pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
 	}
@@ -122,6 +147,7 @@ double partialDerivate(UINT pos1, UINT pos2){
 void adjust(double alpha1, double alpha2){
 	
 	double PD;
+	
 	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T.size(); i1++, i2++){
 		PD = partialDerivate(verifyUintDup(i1, i2), verifyUintDup(i1, i2));
 		// alpha is different from the canonical version because this works better
@@ -199,15 +225,17 @@ int main(int argc, char* argv[]){
 		double alpha, temp;
 		UINT iterations, N, sizeOfTraining, predictions;
 		inp >> alpha >> iterations >> N >> sizeOfTraining >> predictions;
-		UINT pred2 = preditions;
+		UINT pred2 = predictions;
 		//READING DATA
 		for (UINT j1 = 0, j2 = 0; verifyUintDup(j1, j2)<sizeOfTraining; j1++, j2++){
 			inp >> temp;
 			x.push_back(temp);
+			xChecksum+=temp;
 		} 
 		for (UINT j1 = 0, j2 = 0; verifyUintDup(j1, j2)<sizeOfTraining; j1++, j2++){
 			inp >> temp;
 			y.push_back(temp);
+			yChecksum+=temp;
 		} 
 		//TRAINING
 		train(iterations, iterations, N, alpha, alpha);
@@ -215,6 +243,8 @@ int main(int argc, char* argv[]){
 			inp >> temp;
 			out<<predict(temp)<< endl;
 		}
+		verifyChecksum(x, xChecksum);
+		verifyChecksum(y, yChecksum);
 			
 	}
 	
