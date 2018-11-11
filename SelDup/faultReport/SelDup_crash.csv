@@ -1,0 +1,6 @@
+Variable Name;Variable File;Variable Line;Fault Injection Time(s);Injection Time Interval;Fault Model
+user_entry;../elf/dl-sysdep.c;91;1.8454484939575195;0-10;Single bit-flip
+detected;lreg.cpp;57;4.493682384490967;0-10;Single bit-flip
+xChecksum;lreg.cpp;38;3.109792470932007;0-10;Random bit-flip
+i2;lreg.cpp;123;4.302991151809692;0-10;Double bit-flip
+alpha1;lreg.cpp;147;3.708972215652466;0-10;Double bit-flip

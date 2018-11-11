@@ -1,0 +1,17 @@
+Variable Name;Variable File;Variable Line;Fault Injection Time(s);Injection Time Interval;Fault Model;Detected
+alpha2;lreg.cpp;170;5.307978391647339;0-10;Single bit-flip;1
+pred2;lreg.cpp;228;4.252770900726318;0-10;Single bit-flip;1
+xChecksum;lreg.cpp;38;3.2275962829589844;0-10;Single bit-flip;1
+i2;lreg.cpp;111;3.7368967533111572;0-10;Single bit-flip;1
+xChecksum;lreg.cpp;38;6.411487579345703;0-10;Single bit-flip;1
+pos2;lreg.cpp;134;7.007505178451538;0-10;Random bit-flip;1
+pred2;lreg.cpp;228;4.935032606124878;0-10;Random bit-flip;1
+yChecksum;lreg.cpp;39;6.326470851898193;0-10;Random bit-flip;1
+val;lreg.cpp;109;5.223424673080444;0-10;Random bit-flip;0
+pos2;lreg.cpp;134;2.3840761184692383;0-10;Double bit-flip;1
+i1;lreg.cpp;137;6.103818416595459;0-10;Double bit-flip;1
+i1;lreg.cpp;111;2.5082199573516846;0-10;Double bit-flip;1
+yChecksum;lreg.cpp;39;2.318964719772339;0-10;Double bit-flip;1
+xChecksum;lreg.cpp;38;2.095158576965332;0-10;Double bit-flip;1
+yChecksum;lreg.cpp;39;2.92299222946167;0-10;Double bit-flip;1
+ln2a;../sysdeps/ieee754/dbl-64/upow.h;50;3.549393653869629;0-10;Double bit-flip;0

@@ -33,7 +33,8 @@ typedef unsigned int UINT;
 
 vector<double> x; // input of training set
 vector<double> y; // observed values of training set inputs
-vector<double> T; // the adjustment variables
+vector<double> T1; // the adjustment variables
+vector<double> T2;
 
 double xChecksum = 0;
 double yChecksum = 0;
@@ -67,7 +68,7 @@ UINT verifyUintDup(UINT a, UINT b){
 	return a;
 }
 double verifyDoubleDup(double a, double b){
-	if (a != b && detected == 0){
+	if (a != b && detected != 1){
 		//gerar entrada no log
 		ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
 		fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
@@ -108,8 +109,8 @@ bool equals(vector<double> a, vector<double> b){
 double predict(double v){
 	double val = 0;
 	
-	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T.size(); i1++, i2++){
-		val+= (T[verifyUintDup(i1, i2)] * pow(v, verifyUintDup(i1, i2)));
+	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+		val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
 	}
 	return val;
 	
@@ -148,10 +149,13 @@ void adjust(double alpha1, double alpha2){
 	
 	double PD;
 	
-	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T.size(); i1++, i2++){
+	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
 		PD = partialDerivate(verifyUintDup(i1, i2), verifyUintDup(i1, i2));
 		// alpha is different from the canonical version because this works better
-		T[verifyUintDup(i1, i2)]= T[verifyUintDup(i1, i2)] - ((verifyDoubleDup(alpha1, alpha2) / (sqrt( fabs(PD) ))) * PD); 
+		double diff = ((verifyDoubleDup(alpha1, alpha2) / (sqrt( fabs(PD) ))) * PD);
+		T1[verifyUintDup(i1, i2)]= T1[verifyUintDup(i1, i2)] - diff;
+		T2[verifyUintDup(i1, i2)]= T2[verifyUintDup(i1, i2)] - diff;
+		 
 	}
 }
 
@@ -175,24 +179,25 @@ void train(UINT iter1, UINT iter2, UINT N, double alpha1, double alpha2, bool st
 		3) Repeat until reach the maximum number of iterations, or
 		   if stopsWhenStable = true also when T stops changing 
 	*/
-	T = vector<double>(N, 0);
-	vector<double> prevT = T; 
-	vector<double> bestT = T; 
+	T1 = vector<double>(N, 0);
+	T2 = vector<double>(N, 0);
+	vector<double> prevT = T1; 
+	vector<double> bestT = T1; 
 	double bestMSE = meanSquaredError();
 	double MSE;	
 	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<verifyUintDup(iter1, iter2); i1++, i2++){
-		prevT = T; 	
+		prevT = T1; 	
 		adjust(verifyDoubleDup(alpha1, alpha2), verifyDoubleDup(alpha1, alpha2));
 		MSE = meanSquaredError();
 		if (MSE < bestMSE){
 			bestMSE = MSE;
-			bestT = T; 
+			bestT = T1; 
 		}
-		if (equals(T, prevT) && stopsWhenStable){ // implement equals
+		if (equals(T1, prevT) && stopsWhenStable){ // implement equals
 			break;		
 		}
 	}
-	T = bestT;
+	//T1 = bestT;
 }
 
 /*
