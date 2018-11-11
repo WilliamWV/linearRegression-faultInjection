@@ -206,32 +206,6 @@ int main(int argc, char* argv[]){
 			
 		}
 	}
-	/*	
-	int testCases;	
-	inp >> testCases;
-	
-	for (int i = 0; i<testCases; i++){
-		double alpha, temp;
-		int iterations, N, sizeOfTraining, predictions;
-		inp >> alpha >> iterations >> N >> sizeOfTraining >> predictions;
-		
-		//READING DATA
-		for (int j = 0; j<sizeOfTraining; j++){
-			inp >> temp;
-			x.push_back(temp);
-		} 
-		for (int j = 0; j<sizeOfTraining; j++){
-			inp >> temp;
-			y.push_back(temp);
-		} 
-		//TRAINING
-		train(iterations, alpha, N);
-		for (int j = 0; j < predictions; j++){
-			inp >> temp;
-			out<<predict(temp)<< endl;
-		}
-			
-	}
-	*/
+
 	return 0;
 }
