@@ -1,0 +1,55 @@
+[INFO -- 2018-11-12 19:26:28]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 19:26:28]
+Initialization strings:
+[INFO -- 2018-11-12 19:26:28]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 19:26:28]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 19:26:28]
+initSignal:0
+[INFO -- 2018-11-12 19:26:28]
+endSignal:10
+[INFO -- 2018-11-12 19:26:28]
+faultModel:2
+[INFO -- 2018-11-12 19:26:30]
+Backtrace BEGIN:
+#0  0x0000555555555254 in verifyDoubleDup (a=-2.3066600295788469, b=-2.3066600295788469) at lreg.cpp:71
+#1  0x00005555555556bd in predict (v=17) at lreg.cpp:113
+#2  0x000055555555578f in meanSquaredError () at lreg.cpp:125
+#3  0x0000555555555da8 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:191
+#4  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+75	        detected = 1;	
+
+Backtrace END
+Memory content before bitflip:0x4e0xf30xbf0xcc0xe30xa90x250x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7a8
+address max offset: 8
+Memory content after  bitflip:0x880xf60x520x860x4d0x090x520x48
+frame name: meanSquaredError
+symbol name: error
+symbol filename: lreg.cpp
+symbol line: 122
+value: 2.4549792751251831e+40
+value address: 0x7fffffffd7a8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 19:26:30]
+Fault Injection Successful after 2.397825241088867s
+[INFO -- 2018-11-12 19:26:42]
+event type: exit
+[INFO -- 2018-11-12 19:26:42]
+exit code: 0

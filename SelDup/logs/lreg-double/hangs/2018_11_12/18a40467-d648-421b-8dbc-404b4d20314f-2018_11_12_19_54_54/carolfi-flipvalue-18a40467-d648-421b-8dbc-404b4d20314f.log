@@ -1,0 +1,51 @@
+[INFO -- 2018-11-12 19:54:29]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 19:54:29]
+Initialization strings:
+[INFO -- 2018-11-12 19:54:29]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 19:54:29]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 19:54:29]
+initSignal:0
+[INFO -- 2018-11-12 19:54:29]
+endSignal:10
+[INFO -- 2018-11-12 19:54:29]
+faultModel:1
+[INFO -- 2018-11-12 19:54:33]
+Backtrace BEGIN:
+#0  0x000055555555766a in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::_Vector_impl (this=0x7fffffffd860, __a=...) at /usr/include/c++/7/bits/stl_vector.h:92
+#1  0x0000555555556da8 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd860, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:137
+#2  0x000055555555688d in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x0000555555555e22 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:196
+#4  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+87	
+88		_Vector_impl()
+89		: _Tp_alloc_type(), _M_start(), _M_finish(), _M_end_of_storage()
+90		{ }
+91	
+92		_Vector_impl(_Tp_alloc_type const& __a) _GLIBCXX_NOEXCEPT
+93		: _Tp_alloc_type(__a), _M_start(), _M_finish(), _M_end_of_storage()
+94		{ }
+95	
+96	#if __cplusplus >= 201103L
+
+Backtrace END
+Memory content before bitflip:0x060x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd908
+address max offset: 4
+Memory content after  bitflip:0x060x000x180x00
+frame name: main
+symbol name: predictions
+symbol filename: lreg.cpp
+symbol line: 231
+value: 1572870
+value address: 0x7fffffffd908
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-12 19:54:33]
+Fault Injection Successful after 4.55120062828064s
