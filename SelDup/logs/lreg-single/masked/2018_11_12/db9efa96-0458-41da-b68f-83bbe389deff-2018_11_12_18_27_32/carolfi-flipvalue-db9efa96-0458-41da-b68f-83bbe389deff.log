@@ -1,0 +1,62 @@
+[INFO -- 2018-11-12 18:27:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 18:27:18]
+Initialization strings:
+[INFO -- 2018-11-12 18:27:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 18:27:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 18:27:18]
+initSignal:0
+[INFO -- 2018-11-12 18:27:18]
+endSignal:10
+[INFO -- 2018-11-12 18:27:18]
+faultModel:0
+[INFO -- 2018-11-12 18:27:19]
+Backtrace BEGIN:
+#0  0x000055555555786c in std::allocator_traits<std::allocator<double> >::select_on_container_copy_construction (__rhs=...) at /usr/include/c++/7/bits/alloc_traits.h:504
+#1  0x0000555555556f56 in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:95
+#2  0x000055555555686c in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd880, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x0000555555555e0a in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:196
+#4  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+499	       *  @brief  Obtain an allocator to use when copying a container.
+500	       *  @param  __rhs  An allocator.
+501	       *  @return @c __rhs
+502	      */
+503	      static allocator_type
+504	      select_on_container_copy_construction(const allocator_type& __rhs)
+505	      { return __rhs; }
+506	    };
+507	
+508	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x5555557723f0
+address max offset: 8
+Memory content after  bitflip:0x000x000x400x000x000x000x000x00
+frame name: __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 8, capacity 8 = {26, -14, 22, 24, -4, 32, 28, -32}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-12 18:27:19]
+Fault Injection Successful after 1.5908234119415283s
+[INFO -- 2018-11-12 18:27:30]
+event type: exit
+[INFO -- 2018-11-12 18:27:30]
+exit code: 0

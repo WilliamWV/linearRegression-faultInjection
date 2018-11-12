@@ -1,0 +1,50 @@
+[INFO -- 2018-11-12 16:49:02]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 16:49:02]
+Initialization strings:
+[INFO -- 2018-11-12 16:49:02]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 16:49:02]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 16:49:02]
+initSignal:0
+[INFO -- 2018-11-12 16:49:02]
+endSignal:10
+[INFO -- 2018-11-12 16:49:02]
+faultModel:0
+[EXCEPTION -- 2018-11-12 16:49:04]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-12 16:49:05]
+Backtrace BEGIN:
+#0  __pow (x=0, y=2) at w_pow_compat.c:55
+#1  0x00005555555566b8 in std::pow<double, unsigned int> (__x=0, __y=2) at /usr/include/c++/7/cmath:418
+#2  0x00005555555556e7 in predict (v=0) at lreg.cpp:113
+#3  0x000055555555591a in partialDerivate (pos1=0, pos2=0) at lreg.cpp:139
+#4  0x0000555555555a81 in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:153
+#5  0x0000555555555da3 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:190
+#6  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+50	in w_pow_compat.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd680
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x200x00
+frame name: __pow
+symbol name: x
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 4.4501477170144028e-308
+value address: 0x7fffffffd680
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 16:49:05]
+Fault Injection Successful after 3.2189531326293945s
+[INFO -- 2018-11-12 16:49:20]
+event type: exit
+[INFO -- 2018-11-12 16:49:20]
+exit code: 0

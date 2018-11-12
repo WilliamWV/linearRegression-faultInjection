@@ -1,0 +1,63 @@
+[INFO -- 2018-11-12 14:40:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 14:40:41]
+Initialization strings:
+[INFO -- 2018-11-12 14:40:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 14:40:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 14:40:41]
+initSignal:0
+[INFO -- 2018-11-12 14:40:41]
+endSignal:10
+[INFO -- 2018-11-12 14:40:41]
+faultModel:1
+[INFO -- 2018-11-12 14:40:48]
+Backtrace BEGIN:
+#0  verifyUintDup (a=3, b=3) at lreg.cpp:61
+#1  0x0000555555555642 in predict (v=-23) at lreg.cpp:112
+#2  0x000055555555591a in partialDerivate (pos1=2, pos2=2) at lreg.cpp:139
+#3  0x0000555555555a81 in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:153
+#4  0x0000555555555da3 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:190
+#5  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x180x40
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772830
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x220x000x000x180x40
+frame name: train
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 36, capacity 64 = {6.0000005066394806, -10, 2, -7, 5, 12, 8, -11, -21, -19, 20, -23, 2, -1, -13, -13, 4, -3, 11, 19, -16, -5, 9, -14, 15, 15, -13, -27, -25, -4, 4, 24, 3, 30, 16, -14}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-12 14:40:48]
+Fault Injection Successful after 7.030837535858154s
+[INFO -- 2018-11-12 14:40:55]
+event type: exit
+[INFO -- 2018-11-12 14:40:55]
+exit code: 0

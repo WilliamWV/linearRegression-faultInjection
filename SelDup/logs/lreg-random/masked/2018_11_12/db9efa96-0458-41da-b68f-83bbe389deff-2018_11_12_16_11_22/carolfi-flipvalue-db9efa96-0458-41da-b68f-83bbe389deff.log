@@ -1,0 +1,54 @@
+[INFO -- 2018-11-12 16:11:06]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 16:11:06]
+Initialization strings:
+[INFO -- 2018-11-12 16:11:06]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 16:11:06]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 16:11:06]
+initSignal:0
+[INFO -- 2018-11-12 16:11:06]
+endSignal:10
+[INFO -- 2018-11-12 16:11:06]
+faultModel:2
+[INFO -- 2018-11-12 16:11:10]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb0a in __pow (x=-16, y=0) at w_pow_compat.c:30
+#1  0x00005555555566b8 in std::pow<double, unsigned int> (__x=-16, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x00005555555556e7 in predict (v=-16) at lreg.cpp:113
+#3  0x00005555555557f7 in meanSquaredError () at lreg.cpp:125
+#4  0x0000555555555da8 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:191
+#5  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+25	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772c40
+address max offset: 8
+Memory content after  bitflip:0xce0x890x040x080x7d0xbe0x380x76
+frame name: predict
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 36, capacity 64 = {26, -14, 22, 24, -4, 32, 28, -32, -809, -989, -207, -809, -809, -1637, -377, 3, -1889, -9, -1053, -1257, -1403, -1859, -1299, 1, -1859, -219, -23, -1511, -683, -179, -759, -1299, -1623, -1011, -143, -263}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-12 16:11:10]
+Fault Injection Successful after 4.668871641159058s
+[INFO -- 2018-11-12 16:11:21]
+event type: exit
+[INFO -- 2018-11-12 16:11:21]
+exit code: 0

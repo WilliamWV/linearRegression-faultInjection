@@ -1,0 +1,55 @@
+[INFO -- 2018-11-12 17:50:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 17:50:42]
+Initialization strings:
+[INFO -- 2018-11-12 17:50:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 17:50:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 17:50:42]
+initSignal:0
+[INFO -- 2018-11-12 17:50:42]
+endSignal:10
+[INFO -- 2018-11-12 17:50:42]
+faultModel:2
+[EXCEPTION -- 2018-11-12 17:50:43]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-12 17:50:43]
+Backtrace BEGIN:
+#0  0x000055555555553f in equals (a=std::vector of length 2, capacity 2 = {...}, b=std::vector of length 2, capacity 2 = {...}) at lreg.cpp:97
+#1  0x0000555555555e3b in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:196
+#2  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+92			}
+93		}
+94	}
+95	
+96	bool equals(vector<double> a, vector<double> b){
+97		if (a.size() != b.size()) return false;
+98		for (UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<a.size(); i1++, i2++){
+99			if(a[verifyUintDup(i1, i2)] != b[verifyUintDup(i1, i2)]) 
+100				return false;
+101		}
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x2a0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7e8
+address max offset: 8
+Memory content after  bitflip:0xa90x7a0xb60xbe0x040x720x4d0xbe
+frame name: train
+symbol name: alpha1
+symbol filename: lreg.cpp
+symbol line: 174
+value: -1.3711575838981892e-08
+value address: 0x7fffffffd7e8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 17:50:43]
+Fault Injection Successful after 1.8253984451293945s
+[INFO -- 2018-11-12 17:50:44]
+event type: exit
+[EXCEPTION -- 2018-11-12 17:50:44]
+exit code: no exit code available

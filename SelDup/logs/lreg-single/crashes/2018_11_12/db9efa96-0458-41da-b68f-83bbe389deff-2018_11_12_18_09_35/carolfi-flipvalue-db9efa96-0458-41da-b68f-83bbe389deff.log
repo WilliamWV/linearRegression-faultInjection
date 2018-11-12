@@ -1,0 +1,59 @@
+[INFO -- 2018-11-12 18:09:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 18:09:24]
+Initialization strings:
+[INFO -- 2018-11-12 18:09:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 18:09:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 18:09:24]
+initSignal:0
+[INFO -- 2018-11-12 18:09:24]
+endSignal:10
+[INFO -- 2018-11-12 18:09:24]
+faultModel:0
+[EXCEPTION -- 2018-11-12 18:09:29]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-12 18:09:30]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=28, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:85
+#1  0x00007ffff76bcb14 in __pow (x=28, y=0) at w_pow_compat.c:30
+#2  0x00005555555566b8 in std::pow<double, unsigned int> (__x=28, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555556e7 in predict (v=28) at lreg.cpp:113
+#4  0x000055555555591a in partialDerivate (pos1=3, pos2=3) at lreg.cpp:139
+#5  0x0000555555555a81 in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:153
+#6  0x0000555555555da3 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:190
+#7  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+80	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 0
+Memory content before bitflip:0x2c0xfd0xff0xff
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff779f5b8 
+address max offset: 4
+Memory content after  bitflip:0x2c0xfd0xfd0xff
+frame name: __ieee754_pow_sse2
+symbol name: bigu
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 52
+value: {i = {-131796, 1117257727}, x = 6597069766527.293}
+value address: 0x7ffff779f5b8 <bigu>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-12 18:09:30]
+Fault Injection Successful after 6.123499155044556s
+[INFO -- 2018-11-12 18:09:35]
+event type: exit
+[EXCEPTION -- 2018-11-12 18:09:35]
+exit code: no exit code available

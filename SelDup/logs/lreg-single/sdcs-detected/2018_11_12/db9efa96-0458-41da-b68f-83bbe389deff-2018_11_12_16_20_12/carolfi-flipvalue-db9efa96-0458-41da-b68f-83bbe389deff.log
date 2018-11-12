@@ -1,0 +1,54 @@
+[INFO -- 2018-11-12 16:19:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 16:19:56]
+Initialization strings:
+[INFO -- 2018-11-12 16:19:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 16:19:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 16:19:56]
+initSignal:0
+[INFO -- 2018-11-12 16:19:56]
+endSignal:10
+[INFO -- 2018-11-12 16:19:56]
+faultModel:0
+[INFO -- 2018-11-12 16:20:10]
+Backtrace BEGIN:
+#0  malloc (n=11) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  0x00007ffff6f1d205 in tcache_get (tc_idx=1) at malloc.c:2941
+#3  __GI___libc_malloc (bytes=32) at malloc.c:3050
+#4  0x00007ffff7adf1a8 in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x000055555555814a in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd860, __n=4) at /usr/include/c++/7/ext/new_allocator.h:111
+#6  0x0000555555557ed3 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=4) at /usr/include/c++/7/bits/alloc_traits.h:436
+#7  0x00005555555579aa in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd860, __n=4) at /usr/include/c++/7/bits/stl_vector.h:172
+#8  0x00005555555576cb in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd860, __n=4) at /usr/include/c++/7/bits/stl_vector.h:187
+#9  0x0000555555556dbb in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd860, __n=4, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#10 0x000055555555688d in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#11 0x0000555555555e22 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:196
+#12 0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+45	dl-minimal.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x800x590x40
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 8
+Memory content after  bitflip:0x000x000x200x000x000x800x590x40
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_create_storage
+symbol name: xChecksum
+symbol filename: lreg.cpp
+symbol line: 39
+value: 102.00000002980232
+value address: 0x55555575b1b8 <xChecksum>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 16:20:10]
+Fault Injection Successful after 14.89165449142456s
+[INFO -- 2018-11-12 16:20:11]
+event type: exit
+[INFO -- 2018-11-12 16:20:11]
+exit code: 0

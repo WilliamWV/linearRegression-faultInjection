@@ -1,0 +1,62 @@
+[INFO -- 2018-11-12 18:57:06]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 18:57:06]
+Initialization strings:
+[INFO -- 2018-11-12 18:57:06]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 18:57:06]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 18:57:06]
+initSignal:0
+[INFO -- 2018-11-12 18:57:06]
+endSignal:10
+[INFO -- 2018-11-12 18:57:06]
+faultModel:1
+[INFO -- 2018-11-12 18:57:12]
+Backtrace BEGIN:
+#0  0x00005555555556af in predict (v=0) at lreg.cpp:113
+#1  0x000055555555591a in partialDerivate (pos1=2, pos2=2) at lreg.cpp:139
+#2  0x0000555555555a81 in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:153
+#3  0x0000555555555da3 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:190
+#4  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+108	*/
+109	double predict(double v){
+110		double val = 0;
+111		
+112		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+113			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+114		}
+115		return val;
+116		
+117	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0xd70xbd0xcb0x010x0d0x1e0xf30xbf
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772c50
+address max offset: 8
+Memory content after  bitflip:0xd70xbd0xcb0x830x0d0x1e0xf30xbf
+frame name: adjust
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 4, capacity 4 = {-1.1948371074939723, 3.2172553327224698, -2.1879723997358638, 0.034651785875678916}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-12 18:57:12]
+Fault Injection Successful after 6.784582614898682s
+[INFO -- 2018-11-12 18:57:13]
+event type: exit
+[INFO -- 2018-11-12 18:57:13]
+exit code: 0

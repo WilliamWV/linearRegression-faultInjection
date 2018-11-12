@@ -1,0 +1,52 @@
+[INFO -- 2018-11-12 17:54:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 17:54:49]
+Initialization strings:
+[INFO -- 2018-11-12 17:54:50]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 17:54:50]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 17:54:50]
+initSignal:0
+[INFO -- 2018-11-12 17:54:50]
+endSignal:10
+[INFO -- 2018-11-12 17:54:50]
+faultModel:2
+[EXCEPTION -- 2018-11-12 17:54:57]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-12 17:54:57]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=7) at ../sysdeps/ieee754/dbl-64/e_pow.c:338
+#1  __ieee754_pow_sse2 (x=7, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-7, y=3) at w_pow_compat.c:30
+#4  0x00005555555566b8 in std::pow<double, unsigned int> (__x=-7, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x00005555555556e7 in predict (v=-7) at lreg.cpp:113
+#6  0x000055555555578f in meanSquaredError () at lreg.cpp:125
+#7  0x0000555555555da8 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:191
+#8  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+333	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x800x590x40
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 8
+Memory content after  bitflip:0x450x580x190x240x000x750x9b0x08
+frame name: meanSquaredError
+symbol name: xChecksum
+symbol filename: lreg.cpp
+symbol line: 39
+value: 3.3262697872893735e-267
+value address: 0x55555575b1b8 <xChecksum>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 17:54:57]
+Fault Injection Successful after 7.354281425476074s
+[INFO -- 2018-11-12 17:55:04]
+event type: exit
+[EXCEPTION -- 2018-11-12 17:55:04]
+exit code: no exit code available

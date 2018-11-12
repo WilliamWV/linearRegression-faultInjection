@@ -1,0 +1,54 @@
+[INFO -- 2018-11-12 14:58:17]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 14:58:17]
+Initialization strings:
+[INFO -- 2018-11-12 14:58:17]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 14:58:17]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 14:58:17]
+initSignal:0
+[INFO -- 2018-11-12 14:58:17]
+endSignal:10
+[INFO -- 2018-11-12 14:58:17]
+faultModel:1
+[INFO -- 2018-11-12 14:58:19]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb20 in __pow (x=20, y=1) at w_pow_compat.c:31
+#1  0x00005555555566b8 in std::pow<double, unsigned int> (__x=20, __y=1) at /usr/include/c++/7/cmath:418
+#2  0x00005555555556e7 in predict (v=20) at lreg.cpp:113
+#3  0x00005555555557f7 in meanSquaredError () at lreg.cpp:125
+#4  0x0000555555555da8 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:191
+#5  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+26	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x270x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b170 
+address max offset: 8
+Memory content after  bitflip:0x680x270x770x550x550x550x000x00
+frame name: predict
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 20, capacity 31 = {6, -10, 2, -7, 5, 12, 8, -11, 508, 422, 344, 602, 2, 8, 212, 212, 8, 22, 92, 308}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-12 14:58:19]
+Fault Injection Successful after 2.9469733238220215s
+[INFO -- 2018-11-12 14:58:31]
+event type: exit
+[INFO -- 2018-11-12 14:58:31]
+exit code: 0

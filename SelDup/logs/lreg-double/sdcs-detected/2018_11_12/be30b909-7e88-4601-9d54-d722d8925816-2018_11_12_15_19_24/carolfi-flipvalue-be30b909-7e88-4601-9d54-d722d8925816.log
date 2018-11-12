@@ -1,0 +1,51 @@
+[INFO -- 2018-11-12 15:19:05]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 15:19:05]
+Initialization strings:
+[INFO -- 2018-11-12 15:19:05]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 15:19:05]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 15:19:05]
+initSignal:0
+[INFO -- 2018-11-12 15:19:05]
+endSignal:10
+[INFO -- 2018-11-12 15:19:05]
+faultModel:1
+[INFO -- 2018-11-12 15:19:10]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=13) at ../sysdeps/ieee754/dbl-64/e_pow.c:332
+#1  __ieee754_pow_sse2 (x=13, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-13, y=3) at w_pow_compat.c:30
+#4  0x00005555555566b8 in std::pow<double, unsigned int> (__x=-13, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x00005555555556e7 in predict (v=-13) at lreg.cpp:113
+#6  0x000055555555591a in partialDerivate (pos1=1, pos2=1) at lreg.cpp:139
+#7  0x0000555555555a81 in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:153
+#8  0x0000555555555da3 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:190
+#9  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+327	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7e0
+address max offset: 8
+Memory content after  bitflip:0x460x5a0xb70xf40x390xc50xf70x3e
+frame name: train
+symbol name: alpha2
+symbol filename: lreg.cpp
+symbol line: 174
+value: 2.2669234835815428e-05
+value address: 0x7fffffffd7e0
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 15:19:10]
+Fault Injection Successful after 5.452451467514038s
+[INFO -- 2018-11-12 15:19:23]
+event type: exit
+[INFO -- 2018-11-12 15:19:23]
+exit code: 0

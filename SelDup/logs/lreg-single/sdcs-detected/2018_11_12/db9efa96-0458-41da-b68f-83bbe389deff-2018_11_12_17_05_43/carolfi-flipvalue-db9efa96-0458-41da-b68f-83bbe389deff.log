@@ -1,0 +1,55 @@
+[INFO -- 2018-11-12 17:05:27]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 17:05:27]
+Initialization strings:
+[INFO -- 2018-11-12 17:05:27]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 17:05:27]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 17:05:27]
+initSignal:0
+[INFO -- 2018-11-12 17:05:27]
+endSignal:10
+[INFO -- 2018-11-12 17:05:27]
+faultModel:0
+[INFO -- 2018-11-12 17:05:30]
+Backtrace BEGIN:
+#0  0x000055555555666d in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b160 <y>, __n=2) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x000055555555593f in partialDerivate (pos1=0, pos2=0) at lreg.cpp:139
+#2  0x0000555555555a81 in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:153
+#3  0x0000555555555da3 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:190
+#4  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x380x40
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x010x000x380x40
+frame name: adjust
+symbol name: xChecksum
+symbol filename: lreg.cpp
+symbol line: 39
+value: 24.000015258789062
+value address: 0x55555575b1b8 <xChecksum>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 17:05:30]
+Fault Injection Successful after 3.394831657409668s
+[INFO -- 2018-11-12 17:05:42]
+event type: exit
+[INFO -- 2018-11-12 17:05:42]
+exit code: 0

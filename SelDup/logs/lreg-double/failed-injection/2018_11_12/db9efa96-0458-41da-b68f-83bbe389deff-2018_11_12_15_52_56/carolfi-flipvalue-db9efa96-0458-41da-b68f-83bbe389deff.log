@@ -1,0 +1,25 @@
+[INFO -- 2018-11-12 15:52:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 15:52:53]
+Initialization strings:
+[INFO -- 2018-11-12 15:52:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 15:52:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 15:52:53]
+initSignal:0
+[INFO -- 2018-11-12 15:52:53]
+endSignal:10
+[INFO -- 2018-11-12 15:52:53]
+faultModel:1
+[EXCEPTION -- 2018-11-12 15:52:55]
+gdbException: Cannot access memory at address 0x18555555772c80
+[EXCEPTION -- 2018-11-12 15:52:55]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-12 15:52:55]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-12 15:52:55]
+event type: exit
+[EXCEPTION -- 2018-11-12 15:52:55]
+exit code: no exit code available

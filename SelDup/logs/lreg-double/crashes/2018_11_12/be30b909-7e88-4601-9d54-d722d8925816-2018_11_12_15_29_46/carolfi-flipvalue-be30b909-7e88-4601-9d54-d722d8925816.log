@@ -1,0 +1,56 @@
+[INFO -- 2018-11-12 15:29:40]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 15:29:40]
+Initialization strings:
+[INFO -- 2018-11-12 15:29:40]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 15:29:40]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 15:29:40]
+initSignal:0
+[INFO -- 2018-11-12 15:29:40]
+endSignal:10
+[INFO -- 2018-11-12 15:29:40]
+faultModel:1
+[EXCEPTION -- 2018-11-12 15:29:43]
+gdbException: Cannot access memory at address 0x555547772340
+[INFO -- 2018-11-12 15:29:44]
+Backtrace BEGIN:
+#0  0x0000555555555929 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:139
+#1  0x0000555555555a81 in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:153
+#2  0x0000555555555da3 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:190
+#3  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+134	*/
+135	double partialDerivate(UINT pos1, UINT pos2){
+136		double pD = 0;
+137		
+138		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<x.size(); i1++, i2++){
+139			pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
+140		}
+141		pD *= (2.0/x.size());
+142		return pD;
+143	}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x400xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x0c0x000x000x400xc0
+frame name: main
+symbol name: xChecksum
+symbol filename: lreg.cpp
+symbol line: 39
+value: -32.000001430511475
+value address: 0x55555575b1b8 <xChecksum>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 15:29:44]
+Fault Injection Successful after 4.102155447006226s
+[INFO -- 2018-11-12 15:29:44]
+event type: exit
+[EXCEPTION -- 2018-11-12 15:29:44]
+exit code: no exit code available

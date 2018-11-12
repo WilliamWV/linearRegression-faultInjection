@@ -1,0 +1,65 @@
+[INFO -- 2018-11-12 17:22:12]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 17:22:12]
+Initialization strings:
+[INFO -- 2018-11-12 17:22:12]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 17:22:12]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 17:22:12]
+initSignal:0
+[INFO -- 2018-11-12 17:22:12]
+endSignal:10
+[INFO -- 2018-11-12 17:22:12]
+faultModel:2
+[EXCEPTION -- 2018-11-12 17:22:21]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-12 17:22:22]
+Backtrace BEGIN:
+#0  0x0000555555555254 in verifyDoubleDup (a=2.3997727998326579, b=2.3997727998326579) at lreg.cpp:71
+#1  0x00005555555556bd in predict (v=-7) at lreg.cpp:113
+#2  0x000055555555591a in partialDerivate (pos1=2, pos2=2) at lreg.cpp:139
+#3  0x0000555555555a81 in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:153
+#4  0x0000555555555da3 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:190
+#5  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+75	        detected = 1;	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x400x2c0x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b170 
+address max offset: 8
+Memory content after  bitflip:0xe80x6d0x320x550x1c0xdc0x400x93
+frame name: predict
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 36, capacity -979514395296569227 = {26, -14, 22, 24, -4, 32, 28, -32, -809, -989, -207, -809, -809, -1637, -377, 3, -1889, -9, -1053, -1257, -1403, -1859, -1299, 1, -1859, -219, -23, -1511, -683, -179, -759, -1299, -1623, -1011, -143, -263}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-12 17:22:22]
+Fault Injection Successful after 10.198688745498657s
+[INFO -- 2018-11-12 17:22:27]
+event type: exit
+[INFO -- 2018-11-12 17:22:27]
+exit code: 0

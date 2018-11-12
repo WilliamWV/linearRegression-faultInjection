@@ -1,0 +1,57 @@
+[INFO -- 2018-11-12 17:27:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 17:27:41]
+Initialization strings:
+[INFO -- 2018-11-12 17:27:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 17:27:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 17:27:41]
+initSignal:0
+[INFO -- 2018-11-12 17:27:41]
+endSignal:10
+[INFO -- 2018-11-12 17:27:41]
+faultModel:0
+[INFO -- 2018-11-12 17:27:43]
+Backtrace BEGIN:
+#0  0x0000555555557e54 in __gnu_cxx::new_allocator<double>::new_allocator (this=0x7fffffffd860) at /usr/include/c++/7/ext/new_allocator.h:81
+#1  0x00005555555578ad in std::allocator<double>::allocator (this=0x7fffffffd860, __a=...) at /usr/include/c++/7/bits/allocator.h:134
+#2  0x0000555555557681 in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::_Vector_impl (this=0x7fffffffd860, __a=...) at /usr/include/c++/7/bits/stl_vector.h:93
+#3  0x0000555555556da8 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd860, __n=2, __a=...) at /usr/include/c++/7/bits/stl_vector.h:137
+#4  0x000055555555688d in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#5  0x0000555555555e22 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:196
+#6  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+76	      typedef std::true_type propagate_on_container_move_assignment;
+77	#endif
+78	
+79	      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+80	
+81	      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+82	
+83	      template<typename _Tp1>
+84		new_allocator(const new_allocator<_Tp1>&) _GLIBCXX_USE_NOEXCEPT { }
+85	
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x800x540x40
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b1c0 
+address max offset: 8
+Memory content after  bitflip:0x000x000x200x000x000x800x540x40
+frame name: train
+symbol name: yChecksum
+symbol filename: lreg.cpp
+symbol line: 40
+value: 82.000000029802322
+value address: 0x55555575b1c0 <yChecksum>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 17:27:43]
+Fault Injection Successful after 2.2516188621520996s
+[INFO -- 2018-11-12 17:27:56]
+event type: exit
+[INFO -- 2018-11-12 17:27:56]
+exit code: 0

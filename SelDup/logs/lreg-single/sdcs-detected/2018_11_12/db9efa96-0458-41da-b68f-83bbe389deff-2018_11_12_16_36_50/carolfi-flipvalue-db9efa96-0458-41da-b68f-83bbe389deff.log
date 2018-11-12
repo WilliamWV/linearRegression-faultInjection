@@ -1,0 +1,57 @@
+[INFO -- 2018-11-12 16:36:34]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 16:36:34]
+Initialization strings:
+[INFO -- 2018-11-12 16:36:34]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 16:36:34]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 16:36:34]
+initSignal:0
+[INFO -- 2018-11-12 16:36:34]
+endSignal:10
+[INFO -- 2018-11-12 16:36:34]
+faultModel:0
+[EXCEPTION -- 2018-11-12 16:36:36]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-12 16:36:36]
+Backtrace BEGIN:
+#0  0x00005555555550fe in verifyUintDup (a=6, b=6) at lreg.cpp:61
+#1  0x00005555555558cd in partialDerivate (pos1=0, pos2=0) at lreg.cpp:138
+#2  0x0000555555555a81 in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:153
+#3  0x0000555555555da3 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:190
+#4  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x100xc30xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b1c0 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000xc30xc0
+frame name: partialDerivate
+symbol name: yChecksum
+symbol filename: lreg.cpp
+symbol line: 40
+value: -9728
+value address: 0x55555575b1c0 <yChecksum>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 16:36:36]
+Fault Injection Successful after 2.894284963607788s
+[INFO -- 2018-11-12 16:36:49]
+event type: exit
+[INFO -- 2018-11-12 16:36:49]
+exit code: 0

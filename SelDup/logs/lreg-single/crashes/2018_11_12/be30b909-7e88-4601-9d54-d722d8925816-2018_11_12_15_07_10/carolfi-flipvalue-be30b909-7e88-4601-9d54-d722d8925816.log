@@ -1,0 +1,60 @@
+[INFO -- 2018-11-12 15:07:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 15:07:00]
+Initialization strings:
+[INFO -- 2018-11-12 15:07:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 15:07:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 15:07:00]
+initSignal:0
+[INFO -- 2018-11-12 15:07:00]
+endSignal:10
+[INFO -- 2018-11-12 15:07:00]
+faultModel:0
+[EXCEPTION -- 2018-11-12 15:07:01]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-12 15:07:03]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-12 15:07:04]
+Backtrace BEGIN:
+#0  verifyUintDup (a=3223861937, b=813138267) at lreg.cpp:61
+#1  0x00005555555556d1 in predict (v=6) at lreg.cpp:113
+#2  0x000055555555578f in meanSquaredError () at lreg.cpp:125
+#3  0x0000555555555da8 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:191
+#4  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x680xde0xff0xff0xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd8e0
+address max offset: 8
+Memory content after  bitflip:0x680xde0xff0xdf0xff0x7f0x000x00
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 214
+value: 0x7fffffffde68
+value address: 0x7fffffffd8e0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 15:07:04]
+Fault Injection Successful after 4.074051856994629s
+[INFO -- 2018-11-12 15:07:09]
+event type: exit
+[EXCEPTION -- 2018-11-12 15:07:09]
+exit code: no exit code available

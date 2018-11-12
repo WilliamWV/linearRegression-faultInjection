@@ -1,0 +1,56 @@
+[INFO -- 2018-11-12 18:23:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 18:23:24]
+Initialization strings:
+[INFO -- 2018-11-12 18:23:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 18:23:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 18:23:24]
+initSignal:0
+[INFO -- 2018-11-12 18:23:24]
+endSignal:10
+[INFO -- 2018-11-12 18:23:24]
+faultModel:2
+[INFO -- 2018-11-12 18:23:28]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=24) at ../sysdeps/ieee754/dbl-64/e_pow.c:332
+#1  __ieee754_pow_sse2 (x=24, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76bcb14 in __pow (x=24, y=3) at w_pow_compat.c:30
+#3  0x00005555555566b8 in std::pow<double, unsigned int> (__x=24, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555556e7 in predict (v=24) at lreg.cpp:113
+#5  0x000055555555578f in meanSquaredError () at lreg.cpp:125
+#6  0x0000555555555da8 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:191
+#7  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+327	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x5555557723a0
+address max offset: 8
+Memory content after  bitflip:0x310xd20x330x950x200xdd0xab0x4c
+frame name: main
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 4, capacity 4 = {-0.22635146853010671, 0.4857210498909561, -2.2021190679427751, -0.020682964401621144}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-12 18:23:28]
+Fault Injection Successful after 4.450304269790649s
+[INFO -- 2018-11-12 18:23:38]
+event type: exit
+[INFO -- 2018-11-12 18:23:38]
+exit code: 0

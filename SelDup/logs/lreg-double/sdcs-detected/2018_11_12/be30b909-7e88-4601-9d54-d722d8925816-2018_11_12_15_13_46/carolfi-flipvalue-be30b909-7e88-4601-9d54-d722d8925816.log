@@ -1,0 +1,54 @@
+[INFO -- 2018-11-12 15:13:27]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 15:13:27]
+Initialization strings:
+[INFO -- 2018-11-12 15:13:27]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 15:13:27]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 15:13:27]
+initSignal:0
+[INFO -- 2018-11-12 15:13:27]
+endSignal:10
+[INFO -- 2018-11-12 15:13:27]
+faultModel:1
+[INFO -- 2018-11-12 15:13:30]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::size (this=0x11) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x0000555555555750 in meanSquaredError () at lreg.cpp:124
+#2  0x0000555555555da8 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:191
+#3  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x400xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 8
+Memory content after  bitflip:0x110x000x000x000x000x000x400xc0
+frame name: std::vector<double, std::allocator<double> >::size
+symbol name: xChecksum
+symbol filename: lreg.cpp
+symbol line: 39
+value: -32.000000000000121
+value address: 0x55555575b1b8 <xChecksum>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 15:13:30]
+Fault Injection Successful after 3.716266393661499s
+[INFO -- 2018-11-12 15:13:44]
+event type: exit
+[INFO -- 2018-11-12 15:13:44]
+exit code: 0

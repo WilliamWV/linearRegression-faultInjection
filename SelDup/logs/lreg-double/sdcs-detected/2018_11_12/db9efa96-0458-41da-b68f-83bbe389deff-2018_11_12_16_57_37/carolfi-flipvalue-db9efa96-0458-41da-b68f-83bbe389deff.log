@@ -1,0 +1,56 @@
+[INFO -- 2018-11-12 16:57:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 16:57:21]
+Initialization strings:
+[INFO -- 2018-11-12 16:57:21]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 16:57:21]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 16:57:21]
+initSignal:0
+[INFO -- 2018-11-12 16:57:21]
+endSignal:10
+[INFO -- 2018-11-12 16:57:21]
+faultModel:1
+[INFO -- 2018-11-12 16:57:23]
+Backtrace BEGIN:
+#0  0x0000555555554ed0 in pow@plt ()
+#1  0x00005555555566b8 in std::pow<double, unsigned int> (__x=-14, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555995 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:139
+#3  0x0000555555555a81 in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:153
+#4  0x0000555555555da3 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:190
+#5  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+200		//T1 = bestT;
+201	}
+202	
+203	/*
+204	It must receive an input file formated as follows:
+205		1° Line : one integer T -> number of test cases
+206		2° to 5° repeat to all test case	
+207		2° Line : method parameters -> alpha, iterations, N, size of 
+208			      training set, predictions
+209		3° Line : inputs x of the training set
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x380x40
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x380x20
+frame name: adjust
+symbol name: xChecksum
+symbol filename: lreg.cpp
+symbol line: 39
+value: 1.7900017754880496e-153
+value address: 0x55555575b1b8 <xChecksum>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 16:57:23]
+Fault Injection Successful after 2.0928561687469482s
+[INFO -- 2018-11-12 16:57:35]
+event type: exit
+[INFO -- 2018-11-12 16:57:35]
+exit code: 0

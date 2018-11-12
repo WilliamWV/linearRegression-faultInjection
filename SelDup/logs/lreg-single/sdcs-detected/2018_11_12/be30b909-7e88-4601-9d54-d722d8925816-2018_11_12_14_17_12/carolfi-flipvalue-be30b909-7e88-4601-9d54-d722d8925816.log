@@ -1,0 +1,55 @@
+[INFO -- 2018-11-12 14:16:52]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 14:16:52]
+Initialization strings:
+[INFO -- 2018-11-12 14:16:52]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 14:16:52]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 14:16:52]
+initSignal:0
+[INFO -- 2018-11-12 14:16:52]
+endSignal:10
+[INFO -- 2018-11-12 14:16:52]
+faultModel:0
+[INFO -- 2018-11-12 14:16:56]
+Backtrace BEGIN:
+#0  0x0000555555556661 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b180 <T1>, __n=0) at /usr/include/c++/7/bits/stl_vector.h:798
+#1  0x00005555555556a7 in predict (v=-13) at lreg.cpp:113
+#2  0x000055555555578f in meanSquaredError () at lreg.cpp:125
+#3  0x0000555555555da8 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:191
+#4  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x720xa50x40
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b1c0 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x040x720xa50x40
+frame name: meanSquaredError
+symbol name: yChecksum
+symbol filename: lreg.cpp
+symbol line: 40
+value: 2745.0078125
+value address: 0x55555575b1c0 <yChecksum>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 14:16:56]
+Fault Injection Successful after 4.0413978099823s
+[INFO -- 2018-11-12 14:17:11]
+event type: exit
+[INFO -- 2018-11-12 14:17:11]
+exit code: 0

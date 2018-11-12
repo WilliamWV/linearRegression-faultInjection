@@ -1,0 +1,62 @@
+[INFO -- 2018-11-12 16:03:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 16:03:19]
+Initialization strings:
+[INFO -- 2018-11-12 16:03:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 16:03:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 16:03:19]
+initSignal:0
+[INFO -- 2018-11-12 16:03:19]
+endSignal:10
+[INFO -- 2018-11-12 16:03:19]
+faultModel:1
+[INFO -- 2018-11-12 16:03:27]
+Backtrace BEGIN:
+#0  0x0000555555557a54 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-1.0023140759114941, __last=0, __result=-1.0023140759114941) at /usr/include/c++/7/bits/stl_algobase.h:424
+#1  0x0000555555557263 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-1.0023140759114941, __last=0, __result=-1.0023140759114941) at /usr/include/c++/7/bits/stl_algobase.h:456
+#2  0x0000555555556ba5 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x0000555555555d40 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:189
+#4  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+419	    inline _OI
+420	    __copy_move_a2(_II __first, _II __last, _OI __result)
+421	    {
+422	      return _OI(std::__copy_move_a<_IsMove>(std::__niter_base(__first),
+423						     std::__niter_base(__last),
+424						     std::__niter_base(__result)));
+425	    }
+426	
+427	  /**
+428	   *  @brief Copies the range [first,last) into result.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x2c0x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b1a8 
+address max offset: 8
+Memory content after  bitflip:0x700x2c0x770x550x550x550x300x00
+frame name: std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > >
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 1688849860263940, capacity 4 = {-1.0023140759114941, 2.7830692358194624, -2.1892150526648511, 0.035281850726089185, 0, 2.4209216646221081e-322, -1.0023140759114941, 2.7830692358194624, -2.1892150526648511, 0.035281850726089185, 0, 2.4209216646221081e-322, -1.0023140759114941, 2.7830692358194624, -2.1892150526648511, 0.035281850726089185, 0, 2.4209216646221081e-322, 4.6355706481362138e-310, 2.7807613254638213, -2.1960210622283736, -0.02399493734030058, 0, 2.4209216646221081e-322, 0, 2.7830692358194624, -2.1892150526648511, 0.035281850726089185, 0, 2.0593150184308997e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-12 16:03:27]
+Fault Injection Successful after 8.45175051689148s
+[INFO -- 2018-11-12 16:03:30]
+event type: exit
+[INFO -- 2018-11-12 16:03:30]
+exit code: 0

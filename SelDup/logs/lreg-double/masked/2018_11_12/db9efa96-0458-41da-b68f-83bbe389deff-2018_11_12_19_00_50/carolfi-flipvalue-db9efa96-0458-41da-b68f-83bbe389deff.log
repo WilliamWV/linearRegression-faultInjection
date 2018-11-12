@@ -1,0 +1,55 @@
+[INFO -- 2018-11-12 19:00:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 19:00:41]
+Initialization strings:
+[INFO -- 2018-11-12 19:00:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 19:00:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 19:00:41]
+initSignal:0
+[INFO -- 2018-11-12 19:00:41]
+endSignal:10
+[INFO -- 2018-11-12 19:00:41]
+faultModel:1
+[INFO -- 2018-11-12 19:00:42]
+Backtrace BEGIN:
+#0  verifyDoubleDup (a=0, b=1.999997031896332) at lreg.cpp:70
+#1  0x00005555555556bd in predict (v=-16) at lreg.cpp:113
+#2  0x00005555555557f7 in meanSquaredError () at lreg.cpp:125
+#3  0x0000555555555da8 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:191
+#4  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b1c8 
+address max offset: 4
+Memory content after  bitflip:0x000x0c0x000x00
+frame name: meanSquaredError
+symbol name: detected
+symbol filename: lreg.cpp
+symbol line: 58
+value: 3072
+value address: 0x55555575b1c8 <detected>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-12 19:00:42]
+Fault Injection Successful after 1.294835090637207s
+[INFO -- 2018-11-12 19:00:49]
+event type: exit
+[INFO -- 2018-11-12 19:00:49]
+exit code: 0

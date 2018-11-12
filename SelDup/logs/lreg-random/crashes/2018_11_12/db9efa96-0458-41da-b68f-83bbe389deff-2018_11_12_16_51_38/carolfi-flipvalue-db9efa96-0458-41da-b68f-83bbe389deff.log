@@ -1,0 +1,59 @@
+[INFO -- 2018-11-12 16:51:33]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 16:51:33]
+Initialization strings:
+[INFO -- 2018-11-12 16:51:33]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 16:51:33]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 16:51:33]
+initSignal:0
+[INFO -- 2018-11-12 16:51:33]
+endSignal:10
+[INFO -- 2018-11-12 16:51:33]
+faultModel:2
+[EXCEPTION -- 2018-11-12 16:51:36]
+gdbException: Cannot access memory at address 0x664ebc757d3157a7
+[EXCEPTION -- 2018-11-12 16:51:36]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-12 16:51:37]
+Backtrace BEGIN:
+#0  0x00005555555556a7 in predict (v=16) at lreg.cpp:113
+#1  0x000055555555591a in partialDerivate (pos1=0, pos2=0) at lreg.cpp:139
+#2  0x0000555555555a81 in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:153
+#3  0x0000555555555da3 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:190
+#4  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+108	*/
+109	double predict(double v){
+110		double val = 0;
+111		
+112		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+113			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+114		}
+115		return val;
+116		
+117	}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000xf80xff
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd6f8
+address max offset: 8
+Memory content after  bitflip:0x4f0x1e0xa30x8d0xf90x740x030xf5
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 110
+value: -4.5647890949642848e+255
+value address: 0x7fffffffd6f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 16:51:37]
+Fault Injection Successful after 4.077902793884277s
+[INFO -- 2018-11-12 16:51:37]
+event type: exit
+[EXCEPTION -- 2018-11-12 16:51:37]
+exit code: no exit code available

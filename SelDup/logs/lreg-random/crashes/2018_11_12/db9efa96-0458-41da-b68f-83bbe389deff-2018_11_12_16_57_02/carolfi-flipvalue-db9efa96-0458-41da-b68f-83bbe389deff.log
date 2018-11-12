@@ -1,0 +1,56 @@
+[INFO -- 2018-11-12 16:56:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 16:56:58]
+Initialization strings:
+[INFO -- 2018-11-12 16:56:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 16:56:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 16:56:58]
+initSignal:0
+[INFO -- 2018-11-12 16:56:58]
+endSignal:10
+[INFO -- 2018-11-12 16:56:58]
+faultModel:2
+[EXCEPTION -- 2018-11-12 16:56:59]
+gdbException: Cannot access memory at address 0x6ea9442c18ddba63
+[INFO -- 2018-11-12 16:57:00]
+Backtrace BEGIN:
+#0  0x00005555555558de in partialDerivate (pos1=2, pos2=2) at lreg.cpp:138
+#1  0x0000555555555a81 in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:153
+#2  0x0000555555555da3 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:190
+#3  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+133		to the adjustment variable whose position in T is passed in pos
+134	*/
+135	double partialDerivate(UINT pos1, UINT pos2){
+136		double pD = 0;
+137		
+138		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<x.size(); i1++, i2++){
+139			pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
+140		}
+141		pD *= (2.0/x.size());
+142		return pD;
+
+Backtrace END
+Memory content before bitflip:0x060x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd92c
+address max offset: 4
+Memory content after  bitflip:0x5d0x180xd80xe2
+frame name: main
+symbol name: pred2
+symbol filename: lreg.cpp
+symbol line: 233
+value: 3805812829
+value address: 0x7fffffffd92c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-12 16:57:00]
+Fault Injection Successful after 2.1757071018218994s
+[INFO -- 2018-11-12 16:57:00]
+event type: exit
+[EXCEPTION -- 2018-11-12 16:57:00]
+exit code: no exit code available

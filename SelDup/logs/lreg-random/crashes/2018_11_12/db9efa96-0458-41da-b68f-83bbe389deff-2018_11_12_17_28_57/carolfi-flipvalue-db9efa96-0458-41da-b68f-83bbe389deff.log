@@ -1,0 +1,59 @@
+[INFO -- 2018-11-12 17:28:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 17:28:51]
+Initialization strings:
+[INFO -- 2018-11-12 17:28:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 17:28:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 17:28:51]
+initSignal:0
+[INFO -- 2018-11-12 17:28:51]
+endSignal:10
+[INFO -- 2018-11-12 17:28:51]
+faultModel:2
+[EXCEPTION -- 2018-11-12 17:28:54]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-12 17:28:54]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-12 17:28:56]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0f897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff703cb9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1690a in malloc_printerr (str=str@entry=0x7ffff703e7a8 "munmap_chunk(): invalid pointer") at malloc.c:5350
+#4  0x00007ffff6f1decc in munmap_chunk (p=0x555555772350) at malloc.c:2846
+#5  __GI___libc_free (mem=0x555555772360) at malloc.c:3117
+#6  0x0000555555557ea8 in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd820, __p=0x555555772360) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x000055555555796e in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772360, __n=3) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x00005555555570c2 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd820, __p=0x555555772360, __n=3) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x0000555555556d59 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd820, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#10 0x00005555555567ab in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd820, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#11 0x0000555555555eab in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:184
+#12 0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff72738e8 
+address max offset: 8
+Memory content after  bitflip:0x6c0x890x140x0f0x8b0x9d0xb90x04
+frame name: munmap_chunk
+symbol name: __free_hook
+symbol filename: malloc.c
+symbol line: 1864
+value: 0x0
+value address: 0x7ffff72738e8 <__free_hook>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-12 17:28:56]
+Fault Injection Successful after 5.627867698669434s
+[INFO -- 2018-11-12 17:28:57]
+event type: exit
+[EXCEPTION -- 2018-11-12 17:28:57]
+exit code: no exit code available

@@ -1,0 +1,55 @@
+[INFO -- 2018-11-12 19:01:20]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-12 19:01:20]
+Initialization strings:
+[INFO -- 2018-11-12 19:01:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-12 19:01:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-12 19:01:20]
+initSignal:0
+[INFO -- 2018-11-12 19:01:20]
+endSignal:10
+[INFO -- 2018-11-12 19:01:20]
+faultModel:2
+[INFO -- 2018-11-12 19:01:21]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb31 in __pow (x=14, y=0) at w_pow_compat.c:31
+#1  0x00005555555566b8 in std::pow<double, unsigned int> (__x=14, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x00005555555556e7 in predict (v=14) at lreg.cpp:113
+#3  0x000055555555591a in partialDerivate (pos1=0, pos2=0) at lreg.cpp:139
+#4  0x0000555555555a81 in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:153
+#5  0x0000555555555da3 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:190
+#6  0x00005555555562e6 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:246
+
+26	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772330
+address max offset: 8
+Memory content after  bitflip:0x800xb60x7d0xac0x0b0xc10x130x02
+frame name: partialDerivate
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 8, capacity 8 = {13, -7, 11, 12, -2, 16, 14, -16}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-12 19:01:21]
+Fault Injection Successful after 1.5704305171966553s
+[INFO -- 2018-11-12 19:01:29]
+event type: exit
+[INFO -- 2018-11-12 19:01:29]
+exit code: 0
