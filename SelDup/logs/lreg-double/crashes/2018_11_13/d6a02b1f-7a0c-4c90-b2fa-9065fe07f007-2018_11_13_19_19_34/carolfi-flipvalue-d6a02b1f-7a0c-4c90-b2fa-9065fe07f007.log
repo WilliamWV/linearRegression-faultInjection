@@ -1,0 +1,67 @@
+[INFO -- 2018-11-13 19:19:29]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-13 19:19:29]
+Initialization strings:
+[INFO -- 2018-11-13 19:19:29]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-13 19:19:29]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-13 19:19:29]
+initSignal:0
+[INFO -- 2018-11-13 19:19:29]
+endSignal:5
+[INFO -- 2018-11-13 19:19:29]
+faultModel:1
+[EXCEPTION -- 2018-11-13 19:19:30]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-13 19:19:30]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-13 19:19:31]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-13 19:19:31]
+Backtrace BEGIN:
+#0  0x0000555555555b27 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:144
+#1  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#2  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+139		double pD = 0;
+140		
+141		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(x.size() - 1); i1++, i2++){
+142			pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
+143		}
+144		pD *= (2.0/(x.size() - 1));
+145		return pD;
+146	}
+147	
+148	/**
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772468
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x410x000x00
+frame name: adjust
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 10, capacity 13 = {4.6059028871099069e-305, 4.6192533302609501e-305, 1.7904891205175136e-307, 1.798311645801328e-307, 1.8026574931812249e-307, 1.7765824089018436e-307, 4.5569512622227484e-305, 4.5881022962418493e-305, 4.5992276655343853e-305, 1.8026574931812249e-307, 4.6036778132513997e-305, 1.379297264127427e-312, 0, 0, -8.4425425152863546e-227, 0, 1.7765824089018436e-307, 1.8238434991582221e-307, 1.8224854218520044e-307, 1.8348439253385861e-307, 1.8141739887379516e-307, 1.82688559232415e-307, 1.8348439253385861e-307, 1.7904891205175136e-307, 4.5658515576567772e-305, 1.8035266626572042e-307, 1.8163469124279e-307, 1.8348439253385861e-307, 1.8498948170847446e-307, 0, 0, 0, 9.775796363198735e-150, 0, 2.8453131965660838e-306, 2.8453131965660838e-306, 6.4004093949134758e-145, -2.2181357552966519e+130, -5.1070671461941133e+179, 7.2799618168968422e+280, 1.5610724989767569e-148, -0, 1.8107697843883745e-312, 2.8453131965660838e-306, 6.4004093949134758e-145, 0, 0, 2.8453131965660838e-306, 7.4111677581117814e-68, 9.8813129168249309e-324, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.7272337110188889e-77, -5.4865705307238486e+303, 8.2890455643924491e-317, 0, -0, -5.4865705307238949e+303, 7.2911220195563967e-304, -1.2882297539194267e-231, 1.8107697843933151e-312, 0, 0, 0, 0, 0, -1.4916681462400413e-154, 2.716151747497088e-312, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.6815615859885194e+154, 131087.99998312342, 2.4600631144628159e+260, 4.6948222581533121e+257, 2.9095655683757587e-14, 4.6737316579365623e+164, 1.9759224698198629e-258, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-13 19:19:31]
+Fault Injection Successful after 2.872234582901001s
+[INFO -- 2018-11-13 19:19:33]
+event type: exit
+[EXCEPTION -- 2018-11-13 19:19:33]
+exit code: no exit code available

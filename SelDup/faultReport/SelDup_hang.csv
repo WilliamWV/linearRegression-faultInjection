@@ -1,6 +1,25 @@
 Variable Name;Variable File;Variable Line;Fault Injection Time(s);Injection Time Interval;Fault Model
+testCases;lreg.cpp;229;0.7522761821746826;0-5;Single bit-flip
+iter1;lreg.cpp;177;2.997060537338257;0-5;Single bit-flip
+testCases;lreg.cpp;229;2.5489919185638428;0-5;Single bit-flip
 testCases;lreg.cpp;229;1.5316224098205566;0-5;Single bit-flip
+iter1;lreg.cpp;177;2.8447346687316895;0-5;Single bit-flip
+T1;lreg.cpp;36;3.904421806335449;0-5;Single bit-flip
+testCases;lreg.cpp;229;1.9100055694580078;0-5;Single bit-flip
 testCases;lreg.cpp;229;2.638028860092163;0-5;Random bit-flip
+predictions;lreg.cpp;236;3.300243616104126;0-5;Random bit-flip
+predictions;lreg.cpp;236;1.7625343799591064;0-5;Random bit-flip
 predictions;lreg.cpp;236;3.561494827270508;0-5;Random bit-flip
 iter1;lreg.cpp;177;3.424832820892334;0-5;Random bit-flip
+iter1;lreg.cpp;177;4.621539831161499;0-5;Random bit-flip
+iter1;lreg.cpp;177;2.7774622440338135;0-5;Random bit-flip
+predictions;lreg.cpp;236;3.586153984069824;0-5;Random bit-flip
+iter1;lreg.cpp;177;2.455120801925659;0-5;Random bit-flip
+testCases;lreg.cpp;229;3.293400526046753;0-5;Double bit-flip
+iter1;lreg.cpp;177;2.1541709899902344;0-5;Double bit-flip
+testCases;lreg.cpp;229;2.1172733306884766;0-5;Double bit-flip
+testCases;lreg.cpp;229;2.4424524307250977;0-5;Double bit-flip
+testCases;lreg.cpp;229;2.9538190364837646;0-5;Double bit-flip
+predictions;lreg.cpp;236;4.565854549407959;0-5;Double bit-flip
+predictions;lreg.cpp;236;3.0859246253967285;0-5;Double bit-flip
 iter1;lreg.cpp;177;4.492149353027344;0-5;Double bit-flip

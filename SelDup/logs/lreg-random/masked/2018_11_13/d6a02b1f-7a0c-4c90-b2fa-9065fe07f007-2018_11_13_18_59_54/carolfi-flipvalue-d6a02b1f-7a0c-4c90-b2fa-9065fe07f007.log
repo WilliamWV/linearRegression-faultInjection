@@ -1,0 +1,59 @@
+[INFO -- 2018-11-13 18:59:44]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-13 18:59:44]
+Initialization strings:
+[INFO -- 2018-11-13 18:59:44]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-13 18:59:44]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-13 18:59:44]
+initSignal:0
+[INFO -- 2018-11-13 18:59:44]
+endSignal:5
+[INFO -- 2018-11-13 18:59:44]
+faultModel:2
+[INFO -- 2018-11-13 18:59:46]
+Backtrace BEGIN:
+#0  0x000055555555717f in std::vector<double, std::allocator<double> >::end (this=0x7fffffffd800) at /usr/include/c++/7/bits/stl_vector.h:590
+#1  0x0000555555556a29 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#2  0x0000555555555f47 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:199
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+585	       *  Returns a read-only (constant) iterator that points one past
+586	       *  the last element in the %vector.  Iteration is done in
+587	       *  ordinary element order.
+588	       */
+589	      const_iterator
+590	      end() const _GLIBCXX_NOEXCEPT
+591	      { return const_iterator(this->_M_impl._M_finish); }
+592	
+593	      /**
+594	       *  Returns a read/write reverse iterator that points to the
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x600x250x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd868
+address max offset: 8
+Memory content after  bitflip:0x640x140xa00x710xc30xa10xb60xc0
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd860
+value address: 0x7fffffffd768
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-13 18:59:46]
+Fault Injection Successful after 2.721667528152466s
+[INFO -- 2018-11-13 18:59:53]
+event type: exit
+[INFO -- 2018-11-13 18:59:53]
+exit code: 0

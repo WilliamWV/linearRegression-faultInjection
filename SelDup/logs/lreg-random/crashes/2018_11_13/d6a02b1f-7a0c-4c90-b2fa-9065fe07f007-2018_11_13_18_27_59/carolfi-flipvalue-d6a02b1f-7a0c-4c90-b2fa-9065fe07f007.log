@@ -1,0 +1,57 @@
+[INFO -- 2018-11-13 18:27:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-13 18:27:54]
+Initialization strings:
+[INFO -- 2018-11-13 18:27:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-13 18:27:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-13 18:27:54]
+initSignal:0
+[INFO -- 2018-11-13 18:27:54]
+endSignal:5
+[INFO -- 2018-11-13 18:27:54]
+faultModel:2
+[EXCEPTION -- 2018-11-13 18:27:57]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-13 18:27:57]
+Backtrace BEGIN:
+#0  0x00007ffff76da516 in __ieee754_pow_sse2 (x=-14, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:65
+#1  0x00007ffff76bcb14 in __pow (x=-14, y=0) at w_pow_compat.c:30
+#2  0x0000555555556826 in std::pow<double, unsigned int> (__x=-14, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555814 in predict (v=-14) at lreg.cpp:116
+#4  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#5  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+60	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0xb50x4d0xb50xcc0xbe0xb00xec0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772340
+address max offset: 8
+Memory content after  bitflip:0x040x970xf20x1b0x230x920x810x30
+frame name: meanSquaredError
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 3, capacity 3 = {4.8558338212313513e-75, 3.9998075272653311, 1.000202987027252}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-13 18:27:57]
+Fault Injection Successful after 3.7897422313690186s
+[INFO -- 2018-11-13 18:27:58]
+event type: exit
+[EXCEPTION -- 2018-11-13 18:27:58]
+exit code: no exit code available

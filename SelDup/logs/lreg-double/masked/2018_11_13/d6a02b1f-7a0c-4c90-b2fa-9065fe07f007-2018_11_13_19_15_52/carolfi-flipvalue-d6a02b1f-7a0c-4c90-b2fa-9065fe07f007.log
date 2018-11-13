@@ -1,0 +1,59 @@
+[INFO -- 2018-11-13 19:15:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-13 19:15:43]
+Initialization strings:
+[INFO -- 2018-11-13 19:15:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-13 19:15:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-13 19:15:43]
+initSignal:0
+[INFO -- 2018-11-13 19:15:43]
+endSignal:5
+[INFO -- 2018-11-13 19:15:43]
+faultModel:1
+[EXCEPTION -- 2018-11-13 19:15:45]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-13 19:15:45]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-13 19:15:46]
+Backtrace BEGIN:
+#0  0x0000555555555254 in verifyDoubleDup (a=3.9991295670832367, b=3.9991295670832367) at lreg.cpp:71
+#1  0x00005555555557ea in predict (v=13) at lreg.cpp:116
+#2  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+75	        detected = 1;	
+
+Backtrace END
+Memory content before bitflip:0x300x750x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd8dc
+address max offset: 4
+Memory content after  bitflip:0x500x750x000x00
+frame name: main
+symbol name: iterations
+symbol filename: lreg.cpp
+symbol line: 236
+value: 30032
+value address: 0x7fffffffd8dc
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-13 19:15:46]
+Fault Injection Successful after 3.0718350410461426s
+[INFO -- 2018-11-13 19:15:51]
+event type: exit
+[INFO -- 2018-11-13 19:15:51]
+exit code: 0

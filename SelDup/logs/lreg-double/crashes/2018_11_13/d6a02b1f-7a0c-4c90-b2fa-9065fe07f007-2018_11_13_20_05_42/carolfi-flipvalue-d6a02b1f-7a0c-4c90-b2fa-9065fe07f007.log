@@ -1,0 +1,58 @@
+[INFO -- 2018-11-13 20:05:40]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-13 20:05:40]
+Initialization strings:
+[INFO -- 2018-11-13 20:05:40]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-13 20:05:40]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-13 20:05:40]
+initSignal:0
+[INFO -- 2018-11-13 20:05:40]
+endSignal:5
+[INFO -- 2018-11-13 20:05:40]
+faultModel:1
+[EXCEPTION -- 2018-11-13 20:05:41]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-13 20:05:41]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-13 20:05:41]
+Backtrace BEGIN:
+#0  0x00005555555557d4 in predict (v=-14) at lreg.cpp:116
+#1  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000xf80xff
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd748
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x060x000x000xf80xff
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 113
+value: -nan(0x8000006000000)
+value address: 0x7fffffffd748
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-13 20:05:41]
+Fault Injection Successful after 1.852245569229126s
+[INFO -- 2018-11-13 20:05:42]
+event type: exit
+[EXCEPTION -- 2018-11-13 20:05:42]
+exit code: no exit code available

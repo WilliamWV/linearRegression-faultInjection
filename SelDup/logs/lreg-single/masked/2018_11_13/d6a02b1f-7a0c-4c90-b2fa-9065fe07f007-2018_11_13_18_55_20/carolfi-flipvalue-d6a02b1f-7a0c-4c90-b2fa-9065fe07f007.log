@@ -1,0 +1,56 @@
+[INFO -- 2018-11-13 18:55:10]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-13 18:55:10]
+Initialization strings:
+[INFO -- 2018-11-13 18:55:10]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-13 18:55:10]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-13 18:55:10]
+initSignal:0
+[INFO -- 2018-11-13 18:55:10]
+endSignal:5
+[INFO -- 2018-11-13 18:55:10]
+faultModel:0
+[INFO -- 2018-11-13 18:55:13]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator[] (this=0x2, __n=2) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x00005555555557d4 in predict (v=1) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Memory content before bitflip:0x700x870x8b0xa10xc30xda0x390xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd728
+address max offset: 8
+Memory content after  bitflip:0x700x870x8b0xa10xc30xfa0x390xc0
+frame name: partialDerivate
+symbol name: pD
+symbol filename: lreg.cpp
+symbol line: 139
+value: -25.979547592701635
+value address: 0x7fffffffd728
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-13 18:55:13]
+Fault Injection Successful after 3.9353268146514893s
+[INFO -- 2018-11-13 18:55:19]
+event type: exit
+[INFO -- 2018-11-13 18:55:19]
+exit code: 0
