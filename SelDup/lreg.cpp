@@ -36,8 +36,8 @@ vector<double> y; // observed values of training set inputs
 vector<double> T1; // the adjustment variables
 vector<double> T2;
 
-double xChecksum = 0;
-double yChecksum = 0;
+//double xChecksum = 0;
+//double yChecksum = 0;
 
 /**
 	Alterações na duplicação seletiva
@@ -78,16 +78,19 @@ double verifyDoubleDup(double a, double b){
 }
 
 
-void verifyChecksum(vector<double> vec, double check){
+void verifyChecksum(vector<double> vec){
 	if(detected!=1){
 		double temp = 0;		
-		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<vec.size(); i1++, i2++){
+		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(vec.size() - 1); i1++, i2++){
 			temp+= vec[verifyUintDup(i1, i2)];
 		}
-		if(temp!=check){
+		if(temp!=vec[vec.size() - 1]){
 			//gerar entrada no log
 			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
-			fp << "checksum failed"<<endl;
+			fp << "checksum failed: actual = "<<temp<<"expecting"<<vec[vec.size()-1]<<endl;
+			for(int i = 0; i<vec.size(); i++) fp<< vec[i] << " ";
+			fp<<endl;
+
 		    detected = 1;
 		}
 	}
@@ -121,10 +124,10 @@ double predict(double v){
 double meanSquaredError(){
 	double error = 0;
 	
-	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<x.size(); i1++, i2++){
+	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(x.size() - 1); i1++, i2++){
 		error+= ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)]) * (predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)]));	
 	}
-	error /= x.size();
+	error /= (x.size() - 1);
 	return error;
 
 }
@@ -135,10 +138,10 @@ double meanSquaredError(){
 double partialDerivate(UINT pos1, UINT pos2){
 	double pD = 0;
 	
-	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<x.size(); i1++, i2++){
+	for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(x.size() - 1); i1++, i2++){
 		pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
 	}
-	pD *= (2.0/x.size());
+	pD *= (2.0/(x.size() - 1));
 	return pD;
 }
 
@@ -227,7 +230,9 @@ int main(int argc, char* argv[]){
 	inp >> testCases;
 	
 	for (UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<testCases; i1++, i2++){
-		double alpha, temp;
+		double alpha, temp, xChecksum, yChecksum;
+		xChecksum = 0.0;
+		yChecksum = 0.0;
 		UINT iterations, N, sizeOfTraining, predictions;
 		inp >> alpha >> iterations >> N >> sizeOfTraining >> predictions;
 		UINT pred2 = predictions;
@@ -237,20 +242,23 @@ int main(int argc, char* argv[]){
 			x.push_back(temp);
 			xChecksum+=temp;
 		} 
+		x.push_back(xChecksum);
 		for (UINT j1 = 0, j2 = 0; verifyUintDup(j1, j2)<sizeOfTraining; j1++, j2++){
 			inp >> temp;
 			y.push_back(temp);
 			yChecksum+=temp;
 		} 
+		y.push_back(yChecksum);
 		//TRAINING
 		train(iterations, iterations, N, alpha, alpha);
 		for (UINT j1 = 0, j2 = 0; verifyUintDup(j1, j2) < verifyUintDup(predictions, pred2); j1++, j2++){
 			inp >> temp;
 			out<<predict(temp)<< endl;
 		}
-		verifyChecksum(x, xChecksum);
-		verifyChecksum(y, yChecksum);
-			
+		verifyChecksum(x);
+		verifyChecksum(y);
+		x.clear();
+		y.clear();
 	}
 	
 	return 0;

@@ -1,0 +1,63 @@
+[INFO -- 2018-11-13 17:45:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-13 17:45:15]
+Initialization strings:
+[INFO -- 2018-11-13 17:45:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-13 17:45:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-13 17:45:15]
+initSignal:0
+[INFO -- 2018-11-13 17:45:15]
+endSignal:5
+[INFO -- 2018-11-13 17:45:15]
+faultModel:0
+[INFO -- 2018-11-13 17:45:18]
+Backtrace BEGIN:
+#0  std::__copy_move_a<false, double const*, double*> (__first=0x555555772520, __last=0x555555772538, __result=0x555555772540) at /usr/include/c++/7/bits/stl_algobase.h:380
+#1  0x0000555555557bad in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-0.4016323728657536, __last=1.6304166312761136e-322, __result=-0.40155143466250537) at /usr/include/c++/7/bits/stl_algobase.h:422
+#2  0x00005555555573d1 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-0.4016323728657536, __last=1.6304166312761136e-322, __result=-0.40155143466250537) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x0000555555556d13 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#4  0x0000555555555f26 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:197
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+375	    __copy_move_a(_II __first, _II __last, _OI __result)
+376	    {
+377	      typedef typename iterator_traits<_II>::value_type _ValueTypeI;
+378	      typedef typename iterator_traits<_OI>::value_type _ValueTypeO;
+379	      typedef typename iterator_traits<_II>::iterator_category _Category;
+380	      const bool __simple = (__is_trivial(_ValueTypeI)
+381		                     && __is_pointer<_II>::__value
+382		                     && __is_pointer<_OI>::__value
+383				     && __are_same<_ValueTypeI, _ValueTypeO>::__value);
+384	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x800x240x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b150 
+address max offset: 8
+Memory content after  bitflip:0x000x240x770x550x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 13, capacity 0 = {2, -17, -4, -18, 13, 21, 6, 4, -7, 2, 24, 16, 42}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-13 17:45:18]
+Fault Injection Successful after 3.028515338897705s
+[INFO -- 2018-11-13 17:45:23]
+event type: exit
+[INFO -- 2018-11-13 17:45:23]
+exit code: 0

@@ -1,0 +1,57 @@
+[INFO -- 2018-11-13 17:44:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-13 17:44:18]
+Initialization strings:
+[INFO -- 2018-11-13 17:44:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-13 17:44:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-13 17:44:18]
+initSignal:0
+[INFO -- 2018-11-13 17:44:18]
+endSignal:5
+[INFO -- 2018-11-13 17:44:18]
+faultModel:2
+[INFO -- 2018-11-13 17:44:20]
+Backtrace BEGIN:
+#0  std::_Destroy_aux<true>::__destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > () at /usr/include/c++/7/bits/stl_construct.h:117
+#1  0x0000555555557c08 in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=2.4209216646221081e-322, __last=2.4209216646221081e-322) at /usr/include/c++/7/bits/stl_construct.h:137
+#2  0x000055555555744b in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=2.4209216646221081e-322, __last=2.4209216646221081e-322) at /usr/include/c++/7/bits/stl_construct.h:206
+#3  0x0000555555556d21 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#4  0x0000555555555e7d in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:192
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+112	  template<>
+113	    struct _Destroy_aux<true>
+114	    {
+115	      template<typename _ForwardIterator>
+116	        static void
+117	        __destroy(_ForwardIterator, _ForwardIterator) { }
+118	    };
+119	
+120	  /**
+121	   * Destroy a range of objects.  If the value_type of the object has
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000xd80xff0xff0xff0x7f0x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd768
+address max offset: 8
+Memory content after  bitflip:0x4b0x0f0xfc0xf00xcd0x2f0x740xb4
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd800
+value address: 0x7fffffffd768
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-13 17:44:20]
+Fault Injection Successful after 2.6028881072998047s
+[INFO -- 2018-11-13 17:44:21]
+event type: exit
+[EXCEPTION -- 2018-11-13 17:44:21]
+exit code: no exit code available
