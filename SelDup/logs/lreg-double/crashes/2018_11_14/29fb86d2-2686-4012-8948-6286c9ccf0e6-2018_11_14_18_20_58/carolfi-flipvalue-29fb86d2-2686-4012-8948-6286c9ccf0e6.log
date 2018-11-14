@@ -1,0 +1,63 @@
+[INFO -- 2018-11-14 18:20:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 18:20:56]
+Initialization strings:
+[INFO -- 2018-11-14 18:20:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 18:20:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 18:20:56]
+initSignal:0
+[INFO -- 2018-11-14 18:20:56]
+endSignal:5
+[INFO -- 2018-11-14 18:20:56]
+faultModel:1
+[INFO -- 2018-11-14 18:20:57]
+Backtrace BEGIN:
+#0  0x0000555555555254 in verifyDoubleDup (a=3.9786113098188265, b=3.9786113098188265) at lreg.cpp:71
+#1  0x00005555555557ea in predict (v=1) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+75	        detected = 1;	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x400x230x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b1a0 
+address max offset: 8
+Memory content after  bitflip:0x4a0x230x770x550x550x550x000x00
+frame name: partialDerivate
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 1, capacity 1 = {9.5828370048471468e-270, 4.9369506010062756e-308, 5.5046128052004257e-296, 1.3677878493115074e+112, 9.5828370048471468e-270, 9.8739012020125513e-308, 0, 0, 3.4860146853977494e-310, 3.4889854795051007e-310, 3.4872878828723285e-310, 3.7826255594622424e-307, 0, 4.4501477170144028e-308, -nan(0xf000000000000), 5.2897245787687155e-38, 0, 0, 0, 0, 0, 6.0522008951395878e-306, 0, 0, 1.0434277703334437e-309, 3.4864390845559424e-310, 1.0441704688602815e-309, 3.4860146853977494e-310, 1.0437248497441788e-309, 3.4838926896067841e-310, 1.0438946094074561e-309, 3.483468290448591e-310, 3.4817706938158188e-310, 3.4732827106519577e-310, 3.487075683293232e-310, 3.4877122820305216e-310, 0, 0, 0, 6.0522008951395878e-306, 0, 1.0431731308385279e-309, 1.0450139621871902e-309, 1.0459390197273142e-309, 1.0464255867309457e-309, 1.0458647498746304e-309, 1.0455219149296526e-309, 1.0454264251190591e-309, 1.0458647498746304e-309, 1.0453030841137093e-309, 1.0450139621871902e-309, 1.0431731308385279e-309, 1.0460812597576773e-309, 1.0469572461451352e-309, 0, 0, 0, 4.7282819493278029e-308, 5.5046128052004257e-296, 1.3677878493115074e+112, 9.5828370048471468e-270, 4.9369506010062756e-308, 5.5046128052004257e-296, 1.3677878493115074e+112, 9.5828370048471468e-270, 4.9369506010062756e-308, 4.6164893088928679e-128, -1.305324952453989e+188, 2.5200057525078695e+45, 4.9369505992415344e-308, 0, 1.3226991826182229e+112, 9.5828370048471468e-270, -3.0957497478156007e-104, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 18:20:57]
+Fault Injection Successful after 1.886242151260376s
+[INFO -- 2018-11-14 18:20:58]
+event type: exit
+[EXCEPTION -- 2018-11-14 18:20:58]
+exit code: no exit code available

@@ -1,0 +1,62 @@
+[INFO -- 2018-11-14 18:38:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 18:38:56]
+Initialization strings:
+[INFO -- 2018-11-14 18:38:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 18:38:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 18:38:56]
+initSignal:0
+[INFO -- 2018-11-14 18:38:56]
+endSignal:5
+[INFO -- 2018-11-14 18:38:56]
+faultModel:1
+[INFO -- 2018-11-14 18:38:59]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::size (this=0x55555575b140 <x>) at /usr/include/c++/7/bits/stl_vector.h:671
+#1  0x0000555555555a10 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:141
+#2  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+675	      max_size() const _GLIBCXX_NOEXCEPT
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xf80x240x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b168 
+address max offset: 8
+Memory content after  bitflip:0xf80x240x770x550x550x550x210x00
+frame name: std::vector<double, std::allocator<double> >::size
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 1161084278931469, capacity 16 = {-3, -123, -843, -2211, -731, -363, -291, -731, -227, -123, -3, -1091, -6740, 0, 0, 0, 0, 1.6304166312761136e-322, -1.1858238156926499, 3.9684125435368562, -4.0063768050472115, 1.6304166312761136e-322, -1.1858238156926499, 3.9684125435368562, -4.0063768050472115, 1.6304166312761136e-322, 4.6355706480405627e-310, 3.9684036107363454, -4.0062728902804565, 1.6304166312761136e-322, 0, 3.9684125435368562, -4.0063768050472115, 2.155756632499111e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 18:38:59]
+Fault Injection Successful after 3.6181600093841553s
+[INFO -- 2018-11-14 18:39:00]
+event type: exit
+[EXCEPTION -- 2018-11-14 18:39:00]
+exit code: no exit code available

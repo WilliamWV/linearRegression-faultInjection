@@ -9,6 +9,7 @@ T1;lreg.cpp;36;2.0721383094787598;0-5;Single bit-flip
 iter1;lreg.cpp;177;2.14129638671875;0-5;Single bit-flip
 testCases;lreg.cpp;229;2.564149856567383;0-5;Single bit-flip
 iter1;lreg.cpp;177;4.908892631530762;0-5;Single bit-flip
+iter1;lreg.cpp;177;3.686603307723999;0-5;Single bit-flip
 testCases;lreg.cpp;229;0.7522761821746826;0-5;Single bit-flip
 iter1;lreg.cpp;177;2.997060537338257;0-5;Single bit-flip
 testCases;lreg.cpp;229;2.5489919185638428;0-5;Single bit-flip
@@ -16,9 +17,13 @@ testCases;lreg.cpp;229;1.5316224098205566;0-5;Single bit-flip
 iter1;lreg.cpp;177;2.8447346687316895;0-5;Single bit-flip
 T1;lreg.cpp;36;3.904421806335449;0-5;Single bit-flip
 testCases;lreg.cpp;229;1.9100055694580078;0-5;Single bit-flip
+testCases;lreg.cpp;229;1.8887338638305664;0-5;Random bit-flip
 predictions;lreg.cpp;236;3.504950523376465;0-5;Random bit-flip
 predictions;lreg.cpp;236;2.7643096446990967;0-5;Random bit-flip
+testCases;lreg.cpp;229;2.727773666381836;0-5;Random bit-flip
+iter1;lreg.cpp;177;5.131781101226807;0-5;Random bit-flip
 predictions;lreg.cpp;236;3.44242000579834;0-5;Random bit-flip
+testCases;lreg.cpp;229;2.805654525756836;0-5;Random bit-flip
 testCases;lreg.cpp;229;2.0516862869262695;0-5;Random bit-flip
 _rtld_global;rtld.c;231;1.468264102935791;0-5;Random bit-flip
 testCases;lreg.cpp;229;3.210651397705078;0-5;Random bit-flip
@@ -34,10 +39,13 @@ iter1;lreg.cpp;177;2.7774622440338135;0-5;Random bit-flip
 predictions;lreg.cpp;236;3.586153984069824;0-5;Random bit-flip
 iter1;lreg.cpp;177;2.455120801925659;0-5;Random bit-flip
 predictions;lreg.cpp;236;4.254388809204102;0-5;Double bit-flip
+iter1;lreg.cpp;177;2.7089271545410156;0-5;Double bit-flip
 testCases;lreg.cpp;229;2.8716745376586914;0-5;Double bit-flip
 testCases;lreg.cpp;229;2.101161241531372;0-5;Double bit-flip
 testCases;lreg.cpp;229;2.1083168983459473;0-5;Double bit-flip
 x;lreg.cpp;34;3.296431541442871;0-5;Double bit-flip
+testCases;lreg.cpp;229;2.234982490539551;0-5;Double bit-flip
+iter1;lreg.cpp;177;3.324939727783203;0-5;Double bit-flip
 predictions;lreg.cpp;236;2.2522435188293457;0-5;Double bit-flip
 testCases;lreg.cpp;229;3.293400526046753;0-5;Double bit-flip
 iter1;lreg.cpp;177;2.1541709899902344;0-5;Double bit-flip

@@ -1,0 +1,56 @@
+[INFO -- 2018-11-14 17:02:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 17:02:42]
+Initialization strings:
+[INFO -- 2018-11-14 17:02:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 17:02:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 17:02:42]
+initSignal:0
+[INFO -- 2018-11-14 17:02:42]
+endSignal:5
+[INFO -- 2018-11-14 17:02:42]
+faultModel:2
+[EXCEPTION -- 2018-11-14 17:02:43]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-14 17:02:45]
+Backtrace BEGIN:
+#0  0x00005555555557bc in predict (v=8) at lreg.cpp:116
+#1  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Memory content before bitflip:0x080x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd794
+address max offset: 4
+Memory content after  bitflip:0x610x670xd30x0b
+frame name: meanSquaredError
+symbol name: i2
+symbol filename: lreg.cpp
+symbol line: 127
+value: 198403937
+value address: 0x7fffffffd794
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-14 17:02:45]
+Fault Injection Successful after 3.6320114135742188s
+[INFO -- 2018-11-14 17:02:50]
+event type: exit
+[INFO -- 2018-11-14 17:02:50]
+exit code: 0

@@ -1,0 +1,54 @@
+[INFO -- 2018-11-14 17:34:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 17:34:22]
+Initialization strings:
+[INFO -- 2018-11-14 17:34:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 17:34:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 17:34:22]
+initSignal:0
+[INFO -- 2018-11-14 17:34:22]
+endSignal:5
+[INFO -- 2018-11-14 17:34:22]
+faultModel:0
+[INFO -- 2018-11-14 17:34:24]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb4d in __pow (x=-2, y=1) at w_pow_compat.c:62
+#1  0x0000555555556826 in std::pow<double, unsigned int> (__x=-2, __y=1) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555ace in partialDerivate (pos1=1, pos2=1) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+57	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x230x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b1a8 
+address max offset: 8
+Memory content after  bitflip:0x700x230x770x550x570x550x000x00
+frame name: std::pow<double, unsigned int>
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 1073741826, capacity 2 = {1.3902232282291731, 2.0204676819936829, 0, 2.4209216646221081e-322, 0, 14, 26, 18, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 7.1076283810721728e-320, 0, 0, 0, 0, 0, 7.1639518646980749e-322, -2, 6, 12, 8, 14, -5, -16, 13, 30, 0, 0, 0, 0, 0, 0, 0, 0, 7.1639518646980749e-322, -2, 14, 26, 18, 30, -8, -30, 28, 76, 0, 0, 0, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 1.3900166892249539, 2.0204676819936829, 0, 1.6304166312761136e-322, 1.3900166892249539, 2.0204676819936829, 0, 1.6304166312761136e-322, 4.6355706480405627e-310, 2.0204746146530206, 0, 1.6304166312761136e-322, 0, 2.0204676819936829, 0, 2.155756632499111e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 17:34:24]
+Fault Injection Successful after 2.2948591709136963s
+[INFO -- 2018-11-14 17:34:30]
+event type: exit
+[INFO -- 2018-11-14 17:34:30]
+exit code: 0

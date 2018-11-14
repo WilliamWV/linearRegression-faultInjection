@@ -1,0 +1,64 @@
+[INFO -- 2018-11-14 18:22:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 18:22:47]
+Initialization strings:
+[INFO -- 2018-11-14 18:22:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 18:22:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 18:22:47]
+initSignal:0
+[INFO -- 2018-11-14 18:22:47]
+endSignal:5
+[INFO -- 2018-11-14 18:22:47]
+faultModel:2
+[INFO -- 2018-11-14 18:22:51]
+Backtrace BEGIN:
+#0  0x0000555555557fbd in __gnu_cxx::new_allocator<double>::new_allocator (this=0x4008000000000000) at /usr/include/c++/7/ext/new_allocator.h:81
+#1  0x0000555555557a61 in std::allocator<double>::allocator (this=0x7fffffffd787, __a=...) at /usr/include/c++/7/bits/allocator.h:134
+#2  0x0000555555557a37 in std::allocator_traits<std::allocator<double> >::select_on_container_copy_construction (__rhs=...) at /usr/include/c++/7/bits/alloc_traits.h:505
+#3  0x00005555555570ea in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:95
+#4  0x00005555555569da in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd870, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#5  0x0000555555555f47 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:199
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+76	      typedef std::true_type propagate_on_container_move_assignment;
+77	#endif
+78	
+79	      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+80	
+81	      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+82	
+83	      template<typename _Tp1>
+84		new_allocator(const new_allocator<_Tp1>&) _GLIBCXX_USE_NOEXCEPT { }
+85	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x280x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b1b0 
+address max offset: 8
+Memory content after  bitflip:0x430xc60x2d0xb30xf40x6f0xfa0xab
+frame name: __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 4, capacity -756812184658979901 = {0.18042212830568, -0.70501651945768917, -1.0006856118426344, -2.9506377471475469}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 18:22:51]
+Fault Injection Successful after 4.111018180847168s
+[INFO -- 2018-11-14 18:22:52]
+event type: exit
+[INFO -- 2018-11-14 18:22:52]
+exit code: 0

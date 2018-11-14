@@ -1,0 +1,65 @@
+[INFO -- 2018-11-14 16:47:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 16:47:42]
+Initialization strings:
+[INFO -- 2018-11-14 16:47:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 16:47:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 16:47:42]
+initSignal:0
+[INFO -- 2018-11-14 16:47:42]
+endSignal:5
+[INFO -- 2018-11-14 16:47:42]
+faultModel:2
+[EXCEPTION -- 2018-11-14 16:47:43]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-14 16:47:44]
+Backtrace BEGIN:
+#0  0x00005555555567db in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b1a0 <T2>, __n=1) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x00005555555557ab in predict (v=17) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x080xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772490
+address max offset: 8
+Memory content after  bitflip:0x4b0x3c0x370xaa0xfe0x630xff0x39
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 13, capacity 16 = {2.4762820782335767e-29, -123, -843, -2211, -731, -363, -291, -731, -227, -123, -3, -1091, -6740}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 16:47:44]
+Fault Injection Successful after 2.3360183238983154s
+[INFO -- 2018-11-14 16:47:45]
+event type: exit
+[EXCEPTION -- 2018-11-14 16:47:45]
+exit code: no exit code available

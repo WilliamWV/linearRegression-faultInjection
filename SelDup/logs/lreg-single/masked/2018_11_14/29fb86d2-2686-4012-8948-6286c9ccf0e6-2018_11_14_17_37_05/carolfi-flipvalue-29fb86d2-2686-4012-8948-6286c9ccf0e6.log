@@ -1,0 +1,56 @@
+[INFO -- 2018-11-14 17:36:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 17:36:56]
+Initialization strings:
+[INFO -- 2018-11-14 17:36:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 17:36:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 17:36:56]
+initSignal:0
+[INFO -- 2018-11-14 17:36:56]
+endSignal:5
+[INFO -- 2018-11-14 17:36:56]
+faultModel:0
+[INFO -- 2018-11-14 17:36:58]
+Backtrace BEGIN:
+#0  0x00007ffff6f1d96a in __GI___libc_free (mem=0x555555772580) at malloc.c:3086
+#1  0x0000555555558018 in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd850, __p=0x555555772580) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x0000555555557add in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772580, __n=2) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x0000555555557230 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd850, __p=0x555555772580, __n=2) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x0000555555556eed in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd850, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#5  0x0000555555556919 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd850, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#6  0x0000555555555fa4 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:199
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+3081	malloc.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772480
+address max offset: 8
+Memory content after  bitflip:0x020x000x000x000x000x000x000x00
+frame name: std::_Vector_base<double, std::allocator<double> >::~_Vector_base
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 9, capacity 16 = {-2, 6, 12, 8, 14, -5, -16, 13, 30}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 17:36:58]
+Fault Injection Successful after 2.101553440093994s
+[INFO -- 2018-11-14 17:37:04]
+event type: exit
+[INFO -- 2018-11-14 17:37:04]
+exit code: 0
