@@ -1,0 +1,53 @@
+[INFO -- 2018-11-14 13:25:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 13:25:24]
+Initialization strings:
+[INFO -- 2018-11-14 13:25:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 13:25:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 13:25:24]
+initSignal:0
+[INFO -- 2018-11-14 13:25:24]
+endSignal:5
+[INFO -- 2018-11-14 13:25:24]
+faultModel:1
+[INFO -- 2018-11-14 13:25:26]
+Backtrace BEGIN:
+#0  0x0000555555555cdc in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:163
+#1  0x0000555555555ee0 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+158			double diff = ((verifyDoubleDup(alpha1, alpha2) / (sqrt( fabs(PD) ))) * PD);
+159			T1[verifyUintDup(i1, i2)]= T1[verifyUintDup(i1, i2)] - diff;
+160			T2[verifyUintDup(i1, i2)]= T2[verifyUintDup(i1, i2)] - diff;
+161			 
+162		}
+163	}
+164	
+165	/**
+166		Trains the linear regression model
+167		* iterations: max number of iterations
+
+Backtrace END
+Memory content before bitflip:0xc00x110x440xc30x880xa50x730xc1
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd790
+address max offset: 8
+Memory content after  bitflip:0xc00x110x470xc30x880xa50x730xc1
+frame name: adjust
+symbol name: PD
+symbol filename: lreg.cpp
+symbol line: 153
+value: -20600972.204850912
+value address: 0x7fffffffd790
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-14 13:25:26]
+Fault Injection Successful after 2.665240526199341s
+[INFO -- 2018-11-14 13:25:28]
+event type: exit
+[INFO -- 2018-11-14 13:25:28]
+exit code: 0

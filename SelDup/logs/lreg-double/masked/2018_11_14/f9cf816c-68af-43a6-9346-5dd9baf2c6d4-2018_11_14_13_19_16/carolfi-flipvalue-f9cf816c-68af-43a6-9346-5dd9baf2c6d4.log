@@ -1,0 +1,56 @@
+[INFO -- 2018-11-14 13:19:11]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 13:19:11]
+Initialization strings:
+[INFO -- 2018-11-14 13:19:11]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 13:19:11]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 13:19:11]
+initSignal:0
+[INFO -- 2018-11-14 13:19:11]
+endSignal:5
+[INFO -- 2018-11-14 13:19:11]
+faultModel:1
+[EXCEPTION -- 2018-11-14 13:19:14]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-14 13:19:14]
+Backtrace BEGIN:
+#0  0x0000555555555a81 in partialDerivate (pos1=3, pos2=3) at lreg.cpp:142
+#1  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#2  0x0000555555555ee0 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+137	*/
+138	double partialDerivate(UINT pos1, UINT pos2){
+139		double pD = 0;
+140		
+141		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(x.size() - 1); i1++, i2++){
+142			pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
+143		}
+144		pD *= (2.0/(x.size() - 1));
+145		return pD;
+146	}
+
+Backtrace END
+Memory content before bitflip:0x780xe50x1a0x640x590xcd0x1f0x41
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd808
+address max offset: 8
+Memory content after  bitflip:0x780xe50x1a0x640x590xcd0x1f0x59
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 190
+value: 2.0530271423002979e+121
+value address: 0x7fffffffd808
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-14 13:19:14]
+Fault Injection Successful after 3.8306987285614014s
+[INFO -- 2018-11-14 13:19:15]
+event type: exit
+[INFO -- 2018-11-14 13:19:15]
+exit code: 0

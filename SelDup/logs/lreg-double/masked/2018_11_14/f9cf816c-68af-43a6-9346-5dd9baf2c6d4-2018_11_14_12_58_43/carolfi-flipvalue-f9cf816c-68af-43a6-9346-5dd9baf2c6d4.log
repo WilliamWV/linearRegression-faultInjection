@@ -1,0 +1,65 @@
+[INFO -- 2018-11-14 12:58:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 12:58:37]
+Initialization strings:
+[INFO -- 2018-11-14 12:58:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 12:58:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 12:58:37]
+initSignal:0
+[INFO -- 2018-11-14 12:58:37]
+endSignal:5
+[INFO -- 2018-11-14 12:58:37]
+faultModel:1
+[INFO -- 2018-11-14 12:58:38]
+Backtrace BEGIN:
+#0  0x00007ffff7ad6380 in free@plt () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x0000555555558018 in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd850, __p=0x555555772580) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x0000555555557add in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772580, __n=3) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x0000555555557230 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd850, __p=0x555555772580, __n=3) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x0000555555556eed in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd850, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#5  0x0000555555556919 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd850, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#6  0x0000555555555fa4 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+203		//T1 = bestT;
+204	}
+205	
+206	/*
+207	It must receive an input file formated as follows:
+208		1° Line : one integer T -> number of test cases
+209		2° to 5° repeat to all test case	
+210		2° Line : method parameters -> alpha, iterations, N, size of 
+211			      training set, predictions
+212		3° Line : inputs x of the training set
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x580x230x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b1a8 
+address max offset: 8
+Memory content after  bitflip:0x580x230x770x550x550x550x000x42
+frame name: std::vector<double, std::allocator<double> >::~vector
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 594475150812905475, capacity 3 = {0.084064646234177351, 0.94702295943583215, 2.9947925391847434, 1.6304166312761136e-322, 0.084124141560408802, 0.94672510854493186, 2.995031146506562, 2.4209216646221081e-322, 0, 7, 6, 10, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 1.6251741007080921e-317, 0, 0, 0, 0, 0, 7.1639518646980749e-322, -2, 22, -18, 17, 4, -16, 24, 17, -15, -18, 14, -13, 16, 0, 0, 0, 0, 7.1639518646980749e-322, 8, 1472, 952, 882, 50, 750, 1750, 882, 658, 952, 600, 492, 9448, 0, 0, 0, 0, 1.6304166312761136e-322, 0.084064646234177351, 0.94702295943583215, 2.9947925391847434, 1.6304166312761136e-322, 0.084064646234177351, 0.94702295943583215, 2.9947925391847434, 1.6304166312761136e-322, 0.084124141560408802, 0.94672510854493186, 2.995031146506562, 1.6304166312761136e-322, 0.084064646234177351, 0.94702295943583215, 2.9947925391847434, 2.155756632499111e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 12:58:38]
+Fault Injection Successful after 1.311816692352295s
+[INFO -- 2018-11-14 12:58:42]
+event type: exit
+[INFO -- 2018-11-14 12:58:42]
+exit code: 0
