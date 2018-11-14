@@ -1,0 +1,57 @@
+[INFO -- 2018-11-14 19:43:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 19:43:22]
+Initialization strings:
+[INFO -- 2018-11-14 19:43:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 19:43:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 19:43:22]
+initSignal:0
+[INFO -- 2018-11-14 19:43:22]
+endSignal:5
+[INFO -- 2018-11-14 19:43:22]
+faultModel:2
+[EXCEPTION -- 2018-11-14 19:43:23]
+gdbException: Cannot access memory at address 0x2256a3585215f2c7
+[INFO -- 2018-11-14 19:43:23]
+Backtrace BEGIN:
+#0  0x000055555555510c in verifyUintDup (a=2, b=2) at lreg.cpp:61
+#1  0x0000555555555a31 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x040x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd8f8
+address max offset: 4
+Memory content after  bitflip:0xad0xd00x2b0x33
+frame name: main
+symbol name: predictions
+symbol filename: lreg.cpp
+symbol line: 236
+value: 858509485
+value address: 0x7fffffffd8f8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-14 19:43:23]
+Fault Injection Successful after 1.8517792224884033s
+[INFO -- 2018-11-14 19:43:24]
+event type: exit
+[EXCEPTION -- 2018-11-14 19:43:24]
+exit code: no exit code available

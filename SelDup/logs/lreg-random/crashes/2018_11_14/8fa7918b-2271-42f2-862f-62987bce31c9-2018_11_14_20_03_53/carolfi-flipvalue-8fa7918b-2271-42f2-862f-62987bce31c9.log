@@ -1,0 +1,60 @@
+[INFO -- 2018-11-14 20:03:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 20:03:47]
+Initialization strings:
+[INFO -- 2018-11-14 20:03:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 20:03:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 20:03:47]
+initSignal:0
+[INFO -- 2018-11-14 20:03:47]
+endSignal:5
+[INFO -- 2018-11-14 20:03:47]
+faultModel:2
+[EXCEPTION -- 2018-11-14 20:03:48]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-14 20:03:50]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-14 20:03:51]
+Backtrace BEGIN:
+#0  0x00007ffff76d5cdc in __exp1 (x=-1461.8474038009244, xx=-9.009797133352742e-14, error=5.699999999999999e-05) at ../sysdeps/ieee754/dbl-64/e_exp.c:294
+#1  0x00007ffff76da8dc in __ieee754_pow_sse2 (x=2.3763644578690511e-212, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76bcb14 in __pow (x=2.3763644578690511e-212, y=3) at w_pow_compat.c:30
+#3  0x0000555555556826 in std::pow<double, unsigned int> (__x=2.3763644578690511e-212, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x0000555555555814 in predict (v=2.3763644578690511e-212) at lreg.cpp:116
+#5  0x0000555555555928 in meanSquaredError () at lreg.cpp:128
+#6  0x0000555555555ee5 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+289	../sysdeps/ieee754/dbl-64/e_exp.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa80x270x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b168 
+address max offset: 8
+Memory content after  bitflip:0x350x6a0x6c0x490x060x000xd60x55
+frame name: meanSquaredError
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 773129667530893410, capacity 32 = {-2288, -14256, 1950, 18792, -120, -27720, -8, 24, 4, -1800, 25920, -120, 0, 0, 11500, -120, 11758, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, -15.853003492437262, 0.10297705747645039, -1.0021242611651522, -0.9584733629802179, 0, 2.4209216646221081e-322, -15.850147935439463, 0.10297705747645039, -1.0021242611651522, -0.9584733629802179, 0, 2.4209216646221081e-322, -0.0056534793352472912, 0.10289482727370644, -1.0021242240778592, -0.95847325651337878, 0, 2.4209216646221081e-322, 4.6355706480840404e-310, 0.10297705747645039, -1.0021242611651522, -0.9584733629802179, 0, 2.4209216646221081e-322, 0, 0.10297705747645039, -1.0021242611651522, -0.9584733629802179, 0, 2.1114883506317354e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 20:03:51]
+Fault Injection Successful after 4.24990439414978s
+[INFO -- 2018-11-14 20:03:52]
+event type: exit
+[EXCEPTION -- 2018-11-14 20:03:52]
+exit code: no exit code available

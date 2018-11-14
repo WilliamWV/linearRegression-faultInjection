@@ -1,0 +1,58 @@
+[INFO -- 2018-11-14 18:58:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 18:58:19]
+Initialization strings:
+[INFO -- 2018-11-14 18:58:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 18:58:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 18:58:20]
+initSignal:0
+[INFO -- 2018-11-14 18:58:20]
+endSignal:5
+[INFO -- 2018-11-14 18:58:20]
+faultModel:1
+[EXCEPTION -- 2018-11-14 18:58:22]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-14 18:58:23]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-14 18:58:24]
+Backtrace BEGIN:
+#0  0x00005555555567db in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b140 <x>, __n=8) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x00005555555558af in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x480x40
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd930
+address max offset: 8
+Memory content after  bitflip:0x000x140x000x000x000x000x480x40
+frame name: main
+symbol name: xChecksum
+symbol filename: lreg.cpp
+symbol line: 233
+value: 48.00000000003638
+value address: 0x7fffffffd930
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-14 18:58:24]
+Fault Injection Successful after 4.103647708892822s
+[INFO -- 2018-11-14 18:58:26]
+event type: exit
+[EXCEPTION -- 2018-11-14 18:58:26]
+exit code: no exit code available

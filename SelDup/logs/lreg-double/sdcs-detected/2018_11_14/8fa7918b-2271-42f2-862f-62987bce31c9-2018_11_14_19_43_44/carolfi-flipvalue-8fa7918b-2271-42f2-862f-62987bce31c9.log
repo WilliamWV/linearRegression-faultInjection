@@ -1,0 +1,61 @@
+[INFO -- 2018-11-14 19:43:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 19:43:35]
+Initialization strings:
+[INFO -- 2018-11-14 19:43:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 19:43:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 19:43:35]
+initSignal:0
+[INFO -- 2018-11-14 19:43:35]
+endSignal:5
+[INFO -- 2018-11-14 19:43:35]
+faultModel:1
+[INFO -- 2018-11-14 19:43:39]
+Backtrace BEGIN:
+#0  0x000055555555510c in verifyUintDup (a=7, b=2182944512) at lreg.cpp:61
+#1  0x000055555555593c in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0xb10x0d0x630x3b0x910x420xad0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772830
+address max offset: 8
+Memory content after  bitflip:0xb10x0d0x630x730x910x420xad0x3f
+frame name: main
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 4, capacity 4 = {0.057148499808615034, 0.3547938005943122, -1.0022373595812224, -0.95879940012251541}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 19:43:39]
+Fault Injection Successful after 4.162286281585693s
+[INFO -- 2018-11-14 19:43:43]
+event type: exit
+[INFO -- 2018-11-14 19:43:43]
+exit code: 0
