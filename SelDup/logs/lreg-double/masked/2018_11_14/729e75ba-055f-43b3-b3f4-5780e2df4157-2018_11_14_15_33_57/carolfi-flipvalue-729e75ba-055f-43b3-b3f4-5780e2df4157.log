@@ -1,0 +1,55 @@
+[INFO -- 2018-11-14 15:33:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 15:33:47]
+Initialization strings:
+[INFO -- 2018-11-14 15:33:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 15:33:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 15:33:47]
+initSignal:0
+[INFO -- 2018-11-14 15:33:47]
+endSignal:5
+[INFO -- 2018-11-14 15:33:47]
+faultModel:1
+[INFO -- 2018-11-14 15:33:50]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_Vector_impl::~_Vector_impl (this=0x7fffffffd870, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:81
+#1  0x0000555555556ef9 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd870, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:163
+#2  0x0000555555556919 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd870, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#3  0x0000555555555fb4 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:199
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+76	      typedef typename __gnu_cxx::__alloc_traits<_Alloc>::template
+77		rebind<_Tp>::other _Tp_alloc_type;
+78	      typedef typename __gnu_cxx::__alloc_traits<_Tp_alloc_type>::pointer
+79	       	pointer;
+80	
+81	      struct _Vector_impl
+82	      : public _Tp_alloc_type
+83	      {
+84		pointer _M_start;
+85		pointer _M_finish;
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd928
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x0a0x000xc0
+frame name: main
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 233
+value: -2.0048828125
+value address: 0x7fffffffd928
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-14 15:33:50]
+Fault Injection Successful after 3.129657745361328s
+[INFO -- 2018-11-14 15:33:56]
+event type: exit
+[INFO -- 2018-11-14 15:33:56]
+exit code: 0

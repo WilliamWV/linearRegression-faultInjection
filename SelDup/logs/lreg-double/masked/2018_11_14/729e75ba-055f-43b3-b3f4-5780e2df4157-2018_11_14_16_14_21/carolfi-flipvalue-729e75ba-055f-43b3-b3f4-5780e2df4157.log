@@ -1,0 +1,60 @@
+[INFO -- 2018-11-14 16:14:14]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 16:14:14]
+Initialization strings:
+[INFO -- 2018-11-14 16:14:14]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 16:14:14]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 16:14:14]
+initSignal:0
+[INFO -- 2018-11-14 16:14:14]
+endSignal:5
+[INFO -- 2018-11-14 16:14:14]
+faultModel:1
+[INFO -- 2018-11-14 16:14:17]
+Backtrace BEGIN:
+#0  0x0000555555556bbf in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd810, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:203
+#1  0x0000555555555e7d in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:192
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+198			}
+199		      std::__alloc_on_copy(_M_get_Tp_allocator(),
+200					   __x._M_get_Tp_allocator());
+201		    }
+202	#endif
+203		  const size_type __xlen = __x.size();
+204		  if (__xlen > capacity())
+205		    {
+206		      pointer __tmp = _M_allocate_and_copy(__xlen, __x.begin(),
+207							   __x.end());
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772850
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x500x000x000x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 4, capacity 4 = {-0.16737667318849003, -0.27382279210902516, -3.9640832245688524, -3.9587380046825942}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 16:14:17]
+Fault Injection Successful after 3.7577764987945557s
+[INFO -- 2018-11-14 16:14:21]
+event type: exit
+[INFO -- 2018-11-14 16:14:21]
+exit code: 0

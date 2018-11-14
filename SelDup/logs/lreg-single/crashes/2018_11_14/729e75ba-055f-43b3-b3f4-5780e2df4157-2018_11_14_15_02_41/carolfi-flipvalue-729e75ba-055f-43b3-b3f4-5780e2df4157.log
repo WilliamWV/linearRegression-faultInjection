@@ -1,0 +1,55 @@
+[INFO -- 2018-11-14 15:02:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 15:02:37]
+Initialization strings:
+[INFO -- 2018-11-14 15:02:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 15:02:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 15:02:37]
+initSignal:0
+[INFO -- 2018-11-14 15:02:37]
+endSignal:5
+[INFO -- 2018-11-14 15:02:37]
+faultModel:0
+[INFO -- 2018-11-14 15:02:39]
+Backtrace BEGIN:
+#0  0x00005555555573e0 in std::vector<double, std::allocator<double> >::end (this=0x7fffffffd870) at /usr/include/c++/7/bits/stl_vector.h:581
+#1  0x0000555555556cd8 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd810, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555e7d in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:192
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+576	       *  Returns a read/write iterator that points one past the last
+577	       *  element in the %vector.  Iteration is done in ordinary
+578	       *  element order.
+579	       */
+580	      iterator
+581	      end() _GLIBCXX_NOEXCEPT
+582	      { return iterator(this->_M_impl._M_finish); }
+583	
+584	      /**
+585	       *  Returns a read-only (constant) iterator that points one past
+
+Backtrace END
+Fliping a bit of the reference
+Memory content before bitflip:0x800x230x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b180 
+address max offset: 8
+Memory content after  bitflip:0x000x230x770x550x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: __x
+symbol filename: /usr/include/c++/7/bits/vector.tcc
+symbol line: 180
+value: std::vector of length 20, capacity 20 = {-2.0000019073486324, 2.7824066302350246e-310, -2.00000000154798, -2, -2, -2, -16, 1.6304166312761136e-322, 4.6355706480358196e-310, 0.99784772803776167, 4.0013319516488073, 1.6304166312761136e-322, 4.6355706480374006e-310, 0.99787036001694962, 4.0014773722246382, 2.4209216646221081e-322, -0.15750306705549968, -0.43255980292586038, -3.9650886117348216, -3.9585032387796657}
+value address: 0x55555575b180 <T1>
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2018-11-14 15:02:39]
+Fault Injection Successful after 2.905489921569824s
+[INFO -- 2018-11-14 15:02:40]
+event type: exit
+[EXCEPTION -- 2018-11-14 15:02:40]
+exit code: no exit code available

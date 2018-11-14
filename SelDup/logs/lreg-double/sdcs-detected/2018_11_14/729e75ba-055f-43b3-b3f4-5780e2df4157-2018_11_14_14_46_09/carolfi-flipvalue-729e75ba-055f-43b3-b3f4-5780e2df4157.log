@@ -1,0 +1,57 @@
+[INFO -- 2018-11-14 14:45:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 14:45:59]
+Initialization strings:
+[INFO -- 2018-11-14 14:45:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 14:45:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 14:45:59]
+initSignal:0
+[INFO -- 2018-11-14 14:45:59]
+endSignal:5
+[INFO -- 2018-11-14 14:45:59]
+faultModel:1
+[EXCEPTION -- 2018-11-14 14:46:00]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-14 14:46:01]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-14 14:46:02]
+Backtrace BEGIN:
+#0  0x0000555555556a3b in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd870, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#1  0x0000555555555f47 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:199
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+326	      vector(const vector& __x)
+327	      : _Base(__x.size(),
+328		_Alloc_traits::_S_select_on_copy(__x._M_get_Tp_allocator()))
+329	      {
+330		this->_M_impl._M_finish =
+331		  std::__uninitialized_copy_a(__x.begin(), __x.end(),
+332					      this->_M_impl._M_start,
+333					      _M_get_Tp_allocator());
+334	      }
+335	
+
+Backtrace END
+Memory content before bitflip:0x980x3a0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7e8
+address max offset: 4
+Memory content after  bitflip:0x980x3a0x000x44
+frame name: train
+symbol name: iter2
+symbol filename: lreg.cpp
+symbol line: 177
+value: 1140865688
+value address: 0x7fffffffd7e8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-14 14:46:02]
+Fault Injection Successful after 3.5795328617095947s
+[INFO -- 2018-11-14 14:46:08]
+event type: exit
+[INFO -- 2018-11-14 14:46:08]
+exit code: 0

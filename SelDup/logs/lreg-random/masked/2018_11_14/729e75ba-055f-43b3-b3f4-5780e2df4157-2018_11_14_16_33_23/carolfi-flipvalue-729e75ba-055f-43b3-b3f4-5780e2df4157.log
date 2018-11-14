@@ -1,0 +1,56 @@
+[INFO -- 2018-11-14 16:33:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 16:33:15]
+Initialization strings:
+[INFO -- 2018-11-14 16:33:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 16:33:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 16:33:15]
+initSignal:0
+[INFO -- 2018-11-14 16:33:15]
+endSignal:5
+[INFO -- 2018-11-14 16:33:15]
+faultModel:2
+[INFO -- 2018-11-14 16:33:15]
+Backtrace BEGIN:
+#0  0x00007ffff7ddf667 in do_lookup_x (undef_name=undef_name@entry=0x7ffff7a7ff2e "_ZNKSt20__codecvt_utf16_baseIDsE11do_encodingEv", new_hash=new_hash@entry=46247312, old_hash=old_hash@entry=0x7fffffffd9a0, ref=0x7ffff7a56c60, result=result@entry=0x7fffffffd9b0, scope=<optimized out>, i=<optimized out>, version=0x7ffff7fdc228, flags=1, skip=0x0, type_class=0, undef_map=0x7ffff7fde000) at dl-lookup.c:548
+#1  0x00007ffff7de01ef in _dl_lookup_symbol_x (undef_name=0x7ffff7a7ff2e "_ZNKSt20__codecvt_utf16_baseIDsE11do_encodingEv", undef_map=undef_map@entry=0x7ffff7fde000, ref=ref@entry=0x7fffffffdad0, symbol_scope=symbol_scope@entry=0x7ffff7fde358, version=0x7ffff7fdc228, type_class=0, flags=1, skip_map=<optimized out>) at dl-lookup.c:813
+#2  0x00007ffff7de1af9 in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x7ffff7dc8550, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7ac50f0, map=0x7ffff7fde000) at ../sysdeps/x86_64/dl-machine.h:308
+#3  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7fde000) at do-rel.h:137
+#4  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#5  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#6  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde60, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#7  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde60) at rtld.c:414
+#8  _dl_start (arg=0x7fffffffde60) at rtld.c:521
+#9  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#10 0x0000000000000003 in ?? ()
+#11 0x00007fffffffe201 in ?? ()
+#12 0x00007fffffffe210 in ?? ()
+#13 0x00007fffffffe224 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+543	dl-lookup.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff7ffdff8 
+address max offset: 1
+Memory content after  bitflip:0x1f
+frame name: _dl_start_final
+symbol name: tls_init_tp_called
+symbol filename: rtld.c
+symbol line: 677
+value: 31
+value address: 0x7ffff7ffdff8 <tls_init_tp_called>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-14 16:33:15]
+Fault Injection Successful after 0.3203449249267578s
+[INFO -- 2018-11-14 16:33:22]
+event type: exit
+[INFO -- 2018-11-14 16:33:22]
+exit code: 0

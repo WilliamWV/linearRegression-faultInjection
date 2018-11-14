@@ -1,0 +1,55 @@
+[INFO -- 2018-11-14 15:29:25]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 15:29:25]
+Initialization strings:
+[INFO -- 2018-11-14 15:29:25]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 15:29:25]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 15:29:25]
+initSignal:0
+[INFO -- 2018-11-14 15:29:25]
+endSignal:5
+[INFO -- 2018-11-14 15:29:25]
+faultModel:1
+[INFO -- 2018-11-14 15:29:27]
+Backtrace BEGIN:
+#0  0x000055555555581e in predict (v=12) at lreg.cpp:116
+#1  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd778
+address max offset: 8
+Memory content after  bitflip:0x2d0x020x1c0xeb0xe20x360x0a0x3f
+frame name: adjust
+symbol name: alpha1
+symbol filename: lreg.cpp
+symbol line: 151
+value: 4.9999999999887245e-05
+value address: 0x7fffffffd778
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-14 15:29:27]
+Fault Injection Successful after 2.585689067840576s
+[INFO -- 2018-11-14 15:29:33]
+event type: exit
+[INFO -- 2018-11-14 15:29:33]
+exit code: 0

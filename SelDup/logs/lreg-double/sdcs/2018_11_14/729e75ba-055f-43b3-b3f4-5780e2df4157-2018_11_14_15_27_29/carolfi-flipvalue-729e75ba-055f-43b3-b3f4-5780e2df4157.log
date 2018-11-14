@@ -1,0 +1,64 @@
+[INFO -- 2018-11-14 15:27:25]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 15:27:25]
+Initialization strings:
+[INFO -- 2018-11-14 15:27:25]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 15:27:25]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 15:27:25]
+initSignal:0
+[INFO -- 2018-11-14 15:27:25]
+endSignal:5
+[INFO -- 2018-11-14 15:27:25]
+faultModel:1
+[EXCEPTION -- 2018-11-14 15:27:26]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-14 15:27:27]
+Backtrace BEGIN:
+#0  0x00005555555557b4 in predict (v=-8) at lreg.cpp:116
+#1  0x0000555555555a53 in partialDerivate (pos1=3, pos2=3) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x230x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b188 
+address max offset: 8
+Memory content after  bitflip:0x840x230x770x550x550x550x000x00
+frame name: predict
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 0, capacity 4 = {-0.1771349781121678, -0.11702760592217018, -3.9630100814317446, -4.0554664913365759, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 6.3462732208308119e-320, 0, 0, 0, 0, 0, 7.1639518646980749e-322, 0, 17, -8, -25, -21, -15, -22, -8, 23, 30, -11, 24, -26, 7, 3, 27, 0, 7.1639518646980749e-322, 4.6355706480215905e-310, -20893, 1832, 60125, 35385, 12675, 40766, 1832, -50899, -111750, 4895, -57720, 67730, -1603, -159, -81783, 0, 1.6304166312761136e-322, 4.6355706480136855e-310, 0.99784772803776167, 4.0013319516488073, 1.6304166312761136e-322, 4.6355706480389816e-310, 0.99784772803776167, 4.0013319516488073, 1.6304166312761136e-322, 4.6355706480405627e-310, 0.99787036001694962, 4.0014773722246382, 1.6304166312761136e-322, 0, 0.99784772803776167, 4.0013319516488073, 5.5829417980060859e-322, 0, 7, 1280, 887, 497, 16, 590, 2330, 917, 475, 1175, 691, 8900, 1.3487992131466031e-321, 31, 17, -8, -25, -21, -15, -22, -8, 23, 30, -11, 24, -26, 7, 3, 27, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.3487992131466031e-321, -123163, -20893, 1832, 60125, 35385, 12675, 40766, 1832, -50899, -111750, 4895, -57720, 67730, -1603, -159, -81783, -222730, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, -0.1771349781121678, -0.11702760592217018, -3.9630100814317446, -4.0554664913365759, 0, 2.4209216646221081e-322, -0.1775217238904202, -0.12058574703695012, -3.9754294455934955, -4.0554664913365759, 0, 2.4209216646221081e-322, -0.17807715354888445, -0.10685005896433028, -3.9697640877426896, -4.0555780422569798, 0, 2.4209216646221081e-322, 4.6355706480840404e-310, -0.11697116125389265, -3.9630083234495812, -3.9589713142638976, 0, 2.4209216646221081e-322, 0, -0.12058574703695012, -3.9754294455934955, -4.0554664913365759, 0, 2.1114883506317354e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 15:27:27]
+Fault Injection Successful after 2.5486536026000977s
+[INFO -- 2018-11-14 15:27:27]
+event type: exit
+[INFO -- 2018-11-14 15:27:27]
+exit code: 0

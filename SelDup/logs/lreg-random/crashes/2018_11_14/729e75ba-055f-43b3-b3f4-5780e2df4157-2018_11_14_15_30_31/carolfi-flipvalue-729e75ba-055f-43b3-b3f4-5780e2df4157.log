@@ -1,0 +1,57 @@
+[INFO -- 2018-11-14 15:30:26]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-14 15:30:26]
+Initialization strings:
+[INFO -- 2018-11-14 15:30:27]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-14 15:30:27]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-14 15:30:27]
+initSignal:0
+[INFO -- 2018-11-14 15:30:27]
+endSignal:5
+[INFO -- 2018-11-14 15:30:27]
+faultModel:2
+[EXCEPTION -- 2018-11-14 15:30:29]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-14 15:30:29]
+Backtrace BEGIN:
+#0  __pow (x=-18, y=0) at w_pow_compat.c:29
+#1  0x0000555555556826 in std::pow<double, unsigned int> (__x=-18, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555814 in predict (v=-18) at lreg.cpp:116
+#3  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#4  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#5  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+24	in w_pow_compat.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x380x250x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b190 
+address max offset: 8
+Memory content after  bitflip:0xd50x7b0xde0x030xe30x220xc80x30
+frame name: train
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 3, capacity 439375505323256534 = {0.92602668514717434, 0.99463982343293322, 4.0035877697391689}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-14 15:30:29]
+Fault Injection Successful after 2.5354697704315186s
+[INFO -- 2018-11-14 15:30:30]
+event type: exit
+[EXCEPTION -- 2018-11-14 15:30:30]
+exit code: no exit code available
