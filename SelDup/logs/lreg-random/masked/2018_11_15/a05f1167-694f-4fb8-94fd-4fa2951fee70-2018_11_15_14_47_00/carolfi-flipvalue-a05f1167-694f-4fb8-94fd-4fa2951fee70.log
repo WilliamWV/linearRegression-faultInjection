@@ -1,0 +1,48 @@
+[INFO -- 2018-11-15 14:46:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 14:46:54]
+Initialization strings:
+[INFO -- 2018-11-15 14:46:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 14:46:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 14:46:54]
+initSignal:0
+[INFO -- 2018-11-15 14:46:54]
+endSignal:5
+[INFO -- 2018-11-15 14:46:54]
+faultModel:2
+[INFO -- 2018-11-15 14:46:55]
+Backtrace BEGIN:
+#0  0x00007ffff7288281 in __libc_write (fd=5, buf=0x5555557702e0, nbytes=8) at ../sysdeps/unix/sysv/linux/write.c:27
+#1  0x00007ffff7affbb6 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#2  0x00007ffff7b3c2a1 in std::basic_filebuf<char, std::char_traits<char> >::_M_convert_to_external(char*, long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7b3c6e8 in std::basic_filebuf<char, std::char_traits<char> >::overflow(int) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7b3a469 in std::basic_filebuf<char, std::char_traits<char> >::sync() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7b5ef5e in std::ostream::flush() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x0000555555556508 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:256
+
+22	../sysdeps/unix/sysv/linux/write.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x080x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd920
+address max offset: 8
+Memory content after  bitflip:0x1b0xc50xe30x4a0xd80x170x6d0xd6
+frame name: main
+symbol name: xChecksum
+symbol filename: lreg.cpp
+symbol line: 233
+value: -2.1352027441971295e+108
+value address: 0x7fffffffd920
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-15 14:46:55]
+Fault Injection Successful after 1.4469237327575684s
+[INFO -- 2018-11-15 14:46:59]
+event type: exit
+[INFO -- 2018-11-15 14:46:59]
+exit code: 0

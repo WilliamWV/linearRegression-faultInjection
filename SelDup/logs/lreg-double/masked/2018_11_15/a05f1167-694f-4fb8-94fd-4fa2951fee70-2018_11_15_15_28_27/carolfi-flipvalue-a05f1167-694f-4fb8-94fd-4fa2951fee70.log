@@ -1,0 +1,62 @@
+[INFO -- 2018-11-15 15:28:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 15:28:22]
+Initialization strings:
+[INFO -- 2018-11-15 15:28:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 15:28:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 15:28:22]
+initSignal:0
+[INFO -- 2018-11-15 15:28:22]
+endSignal:5
+[INFO -- 2018-11-15 15:28:22]
+faultModel:1
+[INFO -- 2018-11-15 15:28:22]
+Backtrace BEGIN:
+#0  malloc (n=22) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  malloc (n=22) at dl-minimal.c:50
+#3  <function called from gdb>
+#4  0x00007ffff7df1cdd in __libc_open64 (file=file@entry=0x7ffff7df6428 "/etc/ld.so.cache", oflag=oflag@entry=524288) at ../sysdeps/unix/sysv/linux/open64.c:47
+#5  0x00007ffff7de6496 in _dl_sysdep_read_whole_file (file=file@entry=0x7ffff7df6428 "/etc/ld.so.cache", sizep=sizep@entry=0x7ffff7ffe0a8 <cachesize>, prot=prot@entry=1) at dl-misc.c:47
+#6  0x00007ffff7ded368 in _dl_load_cache_lookup (name=name@entry=0x555555554609 "libstdc++.so.6") at dl-cache.c:201
+#7  0x00007ffff7dde383 in _dl_map_object (loader=0x7ffff7ffe170, name=0x555555554609 "libstdc++.so.6", type=1, trace_mode=0, mode=<optimized out>, nsid=<optimized out>) at dl-load.c:2255
+#8  0x00007ffff7de3312 in openaux (a=a@entry=0x7fffffffdae0) at dl-deps.c:63
+#9  0x00007ffff7df0c6b in _dl_catch_exception (exception=exception@entry=0x7fffffffdac0, operate=operate@entry=0x7ffff7de32e0 <openaux>, args=args@entry=0x7fffffffdae0) at dl-error-skeleton.c:196
+#10 0x00007ffff7de3618 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe170, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:249
+#11 0x00007ffff7dd8ea6 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1726
+#12 0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde50, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#13 0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde50) at rtld.c:414
+#14 _dl_start (arg=0x7fffffffde50) at rtld.c:521
+#15 0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#16 0x0000000000000003 in ?? ()
+#17 0x00007fffffffe1fe in ?? ()
+#18 0x00007fffffffe20d in ?? ()
+#19 0x00007fffffffe221 in ?? ()
+#20 0x0000000000000000 in ?? ()
+
+45	in dl-minimal.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff7ffe0a8 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x240x000x00
+frame name: _dl_load_cache_lookup
+symbol name: cachesize
+symbol filename: dl-cache.c
+symbol line: 39
+value: 39582418599936
+value address: 0x7ffff7ffe0a8 <cachesize>
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2018-11-15 15:28:22]
+Fault Injection Successful after 0.9719040393829346s
+[INFO -- 2018-11-15 15:28:27]
+event type: exit
+[INFO -- 2018-11-15 15:28:27]
+exit code: 0

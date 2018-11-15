@@ -1,0 +1,60 @@
+[INFO -- 2018-11-15 15:18:16]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 15:18:16]
+Initialization strings:
+[INFO -- 2018-11-15 15:18:16]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 15:18:16]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 15:18:16]
+initSignal:0
+[INFO -- 2018-11-15 15:18:16]
+endSignal:5
+[INFO -- 2018-11-15 15:18:16]
+faultModel:1
+[EXCEPTION -- 2018-11-15 15:18:17]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-15 15:18:17]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-15 15:18:17]
+Backtrace BEGIN:
+#0  0x000055555555582b in predict (v=-13) at lreg.cpp:115
+#1  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+110		Predicts the value related to v using the Ts variables
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x580xde0xff0xff0xff0x7f0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd8c0
+address max offset: 8
+Memory content after  bitflip:0x580xde0xff0xff0x3f0x7f0x000x00
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 217
+value: 0x7fffffffde58
+value address: 0x7fffffffd8c0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-15 15:18:17]
+Fault Injection Successful after 1.5917091369628906s
+[INFO -- 2018-11-15 15:18:20]
+event type: exit
+[INFO -- 2018-11-15 15:18:20]
+exit code: 0

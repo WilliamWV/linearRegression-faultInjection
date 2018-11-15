@@ -1,0 +1,56 @@
+[INFO -- 2018-11-15 14:56:30]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 14:56:30]
+Initialization strings:
+[INFO -- 2018-11-15 14:56:30]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 14:56:30]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 14:56:30]
+initSignal:0
+[INFO -- 2018-11-15 14:56:30]
+endSignal:5
+[INFO -- 2018-11-15 14:56:30]
+faultModel:1
+[EXCEPTION -- 2018-11-15 14:56:32]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-15 14:56:32]
+Backtrace BEGIN:
+#0  0x0000555555557138 in std::vector<double, std::allocator<double> >::begin (this=0x7fffffffd800) at /usr/include/c++/7/bits/stl_vector.h:573
+#1  0x0000555555556a38 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#2  0x0000555555555f47 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+568	       *  first element in the %vector.  Iteration is done in ordinary
+569	       *  element order.
+570	       */
+571	      const_iterator
+572	      begin() const _GLIBCXX_NOEXCEPT
+573	      { return const_iterator(this->_M_impl._M_start); }
+574	
+575	      /**
+576	       *  Returns a read/write iterator that points one past the last
+577	       *  element in the %vector.  Iteration is done in ordinary
+
+Backtrace END
+Memory content before bitflip:0x300x750x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7dc
+address max offset: 4
+Memory content after  bitflip:0x300x3d0x000x00
+frame name: train
+symbol name: iter1
+symbol filename: lreg.cpp
+symbol line: 177
+value: 15664
+value address: 0x7fffffffd7dc
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-15 14:56:32]
+Fault Injection Successful after 2.864893674850464s
+[INFO -- 2018-11-15 14:56:33]
+event type: exit
+[EXCEPTION -- 2018-11-15 14:56:33]
+exit code: no exit code available

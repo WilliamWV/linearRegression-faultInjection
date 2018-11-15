@@ -1,0 +1,57 @@
+[INFO -- 2018-11-15 14:20:11]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 14:20:11]
+Initialization strings:
+[INFO -- 2018-11-15 14:20:11]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 14:20:11]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 14:20:11]
+initSignal:0
+[INFO -- 2018-11-15 14:20:11]
+endSignal:5
+[INFO -- 2018-11-15 14:20:11]
+faultModel:1
+[INFO -- 2018-11-15 14:20:14]
+Backtrace BEGIN:
+#0  verifyUintDup (a=0, b=0) at lreg.cpp:61
+#1  0x000055555555576f in predict (v=15) at lreg.cpp:115
+#2  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffe1fe 
+address max offset: 1
+Memory content after  bitflip:0x3e
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 217
+value: 0x7fffffffde58
+value address: 0x7fffffffd8c0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-15 14:20:14]
+Fault Injection Successful after 3.005991220474243s
+[INFO -- 2018-11-15 14:20:16]
+event type: exit
+[INFO -- 2018-11-15 14:20:16]
+exit code: 0

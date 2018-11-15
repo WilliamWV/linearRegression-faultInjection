@@ -1,0 +1,57 @@
+[INFO -- 2018-11-15 15:17:28]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 15:17:28]
+Initialization strings:
+[INFO -- 2018-11-15 15:17:28]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 15:17:28]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 15:17:28]
+initSignal:0
+[INFO -- 2018-11-15 15:17:28]
+endSignal:5
+[INFO -- 2018-11-15 15:17:28]
+faultModel:2
+[EXCEPTION -- 2018-11-15 15:17:32]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-15 15:17:32]
+gdbException: Cannot access memory at address 0xb72c2b3b149e558f
+[INFO -- 2018-11-15 15:17:32]
+Backtrace BEGIN:
+#0  0x00005555555558e5 in meanSquaredError () at lreg.cpp:128
+#1  0x0000555555555ee5 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+123	*/
+124	double meanSquaredError(){
+125		double error = 0;
+126		
+127		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(x.size() - 1); i1++, i2++){
+128			error+= ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)]) * (predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)]));	
+129		}
+130		error /= (x.size() - 1);
+131		return error;
+132	
+
+Backtrace END
+Memory content before bitflip:0xc80xaf0x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7dc
+address max offset: 4
+Memory content after  bitflip:0x590xf00xa70x19
+frame name: train
+symbol name: iter1
+symbol filename: lreg.cpp
+symbol line: 177
+value: 430436441
+value address: 0x7fffffffd7dc
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-15 15:17:32]
+Fault Injection Successful after 4.919466495513916s
+[INFO -- 2018-11-15 15:17:33]
+event type: exit
+[EXCEPTION -- 2018-11-15 15:17:33]
+exit code: no exit code available

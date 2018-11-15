@@ -1,0 +1,55 @@
+[INFO -- 2018-11-15 14:47:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 14:47:13]
+Initialization strings:
+[INFO -- 2018-11-15 14:47:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 14:47:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 14:47:13]
+initSignal:0
+[INFO -- 2018-11-15 14:47:13]
+endSignal:5
+[INFO -- 2018-11-15 14:47:13]
+faultModel:2
+[INFO -- 2018-11-15 14:47:14]
+Backtrace BEGIN:
+#0  0x00007ffff76da549 in __ieee754_pow_sse2 (x=-9, y=2) at ../sysdeps/ieee754/dbl-64/e_pow.c:72
+#1  0x00007ffff76bcb14 in __pow (x=-9, y=2) at w_pow_compat.c:30
+#2  0x0000555555556826 in std::pow<double, unsigned int> (__x=-9, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555ace in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#4  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#5  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+67	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x5555557724f8
+address max offset: 8
+Memory content after  bitflip:0x600x390x750x6a0xa10x970xe80x35
+frame name: partialDerivate
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 13, capacity 16 = {1787, 335, 317, 1622, 566, 16, 691, 335, 266, 665, 497, 887, 7984}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-15 14:47:14]
+Fault Injection Successful after 1.553619623184204s
+[INFO -- 2018-11-15 14:47:17]
+event type: exit
+[INFO -- 2018-11-15 14:47:17]
+exit code: 0

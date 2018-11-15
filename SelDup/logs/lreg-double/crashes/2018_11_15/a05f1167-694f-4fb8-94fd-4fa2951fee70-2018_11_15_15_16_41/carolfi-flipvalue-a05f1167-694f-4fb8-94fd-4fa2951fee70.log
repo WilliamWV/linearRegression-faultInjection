@@ -1,0 +1,56 @@
+[INFO -- 2018-11-15 15:16:39]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 15:16:39]
+Initialization strings:
+[INFO -- 2018-11-15 15:16:39]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 15:16:39]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 15:16:39]
+initSignal:0
+[INFO -- 2018-11-15 15:16:39]
+endSignal:5
+[INFO -- 2018-11-15 15:16:39]
+faultModel:1
+[INFO -- 2018-11-15 15:16:40]
+Backtrace BEGIN:
+#0  0x00007ffff76da512 in __ieee754_pow_sse2 (x=-11, y=2) at ../sysdeps/ieee754/dbl-64/e_pow.c:65
+#1  0x00007ffff76bcb14 in __pow (x=-11, y=2) at w_pow_compat.c:30
+#2  0x0000555555556826 in std::pow<double, unsigned int> (__x=-11, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555814 in predict (v=-11) at lreg.cpp:116
+#4  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#5  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#6  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+60	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x2c0xfd0xff0xff0xff0xff0x970x42
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779f5b8 
+address max offset: 8
+Memory content after  bitflip:0xa40xfd0xff0xff0xff0xff0x970x42
+frame name: __ieee754_pow_sse2
+symbol name: bigu
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 52
+value: {i = {-604, 1117257727}, x = 6597069766655.4102}
+value address: 0x7ffff779f5b8 <bigu>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-15 15:16:40]
+Fault Injection Successful after 1.7594401836395264s
+[INFO -- 2018-11-15 15:16:40]
+event type: exit
+[EXCEPTION -- 2018-11-15 15:16:40]
+exit code: no exit code available

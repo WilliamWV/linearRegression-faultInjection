@@ -1,0 +1,61 @@
+[INFO -- 2018-11-15 15:18:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 15:18:21]
+Initialization strings:
+[INFO -- 2018-11-15 15:18:21]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 15:18:21]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 15:18:21]
+initSignal:0
+[INFO -- 2018-11-15 15:18:21]
+endSignal:5
+[INFO -- 2018-11-15 15:18:21]
+faultModel:2
+[INFO -- 2018-11-15 15:18:23]
+Backtrace BEGIN:
+#0  0x00005555555557dc in predict (v=4) at lreg.cpp:116
+#1  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x3e0x600xdc0xca0x3b0x370xe30xbf
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772830
+address max offset: 8
+Memory content after  bitflip:0x980x030x970x340xa40x1f0xe80xd0
+frame name: main
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 4, capacity 4 = {-5.7207233861272249e+81, 0.26055996132322179, -4.9971427006166458, -4.9669747164094176}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-15 15:18:23]
+Fault Injection Successful after 2.571401834487915s
+[INFO -- 2018-11-15 15:18:24]
+event type: exit
+[INFO -- 2018-11-15 15:18:24]
+exit code: 0

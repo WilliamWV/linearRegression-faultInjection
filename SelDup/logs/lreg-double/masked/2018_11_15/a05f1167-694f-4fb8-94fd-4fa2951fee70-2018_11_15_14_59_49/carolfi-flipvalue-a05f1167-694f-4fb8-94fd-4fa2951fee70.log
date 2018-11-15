@@ -1,0 +1,55 @@
+[INFO -- 2018-11-15 14:59:45]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 14:59:45]
+Initialization strings:
+[INFO -- 2018-11-15 14:59:45]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 14:59:45]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 14:59:45]
+initSignal:0
+[INFO -- 2018-11-15 14:59:45]
+endSignal:5
+[INFO -- 2018-11-15 14:59:45]
+faultModel:1
+[INFO -- 2018-11-15 14:59:46]
+Backtrace BEGIN:
+#0  std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.3879015299381502e+105, __last=6.9533558073243381e-310) at /usr/include/c++/7/bits/stl_construct.h:127
+#1  0x000055555555744b in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=2.4209216646221081e-322, __last=2.4209216646221081e-322) at /usr/include/c++/7/bits/stl_construct.h:206
+#2  0x0000555555556d21 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x0000555555555e7d in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:192
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+122	   * a trivial destructor, the compiler should optimize all of this
+123	   * away, otherwise the objects' destructors must be invoked.
+124	   */
+125	  template<typename _ForwardIterator>
+126	    inline void
+127	    _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+128	    {
+129	      typedef typename iterator_traits<_ForwardIterator>::value_type
+130	                       _Value_type;
+131	#if __cplusplus >= 201103L
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7d0
+address max offset: 1
+Memory content after  bitflip:0x89
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 177
+value: 137
+value address: 0x7fffffffd7d0
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-15 14:59:46]
+Fault Injection Successful after 1.9581637382507324s
+[INFO -- 2018-11-15 14:59:49]
+event type: exit
+[INFO -- 2018-11-15 14:59:49]
+exit code: 0

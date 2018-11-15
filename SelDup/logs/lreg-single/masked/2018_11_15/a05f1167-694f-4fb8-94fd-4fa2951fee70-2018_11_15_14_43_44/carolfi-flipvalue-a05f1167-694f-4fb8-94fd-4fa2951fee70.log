@@ -1,0 +1,63 @@
+[INFO -- 2018-11-15 14:43:38]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 14:43:38]
+Initialization strings:
+[INFO -- 2018-11-15 14:43:38]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 14:43:38]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 14:43:38]
+initSignal:0
+[INFO -- 2018-11-15 14:43:38]
+endSignal:5
+[INFO -- 2018-11-15 14:43:38]
+faultModel:0
+[INFO -- 2018-11-15 14:43:39]
+Backtrace BEGIN:
+#0  std::_Destroy_aux<true>::__destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > () at /usr/include/c++/7/bits/stl_construct.h:117
+#1  0x0000555555557c08 in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0, __last=0) at /usr/include/c++/7/bits/stl_construct.h:137
+#2  0x000055555555744b in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=0, __last=0) at /usr/include/c++/7/bits/stl_construct.h:206
+#3  0x0000555555556d21 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#4  0x0000555555555e7d in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:192
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+112	  template<>
+113	    struct _Destroy_aux<true>
+114	    {
+115	      template<typename _ForwardIterator>
+116	        static void
+117	        __destroy(_ForwardIterator, _ForwardIterator) { }
+118	    };
+119	
+120	  /**
+121	   * Destroy a range of objects.  If the value_type of the object has
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x230x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b188 
+address max offset: 8
+Memory content after  bitflip:0x510x230x770x550x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 2, capacity 2 = {-0.62301410090302378, 0.99844612274639022, 0, 1.6304166312761136e-322, -0.62301410090302378, 0.99844612274639022, 0, 2.4209216646221081e-322, 0, -15, -2, 1, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 6.474730288749536e-320, 0, 0, 0, 0, 0, 7.1639518646980749e-322, -13, -14, -1, 2, 12, -1, 4, 14, 3, 0, 0, 0, 0, 0, 0, 0, 0, 7.1639518646980749e-322, -14, -15, -2, 1, 11, -2, 3, 13, -5, 0, 0, 0, 0, 0, 0, 0, 0, 1.6304166312761136e-322, -0.62301410090302378, 0.99844612274639022, 0, 1.6304166312761136e-322, -0.62301410090302378, 0.99844612274639022, 0, 1.6304166312761136e-322, 4.6355706480405627e-310, 0.99844191863670528, 0, 1.6304166312761136e-322, 0, 0.99844612274639022, 0, 2.155756632499111e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-15 14:43:39]
+Fault Injection Successful after 1.3821394443511963s
+[INFO -- 2018-11-15 14:43:42]
+event type: exit
+[INFO -- 2018-11-15 14:43:42]
+exit code: 0

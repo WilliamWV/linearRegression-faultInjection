@@ -1,0 +1,56 @@
+[INFO -- 2018-11-15 15:24:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 15:24:48]
+Initialization strings:
+[INFO -- 2018-11-15 15:24:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 15:24:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 15:24:48]
+initSignal:0
+[INFO -- 2018-11-15 15:24:48]
+endSignal:5
+[INFO -- 2018-11-15 15:24:48]
+faultModel:1
+[INFO -- 2018-11-15 15:24:50]
+Backtrace BEGIN:
+#0  __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >::__normal_iterator (this=0x7fffffffd740, __i=@0x7fffffffd800: 0x555555772520) at /usr/include/c++/7/bits/stl_iterator.h:780
+#1  0x0000555555557372 in std::vector<double, std::allocator<double> >::begin (this=0x7fffffffd800) at /usr/include/c++/7/bits/stl_vector.h:564
+#2  0x0000555555556ce7 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x0000555555555e7d in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:192
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+775	      _GLIBCXX_CONSTEXPR __normal_iterator() _GLIBCXX_NOEXCEPT
+776	      : _M_current(_Iterator()) { }
+777	
+778	      explicit
+779	      __normal_iterator(const _Iterator& __i) _GLIBCXX_NOEXCEPT
+780	      : _M_current(__i) { }
+781	
+782	      // Allow iterator to const_iterator conversion
+783	      template<typename _Iter>
+784	        __normal_iterator(const __normal_iterator<_Iter,
+
+Backtrace END
+Fliping a bit of the reference
+Memory content before bitflip:0x200x250x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd800
+address max offset: 8
+Memory content after  bitflip:0x200xe50x770x550x550x550x000x00
+frame name: __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >::__normal_iterator
+symbol name: __i
+symbol filename: /usr/include/c++/7/bits/stl_iterator.h
+symbol line: 779
+value: @0x7fffffffd800
+value address: 0x7fffffffd800
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2018-11-15 15:24:50]
+Fault Injection Successful after 2.9692349433898926s
+[INFO -- 2018-11-15 15:24:51]
+event type: exit
+[EXCEPTION -- 2018-11-15 15:24:51]
+exit code: no exit code available

@@ -1,0 +1,63 @@
+[INFO -- 2018-11-15 14:35:44]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 14:35:44]
+Initialization strings:
+[INFO -- 2018-11-15 14:35:44]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 14:35:44]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 14:35:44]
+initSignal:0
+[INFO -- 2018-11-15 14:35:44]
+endSignal:5
+[INFO -- 2018-11-15 14:35:44]
+faultModel:2
+[EXCEPTION -- 2018-11-15 14:35:46]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-15 14:35:46]
+Backtrace BEGIN:
+#0  0x0000555555555760 in predict (v=-10) at lreg.cpp:115
+#1  0x0000555555555928 in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+110		Predicts the value related to v using the Ts variables
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x200x280x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b170 
+address max offset: 8
+Memory content after  bitflip:0xb30x180x7a0xef0xc00xe10xe70x8b
+frame name: meanSquaredError
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 17, capacity -1045695423630516685 = {-10, 27462, -101958, -390, 218, -41926, 117618, -55578, -71910, 32408, 6, -14650, 4454, 84390, -390, -17946, -38202}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-15 14:35:46]
+Fault Injection Successful after 2.650880813598633s
+[INFO -- 2018-11-15 14:35:49]
+event type: exit
+[INFO -- 2018-11-15 14:35:49]
+exit code: 0
