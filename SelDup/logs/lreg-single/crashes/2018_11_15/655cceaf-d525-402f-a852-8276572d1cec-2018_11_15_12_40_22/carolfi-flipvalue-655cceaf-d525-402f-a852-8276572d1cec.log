@@ -1,0 +1,61 @@
+[INFO -- 2018-11-15 12:40:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 12:40:18]
+Initialization strings:
+[INFO -- 2018-11-15 12:40:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 12:40:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 12:40:18]
+initSignal:0
+[INFO -- 2018-11-15 12:40:18]
+endSignal:5
+[INFO -- 2018-11-15 12:40:18]
+faultModel:0
+[INFO -- 2018-11-15 12:40:20]
+Backtrace BEGIN:
+#0  0x0000555555555a4e in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#1  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#2  0x0000555555555ee0 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+137	*/
+138	double partialDerivate(UINT pos1, UINT pos2){
+139		double pD = 0;
+140		
+141		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(x.size() - 1); i1++, i2++){
+142			pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
+143		}
+144		pD *= (2.0/(x.size() - 1));
+145		return pD;
+146	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x980x260x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b148 
+address max offset: 8
+Memory content after  bitflip:0x980x260x770x550x450x550x000x00
+frame name: partialDerivate
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length -8589934575, capacity 32 = {7, -32, 0, 15, -28, -11, 31, -15, 8, -8, 6, 3, -26, -25, -19, -27, -121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.3487992131466031e-321, 2183, -194650, 6, 20751, -130222, -7771, 180767, -19839, 3230, -2962, 1392, 195, -104176, -92569, -40483, -116715, -500863, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, 0.093116587721064487, 0.29608345977139683, 1.9916642494688768, 6.0563391906390303, 0, 2.4209216646221081e-322, 0.092581998219030473, 0.29979636215215327, 1.9916642494688768, 6.0563391906390303, 0, 2.4209216646221081e-322, 0.092581998219030473, 0.29979636215215327, 1.9916642494688768, 6.0563391906390303, 0, 2.4209216646221081e-322, 4.6355706480840404e-310, 0.29604997152189405, 2.0058534831137496, 5.9499304036306571, 0, 2.4209216646221081e-322, 0, 0.29979636215215327, 1.9916642494688768, 6.0563391906390303, 0, 2.1114883506317354e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-15 12:40:20]
+Fault Injection Successful after 2.643217086791992s
+[INFO -- 2018-11-15 12:40:20]
+event type: exit
+[EXCEPTION -- 2018-11-15 12:40:20]
+exit code: no exit code available

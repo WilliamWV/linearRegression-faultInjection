@@ -1,0 +1,56 @@
+[INFO -- 2018-11-15 13:05:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 13:05:03]
+Initialization strings:
+[INFO -- 2018-11-15 13:05:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 13:05:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 13:05:03]
+initSignal:0
+[INFO -- 2018-11-15 13:05:03]
+endSignal:5
+[INFO -- 2018-11-15 13:05:03]
+faultModel:2
+[INFO -- 2018-11-15 13:05:05]
+Backtrace BEGIN:
+#0  0x0000555555558063 in std::__niter_base<double*, std::vector<double, std::allocator<double> > > (__it=<error reading variable: Cannot access memory at address 0x1>) at /usr/include/c++/7/bits/stl_iterator.h:983
+#1  0x0000555555557b81 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.075973993959094863, __last=0, __result=0.075951689160050712) at /usr/include/c++/7/bits/stl_algobase.h:422
+#2  0x00005555555573d1 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.075973993959094863, __last=0, __result=0.075951689160050712) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x0000555555556d13 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#4  0x0000555555555f26 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:197
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+978	{
+979	_GLIBCXX_BEGIN_NAMESPACE_VERSION
+980	
+981	  template<typename _Iterator, typename _Container>
+982	    _Iterator
+983	    __niter_base(__gnu_cxx::__normal_iterator<_Iterator, _Container> __it)
+984	    { return __it.base(); }
+985	
+986	_GLIBCXX_END_NAMESPACE_VERSION
+987	} // namespace
+
+Backtrace END
+Memory content before bitflip:0x040x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd770
+address max offset: 8
+Memory content after  bitflip:0x000x6f0x230x7c0x980xc40x970x26
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: __xlen
+symbol filename: /usr/include/c++/7/bits/vector.tcc
+symbol line: 203
+value: 2780907454121340672
+value address: 0x7fffffffd770
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2018-11-15 13:05:05]
+Fault Injection Successful after 2.0800862312316895s
+[INFO -- 2018-11-15 13:05:07]
+event type: exit
+[INFO -- 2018-11-15 13:05:07]
+exit code: 0

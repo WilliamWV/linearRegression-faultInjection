@@ -1,0 +1,55 @@
+[INFO -- 2018-11-15 12:34:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 12:34:07]
+Initialization strings:
+[INFO -- 2018-11-15 12:34:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 12:34:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 12:34:07]
+initSignal:0
+[INFO -- 2018-11-15 12:34:07]
+endSignal:5
+[INFO -- 2018-11-15 12:34:07]
+faultModel:0
+[INFO -- 2018-11-15 12:34:07]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd860, __n=140737488344951) at /usr/include/c++/7/bits/stl_vector.h:185
+#1  0x0000555555556f4f in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd860, __n=2, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#2  0x00005555555569fb in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x0000555555555f47 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:199
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+180		  _Tr::deallocate(_M_impl, __p, __n);
+181	      }
+182	
+183	    private:
+184	      void
+185	      _M_create_storage(size_t __n)
+186	      {
+187		this->_M_impl._M_start = this->_M_allocate(__n);
+188		this->_M_impl._M_finish = this->_M_impl._M_start;
+189		this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+
+Backtrace END
+Memory content before bitflip:0x360x130x300xcc0xc90xf30xf30x3d
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7f0
+address max offset: 8
+Memory content after  bitflip:0x360x130x300xcc0x490xf30xf30x3d
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 189
+value: 2.9031572648298519e-10
+value address: 0x7fffffffd7f0
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-15 12:34:07]
+Fault Injection Successful after 0.9783034324645996s
+[INFO -- 2018-11-15 12:34:10]
+event type: exit
+[INFO -- 2018-11-15 12:34:10]
+exit code: 0

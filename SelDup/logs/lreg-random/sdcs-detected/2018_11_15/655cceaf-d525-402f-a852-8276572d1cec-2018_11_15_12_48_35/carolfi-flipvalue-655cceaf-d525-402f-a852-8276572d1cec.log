@@ -1,0 +1,54 @@
+[INFO -- 2018-11-15 12:48:26]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 12:48:26]
+Initialization strings:
+[INFO -- 2018-11-15 12:48:26]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 12:48:26]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 12:48:26]
+initSignal:0
+[INFO -- 2018-11-15 12:48:26]
+endSignal:5
+[INFO -- 2018-11-15 12:48:26]
+faultModel:2
+[INFO -- 2018-11-15 12:48:28]
+Backtrace BEGIN:
+#0  0x00005555555570c4 in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:94
+#1  0x00005555555569da in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x0000555555555f47 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+89	    template<typename _Ptr>
+90	      static typename std::enable_if<__is_custom_pointer<_Ptr>::value>::type
+91	      destroy(_Alloc& __a, _Ptr __p)
+92	      { _Base_type::destroy(__a, std::addressof(*__p)); }
+93	
+94	    static _Alloc _S_select_on_copy(const _Alloc& __a)
+95	    { return _Base_type::select_on_container_copy_construction(__a); }
+96	
+97	    static void _S_on_swap(_Alloc& __a, _Alloc& __b)
+98	    { std::__alloc_on_swap(__a, __b); }
+
+Backtrace END
+Memory content before bitflip:0x5e0x040x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7ec
+address max offset: 4
+Memory content after  bitflip:0x2b0xc60x1c0xee
+frame name: train
+symbol name: i2
+symbol filename: lreg.cpp
+symbol line: 191
+value: 3994863147
+value address: 0x7fffffffd7ec
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-15 12:48:28]
+Fault Injection Successful after 2.642134189605713s
+[INFO -- 2018-11-15 12:48:34]
+event type: exit
+[INFO -- 2018-11-15 12:48:34]
+exit code: 0

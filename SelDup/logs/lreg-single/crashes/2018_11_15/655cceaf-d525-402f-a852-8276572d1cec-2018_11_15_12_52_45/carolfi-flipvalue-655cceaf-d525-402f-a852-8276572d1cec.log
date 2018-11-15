@@ -1,0 +1,63 @@
+[INFO -- 2018-11-15 12:52:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 12:52:36]
+Initialization strings:
+[INFO -- 2018-11-15 12:52:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 12:52:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 12:52:36]
+initSignal:0
+[INFO -- 2018-11-15 12:52:36]
+endSignal:5
+[INFO -- 2018-11-15 12:52:36]
+faultModel:0
+[INFO -- 2018-11-15 12:52:40]
+Backtrace BEGIN:
+#0  0x000055555555511b in verifyUintDup (a=1, b=1) at lreg.cpp:61
+#1  0x000055555555576f in predict (v=-28) at lreg.cpp:115
+#2  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x100x260x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b140 
+address max offset: 8
+Memory content after  bitflip:0x120x260x770x550x550x550x000x00
+frame name: predict
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 16, capacity 31 = {3.4826194921322049e-310, 1.0443614484814684e-309, 0, 3.4864390845559424e-310, 1.0442765686498298e-309, 1.0438097295758175e-309, 3.4900464774005834e-310, 1.0439794892390947e-309, 3.483468290448591e-310, 1.0436824098283595e-309, 3.4817706938158188e-310, 3.4783755005502744e-310, 1.0442341287340105e-309, 1.0442129087761009e-309, 1.0440855890286429e-309, 1.0442553486919202e-309, 1.0450033522082354e-309, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.5493634291557345e-303, 0, 3.5108536408165249e-310, 1.0486003682033419e-309, 3.4817706938158188e-310, 3.521720372973012e-310, 1.0484312768444032e-309, 1.0470427062099979e-309, 3.5322882591158227e-310, 1.0474887190557883e-309, 3.512589367061166e-310, 1.0465500882027437e-309, 3.5084547908872071e-310, 3.4988262349857022e-310, 1.0482963415358791e-309, 1.0482362096873787e-309, 1.0478365792349391e-309, 1.0483613017537084e-309, 1.0490843798494932e-309, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9.4565638986556059e-308, 1.7883431328034233e-107, -1.1010780522046743e-19, 2.5983599934857611e+302, -1.3825583277507728e-187, 3.48172792354346e-310, 9.4565638986556059e-308, -2.1904956667059895e+67, -5.8632108261102949e-266, 2.5983597975646697e+302, -1.3825583277507728e-187, 3.48172792354346e-310, 9.4565638986556059e-308, 5.2884477503219888e+123, 1.1370569661985214e-195, -2.9178957249735213e+122, -6.601596528125884e-251, 3.481818243174004e-310, 9.4565638986556059e-308, 1.6632655625031839e-111, 1.1237306513011613e-195, -2.9178957249735213e+122, -6.601596528125884e-251, 3.481818243174004e-310, 9.4565638986556059e-308, 0, -5.8149381054469311e-266, 2.5983597975646697e+302, -1.3825583277507728e-187, 3.48172792354346e-310, -4.1146289095274007e-121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-15 12:52:40]
+Fault Injection Successful after 4.3037800788879395s
+[INFO -- 2018-11-15 12:52:44]
+event type: exit
+[EXCEPTION -- 2018-11-15 12:52:44]
+exit code: no exit code available

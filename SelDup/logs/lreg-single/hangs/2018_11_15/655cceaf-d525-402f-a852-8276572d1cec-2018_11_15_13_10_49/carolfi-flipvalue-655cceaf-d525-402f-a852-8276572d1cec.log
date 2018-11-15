@@ -1,0 +1,43 @@
+[INFO -- 2018-11-15 13:10:27]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 13:10:27]
+Initialization strings:
+[INFO -- 2018-11-15 13:10:27]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 13:10:27]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 13:10:27]
+initSignal:0
+[INFO -- 2018-11-15 13:10:27]
+endSignal:5
+[INFO -- 2018-11-15 13:10:27]
+faultModel:0
+[INFO -- 2018-11-15 13:10:28]
+Backtrace BEGIN:
+#0  0x00007ffff7de4e4b in _dl_fixup (l=0x7ffff7fde000, reloc_arg=<optimized out>) at ../elf/dl-runtime.c:84
+#1  0x00007ffff7dec70a in _dl_runtime_resolve_xsave () at ../sysdeps/x86_64/dl-trampoline.h:125
+#2  0x00007ffff7b58385 in std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7b5873e in std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7b49d0f in std::istream& std::istream::_M_extract<double>(double&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x000055555555631e in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:241
+
+79	../elf/dl-runtime.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x040x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd8e8
+address max offset: 4
+Memory content after  bitflip:0x040x000x400x00
+frame name: main
+symbol name: predictions
+symbol filename: lreg.cpp
+symbol line: 236
+value: 4194308
+value address: 0x7fffffffd8e8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-15 13:10:28]
+Fault Injection Successful after 1.1128768920898438s

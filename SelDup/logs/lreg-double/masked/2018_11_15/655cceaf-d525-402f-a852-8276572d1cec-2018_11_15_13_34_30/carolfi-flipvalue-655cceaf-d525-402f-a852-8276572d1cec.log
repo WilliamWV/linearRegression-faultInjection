@@ -1,0 +1,59 @@
+[INFO -- 2018-11-15 13:34:26]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 13:34:26]
+Initialization strings:
+[INFO -- 2018-11-15 13:34:26]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 13:34:26]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 13:34:26]
+initSignal:0
+[INFO -- 2018-11-15 13:34:26]
+endSignal:5
+[INFO -- 2018-11-15 13:34:26]
+faultModel:1
+[INFO -- 2018-11-15 13:34:29]
+Backtrace BEGIN:
+#0  0x00007ffff76d597d in __exp1 (x=<optimized out>, xx=<optimized out>, error=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_exp.c:279
+#1  0x00007ffff76da8dc in __ieee754_pow_sse2 (x=8, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-8, y=3) at w_pow_compat.c:30
+#4  0x0000555555556826 in std::pow<double, unsigned int> (__x=-8, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x0000555555555814 in predict (v=-8) at lreg.cpp:116
+#6  0x0000555555555a53 in partialDerivate (pos1=3, pos2=3) at lreg.cpp:142
+#7  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#8  0x0000555555555ee0 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#9  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+274	../sysdeps/ieee754/dbl-64/e_exp.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0x000x000xf00x4f
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779181c 
+address max offset: 4
+Memory content after  bitflip:0x000x000x600x4f
+frame name: __exp1
+symbol name: t256
+symbol filename: ../sysdeps/ieee754/dbl-64/uexp.h
+symbol line: 55
+value: {i = {0, 1331691520}, x = 2.2615642429163319e+74}
+value address: 0x7ffff7791818 <t256>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-15 13:34:29]
+Fault Injection Successful after 3.8955070972442627s
+[INFO -- 2018-11-15 13:34:30]
+event type: exit
+[INFO -- 2018-11-15 13:34:30]
+exit code: 0

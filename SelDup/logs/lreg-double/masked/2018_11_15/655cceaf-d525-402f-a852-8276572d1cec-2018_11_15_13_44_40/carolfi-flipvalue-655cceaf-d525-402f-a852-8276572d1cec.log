@@ -1,0 +1,58 @@
+[INFO -- 2018-11-15 13:44:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 13:44:36]
+Initialization strings:
+[INFO -- 2018-11-15 13:44:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 13:44:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 13:44:36]
+initSignal:0
+[INFO -- 2018-11-15 13:44:36]
+endSignal:5
+[INFO -- 2018-11-15 13:44:36]
+faultModel:1
+[EXCEPTION -- 2018-11-15 13:44:37]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-15 13:44:37]
+Backtrace BEGIN:
+#0  __GI___libc_free (mem=<optimized out>) at malloc.c:3125
+#1  0x0000555555558018 in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd860, __p=0x5555557728c0) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x0000555555557add in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x5555557728c0, __n=4) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x0000555555557230 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd860, __p=0x5555557728c0, __n=4) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x0000555555556eed in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd860, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#5  0x0000555555556919 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd860, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#6  0x0000555555555fb4 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:199
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+3120	in malloc.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x100x270x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b150 
+address max offset: 8
+Memory content after  bitflip:0x100x270x770x550x550x140x000x00
+frame name: std::vector<double, std::allocator<double> >::~vector
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 17, capacity -8933531975648 = {7, -32, 0, 15, -28, -11, 31, -15, 8, -8, 6, 3, -26, -25, -19, -27, -121}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-15 13:44:37]
+Fault Injection Successful after 1.7798099517822266s
+[INFO -- 2018-11-15 13:44:39]
+event type: exit
+[INFO -- 2018-11-15 13:44:39]
+exit code: 0
