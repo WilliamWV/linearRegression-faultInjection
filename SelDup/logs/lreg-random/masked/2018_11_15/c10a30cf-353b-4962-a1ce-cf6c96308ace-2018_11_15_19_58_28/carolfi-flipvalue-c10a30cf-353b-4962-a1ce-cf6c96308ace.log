@@ -1,0 +1,58 @@
+[INFO -- 2018-11-15 19:58:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 19:58:22]
+Initialization strings:
+[INFO -- 2018-11-15 19:58:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 19:58:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 19:58:22]
+initSignal:0
+[INFO -- 2018-11-15 19:58:22]
+endSignal:5
+[INFO -- 2018-11-15 19:58:22]
+faultModel:2
+[EXCEPTION -- 2018-11-15 19:58:23]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-15 19:58:23]
+Backtrace BEGIN:
+#0  0x00007ffff76da5e4 in __ieee754_pow_sse2 (x=-7, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:85
+#1  0x00007ffff76bcb14 in __pow (x=-7, y=0) at w_pow_compat.c:30
+#2  0x0000555555556826 in std::pow<double, unsigned int> (__x=-7, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555814 in predict (v=-7) at lreg.cpp:116
+#4  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#5  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+80	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0xff0xff0x070x42
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5b4 
+address max offset: 4
+Memory content after  bitflip:0x330x020x5c0x9b
+frame name: __ieee754_pow_sse2
+symbol name: bigv
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 53
+value: {i = {-523926, -1688468941}, x = -6.9118459786447729e-177}
+value address: 0x7ffff779f5b0 <bigv>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-15 19:58:23]
+Fault Injection Successful after 1.6644299030303955s
+[INFO -- 2018-11-15 19:58:26]
+event type: exit
+[INFO -- 2018-11-15 19:58:26]
+exit code: 0

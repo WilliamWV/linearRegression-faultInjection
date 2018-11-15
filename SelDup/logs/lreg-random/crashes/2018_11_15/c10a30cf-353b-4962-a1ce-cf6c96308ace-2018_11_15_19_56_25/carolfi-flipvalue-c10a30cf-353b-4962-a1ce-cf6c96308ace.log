@@ -1,0 +1,59 @@
+[INFO -- 2018-11-15 19:56:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 19:56:18]
+Initialization strings:
+[INFO -- 2018-11-15 19:56:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 19:56:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 19:56:18]
+initSignal:0
+[INFO -- 2018-11-15 19:56:18]
+endSignal:5
+[INFO -- 2018-11-15 19:56:18]
+faultModel:2
+[EXCEPTION -- 2018-11-15 19:56:20]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-15 19:56:20]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-15 19:56:22]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=2.1800754380842661e-106, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:110
+#1  0x00007ffff76bcb14 in __pow (x=2.1800754380842661e-106, y=3) at w_pow_compat.c:30
+#2  0x0000555555556826 in std::pow<double, unsigned int> (__x=2.1800754380842661e-106, __y=3) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555ace in partialDerivate (pos1=3, pos2=3) at lreg.cpp:142
+#4  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#5  0x0000555555555ee0 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+105	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772710
+address max offset: 8
+Memory content after  bitflip:0x520x600x1e0xfd0xd20x530x390x4e
+frame name: train
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 14, capacity 29 = {1.7272337110189135e-77, 3.7857669957337329e-270, 2.7516420536595969e-135, 9.3633527093845297e-97, 3.7857669957338405e-270, 1.181821263076591e-125, 7.418412301375159e-68, 3.7857669957337329e-270, 1.3684555315672625e-48, 4.021529366772069e-87, 1.6543612251061259e-24, 2.1800754380842661e-106, 7.1054273576013048e-15, 9.4856879503213471e+80, 9.4860604001519336e-322, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.5271988735861686e-32, 3.4567796976928656e-319, -5.7174753711046946e-112, -1.5506501614525811e-266, -1.1025403474885506e+27, -9.0221874415876466e-10, 6.5185151242706334e+91, -1.6172698447808963e-172, -1.2891945871788699e-43, 562949953421320, -7.2611098403426781e-122, -1.1025403474885506e+27, 6.5185151242706334e+91, -1.4155186770563886e+105, -8.6736173798841587e-19, -2.8597577670328063e+173, -3.0860595173719616e-65, -1.3577823278043786e+196, -4.8920073583162986e+272, 3.1620201333839779e-322, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6.1975594614325967e-320, 2.4761197850967667e-117, -5.179548053897743e-08, -1.0533888549393943e+308, 7.1212473412743053e-308, 9.4860604001519336e-322, 6.1975594614325967e-320, 2.4470512236055983e-117, -5.179548815146412e-08, -1.0533888549393943e+308, 7.1212473412743053e-308, 9.4860604001519336e-322, 6.1975594614325967e-320, -1.428021094938655e+41, -4.8293185254129125e-08, -1.0532937284708875e+308, 7.1212816583626109e-308, 9.4860604001519336e-322, 6.1975594614325967e-320, 4.7468246801061408e-307, -5.1795495763950388e-08, -1.0533888549393943e+308, 7.1212473412743053e-308, 9.4860604001519336e-322, 6.1975594614325967e-320, 0, -5.1795488151463697e-08, -1.0533888549393943e+308, 7.1212473412743053e-308, 9.4860604001519336e-322, 5.4054101776172425e-317, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-15 19:56:22]
+Fault Injection Successful after 4.090371131896973s
+[INFO -- 2018-11-15 19:56:23]
+event type: exit
+[EXCEPTION -- 2018-11-15 19:56:23]
+exit code: no exit code available

@@ -1,0 +1,61 @@
+[INFO -- 2018-11-15 20:18:45]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 20:18:45]
+Initialization strings:
+[INFO -- 2018-11-15 20:18:45]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 20:18:45]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 20:18:45]
+initSignal:0
+[INFO -- 2018-11-15 20:18:45]
+endSignal:5
+[INFO -- 2018-11-15 20:18:45]
+faultModel:0
+[INFO -- 2018-11-15 20:18:49]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::end (this=0x7fffffffd810) at /usr/include/c++/7/bits/stl_vector.h:581
+#1  0x0000555555556cd8 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd810, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555e7d in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:192
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+576	       *  Returns a read/write iterator that points one past the last
+577	       *  element in the %vector.  Iteration is done in ordinary
+578	       *  element order.
+579	       */
+580	      iterator
+581	      end() _GLIBCXX_NOEXCEPT
+582	      { return iterator(this->_M_impl._M_finish); }
+583	
+584	      /**
+585	       *  Returns a read-only (constant) iterator that points one past
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x800x230x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b180 
+address max offset: 8
+Memory content after  bitflip:0x800xa30x770x550x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::end
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length -4092, capacity -4092 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-15 20:18:49]
+Fault Injection Successful after 4.344729661941528s
+[INFO -- 2018-11-15 20:18:49]
+event type: exit
+[EXCEPTION -- 2018-11-15 20:18:49]
+exit code: no exit code available

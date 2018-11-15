@@ -1,0 +1,47 @@
+[INFO -- 2018-11-15 20:06:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 20:06:32]
+Initialization strings:
+[INFO -- 2018-11-15 20:06:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 20:06:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 20:06:32]
+initSignal:0
+[INFO -- 2018-11-15 20:06:32]
+endSignal:5
+[INFO -- 2018-11-15 20:06:32]
+faultModel:2
+[INFO -- 2018-11-15 20:06:34]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb20 in __pow (x=-14, y=0) at w_pow_compat.c:31
+#1  0x0000555555556826 in std::pow<double, unsigned int> (__x=-14, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555814 in predict (v=-14) at lreg.cpp:116
+#3  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#4  0x0000555555555ee5 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+26	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd758
+address max offset: 8
+Memory content after  bitflip:0x680x820x0d0x5b0x6a0x120x190xde
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 113
+value: -1.9567069464994333e+145
+value address: 0x7fffffffd758
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-15 20:06:34]
+Fault Injection Successful after 2.6892125606536865s
+[INFO -- 2018-11-15 20:06:37]
+event type: exit
+[INFO -- 2018-11-15 20:06:37]
+exit code: 0

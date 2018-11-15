@@ -1,0 +1,65 @@
+[INFO -- 2018-11-15 20:18:02]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 20:18:02]
+Initialization strings:
+[INFO -- 2018-11-15 20:18:02]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 20:18:02]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 20:18:02]
+initSignal:0
+[INFO -- 2018-11-15 20:18:02]
+endSignal:5
+[INFO -- 2018-11-15 20:18:02]
+faultModel:0
+[EXCEPTION -- 2018-11-15 20:18:02]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-15 20:18:02]
+Backtrace BEGIN:
+#0  __strcmp_ssse3 () at ../sysdeps/x86_64/multiarch/../strcmp.S:1196
+#1  0x00007ffff7ae06b0 in __cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#2  0x00007ffff7add3b6 in __dynamic_cast () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7b52180 in bool std::has_facet<std::ctype<char> >(std::locale const&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7b44c14 in std::basic_ios<char, std::char_traits<char> >::_M_cache_locale(std::locale const&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7b45080 in std::basic_ios<char, std::char_traits<char> >::init(std::basic_streambuf<char, std::char_traits<char> >*) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7aef36b in std::ios_base::Init::Init() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x000055555555667d in __static_initialization_and_destruction_0 (__initialize_p=1, __priority=65535) at /usr/include/c++/7/iostream:74
+#8  0x0000555555556748 in _GLOBAL__sub_I_x () at lreg.cpp:265
+#9  0x000055555555866d in __libc_csu_init ()
+#10 0x00007ffff6ea7b28 in __libc_start_main (main=0x5555555560a2 <main(int, char**)>, argc=3, argv=0x7fffffffde68, init=0x555555558620 <__libc_csu_init>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7fffffffde58) at ../csu/libc-start.c:266
+#11 0x000055555555501a in _start ()
+
+1191	in ../sysdeps/x86_64/multiarch/../strcmp.S
+
+Backtrace END
+Fliping value of field: cancel_jmp_buf
+Fliping array at pos: 0
+Fliping value of field: jmp_buf
+Fliping array at pos: 5
+Memory content before bitflip:0x890x940xec0xf60xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffddd8
+address max offset: 8
+Memory content after  bitflip:0x890x940xec0xf60xff0x7f0x000x02
+frame name: __libc_start_main
+symbol name: unwind_buf
+symbol filename: ../csu/libc-start.c
+symbol line: 294
+value: {cancel_jmp_buf = {{jmp_buf = {140737488346760, 140737339942440, 140737348932688, 140737339942440, 140737348932640, 144255925411943561, 3, 1}, mask_was_saved = 3}}, priv = {pad = {0x7fffffffde68, 0x7fffffffde88, 0x7ffff7de5733 <_dl_init+259>, 0x7ffff7dc52b8}, data = {prev = 0x7fffffffde68, cleanup = 0x7fffffffde88, canceltype = -136423629}}}
+value address: 0x7fffffffddb0
+Type: The type is a structure.
+Type sizeof: 104
+Field name: cancel_jmp_buf
+Field Type: The type is an array.
+Field Type sizeof: 72
+Field name: priv
+Field Type: The type is a union.
+Field Type sizeof: 32
+
+[INFO -- 2018-11-15 20:18:02]
+Fault Injection Successful after 0.7307891845703125s
+[INFO -- 2018-11-15 20:18:05]
+event type: exit
+[INFO -- 2018-11-15 20:18:05]
+exit code: 0

@@ -1,0 +1,54 @@
+[INFO -- 2018-11-15 19:39:02]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-15 19:39:02]
+Initialization strings:
+[INFO -- 2018-11-15 19:39:02]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-15 19:39:02]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-15 19:39:02]
+initSignal:0
+[INFO -- 2018-11-15 19:39:02]
+endSignal:5
+[INFO -- 2018-11-15 19:39:02]
+faultModel:1
+[INFO -- 2018-11-15 19:39:05]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb31 in __pow (x=12, y=2) at w_pow_compat.c:31
+#1  0x0000555555556826 in std::pow<double, unsigned int> (__x=12, __y=2) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555814 in predict (v=12) at lreg.cpp:116
+#3  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#4  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde68) at lreg.cpp:253
+
+26	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x210x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772538
+address max offset: 8
+Memory content after  bitflip:0x210x000x000x000x000x000x210x00
+frame name: meanSquaredError
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 3, capacity 3 = {-2.0414583710711862, -2.950792473323439, 2.9917329317692181}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-15 19:39:05]
+Fault Injection Successful after 3.617898464202881s
+[INFO -- 2018-11-15 19:39:06]
+event type: exit
+[EXCEPTION -- 2018-11-15 19:39:06]
+exit code: no exit code available
