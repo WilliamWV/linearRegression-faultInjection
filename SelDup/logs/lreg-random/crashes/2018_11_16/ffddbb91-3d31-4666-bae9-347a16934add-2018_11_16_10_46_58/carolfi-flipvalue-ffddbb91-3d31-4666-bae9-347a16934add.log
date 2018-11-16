@@ -1,0 +1,57 @@
+[INFO -- 2018-11-16 10:46:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 10:46:54]
+Initialization strings:
+[INFO -- 2018-11-16 10:46:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 10:46:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 10:46:54]
+initSignal:0
+[INFO -- 2018-11-16 10:46:54]
+endSignal:5
+[INFO -- 2018-11-16 10:46:54]
+faultModel:2
+[EXCEPTION -- 2018-11-16 10:46:57]
+gdbException: Cannot access memory at address 0x722173787350d6e1
+[INFO -- 2018-11-16 10:46:57]
+Backtrace BEGIN:
+#0  0x000055555555582b in predict (v=-29) at lreg.cpp:115
+#1  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+110		Predicts the value related to v using the Ts variables
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd760
+address max offset: 8
+Memory content after  bitflip:0x8f0x540x0e0xe40x060x5d0x120x08
+frame name: adjust
+symbol name: alpha2
+symbol filename: lreg.cpp
+symbol line: 151
+value: 8.68993776845204e-270
+value address: 0x7fffffffd760
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-16 10:46:57]
+Fault Injection Successful after 3.866581439971924s
+[INFO -- 2018-11-16 10:46:58]
+event type: exit
+[EXCEPTION -- 2018-11-16 10:46:58]
+exit code: no exit code available

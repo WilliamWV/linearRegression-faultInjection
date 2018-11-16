@@ -1,0 +1,14 @@
+[INFO -- 2018-11-16 10:45:09]
+Starting GDB script
+[INFO -- 2018-11-16 10:45:09]
+initSignal:0.0
+[INFO -- 2018-11-16 10:45:09]
+endSignal:5.0
+[INFO -- 2018-11-16 10:45:09]
+sending 5 signals using command: 'killall -2 lreg' after 0.369800572394s
+[INFO -- 2018-11-16 10:45:12]
+sending 5 signals using command: 'killall -2 lreg' after 3.1637236003s
+[INFO -- 2018-11-16 10:45:14]
+sending 5 signals using command: 'killall -2 lreg' after 4.50571299615s
+[INFO -- 2018-11-16 10:45:19]
+Execution finished before waitTime

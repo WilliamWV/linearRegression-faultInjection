@@ -1,0 +1,57 @@
+[INFO -- 2018-11-16 11:43:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 11:43:51]
+Initialization strings:
+[INFO -- 2018-11-16 11:43:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 11:43:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 11:43:51]
+initSignal:0
+[INFO -- 2018-11-16 11:43:51]
+endSignal:5
+[INFO -- 2018-11-16 11:43:51]
+faultModel:2
+[EXCEPTION -- 2018-11-16 11:43:51]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-16 11:43:52]
+Backtrace BEGIN:
+#0  0x000055555555574d in predict (v=5) at lreg.cpp:113
+#1  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+108	
+109	/**
+110		Predicts the value related to v using the Ts variables
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000xb00x870x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd918
+address max offset: 8
+Memory content after  bitflip:0x070xbc0x000x530x200x490x090x04
+frame name: main
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 233
+value: 3.2433087134272371e-289
+value address: 0x7fffffffd918
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-16 11:43:52]
+Fault Injection Successful after 1.7967896461486816s
+[INFO -- 2018-11-16 11:43:56]
+event type: exit
+[INFO -- 2018-11-16 11:43:56]
+exit code: 0

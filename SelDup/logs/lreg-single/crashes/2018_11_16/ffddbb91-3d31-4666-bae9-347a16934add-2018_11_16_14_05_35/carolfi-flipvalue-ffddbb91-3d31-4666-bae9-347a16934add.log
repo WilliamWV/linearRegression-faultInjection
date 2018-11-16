@@ -1,0 +1,61 @@
+[INFO -- 2018-11-16 14:05:30]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 14:05:30]
+Initialization strings:
+[INFO -- 2018-11-16 14:05:30]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 14:05:30]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 14:05:30]
+initSignal:0
+[INFO -- 2018-11-16 14:05:30]
+endSignal:5
+[INFO -- 2018-11-16 14:05:30]
+faultModel:0
+[EXCEPTION -- 2018-11-16 14:05:31]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-16 14:05:33]
+gdbException: Cannot access memory at address 0x575555772400
+[INFO -- 2018-11-16 14:05:33]
+Backtrace BEGIN:
+#0  0x0000555555554f00 in operator new(unsigned long)@plt ()
+#1  0x00005555555582ba in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd840, __n=3) at /usr/include/c++/7/ext/new_allocator.h:111
+#2  0x0000555555558043 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=3) at /usr/include/c++/7/bits/alloc_traits.h:436
+#3  0x0000555555557b1a in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd840, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#4  0x000055555555787f in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd840, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#5  0x0000555555556f4f in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd840, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#6  0x00005555555569fb in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd840, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#7  0x0000555555555f5f in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#8  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+2284	in rtld.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772510
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x08
+frame name: std::allocator_traits<std::allocator<double> >::allocate
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 13, capacity 16 = {2, 838, 58, 262, 2, -2, 2, 218, 58, 362, 218, 758, 2776}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-16 14:05:33]
+Fault Injection Successful after 3.729243040084839s
+[INFO -- 2018-11-16 14:05:34]
+event type: exit
+[EXCEPTION -- 2018-11-16 14:05:34]
+exit code: no exit code available

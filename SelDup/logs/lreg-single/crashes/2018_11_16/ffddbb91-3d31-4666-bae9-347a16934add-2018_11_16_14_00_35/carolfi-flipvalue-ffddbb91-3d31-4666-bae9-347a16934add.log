@@ -1,0 +1,60 @@
+[INFO -- 2018-11-16 14:00:33]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 14:00:33]
+Initialization strings:
+[INFO -- 2018-11-16 14:00:34]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 14:00:34]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 14:00:34]
+initSignal:0
+[INFO -- 2018-11-16 14:00:34]
+endSignal:5
+[INFO -- 2018-11-16 14:00:34]
+faultModel:0
+[EXCEPTION -- 2018-11-16 14:00:34]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-16 14:00:35]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-16 14:00:35]
+Backtrace BEGIN:
+#0  0x000055555555523e in verifyDoubleDup (a=-1.4058481822510369, b=-1.4058481822510369) at lreg.cpp:70
+#1  0x00005555555557ea in predict (v=5) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd6d4
+address max offset: 4
+Memory content after  bitflip:0x000x000x400x00
+frame name: predict
+symbol name: i2
+symbol filename: lreg.cpp
+symbol line: 115
+value: 4194304
+value address: 0x7fffffffd6d4
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-16 14:00:35]
+Fault Injection Successful after 1.4000661373138428s
+[INFO -- 2018-11-16 14:00:35]
+event type: exit
+[EXCEPTION -- 2018-11-16 14:00:35]
+exit code: no exit code available

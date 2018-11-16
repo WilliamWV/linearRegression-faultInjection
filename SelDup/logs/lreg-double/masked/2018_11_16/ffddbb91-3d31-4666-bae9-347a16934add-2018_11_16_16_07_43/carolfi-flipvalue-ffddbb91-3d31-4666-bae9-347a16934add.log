@@ -1,0 +1,54 @@
+[INFO -- 2018-11-16 16:07:38]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 16:07:38]
+Initialization strings:
+[INFO -- 2018-11-16 16:07:38]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 16:07:38]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 16:07:38]
+initSignal:0
+[INFO -- 2018-11-16 16:07:38]
+endSignal:5
+[INFO -- 2018-11-16 16:07:38]
+faultModel:1
+[INFO -- 2018-11-16 16:07:39]
+Backtrace BEGIN:
+#0  0x0000555555557127 in std::vector<double, std::allocator<double> >::begin (this=0x55555575b180 <T1>) at /usr/include/c++/7/bits/stl_vector.h:572
+#1  0x0000555555556d05 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555f26 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:197
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+567	       *  Returns a read-only (constant) iterator that points to the
+568	       *  first element in the %vector.  Iteration is done in ordinary
+569	       *  element order.
+570	       */
+571	      const_iterator
+572	      begin() const _GLIBCXX_NOEXCEPT
+573	      { return const_iterator(this->_M_impl._M_start); }
+574	
+575	      /**
+576	       *  Returns a read/write iterator that points one past the last
+
+Backtrace END
+Memory content before bitflip:0x2c0x580xa00x740x3f0xa30xde0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0x2c0x580xa00x740x3f0xa30xde0xbd
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 190
+value: -1.1145925602316429e-10
+value address: 0x7fffffffd7f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-16 16:07:39]
+Fault Injection Successful after 1.8148443698883057s
+[INFO -- 2018-11-16 16:07:42]
+event type: exit
+[INFO -- 2018-11-16 16:07:42]
+exit code: 0

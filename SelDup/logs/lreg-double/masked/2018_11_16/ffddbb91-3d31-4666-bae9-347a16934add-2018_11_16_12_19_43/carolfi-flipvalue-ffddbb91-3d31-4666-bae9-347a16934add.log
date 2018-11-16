@@ -1,0 +1,61 @@
+[INFO -- 2018-11-16 12:19:34]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 12:19:34]
+Initialization strings:
+[INFO -- 2018-11-16 12:19:34]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 12:19:34]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 12:19:34]
+initSignal:0
+[INFO -- 2018-11-16 12:19:34]
+endSignal:5
+[INFO -- 2018-11-16 12:19:34]
+faultModel:1
+[EXCEPTION -- 2018-11-16 12:19:34]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-16 12:19:34]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-16 12:19:34]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-16 12:19:34]
+Backtrace BEGIN:
+#0  0x00007ffff7df1f43 in __mmap64 (addr=addr@entry=0x0, len=len@entry=12288, prot=prot@entry=3, flags=flags@entry=34, fd=fd@entry=-1, offset=offset@entry=0) at ../sysdeps/unix/sysv/linux/mmap64.c:52
+#1  0x00007ffff7df0537 in malloc (n=n@entry=4232) at dl-minimal.c:73
+#2  0x00007ffff7de80ac in _dl_allocate_tls_storage () at ../elf/dl-tls.c:346
+#3  0x00007ffff7dd5fdc in init_tls () at rtld.c:730
+#4  0x00007ffff7dd8fff in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1801
+#5  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde50, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#6  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde50) at rtld.c:414
+#7  _dl_start (arg=0x7fffffffde50) at rtld.c:521
+#8  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#9  0x0000000000000003 in ?? ()
+#10 0x00007fffffffe1fe in ?? ()
+#11 0x00007fffffffe20d in ?? ()
+#12 0x00007fffffffe221 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+47	in ../sysdeps/unix/sysv/linux/mmap64.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff7ffc684 
+address max offset: 4
+Memory content after  bitflip:0x000x000x500x00
+frame name: init_tls
+symbol name: version_info
+symbol filename: rtld.c
+symbol line: 827
+value: 5242880
+value address: 0x7ffff7ffc684 <version_info>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-16 12:19:34]
+Fault Injection Successful after 0.646263837814331s
+[INFO -- 2018-11-16 12:19:42]
+event type: exit
+[INFO -- 2018-11-16 12:19:42]
+exit code: 0

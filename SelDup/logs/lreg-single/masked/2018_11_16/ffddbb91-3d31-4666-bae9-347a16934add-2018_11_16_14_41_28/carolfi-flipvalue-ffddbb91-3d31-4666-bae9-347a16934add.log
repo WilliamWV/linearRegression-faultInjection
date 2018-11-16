@@ -1,0 +1,58 @@
+[INFO -- 2018-11-16 14:41:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 14:41:22]
+Initialization strings:
+[INFO -- 2018-11-16 14:41:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 14:41:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 14:41:22]
+initSignal:0
+[INFO -- 2018-11-16 14:41:22]
+endSignal:5
+[INFO -- 2018-11-16 14:41:22]
+faultModel:0
+[INFO -- 2018-11-16 14:41:23]
+Backtrace BEGIN:
+#0  0x0000555555556bdb in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:204
+#1  0x0000555555555e7d in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:192
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+199		      std::__alloc_on_copy(_M_get_Tp_allocator(),
+200					   __x._M_get_Tp_allocator());
+201		    }
+202	#endif
+203		  const size_type __xlen = __x.size();
+204		  if (__xlen > capacity())
+205		    {
+206		      pointer __tmp = _M_allocate_and_copy(__xlen, __x.begin(),
+207							   __x.end());
+208		      std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772530
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x080x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd800
+value address: 0x7fffffffd768
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-16 14:41:23]
+Fault Injection Successful after 1.6486904621124268s
+[INFO -- 2018-11-16 14:41:27]
+event type: exit
+[INFO -- 2018-11-16 14:41:27]
+exit code: 0

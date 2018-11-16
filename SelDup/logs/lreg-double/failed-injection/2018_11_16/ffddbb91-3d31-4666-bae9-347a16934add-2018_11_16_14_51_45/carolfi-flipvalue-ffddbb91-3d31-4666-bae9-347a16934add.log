@@ -1,0 +1,21 @@
+[INFO -- 2018-11-16 14:51:38]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 14:51:38]
+Initialization strings:
+[INFO -- 2018-11-16 14:51:38]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 14:51:38]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 14:51:38]
+initSignal:0
+[INFO -- 2018-11-16 14:51:38]
+endSignal:5
+[INFO -- 2018-11-16 14:51:38]
+faultModel:1
+[EXCEPTION -- 2018-11-16 14:51:41]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-16 14:51:42]
+event type: exit
+[INFO -- 2018-11-16 14:51:42]
+exit code: 0

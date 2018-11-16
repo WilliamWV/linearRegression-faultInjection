@@ -1,0 +1,61 @@
+[INFO -- 2018-11-16 16:12:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 16:12:07]
+Initialization strings:
+[INFO -- 2018-11-16 16:12:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 16:12:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 16:12:07]
+initSignal:0
+[INFO -- 2018-11-16 16:12:07]
+endSignal:5
+[INFO -- 2018-11-16 16:12:07]
+faultModel:1
+[INFO -- 2018-11-16 16:12:09]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_M_get_Tp_allocator (this=0x7fffffffd840) at /usr/include/c++/7/bits/stl_vector.h:116
+#1  0x0000555555556a13 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd840, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:333
+#2  0x0000555555555f5f in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:199
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	    public:
+112	      typedef _Alloc allocator_type;
+113	
+114	      _Tp_alloc_type&
+115	      _M_get_Tp_allocator() _GLIBCXX_NOEXCEPT
+116	      { return *static_cast<_Tp_alloc_type*>(&this->_M_impl); }
+117	
+118	      const _Tp_alloc_type&
+119	      _M_get_Tp_allocator() const _GLIBCXX_NOEXCEPT
+120	      { return *static_cast<const _Tp_alloc_type*>(&this->_M_impl); }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772820
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x140x000x000x00
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 17, capacity 32 = {7269, -63607, -13063, 22361, -42439, 7269, 821, -7, 45593, 821, -33895, 1665, 22361, 8777, 45593, 2957, 12476}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-16 16:12:09]
+Fault Injection Successful after 2.396897315979004s
+[INFO -- 2018-11-16 16:12:12]
+event type: exit
+[INFO -- 2018-11-16 16:12:12]
+exit code: 0

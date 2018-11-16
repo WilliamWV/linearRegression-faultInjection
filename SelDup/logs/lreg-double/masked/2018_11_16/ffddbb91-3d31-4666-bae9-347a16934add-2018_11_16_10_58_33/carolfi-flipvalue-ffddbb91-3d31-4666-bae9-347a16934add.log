@@ -1,0 +1,62 @@
+[INFO -- 2018-11-16 10:58:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 10:58:24]
+Initialization strings:
+[INFO -- 2018-11-16 10:58:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 10:58:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 10:58:24]
+initSignal:0
+[INFO -- 2018-11-16 10:58:24]
+endSignal:5
+[INFO -- 2018-11-16 10:58:24]
+faultModel:1
+[INFO -- 2018-11-16 10:58:26]
+Backtrace BEGIN:
+#0  verifyUintDup (a=0, b=0) at lreg.cpp:61
+#1  0x000055555555576f in predict (v=-1) at lreg.cpp:115
+#2  0x0000555555555928 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772510
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x21
+frame name: verifyUintDup
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 13, capacity 16 = {2, 838, 58, 262, 2, -2, 2, 218, 58, 362, 218, 758, 2776}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-16 10:58:26]
+Fault Injection Successful after 2.7923996448516846s
+[INFO -- 2018-11-16 10:58:32]
+event type: exit
+[INFO -- 2018-11-16 10:58:32]
+exit code: 0

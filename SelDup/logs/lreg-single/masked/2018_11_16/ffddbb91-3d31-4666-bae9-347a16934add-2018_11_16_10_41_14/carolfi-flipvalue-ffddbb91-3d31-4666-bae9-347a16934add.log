@@ -1,0 +1,54 @@
+[INFO -- 2018-11-16 10:41:10]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 10:41:10]
+Initialization strings:
+[INFO -- 2018-11-16 10:41:10]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 10:41:10]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 10:41:10]
+initSignal:0
+[INFO -- 2018-11-16 10:41:10]
+endSignal:5
+[INFO -- 2018-11-16 10:41:10]
+faultModel:0
+[INFO -- 2018-11-16 10:41:11]
+Backtrace BEGIN:
+#0  0x00005555555559d9 in partialDerivate (pos1=0, pos2=1433871664) at lreg.cpp:138
+#1  0x0000555555555bbe in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:156
+#2  0x0000555555555ee0 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+133	}
+134	/**
+135		Calculates the partial derivate of the meanSquaredError function 
+136		to the adjustment variable whose position in T is passed in pos
+137	*/
+138	double partialDerivate(UINT pos1, UINT pos2){
+139		double pD = 0;
+140		
+141		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(x.size() - 1); i1++, i2++){
+142			pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
+
+Backtrace END
+Memory content before bitflip:0xaa0x450x0b0x7a0x2a0x550x0d0x3e
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0xaa0x450x0b0x6a0x2a0x550x0d0x3e
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 190
+value: 8.5369330015549982e-10
+value address: 0x7fffffffd7f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-16 10:41:11]
+Fault Injection Successful after 1.0441460609436035s
+[INFO -- 2018-11-16 10:41:13]
+event type: exit
+[INFO -- 2018-11-16 10:41:13]
+exit code: 0

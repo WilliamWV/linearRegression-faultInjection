@@ -1,0 +1,25 @@
+[INFO -- 2018-11-16 12:03:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 12:03:35]
+Initialization strings:
+[INFO -- 2018-11-16 12:03:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 12:03:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 12:03:35]
+initSignal:0
+[INFO -- 2018-11-16 12:03:35]
+endSignal:5
+[INFO -- 2018-11-16 12:03:35]
+faultModel:2
+[EXCEPTION -- 2018-11-16 12:03:37]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-16 12:03:37]
+gdbException: Cannot access memory at address 0xe6ac4372833f43e2
+[EXCEPTION -- 2018-11-16 12:03:37]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-16 12:03:38]
+event type: exit
+[EXCEPTION -- 2018-11-16 12:03:38]
+exit code: no exit code available

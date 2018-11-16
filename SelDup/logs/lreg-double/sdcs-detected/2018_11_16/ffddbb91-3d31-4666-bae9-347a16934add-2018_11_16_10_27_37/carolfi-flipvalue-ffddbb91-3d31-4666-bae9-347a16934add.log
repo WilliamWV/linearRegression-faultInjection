@@ -1,0 +1,54 @@
+[INFO -- 2018-11-16 10:27:30]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 10:27:30]
+Initialization strings:
+[INFO -- 2018-11-16 10:27:30]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 10:27:30]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 10:27:30]
+initSignal:0
+[INFO -- 2018-11-16 10:27:30]
+endSignal:5
+[INFO -- 2018-11-16 10:27:30]
+faultModel:1
+[INFO -- 2018-11-16 10:27:31]
+Backtrace BEGIN:
+#0  0x0000555555556853 in std::allocator<double>::~allocator (this=0x7fffffffd860, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/allocator.h:139
+#1  0x0000555555556a07 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x0000555555555f47 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:199
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+134	      : __allocator_base<_Tp>(__a) { }
+135	
+136	      template<typename _Tp1>
+137		allocator(const allocator<_Tp1>&) throw() { }
+138	
+139	      ~allocator() throw() { }
+140	
+141	      // Inherit everything else.
+142	    };
+143	
+
+Backtrace END
+Memory content before bitflip:0x830x140x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7e8
+address max offset: 4
+Memory content after  bitflip:0xab0x140x000x00
+frame name: train
+symbol name: i1
+symbol filename: lreg.cpp
+symbol line: 191
+value: 5291
+value address: 0x7fffffffd7e8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-16 10:27:31]
+Fault Injection Successful after 1.9710917472839355s
+[INFO -- 2018-11-16 10:27:36]
+event type: exit
+[INFO -- 2018-11-16 10:27:36]
+exit code: 0

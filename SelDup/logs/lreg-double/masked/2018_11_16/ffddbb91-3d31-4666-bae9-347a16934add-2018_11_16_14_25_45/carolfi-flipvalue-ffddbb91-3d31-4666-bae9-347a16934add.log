@@ -1,0 +1,61 @@
+[INFO -- 2018-11-16 14:25:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 14:25:36]
+Initialization strings:
+[INFO -- 2018-11-16 14:25:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 14:25:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 14:25:36]
+initSignal:0
+[INFO -- 2018-11-16 14:25:36]
+endSignal:5
+[INFO -- 2018-11-16 14:25:36]
+faultModel:1
+[INFO -- 2018-11-16 14:25:38]
+Backtrace BEGIN:
+#0  0x0000555555558046 in std::__niter_base<double const*, std::vector<double, std::allocator<double> > > (__it=1.6304166312761136e-322) at /usr/include/c++/7/bits/stl_iterator.h:983
+#1  0x0000555555557b9f in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-0.89451561141980385, __last=1.6304166312761136e-322, __result=-0.89445876399917768) at /usr/include/c++/7/bits/stl_algobase.h:422
+#2  0x00005555555573d1 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=-0.89451561141980385, __last=1.6304166312761136e-322, __result=-0.89445876399917768) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x0000555555556d13 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#4  0x0000555555555e7d in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:192
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+978	{
+979	_GLIBCXX_BEGIN_NAMESPACE_VERSION
+980	
+981	  template<typename _Iterator, typename _Container>
+982	    _Iterator
+983	    __niter_base(__gnu_cxx::__normal_iterator<_Iterator, _Container> __it)
+984	    { return __it.base(); }
+985	
+986	_GLIBCXX_END_NAMESPACE_VERSION
+987	} // namespace
+
+Backtrace END
+Fliping value of field: _M_current
+Fliping a bit of the pointer
+Memory content before bitflip:0x200x250x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd6d8
+address max offset: 8
+Memory content after  bitflip:0x200x250x770x550x140x550x000x00
+frame name: std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > >
+symbol name: __first
+symbol filename: /usr/include/c++/7/bits/stl_algobase.h
+symbol line: 420
+value: <error reading variable: Cannot access memory at address 0x551455772520>
+value address: 0x7fffffffd6d8
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_current
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-16 14:25:38]
+Fault Injection Successful after 2.8106119632720947s
+[INFO -- 2018-11-16 14:25:44]
+event type: exit
+[INFO -- 2018-11-16 14:25:44]
+exit code: 0

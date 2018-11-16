@@ -1,0 +1,63 @@
+[INFO -- 2018-11-16 14:55:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 14:55:03]
+Initialization strings:
+[INFO -- 2018-11-16 14:55:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 14:55:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 14:55:03]
+initSignal:0
+[INFO -- 2018-11-16 14:55:03]
+endSignal:5
+[INFO -- 2018-11-16 14:55:03]
+faultModel:2
+[INFO -- 2018-11-16 14:55:05]
+Backtrace BEGIN:
+#0  0x0000555555557b4e in std::__miter_base<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > > > (__it=1.6304166312761136e-322) at /usr/include/c++/7/bits/cpp_type_traits.h:409
+#1  0x000055555555824f in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-0.04555180262790616, __last=1.6304166312761136e-322, __result=0x555555772580) at /usr/include/c++/7/bits/stl_algobase.h:455
+#2  0x0000555555557ff6 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-0.04555180262790616, __last=1.6304166312761136e-322, __result=0x555555772580) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#3  0x0000555555557ab0 in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-0.04555180262790616, __last=1.6304166312761136e-322, __result=0x555555772580) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#4  0x00005555555571e9 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=-0.04555180262790616, __last=1.6304166312761136e-322, __result=0x555555772580) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#5  0x0000555555556a49 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd840, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#6  0x0000555555555f5f in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+404	  // Fallback implementation of the function in bits/stl_iterator.h used to
+405	  // remove the move_iterator wrapper.
+406	  template<typename _Iterator>
+407	    inline _Iterator
+408	    __miter_base(_Iterator __it)
+409	    { return __it; }
+410	
+411	_GLIBCXX_END_NAMESPACE_VERSION
+412	} // namespace
+413	} // extern "C++"
+
+Backtrace END
+Fliping value of field: _M_current
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x920x140x1f0xdd0x900x520xa70xbf
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772520
+address max offset: 8
+Memory content after  bitflip:0x590xfd0x2b0x4b0x130x9c0x3a0x8f
+frame name: std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*>
+symbol name: __first
+symbol filename: /usr/include/c++/7/bits/stl_uninitialized.h
+symbol line: 99
+value: -2.6153082168522061e-235
+value address: 0x7fffffffd6d8
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_current
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-16 14:55:05]
+Fault Injection Successful after 2.8634636402130127s
+[INFO -- 2018-11-16 14:55:11]
+event type: exit
+[INFO -- 2018-11-16 14:55:11]
+exit code: 0

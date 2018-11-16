@@ -1,0 +1,56 @@
+[INFO -- 2018-11-16 16:12:20]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 16:12:20]
+Initialization strings:
+[INFO -- 2018-11-16 16:12:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 16:12:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 16:12:20]
+initSignal:0
+[INFO -- 2018-11-16 16:12:20]
+endSignal:5
+[INFO -- 2018-11-16 16:12:20]
+faultModel:0
+[INFO -- 2018-11-16 16:12:21]
+Backtrace BEGIN:
+#0  0x00007ffff7de00c0 in _dl_lookup_symbol_x (undef_name=0x7ffff7aa2b2d "_ZNKSt9money_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES3_bRSt8ios_basece", undef_map=undef_map@entry=0x7ffff7fde000, ref=ref@entry=0x7fffffffdac0, symbol_scope=symbol_scope@entry=0x7ffff7fde358, version=0x7ffff7fdc030, type_class=0, flags=1, skip_map=0x0) at dl-lookup.c:790
+#1  0x00007ffff7de1af9 in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x7ffff7dcc730, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7acd0a0, map=0x7ffff7fde000) at ../sysdeps/x86_64/dl-machine.h:308
+#2  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7fde000) at do-rel.h:137
+#3  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#4  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#5  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde50, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#6  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde50) at rtld.c:414
+#7  _dl_start (arg=0x7fffffffde50) at rtld.c:521
+#8  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#9  0x0000000000000003 in ?? ()
+#10 0x00007fffffffe1fe in ?? ()
+#11 0x00007fffffffe20d in ?? ()
+#12 0x00007fffffffe221 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+785	dl-lookup.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffda60
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x200x000x000x000x00
+frame name: elf_machine_rela
+symbol name: r2
+symbol filename: do-rel.h
+symbol line: 50
+value: 0x0
+value address: 0x7fffffffda60
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-16 16:12:21]
+Fault Injection Successful after 1.0330758094787598s
+[INFO -- 2018-11-16 16:12:26]
+event type: exit
+[INFO -- 2018-11-16 16:12:26]
+exit code: 0

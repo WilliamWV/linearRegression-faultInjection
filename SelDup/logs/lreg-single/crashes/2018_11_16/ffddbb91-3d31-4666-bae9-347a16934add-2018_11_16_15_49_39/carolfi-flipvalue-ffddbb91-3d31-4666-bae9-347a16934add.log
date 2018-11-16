@@ -1,0 +1,54 @@
+[INFO -- 2018-11-16 15:49:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 15:49:36]
+Initialization strings:
+[INFO -- 2018-11-16 15:49:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 15:49:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 15:49:36]
+initSignal:0
+[INFO -- 2018-11-16 15:49:36]
+endSignal:5
+[INFO -- 2018-11-16 15:49:36]
+faultModel:0
+[INFO -- 2018-11-16 15:49:37]
+Backtrace BEGIN:
+#0  0x000055555555511b in verifyUintDup (a=6, b=6) at lreg.cpp:61
+#1  0x000055555555586f in meanSquaredError () at lreg.cpp:127
+#2  0x0000555555555ee5 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x060x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd780
+address max offset: 4
+Memory content after  bitflip:0x060x000x020x00
+frame name: meanSquaredError
+symbol name: i1
+symbol filename: lreg.cpp
+symbol line: 127
+value: 131078
+value address: 0x7fffffffd780
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-16 15:49:37]
+Fault Injection Successful after 1.8408551216125488s
+[INFO -- 2018-11-16 15:49:38]
+event type: exit
+[EXCEPTION -- 2018-11-16 15:49:38]
+exit code: no exit code available

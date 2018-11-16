@@ -1,0 +1,57 @@
+[INFO -- 2018-11-16 11:28:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 11:28:21]
+Initialization strings:
+[INFO -- 2018-11-16 11:28:21]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 11:28:21]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 11:28:21]
+initSignal:0
+[INFO -- 2018-11-16 11:28:21]
+endSignal:5
+[INFO -- 2018-11-16 11:28:21]
+faultModel:2
+[EXCEPTION -- 2018-11-16 11:28:22]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-16 11:28:24]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-16 11:28:24]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-16 11:28:24]
+Backtrace BEGIN:
+#0  my_log2 (error=<synthetic pointer>, delta=<synthetic pointer>, x=2.8032655308471015e-301) at ../sysdeps/ieee754/dbl-64/e_pow.c:420
+#1  power1 (y=3, x=6.2244998729690281e-317) at ../sysdeps/ieee754/dbl-64/e_pow.c:227
+#2  __ieee754_pow_sse2 (x=6.2244998729690281e-317, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:116
+#3  0x00007ffff76bcb14 in __pow (x=6.2244998729690281e-317, y=3) at w_pow_compat.c:30
+#4  0x0000555555556826 in std::pow<double, unsigned int> (__x=6.2244998729690281e-317, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x0000555555555814 in predict (v=6.2244998729690281e-317) at lreg.cpp:116
+#6  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#7  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#8  0x0000555555555ee0 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#9  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+415	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000xa00x070x880x01
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd608
+address max offset: 8
+Memory content after  bitflip:0x350xe50xa70x0f0x650xde0x850x39
+frame name: my_log2
+symbol name: x
+symbol filename: ../sysdeps/ieee754/dbl-64/e_pow.c
+symbol line: 347
+value: 1.3477645160389924e-31
+value address: 0x7fffffffd608
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-16 11:28:24]
+Fault Injection Successful after 3.887089252471924s
+[INFO -- 2018-11-16 11:28:26]
+event type: exit
+[EXCEPTION -- 2018-11-16 11:28:26]
+exit code: no exit code available

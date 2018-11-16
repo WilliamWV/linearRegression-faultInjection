@@ -1,0 +1,59 @@
+[INFO -- 2018-11-16 12:57:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 12:57:32]
+Initialization strings:
+[INFO -- 2018-11-16 12:57:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 12:57:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 12:57:32]
+initSignal:0
+[INFO -- 2018-11-16 12:57:32]
+endSignal:5
+[INFO -- 2018-11-16 12:57:32]
+faultModel:2
+[EXCEPTION -- 2018-11-16 12:57:35]
+gdbException: Cannot access memory at address 0x3639ca2455e21a54
+[EXCEPTION -- 2018-11-16 12:57:35]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-16 12:57:35]
+Backtrace BEGIN:
+#0  0x00005555555557d4 in predict (v=1) at lreg.cpp:116
+#1  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Memory content before bitflip:0xd70x550xf30xfe0xf60x4a0xe80x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0x640x320x220xb40xf90x140x060x56
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 190
+value: 2.5322443881437494e+106
+value address: 0x7fffffffd7f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-16 12:57:35]
+Fault Injection Successful after 3.6784658432006836s
+[INFO -- 2018-11-16 12:57:36]
+event type: exit
+[EXCEPTION -- 2018-11-16 12:57:36]
+exit code: no exit code available

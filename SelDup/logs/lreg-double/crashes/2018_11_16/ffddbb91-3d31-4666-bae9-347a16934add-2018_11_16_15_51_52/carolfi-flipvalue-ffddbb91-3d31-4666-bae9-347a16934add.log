@@ -1,0 +1,54 @@
+[INFO -- 2018-11-16 15:51:46]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 15:51:46]
+Initialization strings:
+[INFO -- 2018-11-16 15:51:46]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 15:51:46]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 15:51:46]
+initSignal:0
+[INFO -- 2018-11-16 15:51:46]
+endSignal:5
+[INFO -- 2018-11-16 15:51:46]
+faultModel:1
+[EXCEPTION -- 2018-11-16 15:51:50]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-16 15:51:50]
+Backtrace BEGIN:
+#0  tcache_get (tc_idx=1) at malloc.c:2943
+#1  __GI___libc_malloc (bytes=32) at malloc.c:3050
+#2  0x00007ffff7adf1a8 in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00005555555582ba in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd840, __n=4) at /usr/include/c++/7/ext/new_allocator.h:111
+#4  0x0000555555558043 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=4) at /usr/include/c++/7/bits/alloc_traits.h:436
+#5  0x0000555555557b1a in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd840, __n=4) at /usr/include/c++/7/bits/stl_vector.h:172
+#6  0x000055555555787f in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd840, __n=4) at /usr/include/c++/7/bits/stl_vector.h:187
+#7  0x0000555555556f4f in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd840, __n=4, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#8  0x00005555555569fb in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd840, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#9  0x0000555555555f5f in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:199
+#10 0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+2938	malloc.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 4
+Memory content after  bitflip:0x010x000x090x00
+frame name: std::allocator_traits<std::allocator<double> >::allocate
+symbol name: detected
+symbol filename: lreg.cpp
+symbol line: 58
+value: 589825
+value address: 0x55555575b1b8 <detected>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-16 15:51:50]
+Fault Injection Successful after 4.4612298011779785s
+[INFO -- 2018-11-16 15:51:50]
+event type: exit
+[EXCEPTION -- 2018-11-16 15:51:50]
+exit code: no exit code available

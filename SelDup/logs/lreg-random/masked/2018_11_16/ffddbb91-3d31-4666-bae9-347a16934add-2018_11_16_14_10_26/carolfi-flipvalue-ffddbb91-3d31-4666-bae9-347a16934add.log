@@ -1,0 +1,61 @@
+[INFO -- 2018-11-16 14:10:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 14:10:19]
+Initialization strings:
+[INFO -- 2018-11-16 14:10:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 14:10:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 14:10:19]
+initSignal:0
+[INFO -- 2018-11-16 14:10:19]
+endSignal:5
+[INFO -- 2018-11-16 14:10:19]
+faultModel:2
+[INFO -- 2018-11-16 14:10:23]
+Backtrace BEGIN:
+#0  0x0000555555555814 in predict (v=1) at lreg.cpp:116
+#1  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2b0x9b0x1a0x6d0xe10x1e0xe50x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772890
+address max offset: 8
+Memory content after  bitflip:0x740xd80x740xc30xf80xe80x4b0xe7
+frame name: train
+symbol name: bestT
+symbol filename: lreg.cpp
+symbol line: 188
+value: std::vector of length 4, capacity 4 = {-3.8860451273672305e+189, -1.1291302823819873, -3.9744396659145775, -2.0544182105061783}
+value address: 0x7fffffffd820
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-16 14:10:23]
+Fault Injection Successful after 4.871088266372681s
+[INFO -- 2018-11-16 14:10:25]
+event type: exit
+[INFO -- 2018-11-16 14:10:25]
+exit code: 0

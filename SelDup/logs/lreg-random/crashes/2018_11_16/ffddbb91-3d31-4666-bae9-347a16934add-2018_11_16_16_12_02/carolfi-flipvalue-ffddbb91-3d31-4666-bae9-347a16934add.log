@@ -1,0 +1,63 @@
+[INFO -- 2018-11-16 16:11:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 16:11:59]
+Initialization strings:
+[INFO -- 2018-11-16 16:11:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 16:11:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 16:11:59]
+initSignal:0
+[INFO -- 2018-11-16 16:11:59]
+endSignal:5
+[INFO -- 2018-11-16 16:11:59]
+faultModel:2
+[EXCEPTION -- 2018-11-16 16:12:00]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-16 16:12:00]
+Backtrace BEGIN:
+#0  0x0000555555557443 in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=1.6304166312761136e-322, __last=1.6304166312761136e-322) at /usr/include/c++/7/bits/stl_construct.h:206
+#1  0x0000555555556d21 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555f26 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:197
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+201	  template<typename _ForwardIterator, typename _Tp>
+202	    inline void
+203	    _Destroy(_ForwardIterator __first, _ForwardIterator __last,
+204		     allocator<_Tp>&)
+205	    {
+206	      _Destroy(__first, __last);
+207	    }
+208	
+209	#if __cplusplus > 201402L
+210	  template <typename _Tp>
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x210x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772358
+address max offset: 8
+Memory content after  bitflip:0xc60x120x070xc20x8c0x720x210x79
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 3, capacity 3 = {-0.45716103758446064, 1.9948097977145771, 1.9946042578312964}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-16 16:12:00]
+Fault Injection Successful after 1.563807725906372s
+[INFO -- 2018-11-16 16:12:01]
+event type: exit
+[EXCEPTION -- 2018-11-16 16:12:01]
+exit code: no exit code available

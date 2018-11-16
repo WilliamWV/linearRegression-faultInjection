@@ -1,0 +1,60 @@
+[INFO -- 2018-11-16 10:58:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 10:58:19]
+Initialization strings:
+[INFO -- 2018-11-16 10:58:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 10:58:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 10:58:19]
+initSignal:0
+[INFO -- 2018-11-16 10:58:19]
+endSignal:5
+[INFO -- 2018-11-16 10:58:19]
+faultModel:0
+[EXCEPTION -- 2018-11-16 10:58:21]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-16 10:58:21]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-16 10:58:22]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-16 10:58:22]
+Backtrace BEGIN:
+#0  0x0000555555555a8a in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#1  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#2  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+137	*/
+138	double partialDerivate(UINT pos1, UINT pos2){
+139		double pD = 0;
+140		
+141		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(x.size() - 1); i1++, i2++){
+142			pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
+143		}
+144		pD *= (2.0/(x.size() - 1));
+145		return pD;
+146	}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd77c
+address max offset: 4
+Memory content after  bitflip:0x040x000x000x00
+frame name: adjust
+symbol name: i2
+symbol filename: lreg.cpp
+symbol line: 155
+value: 4
+value address: 0x7fffffffd77c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-16 10:58:22]
+Fault Injection Successful after 3.3437299728393555s
+[INFO -- 2018-11-16 10:58:23]
+event type: exit
+[EXCEPTION -- 2018-11-16 10:58:23]
+exit code: no exit code available

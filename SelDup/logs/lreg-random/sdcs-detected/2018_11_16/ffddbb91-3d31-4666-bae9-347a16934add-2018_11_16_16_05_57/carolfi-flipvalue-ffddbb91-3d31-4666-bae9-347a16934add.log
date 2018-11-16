@@ -1,0 +1,64 @@
+[INFO -- 2018-11-16 16:05:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 16:05:49]
+Initialization strings:
+[INFO -- 2018-11-16 16:05:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 16:05:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 16:05:49]
+initSignal:0
+[INFO -- 2018-11-16 16:05:49]
+endSignal:5
+[INFO -- 2018-11-16 16:05:49]
+faultModel:2
+[EXCEPTION -- 2018-11-16 16:05:50]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-16 16:05:51]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator[] (this=0x2, __n=2) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x0000555555555a78 in partialDerivate (pos1=1, pos2=1) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=15000, iter2=15000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x3f0x40
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772490
+address max offset: 8
+Memory content after  bitflip:0x230x920x4a0xb30x920x030xb50x25
+frame name: adjust
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 9, capacity 16 = {4.8505354421362283e-127, -15, 33, 5, 5, 29, 33, -9, 112}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-16 16:05:51]
+Fault Injection Successful after 2.3918755054473877s
+[INFO -- 2018-11-16 16:05:56]
+event type: exit
+[INFO -- 2018-11-16 16:05:56]
+exit code: 0

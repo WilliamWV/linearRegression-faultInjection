@@ -1,0 +1,52 @@
+[INFO -- 2018-11-16 15:53:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 15:53:00]
+Initialization strings:
+[INFO -- 2018-11-16 15:53:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 15:53:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 15:53:00]
+initSignal:0
+[INFO -- 2018-11-16 15:53:00]
+endSignal:5
+[INFO -- 2018-11-16 15:53:00]
+faultModel:1
+[EXCEPTION -- 2018-11-16 15:53:04]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-16 15:53:04]
+Backtrace BEGIN:
+#0  0x00005555555557b4 in predict (v=-29) at lreg.cpp:116
+#1  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Memory content before bitflip:0x6b0x850x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7ec
+address max offset: 4
+Memory content after  bitflip:0x6b0x860x000x00
+frame name: train
+symbol name: i2
+symbol filename: lreg.cpp
+symbol line: 191
+value: 34411
+value address: 0x7fffffffd7ec
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-16 15:53:04]
+Fault Injection Successful after 4.241542816162109s

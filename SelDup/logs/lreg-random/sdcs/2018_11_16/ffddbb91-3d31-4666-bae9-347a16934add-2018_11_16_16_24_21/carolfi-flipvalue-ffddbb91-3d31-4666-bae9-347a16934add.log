@@ -1,0 +1,56 @@
+[INFO -- 2018-11-16 16:24:16]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-16 16:24:16]
+Initialization strings:
+[INFO -- 2018-11-16 16:24:16]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-16 16:24:16]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-16 16:24:16]
+initSignal:0
+[INFO -- 2018-11-16 16:24:16]
+endSignal:5
+[INFO -- 2018-11-16 16:24:16]
+faultModel:2
+[INFO -- 2018-11-16 16:24:18]
+Backtrace BEGIN:
+#0  0x00005555555567c4 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b1a0 <T2>, __n=4294967297) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x00005555555557ab in predict (v=-29) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=45000, iter2=45000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Memory content before bitflip:0x6a0xb70x740xb10xb90x0b0x280x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd6d8
+address max offset: 8
+Memory content after  bitflip:0x760x6e0x8d0xe50xa10x420x610x5f
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 113
+value: 2.8249823881207884e+151
+value address: 0x7fffffffd6d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-16 16:24:18]
+Fault Injection Successful after 2.28883957862854s
+[INFO -- 2018-11-16 16:24:20]
+event type: exit
+[INFO -- 2018-11-16 16:24:20]
+exit code: 0
