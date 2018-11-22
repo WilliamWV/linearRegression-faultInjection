@@ -31,6 +31,7 @@ for out in outs:
 			if float(line) != goldenVals[pos-1]:
 				print ("#ERR p: [" + str(pos) + "], r: " + str(float(line)) + ", e: "+ str(goldenVals[pos-1]))
 			pos+=1
-		else:
+		elif pos == len(goldenVals)+1:
 			print ("#ERR p: [" + str(pos) + "], r: " + str(float(line)) + ", e: "+ str(0.0))
+			pos+=1
 	sdcCounter+=1
