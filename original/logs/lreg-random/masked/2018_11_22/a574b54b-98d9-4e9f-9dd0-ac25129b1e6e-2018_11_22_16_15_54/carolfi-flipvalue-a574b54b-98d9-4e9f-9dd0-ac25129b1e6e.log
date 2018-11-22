@@ -1,0 +1,57 @@
+[INFO -- 2018-11-22 16:15:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 16:15:48]
+Initialization strings:
+[INFO -- 2018-11-22 16:15:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 16:15:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 16:15:48]
+initSignal:0
+[INFO -- 2018-11-22 16:15:48]
+endSignal:3
+[INFO -- 2018-11-22 16:15:48]
+faultModel:2
+[EXCEPTION -- 2018-11-22 16:15:50]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-22 16:15:50]
+Backtrace BEGIN:
+#0  0x00007ffff76da567 in __ieee754_pow_sse2 (x=-6, y=1) at ../sysdeps/ieee754/dbl-64/e_pow.c:76
+#1  0x00007ffff76bcb14 in __pow (x=-6, y=1) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=-6, __y=1) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555401 in partialDerivate (pos=1) at lreg.cpp:74
+#4  0x00005555555554b3 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#5  0x000055555555565c in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+71	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x6a0x010xf80xff0xff0xff0x070x42
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5b0 
+address max offset: 8
+Memory content after  bitflip:0xd30xb20xae0x960x330x510x300x47
+frame name: __ieee754_pow_sse2
+symbol name: bigv
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 53
+value: {i = {-1766935853, 1194348851}, x = 8.4723712184690294e+34}
+value address: 0x7ffff779f5b0 <bigv>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-22 16:15:50]
+Fault Injection Successful after 2.702993154525757s
+[INFO -- 2018-11-22 16:15:53]
+event type: exit
+[INFO -- 2018-11-22 16:15:53]
+exit code: 0

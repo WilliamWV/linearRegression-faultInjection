@@ -1,0 +1,56 @@
+[INFO -- 2018-11-22 18:58:08]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:58:08]
+Initialization strings:
+[INFO -- 2018-11-22 18:58:08]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:58:08]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:58:08]
+initSignal:0
+[INFO -- 2018-11-22 18:58:08]
+endSignal:3
+[INFO -- 2018-11-22 18:58:08]
+faultModel:1
+[EXCEPTION -- 2018-11-22 18:58:10]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-22 18:58:10]
+Backtrace BEGIN:
+#0  0x00005555555553ce in partialDerivate (pos=1) at lreg.cpp:74
+#1  0x00005555555554b3 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#2  0x000055555555565c in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Memory content before bitflip:0x200x720xa10x0a0x2a0xc40xc00xbf
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0x200x120xa10x0a0x2a0xc40xc00xbf
+frame name: partialDerivate
+symbol name: pD
+symbol filename: lreg.cpp
+symbol line: 72
+value: -0.13098645705226009
+value address: 0x7fffffffd788
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 18:58:10]
+Fault Injection Successful after 2.593566417694092s
+[INFO -- 2018-11-22 18:58:13]
+event type: exit
+[INFO -- 2018-11-22 18:58:13]
+exit code: 0

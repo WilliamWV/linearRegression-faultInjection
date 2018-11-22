@@ -1,0 +1,52 @@
+[INFO -- 2018-11-22 15:08:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 15:08:24]
+Initialization strings:
+[INFO -- 2018-11-22 15:08:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 15:08:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 15:08:24]
+initSignal:0
+[INFO -- 2018-11-22 15:08:24]
+endSignal:3
+[INFO -- 2018-11-22 15:08:24]
+faultModel:0
+[EXCEPTION -- 2018-11-22 15:08:25]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-22 15:08:26]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:447
+#1  __ieee754_pow_sse2 (x=-16, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:183
+#2  0x00007ffff76bcb14 in __pow (x=-16, y=3) at w_pow_compat.c:30
+#3  0x0000555555555d5f in std::pow<double, int> (__x=-16, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555551e7 in predict (v=-16) at lreg.cpp:50
+#5  0x00005555555553ac in partialDerivate (pos=2) at lreg.cpp:74
+#6  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#7  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#8  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+442	../sysdeps/i386/fpu/fenv_private.h: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x300xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd6f8
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x800x000x300xc0
+frame name: std::pow<double, int>
+symbol name: __x
+symbol filename: /usr/include/c++/7/cmath
+symbol line: 415
+value: -16.001953125
+value address: 0x7fffffffd6f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 15:08:26]
+Fault Injection Successful after 2.9948832988739014s
+[INFO -- 2018-11-22 15:08:28]
+event type: exit
+[INFO -- 2018-11-22 15:08:28]
+exit code: 0

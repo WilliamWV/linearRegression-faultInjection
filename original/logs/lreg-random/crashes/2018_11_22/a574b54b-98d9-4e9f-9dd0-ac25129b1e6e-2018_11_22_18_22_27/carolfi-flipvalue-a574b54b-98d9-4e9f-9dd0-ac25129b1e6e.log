@@ -1,0 +1,57 @@
+[INFO -- 2018-11-22 18:22:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:22:23]
+Initialization strings:
+[INFO -- 2018-11-22 18:22:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:22:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:22:23]
+initSignal:0
+[INFO -- 2018-11-22 18:22:23]
+endSignal:3
+[INFO -- 2018-11-22 18:22:23]
+faultModel:2
+[EXCEPTION -- 2018-11-22 18:22:24]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-22 18:22:25]
+gdbException: Cannot access memory at address 0x30f32efeea2d9245
+[INFO -- 2018-11-22 18:22:25]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length -440890097569026014, capacity -440890097569026014 = {...}) at /usr/include/c++/7/bits/vector.tcc:230
+#1  0x0000555555555641 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+225		      std::__uninitialized_copy_a(__x._M_impl._M_start + size(),
+226						  __x._M_impl._M_finish,
+227						  this->_M_impl._M_finish,
+228						  _M_get_Tp_allocator());
+229		    }
+230		  this->_M_impl._M_finish = this->_M_impl._M_start + __xlen;
+231		}
+232	      return *this;
+233	    }
+234	
+
+Backtrace END
+Memory content before bitflip:0x020x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd818
+address max offset: 4
+Memory content after  bitflip:0x660x550x370x17
+frame name: train
+symbol name: N
+symbol filename: lreg.cpp
+symbol line: 105
+value: 389502310
+value address: 0x7fffffffd818
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-22 18:22:25]
+Fault Injection Successful after 2.940448522567749s
+[INFO -- 2018-11-22 18:22:26]
+event type: exit
+[EXCEPTION -- 2018-11-22 18:22:26]
+exit code: no exit code available

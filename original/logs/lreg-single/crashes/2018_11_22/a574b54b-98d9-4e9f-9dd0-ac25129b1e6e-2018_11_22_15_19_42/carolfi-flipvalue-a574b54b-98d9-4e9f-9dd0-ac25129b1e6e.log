@@ -1,0 +1,62 @@
+[INFO -- 2018-11-22 15:19:39]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 15:19:39]
+Initialization strings:
+[INFO -- 2018-11-22 15:19:39]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 15:19:39]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 15:19:39]
+initSignal:0
+[INFO -- 2018-11-22 15:19:39]
+endSignal:3
+[INFO -- 2018-11-22 15:19:39]
+faultModel:0
+[INFO -- 2018-11-22 15:19:41]
+Backtrace BEGIN:
+#0  0x0000555555556757 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd8a0, __p=0x555555771470, __n=2) at /usr/include/c++/7/bits/stl_vector.h:180
+#1  0x0000555555556427 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd8a0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#2  0x0000555555555e53 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd8a0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#3  0x0000555555555730 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+175	      void
+176	      _M_deallocate(pointer __p, size_t __n)
+177	      {
+178		typedef __gnu_cxx::__alloc_traits<_Tp_alloc_type> _Tr;
+179		if (__p)
+180		  _Tr::deallocate(_M_impl, __p, __n);
+181	      }
+182	
+183	    private:
+184	      void
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x300x130x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a150 
+address max offset: 8
+Memory content after  bitflip:0xb00x130x770x550x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::~vector
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 8, capacity 24 = {12, -6, -10, -3, 7, -12, 6, -10}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-22 15:19:41]
+Fault Injection Successful after 2.4245455265045166s
+[INFO -- 2018-11-22 15:19:42]
+event type: exit
+[EXCEPTION -- 2018-11-22 15:19:42]
+exit code: no exit code available

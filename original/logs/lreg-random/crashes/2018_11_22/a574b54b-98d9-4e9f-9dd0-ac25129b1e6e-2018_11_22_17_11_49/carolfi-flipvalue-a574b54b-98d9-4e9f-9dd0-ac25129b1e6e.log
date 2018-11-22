@@ -1,0 +1,59 @@
+[INFO -- 2018-11-22 17:11:46]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 17:11:46]
+Initialization strings:
+[INFO -- 2018-11-22 17:11:46]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 17:11:46]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 17:11:46]
+initSignal:0
+[INFO -- 2018-11-22 17:11:46]
+endSignal:3
+[INFO -- 2018-11-22 17:11:46]
+faultModel:2
+[INFO -- 2018-11-22 17:11:48]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:447
+#1  __ieee754_pow_sse2 (x=1, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:97
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-1, y=3) at w_pow_compat.c:30
+#4  0x0000555555555d5f in std::pow<double, int> (__x=-1, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x00005555555551e7 in predict (v=-1) at lreg.cpp:50
+#6  0x00005555555553ac in partialDerivate (pos=2) at lreg.cpp:74
+#7  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#8  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#9  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+442	../sysdeps/i386/fpu/fenv_private.h: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 0
+Memory content before bitflip:0x2c0xfd0xff0xff
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5b8 
+address max offset: 4
+Memory content after  bitflip:0x3c0xf90xb80xf0
+frame name: __ieee754_pow_sse2
+symbol name: bigu
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 52
+value: {i = {-256313028, 1117257727}, x = 6597069516350.3086}
+value address: 0x7ffff779f5b8 <bigu>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-22 17:11:48]
+Fault Injection Successful after 2.599825143814087s
+[INFO -- 2018-11-22 17:11:49]
+event type: exit
+[EXCEPTION -- 2018-11-22 17:11:49]
+exit code: no exit code available

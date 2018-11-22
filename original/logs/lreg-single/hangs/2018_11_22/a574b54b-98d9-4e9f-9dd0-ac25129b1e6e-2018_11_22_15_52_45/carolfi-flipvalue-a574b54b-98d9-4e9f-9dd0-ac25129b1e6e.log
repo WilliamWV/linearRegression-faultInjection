@@ -1,0 +1,59 @@
+[INFO -- 2018-11-22 15:52:34]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 15:52:34]
+Initialization strings:
+[INFO -- 2018-11-22 15:52:34]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 15:52:34]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 15:52:34]
+initSignal:0
+[INFO -- 2018-11-22 15:52:34]
+endSignal:3
+[INFO -- 2018-11-22 15:52:34]
+faultModel:0
+[EXCEPTION -- 2018-11-22 15:52:35]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-22 15:52:36]
+Backtrace BEGIN:
+#0  0x0000555555556484 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8a0, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#1  0x0000555555555f35 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x00005555555556c3 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+133	      : _M_impl()
+134	      { _M_create_storage(__n); }
+135	
+136	      _Vector_base(size_t __n, const allocator_type& __a)
+137	      : _M_impl(__a)
+138	      { _M_create_storage(__n); }
+139	
+140	#if __cplusplus >= 201103L
+141	      _Vector_base(_Tp_alloc_type&& __a) noexcept
+142	      : _M_impl(std::move(__a)) { }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x780x130x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a188 
+address max offset: 8
+Memory content after  bitflip:0xf80x130x770x550x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 19, capacity 3 = {0.041890182372233548, -0.033946996778341156, -2.9899488447222846, 2.4209216646221081e-322, 0, 8, 12, 5, 0, 4.001931731314097e-322, 4.6355706478057827e-310, 1.5810100666919889e-322, -143.00012207031247, -8.0003907742435221, 1, 1, -1319, -23, 0}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-22 15:52:36]
+Fault Injection Successful after 2.725421905517578s

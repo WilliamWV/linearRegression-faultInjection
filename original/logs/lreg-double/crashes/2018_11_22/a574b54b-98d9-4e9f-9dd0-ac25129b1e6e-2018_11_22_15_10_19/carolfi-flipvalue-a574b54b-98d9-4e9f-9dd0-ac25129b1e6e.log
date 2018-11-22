@@ -1,0 +1,59 @@
+[INFO -- 2018-11-22 15:10:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 15:10:15]
+Initialization strings:
+[INFO -- 2018-11-22 15:10:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 15:10:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 15:10:15]
+initSignal:0
+[INFO -- 2018-11-22 15:10:15]
+endSignal:3
+[INFO -- 2018-11-22 15:10:15]
+faultModel:1
+[EXCEPTION -- 2018-11-22 15:10:16]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-22 15:10:17]
+gdbException: Cannot access memory at address 0x551155771340
+[INFO -- 2018-11-22 15:10:18]
+Backtrace BEGIN:
+#0  __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >::__normal_iterator (this=0x5555555551a9 <predict(double)+48>, __i=@0x7fffffffd7b0: 0x55555575a180 <T>) at /usr/include/c++/7/bits/stl_iterator.h:779
+#1  0x0000555555556944 in std::vector<double, std::allocator<double> >::end (this=0x7fffffffd860) at /usr/include/c++/7/bits/stl_vector.h:582
+#2  0x0000555555556212 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd860, __x=std::vector of length 36507222018, capacity 36507222018 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x00005555555556a2 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:124
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+774	
+775	      _GLIBCXX_CONSTEXPR __normal_iterator() _GLIBCXX_NOEXCEPT
+776	      : _M_current(_Iterator()) { }
+777	
+778	      explicit
+779	      __normal_iterator(const _Iterator& __i) _GLIBCXX_NOEXCEPT
+780	      : _M_current(__i) { }
+781	
+782	      // Allow iterator to const_iterator conversion
+783	      template<typename _Iter>
+
+Backtrace END
+Memory content before bitflip:0xdc0x7e0xd30x7d0xa50x010x620x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd830
+address max offset: 8
+Memory content after  bitflip:0xdc0x7e0xd30x7d0xa50x150x620x3f
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: 0.0022075874572776554
+value address: 0x7fffffffd830
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 15:10:18]
+Fault Injection Successful after 3.1627347469329834s
+[INFO -- 2018-11-22 15:10:18]
+event type: exit
+[EXCEPTION -- 2018-11-22 15:10:18]
+exit code: no exit code available

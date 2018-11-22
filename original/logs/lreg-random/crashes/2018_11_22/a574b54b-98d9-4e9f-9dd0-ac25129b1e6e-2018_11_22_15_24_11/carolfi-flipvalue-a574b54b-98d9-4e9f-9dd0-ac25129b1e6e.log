@@ -1,0 +1,53 @@
+[INFO -- 2018-11-22 15:24:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 15:24:07]
+Initialization strings:
+[INFO -- 2018-11-22 15:24:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 15:24:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 15:24:07]
+initSignal:0
+[INFO -- 2018-11-22 15:24:07]
+endSignal:3
+[INFO -- 2018-11-22 15:24:07]
+faultModel:2
+[EXCEPTION -- 2018-11-22 15:24:10]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-22 15:24:10]
+Backtrace BEGIN:
+#0  0x00007ffff6f1dc01 in __GI___libc_free (mem=0x5555557715e1) at malloc.c:3123
+#1  0x0000555555557552 in __gnu_cxx::new_allocator<double>::deallocate (this=0x55555575a160 <y>, __p=0x5555557715e1) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x0000555555557017 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x5555557715e1, __n=18446744073709551611) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x000055555555676a in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x55555575a160 <y>, __p=0x5555557715e1, __n=18446744073709551611) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x0000555555556427 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x55555575a160 <y>, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#5  0x0000555555555e53 in std::vector<double, std::allocator<double> >::~vector (this=0x55555575a160 <y>, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#6  0x00007ffff6ec9041 in __run_exit_handlers (status=0, listp=0x7ffff7271718 <__exit_funcs>, run_list_atexit=run_list_atexit@entry=true, run_dtors=run_dtors@entry=true) at exit.c:108
+#7  0x00007ffff6ec913a in __GI_exit (status=<optimized out>) at exit.c:139
+#8  0x00007ffff6ea7b9e in __libc_start_main (main=0x555555555806 <main(int, char**)>, argc=3, argv=0x7fffffffde58, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7fffffffde48) at ../csu/libc-start.c:344
+#9  0x0000555555554fca in _start ()
+
+3118	malloc.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff7272d6c 
+address max offset: 1
+Memory content after  bitflip:0x9d
+frame name: __run_exit_handlers
+symbol name: __exit_funcs_done
+symbol filename: exit.c
+symbol line: 31
+value: 157
+value address: 0x7ffff7272d6c <__exit_funcs_done>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-22 15:24:10]
+Fault Injection Successful after 3.273789882659912s
+[INFO -- 2018-11-22 15:24:10]
+event type: exit
+[EXCEPTION -- 2018-11-22 15:24:10]
+exit code: no exit code available

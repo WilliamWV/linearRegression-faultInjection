@@ -1,0 +1,56 @@
+[INFO -- 2018-11-22 18:33:08]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:33:08]
+Initialization strings:
+[INFO -- 2018-11-22 18:33:08]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:33:08]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:33:08]
+initSignal:0
+[INFO -- 2018-11-22 18:33:08]
+endSignal:3
+[INFO -- 2018-11-22 18:33:08]
+faultModel:1
+[EXCEPTION -- 2018-11-22 18:33:09]
+gdbException: Cannot access memory at address 0x5555553f1340
+[INFO -- 2018-11-22 18:33:10]
+Backtrace BEGIN:
+#0  0x0000555555555396 in partialDerivate (pos=0) at lreg.cpp:74
+#1  0x00005555555554b3 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#2  0x000055555555565c in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7d8
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000xc00x000x00
+frame name: adjust
+symbol name: PD
+symbol filename: lreg.cpp
+symbol line: 85
+value: 1.0430033711752506e-309
+value address: 0x7fffffffd7d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 18:33:10]
+Fault Injection Successful after 2.0093483924865723s
+[INFO -- 2018-11-22 18:33:10]
+event type: exit
+[EXCEPTION -- 2018-11-22 18:33:10]
+exit code: no exit code available

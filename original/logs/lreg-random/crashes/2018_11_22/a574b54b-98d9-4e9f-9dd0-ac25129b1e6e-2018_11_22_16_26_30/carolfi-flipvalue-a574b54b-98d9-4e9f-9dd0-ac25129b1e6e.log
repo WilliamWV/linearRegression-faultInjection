@@ -1,0 +1,59 @@
+[INFO -- 2018-11-22 16:26:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 16:26:24]
+Initialization strings:
+[INFO -- 2018-11-22 16:26:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 16:26:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 16:26:24]
+initSignal:0
+[INFO -- 2018-11-22 16:26:24]
+endSignal:3
+[INFO -- 2018-11-22 16:26:24]
+faultModel:2
+[INFO -- 2018-11-22 16:26:26]
+Backtrace BEGIN:
+#0  0x0000555555555d33 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a180 <T>, __n=2) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x00005555555554d0 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:89
+#2  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x310x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771378
+address max offset: 8
+Memory content after  bitflip:0xe50xe40x6a0xc30x410x1f0xb70x65
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x55555575a180 <T>
+value address: 0x7fffffffd798
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 16:26:26]
+Fault Injection Successful after 2.7208569049835205s
+[INFO -- 2018-11-22 16:26:29]
+event type: exit
+[EXCEPTION -- 2018-11-22 16:26:29]
+exit code: no exit code available

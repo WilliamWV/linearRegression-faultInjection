@@ -1,0 +1,62 @@
+[INFO -- 2018-11-22 18:40:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:40:21]
+Initialization strings:
+[INFO -- 2018-11-22 18:40:21]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:40:21]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:40:21]
+initSignal:0
+[INFO -- 2018-11-22 18:40:21]
+endSignal:3
+[INFO -- 2018-11-22 18:40:21]
+faultModel:0
+[INFO -- 2018-11-22 18:40:23]
+Backtrace BEGIN:
+#0  0x0000555555554f40 in memmove@plt ()
+#1  0x0000555555557854 in std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<double> (__first=0x555555771360, __last=0x555555771378, __result=0x555555771490) at /usr/include/c++/7/bits/stl_algobase.h:368
+#2  0x00005555555575e8 in std::__copy_move_a<false, double const*, double*> (__first=0x555555771360, __last=0x555555771378, __result=0x555555771490) at /usr/include/c++/7/bits/stl_algobase.h:386
+#3  0x0000555555557956 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.14313024432747887, __last=2.4209216646221081e-322, __result=0x555555771490) at /usr/include/c++/7/bits/stl_algobase.h:424
+#4  0x00005555555577ad in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.14313024432747887, __last=2.4209216646221081e-322, __result=0x555555771490) at /usr/include/c++/7/bits/stl_algobase.h:456
+#5  0x0000555555557530 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.14313024432747887, __last=2.4209216646221081e-322, __result=0x555555771490) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#6  0x0000555555556fea in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.14313024432747887, __last=2.4209216646221081e-322, __result=0x555555771490) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#7  0x0000555555556723 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=0.14313024432747887, __last=2.4209216646221081e-322, __result=0x555555771490) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#8  0x0000555555555f83 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd880, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#9  0x00005555555556db in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#10 0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+130		T = bestT;
+131	}
+132	
+133	/*
+134	It must receive an input file formated as follows:
+135		1° Line : one integer T -> number of test cases
+136		2° to 5° repeat to all test case	
+137		2° Line : method parameters -> alpha, iterations, N, size of 
+138			      training set, predictions
+139		3° Line : inputs x of the training set
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x600x130x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd668
+address max offset: 8
+Memory content after  bitflip:0xe00x130x770x550x550x550x000x00
+frame name: std::__copy_move_a<false, double const*, double*>
+symbol name: __first
+symbol filename: /usr/include/c++/7/bits/stl_algobase.h
+symbol line: 375
+value: 0x555555771360
+value address: 0x7fffffffd668
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 18:40:23]
+Fault Injection Successful after 2.5049030780792236s
+[INFO -- 2018-11-22 18:40:26]
+event type: exit
+[INFO -- 2018-11-22 18:40:26]
+exit code: 0

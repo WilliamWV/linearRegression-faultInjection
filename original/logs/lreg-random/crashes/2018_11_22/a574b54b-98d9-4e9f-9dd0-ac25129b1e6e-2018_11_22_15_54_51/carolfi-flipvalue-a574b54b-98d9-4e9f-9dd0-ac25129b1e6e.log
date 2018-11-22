@@ -1,0 +1,49 @@
+[INFO -- 2018-11-22 15:54:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 15:54:47]
+Initialization strings:
+[INFO -- 2018-11-22 15:54:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 15:54:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 15:54:47]
+initSignal:0
+[INFO -- 2018-11-22 15:54:47]
+endSignal:3
+[INFO -- 2018-11-22 15:54:47]
+faultModel:2
+[INFO -- 2018-11-22 15:54:49]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=7, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:65
+#1  0x00007ffff76bcb14 in __pow (x=7, y=0) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=7, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=7) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+60	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x040x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd92c
+address max offset: 4
+Memory content after  bitflip:0x410xc80x360xa1
+frame name: main
+symbol name: predictions
+symbol filename: lreg.cpp
+symbol line: 161
+value: -1590245311
+value address: 0x7fffffffd92c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-22 15:54:49]
+Fault Injection Successful after 2.2111926078796387s
+[INFO -- 2018-11-22 15:54:49]
+event type: exit
+[EXCEPTION -- 2018-11-22 15:54:49]
+exit code: no exit code available

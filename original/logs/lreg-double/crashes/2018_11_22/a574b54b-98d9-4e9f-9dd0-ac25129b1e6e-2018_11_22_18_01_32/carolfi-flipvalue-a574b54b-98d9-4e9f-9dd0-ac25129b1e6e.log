@@ -1,0 +1,53 @@
+[INFO -- 2018-11-22 18:01:30]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:01:30]
+Initialization strings:
+[INFO -- 2018-11-22 18:01:30]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:01:30]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:01:30]
+initSignal:0
+[INFO -- 2018-11-22 18:01:30]
+endSignal:3
+[INFO -- 2018-11-22 18:01:30]
+faultModel:1
+[INFO -- 2018-11-22 18:01:30]
+Backtrace BEGIN:
+#0  0x00007ffff7dd819a in elf_get_dynamic_info (temp=0x0, l=0x7ffff7ffe170) at get-dynamic-info.h:102
+#1  dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1291
+#2  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde50, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#3  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde50) at rtld.c:414
+#4  _dl_start (arg=0x7fffffffde50) at rtld.c:521
+#5  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#6  0x0000000000000003 in ?? ()
+#7  0x00007fffffffe1fd in ?? ()
+#8  0x00007fffffffe20c in ?? ()
+#9  0x00007fffffffe220 in ?? ()
+#10 0x0000000000000000 in ?? ()
+
+97	get-dynamic-info.h: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff7ffc690 
+address max offset: 8
+Memory content after  bitflip:0x000x180x000x000x000x000x000x00
+frame name: elf_get_dynamic_info
+symbol name: library_path
+symbol filename: rtld.c
+symbol line: 823
+value: 0x0
+value address: 0x7ffff7ffc690 <library_path>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 18:01:30]
+Fault Injection Successful after 0.911412239074707s
+[INFO -- 2018-11-22 18:01:31]
+event type: exit
+[EXCEPTION -- 2018-11-22 18:01:31]
+exit code: no exit code available

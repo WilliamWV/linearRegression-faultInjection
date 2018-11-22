@@ -1,0 +1,55 @@
+[INFO -- 2018-11-22 18:24:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:24:43]
+Initialization strings:
+[INFO -- 2018-11-22 18:24:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:24:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:24:43]
+initSignal:0
+[INFO -- 2018-11-22 18:24:43]
+endSignal:3
+[INFO -- 2018-11-22 18:24:43]
+faultModel:2
+[INFO -- 2018-11-22 18:24:44]
+Backtrace BEGIN:
+#0  std::__miter_base<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > > > (__it=4.6355706478097352e-310) at /usr/include/c++/7/bits/cpp_type_traits.h:408
+#1  0x00005555555568e7 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.61682268773586246, __last=0, __result=0.61649873000239275) at /usr/include/c++/7/bits/stl_algobase.h:455
+#2  0x000055555555624d in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd860, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x00005555555556a2 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:124
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+403	
+404	  // Fallback implementation of the function in bits/stl_iterator.h used to
+405	  // remove the move_iterator wrapper.
+406	  template<typename _Iterator>
+407	    inline _Iterator
+408	    __miter_base(_Iterator __it)
+409	    { return __it; }
+410	
+411	_GLIBCXX_END_NAMESPACE_VERSION
+412	} // namespace
+
+Backtrace END
+Memory content before bitflip:0x420x850x740xa00x9d0x060xfd0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd838
+address max offset: 8
+Memory content after  bitflip:0x140xeb0xd70x740x190xde0xb90x64
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 1.6378465128771343e+177
+value address: 0x7fffffffd838
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 18:24:44]
+Fault Injection Successful after 1.9859046936035156s
+[INFO -- 2018-11-22 18:24:47]
+event type: exit
+[INFO -- 2018-11-22 18:24:47]
+exit code: 0

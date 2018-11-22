@@ -1,0 +1,55 @@
+[INFO -- 2018-11-22 16:28:33]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 16:28:33]
+Initialization strings:
+[INFO -- 2018-11-22 16:28:33]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 16:28:33]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 16:28:33]
+initSignal:0
+[INFO -- 2018-11-22 16:28:33]
+endSignal:3
+[INFO -- 2018-11-22 16:28:33]
+faultModel:0
+[INFO -- 2018-11-22 16:28:35]
+Backtrace BEGIN:
+#0  0x0000555555556757 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd880, __p=0x555555771490, __n=2) at /usr/include/c++/7/bits/stl_vector.h:180
+#1  0x0000555555556427 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd880, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#2  0x0000555555555e53 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd880, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#3  0x0000555555555720 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+175	      void
+176	      _M_deallocate(pointer __p, size_t __n)
+177	      {
+178		typedef __gnu_cxx::__alloc_traits<_Tp_alloc_type> _Tr;
+179		if (__p)
+180		  _Tr::deallocate(_M_impl, __p, __n);
+181	      }
+182	
+183	    private:
+184	      void
+
+Backtrace END
+Memory content before bitflip:0x100x270x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd81c
+address max offset: 4
+Memory content after  bitflip:0x140x270x000x00
+frame name: train
+symbol name: iterations
+symbol filename: lreg.cpp
+symbol line: 105
+value: 10004
+value address: 0x7fffffffd81c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-22 16:28:35]
+Fault Injection Successful after 2.5867085456848145s
+[INFO -- 2018-11-22 16:28:38]
+event type: exit
+[INFO -- 2018-11-22 16:28:38]
+exit code: 0

@@ -1,0 +1,57 @@
+[INFO -- 2018-11-22 18:20:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:20:24]
+Initialization strings:
+[INFO -- 2018-11-22 18:20:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:20:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:20:24]
+initSignal:0
+[INFO -- 2018-11-22 18:20:24]
+endSignal:3
+[INFO -- 2018-11-22 18:20:24]
+faultModel:2
+[EXCEPTION -- 2018-11-22 18:20:26]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-22 18:20:26]
+Backtrace BEGIN:
+#0  std::pow<double, int> (__x=12, __y=1) at /usr/include/c++/7/cmath:419
+#1  0x00005555555551e7 in predict (v=12) at lreg.cpp:50
+#2  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#3  0x0000555555555661 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+423	#ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd754
+address max offset: 4
+Memory content after  bitflip:0xae0xa60x8d0xa0
+frame name: std::pow<double, int>
+symbol name: __y
+symbol filename: /usr/include/c++/7/cmath
+symbol line: 415
+value: -1601329490
+value address: 0x7fffffffd754
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-22 18:20:26]
+Fault Injection Successful after 2.9711005687713623s
+[INFO -- 2018-11-22 18:20:29]
+event type: exit
+[INFO -- 2018-11-22 18:20:29]
+exit code: 0

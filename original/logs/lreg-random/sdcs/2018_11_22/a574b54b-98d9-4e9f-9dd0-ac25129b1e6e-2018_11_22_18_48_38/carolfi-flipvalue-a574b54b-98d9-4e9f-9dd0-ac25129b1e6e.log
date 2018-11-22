@@ -1,0 +1,54 @@
+[INFO -- 2018-11-22 18:48:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:48:32]
+Initialization strings:
+[INFO -- 2018-11-22 18:48:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:48:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:48:32]
+initSignal:0
+[INFO -- 2018-11-22 18:48:32]
+endSignal:3
+[INFO -- 2018-11-22 18:48:32]
+faultModel:2
+[INFO -- 2018-11-22 18:48:34]
+Backtrace BEGIN:
+#0  0x00005555555551c2 in predict (v=23) at lreg.cpp:50
+#1  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#2  0x0000555555555661 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Memory content before bitflip:0xdb0x170x610xef0x900x410x200x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd830
+address max offset: 8
+Memory content after  bitflip:0x490xad0xe00xb60xac0xbc0x7f0xdd
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: -2.4188224180971941e+142
+value address: 0x7fffffffd830
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 18:48:34]
+Fault Injection Successful after 2.74045991897583s
+[INFO -- 2018-11-22 18:48:37]
+event type: exit
+[INFO -- 2018-11-22 18:48:37]
+exit code: 0

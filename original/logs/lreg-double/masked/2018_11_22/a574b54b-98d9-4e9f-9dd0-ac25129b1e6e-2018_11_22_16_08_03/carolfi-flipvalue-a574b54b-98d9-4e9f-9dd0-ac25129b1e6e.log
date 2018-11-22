@@ -1,0 +1,57 @@
+[INFO -- 2018-11-22 16:07:57]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 16:07:57]
+Initialization strings:
+[INFO -- 2018-11-22 16:07:57]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 16:07:57]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 16:07:57]
+initSignal:0
+[INFO -- 2018-11-22 16:07:57]
+endSignal:3
+[INFO -- 2018-11-22 16:07:57]
+faultModel:1
+[EXCEPTION -- 2018-11-22 16:07:58]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-22 16:07:59]
+Backtrace BEGIN:
+#0  0x0000555555555d1c in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a140 <x>, __n=1) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x00005555555553eb in partialDerivate (pos=1) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd740
+address max offset: 8
+Memory content after  bitflip:0x010x000x000x000x000x000x220x00
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: __n
+symbol filename: /usr/include/c++/7/bits/stl_vector.h
+symbol line: 795
+value: 9570149208162305
+value address: 0x7fffffffd740
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 16:07:59]
+Fault Injection Successful after 2.518214225769043s
+[INFO -- 2018-11-22 16:08:02]
+event type: exit
+[INFO -- 2018-11-22 16:08:02]
+exit code: 0

@@ -1,0 +1,144 @@
+[INFO -- 2018-11-22 18:12:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:12:19]
+Initialization strings:
+[INFO -- 2018-11-22 18:12:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:12:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:12:19]
+initSignal:0
+[INFO -- 2018-11-22 18:12:19]
+endSignal:3
+[INFO -- 2018-11-22 18:12:19]
+faultModel:2
+[INFO -- 2018-11-22 18:12:19]
+Backtrace BEGIN:
+#0  0x00007ffff7ddf328 in do_lookup_x (undef_name=undef_name@entry=0x7ffff6e9afc5 "argp_program_bug_address", new_hash=new_hash@entry=3952066248, old_hash=old_hash@entry=0x7fffffffd990, ref=0x7ffff6e90c38, result=result@entry=0x7fffffffd9a0, scope=<optimized out>, i=<optimized out>, version=0x7ffff7fdca30, flags=1, skip=0x0, type_class=4, undef_map=0x7ffff7fdf3d0) at dl-lookup.c:540
+#1  0x00007ffff7de01ef in _dl_lookup_symbol_x (undef_name=0x7ffff6e9afc5 "argp_program_bug_address", undef_map=undef_map@entry=0x7ffff7fdf3d0, ref=ref@entry=0x7fffffffdac0, symbol_scope=symbol_scope@entry=0x7ffff7fdf728, version=0x7ffff7fdca30, type_class=4, flags=1, skip_map=<optimized out>) at dl-lookup.c:813
+#2  0x00007ffff7de1af9 in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x7ffff7270f08, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff6ea6860, map=0x7ffff7fdf3d0) at ../sysdeps/x86_64/dl-machine.h:308
+#3  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7fdf3d0) at do-rel.h:137
+#4  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#5  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#6  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde50, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#7  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde50) at rtld.c:414
+#8  _dl_start (arg=0x7fffffffde50) at rtld.c:521
+#9  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#10 0x0000000000000003 in ?? ()
+#11 0x00007fffffffe1fd in ?? ()
+#12 0x00007fffffffe20c in ?? ()
+#13 0x00007fffffffe220 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+535	dl-lookup.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: _dl_load_adds
+Memory content before bitflip:0x080x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff7ffd9b8 
+address max offset: 8
+Memory content after  bitflip:0x030x350xba0xd90x900x3f0x280x38
+frame name: dl_main
+symbol name: _rtld_global
+symbol filename: rtld.c
+symbol line: 231
+value: {_dl_ns = {{_ns_loaded = 0x7ffff7ffe170, _ns_nloaded = 8, _ns_main_searchlist = 0x7ffff7ffe428, _ns_global_scope_alloc = 0, _ns_unique_sym_table = {lock = {mutex = {__data = {__lock = 0, __count = 0, __owner = 0, __nusers = 0, __kind = 1, __spins = 0, __elision = 0, __list = {__prev = 0x0, __next = 0x0}}, __size = '\000' <repeats 16 times>, "\001", '\000' <repeats 22 times>, __align = 0}}, entries = 0x0, size = 0, n_elements = 0, free = 0x0}, _ns_debug = {r_version = 0, r_map = 0x0, r_brk = 0, r_state = RT_CONSISTENT, r_ldbase = 0}}, {_ns_loaded = 0x0, _ns_nloaded = 0, _ns_main_searchlist = 0x0, _ns_global_scope_alloc = 0, _ns_unique_sym_table = {lock = {mutex = {__data = {__lock = 0, __count = 0, __owner = 0, __nusers = 0, __kind = 0, __spins = 0, __elision = 0, __list = {__prev = 0x0, __next = 0x0}}, __size = '\000' <repeats 39 times>, __align = 0}}, entries = 0x0, size = 0, n_elements = 0, free = 0x0}, _ns_debug = {r_version = 0, r_map = 0x0, r_brk = 0, r_state = RT_CONSISTENT, r_ldbase = 0}} <repeats 15 times>}, _dl_nns = 1, _dl_load_lock = {mutex = {__data = {__lock = 0, __count = 0, __owner = 0, __nusers = 0, __kind = 1, __spins = 0, __elision = 0, __list = {__prev = 0x0, __next = 0x0}}, __size = '\000' <repeats 16 times>, "\001", '\000' <repeats 22 times>, __align = 0}}, _dl_load_write_lock = {mutex = {__data = {__lock = 0, __count = 0, __owner = 0, __nusers = 0, __kind = 1, __spins = 0, __elision = 0, __list = {__prev = 0x0, __next = 0x0}}, __size = '\000' <repeats 16 times>, "\001", '\000' <repeats 22 times>, __align = 0}}, _dl_load_adds = 4046554156553090307, _dl_initfirst = 0x7ffff7fdeee0, _dl_cpuclock_offset = 56976389959256, _dl_profile_map = 0x0, _dl_num_relocations = 40, _dl_num_cache_relocations = 0, _dl_all_dirs = 0x7ffff7ffec90, _dl_rtld_map = {l_addr = 140737351864320, l_name = 0x555555554238 "/lib64/ld-linux-x86-64.so.2", l_ld = 0x7ffff7ffce68, l_next = 0x0, l_prev = 0x7ffff7fdf3d0, l_real = 0x7ffff7ffd9f0 <_rtld_global+2448>, l_ns = 0, l_libname = 0x7ffff7ffe030 <_dl_rtld_libname>, l_info = {0x0, 0x0, 0x7ffff7ffcee8, 0x7ffff7ffced8, 0x7ffff7ffce78, 0x7ffff7ffce98, 0x7ffff7ffcea8, 0x7ffff7ffcf18, 0x7ffff7ffcf28, 0x7ffff7ffcf38, 0x7ffff7ffceb8, 0x7ffff7ffcec8, 0x0, 0x0, 0x7ffff7ffce68, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7ffff7ffcef8, 0x0, 0x0, 0x7ffff7ffcf08, 0x0 <repeats 12 times>, 0x7ffff7ffcf58, 0x7ffff7ffcf48, 0x0, 0x0, 0x7ffff7ffcf78, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7ffff7ffcf68, 0x0 <repeats 25 times>, 0x7ffff7ffce88}, l_phdr = 0x7ffff7dd5040, l_entry = 0, l_phnum = 7, l_ldnum = 0, l_searchlist = {r_list = 0x0, r_nlist = 0}, l_symbolic_searchlist = {r_list = 0x0, r_nlist = 0}, l_loader = 0x0, l_versions = 0x7ffff7fdcd00, l_nversions = 6, l_nbuckets = 17, l_gnu_bitmask_idxbits = 3, l_gnu_shift = 8, l_gnu_bitmask = 0x7ffff7dd52d8, {l_gnu_buckets = 0x7ffff7dd52f8, l_chain = 0x7ffff7dd52f8}, {l_gnu_chain_zero = 0x7ffff7dd5338, l_buckets = 0x7ffff7dd5338}, l_direct_opencount = 0, l_type = lt_library, l_relocated = 1, l_init_called = 0, l_global = 1, l_reserved = 0, l_phdr_allocated = 0, l_soname_added = 0, l_faked = 0, l_need_tls_init = 0, l_auditing = 0, l_audit_any_plt = 0, l_removed = 0, l_contiguous = 0, l_symbolic_in_local_scope = 0, l_free_initfini = 0, l_rpath_dirs = {dirs = 0x0, malloced = 0}, l_reloc_result = 0x0, l_versyms = 0x7ffff7dd5914, l_origin = 0x0, l_map_start = 140737351864320, l_map_end = 140737354129776, l_text_end = 140737351994144, l_scope_mem = {0x0, 0x0, 0x0, 0x0}, l_scope_max = 0, l_scope = 0x0, l_local_scope = {0x0, 0x0}, l_file_id = {dev = 0, ino = 0}, l_runpath_dirs = {dirs = 0x0, malloced = 0}, l_initfini = 0x0, l_reldeps = 0x0, l_reldepsmax = 0, l_used = 1, l_feature_1 = 0, l_flags_1 = 0, l_flags = 0, l_idx = 0, l_mach = {plt = 0, gotplt = 0, tlsdesc_table = 0x0}, l_lookup_cache = {sym = 0x0, type_class = 0, value = 0x0, ret = 0x0}, l_tls_initimage = 0x0, l_tls_initimage_size = 0, l_tls_blocksize = 0, l_tls_align = 0, l_tls_firstbyte_offset = 0, l_tls_offset = 0, l_tls_modid = 0, l_tls_dtor_count = 0, l_relro_addr = 2258560, l_relro_size = 2432, l_serial = 0, l_audit = 0x7ffff7ffde60 <_rtld_global+3584>}, audit_data = {{cookie = 0, bindflags = 0} <repeats 16 times>}, _dl_rtld_lock_recursive = 0x7ffff7dd60e0 <rtld_lock_default_lock_recursive>, _dl_rtld_unlock_recursive = 0x7ffff7dd60f0 <rtld_lock_default_unlock_recursive>, _dl_make_stack_executable_hook = 0x7ffff7de8d00 <__GI__dl_make_stack_executable>, _dl_stack_flags = 6, _dl_tls_dtv_gaps = false, _dl_tls_max_dtv_idx = 2, _dl_tls_dtv_slotinfo_list = 0x7ffff7fdcd90, _dl_tls_static_nelem = 2, _dl_tls_static_size = 4160, _dl_tls_static_used = 176, _dl_tls_static_align = 64, _dl_initial_dtv = 0x7ffff7fda0a0, _dl_tls_generation = 0, _dl_init_static_tls = 0x7ffff7de15d0 <_dl_nothread_init_static_tls>, _dl_wait_lookup_done = 0x0, _dl_scope_free_list = 0x0}
+value address: 0x7ffff7ffd060 <_rtld_global>
+Type: The type is a structure.
+Type sizeof: 3960
+Field name: _dl_ns
+Field Type: The type is an array.
+Field Type sizeof: 2304
+Field name: _dl_nns
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: _dl_load_lock
+Field Type: The type is a structure.
+Field Type sizeof: 40
+Field name: _dl_load_write_lock
+Field Type: The type is a structure.
+Field Type sizeof: 40
+Field name: _dl_load_adds
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: _dl_initfirst
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: _dl_cpuclock_offset
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: _dl_profile_map
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: _dl_num_relocations
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: _dl_num_cache_relocations
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: _dl_all_dirs
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: _dl_rtld_map
+Field Type: The type is a structure.
+Field Type sizeof: 1136
+Field name: audit_data
+Field Type: The type is an array.
+Field Type sizeof: 256
+Field name: _dl_rtld_lock_recursive
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: _dl_rtld_unlock_recursive
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: _dl_make_stack_executable_hook
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: _dl_stack_flags
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: _dl_tls_dtv_gaps
+Field Type: A boolean type.
+Field Type sizeof: 1
+Field name: _dl_tls_max_dtv_idx
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: _dl_tls_dtv_slotinfo_list
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: _dl_tls_static_nelem
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: _dl_tls_static_size
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: _dl_tls_static_used
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: _dl_tls_static_align
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: _dl_initial_dtv
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: _dl_tls_generation
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: _dl_init_static_tls
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: _dl_wait_lookup_done
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: _dl_scope_free_list
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-22 18:12:19]
+Fault Injection Successful after 0.7027683258056641s
+[INFO -- 2018-11-22 18:12:23]
+event type: exit
+[INFO -- 2018-11-22 18:12:23]
+exit code: 0

@@ -1,0 +1,57 @@
+[INFO -- 2018-11-22 18:25:31]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:25:31]
+Initialization strings:
+[INFO -- 2018-11-22 18:25:31]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:25:31]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:25:31]
+initSignal:0
+[INFO -- 2018-11-22 18:25:31]
+endSignal:3
+[INFO -- 2018-11-22 18:25:31]
+faultModel:1
+[EXCEPTION -- 2018-11-22 18:25:32]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-22 18:25:33]
+Backtrace BEGIN:
+#0  0x0000555555555d41 in std::pow<double, int> (__x=-6, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x00005555555551e7 in predict (v=-6) at lreg.cpp:50
+#2  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#3  0x0000555555555661 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Memory content before bitflip:0x3d0xa70x550x970xf00x6d0xbd0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd830
+address max offset: 8
+Memory content after  bitflip:0x3d0xa70x550x970xf00x2f0xbd0x3f
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: 0.11401275343601198
+value address: 0x7fffffffd830
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 18:25:33]
+Fault Injection Successful after 2.3618364334106445s
+[INFO -- 2018-11-22 18:25:35]
+event type: exit
+[INFO -- 2018-11-22 18:25:35]
+exit code: 0

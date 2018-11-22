@@ -1,0 +1,55 @@
+[INFO -- 2018-11-22 14:36:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 14:36:56]
+Initialization strings:
+[INFO -- 2018-11-22 14:36:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 14:36:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 14:36:56]
+initSignal:0
+[INFO -- 2018-11-22 14:36:56]
+endSignal:3
+[INFO -- 2018-11-22 14:36:56]
+faultModel:2
+[INFO -- 2018-11-22 14:36:59]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x555555556529 <std::_Destroy<double*, double>(double*, double*, std::allocator<double>&)+39>, __p=0x7fffffffd7d0, __n=93824994448944) at /usr/include/c++/7/bits/stl_vector.h:176
+#1  0x0000555555556427 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd8a0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#2  0x0000555555555e53 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd8a0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#3  0x0000555555555730 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+171		typedef __gnu_cxx::__alloc_traits<_Tp_alloc_type> _Tr;
+172		return __n != 0 ? _Tr::allocate(_M_impl, __n) : pointer();
+173	      }
+174	
+175	      void
+176	      _M_deallocate(pointer __p, size_t __n)
+177	      {
+178		typedef __gnu_cxx::__alloc_traits<_Tp_alloc_type> _Tr;
+179		if (__p)
+180		  _Tr::deallocate(_M_impl, __p, __n);
+
+Backtrace END
+Memory content before bitflip:0x910xc90x7d0x300x940x0b0x0a0x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd830
+address max offset: 8
+Memory content after  bitflip:0x0a0x8f0x360xe40x2f0xa80xf70xc6
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: -7.6771291819932752e+33
+value address: 0x7fffffffd830
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 14:36:59]
+Fault Injection Successful after 3.15556263923645s
+[INFO -- 2018-11-22 14:37:01]
+event type: exit
+[INFO -- 2018-11-22 14:37:01]
+exit code: 0

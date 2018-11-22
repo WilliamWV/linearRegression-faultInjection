@@ -1,0 +1,61 @@
+[INFO -- 2018-11-22 17:26:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 17:26:48]
+Initialization strings:
+[INFO -- 2018-11-22 17:26:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 17:26:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 17:26:48]
+initSignal:0
+[INFO -- 2018-11-22 17:26:48]
+endSignal:3
+[INFO -- 2018-11-22 17:26:48]
+faultModel:1
+[EXCEPTION -- 2018-11-22 17:26:49]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-22 17:26:50]
+Backtrace BEGIN:
+#0  0x000055555555695f in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=0, __last=1.452514982553524) at /usr/include/c++/7/bits/stl_construct.h:203
+#1  0x000055555555625b in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555641 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+198		__traits::destroy(__alloc, std::__addressof(*__first));
+199	    }
+200	
+201	  template<typename _ForwardIterator, typename _Tp>
+202	    inline void
+203	    _Destroy(_ForwardIterator __first, _ForwardIterator __last,
+204		     allocator<_Tp>&)
+205	    {
+206	      _Destroy(__first, __last);
+207	    }
+
+Backtrace END
+Fliping value of field: _M_current
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x410x470xb00x590x800x3d0xf70x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771340
+address max offset: 8
+Memory content after  bitflip:0x410x470xb00x990x800x3d0xf70x3f
+frame name: std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double>
+symbol name: __last
+symbol filename: /usr/include/c++/7/bits/stl_construct.h
+symbol line: 203
+value: 1.4525152209721031
+value address: 0x7fffffffd790
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_current
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-22 17:26:50]
+Fault Injection Successful after 2.5109333992004395s
+[INFO -- 2018-11-22 17:26:53]
+event type: exit
+[INFO -- 2018-11-22 17:26:53]
+exit code: 0

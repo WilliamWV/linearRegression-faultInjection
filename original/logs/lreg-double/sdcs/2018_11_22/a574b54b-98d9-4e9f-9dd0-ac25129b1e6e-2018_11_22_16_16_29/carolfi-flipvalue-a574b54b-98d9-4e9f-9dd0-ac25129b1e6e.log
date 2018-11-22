@@ -1,0 +1,65 @@
+[INFO -- 2018-11-22 16:16:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 16:16:22]
+Initialization strings:
+[INFO -- 2018-11-22 16:16:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 16:16:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 16:16:22]
+initSignal:0
+[INFO -- 2018-11-22 16:16:22]
+endSignal:3
+[INFO -- 2018-11-22 16:16:22]
+faultModel:1
+[INFO -- 2018-11-22 16:16:25]
+Backtrace BEGIN:
+#0  0x00005555555577b5 in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd740, __n=140737488344888) at /usr/include/c++/7/ext/new_allocator.h:99
+#1  0x000055555555757d in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=4) at /usr/include/c++/7/bits/alloc_traits.h:436
+#2  0x0000555555557054 in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd8a0, __n=4) at /usr/include/c++/7/bits/stl_vector.h:172
+#3  0x0000555555556db9 in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd8a0, __n=4) at /usr/include/c++/7/bits/stl_vector.h:187
+#4  0x0000555555556489 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8a0, __n=4, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#5  0x0000555555555f35 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#6  0x00005555555556c3 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+94	      { return std::__addressof(__x); }
+95	
+96	      // NB: __n is permitted to be 0.  The C++ standard says nothing
+97	      // about what the return value is when __n == 0.
+98	      pointer
+99	      allocate(size_type __n, const void* = static_cast<const void*>(0))
+100	      {
+101		if (__n > this->max_size())
+102		  std::__throw_bad_alloc();
+103	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2b0x010x110xf90x630xdf0xad0xbf
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771380
+address max offset: 8
+Memory content after  bitflip:0x2b0x010x110xf90x630xdf0xad0x7f
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 4, capacity 4 = {1.0488633297714727e+307, -0.23267097611747006, -1.9485380851924918, -4.045962817914285}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-22 16:16:25]
+Fault Injection Successful after 3.8011157512664795s
+[INFO -- 2018-11-22 16:16:28]
+event type: exit
+[INFO -- 2018-11-22 16:16:28]
+exit code: 0

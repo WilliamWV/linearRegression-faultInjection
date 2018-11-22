@@ -1,0 +1,58 @@
+[INFO -- 2018-11-22 18:11:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:11:22]
+Initialization strings:
+[INFO -- 2018-11-22 18:11:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:11:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:11:22]
+initSignal:0
+[INFO -- 2018-11-22 18:11:22]
+endSignal:3
+[INFO -- 2018-11-22 18:11:22]
+faultModel:1
+[EXCEPTION -- 2018-11-22 18:11:24]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-22 18:11:24]
+Backtrace BEGIN:
+#0  0x00007ffff76da5e4 in __ieee754_pow_sse2 (x=-10, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:85
+#1  0x00007ffff76bcb14 in __pow (x=-10, y=0) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=-10, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=-10) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+80	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x940x600xf00x9d0x490x820xf30x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771340
+address max offset: 8
+Memory content after  bitflip:0x940x600xf00x9d0x490x820xf30x77
+frame name: predict
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 2, capacity 2 = {6.4415400589508433e+269, -1.0202122028517604}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-22 18:11:24]
+Fault Injection Successful after 2.4302663803100586s
+[INFO -- 2018-11-22 18:11:27]
+event type: exit
+[INFO -- 2018-11-22 18:11:27]
+exit code: 0

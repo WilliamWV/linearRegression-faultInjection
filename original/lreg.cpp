@@ -176,6 +176,8 @@ int main(int argc, char* argv[]){
 			inp >> temp;
 			out<<predict(temp)<< endl;
 		}
+		x.clear();
+		y.clear();
 			
 	}
 	

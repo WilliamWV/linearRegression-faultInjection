@@ -1,0 +1,57 @@
+[INFO -- 2018-11-22 18:27:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:27:43]
+Initialization strings:
+[INFO -- 2018-11-22 18:27:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:27:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:27:43]
+initSignal:0
+[INFO -- 2018-11-22 18:27:43]
+endSignal:3
+[INFO -- 2018-11-22 18:27:43]
+faultModel:0
+[EXCEPTION -- 2018-11-22 18:27:44]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-22 18:27:45]
+Backtrace BEGIN:
+#0  0x00005555555551b8 in predict (v=29) at lreg.cpp:50
+#1  0x00005555555553ac in partialDerivate (pos=2) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Memory content before bitflip:0x280x860xda0x1a0xdb0x870xe50xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0x280x860xda0x1a0xcb0x870xe50xc0
+frame name: partialDerivate
+symbol name: pD
+symbol filename: lreg.cpp
+symbol line: 72
+value: -44094.347028028511
+value address: 0x7fffffffd788
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 18:27:45]
+Fault Injection Successful after 2.8901796340942383s
+[INFO -- 2018-11-22 18:27:47]
+event type: exit
+[INFO -- 2018-11-22 18:27:47]
+exit code: 0

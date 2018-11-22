@@ -1,0 +1,65 @@
+[INFO -- 2018-11-22 14:29:50]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 14:29:50]
+Initialization strings:
+[INFO -- 2018-11-22 14:29:50]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 14:29:50]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 14:29:50]
+initSignal:0
+[INFO -- 2018-11-22 14:29:50]
+endSignal:3
+[INFO -- 2018-11-22 14:29:50]
+faultModel:2
+[EXCEPTION -- 2018-11-22 14:29:52]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-22 14:29:52]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-22 14:29:52]
+Backtrace BEGIN:
+#0  0x000055555555542c in partialDerivate (pos=2) at lreg.cpp:76
+#1  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#2  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+79	
+80	/**
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771530
+address max offset: 8
+Memory content after  bitflip:0xd70xf40xc10x9d0x390x980x8c0x0c
+frame name: train
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 13, capacity 13 = {6.2147608509582055e-317, 2.0799768437399807e-317, 2.0747911307212309e-317, 6.2231085841103392e-317, 2.0802298053506514e-317, 6.2228556224996685e-317, 6.2231085841103392e-317, 6.2243733921636928e-317, 2.0794709205186392e-317, 6.222349699278327e-317, 2.0758029771639138e-317, 6.2167845438435712e-317, 6.2229821033050038e-317, 3.6679125910071402e-31, 1.2023180099211391e-314, -0, 2.0977691357780156e-317, 2.0932543639063183e-317, -3.1050361875006212e+231, 6.2481853800306575e-317, 2.0000000056027112, 1.7272337126485369e-77, -6.2488607677685225e-317, 2.0000000018862005, -2.3158417869313246e+77, -2.6815615885232777e+154, -6.2470381596010141e-317, 2.0971584706397558e-317, 6.2359523146396282e-317, 2.0000000018704327, -2.6815615885180397e+154, 6.2454418334993011e-317, 4.0616325686444665e-315, 1.7447447783331697e+24, -7.6391354091976059e-305, -1.1157451291147556e-187, 5.9997237341257852e-86, 6.2188314578142915e-317, 4.0616325686444665e-315, 1.7447447783331697e+24, -7.6391354091976059e-305, -1.1157451291147556e-187, 5.9997237341257852e-86, 6.2188314578142915e-317, 4.0616325686444665e-315, 1.2019133903522365e+103, -1.1807915496065895e-222, -1.6858882985989272e+250, -3.9792113393278002e-260, 6.2187790868558323e-317, 4.0616325686444665e-315, 0, -7.6391353964850677e-305, -1.1157451291147556e-187, 5.9997237341257852e-86, 6.2188314578142915e-317, 3.5968657561467212e-312, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-22 14:29:52]
+Fault Injection Successful after 2.9380500316619873s
+[INFO -- 2018-11-22 14:30:01]
+event type: exit
+[EXCEPTION -- 2018-11-22 14:30:01]
+exit code: no exit code available

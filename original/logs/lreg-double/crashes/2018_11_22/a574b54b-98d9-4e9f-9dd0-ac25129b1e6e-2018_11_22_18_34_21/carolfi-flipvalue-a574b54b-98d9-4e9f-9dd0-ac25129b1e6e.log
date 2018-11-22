@@ -1,0 +1,62 @@
+[INFO -- 2018-11-22 18:34:17]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 18:34:17]
+Initialization strings:
+[INFO -- 2018-11-22 18:34:17]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 18:34:17]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 18:34:17]
+initSignal:0
+[INFO -- 2018-11-22 18:34:17]
+endSignal:3
+[INFO -- 2018-11-22 18:34:17]
+faultModel:1
+[EXCEPTION -- 2018-11-22 18:34:19]
+gdbException: Cannot access memory at address 0x555555551540
+[INFO -- 2018-11-22 18:34:19]
+Backtrace BEGIN:
+#0  0x00005555555554f3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:89
+#1  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+84		
+85		double PD;
+86		for(int i = 0; i<T.size(); i++){
+87			PD = partialDerivate(i);
+88			// alpha is different from the canonical version because this works better
+89			T[i]= T[i] - ((alpha / (sqrt( fabs(PD) ))) * PD); 
+90		}
+91	}
+92	
+93	/**
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x100xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x5555557714b0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x820x000x000x100xc0
+frame name: adjust
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 12, capacity 16 = {-4.0000019371509552, -3, -7, -2, -1, -1, -21, -3, -19, 13, 6, 23}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-22 18:34:19]
+Fault Injection Successful after 2.7556960582733154s
+[INFO -- 2018-11-22 18:34:20]
+event type: exit
+[EXCEPTION -- 2018-11-22 18:34:20]
+exit code: no exit code available
