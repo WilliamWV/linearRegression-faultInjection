@@ -1,0 +1,57 @@
+[INFO -- 2018-11-23 20:03:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 20:03:15]
+Initialization strings:
+[INFO -- 2018-11-23 20:03:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 20:03:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 20:03:15]
+initSignal:0
+[INFO -- 2018-11-23 20:03:15]
+endSignal:3
+[INFO -- 2018-11-23 20:03:15]
+faultModel:2
+[EXCEPTION -- 2018-11-23 20:03:16]
+gdbException: Cannot access memory at address 0x9cb38e5998d6664d
+[INFO -- 2018-11-23 20:03:17]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=31, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:112
+#1  0x00007ffff76bcb14 in __pow (x=31, y=3) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=31, __y=3) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=31) at lreg.cpp:50
+#4  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#5  0x0000555555555661 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+107	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x000x380xfa0xfe0x420x2e0xe60x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5c8 
+address max offset: 8
+Memory content after  bitflip:0x1f0x190xcb0x290x5c0xf00x390xb9
+frame name: __ieee754_pow_sse2
+symbol name: ln2a
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 50
+value: {i = {701176095, -1187385252}, x = -4.995651636719235e-33}
+value address: 0x7ffff779f5c8 <ln2a>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-23 20:03:17]
+Fault Injection Successful after 2.1011505126953125s
+[INFO -- 2018-11-23 20:03:17]
+event type: exit
+[EXCEPTION -- 2018-11-23 20:03:17]
+exit code: no exit code available

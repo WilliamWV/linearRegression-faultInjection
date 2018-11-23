@@ -1,0 +1,54 @@
+[INFO -- 2018-11-23 19:46:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 19:46:18]
+Initialization strings:
+[INFO -- 2018-11-23 19:46:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 19:46:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 19:46:18]
+initSignal:0
+[INFO -- 2018-11-23 19:46:18]
+endSignal:3
+[INFO -- 2018-11-23 19:46:18]
+faultModel:2
+[INFO -- 2018-11-23 19:46:19]
+Backtrace BEGIN:
+#0  0x0000555555555fee in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_propagate_on_copy_assign () at /usr/include/c++/7/ext/alloc_traits.h:101
+#1  0x000055555555601a in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:185
+#2  0x0000555555555641 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+96	
+97	    static void _S_on_swap(_Alloc& __a, _Alloc& __b)
+98	    { std::__alloc_on_swap(__a, __b); }
+99	
+100	    static constexpr bool _S_propagate_on_copy_assign()
+101	    { return _Base_type::propagate_on_container_copy_assignment::value; }
+102	
+103	    static constexpr bool _S_propagate_on_move_assign()
+104	    { return _Base_type::propagate_on_container_move_assignment::value; }
+105	
+
+Backtrace END
+Memory content before bitflip:0x800x140x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7c0
+address max offset: 8
+Memory content after  bitflip:0x900x600xb30xa90xc00xaf0x690x64
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: __xlen
+symbol filename: /usr/include/c++/7/bits/vector.tcc
+symbol line: 203
+value: 7235507518363099280
+value address: 0x7fffffffd7c0
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 19:46:19]
+Fault Injection Successful after 1.0065271854400635s
+[INFO -- 2018-11-23 19:46:20]
+event type: exit
+[INFO -- 2018-11-23 19:46:20]
+exit code: 0

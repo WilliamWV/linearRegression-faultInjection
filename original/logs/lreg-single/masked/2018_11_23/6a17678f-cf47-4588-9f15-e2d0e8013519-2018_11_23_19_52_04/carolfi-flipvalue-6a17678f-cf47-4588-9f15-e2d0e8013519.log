@@ -1,0 +1,55 @@
+[INFO -- 2018-11-23 19:52:01]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 19:52:01]
+Initialization strings:
+[INFO -- 2018-11-23 19:52:01]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 19:52:01]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 19:52:01]
+initSignal:0
+[INFO -- 2018-11-23 19:52:01]
+endSignal:3
+[INFO -- 2018-11-23 19:52:01]
+faultModel:0
+[INFO -- 2018-11-23 19:52:03]
+Backtrace BEGIN:
+#0  0x0000555555556fa2 in __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >::__normal_iterator (this=0x7fffffffd790, __i=@0x7fffffffd788: 0x5555557715d0) at /usr/include/c++/7/bits/stl_iterator.h:779
+#1  0x0000555555556685 in std::vector<double, std::allocator<double> >::begin (this=0x7fffffffd840) at /usr/include/c++/7/bits/stl_vector.h:573
+#2  0x0000555555555f72 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#3  0x00005555555556c3 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+774	
+775	      _GLIBCXX_CONSTEXPR __normal_iterator() _GLIBCXX_NOEXCEPT
+776	      : _M_current(_Iterator()) { }
+777	
+778	      explicit
+779	      __normal_iterator(const _Iterator& __i) _GLIBCXX_NOEXCEPT
+780	      : _M_current(__i) { }
+781	
+782	      // Allow iterator to const_iterator conversion
+783	      template<typename _Iter>
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd80c
+address max offset: 1
+Memory content after  bitflip:0x03
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 105
+value: 3
+value address: 0x7fffffffd80c
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-23 19:52:03]
+Fault Injection Successful after 2.7796385288238525s
+[INFO -- 2018-11-23 19:52:04]
+event type: exit
+[INFO -- 2018-11-23 19:52:04]
+exit code: 0

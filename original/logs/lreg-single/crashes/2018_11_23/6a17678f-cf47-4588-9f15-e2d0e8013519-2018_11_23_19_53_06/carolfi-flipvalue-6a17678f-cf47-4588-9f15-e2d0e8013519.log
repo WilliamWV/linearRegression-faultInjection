@@ -1,0 +1,60 @@
+[INFO -- 2018-11-23 19:53:05]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 19:53:05]
+Initialization strings:
+[INFO -- 2018-11-23 19:53:05]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 19:53:05]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 19:53:05]
+initSignal:0
+[INFO -- 2018-11-23 19:53:05]
+endSignal:3
+[INFO -- 2018-11-23 19:53:05]
+faultModel:0
+[EXCEPTION -- 2018-11-23 19:53:05]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-23 19:53:05]
+Backtrace BEGIN:
+#0  0x00007ffff76b9990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76bcb14 in __pow (x=-1, y=2) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=-1, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=-1) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=2) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+140		4° Line : values y of the training set
+141		5° Line : set z of new inputs to predict*/
+142	
+143	
+144	int main(int argc, char* argv[]){
+145		
+146		if (argc != 3) {
+147			cout << "Wrong number of arguments" <<endl;
+148			cout <<"  Use as : " << endl; 
+149			cout <<'\t'<<argv[0]<<" <input file> "<<"<output file>"<<endl;
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd6c8
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x800x000x40
+frame name: __pow
+symbol name: y
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 2.0625
+value address: 0x7fffffffd6c8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 19:53:05]
+Fault Injection Successful after 0.9984016418457031s
+[INFO -- 2018-11-23 19:53:06]
+event type: exit
+[EXCEPTION -- 2018-11-23 19:53:06]
+exit code: no exit code available
