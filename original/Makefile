@@ -28,3 +28,12 @@ mv_bin: gen_data
 	mv $(EXEC_INP_GEN) $(EXEC) $(INPUT) $(REPORT) $(OUTPUT) $(destDir)
 	@echo "All Done, executables should be in the $(destDir)"
 
+graph: lreg
+
+lreg: process_lreg.py parseUtils.py createErrLimitsTableforPlot.R lineGraph.R 
+	./process_lreg.py
+	./createErrLimitsTableforPlot.R lreg_logs_parsed.csv Lreg errLimit_lreg.csv
+	./lineGraph.R errLimit_lreg.csv errLimit_lreg.pdf
+
+clean:
+	rm -f lreg_logs_parsed.csv errLimit_lreg.csv errLimit_lreg.pdf parseUtils.pyc

@@ -1,0 +1,56 @@
+[INFO -- 2018-11-23 17:35:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 17:35:32]
+Initialization strings:
+[INFO -- 2018-11-23 17:35:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 17:35:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 17:35:32]
+initSignal:0
+[INFO -- 2018-11-23 17:35:32]
+endSignal:3
+[INFO -- 2018-11-23 17:35:32]
+faultModel:1
+[INFO -- 2018-11-23 17:35:34]
+Backtrace BEGIN:
+#0  std::allocator<double>::allocator (this=0x7fffffffd880, __a=...) at /usr/include/c++/7/bits/allocator.h:134
+#1  0x0000555555556d6f in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::_Vector_impl (this=0x7fffffffd880, __a=...) at /usr/include/c++/7/bits/stl_vector.h:93
+#2  0x0000555555556476 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd880, __n=4, __a=...) at /usr/include/c++/7/bits/stl_vector.h:137
+#3  0x0000555555555f35 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd880, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#4  0x00005555555556db in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+129	#endif
+130	
+131	      allocator() throw() { }
+132	
+133	      allocator(const allocator& __a) throw()
+134	      : __allocator_base<_Tp>(__a) { }
+135	
+136	      template<typename _Tp1>
+137		allocator(const allocator<_Tp1>&) throw() { }
+138	
+
+Backtrace END
+Memory content before bitflip:0x000x410xca0xea0xa50x010x0a0x41
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd838
+address max offset: 8
+Memory content after  bitflip:0x120x410xca0xea0xa50x010x0a0x41
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 213044.73964358174
+value address: 0x7fffffffd838
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 17:35:34]
+Fault Injection Successful after 2.0357871055603027s
+[INFO -- 2018-11-23 17:35:34]
+event type: exit
+[INFO -- 2018-11-23 17:35:34]
+exit code: 0

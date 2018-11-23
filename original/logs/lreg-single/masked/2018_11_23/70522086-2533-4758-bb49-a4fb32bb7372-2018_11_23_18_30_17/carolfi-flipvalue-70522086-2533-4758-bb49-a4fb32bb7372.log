@@ -1,0 +1,51 @@
+[INFO -- 2018-11-23 18:30:14]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:30:14]
+Initialization strings:
+[INFO -- 2018-11-23 18:30:14]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:30:14]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:30:14]
+initSignal:0
+[INFO -- 2018-11-23 18:30:14]
+endSignal:3
+[INFO -- 2018-11-23 18:30:14]
+faultModel:0
+[INFO -- 2018-11-23 18:30:16]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=18) at ../sysdeps/ieee754/dbl-64/e_pow.c:332
+#1  __ieee754_pow_sse2 (x=18, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-18, y=3) at w_pow_compat.c:30
+#4  0x0000555555555d5f in std::pow<double, int> (__x=-18, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x00005555555551e7 in predict (v=-18) at lreg.cpp:50
+#6  0x00005555555553ac in partialDerivate (pos=1) at lreg.cpp:74
+#7  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#8  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#9  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+327	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x320xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd6f8
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x320xe0
+frame name: std::pow<double, int>
+symbol name: __x
+symbol filename: /usr/include/c++/7/cmath
+symbol line: 415
+value: -2.4134054273896675e+155
+value address: 0x7fffffffd6f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 18:30:16]
+Fault Injection Successful after 2.4341278076171875s
+[INFO -- 2018-11-23 18:30:16]
+event type: exit
+[INFO -- 2018-11-23 18:30:16]
+exit code: 0

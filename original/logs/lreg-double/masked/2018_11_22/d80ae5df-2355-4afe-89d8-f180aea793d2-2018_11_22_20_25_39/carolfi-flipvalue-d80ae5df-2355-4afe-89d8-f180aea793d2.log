@@ -1,0 +1,54 @@
+[INFO -- 2018-11-22 20:25:34]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 20:25:34]
+Initialization strings:
+[INFO -- 2018-11-22 20:25:34]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 20:25:34]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 20:25:34]
+initSignal:0
+[INFO -- 2018-11-22 20:25:34]
+endSignal:3
+[INFO -- 2018-11-22 20:25:34]
+faultModel:1
+[INFO -- 2018-11-22 20:25:36]
+Backtrace BEGIN:
+#0  0x000055555555645b in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8a0, __n=140737488345152, __a=...) at /usr/include/c++/7/bits/stl_vector.h:136
+#1  0x0000555555555f35 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x00005555555556c3 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+131	
+132	      _Vector_base(size_t __n)
+133	      : _M_impl()
+134	      { _M_create_storage(__n); }
+135	
+136	      _Vector_base(size_t __n, const allocator_type& __a)
+137	      : _M_impl(__a)
+138	      { _M_create_storage(__n); }
+139	
+140	#if __cplusplus >= 201103L
+
+Backtrace END
+Memory content before bitflip:0x030x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd818
+address max offset: 4
+Memory content after  bitflip:0x8b0x000x000x00
+frame name: train
+symbol name: N
+symbol filename: lreg.cpp
+symbol line: 105
+value: 139
+value address: 0x7fffffffd818
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-22 20:25:36]
+Fault Injection Successful after 2.5136375427246094s
+[INFO -- 2018-11-22 20:25:38]
+event type: exit
+[INFO -- 2018-11-22 20:25:38]
+exit code: 0

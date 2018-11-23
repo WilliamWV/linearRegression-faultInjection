@@ -1,0 +1,7 @@
+Gráficos que podem ser feitos para comparar as falhas:
+	1) Fazer um gráfico de linha único para as 3 versões da tolerância X sdcs
+	2) Fazer um gráfico de barras relativo horizontal comparando quantidade de sdcs, crashes, hangs e maskeds para as 3 versões
+	3) Gráfico de barras vertical comparando o tempo de execução nas 3 versões
+	4) Gráfico de barras vertical comparando tempo entre sdcs normais e sdcs críticos nas 3 versões - fazer um grupo com 2 barras para cada versão
+	5) Gráfico de linhas para mostrar a quantidade de sdcs em cada janela de tempo relativa, ou seja, cada janela representa algo tipo 25% do tempo máximo de execução e conta quantos sdc decorreram de falhas injetadas nessa janela 
+	

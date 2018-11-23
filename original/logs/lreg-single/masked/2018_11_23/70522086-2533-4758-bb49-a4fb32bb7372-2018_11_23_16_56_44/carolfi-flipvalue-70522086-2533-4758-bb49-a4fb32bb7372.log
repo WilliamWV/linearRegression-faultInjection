@@ -1,0 +1,54 @@
+[INFO -- 2018-11-23 16:56:38]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 16:56:38]
+Initialization strings:
+[INFO -- 2018-11-23 16:56:38]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 16:56:38]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 16:56:38]
+initSignal:0
+[INFO -- 2018-11-23 16:56:38]
+endSignal:3
+[INFO -- 2018-11-23 16:56:38]
+faultModel:0
+[INFO -- 2018-11-23 16:56:40]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb0f in __pow (x=23, y=2) at w_pow_compat.c:30
+#1  0x0000555555555d5f in std::pow<double, int> (__x=23, __y=2) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555401 in partialDerivate (pos=2) at lreg.cpp:74
+#3  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#4  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+25	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x250xd70x0c0x3d0x090x1a0xed0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771360
+address max offset: 8
+Memory content after  bitflip:0x250xc70x0c0x3d0x090x1a0xed0x3f
+frame name: partialDerivate
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 3, capacity 3 = {0.90942823337374945, -0.026509468030011939, -2.9922698157102419}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 16:56:40]
+Fault Injection Successful after 2.3438944816589355s
+[INFO -- 2018-11-23 16:56:42]
+event type: exit
+[INFO -- 2018-11-23 16:56:42]
+exit code: 0

@@ -1,0 +1,57 @@
+[INFO -- 2018-11-23 19:13:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 19:13:37]
+Initialization strings:
+[INFO -- 2018-11-23 19:13:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 19:13:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 19:13:37]
+initSignal:0
+[INFO -- 2018-11-23 19:13:37]
+endSignal:3
+[INFO -- 2018-11-23 19:13:37]
+faultModel:0
+[INFO -- 2018-11-23 19:13:40]
+Backtrace BEGIN:
+#0  0x00007ffff76da86a in __ieee754_pow_sse2 (x=31, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:107
+#1  0x00007ffff76bcb14 in __pow (x=31, y=3) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=31, __y=3) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=31) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=3) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+102	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 0
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff779f5d0 
+address max offset: 4
+Memory content after  bitflip:0x000x000x080x00
+frame name: __ieee754_pow_sse2
+symbol name: nINF
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 49
+value: {i = {524288, -1048576}, x = -nan(0x000080000)}
+value address: 0x7ffff779f5d0 <nINF>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-23 19:13:40]
+Fault Injection Successful after 3.3565592765808105s
+[INFO -- 2018-11-23 19:13:40]
+event type: exit
+[INFO -- 2018-11-23 19:13:40]
+exit code: 0

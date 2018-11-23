@@ -1,0 +1,64 @@
+[INFO -- 2018-11-23 17:47:27]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 17:47:27]
+Initialization strings:
+[INFO -- 2018-11-23 17:47:27]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 17:47:27]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 17:47:27]
+initSignal:0
+[INFO -- 2018-11-23 17:47:27]
+endSignal:3
+[INFO -- 2018-11-23 17:47:27]
+faultModel:1
+[EXCEPTION -- 2018-11-23 17:47:28]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-23 17:47:29]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-23 17:47:29]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-23 17:47:30]
+Backtrace BEGIN:
+#0  0x0000555555555d0e in std::vector<double, std::allocator<double> >::size (this=0x55555575a180 <T>) at /usr/include/c++/7/bits/stl_vector.h:671
+#1  0x00005555555551a9 in predict (v=-2) at lreg.cpp:49
+#2  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#3  0x0000555555555661 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+675	      max_size() const _GLIBCXX_NOEXCEPT
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x780x130x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a188 
+address max offset: 8
+Memory content after  bitflip:0x780x3b0x770x550x550x550x000x00
+frame name: meanSquaredError
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 1282, capacity 2 = {5.8869515938156598e+110, 1.2998254596240549e+55, -2.9902693880468938, 0, 0, 1.3607298009564809e-312, 1.3613929246411575e-312, 1.3597351154294659e-312, 4.4001704721455887e-310, 3.8164435132528918e+265, 1.7383392282602699e-310, -nan(0xfff0000000000), 1.7935417168364969e-52, 4.0768844781739169e-312, 1.356751058848421e-312, 1.356751058848421e-312, 4.0865502181942596e-312, 4.0787908939854748e-312, 4.4001704721455887e-310, 0, 1.7383389519587511e-310, -nan(0xfff0000000000), 3.3079351427621573e-33, 6.7034826827740331e-320, 0, 0, 0, 0, 1.7926620442074621e-310, -1.2128736417773057e-29, -1.2146082023616408e+224, -2.4942680850963055e-158, 1.8334109309832799e-310, 4.1439271150501696e+265, 4.7549893359257564e+281, -2.4940662143891877e-158, 1.8334109309832799e-310, 0, 3.1404243195563213e+262, -2.494066214408299e-158, 7.9175972628389087e-310, 0, 4.0755581660226761e-312, 4.0748950423379995e-312, 4.0765528515496911e-312, 4.0742319186533228e-312, 4.0729056712839695e-312, 4.0729056712839695e-312, 4.0786251130643056e-312, 4.0748950423379995e-312, 4.0784593321431365e-312, 1.3615587055623267e-312, 1.3600666772718042e-312, 1.3626362815499262e-312, 0, 0, 0, 0, 7.8768483760630908e-310, 0, 4.0800342508942435e-312, 4.0787908939854748e-312, 4.0823448224830387e-312, 4.0768844133920294e-312, 1.356751058848421e-312, 1.356751058848421e-312, 4.0865502181942596e-312, 4.0787908939854748e-312, 4.0862393789670674e-312, 4.0847952717240704e-312, 4.0816920601059351e-312, 4.086892141344171e-312, 0, 0, 0, 0, 1.8693401753783626e-305, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 17:47:30]
+Fault Injection Successful after 3.096055507659912s

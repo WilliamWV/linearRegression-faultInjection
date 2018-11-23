@@ -1,0 +1,54 @@
+[INFO -- 2018-11-23 18:45:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:45:48]
+Initialization strings:
+[INFO -- 2018-11-23 18:45:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:45:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:45:48]
+initSignal:0
+[INFO -- 2018-11-23 18:45:48]
+endSignal:3
+[INFO -- 2018-11-23 18:45:48]
+faultModel:1
+[INFO -- 2018-11-23 18:45:48]
+Backtrace BEGIN:
+#0  0x00007ffff7de1a25 in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x7ffff7dc7058, version=0x7ffff7fdb2a0, sym=0x7ffff7a638c0, reloc=0x7ffff7ac1190, map=0x7ffff7fdd000) at ../sysdeps/x86_64/dl-machine.h:301
+#1  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7fdd000) at do-rel.h:137
+#2  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#3  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#4  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde50, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#5  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde50) at rtld.c:414
+#6  _dl_start (arg=0x7fffffffde50) at rtld.c:521
+#7  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#8  0x0000000000000003 in ?? ()
+#9  0x00007fffffffe1fc in ?? ()
+#10 0x00007fffffffe20b in ?? ()
+#11 0x00007fffffffe21f in ?? ()
+#12 0x0000000000000000 in ?? ()
+
+296	../sysdeps/x86_64/dl-machine.h: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff7ffdff8 
+address max offset: 1
+Memory content after  bitflip:0x40
+frame name: _dl_start_final
+symbol name: tls_init_tp_called
+symbol filename: rtld.c
+symbol line: 677
+value: 64
+value address: 0x7ffff7ffdff8 <tls_init_tp_called>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-23 18:45:48]
+Fault Injection Successful after 0.2924611568450928s
+[INFO -- 2018-11-23 18:45:49]
+event type: exit
+[INFO -- 2018-11-23 18:45:49]
+exit code: 0

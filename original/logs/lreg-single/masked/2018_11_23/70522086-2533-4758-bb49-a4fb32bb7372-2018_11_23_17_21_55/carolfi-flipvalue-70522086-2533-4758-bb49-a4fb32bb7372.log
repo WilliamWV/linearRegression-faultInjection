@@ -1,0 +1,61 @@
+[INFO -- 2018-11-23 17:21:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 17:21:53]
+Initialization strings:
+[INFO -- 2018-11-23 17:21:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 17:21:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 17:21:53]
+initSignal:0
+[INFO -- 2018-11-23 17:21:53]
+endSignal:3
+[INFO -- 2018-11-23 17:21:53]
+faultModel:0
+[INFO -- 2018-11-23 17:21:54]
+Backtrace BEGIN:
+#0  0x0000555555555cf2 in std::vector<double, std::allocator<double> >::size (this=0x55555575a160 <y>) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x0000555555555237 in meanSquaredError () at lreg.cpp:60
+#2  0x0000555555555661 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0xc00x150x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a170 
+address max offset: 8
+Memory content after  bitflip:0xc00x150x7f0x550x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::size
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 12, capacity 65552 = {-44, -23, -143, -8, 1, 1, -1319, -23, -1079, -503, -104, -1583}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 17:21:54]
+Fault Injection Successful after 1.6126115322113037s
+[INFO -- 2018-11-23 17:21:55]
+event type: exit
+[INFO -- 2018-11-23 17:21:55]
+exit code: 0

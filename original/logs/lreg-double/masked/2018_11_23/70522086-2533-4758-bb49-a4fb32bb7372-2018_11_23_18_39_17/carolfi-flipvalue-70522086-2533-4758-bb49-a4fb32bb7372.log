@@ -1,0 +1,60 @@
+[INFO -- 2018-11-23 18:39:14]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:39:14]
+Initialization strings:
+[INFO -- 2018-11-23 18:39:14]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:39:14]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:39:14]
+initSignal:0
+[INFO -- 2018-11-23 18:39:14]
+endSignal:3
+[INFO -- 2018-11-23 18:39:14]
+faultModel:1
+[EXCEPTION -- 2018-11-23 18:39:15]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-23 18:39:15]
+Backtrace BEGIN:
+#0  0x00007ffff76b9990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76bcb14 in __pow (x=13, y=0) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=13, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=13) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=2) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+140		4° Line : values y of the training set
+141		5° Line : set z of new inputs to predict*/
+142	
+143	
+144	int main(int argc, char* argv[]){
+145		
+146		if (argc != 3) {
+147			cout << "Wrong number of arguments" <<endl;
+148			cout <<"  Use as : " << endl; 
+149			cout <<'\t'<<argv[0]<<" <input file> "<<"<output file>"<<endl;
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd6c8
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x05
+frame name: __pow
+symbol name: y
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 1.3449746190494519e-284
+value address: 0x7fffffffd6c8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 18:39:15]
+Fault Injection Successful after 1.4842092990875244s
+[INFO -- 2018-11-23 18:39:16]
+event type: exit
+[INFO -- 2018-11-23 18:39:16]
+exit code: 0

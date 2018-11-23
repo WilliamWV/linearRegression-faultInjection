@@ -23,7 +23,7 @@ gold = open(goldOutput)
 goldLines = gold.readlines()
 goldenVals = [float(x) for x in goldLines]
 for out in outs:
-	print("#SDC " + str(sdcCounter))
+	print("#SDC " + str(sdcCounter) + ' => ' + out)
 	sdcOut = open(out)
 	pos = 1
 	for line in sdcOut:

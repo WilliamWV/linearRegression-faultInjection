@@ -1,0 +1,52 @@
+[INFO -- 2018-11-23 18:58:40]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:58:40]
+Initialization strings:
+[INFO -- 2018-11-23 18:58:40]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:58:40]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:58:40]
+initSignal:0
+[INFO -- 2018-11-23 18:58:40]
+endSignal:3
+[INFO -- 2018-11-23 18:58:40]
+faultModel:2
+[INFO -- 2018-11-23 18:58:40]
+Backtrace BEGIN:
+#0  malloc (n=64) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  0x00007ffff7dd727f in elf_machine_rela (skip_ifunc=0, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=0x7ffff7dd54e0, reloc=0x7ffff7dd5da8, map=0x7ffff7ffd9f0 <_rtld_global+2448>) at ../sysdeps/x86_64/dl-machine.h:335
+#3  elf_dynamic_do_Rela (skip_ifunc=0, lazy=0, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ffd9f0 <_rtld_global+2448>) at do-rel.h:137
+#4  _dl_start (arg=0x7fffffffde50) at rtld.c:505
+#5  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#6  0x0000000000000003 in ?? ()
+#7  0x00007fffffffe1fc in ?? ()
+#8  0x00007fffffffe20b in ?? ()
+#9  0x00007fffffffe21f in ?? ()
+#10 0x0000000000000000 in ?? ()
+
+45	dl-minimal.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff7ffdff8 
+address max offset: 1
+Memory content after  bitflip:0xdc
+frame name: elf_dynamic_do_Rela
+symbol name: tls_init_tp_called
+symbol filename: rtld.c
+symbol line: 677
+value: 220
+value address: 0x7ffff7ffdff8 <tls_init_tp_called>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-23 18:58:40]
+Fault Injection Successful after 0.6567885875701904s
+[INFO -- 2018-11-23 18:58:44]
+event type: exit
+[INFO -- 2018-11-23 18:58:44]
+exit code: 0

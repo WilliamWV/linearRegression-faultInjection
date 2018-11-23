@@ -1,0 +1,55 @@
+[INFO -- 2018-11-23 18:09:31]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:09:31]
+Initialization strings:
+[INFO -- 2018-11-23 18:09:31]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:09:31]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:09:31]
+initSignal:0
+[INFO -- 2018-11-23 18:09:31]
+endSignal:3
+[INFO -- 2018-11-23 18:09:31]
+faultModel:2
+[INFO -- 2018-11-23 18:09:32]
+Backtrace BEGIN:
+#0  0x00005555555570f9 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.76779148516437257, __last=2.4209216646221081e-322, __result=0.76779148516437257) at /usr/include/c++/7/bits/stl_algobase.h:424
+#1  0x000055555555690b in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.76779148516437257, __last=2.4209216646221081e-322, __result=0.76779148516437257) at /usr/include/c++/7/bits/stl_algobase.h:456
+#2  0x000055555555624d in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x0000555555555641 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:119
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+419	    inline _OI
+420	    __copy_move_a2(_II __first, _II __last, _OI __result)
+421	    {
+422	      return _OI(std::__copy_move_a<_IsMove>(std::__niter_base(__first),
+423						     std::__niter_base(__last),
+424						     std::__niter_base(__result)));
+425	    }
+426	
+427	  /**
+428	   *  @brief Copies the range [first,last) into result.
+
+Backtrace END
+Memory content before bitflip:0x030x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7c0
+address max offset: 8
+Memory content after  bitflip:0x230x660x680x300x790x8d0x1c0xfc
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: __xlen
+symbol filename: /usr/include/c++/7/bits/vector.tcc
+symbol line: 203
+value: 18166550548548445731
+value address: 0x7fffffffd7c0
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 18:09:32]
+Fault Injection Successful after 1.7166049480438232s
+[INFO -- 2018-11-23 18:09:32]
+event type: exit
+[EXCEPTION -- 2018-11-23 18:09:32]
+exit code: no exit code available

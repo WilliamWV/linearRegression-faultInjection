@@ -1,0 +1,53 @@
+[INFO -- 2018-11-22 20:22:09]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 20:22:09]
+Initialization strings:
+[INFO -- 2018-11-22 20:22:09]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 20:22:09]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 20:22:09]
+initSignal:0
+[INFO -- 2018-11-22 20:22:09]
+endSignal:3
+[INFO -- 2018-11-22 20:22:09]
+faultModel:2
+[INFO -- 2018-11-22 20:22:10]
+Backtrace BEGIN:
+#0  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=0, nrelative=<optimized out>, relsize=93336, reladdr=<optimized out>, map=0x7ffff7fde000) at do-rel.h:112
+#1  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#2  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#3  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde50, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#4  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde50) at rtld.c:414
+#5  _dl_start (arg=0x7fffffffde50) at rtld.c:521
+#6  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#7  0x0000000000000003 in ?? ()
+#8  0x00007fffffffe1fd in ?? ()
+#9  0x00007fffffffe20c in ?? ()
+#10 0x00007fffffffe220 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+107	do-rel.h: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff7ffdff8 
+address max offset: 1
+Memory content after  bitflip:0x7e
+frame name: _dl_start
+symbol name: tls_init_tp_called
+symbol filename: rtld.c
+symbol line: 677
+value: 126
+value address: 0x7ffff7ffdff8 <tls_init_tp_called>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-22 20:22:10]
+Fault Injection Successful after 1.1156139373779297s
+[INFO -- 2018-11-22 20:22:13]
+event type: exit
+[INFO -- 2018-11-22 20:22:13]
+exit code: 0

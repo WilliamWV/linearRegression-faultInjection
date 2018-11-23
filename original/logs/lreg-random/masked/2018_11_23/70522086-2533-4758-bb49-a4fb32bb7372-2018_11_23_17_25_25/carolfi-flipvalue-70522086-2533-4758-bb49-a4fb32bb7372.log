@@ -1,0 +1,53 @@
+[INFO -- 2018-11-23 17:25:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 17:25:22]
+Initialization strings:
+[INFO -- 2018-11-23 17:25:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 17:25:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 17:25:22]
+initSignal:0
+[INFO -- 2018-11-23 17:25:22]
+endSignal:3
+[INFO -- 2018-11-23 17:25:22]
+faultModel:2
+[INFO -- 2018-11-23 17:25:23]
+Backtrace BEGIN:
+#0  0x0000555555555f45 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:333
+#1  0x00005555555556c3 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+328		_Alloc_traits::_S_select_on_copy(__x._M_get_Tp_allocator()))
+329	      {
+330		this->_M_impl._M_finish =
+331		  std::__uninitialized_copy_a(__x.begin(), __x.end(),
+332					      this->_M_impl._M_start,
+333					      _M_get_Tp_allocator());
+334	      }
+335	
+336	#if __cplusplus >= 201103L
+337	      /**
+
+Backtrace END
+Memory content before bitflip:0x030x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd90c
+address max offset: 4
+Memory content after  bitflip:0x7e0x960xba0x31
+frame name: main
+symbol name: argc
+symbol filename: lreg.cpp
+symbol line: 144
+value: 834311806
+value address: 0x7fffffffd90c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-23 17:25:23]
+Fault Injection Successful after 1.6775834560394287s
+[INFO -- 2018-11-23 17:25:24]
+event type: exit
+[INFO -- 2018-11-23 17:25:24]
+exit code: 0

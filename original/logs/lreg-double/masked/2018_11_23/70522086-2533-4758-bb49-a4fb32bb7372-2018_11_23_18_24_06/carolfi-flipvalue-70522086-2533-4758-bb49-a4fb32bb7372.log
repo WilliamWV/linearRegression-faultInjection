@@ -1,0 +1,54 @@
+[INFO -- 2018-11-23 18:24:04]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:24:04]
+Initialization strings:
+[INFO -- 2018-11-23 18:24:04]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:24:04]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:24:04]
+initSignal:0
+[INFO -- 2018-11-23 18:24:04]
+endSignal:3
+[INFO -- 2018-11-23 18:24:04]
+faultModel:1
+[INFO -- 2018-11-23 18:24:05]
+Backtrace BEGIN:
+#0  0x000055555555517d in predict (v=-4) at lreg.cpp:47
+#1  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#2  0x0000555555555661 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+42	}
+43	
+44	/**
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd940
+address max offset: 8
+Memory content after  bitflip:0x1d0x430x1c0xeb0xe20x360x0a0x3f
+frame name: main
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 160
+value: 4.9999999999999894e-05
+value address: 0x7fffffffd940
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 18:24:05]
+Fault Injection Successful after 1.0786266326904297s
+[INFO -- 2018-11-23 18:24:06]
+event type: exit
+[INFO -- 2018-11-23 18:24:06]
+exit code: 0

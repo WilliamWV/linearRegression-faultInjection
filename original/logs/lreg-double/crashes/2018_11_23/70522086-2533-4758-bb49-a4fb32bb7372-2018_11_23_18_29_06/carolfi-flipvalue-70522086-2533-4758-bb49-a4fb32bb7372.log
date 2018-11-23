@@ -1,0 +1,75 @@
+[INFO -- 2018-11-23 18:29:04]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:29:04]
+Initialization strings:
+[INFO -- 2018-11-23 18:29:04]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:29:04]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:29:04]
+initSignal:0
+[INFO -- 2018-11-23 18:29:04]
+endSignal:3
+[INFO -- 2018-11-23 18:29:04]
+faultModel:1
+[EXCEPTION -- 2018-11-23 18:29:05]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-23 18:29:05]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-23 18:29:05]
+Backtrace BEGIN:
+#0  malloc (n=10) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  malloc (n=10) at dl-minimal.c:50
+#3  <function called from gdb>
+#4  malloc (n=10) at dl-minimal.c:50
+#5  <function called from gdb>
+#6  malloc (n=10) at dl-minimal.c:50
+#7  <function called from gdb>
+#8  malloc (n=10) at dl-minimal.c:50
+#9  <function called from gdb>
+#10 malloc (n=10) at dl-minimal.c:50
+#11 <function called from gdb>
+#12 __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#13 0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#14 0x00007ffff6f0f897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff703cb9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#15 0x00007ffff6f1690a in malloc_printerr (str=str@entry=0x7ffff703ad88 "free(): invalid pointer") at malloc.c:5350
+#16 0x00007ffff6f1de1c in _int_free (have_lock=0, p=0x555555771441, av=0x7ffff7271c40 <main_arena>) at malloc.c:4157
+#17 __GI___libc_free (mem=0x555555771451) at malloc.c:3124
+#18 0x0000555555557552 in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd8a0, __p=0x555555771451) at /usr/include/c++/7/ext/new_allocator.h:125
+#19 0x0000555555557017 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555771451, __n=6) at /usr/include/c++/7/bits/alloc_traits.h:462
+#20 0x000055555555676a in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd8a0, __p=0x555555771451, __n=6) at /usr/include/c++/7/bits/stl_vector.h:180
+#21 0x0000555555556427 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd8a0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#22 0x0000555555555e53 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd8a0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#23 0x0000555555555730 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#24 0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+45	in dl-minimal.c
+
+Backtrace END
+Fliping value of field: __val
+Fliping array at pos: 7
+Memory content before bitflip:0x010x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd368
+address max offset: 8
+Memory content after  bitflip:0x010x000x000x000x060x000x000x00
+frame name: __GI_raise
+symbol name: set
+symbol filename: ../sysdeps/unix/sysv/linux/raise.c
+symbol line: 39
+value: {__val = {0, 140737488344040, 10, 0, 4, 140737336121354, 11, 25769803777, 140737488344048, 140737339918688, 1, 0, 0, 140733193388033, 0, 93824994448408}}
+value address: 0x7fffffffd330
+Type: The type is a structure.
+Type sizeof: 128
+Field name: __val
+Field Type: The type is an array.
+Field Type sizeof: 128
+
+[INFO -- 2018-11-23 18:29:05]
+Fault Injection Successful after 1.6466009616851807s
+[INFO -- 2018-11-23 18:29:05]
+event type: exit
+[EXCEPTION -- 2018-11-23 18:29:05]
+exit code: no exit code available

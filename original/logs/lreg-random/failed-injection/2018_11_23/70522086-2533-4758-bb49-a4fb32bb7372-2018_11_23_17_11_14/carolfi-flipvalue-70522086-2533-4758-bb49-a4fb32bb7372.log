@@ -1,0 +1,21 @@
+[INFO -- 2018-11-23 17:10:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 17:10:55]
+Initialization strings:
+[INFO -- 2018-11-23 17:10:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 17:10:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 17:10:55]
+initSignal:0
+[INFO -- 2018-11-23 17:10:55]
+endSignal:3
+[INFO -- 2018-11-23 17:10:55]
+faultModel:2
+[EXCEPTION -- 2018-11-23 17:10:56]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-23 17:10:58]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-23 17:10:58]
+pythonException: empty range for randrange() (0,0, 0)

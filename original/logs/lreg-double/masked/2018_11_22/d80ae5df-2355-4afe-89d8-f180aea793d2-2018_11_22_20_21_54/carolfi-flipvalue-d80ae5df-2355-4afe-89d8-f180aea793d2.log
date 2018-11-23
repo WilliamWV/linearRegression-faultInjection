@@ -1,0 +1,49 @@
+[INFO -- 2018-11-22 20:21:50]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 20:21:50]
+Initialization strings:
+[INFO -- 2018-11-22 20:21:50]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 20:21:50]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 20:21:50]
+initSignal:0
+[INFO -- 2018-11-22 20:21:50]
+endSignal:3
+[INFO -- 2018-11-22 20:21:50]
+faultModel:1
+[EXCEPTION -- 2018-11-22 20:21:51]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-22 20:21:51]
+Backtrace BEGIN:
+#0  __pow (x=23, y=0) at w_pow_compat.c:55
+#1  0x0000555555555d5f in std::pow<double, int> (__x=23, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x00005555555551e7 in predict (v=23) at lreg.cpp:50
+#3  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#4  0x0000555555555661 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+50	in w_pow_compat.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd728
+address max offset: 8
+Memory content after  bitflip:0x000x000x050x000x000x000x000x00
+frame name: __pow
+symbol name: y
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 1.6189543082925967e-318
+value address: 0x7fffffffd728
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 20:21:51]
+Fault Injection Successful after 1.983381986618042s
+[INFO -- 2018-11-22 20:21:54]
+event type: exit
+[INFO -- 2018-11-22 20:21:54]
+exit code: 0

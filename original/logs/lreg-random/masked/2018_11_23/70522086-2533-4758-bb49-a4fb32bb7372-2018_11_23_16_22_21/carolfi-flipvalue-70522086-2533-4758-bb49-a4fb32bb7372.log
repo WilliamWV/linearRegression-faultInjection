@@ -1,0 +1,53 @@
+[INFO -- 2018-11-23 16:22:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 16:22:18]
+Initialization strings:
+[INFO -- 2018-11-23 16:22:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 16:22:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 16:22:18]
+initSignal:0
+[INFO -- 2018-11-23 16:22:18]
+endSignal:3
+[INFO -- 2018-11-23 16:22:18]
+faultModel:2
+[INFO -- 2018-11-23 16:22:19]
+Backtrace BEGIN:
+#0  0x00005555555554f3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:89
+#1  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+84		
+85		double PD;
+86		for(int i = 0; i<T.size(); i++){
+87			PD = partialDerivate(i);
+88			// alpha is different from the canonical version because this works better
+89			T[i]= T[i] - ((alpha / (sqrt( fabs(PD) ))) * PD); 
+90		}
+91	}
+92	
+93	/**
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd940
+address max offset: 8
+Memory content after  bitflip:0xc40xb20x460xae0x0f0x080x570xfe
+frame name: main
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 160
+value: -3.8560060919675959e+300
+value address: 0x7fffffffd940
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 16:22:19]
+Fault Injection Successful after 1.7118046283721924s
+[INFO -- 2018-11-23 16:22:20]
+event type: exit
+[INFO -- 2018-11-23 16:22:20]
+exit code: 0

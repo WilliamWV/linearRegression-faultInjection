@@ -1,0 +1,56 @@
+[INFO -- 2018-11-23 19:07:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 19:07:13]
+Initialization strings:
+[INFO -- 2018-11-23 19:07:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 19:07:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 19:07:13]
+initSignal:0
+[INFO -- 2018-11-23 19:07:13]
+endSignal:3
+[INFO -- 2018-11-23 19:07:13]
+faultModel:2
+[INFO -- 2018-11-23 19:07:15]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::size (this=0xc033000000000000) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x00005555555551a9 in predict (v=-19) at lreg.cpp:49
+#2  0x00005555555553ac in partialDerivate (pos=2) at lreg.cpp:74
+#3  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#4  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7c8
+address max offset: 8
+Memory content after  bitflip:0xa50x2d0xca0x480x5d0x9e0x790xdc
+frame name: adjust
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 83
+value: -2.9792957550617097e+137
+value address: 0x7fffffffd7c8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 19:07:15]
+Fault Injection Successful after 2.3098833560943604s
+[INFO -- 2018-11-23 19:07:17]
+event type: exit
+[INFO -- 2018-11-23 19:07:17]
+exit code: 0

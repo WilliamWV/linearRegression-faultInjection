@@ -1,0 +1,50 @@
+[INFO -- 2018-11-23 16:20:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 16:20:35]
+Initialization strings:
+[INFO -- 2018-11-23 16:20:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 16:20:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 16:20:35]
+initSignal:0
+[INFO -- 2018-11-23 16:20:35]
+endSignal:3
+[INFO -- 2018-11-23 16:20:35]
+faultModel:2
+[EXCEPTION -- 2018-11-23 16:20:36]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-23 16:20:38]
+Backtrace BEGIN:
+#0  0x00007ffff76da518 in __ieee754_pow_sse2 (x=-2, y=2) at ../sysdeps/ieee754/dbl-64/e_pow.c:65
+#1  0x00007ffff76bcb14 in __pow (x=-2, y=2) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=-2, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=-2) at lreg.cpp:50
+#4  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#5  0x0000555555555661 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+60	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000xe00x930xe20xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd948
+address max offset: 8
+Memory content after  bitflip:0xf80xee0x550x5b0x6b0x390xcd0xe7
+frame name: main
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 160
+value: -1.0416727165703901e+192
+value address: 0x7fffffffd948
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 16:20:38]
+Fault Injection Successful after 3.067572593688965s
+[INFO -- 2018-11-23 16:20:38]
+event type: exit
+[INFO -- 2018-11-23 16:20:38]
+exit code: 0

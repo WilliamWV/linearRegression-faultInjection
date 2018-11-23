@@ -1,0 +1,57 @@
+[INFO -- 2018-11-23 18:28:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:28:59]
+Initialization strings:
+[INFO -- 2018-11-23 18:28:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:28:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:28:59]
+initSignal:0
+[INFO -- 2018-11-23 18:28:59]
+endSignal:3
+[INFO -- 2018-11-23 18:28:59]
+faultModel:2
+[INFO -- 2018-11-23 18:28:59]
+Backtrace BEGIN:
+#0  0x00007ffff7de6b1b in match_symbol (weak=0, verbose=1, map=0x7ffff7fde3d0, string=0x7ffff7ab62f1 "GLIBC_2.16", hash=110530966, ns=<optimized out>, name=0x7ffff7ffedd0 "/usr/lib/x86_64-linux-gnu/libstdc++.so.6") at dl-version.c:95
+#1  _dl_check_map_versions (map=map@entry=0x7ffff7fdd000, verbose=verbose@entry=1, trace_mode=trace_mode@entry=0) at dl-version.c:218
+#2  0x00007ffff7de711e in _dl_check_all_versions (map=<optimized out>, verbose=verbose@entry=1, trace_mode=0) at dl-version.c:368
+#3  0x00007ffff7dd6e78 in version_check_doit (a=a@entry=0x7fffffffdbf0) at rtld.c:623
+#4  0x00007ffff7df0d3b in _dl_receive_error (fct=fct@entry=0x7ffff7dd61f0 <print_missing_version>, operate=operate@entry=0x7ffff7dd6e60 <version_check_doit>, args=args@entry=0x7fffffffdbf0) at dl-error-skeleton.c:234
+#5  0x00007ffff7dd8fe3 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1789
+#6  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde50, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#7  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde50) at rtld.c:414
+#8  _dl_start (arg=0x7fffffffde50) at rtld.c:521
+#9  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#10 0x0000000000000003 in ?? ()
+#11 0x00007fffffffe1fc in ?? ()
+#12 0x00007fffffffe20b in ?? ()
+#13 0x00007fffffffe21f in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+90	dl-version.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff7ffe0e8 
+address max offset: 8
+Memory content after  bitflip:0xc90x530x600xd10x270xae0x4a0x61
+frame name: _dl_receive_error
+symbol name: catch_hook
+symbol filename: dl-error-skeleton.c
+symbol line: 57
+value: 0x0
+value address: 0x7ffff7ffe0e8 <catch_hook>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 18:28:59]
+Fault Injection Successful after 0.5671517848968506s
+[INFO -- 2018-11-23 18:29:00]
+event type: exit
+[INFO -- 2018-11-23 18:29:00]
+exit code: 0

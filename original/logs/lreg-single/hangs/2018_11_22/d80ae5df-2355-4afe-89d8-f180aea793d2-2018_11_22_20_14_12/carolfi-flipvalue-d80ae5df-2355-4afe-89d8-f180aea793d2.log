@@ -1,0 +1,49 @@
+[INFO -- 2018-11-22 20:14:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 20:14:00]
+Initialization strings:
+[INFO -- 2018-11-22 20:14:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 20:14:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 20:14:00]
+initSignal:0
+[INFO -- 2018-11-22 20:14:00]
+endSignal:3
+[INFO -- 2018-11-22 20:14:00]
+faultModel:0
+[INFO -- 2018-11-22 20:14:02]
+Backtrace BEGIN:
+#0  0x0000555555555ed4 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:326
+#1  0x00005555555556db in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+321	       *  (i.e. capacity() == size() in the new %vector).
+322	       *
+323	       *  The newly-created %vector uses a copy of the allocator object used
+324	       *  by @a __x (unless the allocator traits dictate a different object).
+325	       */
+326	      vector(const vector& __x)
+327	      : _Base(__x.size(),
+328		_Alloc_traits::_S_select_on_copy(__x._M_get_Tp_allocator()))
+329	      {
+330		this->_M_impl._M_finish =
+
+Backtrace END
+Memory content before bitflip:0x040x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd92c
+address max offset: 4
+Memory content after  bitflip:0x040x000x000x40
+frame name: main
+symbol name: predictions
+symbol filename: lreg.cpp
+symbol line: 161
+value: 1073741828
+value address: 0x7fffffffd92c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-22 20:14:02]
+Fault Injection Successful after 2.8086390495300293s

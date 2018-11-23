@@ -1,0 +1,55 @@
+[INFO -- 2018-11-23 18:00:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:00:07]
+Initialization strings:
+[INFO -- 2018-11-23 18:00:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:00:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:00:07]
+initSignal:0
+[INFO -- 2018-11-23 18:00:07]
+endSignal:3
+[INFO -- 2018-11-23 18:00:07]
+faultModel:0
+[EXCEPTION -- 2018-11-23 18:00:08]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-23 18:00:08]
+Backtrace BEGIN:
+#0  meanSquaredError () at lreg.cpp:60
+#1  0x0000555555555661 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+55	/**
+56		Calculates the mean squared error of T
+57	*/
+58	double meanSquaredError(){
+59		double error = 0;
+60		for(int i = 0; i<x.size(); i++){
+61			error+= ((predict(x[i]) - y[i]) * (predict(x[i]) - y[i]));	
+62		}
+63		error /= x.size();
+64		return error;
+
+Backtrace END
+Memory content before bitflip:0xb20xd50x170x130x160x6a0xd20x41
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd838
+address max offset: 8
+Memory content after  bitflip:0xb20xd50x170x130x160x6a0xd20x61
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 1.6568959034049872e+163
+value address: 0x7fffffffd838
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 18:00:08]
+Fault Injection Successful after 1.9812188148498535s
+[INFO -- 2018-11-23 18:00:11]
+event type: exit
+[EXCEPTION -- 2018-11-23 18:00:11]
+exit code: no exit code available

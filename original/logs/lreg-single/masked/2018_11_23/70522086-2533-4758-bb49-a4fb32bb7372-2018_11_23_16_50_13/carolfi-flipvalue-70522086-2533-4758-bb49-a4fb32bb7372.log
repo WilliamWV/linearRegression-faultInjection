@@ -1,0 +1,55 @@
+[INFO -- 2018-11-23 16:50:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 16:50:07]
+Initialization strings:
+[INFO -- 2018-11-23 16:50:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 16:50:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 16:50:07]
+initSignal:0
+[INFO -- 2018-11-23 16:50:07]
+endSignal:3
+[INFO -- 2018-11-23 16:50:07]
+faultModel:0
+[INFO -- 2018-11-23 16:50:10]
+Backtrace BEGIN:
+#0  0x0000555555557071 in __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >::__normal_iterator (this=0x7fffffffd790, __i=@0x7fffffffd860: 0x555555771450) at /usr/include/c++/7/bits/stl_iterator.h:780
+#1  0x00005555555568ac in std::vector<double, std::allocator<double> >::begin (this=0x7fffffffd860) at /usr/include/c++/7/bits/stl_vector.h:564
+#2  0x0000555555556221 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x00005555555556a2 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:124
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+775	      _GLIBCXX_CONSTEXPR __normal_iterator() _GLIBCXX_NOEXCEPT
+776	      : _M_current(_Iterator()) { }
+777	
+778	      explicit
+779	      __normal_iterator(const _Iterator& __i) _GLIBCXX_NOEXCEPT
+780	      : _M_current(__i) { }
+781	
+782	      // Allow iterator to const_iterator conversion
+783	      template<typename _Iter>
+784	        __normal_iterator(const __normal_iterator<_Iter,
+
+Backtrace END
+Memory content before bitflip:0x540x7e0x3e0x810x220x820x170x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd830
+address max offset: 8
+Memory content after  bitflip:0x540x7e0x3e0x810x220x800x170x40
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: 5.8751316255944239
+value address: 0x7fffffffd830
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 16:50:10]
+Fault Injection Successful after 3.017625093460083s
+[INFO -- 2018-11-23 16:50:12]
+event type: exit
+[INFO -- 2018-11-23 16:50:12]
+exit code: 0

@@ -1,0 +1,57 @@
+[INFO -- 2018-11-22 20:16:25]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-22 20:16:25]
+Initialization strings:
+[INFO -- 2018-11-22 20:16:25]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-22 20:16:25]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-22 20:16:25]
+initSignal:0
+[INFO -- 2018-11-22 20:16:25]
+endSignal:3
+[INFO -- 2018-11-22 20:16:25]
+faultModel:1
+[EXCEPTION -- 2018-11-22 20:16:26]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-22 20:16:27]
+Backtrace BEGIN:
+#0  std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.6304166312761136e-322, __last=1.6304166312761136e-322) at /usr/include/c++/7/bits/stl_construct.h:137
+#1  0x0000555555556985 in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=1.6304166312761136e-322, __last=1.6304166312761136e-322) at /usr/include/c++/7/bits/stl_construct.h:206
+#2  0x000055555555625b in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x0000555555555641 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:119
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+132	      // A deleted destructor is trivial, this ensures we reject such types:
+133	      static_assert(is_destructible<_Value_type>::value,
+134			    "value type is destructible");
+135	#endif
+136	      std::_Destroy_aux<__has_trivial_destructor(_Value_type)>::
+137		__destroy(__first, __last);
+138	    }
+139	
+140	  template<bool>
+141	    struct _Destroy_n_aux
+
+Backtrace END
+Memory content before bitflip:0x710x9a0x930x820x870x250x100x40
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd830
+address max offset: 8
+Memory content after  bitflip:0x710x9a0x930x820x870x250x130x40
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: 4.7866497423734566
+value address: 0x7fffffffd830
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-22 20:16:27]
+Fault Injection Successful after 2.7922704219818115s
+[INFO -- 2018-11-22 20:16:30]
+event type: exit
+[INFO -- 2018-11-22 20:16:30]
+exit code: 0

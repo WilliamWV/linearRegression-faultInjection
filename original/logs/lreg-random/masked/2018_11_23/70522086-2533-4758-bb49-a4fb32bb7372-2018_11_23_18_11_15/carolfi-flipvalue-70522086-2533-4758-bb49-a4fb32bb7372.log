@@ -1,0 +1,62 @@
+[INFO -- 2018-11-23 18:11:12]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:11:12]
+Initialization strings:
+[INFO -- 2018-11-23 18:11:12]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:11:12]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:11:12]
+initSignal:0
+[INFO -- 2018-11-23 18:11:12]
+endSignal:3
+[INFO -- 2018-11-23 18:11:12]
+faultModel:2
+[INFO -- 2018-11-23 18:11:13]
+Backtrace BEGIN:
+#0  0x0000555555556f5a in std::allocator_traits<std::allocator<double> >::select_on_container_copy_construction (__rhs=...) at /usr/include/c++/7/bits/alloc_traits.h:504
+#1  0x0000555555556624 in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:95
+#2  0x0000555555555f14 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x00005555555556c3 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+499	       *  @brief  Obtain an allocator to use when copying a container.
+500	       *  @param  __rhs  An allocator.
+501	       *  @return @c __rhs
+502	      */
+503	      static allocator_type
+504	      select_on_container_copy_construction(const allocator_type& __rhs)
+505	      { return __rhs; }
+506	    };
+507	
+508	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771370
+address max offset: 8
+Memory content after  bitflip:0xad0x7f0x4b0x870x460x730x0a0x5a
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 114
+value: std::vector of length 2, capacity 2 = {1.9325117798450724, -1.0017459704076594}
+value address: 0x7fffffffd840
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 18:11:13]
+Fault Injection Successful after 1.1250452995300293s
+[INFO -- 2018-11-23 18:11:14]
+event type: exit
+[INFO -- 2018-11-23 18:11:14]
+exit code: 0

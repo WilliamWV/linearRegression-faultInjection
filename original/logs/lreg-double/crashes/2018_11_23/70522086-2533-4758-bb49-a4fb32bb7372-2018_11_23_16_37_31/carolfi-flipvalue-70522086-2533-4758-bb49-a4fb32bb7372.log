@@ -1,0 +1,56 @@
+[INFO -- 2018-11-23 16:37:27]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 16:37:27]
+Initialization strings:
+[INFO -- 2018-11-23 16:37:27]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 16:37:27]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 16:37:27]
+initSignal:0
+[INFO -- 2018-11-23 16:37:27]
+endSignal:3
+[INFO -- 2018-11-23 16:37:27]
+faultModel:1
+[INFO -- 2018-11-23 16:37:29]
+Backtrace BEGIN:
+#0  malloc (n=14) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  malloc (n=14) at dl-minimal.c:50
+#3  <function called from gdb>
+#4  0x00007ffff6f1d0a9 in __GI___libc_malloc (bytes=24) at malloc.c:3039
+#5  0x00007ffff7adf1a8 in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00005555555577f4 in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd8a0, __n=3) at /usr/include/c++/7/ext/new_allocator.h:111
+#7  0x000055555555757d in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=3) at /usr/include/c++/7/bits/alloc_traits.h:436
+#8  0x0000555555557054 in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd8a0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#9  0x0000555555556db9 in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd8a0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#10 0x0000555555556489 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8a0, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#11 0x0000555555555f35 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#12 0x00005555555556c3 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#13 0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+45	in dl-minimal.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00xd80xff0xff0xff0x7f0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd758
+address max offset: 8
+Memory content after  bitflip:0xa00xe80xff0xff0xff0x7f0x000x00
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_create_storage
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd8a0
+value address: 0x7fffffffd758
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 16:37:29]
+Fault Injection Successful after 2.5626206398010254s
+[INFO -- 2018-11-23 16:37:30]
+event type: exit
+[EXCEPTION -- 2018-11-23 16:37:30]
+exit code: no exit code available

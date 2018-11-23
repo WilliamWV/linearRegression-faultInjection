@@ -1,0 +1,65 @@
+[INFO -- 2018-11-23 16:28:30]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 16:28:30]
+Initialization strings:
+[INFO -- 2018-11-23 16:28:30]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 16:28:30]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 16:28:30]
+initSignal:0
+[INFO -- 2018-11-23 16:28:30]
+endSignal:3
+[INFO -- 2018-11-23 16:28:30]
+faultModel:2
+[EXCEPTION -- 2018-11-23 16:28:32]
+gdbException: Cannot access memory at address 0xe0ef2d0f1d7b4342
+[INFO -- 2018-11-23 16:28:33]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::size (this=0xbff0000000000000) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x00005555555551a9 in predict (v=-1) at lreg.cpp:49
+#2  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#3  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x130x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a188 
+address max offset: 8
+Memory content after  bitflip:0x340xac0x710xd20xdf0x810xf00x1e
+frame name: main
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 278666348607787798, capacity 4 = {0.035381366882189777, -0.50502284970311107, -1.9415147606631922, -3.9709324207368635, 0, 4.001931731314097e-322, 4.6355706478057827e-310, 1.5810100666919889e-322, -143.00012207031247, 2.9988444211833614e-310, 1.00000000077399, 1, -1319, -23, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 1.124676287488633e-312, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 4.6355706478247548e-310, -0.018636480386081677, -2.9944537928979051, 1.6304166312761136e-322, 4.6355706478263358e-310, -0.018629603636086151, -2.9945863353366149, 1.6304166312761136e-322, 0, -0.018636480386081677, -2.9944537928979051, 7.1639518646980749e-322, -15, -9, -1, 29, 5, -18, 31, -16, -18, -28, 25, -14, 7, -2, -17, 21, 0, 7.1639518646980749e-322, 13145, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047, 0, 2.4209216646221081e-322, 0.035381366882189777, -0.50502284970311107, -1.9415147606631922, -3.9709324207368635, 0, 2.4209216646221081e-322, 0.035098955012561557, -0.50772644154870383, -1.9509442048159853, -4.0455527139433265, 0, 2.4209216646221081e-322, 4.6355706478492604e-310, -0.50772644154870383, -1.9509442048159853, -4.0455527139433265, 0, 2.4209216646221081e-322, 0, -0.50502284970311107, -1.9415147606631922, -3.9709324207368635, 0, 2.1438990569989211e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 16:28:33]
+Fault Injection Successful after 3.09191632270813s
+[INFO -- 2018-11-23 16:28:33]
+event type: exit
+[EXCEPTION -- 2018-11-23 16:28:33]
+exit code: no exit code available

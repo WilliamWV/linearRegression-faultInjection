@@ -1,0 +1,58 @@
+[INFO -- 2018-11-23 17:27:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 17:27:56]
+Initialization strings:
+[INFO -- 2018-11-23 17:27:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 17:27:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 17:27:56]
+initSignal:0
+[INFO -- 2018-11-23 17:27:56]
+endSignal:3
+[INFO -- 2018-11-23 17:27:56]
+faultModel:1
+[EXCEPTION -- 2018-11-23 17:27:57]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-23 17:27:57]
+Backtrace BEGIN:
+#0  0x00007ffff76da5d4 in __ieee754_pow_sse2 (x=-19, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:83
+#1  0x00007ffff76bcb14 in __pow (x=-19, y=0) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=-19, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=-19) at lreg.cpp:50
+#4  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#5  0x0000555555555661 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+78	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 0
+Memory content before bitflip:0x6a0x010xf80xff
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779f5b0 
+address max offset: 4
+Memory content after  bitflip:0x3a0x010xf80xff
+frame name: __ieee754_pow_sse2
+symbol name: bigv
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 53
+value: {i = {-523974, 1107820543}, x = 12884901887.000599}
+value address: 0x7ffff779f5b0 <bigv>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-23 17:27:57]
+Fault Injection Successful after 1.5790014266967773s
+[INFO -- 2018-11-23 17:27:59]
+event type: exit
+[EXCEPTION -- 2018-11-23 17:27:59]
+exit code: no exit code available

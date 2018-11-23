@@ -1,0 +1,61 @@
+[INFO -- 2018-11-23 17:01:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 17:01:42]
+Initialization strings:
+[INFO -- 2018-11-23 17:01:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 17:01:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 17:01:42]
+initSignal:0
+[INFO -- 2018-11-23 17:01:42]
+endSignal:3
+[INFO -- 2018-11-23 17:01:42]
+faultModel:1
+[INFO -- 2018-11-23 17:01:44]
+Backtrace BEGIN:
+#0  0x0000555555555d33 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a160 <y>, __n=4) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x0000555555555283 in meanSquaredError () at lreg.cpp:61
+#2  0x0000555555555661 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771350
+address max offset: 8
+Memory content after  bitflip:0x090x000x000x000x000x000x000x00
+frame name: meanSquaredError
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 2, capacity 2 = {1.7870764347067929, -1.0055110457799437}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 17:01:44]
+Fault Injection Successful after 2.570035457611084s
+[INFO -- 2018-11-23 17:01:47]
+event type: exit
+[INFO -- 2018-11-23 17:01:47]
+exit code: 0

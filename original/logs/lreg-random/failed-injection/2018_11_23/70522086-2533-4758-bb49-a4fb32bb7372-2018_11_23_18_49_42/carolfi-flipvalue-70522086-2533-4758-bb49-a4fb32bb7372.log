@@ -1,0 +1,27 @@
+[INFO -- 2018-11-23 18:49:39]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:49:39]
+Initialization strings:
+[INFO -- 2018-11-23 18:49:39]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:49:39]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:49:39]
+initSignal:0
+[INFO -- 2018-11-23 18:49:39]
+endSignal:3
+[INFO -- 2018-11-23 18:49:39]
+faultModel:2
+[EXCEPTION -- 2018-11-23 18:49:39]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-23 18:49:40]
+gdbException: Cannot access memory at address 0xd33434603f9c1951
+[EXCEPTION -- 2018-11-23 18:49:41]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-23 18:49:41]
+gdbException: Cannot access memory at address 0xd33434603f9c1951
+[INFO -- 2018-11-23 18:49:41]
+event type: exit
+[EXCEPTION -- 2018-11-23 18:49:41]
+exit code: no exit code available

@@ -1,0 +1,25 @@
+[INFO -- 2018-11-23 18:27:44]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:27:44]
+Initialization strings:
+[INFO -- 2018-11-23 18:27:44]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:27:44]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:27:44]
+initSignal:0
+[INFO -- 2018-11-23 18:27:44]
+endSignal:3
+[INFO -- 2018-11-23 18:27:44]
+faultModel:2
+[EXCEPTION -- 2018-11-23 18:27:45]
+gdbException: Cannot access memory at address 0xca30281f8f3fd1d4
+[EXCEPTION -- 2018-11-23 18:27:45]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-23 18:27:45]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-23 18:27:46]
+event type: exit
+[EXCEPTION -- 2018-11-23 18:27:46]
+exit code: no exit code available

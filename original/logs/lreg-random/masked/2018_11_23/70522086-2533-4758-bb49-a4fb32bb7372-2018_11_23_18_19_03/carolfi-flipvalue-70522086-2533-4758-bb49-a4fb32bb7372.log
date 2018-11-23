@@ -1,0 +1,58 @@
+[INFO -- 2018-11-23 18:19:01]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:19:01]
+Initialization strings:
+[INFO -- 2018-11-23 18:19:01]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:19:01]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:19:01]
+initSignal:0
+[INFO -- 2018-11-23 18:19:01]
+endSignal:3
+[INFO -- 2018-11-23 18:19:01]
+faultModel:2
+[EXCEPTION -- 2018-11-23 18:19:01]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-23 18:19:01]
+Backtrace BEGIN:
+#0  0x00007ffff76da549 in __ieee754_pow_sse2 (x=-1, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:72
+#1  0x00007ffff76bcb14 in __pow (x=-1, y=0) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=-1, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=-1) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=1) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+67	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x000x000x000x000x000x000x300x43
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5a8 
+address max offset: 8
+Memory content after  bitflip:0x5b0x790x5c0xc30xb40x6a0x040x48
+frame name: __ieee754_pow_sse2
+symbol name: t52
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 54
+value: {i = {-1017349797, 1208249012}, x = 8.68435510225366e+38}
+value address: 0x7ffff779f5a8 <t52>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-23 18:19:01]
+Fault Injection Successful after 0.7788290977478027s
+[INFO -- 2018-11-23 18:19:03]
+event type: exit
+[INFO -- 2018-11-23 18:19:03]
+exit code: 0

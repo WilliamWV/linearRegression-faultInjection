@@ -1,0 +1,60 @@
+[INFO -- 2018-11-23 17:37:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 17:37:36]
+Initialization strings:
+[INFO -- 2018-11-23 17:37:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 17:37:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 17:37:36]
+initSignal:0
+[INFO -- 2018-11-23 17:37:36]
+endSignal:3
+[INFO -- 2018-11-23 17:37:36]
+faultModel:1
+[EXCEPTION -- 2018-11-23 17:37:39]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-23 17:37:39]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-23 17:37:39]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=2, y=11) at ../sysdeps/ieee754/dbl-64/e_pow.c:110
+#1  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#2  0x00007ffff76bcb14 in __pow (x=-2, y=11) at w_pow_compat.c:30
+#3  0x0000555555555d5f in std::pow<double, int> (__x=-2, __y=11) at /usr/include/c++/7/cmath:418
+#4  0x0000555555555401 in partialDerivate (pos=11) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+105	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x000x000x000x000x000x000xf00x7f
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779f5d8 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x220x000xf00x7f
+frame name: __ieee754_pow_sse2
+symbol name: INF
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 48
+value: {i = {0, 2146435106}, x = nan(0x2200000000)}
+value address: 0x7ffff779f5d8 <INF>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-23 17:37:39]
+Fault Injection Successful after 3.4504196643829346s
+[INFO -- 2018-11-23 17:37:41]
+event type: exit
+[EXCEPTION -- 2018-11-23 17:37:41]
+exit code: no exit code available

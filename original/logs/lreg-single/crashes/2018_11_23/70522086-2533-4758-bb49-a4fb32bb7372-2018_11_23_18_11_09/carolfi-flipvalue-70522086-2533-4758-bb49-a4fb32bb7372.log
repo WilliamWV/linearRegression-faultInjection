@@ -1,0 +1,57 @@
+[INFO -- 2018-11-23 18:11:05]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:11:05]
+Initialization strings:
+[INFO -- 2018-11-23 18:11:05]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:11:05]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:11:05]
+initSignal:0
+[INFO -- 2018-11-23 18:11:05]
+endSignal:3
+[INFO -- 2018-11-23 18:11:05]
+faultModel:0
+[EXCEPTION -- 2018-11-23 18:11:07]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-23 18:11:07]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb0f in __pow (x=-18, y=2) at w_pow_compat.c:30
+#1  0x0000555555555d5f in std::pow<double, int> (__x=-18, __y=2) at /usr/include/c++/7/cmath:418
+#2  0x00005555555551e7 in predict (v=-18) at lreg.cpp:50
+#3  0x00005555555553ac in partialDerivate (pos=1) at lreg.cpp:74
+#4  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#5  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+25	in w_pow_compat.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x130x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a190 
+address max offset: 8
+Memory content after  bitflip:0xa00x130x770x550x550x540x000x00
+frame name: predict
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 4, capacity -137438953468 = {0.26972858428176039, -1.1899527784428048, -1.9569169011315495, -4.0445354809202732}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 18:11:07]
+Fault Injection Successful after 2.8669931888580322s
+[INFO -- 2018-11-23 18:11:08]
+event type: exit
+[EXCEPTION -- 2018-11-23 18:11:08]
+exit code: no exit code available

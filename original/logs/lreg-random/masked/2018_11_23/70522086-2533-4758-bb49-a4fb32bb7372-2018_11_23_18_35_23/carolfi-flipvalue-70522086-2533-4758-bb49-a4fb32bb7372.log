@@ -1,0 +1,60 @@
+[INFO -- 2018-11-23 18:35:20]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:35:20]
+Initialization strings:
+[INFO -- 2018-11-23 18:35:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:35:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:35:20]
+initSignal:0
+[INFO -- 2018-11-23 18:35:20]
+endSignal:3
+[INFO -- 2018-11-23 18:35:20]
+faultModel:2
+[INFO -- 2018-11-23 18:35:21]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd880, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:433
+#1  0x0000555555555730 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+428	       *  The dtor only erases the elements, and note that if the
+429	       *  elements themselves are pointers, the pointed-to memory is
+430	       *  not touched in any way.  Managing the pointer is the user's
+431	       *  responsibility.
+432	       */
+433	      ~vector() _GLIBCXX_NOEXCEPT
+434	      { std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+435			      _M_get_Tp_allocator()); }
+436	
+437	      /**
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xc00x150x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a168 
+address max offset: 8
+Memory content after  bitflip:0x260x200x0d0xc30x320xa60xba0x09
+frame name: std::vector<double, std::allocator<double> >::~vector
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 87620200495759708, capacity 16 = {13145, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047, 0, 2.4209216646221081e-322, -0.0062452449251350246, -0.38269013652699774, -1.9404445017210805, -3.9711148182413409, 0, 2.4209216646221081e-322, -0.0064935425235042995, -0.3854939031174241, -1.9498748224533586, -4.0457349620854126, 0, 2.4209216646221081e-322, -0.0062452449251350246, -0.38269013652699774, -1.9404445017210805, -3.9711148182413409, 0, 2.4209216646221081e-322, 0, -0.3854939031174241, -1.9498748224533586, -4.0457349620854126, 0, 2.1438990569989211e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 18:35:21]
+Fault Injection Successful after 1.8770215511322021s
+[INFO -- 2018-11-23 18:35:22]
+event type: exit
+[INFO -- 2018-11-23 18:35:22]
+exit code: 0

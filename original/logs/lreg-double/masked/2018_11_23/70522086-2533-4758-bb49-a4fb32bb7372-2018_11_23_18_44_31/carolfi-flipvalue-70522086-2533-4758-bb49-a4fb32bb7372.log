@@ -1,0 +1,54 @@
+[INFO -- 2018-11-23 18:44:29]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 18:44:29]
+Initialization strings:
+[INFO -- 2018-11-23 18:44:29]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 18:44:29]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 18:44:29]
+initSignal:0
+[INFO -- 2018-11-23 18:44:29]
+endSignal:3
+[INFO -- 2018-11-23 18:44:29]
+faultModel:1
+[INFO -- 2018-11-23 18:44:29]
+Backtrace BEGIN:
+#0  0x0000555555555452 in partialDerivate (pos=1) at lreg.cpp:76
+#1  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#2  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+79	
+80	/**
+
+Backtrace END
+Memory content before bitflip:0x400x720xd10x840xbd0xdd0x290x40
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd838
+address max offset: 8
+Memory content after  bitflip:0x460x720xd10x840xbd0xdd0x290x40
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 12.933086538855729
+value address: 0x7fffffffd838
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 18:44:29]
+Fault Injection Successful after 0.9746391773223877s
+[INFO -- 2018-11-23 18:44:30]
+event type: exit
+[INFO -- 2018-11-23 18:44:30]
+exit code: 0

@@ -1,0 +1,65 @@
+[INFO -- 2018-11-23 17:44:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 17:44:43]
+Initialization strings:
+[INFO -- 2018-11-23 17:44:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 17:44:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 17:44:43]
+initSignal:0
+[INFO -- 2018-11-23 17:44:43]
+endSignal:3
+[INFO -- 2018-11-23 17:44:43]
+faultModel:1
+[EXCEPTION -- 2018-11-23 17:44:44]
+gdbException: Cannot access memory at address 0x55551d771380
+[INFO -- 2018-11-23 17:44:44]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a180 <T>, __n=8589934594) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x00005555555551c7 in predict (v=31) at lreg.cpp:50
+#2  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#3  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x800xac0xc90x40
+Fault Model: Double bit-flip
+base address to flip value: 0x555555771540
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x800xbd0xc90x40
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 16, capacity 16 = {13179, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 17:44:44]
+Fault Injection Successful after 1.3512356281280518s
+[INFO -- 2018-11-23 17:44:44]
+event type: exit
+[EXCEPTION -- 2018-11-23 17:44:44]
+exit code: no exit code available

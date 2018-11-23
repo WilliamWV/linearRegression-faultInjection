@@ -1,0 +1,61 @@
+[INFO -- 2018-11-23 17:58:45]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 17:58:45]
+Initialization strings:
+[INFO -- 2018-11-23 17:58:45]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 17:58:45]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 17:58:45]
+initSignal:0
+[INFO -- 2018-11-23 17:58:45]
+endSignal:3
+[INFO -- 2018-11-23 17:58:45]
+faultModel:2
+[INFO -- 2018-11-23 17:58:46]
+Backtrace BEGIN:
+#0  0x00005555555551e7 in predict (v=13) at lreg.cpp:50
+#1  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#2  0x0000555555555661 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x4b0x300x900x780xea0x470xf30x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x555555771360
+address max offset: 8
+Memory content after  bitflip:0xde0x3e0x4e0xfa0xab0xb00x940xcc
+frame name: predict
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 3, capacity 3 = {-8.3119369182314104e+60, -0.023974917684938087, -2.9928830743824641}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 17:58:46]
+Fault Injection Successful after 1.2574727535247803s
+[INFO -- 2018-11-23 17:58:47]
+event type: exit
+[INFO -- 2018-11-23 17:58:47]
+exit code: 0
