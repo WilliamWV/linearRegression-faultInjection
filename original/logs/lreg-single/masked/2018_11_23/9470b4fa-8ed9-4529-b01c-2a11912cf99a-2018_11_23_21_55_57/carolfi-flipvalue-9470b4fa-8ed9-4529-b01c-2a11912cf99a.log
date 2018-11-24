@@ -1,0 +1,50 @@
+[INFO -- 2018-11-23 21:55:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 21:55:55]
+Initialization strings:
+[INFO -- 2018-11-23 21:55:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 21:55:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 21:55:55]
+initSignal:0
+[INFO -- 2018-11-23 21:55:55]
+endSignal:3
+[INFO -- 2018-11-23 21:55:55]
+faultModel:0
+[EXCEPTION -- 2018-11-23 21:55:55]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-23 21:55:55]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb20 in __pow (x=-2, y=2) at w_pow_compat.c:31
+#1  0x0000555555555d5f in std::pow<double, int> (__x=-2, __y=2) at /usr/include/c++/7/cmath:418
+#2  0x00005555555551e7 in predict (v=-2) at lreg.cpp:50
+#3  0x00005555555553ac in partialDerivate (pos=1) at lreg.cpp:74
+#4  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#5  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+26	in w_pow_compat.c
+
+Backtrace END
+Memory content before bitflip:0x020x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd734
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: predict
+symbol name: i
+symbol filename: lreg.cpp
+symbol line: 49
+value: 0
+value address: 0x7fffffffd734
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-23 21:55:55]
+Fault Injection Successful after 0.9485857486724854s
+[INFO -- 2018-11-23 21:55:56]
+event type: exit
+[INFO -- 2018-11-23 21:55:56]
+exit code: 0

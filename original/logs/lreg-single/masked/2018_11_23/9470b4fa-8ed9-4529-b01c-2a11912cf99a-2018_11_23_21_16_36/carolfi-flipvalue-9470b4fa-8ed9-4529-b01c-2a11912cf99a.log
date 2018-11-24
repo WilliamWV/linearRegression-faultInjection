@@ -1,0 +1,63 @@
+[INFO -- 2018-11-23 21:16:34]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 21:16:34]
+Initialization strings:
+[INFO -- 2018-11-23 21:16:34]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 21:16:34]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 21:16:34]
+initSignal:0
+[INFO -- 2018-11-23 21:16:34]
+endSignal:3
+[INFO -- 2018-11-23 21:16:34]
+faultModel:0
+[INFO -- 2018-11-23 21:16:35]
+Backtrace BEGIN:
+#0  0x0000555555555d5f in std::pow<double, int> (__x=29, __y=2) at /usr/include/c++/7/cmath:418
+#1  0x00005555555551e7 in predict (v=29) at lreg.cpp:50
+#2  0x00005555555553ac in partialDerivate (pos=3) at lreg.cpp:74
+#3  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x130x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a190 
+address max offset: 8
+Memory content after  bitflip:0xa00x120x770x550x550x550x000x00
+frame name: main
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 4, capacity -28 = {0.25741559734991848, -1.1552146147814193, -1.956612594976191, -3.9699671250048936}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 21:16:35]
+Fault Injection Successful after 1.5804038047790527s
+[INFO -- 2018-11-23 21:16:35]
+event type: exit
+[INFO -- 2018-11-23 21:16:35]
+exit code: 0

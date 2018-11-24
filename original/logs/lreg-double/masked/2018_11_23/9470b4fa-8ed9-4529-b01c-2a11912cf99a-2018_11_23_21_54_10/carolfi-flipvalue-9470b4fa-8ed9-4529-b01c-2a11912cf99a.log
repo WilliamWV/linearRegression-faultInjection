@@ -1,0 +1,61 @@
+[INFO -- 2018-11-23 21:54:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 21:54:07]
+Initialization strings:
+[INFO -- 2018-11-23 21:54:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 21:54:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 21:54:07]
+initSignal:0
+[INFO -- 2018-11-23 21:54:07]
+endSignal:3
+[INFO -- 2018-11-23 21:54:07]
+faultModel:1
+[INFO -- 2018-11-23 21:54:08]
+Backtrace BEGIN:
+#0  0x00005555555553ce in partialDerivate (pos=2) at lreg.cpp:74
+#1  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#2  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x580x130x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd850
+address max offset: 8
+Memory content after  bitflip:0x580x130x770x550x550x950x000x00
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 114
+value: std::vector of length 3, capacity 8796093022211 = {0.14625196220417658, -0.033052303509456246, -2.9902121099312158}
+value address: 0x7fffffffd840
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 21:54:08]
+Fault Injection Successful after 1.4237771034240723s
+[INFO -- 2018-11-23 21:54:09]
+event type: exit
+[INFO -- 2018-11-23 21:54:09]
+exit code: 0

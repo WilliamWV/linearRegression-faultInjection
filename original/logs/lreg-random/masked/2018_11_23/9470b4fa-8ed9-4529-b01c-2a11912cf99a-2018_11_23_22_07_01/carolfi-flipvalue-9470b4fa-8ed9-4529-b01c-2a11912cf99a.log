@@ -1,0 +1,54 @@
+[INFO -- 2018-11-23 22:06:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 22:06:59]
+Initialization strings:
+[INFO -- 2018-11-23 22:06:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 22:06:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 22:06:59]
+initSignal:0
+[INFO -- 2018-11-23 22:06:59]
+endSignal:3
+[INFO -- 2018-11-23 22:06:59]
+faultModel:2
+[INFO -- 2018-11-23 22:07:00]
+Backtrace BEGIN:
+#0  0x00005555555566e2 in std::vector<double, std::allocator<double> >::end (this=0x55555575a180 <T>) at /usr/include/c++/7/bits/stl_vector.h:591
+#1  0x0000555555556230 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd860, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x00005555555556a2 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:124
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+586	       *  the last element in the %vector.  Iteration is done in
+587	       *  ordinary element order.
+588	       */
+589	      const_iterator
+590	      end() const _GLIBCXX_NOEXCEPT
+591	      { return const_iterator(this->_M_impl._M_finish); }
+592	
+593	      /**
+594	       *  Returns a read/write reverse iterator that points to the
+595	       *  last element in the %vector.  Iteration is done in reverse
+
+Backtrace END
+Memory content before bitflip:0x020x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7c0
+address max offset: 8
+Memory content after  bitflip:0xe00x3e0xa00x070x4f0x200xe90x63
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: __xlen
+symbol filename: /usr/include/c++/7/bits/vector.tcc
+symbol line: 203
+value: 7199321003130896096
+value address: 0x7fffffffd7c0
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 22:07:00]
+Fault Injection Successful after 1.3154971599578857s
+[INFO -- 2018-11-23 22:07:01]
+event type: exit
+[INFO -- 2018-11-23 22:07:01]
+exit code: 0

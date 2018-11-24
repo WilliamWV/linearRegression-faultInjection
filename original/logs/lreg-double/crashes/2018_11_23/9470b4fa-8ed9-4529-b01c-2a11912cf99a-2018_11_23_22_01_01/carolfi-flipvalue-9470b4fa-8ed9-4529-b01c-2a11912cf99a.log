@@ -1,0 +1,60 @@
+[INFO -- 2018-11-23 22:00:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 22:00:59]
+Initialization strings:
+[INFO -- 2018-11-23 22:00:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 22:00:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 22:00:59]
+initSignal:0
+[INFO -- 2018-11-23 22:00:59]
+endSignal:3
+[INFO -- 2018-11-23 22:00:59]
+faultModel:1
+[EXCEPTION -- 2018-11-23 22:01:00]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-23 22:01:00]
+Backtrace BEGIN:
+#0  0x0000555555555ffa in std::vector<double, std::allocator<double> >::operator= (this=0x55555555530c <meanSquaredError()+256>, __x=std::vector of length -5864062013511, capacity 567795348112903497 = {...}) at /usr/include/c++/7/bits/vector.tcc:179
+#1  0x00005555555556a2 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:124
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+174	      return __first;
+175	    }
+176	
+177	  template<typename _Tp, typename _Alloc>
+178	    vector<_Tp, _Alloc>&
+179	    vector<_Tp, _Alloc>::
+180	    operator=(const vector<_Tp, _Alloc>& __x)
+181	    {
+182	      if (&__x != this)
+183		{
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x2a0xc00xeb0x150x480x890xc20x48
+Fault Model: Double bit-flip
+base address to flip value: 0x555555555314 
+address max offset: 8
+Memory content after  bitflip:0x2a0xc00xa30x150x480x890xc20x48
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x55555555530c <meanSquaredError()+256>
+value address: 0x7fffffffd7b8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 22:01:00]
+Fault Injection Successful after 1.360217809677124s
+[INFO -- 2018-11-23 22:01:00]
+event type: exit
+[EXCEPTION -- 2018-11-23 22:01:00]
+exit code: no exit code available

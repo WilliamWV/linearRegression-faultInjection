@@ -1,0 +1,54 @@
+[INFO -- 2018-11-23 21:04:04]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 21:04:04]
+Initialization strings:
+[INFO -- 2018-11-23 21:04:04]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 21:04:04]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 21:04:04]
+initSignal:0
+[INFO -- 2018-11-23 21:04:04]
+endSignal:3
+[INFO -- 2018-11-23 21:04:04]
+faultModel:0
+[INFO -- 2018-11-23 21:04:05]
+Backtrace BEGIN:
+#0  0x00005555555568c4 in std::vector<double, std::allocator<double> >::begin (this=0x7fffffffd840) at /usr/include/c++/7/bits/stl_vector.h:564
+#1  0x0000555555556221 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555641 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+559	       *  element in the %vector.  Iteration is done in ordinary
+560	       *  element order.
+561	       */
+562	      iterator
+563	      begin() _GLIBCXX_NOEXCEPT
+564	      { return iterator(this->_M_impl._M_start); }
+565	
+566	      /**
+567	       *  Returns a read-only (constant) iterator that points to the
+568	       *  first element in the %vector.  Iteration is done in ordinary
+
+Backtrace END
+Memory content before bitflip:0xb40xe20xdb0xd10xee0x540x090x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd838
+address max offset: 8
+Memory content after  bitflip:0xb40xea0xdb0xd10xee0x540x090x40
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 3.1664711375463757
+value address: 0x7fffffffd838
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 21:04:05]
+Fault Injection Successful after 1.5444953441619873s
+[INFO -- 2018-11-23 21:04:06]
+event type: exit
+[INFO -- 2018-11-23 21:04:06]
+exit code: 0

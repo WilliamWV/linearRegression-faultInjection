@@ -1,0 +1,64 @@
+[INFO -- 2018-11-23 21:48:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 21:48:53]
+Initialization strings:
+[INFO -- 2018-11-23 21:48:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 21:48:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 21:48:53]
+initSignal:0
+[INFO -- 2018-11-23 21:48:53]
+endSignal:3
+[INFO -- 2018-11-23 21:48:53]
+faultModel:0
+[EXCEPTION -- 2018-11-23 21:48:54]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-23 21:48:55]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-23 21:48:55]
+Backtrace BEGIN:
+#0  0x0000555555555d18 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a140 <x>, __n=4294967302) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x000055555555539b in partialDerivate (pos=1) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x100xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x5555557714b0
+address max offset: 8
+Memory content after  bitflip:0x000x000x010x000x000x000x100xc0
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x55555575a140 <x>
+value address: 0x7fffffffd748
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 21:48:55]
+Fault Injection Successful after 2.6477432250976562s
+[INFO -- 2018-11-23 21:48:56]
+event type: exit
+[EXCEPTION -- 2018-11-23 21:48:56]
+exit code: no exit code available

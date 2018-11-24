@@ -1,0 +1,58 @@
+[INFO -- 2018-11-23 21:32:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 21:32:03]
+Initialization strings:
+[INFO -- 2018-11-23 21:32:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 21:32:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 21:32:03]
+initSignal:0
+[INFO -- 2018-11-23 21:32:03]
+endSignal:3
+[INFO -- 2018-11-23 21:32:03]
+faultModel:0
+[INFO -- 2018-11-23 21:32:04]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:203
+#1  0x00005555555556a2 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:124
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+198			}
+199		      std::__alloc_on_copy(_M_get_Tp_allocator(),
+200					   __x._M_get_Tp_allocator());
+201		    }
+202	#endif
+203		  const size_type __xlen = __x.size();
+204		  if (__xlen > capacity())
+205		    {
+206		      pointer __tmp = _M_allocate_and_copy(__xlen, __x.begin(),
+207							   __x.end());
+
+Backtrace END
+Fliping a bit of the value pointed by a reference
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x780x130x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a190 
+address max offset: 8
+Memory content after  bitflip:0x780x130x770x550x540x550x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: __x
+symbol filename: /usr/include/c++/7/bits/vector.tcc
+symbol line: 180
+value: std::vector of length 3, capacity -536870909 = {1.4506828334111019, -0.021861445270002021, -2.9936354475102225}
+value address: 0x55555575a180 <T>
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 21:32:04]
+Fault Injection Successful after 1.6919186115264893s
+[INFO -- 2018-11-23 21:32:05]
+event type: exit
+[INFO -- 2018-11-23 21:32:05]
+exit code: 0

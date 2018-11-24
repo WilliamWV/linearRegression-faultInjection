@@ -1,0 +1,59 @@
+[INFO -- 2018-11-23 22:03:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 22:03:36]
+Initialization strings:
+[INFO -- 2018-11-23 22:03:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 22:03:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 22:03:36]
+initSignal:0
+[INFO -- 2018-11-23 22:03:36]
+endSignal:3
+[INFO -- 2018-11-23 22:03:36]
+faultModel:1
+[INFO -- 2018-11-23 22:03:37]
+Backtrace BEGIN:
+#0  0x00005555555565f3 in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:94
+#1  0x0000555555555f14 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x00005555555556c3 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+89	    template<typename _Ptr>
+90	      static typename std::enable_if<__is_custom_pointer<_Ptr>::value>::type
+91	      destroy(_Alloc& __a, _Ptr __p)
+92	      { _Base_type::destroy(__a, std::addressof(*__p)); }
+93	
+94	    static _Alloc _S_select_on_copy(const _Alloc& __a)
+95	    { return _Base_type::select_on_container_copy_construction(__a); }
+96	
+97	    static void _S_on_swap(_Alloc& __a, _Alloc& __b)
+98	    { std::__alloc_on_swap(__a, __b); }
+
+Backtrace END
+Fliping a bit of the value pointed by a reference
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x580x130x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd848
+address max offset: 8
+Memory content after  bitflip:0x580x130x270x550x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: __x
+symbol filename: /usr/include/c++/7/bits/stl_vector.h
+symbol line: 326
+value: std::vector of length -655357, capacity 3 = {1.1774608318382898, -0.024211517881480057, -2.9928134582564954, 1.6304166312761136e-322, 1.1775559903044681, -0.024203116100434272, -2.9929464524698766, 2.4209216646221081e-322, 0, 8, 12, 5, 0, 4.001931731314097e-322, 4.6355706478057827e-310, 1.5810100666919889e-322, -143.00012207031247, -8.0003907742435221, 1, 1, -1319, -23, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 1.124676287488633e-312, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 1.1775559903044681, -0.024203116100434272, -2.9929464524698766, 1.6304166312761136e-322, 4.6355706478263358e-310, -0.024204751835619077, -2.9929459711793296, 1.6304166312761136e-322, 0, -0.024211517881480057, -2.9928134582564954, 7.1639518646980749e-322, -4, -3, -7, -2, -1, -1, -21, -3, -19, 13, 6, 23, 0, 0, 0, 0, 0, 7.1639518646980749e-322, -44, -23, -143, -8, 1, 1, -1319, -23, -1079, -503, -104, -1583, 0, 0, 0, 0, 0, 2.1533851173990731e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x7fffffffd840
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2018-11-23 22:03:37]
+Fault Injection Successful after 1.964811086654663s
+[INFO -- 2018-11-23 22:03:38]
+event type: exit
+[EXCEPTION -- 2018-11-23 22:03:38]
+exit code: no exit code available

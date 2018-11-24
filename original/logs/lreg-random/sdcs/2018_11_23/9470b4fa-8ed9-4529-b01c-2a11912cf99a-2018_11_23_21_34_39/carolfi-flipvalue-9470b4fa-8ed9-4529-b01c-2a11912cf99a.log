@@ -1,0 +1,57 @@
+[INFO -- 2018-11-23 21:34:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 21:34:37]
+Initialization strings:
+[INFO -- 2018-11-23 21:34:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 21:34:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 21:34:37]
+initSignal:0
+[INFO -- 2018-11-23 21:34:37]
+endSignal:3
+[INFO -- 2018-11-23 21:34:37]
+faultModel:2
+[INFO -- 2018-11-23 21:34:38]
+Backtrace BEGIN:
+#0  0x00007ffff76da5b0 in __ieee754_pow_sse2 (x=23, y=1) at ../sysdeps/ieee754/dbl-64/e_pow.c:79
+#1  0x00007ffff76bcb14 in __pow (x=23, y=1) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=23, __y=1) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=23) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=1) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+74	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0x570xf30x2e0x3d
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5c4 
+address max offset: 4
+Memory content after  bitflip:0xa90x0c0x210x5c
+frame name: __ieee754_pow_sse2
+symbol name: ln2b
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 51
+value: {i = {-1815648464, 1545669801}, x = 6.1961048025803255e+135}
+value address: 0x7ffff779f5c0 <ln2b>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-23 21:34:38]
+Fault Injection Successful after 1.1308538913726807s
+[INFO -- 2018-11-23 21:34:39]
+event type: exit
+[INFO -- 2018-11-23 21:34:39]
+exit code: 0

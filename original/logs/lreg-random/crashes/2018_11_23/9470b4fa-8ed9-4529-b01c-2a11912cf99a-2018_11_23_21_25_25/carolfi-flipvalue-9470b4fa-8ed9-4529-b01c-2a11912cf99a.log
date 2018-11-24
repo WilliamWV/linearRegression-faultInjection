@@ -1,0 +1,60 @@
+[INFO -- 2018-11-23 21:25:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-23 21:25:23]
+Initialization strings:
+[INFO -- 2018-11-23 21:25:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-23 21:25:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-23 21:25:23]
+initSignal:0
+[INFO -- 2018-11-23 21:25:23]
+endSignal:3
+[INFO -- 2018-11-23 21:25:23]
+faultModel:2
+[EXCEPTION -- 2018-11-23 21:25:24]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-23 21:25:24]
+Backtrace BEGIN:
+#0  __exp1 (x=<optimized out>, xx=<optimized out>, error=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_exp.c:277
+#1  0x00007ffff76da8dc in __ieee754_pow_sse2 (x=16, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-16, y=3) at w_pow_compat.c:30
+#4  0x0000555555555d5f in std::pow<double, int> (__x=-16, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x00005555555551e7 in predict (v=-16) at lreg.cpp:50
+#6  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#7  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#8  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#9  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+272	in ../sysdeps/ieee754/dbl-64/e_exp.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x300x150x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a148 
+address max offset: 8
+Memory content after  bitflip:0x900xd00xbe0x530x0e0x730xe10x71
+frame name: std::pow<double, int>
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 1025734084552882064, capacity 36 = {-5.4861240687936887e+303, 6.1363668544819047e-92, 4.393266747133998e-315, 0, 0, 0, 0, 9.775796363198735e-150, 3.1050361846014179e+231, -2.000162760420503, -4.3066616780143987e-252, 4.0119434525837858e-146, -1.2882297539194267e-231, 9.1256238199978346e+192, -2.6344828905825299e+95, 4.0119444891500978e-146, 0, -2, -4.3066616780143987e-252, -3.4647819890021131e-223, 0, 4.6081279609684141e-305, 4.5947775178173709e-305, 4.5480509667887196e-305, 1.8065687558231321e-307, 1.7887507815655549e-307, 4.6125781086854285e-305, 1.8074379252991114e-307, 4.6103530348269213e-305, 4.6125781086854285e-305, 4.6237034779779645e-305, 1.8048304168711733e-307, 4.6059028871099069e-305, 1.7922274594694724e-307, 4.5569512622227484e-305, 4.6114655717561749e-305, 1.8030920779192146e-307, -8.4425425152863546e-227, 0, 1.8677034545608416e-307, 1.8521899677322526e-307, 1.798311645801328e-307, 4.833160012531393e-305, 4.7015462962466773e-305, 1.8731726865124754e-307, 4.8390975265141772e-305, 1.8701038561995815e-307, 1.8731726865124754e-307, 1.8865744692296853e-307, 4.8230686832998113e-305, 1.8656052251227351e-307, 4.7255527571732277e-305, 1.8098281413580547e-307, 1.8716397567530821e-307, 4.8090272504153644e-305, 1.131959884853339e-72, -2.7516420536594796e-135, 1.5771103205288755e+88, 4.8248510533388012e-122, 1.3277212079805423e+182, 4.5749535608388243e-305, 1.131959884853339e-72, -2.7516420536594796e-135, 1.5771103205288755e+88, 4.8248510533388012e-122, 1.3277212079805423e+182, 4.5749535608388243e-305, 1.131959884853339e-72, 2.6815615859885194e+154, -1.8349482091117227e+106, -4.1667769478811474e-199, 7.8455012562251005e+56, 4.574491127229488e-305, 1.131959884853339e-72, 0, 9.9464647281957328e+86, 4.8248510533388012e-122, 1.3277212079805423e+182, 4.5749535608388243e-305, -7.2911220195563975e-304, 8.3497094147170666e-322, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-23 21:25:24]
+Fault Injection Successful after 1.2166006565093994s
+[INFO -- 2018-11-23 21:25:24]
+event type: exit
+[EXCEPTION -- 2018-11-23 21:25:24]
+exit code: no exit code available
