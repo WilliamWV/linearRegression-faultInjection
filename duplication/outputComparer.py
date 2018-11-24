@@ -12,7 +12,7 @@ goldOutput = 'lastDataCreated/goldOutput'
 outs = [] # lista com diretórios que tem um arquivo output com sdc
 
 for dirName, subdirList, fileList in os.walk(rootDir):
-	if re.search("sdcs", dirName):
+	if re.search("sdcs", dirName) and not re.search("detected", dirName):
 		for file in fileList:
 			if file == 'output':
 				outs.append(dirName +'/output' )

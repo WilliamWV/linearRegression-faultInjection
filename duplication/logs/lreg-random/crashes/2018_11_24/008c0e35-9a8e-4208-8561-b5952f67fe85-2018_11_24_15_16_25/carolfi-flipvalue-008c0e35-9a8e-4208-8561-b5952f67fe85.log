@@ -1,0 +1,60 @@
+[INFO -- 2018-11-24 15:16:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 15:16:22]
+Initialization strings:
+[INFO -- 2018-11-24 15:16:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 15:16:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 15:16:22]
+initSignal:0
+[INFO -- 2018-11-24 15:16:22]
+endSignal:6
+[INFO -- 2018-11-24 15:16:22]
+faultModel:2
+[EXCEPTION -- 2018-11-24 15:16:23]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-24 15:16:24]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 15:16:24]
+Backtrace BEGIN:
+#0  0x0000555555555217 in predict (v=31) at lreg.cpp:50
+#1  0x00005555555553fc in partialDerivate (pos=3) at lreg.cpp:74
+#2  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd518
+address max offset: 8
+Memory content after  bitflip:0xa60xf30x290x4e0x0a0xfc0x170x51
+frame name: adjust
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 83
+value: 4.5501957705549995e+82
+value address: 0x7fffffffd518
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 15:16:24]
+Fault Injection Successful after 2.1246578693389893s
+[INFO -- 2018-11-24 15:16:24]
+event type: exit
+[EXCEPTION -- 2018-11-24 15:16:24]
+exit code: no exit code available

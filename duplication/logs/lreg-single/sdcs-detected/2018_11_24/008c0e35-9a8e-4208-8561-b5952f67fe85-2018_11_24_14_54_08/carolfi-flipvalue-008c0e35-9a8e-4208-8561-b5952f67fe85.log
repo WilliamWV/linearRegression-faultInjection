@@ -1,0 +1,57 @@
+[INFO -- 2018-11-24 14:54:02]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 14:54:02]
+Initialization strings:
+[INFO -- 2018-11-24 14:54:02]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 14:54:02]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 14:54:02]
+initSignal:0
+[INFO -- 2018-11-24 14:54:02]
+endSignal:6
+[INFO -- 2018-11-24 14:54:02]
+faultModel:0
+[INFO -- 2018-11-24 14:54:03]
+Backtrace BEGIN:
+#0  std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.091506919239828025, __last=0, __result=0x5555557726f0) at /usr/include/c++/7/bits/stl_uninitialized.h:135
+#1  0x0000555555556b4d in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=0.091506919239828025, __last=0, __result=0x5555557726f0) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#2  0x000055555555636d in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5d0, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#3  0x000055555555572b in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+130	
+131	      return std::__uninitialized_copy<__is_trivial(_ValueType1)
+132					       && __is_trivial(_ValueType2)
+133					       && __assignable>::
+134		__uninit_copy(__first, __last, __result);
+135	    }
+136	
+137	
+138	  template<bool _TrivialValueType>
+139	    struct __uninitialized_fill
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffe1f2 
+address max offset: 1
+Memory content after  bitflip:0x2b
+frame name: execute
+symbol name: input
+symbol filename: lreg.cpp
+symbol line: 134
+value: 0x7fffffffe1f2 "+tmp/lreg/randInput"
+value address: 0x7fffffffd650
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 14:54:03]
+Fault Injection Successful after 1.6014087200164795s
+[INFO -- 2018-11-24 14:54:07]
+event type: exit
+[INFO -- 2018-11-24 14:54:07]
+exit code: 0

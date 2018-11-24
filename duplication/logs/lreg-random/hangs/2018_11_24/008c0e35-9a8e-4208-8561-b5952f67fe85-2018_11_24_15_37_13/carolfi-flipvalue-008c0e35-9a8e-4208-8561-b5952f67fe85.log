@@ -1,0 +1,52 @@
+[INFO -- 2018-11-24 15:36:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 15:36:49]
+Initialization strings:
+[INFO -- 2018-11-24 15:36:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 15:36:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 15:36:49]
+initSignal:0
+[INFO -- 2018-11-24 15:36:49]
+endSignal:6
+[INFO -- 2018-11-24 15:36:49]
+faultModel:2
+[INFO -- 2018-11-24 15:36:51]
+Backtrace BEGIN:
+#0  __gnu_cxx::new_allocator<double>::~new_allocator (this=0x7fffffffd517, __in_chrg=<optimized out>) at /usr/include/c++/7/ext/new_allocator.h:86
+#1  0x000055555555618e in std::allocator<double>::~allocator (this=0x7fffffffd517, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/allocator.h:139
+#2  0x000055555555632b in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5d0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x000055555555572b in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+81	      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+82	
+83	      template<typename _Tp1>
+84		new_allocator(const new_allocator<_Tp1>&) _GLIBCXX_USE_NOEXCEPT { }
+85	
+86	      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+87	
+88	      pointer
+89	      address(reference __x) const _GLIBCXX_NOEXCEPT
+90	      { return std::__addressof(__x); }
+
+Backtrace END
+Memory content before bitflip:0x060x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd674
+address max offset: 4
+Memory content after  bitflip:0x840x660x150x20
+frame name: execute
+symbol name: predictions
+symbol filename: lreg.cpp
+symbol line: 144
+value: 538273412
+value address: 0x7fffffffd674
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-24 15:36:51]
+Fault Injection Successful after 2.3746917247772217s

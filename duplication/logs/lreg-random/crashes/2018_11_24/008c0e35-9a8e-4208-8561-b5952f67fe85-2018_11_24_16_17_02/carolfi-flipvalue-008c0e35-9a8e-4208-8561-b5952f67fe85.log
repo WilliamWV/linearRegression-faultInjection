@@ -1,0 +1,64 @@
+[INFO -- 2018-11-24 16:17:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 16:17:00]
+Initialization strings:
+[INFO -- 2018-11-24 16:17:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 16:17:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 16:17:00]
+initSignal:0
+[INFO -- 2018-11-24 16:17:00]
+endSignal:6
+[INFO -- 2018-11-24 16:17:00]
+faultModel:2
+[EXCEPTION -- 2018-11-24 16:17:01]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 16:17:02]
+Backtrace BEGIN:
+#0  0x00005555555560dc in std::vector<double, std::allocator<double> >::size (this=0x55555575b160 <y>) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x0000555555555287 in meanSquaredError () at lreg.cpp:60
+#2  0x00005555555556b1 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x230x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b188 
+address max offset: 8
+Memory content after  bitflip:0x070xca0x170xe40xb50xb20x9c0x2e
+frame name: main
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 419832761425335504, capacity 4 = {0.21124493427457955, -1.0216097329561176, -1.9554424125374179, -4.0447864949482515, 0, 4.001931731314097e-322, 4.635570648008152e-310, 1.5810100666919889e-322, 12.999771118164061, 2.9988444211833614e-310, -1078.8154304800657, -1078.8160145721722, -1722.5303976432911, -1319.1177772194476, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 1.124676287488633e-312, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 4.6355706480121045e-310, -0.018636480386081677, -2.9944537928979051, 1.6304166312761136e-322, 4.6355706480287051e-310, -0.018629603636086151, -2.9945863353366149, 1.6304166312761136e-322, 0, -0.018636480386081677, -2.9944537928979051, 7.1639518646980749e-322, -15, -9, -1, 29, 5, -18, 31, -16, -18, -28, 25, -14, 7, -2, -17, 21, 0, 7.1639518646980749e-322, 13145, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047, 0, 7.1639518646980749e-322, 9.9997448205173409, 10.999751207252501, 12.999763980722822, -7.0003637539803849, -1078.8160145721722, -1078.8160145721722, -1722.5303976432911, -1319.1177772194476, -1582.6669839552355, -584.82432114594803, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, 0.2114950277526515, -1.0188115251765248, -1.9460121408792364, -3.9701663428084077, 0, 2.4209216646221081e-322, 0.2112138988934591, -1.0215197646639638, -1.9554416246497457, -4.0447866290975787, 0, 2.4209216646221081e-322, 4.6355706480587443e-310, -1.0215197646639638, -1.9554416246497457, -4.0447866290975787, 0, 2.4209216646221081e-322, 0, -1.0188115251765248, -1.9460121408792364, -3.9701663428084077, 0, 2.1367845116988072e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 16:17:02]
+Fault Injection Successful after 2.1216840744018555s
+[INFO -- 2018-11-24 16:17:02]
+event type: exit
+[EXCEPTION -- 2018-11-24 16:17:02]
+exit code: no exit code available

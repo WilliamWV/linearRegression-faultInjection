@@ -1,0 +1,59 @@
+[INFO -- 2018-11-24 16:27:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 16:27:35]
+Initialization strings:
+[INFO -- 2018-11-24 16:27:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 16:27:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 16:27:35]
+initSignal:0
+[INFO -- 2018-11-24 16:27:35]
+endSignal:6
+[INFO -- 2018-11-24 16:27:35]
+faultModel:2
+[EXCEPTION -- 2018-11-24 16:27:35]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-24 16:27:38]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 16:27:38]
+Backtrace BEGIN:
+#0  0x0000555555556b48 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=0.61849340939847219, __last=1.6304166312761136e-322, __result=0x555555772470) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#1  0x000055555555636d in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5f0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#2  0x0000555555555713 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+284	
+285	  template<typename _InputIterator, typename _ForwardIterator, typename _Tp>
+286	    inline _ForwardIterator
+287	    __uninitialized_copy_a(_InputIterator __first, _InputIterator __last,
+288				   _ForwardIterator __result, allocator<_Tp>&)
+289	    { return std::uninitialized_copy(__first, __last, __result); }
+290	
+291	  template<typename _InputIterator, typename _ForwardIterator,
+292		   typename _Allocator>
+293	    inline _ForwardIterator
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000xbc0x980xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd690
+address max offset: 8
+Memory content after  bitflip:0xbe0x0f0x5b0xdf0xbb0x6c0x240x91
+frame name: execute
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 143
+value: -4.3109187555412132e-226
+value address: 0x7fffffffd690
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 16:27:38]
+Fault Injection Successful after 3.4229540824890137s
+[INFO -- 2018-11-24 16:27:39]
+event type: exit
+[INFO -- 2018-11-24 16:27:39]
+exit code: 0

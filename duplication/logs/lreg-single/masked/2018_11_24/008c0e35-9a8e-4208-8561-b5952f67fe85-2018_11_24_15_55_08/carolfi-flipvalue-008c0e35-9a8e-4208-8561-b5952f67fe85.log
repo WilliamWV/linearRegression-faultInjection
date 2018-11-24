@@ -1,0 +1,54 @@
+[INFO -- 2018-11-24 15:55:05]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 15:55:05]
+Initialization strings:
+[INFO -- 2018-11-24 15:55:05]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 15:55:05]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 15:55:05]
+initSignal:0
+[INFO -- 2018-11-24 15:55:05]
+endSignal:6
+[INFO -- 2018-11-24 15:55:05]
+faultModel:0
+[INFO -- 2018-11-24 15:55:06]
+Backtrace BEGIN:
+#0  0x00005555555563e4 in std::vector<double, std::allocator<double> >::operator= (this=0x55555555535c <meanSquaredError()+256>, __x=std::vector of length -5864062013415, capacity 568921248019746207 = {...}) at /usr/include/c++/7/bits/vector.tcc:179
+#1  0x00005555555556f2 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:124
+#2  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#3  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+174	      return __first;
+175	    }
+176	
+177	  template<typename _Tp, typename _Alloc>
+178	    vector<_Tp, _Alloc>&
+179	    vector<_Tp, _Alloc>::
+180	    operator=(const vector<_Tp, _Alloc>& __x)
+181	    {
+182	      if (&__x != this)
+183		{
+
+Backtrace END
+Memory content before bitflip:0x570xc30xff0x9e0x8c0xee0x8d0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd588
+address max offset: 8
+Memory content after  bitflip:0x770xc30xff0x9e0x8c0xee0x8d0x3f
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 0.014615152933375104
+value address: 0x7fffffffd588
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 15:55:06]
+Fault Injection Successful after 1.0810339450836182s
+[INFO -- 2018-11-24 15:55:07]
+event type: exit
+[INFO -- 2018-11-24 15:55:07]
+exit code: 0

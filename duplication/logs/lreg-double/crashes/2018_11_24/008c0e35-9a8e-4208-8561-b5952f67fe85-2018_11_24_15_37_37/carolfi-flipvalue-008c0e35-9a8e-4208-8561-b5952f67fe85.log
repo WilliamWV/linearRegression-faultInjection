@@ -1,0 +1,61 @@
+[INFO -- 2018-11-24 15:37:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 15:37:32]
+Initialization strings:
+[INFO -- 2018-11-24 15:37:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 15:37:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 15:37:32]
+initSignal:0
+[INFO -- 2018-11-24 15:37:32]
+endSignal:6
+[INFO -- 2018-11-24 15:37:32]
+faultModel:1
+[EXCEPTION -- 2018-11-24 15:37:35]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-24 15:37:35]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-24 15:37:36]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0f897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff703cb9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1690a in malloc_printerr (str=str@entry=0x7ffff703e870 "double free or corruption (out)") at malloc.c:5350
+#4  0x00007ffff6f1de75 in _int_free (have_lock=0, p=0x5555557725d0, av=0x7ffff7271c40 <main_arena>) at malloc.c:4278
+#5  __GI___libc_free (mem=0x5555557725e0) at malloc.c:3124
+#6  0x0000555555557cda in __gnu_cxx::new_allocator<double>::deallocate (this=0x55555575b160 <y>, __p=0x5555557725e0) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x00005555555574e9 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x5555557725e0, __n=18446744073709551612) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x0000555555556b94 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x55555575b160 <y>, __p=0x5555557725e0, __n=18446744073709551612) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x0000555555556851 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x55555575b160 <y>, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#10 0x000055555555623d in std::vector<double, std::allocator<double> >::~vector (this=0x55555575b160 <y>, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#11 0x00007ffff6ec9041 in __run_exit_handlers (status=0, listp=0x7ffff7271718 <__exit_funcs>, run_list_atexit=run_list_atexit@entry=true, run_dtors=run_dtors@entry=true) at exit.c:108
+#12 0x00007ffff6ec913a in __GI_exit (status=<optimized out>) at exit.c:139
+#13 0x00007ffff6ea7b9e in __libc_start_main (main=0x555555555b2d <main(int, char**)>, argc=4, argv=0x7fffffffde48, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7fffffffde38) at ../csu/libc-start.c:344
+#14 0x000055555555501a in _start ()
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x900x110xf20xf60xff0x7f0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff72724d8 
+address max offset: 8
+Memory content after  bitflip:0x900xd10xf20xf60xff0x7f0x000x00
+frame name: malloc_printerr
+symbol name: __morecore
+symbol filename: malloc.c
+symbol line: 363
+value: 0x7ffff6f21190 <__GI___default_morecore>
+value address: 0x7ffff72724d8 <__morecore>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 15:37:36]
+Fault Injection Successful after 4.499707460403442s
+[INFO -- 2018-11-24 15:37:36]
+event type: exit
+[EXCEPTION -- 2018-11-24 15:37:36]
+exit code: no exit code available

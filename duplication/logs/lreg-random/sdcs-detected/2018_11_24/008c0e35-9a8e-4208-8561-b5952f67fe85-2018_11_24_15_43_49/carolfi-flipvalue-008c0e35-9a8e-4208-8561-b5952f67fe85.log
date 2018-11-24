@@ -1,0 +1,59 @@
+[INFO -- 2018-11-24 15:43:45]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 15:43:45]
+Initialization strings:
+[INFO -- 2018-11-24 15:43:45]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 15:43:45]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 15:43:45]
+initSignal:0
+[INFO -- 2018-11-24 15:43:45]
+endSignal:6
+[INFO -- 2018-11-24 15:43:45]
+faultModel:2
+[EXCEPTION -- 2018-11-24 15:43:48]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-24 15:43:48]
+Backtrace BEGIN:
+#0  0x000055555555612b in std::pow<double, int> (__x=-28, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x0000555555555237 in predict (v=-28) at lreg.cpp:50
+#2  0x00005555555553fc in partialDerivate (pos=1) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Memory content before bitflip:0xa80x1e0x6c0xf60x6f0x000xcf0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd488
+address max offset: 8
+Memory content after  bitflip:0xdc0x700xc80x9b0x020x8b0x190x33
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 48
+value: 1.5522903561293989e-62
+value address: 0x7fffffffd488
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 15:43:48]
+Fault Injection Successful after 3.402393102645874s
+[INFO -- 2018-11-24 15:43:48]
+event type: exit
+[INFO -- 2018-11-24 15:43:48]
+exit code: 0

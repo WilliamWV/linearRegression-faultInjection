@@ -1,0 +1,50 @@
+[INFO -- 2018-11-24 15:26:57]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 15:26:57]
+Initialization strings:
+[INFO -- 2018-11-24 15:26:57]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 15:26:57]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 15:26:57]
+initSignal:0
+[INFO -- 2018-11-24 15:26:57]
+endSignal:6
+[INFO -- 2018-11-24 15:26:57]
+faultModel:0
+[INFO -- 2018-11-24 15:26:59]
+Backtrace BEGIN:
+#0  __GI___libc_free (mem=0x555555772490) at malloc.c:3086
+#1  0x0000555555557cda in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd5d0, __p=0x555555772490) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x00005555555574e9 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772490, __n=3) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x0000555555556b94 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd5d0, __p=0x555555772490, __n=3) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x0000555555556851 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd5d0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#5  0x000055555555623d in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd5d0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#6  0x0000555555555770 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#7  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#8  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+3081	malloc.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x650x580xe80x0c0xd20xbc0x190x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd580
+address max offset: 8
+Memory content after  bitflip:0x650x5c0xe80x0c0xd20xbc0x190x40
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: 6.434395028764901
+value address: 0x7fffffffd580
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 15:26:59]
+Fault Injection Successful after 2.0937774181365967s
+[INFO -- 2018-11-24 15:27:00]
+event type: exit
+[INFO -- 2018-11-24 15:27:00]
+exit code: 0

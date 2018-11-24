@@ -16,7 +16,7 @@ destDir = /tmp/lreg
 all: gen_bin gen_data mv_bin
 
 gen_bin: $(SRC) $(INP_GEN_SRC)
-	$(CC) $(CC_FLAGS) $(SRC) -o $(EXEC)
+	$(CC) $(CC_FLAGS) -O0 $(SRC) -o $(EXEC)
 	$(CC) $(CC_FLAGS) $(INP_GEN_SRC) -o $(EXEC_INP_GEN)
 	
 gen_data: gen_bin

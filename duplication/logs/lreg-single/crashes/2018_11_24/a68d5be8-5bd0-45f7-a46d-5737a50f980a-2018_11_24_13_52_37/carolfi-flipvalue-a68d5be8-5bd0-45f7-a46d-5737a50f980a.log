@@ -1,0 +1,66 @@
+[INFO -- 2018-11-24 13:52:30]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 13:52:30]
+Initialization strings:
+[INFO -- 2018-11-24 13:52:30]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 13:52:30]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 13:52:30]
+initSignal:0
+[INFO -- 2018-11-24 13:52:30]
+endSignal:10
+[INFO -- 2018-11-24 13:52:30]
+faultModel:0
+[EXCEPTION -- 2018-11-24 13:52:34]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-24 13:52:35]
+Backtrace BEGIN:
+#0  0x000055555555613b in std::pow<double, int> (__x=-28, __y=2) at /usr/include/c++/7/cmath:418
+#1  0x0000555555555237 in predict (v=-28) at lreg.cpp:50
+#2  0x00005555555553fc in partialDerivate (pos=0) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x230x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b188 
+address max offset: 8
+Memory content after  bitflip:0xa00x230x770x550x510x550x000x00
+frame name: execute
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length -2147483644, capacity 4 = {0.35531442460385165, -1.4368542295027253, -1.9590803967772985, -4.0441673211413312, 0, 4.001931731314097e-322, 4.635570648008152e-310, 1.5810100666919889e-322, 12.999771118164061, 2.9988444211833614e-310, -1078.8154304800657, -1078.8160145721722, -1722.5303976432911, -1319.1177772194476, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 1.124676287488633e-312, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 4.6355706480121045e-310, -0.018636480386081677, -2.9944537928979051, 1.6304166312761136e-322, 4.6355706480287051e-310, -0.018629603636086151, -2.9945863353366149, 1.6304166312761136e-322, 0, -0.018636480386081677, -2.9944537928979051, 7.1639518646980749e-322, -15, -9, -1, 29, 5, -18, 31, -16, -18, -28, 25, -14, 7, -2, -17, 21, 0, 7.1639518646980749e-322, 13145, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047, 0, 7.1639518646980749e-322, 9.9997448205173409, 10.999751207252501, 12.999763980722822, -7.0003637539803849, -1078.8160145721722, -1078.8160145721722, -1722.5303976432911, -1319.1177772194476, -1582.6669839552355, -584.82432114594803, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, 0.35531442460385165, -1.4368542295027253, -1.9590803967772985, -4.0441673211413312, 0, 2.4209216646221081e-322, 0.35531442460385165, -1.4368542295027253, -1.9590803967772985, -4.0441673211413312, 0, 2.4209216646221081e-322, 4.6355706480587443e-310, -1.434059656815871, -1.949650157154877, -3.9695471635773512, 0, 2.4209216646221081e-322, 0, -1.4368542295027253, -1.9590803967772985, -4.0441673211413312, 0, 2.1367845116988072e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 13:52:35]
+Fault Injection Successful after 5.505263090133667s
+[INFO -- 2018-11-24 13:52:36]
+event type: exit
+[EXCEPTION -- 2018-11-24 13:52:36]
+exit code: no exit code available

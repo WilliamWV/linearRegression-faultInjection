@@ -1,0 +1,62 @@
+[INFO -- 2018-11-24 15:19:38]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 15:19:38]
+Initialization strings:
+[INFO -- 2018-11-24 15:19:38]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 15:19:38]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 15:19:38]
+initSignal:0
+[INFO -- 2018-11-24 15:19:38]
+endSignal:6
+[INFO -- 2018-11-24 15:19:38]
+faultModel:1
+[EXCEPTION -- 2018-11-24 15:19:40]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 15:19:40]
+Backtrace BEGIN:
+#0  0x00007ffff7ad6380 in free@plt () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x0000555555557cda in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd5d0, __p=0x555555772490) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x00005555555574e9 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772490, __n=3) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x0000555555556b94 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd5d0, __p=0x555555772490, __n=3) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x0000555555556851 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd5d0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#5  0x000055555555623d in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd5d0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#6  0x0000555555555770 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#7  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#8  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+177		4° Line : values y of the training set
+178		5° Line : set z of new inputs to predict*/
+179	
+180	
+181	int main(int argc, char* argv[]){
+182		
+183		if (argc != 4) {
+184			cout << "Wrong number of arguments" <<endl;
+185			cout <<"  Use as : " << endl; 
+186			cout <<'\t'<<argv[0]<<" <input file> "<<"<output file> "<<"<detected log file>"<<endl;
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x670xe30xab0xbd0x7f0xb90xfc0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772490
+address max offset: 8
+Memory content after  bitflip:0x670xe30xab0xb70x7f0xb90xfc0x3f
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_deallocate
+symbol name: __p
+symbol filename: /usr/include/c++/7/bits/stl_vector.h
+symbol line: 176
+value: 0x555555772490
+value address: 0x7fffffffd4f0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 15:19:40]
+Fault Injection Successful after 2.7088780403137207s
+[INFO -- 2018-11-24 15:19:41]
+event type: exit
+[EXCEPTION -- 2018-11-24 15:19:41]
+exit code: no exit code available

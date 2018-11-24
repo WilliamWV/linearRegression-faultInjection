@@ -1,0 +1,61 @@
+[INFO -- 2018-11-24 14:08:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 14:08:53]
+Initialization strings:
+[INFO -- 2018-11-24 14:08:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 14:08:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 14:08:53]
+initSignal:0
+[INFO -- 2018-11-24 14:08:53]
+endSignal:6
+[INFO -- 2018-11-24 14:08:53]
+faultModel:2
+[EXCEPTION -- 2018-11-24 14:08:54]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-24 14:08:55]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-24 14:08:56]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-24 14:08:56]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 14:08:57]
+Backtrace BEGIN:
+#0  __memmove_ssse3 () at ../sysdeps/x86_64/multiarch/memcpy-ssse3.S:2996
+#1  0x0000555555558028 in std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<double> (__first=0x5555557723fe, __last=0x555555772358, __result=0x555555772470) at /usr/include/c++/7/bits/stl_algobase.h:368
+#2  0x0000555555557d70 in std::__copy_move_a<false, double const*, double*> (__first=0x5555557723fe, __last=0x555555772358, __result=0x555555772470) at /usr/include/c++/7/bits/stl_algobase.h:386
+#3  0x000055555555812a in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0, __last=2.6227059794340066e-317, __result=0x555555772470) at /usr/include/c++/7/bits/stl_algobase.h:424
+#4  0x0000555555557f81 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0, __last=2.6227059794340066e-317, __result=0x555555772470) at /usr/include/c++/7/bits/stl_algobase.h:456
+#5  0x0000555555557cb8 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0, __last=2.6227059794340066e-317, __result=0x555555772470) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#6  0x00005555555574bc in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0, __last=2.6227059794340066e-317, __result=0x555555772470) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#7  0x0000555555556b4d in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=0, __last=2.6227059794340066e-317, __result=0x555555772470) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#8  0x000055555555636d in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5f0, __x=std::vector of length -20, capacity -20 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#9  0x0000555555555713 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#10 0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#11 0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+2991	../sysdeps/x86_64/multiarch/memcpy-ssse3.S: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x640xe00xc70xc10x240xf40x190x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd580
+address max offset: 8
+Memory content after  bitflip:0xd90xcc0xcd0x550xa60xec0x580xeb
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: -1.2803300784361789e+209
+value address: 0x7fffffffd580
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 14:08:57]
+Fault Injection Successful after 4.201095104217529s
+[INFO -- 2018-11-24 14:08:57]
+event type: exit
+[EXCEPTION -- 2018-11-24 14:08:57]
+exit code: no exit code available
