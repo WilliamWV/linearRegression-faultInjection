@@ -1,0 +1,56 @@
+[INFO -- 2018-11-24 10:00:50]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 10:00:50]
+Initialization strings:
+[INFO -- 2018-11-24 10:00:50]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 10:00:50]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 10:00:50]
+initSignal:0
+[INFO -- 2018-11-24 10:00:50]
+endSignal:2
+[INFO -- 2018-11-24 10:00:50]
+faultModel:0
+[EXCEPTION -- 2018-11-24 10:00:50]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-24 10:00:51]
+Backtrace BEGIN:
+#0  0x00005555555562f7 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd860, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:230
+#1  0x00005555555556a2 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:124
+#2  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+225		      std::__uninitialized_copy_a(__x._M_impl._M_start + size(),
+226						  __x._M_impl._M_finish,
+227						  this->_M_impl._M_finish,
+228						  _M_get_Tp_allocator());
+229		    }
+230		  this->_M_impl._M_finish = this->_M_impl._M_start + __xlen;
+231		}
+232	      return *this;
+233	    }
+234	
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x580xde0xff0xff0xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd900
+address max offset: 8
+Memory content after  bitflip:0x580xde0xff0xff0xdf0x7f0x000x00
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 144
+value: 0x7fffffffde58
+value address: 0x7fffffffd900
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 10:00:51]
+Fault Injection Successful after 1.004622220993042s
+[INFO -- 2018-11-24 10:00:52]
+event type: exit
+[INFO -- 2018-11-24 10:00:52]
+exit code: 0

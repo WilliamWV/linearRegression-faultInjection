@@ -1,0 +1,57 @@
+[INFO -- 2018-11-24 12:30:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 12:30:58]
+Initialization strings:
+[INFO -- 2018-11-24 12:30:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 12:30:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 12:30:58]
+initSignal:0
+[INFO -- 2018-11-24 12:30:58]
+endSignal:2
+[INFO -- 2018-11-24 12:30:58]
+faultModel:0
+[INFO -- 2018-11-24 12:31:00]
+Backtrace BEGIN:
+#0  0x0000555555557803 in __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >::base (this=0x7fffffffd6f8) at /usr/include/c++/7/bits/stl_iterator.h:845
+#1  0x0000555555557597 in std::__niter_base<double const*, std::vector<double, std::allocator<double> > > (__it=1.4597408055636343) at /usr/include/c++/7/bits/stl_iterator.h:984
+#2  0x00005555555570d9 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.4597408055636343, __last=2.4209216646221081e-322, __result=1.4596505541090585) at /usr/include/c++/7/bits/stl_algobase.h:422
+#3  0x000055555555690b in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.4597408055636343, __last=2.4209216646221081e-322, __result=1.4596505541090585) at /usr/include/c++/7/bits/stl_algobase.h:456
+#4  0x000055555555624d in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#5  0x00005555555556a2 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:124
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+840	      operator-(difference_type __n) const _GLIBCXX_NOEXCEPT
+841	      { return __normal_iterator(_M_current - __n); }
+842	
+843	      const _Iterator&
+844	      base() const _GLIBCXX_NOEXCEPT
+845	      { return _M_current; }
+846	    };
+847	
+848	  // Note: In what follows, the left- and right-hand-side iterators are
+849	  // allowed to vary in types (conceptually in cv-qualification) so that
+
+Backtrace END
+Memory content before bitflip:0x030x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7c0
+address max offset: 8
+Memory content after  bitflip:0x030x000x100x000x000x000x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: __xlen
+symbol filename: /usr/include/c++/7/bits/vector.tcc
+symbol line: 203
+value: 1048579
+value address: 0x7fffffffd7c0
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 12:31:00]
+Fault Injection Successful after 2.9628400802612305s
+[INFO -- 2018-11-24 12:31:03]
+event type: exit
+[INFO -- 2018-11-24 12:31:03]
+exit code: 0

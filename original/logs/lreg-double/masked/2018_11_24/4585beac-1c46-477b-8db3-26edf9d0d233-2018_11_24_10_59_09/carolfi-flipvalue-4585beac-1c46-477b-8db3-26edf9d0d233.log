@@ -1,0 +1,64 @@
+[INFO -- 2018-11-24 10:59:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 10:59:03]
+Initialization strings:
+[INFO -- 2018-11-24 10:59:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 10:59:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 10:59:03]
+initSignal:0
+[INFO -- 2018-11-24 10:59:03]
+endSignal:2
+[INFO -- 2018-11-24 10:59:03]
+faultModel:1
+[EXCEPTION -- 2018-11-24 10:59:05]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-24 10:59:07]
+Backtrace BEGIN:
+#0  __gnu_cxx::new_allocator<double>::~new_allocator (this=0x7fffffffd7c7, __in_chrg=<optimized out>) at /usr/include/c++/7/ext/new_allocator.h:86
+#1  0x0000555555555da4 in std::allocator<double>::~allocator (this=0x7fffffffd7c7, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/allocator.h:139
+#2  0x0000555555555f41 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x00005555555556c3 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+81	      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+82	
+83	      template<typename _Tp1>
+84		new_allocator(const new_allocator<_Tp1>&) _GLIBCXX_USE_NOEXCEPT { }
+85	
+86	      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+87	
+88	      pointer
+89	      address(reference __x) const _GLIBCXX_NOEXCEPT
+90	      { return std::__addressof(__x); }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x5555557715c0
+address max offset: 8
+Memory content after  bitflip:0x440x000x000x000x000x000x000x00
+frame name: std::allocator<double>::~allocator
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 16, capacity 16 = {13145, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047}
+value address: 0x55555575a160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 10:59:07]
+Fault Injection Successful after 4.870485544204712s
+[INFO -- 2018-11-24 10:59:08]
+event type: exit
+[INFO -- 2018-11-24 10:59:08]
+exit code: 0

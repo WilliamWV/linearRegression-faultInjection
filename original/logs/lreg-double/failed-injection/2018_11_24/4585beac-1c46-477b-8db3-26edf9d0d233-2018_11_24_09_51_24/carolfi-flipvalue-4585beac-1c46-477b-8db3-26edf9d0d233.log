@@ -1,0 +1,23 @@
+[INFO -- 2018-11-24 09:51:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 09:51:19]
+Initialization strings:
+[INFO -- 2018-11-24 09:51:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 09:51:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 09:51:19]
+initSignal:0
+[INFO -- 2018-11-24 09:51:19]
+endSignal:2
+[INFO -- 2018-11-24 09:51:19]
+faultModel:1
+[EXCEPTION -- 2018-11-24 09:51:21]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-24 09:51:21]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-24 09:51:23]
+event type: exit
+[INFO -- 2018-11-24 09:51:23]
+exit code: 0

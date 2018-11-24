@@ -1,0 +1,54 @@
+[INFO -- 2018-11-24 11:23:29]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 11:23:29]
+Initialization strings:
+[INFO -- 2018-11-24 11:23:29]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 11:23:29]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 11:23:29]
+initSignal:0
+[INFO -- 2018-11-24 11:23:29]
+endSignal:2
+[INFO -- 2018-11-24 11:23:29]
+faultModel:2
+[EXCEPTION -- 2018-11-24 11:23:31]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 11:23:31]
+Backtrace BEGIN:
+#0  0x0000555555555666 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:121
+#1  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+116		double bestMSE = meanSquaredError();
+117		double MSE;	
+118		for(int i = 0; i<iterations; i++){
+119			prevT = T; 	
+120			adjust(alpha);
+121			MSE = meanSquaredError();
+122			if (MSE < bestMSE){
+123				bestMSE = MSE;
+124				bestT = T; 
+125			}
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x2a0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd940
+address max offset: 8
+Memory content after  bitflip:0x490xc30x8c0xef0xdb0x650xc70x99
+frame name: main
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 160
+value: -1.7207956900683592e-184
+value address: 0x7fffffffd940
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 11:23:31]
+Fault Injection Successful after 2.352282762527466s
+[INFO -- 2018-11-24 11:23:33]
+event type: exit
+[INFO -- 2018-11-24 11:23:33]
+exit code: 0

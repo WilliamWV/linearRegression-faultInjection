@@ -1,0 +1,62 @@
+[INFO -- 2018-11-24 09:52:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 09:52:59]
+Initialization strings:
+[INFO -- 2018-11-24 09:52:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 09:52:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 09:52:59]
+initSignal:0
+[INFO -- 2018-11-24 09:52:59]
+endSignal:2
+[INFO -- 2018-11-24 09:52:59]
+faultModel:1
+[INFO -- 2018-11-24 09:53:00]
+Backtrace BEGIN:
+#0  0x0000555555556dce in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd880, __n=4) at /usr/include/c++/7/bits/stl_vector.h:188
+#1  0x0000555555556489 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd880, __n=4, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#2  0x0000555555555f35 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd880, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x00005555555556db in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+183	    private:
+184	      void
+185	      _M_create_storage(size_t __n)
+186	      {
+187		this->_M_impl._M_start = this->_M_allocate(__n);
+188		this->_M_impl._M_finish = this->_M_impl._M_start;
+189		this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+190	      }
+191	    };
+192	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x160x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd860
+address max offset: 8
+Memory content after  bitflip:0x000x9e0x770x550x550x550x000x00
+frame name: train
+symbol name: bestT
+symbol filename: lreg.cpp
+symbol line: 115
+value: std::vector of length -4348, capacity -4348 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x7fffffffd860
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 09:53:00]
+Fault Injection Successful after 1.7805061340332031s
+[INFO -- 2018-11-24 09:53:01]
+event type: exit
+[EXCEPTION -- 2018-11-24 09:53:01]
+exit code: no exit code available

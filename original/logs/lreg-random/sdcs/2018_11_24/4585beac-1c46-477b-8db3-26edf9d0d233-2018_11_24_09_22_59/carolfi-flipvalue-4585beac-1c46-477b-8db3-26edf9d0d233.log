@@ -1,0 +1,64 @@
+[INFO -- 2018-11-24 09:22:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 09:22:55]
+Initialization strings:
+[INFO -- 2018-11-24 09:22:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 09:22:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 09:22:55]
+initSignal:0
+[INFO -- 2018-11-24 09:22:55]
+endSignal:2
+[INFO -- 2018-11-24 09:22:55]
+faultModel:2
+[INFO -- 2018-11-24 09:22:56]
+Backtrace BEGIN:
+#0  __gnu_cxx::new_allocator<double>::new_allocator (this=0x7fffffffd8a0) at /usr/include/c++/7/ext/new_allocator.h:81
+#1  0x0000555555556f9b in std::allocator<double>::allocator (this=0x7fffffffd8a0, __a=...) at /usr/include/c++/7/bits/allocator.h:134
+#2  0x0000555555556d6f in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::_Vector_impl (this=0x7fffffffd8a0, __a=...) at /usr/include/c++/7/bits/stl_vector.h:93
+#3  0x0000555555556476 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8a0, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:137
+#4  0x0000555555555f35 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#5  0x00005555555556c3 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+76	      typedef std::true_type propagate_on_container_move_assignment;
+77	#endif
+78	
+79	      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+80	
+81	      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+82	
+83	      template<typename _Tp1>
+84		new_allocator(const new_allocator<_Tp1>&) _GLIBCXX_USE_NOEXCEPT { }
+85	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x100xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x5555557714b0
+address max offset: 8
+Memory content after  bitflip:0xbb0xe10x5b0x150x860x040x9d0x19
+frame name: std::allocator<double>::allocator
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 12, capacity 16 = {2.6676277795185696e-185, -3, -7, -2, -1, -1, -21, -3, -19, 13, 6, 23}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 09:22:56]
+Fault Injection Successful after 1.5145986080169678s
+[INFO -- 2018-11-24 09:22:58]
+event type: exit
+[INFO -- 2018-11-24 09:22:58]
+exit code: 0

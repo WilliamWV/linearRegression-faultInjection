@@ -1,0 +1,57 @@
+[INFO -- 2018-11-24 11:54:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 11:54:54]
+Initialization strings:
+[INFO -- 2018-11-24 11:54:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 11:54:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 11:54:54]
+initSignal:0
+[INFO -- 2018-11-24 11:54:54]
+endSignal:2
+[INFO -- 2018-11-24 11:54:54]
+faultModel:2
+[EXCEPTION -- 2018-11-24 11:54:57]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-24 11:54:58]
+Backtrace BEGIN:
+#0  0x0000555555555d27 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575a160 <y>, __n=2) at /usr/include/c++/7/bits/stl_vector.h:798
+#1  0x00005555555553c5 in partialDerivate (pos=0) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+
+Backtrace END
+Memory content before bitflip:0x200x4e0x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd81c
+address max offset: 4
+Memory content after  bitflip:0xf90x0b0x2f0xbd
+frame name: train
+symbol name: iterations
+symbol filename: lreg.cpp
+symbol line: 105
+value: -1120990215
+value address: 0x7fffffffd81c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-24 11:54:58]
+Fault Injection Successful after 4.073789834976196s
+[INFO -- 2018-11-24 11:55:00]
+event type: exit
+[INFO -- 2018-11-24 11:55:00]
+exit code: 0

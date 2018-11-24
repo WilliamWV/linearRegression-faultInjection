@@ -1,0 +1,59 @@
+[INFO -- 2018-11-24 11:03:46]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 11:03:46]
+Initialization strings:
+[INFO -- 2018-11-24 11:03:46]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 11:03:46]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 11:03:46]
+initSignal:0
+[INFO -- 2018-11-24 11:03:46]
+endSignal:2
+[INFO -- 2018-11-24 11:03:46]
+faultModel:1
+[EXCEPTION -- 2018-11-24 11:03:47]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-24 11:03:47]
+Backtrace BEGIN:
+#0  0x00007ffff76daa31 in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:215
+#1  0x00007ffff76bcb14 in __pow (x=12, y=1) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=12, __y=1) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=12) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+210	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0x420x2e0xe60x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779f5cc 
+address max offset: 4
+Memory content after  bitflip:0x420x060xe60x3f
+frame name: __ieee754_pow_sse2
+symbol name: ln2a
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 50
+value: {i = {-17156096, 1072039490}, x = 0.68826436805989033}
+value address: 0x7ffff779f5c8 <ln2a>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-24 11:03:47]
+Fault Injection Successful after 1.760481357574463s
+[INFO -- 2018-11-24 11:03:50]
+event type: exit
+[INFO -- 2018-11-24 11:03:50]
+exit code: 0

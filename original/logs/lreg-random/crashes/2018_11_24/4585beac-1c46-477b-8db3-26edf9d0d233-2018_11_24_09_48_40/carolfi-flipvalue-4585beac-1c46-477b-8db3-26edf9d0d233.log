@@ -1,0 +1,57 @@
+[INFO -- 2018-11-24 09:48:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 09:48:37]
+Initialization strings:
+[INFO -- 2018-11-24 09:48:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 09:48:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 09:48:37]
+initSignal:0
+[INFO -- 2018-11-24 09:48:37]
+endSignal:2
+[INFO -- 2018-11-24 09:48:37]
+faultModel:2
+[EXCEPTION -- 2018-11-24 09:48:38]
+gdbException: Cannot access memory at address 0xee3fdd6948636173
+[INFO -- 2018-11-24 09:48:39]
+Backtrace BEGIN:
+#0  std::pow<double, int> (__x=4.6355706431331074e-310, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x00005555555551e7 in predict (v=7) at lreg.cpp:50
+#2  0x000055555555526a in meanSquaredError () at lreg.cpp:61
+#3  0x0000555555555661 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Memory content before bitflip:0x860x730xbb0x3c0x960x080x0a0x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd830
+address max offset: 8
+Memory content after  bitflip:0x7f0xa20x020x640x2b0xd00xa80xc0
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: -3176.0847473929748
+value address: 0x7fffffffd830
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 09:48:39]
+Fault Injection Successful after 2.0952048301696777s
+[INFO -- 2018-11-24 09:48:40]
+event type: exit
+[EXCEPTION -- 2018-11-24 09:48:40]
+exit code: no exit code available

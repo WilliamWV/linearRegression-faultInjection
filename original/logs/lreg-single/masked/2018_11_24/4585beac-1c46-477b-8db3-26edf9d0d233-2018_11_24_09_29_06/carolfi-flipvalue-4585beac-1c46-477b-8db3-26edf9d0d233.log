@@ -1,0 +1,61 @@
+[INFO -- 2018-11-24 09:29:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 09:29:03]
+Initialization strings:
+[INFO -- 2018-11-24 09:29:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 09:29:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 09:29:03]
+initSignal:0
+[INFO -- 2018-11-24 09:29:03]
+endSignal:2
+[INFO -- 2018-11-24 09:29:03]
+faultModel:0
+[INFO -- 2018-11-24 09:29:04]
+Backtrace BEGIN:
+#0  0x0000555555555cf2 in std::vector<double, std::allocator<double> >::size (this=0x55555555549b <adjust(double)+39>) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x0000555555555237 in meanSquaredError () at lreg.cpp:60
+#2  0x0000555555555661 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x9c0x050xad0x7b0xe10x730x9a0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771360
+address max offset: 8
+Memory content after  bitflip:0x9c0x050xad0x7b0xe90x730x9a0x3f
+frame name: meanSquaredError
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 3, capacity 3 = {0.025832794354987962, -0.03408465741669247, -2.9899083377176097}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 09:29:04]
+Fault Injection Successful after 1.4880685806274414s
+[INFO -- 2018-11-24 09:29:06]
+event type: exit
+[INFO -- 2018-11-24 09:29:06]
+exit code: 0

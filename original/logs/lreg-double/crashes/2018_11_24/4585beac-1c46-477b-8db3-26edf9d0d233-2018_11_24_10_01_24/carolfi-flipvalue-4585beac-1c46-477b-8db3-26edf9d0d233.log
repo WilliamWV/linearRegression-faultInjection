@@ -1,0 +1,64 @@
+[INFO -- 2018-11-24 10:01:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 10:01:22]
+Initialization strings:
+[INFO -- 2018-11-24 10:01:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 10:01:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 10:01:22]
+initSignal:0
+[INFO -- 2018-11-24 10:01:22]
+endSignal:2
+[INFO -- 2018-11-24 10:01:22]
+faultModel:1
+[INFO -- 2018-11-24 10:01:23]
+Backtrace BEGIN:
+#0  __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >::base (this=0x7fffffffd6f8) at /usr/include/c++/7/bits/stl_iterator.h:845
+#1  0x0000555555557597 in std::__niter_base<double const*, std::vector<double, std::allocator<double> > > (__it=0.6361907387226271) at /usr/include/c++/7/bits/stl_iterator.h:984
+#2  0x00005555555570d9 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.6361907387226271, __last=0, __result=0.63586905682609662) at /usr/include/c++/7/bits/stl_algobase.h:422
+#3  0x000055555555690b in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.6361907387226271, __last=0, __result=0.63586905682609662) at /usr/include/c++/7/bits/stl_algobase.h:456
+#4  0x000055555555624d in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd860, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#5  0x00005555555556a2 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:124
+#6  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+840	      operator-(difference_type __n) const _GLIBCXX_NOEXCEPT
+841	      { return __normal_iterator(_M_current - __n); }
+842	
+843	      const _Iterator&
+844	      base() const _GLIBCXX_NOEXCEPT
+845	      { return _M_current; }
+846	    };
+847	
+848	  // Note: In what follows, the left- and right-hand-side iterators are
+849	  // allowed to vary in types (conceptually in cv-qualification) so that
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x300x130x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575a148 
+address max offset: 8
+Memory content after  bitflip:0x300x130x770xc50x550x550x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 234881032, capacity 8 = {12, -6, -10, -3, 7, -12, 6, -10, 0, 1.6304166312761136e-322, 0.6361907387226271, -1.0353118756153978, 0, 1.6304166312761136e-322, 0.63586905682609662, -1.0353202056152813, 0, 2.4209216646221081e-322, 0, 8, 12, 5, 0, 4.001931731314097e-322, -10, 8, 12, 5, -5, 14, -4, 12, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 6.3482494834141768e-320, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 0.63586905682609662, -1.0353202056152813, 0, 1.6304166312761136e-322, 4.6355706478263358e-310, -1.0353285365974996, 0, 1.6304166312761136e-322, 0, -1.0353202056152813, 0, 2.167614207999301e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 10:01:23]
+Fault Injection Successful after 1.7441775798797607s
+[INFO -- 2018-11-24 10:01:23]
+event type: exit
+[EXCEPTION -- 2018-11-24 10:01:23]
+exit code: no exit code available

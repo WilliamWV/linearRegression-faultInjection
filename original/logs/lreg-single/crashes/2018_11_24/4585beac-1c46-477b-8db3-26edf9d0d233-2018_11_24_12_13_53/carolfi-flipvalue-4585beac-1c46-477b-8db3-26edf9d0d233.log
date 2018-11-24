@@ -1,0 +1,63 @@
+[INFO -- 2018-11-24 12:13:46]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 12:13:46]
+Initialization strings:
+[INFO -- 2018-11-24 12:13:46]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 12:13:46]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 12:13:46]
+initSignal:0
+[INFO -- 2018-11-24 12:13:46]
+endSignal:2
+[INFO -- 2018-11-24 12:13:46]
+faultModel:0
+[EXCEPTION -- 2018-11-24 12:13:48]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 12:13:49]
+Backtrace BEGIN:
+#0  0x0000555555556944 in std::vector<double, std::allocator<double> >::end (this=0x7fffffffd840) at /usr/include/c++/7/bits/stl_vector.h:582
+#1  0x0000555555556212 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd840, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555641 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+577	       *  element in the %vector.  Iteration is done in ordinary
+578	       *  element order.
+579	       */
+580	      iterator
+581	      end() _GLIBCXX_NOEXCEPT
+582	      { return iterator(this->_M_impl._M_finish); }
+583	
+584	      /**
+585	       *  Returns a read-only (constant) iterator that points one past
+586	       *  the last element in the %vector.  Iteration is done in
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555771330
+address max offset: 8
+Memory content after  bitflip:0x000x400x000x000x000x000x000x00
+frame name: std::vector<double, std::allocator<double> >::end
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 8, capacity 8 = {12, -6, -10, -3, 7, -12, 6, -10}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 12:13:49]
+Fault Injection Successful after 3.152696132659912s
+[INFO -- 2018-11-24 12:13:52]
+event type: exit
+[EXCEPTION -- 2018-11-24 12:13:52]
+exit code: no exit code available

@@ -1,0 +1,57 @@
+[INFO -- 2018-11-24 10:06:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 10:06:59]
+Initialization strings:
+[INFO -- 2018-11-24 10:06:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 10:06:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 10:06:59]
+initSignal:0
+[INFO -- 2018-11-24 10:06:59]
+endSignal:2
+[INFO -- 2018-11-24 10:06:59]
+faultModel:2
+[INFO -- 2018-11-24 10:07:00]
+Backtrace BEGIN:
+#0  0x0000555555557415 in std::_Destroy_aux<true>::__destroy<double*> () at /usr/include/c++/7/bits/stl_construct.h:117
+#1  0x0000555555556e43 in std::_Destroy<double*> (__first=0x555555771490, __last=0x5555557714a8) at /usr/include/c++/7/bits/stl_construct.h:137
+#2  0x0000555555556529 in std::_Destroy<double*, double> (__first=0x555555771490, __last=0x5555557714a8) at /usr/include/c++/7/bits/stl_construct.h:206
+#3  0x0000555555555e47 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd880, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:434
+#4  0x0000555555555720 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+112	  template<>
+113	    struct _Destroy_aux<true>
+114	    {
+115	      template<typename _ForwardIterator>
+116	        static void
+117	        __destroy(_ForwardIterator, _ForwardIterator) { }
+118	    };
+119	
+120	  /**
+121	   * Destroy a range of objects.  If the value_type of the object has
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xa80x140x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7c0
+address max offset: 8
+Memory content after  bitflip:0x480xc30xaa0x5d0xe90xc60x420x4f
+frame name: std::_Destroy<double*, double>
+symbol name: __last
+symbol filename: /usr/include/c++/7/bits/stl_construct.h
+symbol line: 203
+value: 0x5555557714a8
+value address: 0x7fffffffd7c0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 10:07:00]
+Fault Injection Successful after 1.365163803100586s
+[INFO -- 2018-11-24 10:07:01]
+event type: exit
+[INFO -- 2018-11-24 10:07:01]
+exit code: 0

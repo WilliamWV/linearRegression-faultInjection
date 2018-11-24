@@ -1,0 +1,61 @@
+[INFO -- 2018-11-24 09:48:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 09:48:42]
+Initialization strings:
+[INFO -- 2018-11-24 09:48:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 09:48:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 09:48:42]
+initSignal:0
+[INFO -- 2018-11-24 09:48:42]
+endSignal:2
+[INFO -- 2018-11-24 09:48:42]
+faultModel:1
+[INFO -- 2018-11-24 09:48:43]
+Backtrace BEGIN:
+#0  0x0000555555555463 in partialDerivate (pos=2) at lreg.cpp:76
+#1  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#2  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+79	
+80	/**
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0xdb0xdd0x770x970x6d0x4e0xaf0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x5555557715d0
+address max offset: 8
+Memory content after  bitflip:0xdb0xdd0x770x970x6d0x4e0xa60x3f
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 114
+value: std::vector of length 4, capacity 4 = {0.043567108859800384, -0.58410557505814475, -1.9516125311734187, -4.0454388320719303}
+value address: 0x7fffffffd840
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 09:48:43]
+Fault Injection Successful after 1.541487693786621s
+[INFO -- 2018-11-24 09:48:44]
+event type: exit
+[INFO -- 2018-11-24 09:48:44]
+exit code: 0

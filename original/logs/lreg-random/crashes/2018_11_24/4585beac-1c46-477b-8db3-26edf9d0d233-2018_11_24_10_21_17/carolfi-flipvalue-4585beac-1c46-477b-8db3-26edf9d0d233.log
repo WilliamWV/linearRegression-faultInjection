@@ -1,0 +1,56 @@
+[INFO -- 2018-11-24 10:21:16]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 10:21:16]
+Initialization strings:
+[INFO -- 2018-11-24 10:21:16]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 10:21:16]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 10:21:16]
+initSignal:0
+[INFO -- 2018-11-24 10:21:16]
+endSignal:2
+[INFO -- 2018-11-24 10:21:16]
+faultModel:2
+[INFO -- 2018-11-24 10:21:16]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=-10, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:76
+#1  0x00007ffff76bcb14 in __pow (x=-10, y=0) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=-10, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=-10) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+71	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x2c0xfd0xff0xff0xff0xff0x970x42
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5b8 
+address max offset: 8
+Memory content after  bitflip:0x120xff0xe00xda0x6d0x4b0xb80x1a
+frame name: __ieee754_pow_sse2
+symbol name: bigu
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 52
+value: {i = {-622788846, 448285549}, x = 5.85481476112596e-180}
+value address: 0x7ffff779f5b8 <bigu>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-24 10:21:16]
+Fault Injection Successful after 0.8162360191345215s
+[INFO -- 2018-11-24 10:21:17]
+event type: exit
+[EXCEPTION -- 2018-11-24 10:21:17]
+exit code: no exit code available

@@ -159,6 +159,8 @@ vector <double> execute(char* input){
 			inp >> temp;
 			ans.push_back(predict(temp));
 		}
+		x.clear();
+		y.clear();
 			
 	}
 	return ans;

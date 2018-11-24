@@ -1,0 +1,56 @@
+[INFO -- 2018-11-24 11:55:01]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 11:55:01]
+Initialization strings:
+[INFO -- 2018-11-24 11:55:01]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 11:55:01]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 11:55:01]
+initSignal:0
+[INFO -- 2018-11-24 11:55:01]
+endSignal:2
+[INFO -- 2018-11-24 11:55:01]
+faultModel:0
+[EXCEPTION -- 2018-11-24 11:55:03]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-24 11:55:03]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb37 in __pow (x=-7, y=0) at w_pow_compat.c:31
+#1  0x0000555555555d5f in std::pow<double, int> (__x=-7, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555401 in partialDerivate (pos=0) at lreg.cpp:74
+#3  0x00005555555554b3 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#4  0x000055555555565c in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+26	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x780x130x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575a190 
+address max offset: 8
+Memory content after  bitflip:0x780x130x750x550x550x550x000x00
+frame name: partialDerivate
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 3, capacity -16381 = {-0.090921001198341664, 0.014740735413407141, -2.9894565971893892}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 11:55:03]
+Fault Injection Successful after 2.664060115814209s
+[INFO -- 2018-11-24 11:55:06]
+event type: exit
+[INFO -- 2018-11-24 11:55:06]
+exit code: 0

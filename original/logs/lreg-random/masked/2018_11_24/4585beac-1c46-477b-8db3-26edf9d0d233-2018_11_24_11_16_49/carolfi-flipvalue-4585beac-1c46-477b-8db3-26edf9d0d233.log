@@ -1,0 +1,64 @@
+[INFO -- 2018-11-24 11:16:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 11:16:43]
+Initialization strings:
+[INFO -- 2018-11-24 11:16:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 11:16:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 11:16:43]
+initSignal:0
+[INFO -- 2018-11-24 11:16:43]
+endSignal:2
+[INFO -- 2018-11-24 11:16:43]
+faultModel:2
+[EXCEPTION -- 2018-11-24 11:16:45]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-24 11:16:45]
+Backtrace BEGIN:
+#0  0x0000555555555d3c in std::pow<double, int> (__x=4.6355706431299454e-310, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x0000555555555401 in partialDerivate (pos=0) at lreg.cpp:74
+#2  0x00005555555554b3 in adjust (alpha=0.00020000000000000001) at lreg.cpp:87
+#3  0x000055555555565c in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x600x140x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd868
+address max offset: 8
+Memory content after  bitflip:0x2c0xca0xc80x0f0x6c0x690x460xd6
+frame name: train
+symbol name: bestT
+symbol filename: lreg.cpp
+symbol line: 115
+value: std::vector of length -375836701671934276, capacity 2 = {0.65510283340245656, -1.0348221443553458, 0, 1.6304166312761136e-322, 4.6355706478263358e-310, -1.034830416397456, 0, 1.6304166312761136e-322, 0, -1.0348221443553458, 0, 2.167614207999301e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x7fffffffd860
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 11:16:45]
+Fault Injection Successful after 2.8835856914520264s
+[INFO -- 2018-11-24 11:16:48]
+event type: exit
+[INFO -- 2018-11-24 11:16:48]
+exit code: 0

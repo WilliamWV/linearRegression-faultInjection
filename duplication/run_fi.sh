@@ -9,5 +9,7 @@ done
 cd ../linearRegression/$FOLDER
 ./faultinj_parser.py logs
 mv $FOLDER_*.csv faultReport
+python3 outputComparer.py > sdcDiff.log
+make graph > dump
 rm -rf dump
 

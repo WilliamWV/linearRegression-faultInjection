@@ -1,0 +1,63 @@
+[INFO -- 2018-11-24 10:49:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 10:49:13]
+Initialization strings:
+[INFO -- 2018-11-24 10:49:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 10:49:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 10:49:13]
+initSignal:0
+[INFO -- 2018-11-24 10:49:13]
+endSignal:2
+[INFO -- 2018-11-24 10:49:13]
+faultModel:0
+[EXCEPTION -- 2018-11-24 10:49:15]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 10:49:15]
+Backtrace BEGIN:
+#0  0x0000555555554ec0 in operator new(unsigned long)@plt ()
+#1  0x00005555555577f4 in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd880, __n=3) at /usr/include/c++/7/ext/new_allocator.h:111
+#2  0x000055555555757d in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=3) at /usr/include/c++/7/bits/alloc_traits.h:436
+#3  0x0000555555557054 in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd880, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#4  0x0000555555556db9 in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd880, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#5  0x0000555555556489 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd880, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#6  0x0000555555555f35 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd880, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#7  0x00005555555556db in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#8  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+140		4° Line : values y of the training set
+141		5° Line : set z of new inputs to predict*/
+142	
+143	
+144	int main(int argc, char* argv[]){
+145		
+146		if (argc != 3) {
+147			cout << "Wrong number of arguments" <<endl;
+148			cout <<"  Use as : " << endl; 
+149			cout <<'\t'<<argv[0]<<" <input file> "<<"<output file>"<<endl;
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffe1fd 
+address max offset: 1
+Memory content after  bitflip:0x0f
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 144
+value: 0x7fffffffde58
+value address: 0x7fffffffd900
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 10:49:15]
+Fault Injection Successful after 2.5326929092407227s
+[INFO -- 2018-11-24 10:49:17]
+event type: exit
+[INFO -- 2018-11-24 10:49:17]
+exit code: 0

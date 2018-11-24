@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
 		//Alpha: decreases with increases of degree
 		double alpha = 0.0002 / pow(i + 1, 2);
 		//Iterations: increase with increase of degree		
-		int iterations = 15000 * (i + 1);
+		int iterations = 10000 * (i + 1);
 		//N: the degree representations;
 		int N = i + 2;
 		//size of training set: increases with the degree
@@ -37,7 +37,6 @@ int main(int argc, char* argv[]){
 		//The y values are corresponding to the application of a polynomial 
 		//with degree i+1 whose coefficients are randomy generated between [-2*(i+1), 2*(i+1)]
 		//The z values are in [-2 * sizeOfTrainingSet, 2 * sizeOfTrainingSet]
-		srand(time(NULL));
 		vector<double> x;
 		vector<double> coeff;
 		vector<double> y;

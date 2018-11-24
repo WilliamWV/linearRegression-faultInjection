@@ -1,0 +1,58 @@
+[INFO -- 2018-11-24 09:22:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 09:22:42]
+Initialization strings:
+[INFO -- 2018-11-24 09:22:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 09:22:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 09:22:42]
+initSignal:0
+[INFO -- 2018-11-24 09:22:42]
+endSignal:2
+[INFO -- 2018-11-24 09:22:42]
+faultModel:1
+[EXCEPTION -- 2018-11-24 09:22:43]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-24 09:22:43]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 09:22:43]
+Backtrace BEGIN:
+#0  0x000055555555660f in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:94
+#1  0x0000555555555f14 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd880, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x00005555555556db in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+89	    template<typename _Ptr>
+90	      static typename std::enable_if<__is_custom_pointer<_Ptr>::value>::type
+91	      destroy(_Alloc& __a, _Ptr __p)
+92	      { _Base_type::destroy(__a, std::addressof(*__p)); }
+93	
+94	    static _Alloc _S_select_on_copy(const _Alloc& __a)
+95	    { return _Base_type::select_on_container_copy_construction(__a); }
+96	
+97	    static void _S_on_swap(_Alloc& __a, _Alloc& __b)
+98	    { std::__alloc_on_swap(__a, __b); }
+
+Backtrace END
+Memory content before bitflip:0x060x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd92c
+address max offset: 4
+Memory content after  bitflip:0x060x440x000x00
+frame name: main
+symbol name: predictions
+symbol filename: lreg.cpp
+symbol line: 161
+value: 17414
+value address: 0x7fffffffd92c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-24 09:22:43]
+Fault Injection Successful after 1.8372538089752197s
+[INFO -- 2018-11-24 09:22:44]
+event type: exit
+[EXCEPTION -- 2018-11-24 09:22:44]
+exit code: no exit code available

@@ -1,0 +1,64 @@
+[INFO -- 2018-11-24 10:31:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 10:31:35]
+Initialization strings:
+[INFO -- 2018-11-24 10:31:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 10:31:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 10:31:35]
+initSignal:0
+[INFO -- 2018-11-24 10:31:35]
+endSignal:2
+[INFO -- 2018-11-24 10:31:35]
+faultModel:2
+[EXCEPTION -- 2018-11-24 10:31:36]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-24 10:31:38]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd8a0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#1  0x0000555555556489 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd8a0, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#2  0x0000555555555f35 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd8a0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x00005555555556c3 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+182	
+183	    private:
+184	      void
+185	      _M_create_storage(size_t __n)
+186	      {
+187		this->_M_impl._M_start = this->_M_allocate(__n);
+188		this->_M_impl._M_finish = this->_M_impl._M_start;
+189		this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+190	      }
+191	    };
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x780x130x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575a188 
+address max offset: 8
+Memory content after  bitflip:0xbd0xba0x6d0x0b0x1e0xe10x570xce
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length -447279710595001108, capacity 3 = {0.71418156572892422, -0.028183373154601007, -2.9916447808042563, 2.4209216646221081e-322, 0, 8, 12, 5, 0, 4.001931731314097e-322, 4.6355706478057827e-310, 1.5810100666919889e-322, -143.00012207031247, -8.0003907742435221, 1, 1, -1319, -23, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 1.124676287488633e-312, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 0.71418156572892422, -0.028183373154601007, -2.9916447808042563, 1.6304166312761136e-322, 4.6355706478263358e-310, -0.028185138011052765, -2.991644261506671, 1.6304166312761136e-322, 0, -0.028176679057335029, -2.9917772747233764, 7.1639518646980749e-322, -4, -3, -7, -2, -1, -1, -21, -3, -19, 13, 6, 23, 0, 0, 0, 0, 0, 7.1639518646980749e-322, -44, -23, -143, -8, 1, 1, -1319, -23, -1079, -503, -104, -1583, 0, 0, 0, 0, 0, 2.1533851173990731e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575a180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 10:31:38]
+Fault Injection Successful after 3.183511257171631s
+[INFO -- 2018-11-24 10:31:38]
+event type: exit
+[EXCEPTION -- 2018-11-24 10:31:38]
+exit code: no exit code available

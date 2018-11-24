@@ -1,0 +1,56 @@
+[INFO -- 2018-11-24 09:46:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 09:46:23]
+Initialization strings:
+[INFO -- 2018-11-24 09:46:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 09:46:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 09:46:23]
+initSignal:0
+[INFO -- 2018-11-24 09:46:23]
+endSignal:2
+[INFO -- 2018-11-24 09:46:23]
+faultModel:0
+[INFO -- 2018-11-24 09:46:24]
+Backtrace BEGIN:
+#0  __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >::__normal_iterator (this=0x7fffffffd790, __i=@0x7fffffffd868: 0x555555771468) at /usr/include/c++/7/bits/stl_iterator.h:779
+#1  0x00005555555568ac in std::vector<double, std::allocator<double> >::begin (this=0x7fffffffd860) at /usr/include/c++/7/bits/stl_vector.h:564
+#2  0x0000555555556221 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x00005555555556a2 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:124
+#4  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+774	
+775	      _GLIBCXX_CONSTEXPR __normal_iterator() _GLIBCXX_NOEXCEPT
+776	      : _M_current(_Iterator()) { }
+777	
+778	      explicit
+779	      __normal_iterator(const _Iterator& __i) _GLIBCXX_NOEXCEPT
+780	      : _M_current(__i) { }
+781	
+782	      // Allow iterator to const_iterator conversion
+783	      template<typename _Iter>
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x600xd80xff0xff0xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0x600xd80xff0xff0xff0x7f0x000x40
+frame name: std::vector<double, std::allocator<double> >::begin
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd860
+value address: 0x7fffffffd788
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 09:46:24]
+Fault Injection Successful after 1.7869105339050293s
+[INFO -- 2018-11-24 09:46:25]
+event type: exit
+[INFO -- 2018-11-24 09:46:25]
+exit code: 0

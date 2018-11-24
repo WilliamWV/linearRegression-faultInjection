@@ -1,0 +1,21 @@
+[INFO -- 2018-11-24 11:30:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 11:30:47]
+Initialization strings:
+[INFO -- 2018-11-24 11:30:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 11:30:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 11:30:47]
+initSignal:0
+[INFO -- 2018-11-24 11:30:47]
+endSignal:2
+[INFO -- 2018-11-24 11:30:47]
+faultModel:0
+[EXCEPTION -- 2018-11-24 11:30:48]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-24 11:30:51]
+event type: exit
+[INFO -- 2018-11-24 11:30:51]
+exit code: 0

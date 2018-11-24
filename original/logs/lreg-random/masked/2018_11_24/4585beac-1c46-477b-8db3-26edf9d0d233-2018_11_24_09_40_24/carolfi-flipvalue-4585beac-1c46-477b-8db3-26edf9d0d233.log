@@ -1,0 +1,60 @@
+[INFO -- 2018-11-24 09:40:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 09:40:19]
+Initialization strings:
+[INFO -- 2018-11-24 09:40:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 09:40:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-24 09:40:19]
+initSignal:0
+[INFO -- 2018-11-24 09:40:19]
+endSignal:2
+[INFO -- 2018-11-24 09:40:19]
+faultModel:2
+[EXCEPTION -- 2018-11-24 09:40:22]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 09:40:22]
+Backtrace BEGIN:
+#0  0x00007ffff76b9990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76bcb14 in __pow (x=-28, y=2) at w_pow_compat.c:30
+#2  0x0000555555555d5f in std::pow<double, int> (__x=-28, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x00005555555551e7 in predict (v=-28) at lreg.cpp:50
+#4  0x00005555555553ac in partialDerivate (pos=0) at lreg.cpp:74
+#5  0x00005555555554b3 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#6  0x000055555555565c in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+140		4° Line : values y of the training set
+141		5° Line : set z of new inputs to predict*/
+142	
+143	
+144	int main(int argc, char* argv[]){
+145		
+146		if (argc != 3) {
+147			cout << "Wrong number of arguments" <<endl;
+148			cout <<"  Use as : " << endl; 
+149			cout <<'\t'<<argv[0]<<" <input file> "<<"<output file>"<<endl;
+
+Backtrace END
+Memory content before bitflip:0x140x6a0x560x560x9f0xfe0x090x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd838
+address max offset: 8
+Memory content after  bitflip:0x280xdd0x9e0x950x820xb50xbe0x75
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 1.4755104835499746e+259
+value address: 0x7fffffffd838
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 09:40:22]
+Fault Injection Successful after 3.7489285469055176s
+[INFO -- 2018-11-24 09:40:23]
+event type: exit
+[INFO -- 2018-11-24 09:40:23]
+exit code: 0
