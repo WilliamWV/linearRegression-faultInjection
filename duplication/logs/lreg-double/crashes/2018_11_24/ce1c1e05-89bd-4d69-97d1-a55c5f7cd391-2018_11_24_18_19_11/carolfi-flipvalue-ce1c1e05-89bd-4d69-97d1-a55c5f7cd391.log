@@ -1,0 +1,65 @@
+[INFO -- 2018-11-24 18:19:06]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 18:19:06]
+Initialization strings:
+[INFO -- 2018-11-24 18:19:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 18:19:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 18:19:07]
+initSignal:0
+[INFO -- 2018-11-24 18:19:07]
+endSignal:6
+[INFO -- 2018-11-24 18:19:07]
+faultModel:1
+[EXCEPTION -- 2018-11-24 18:19:08]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-24 18:19:09]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 18:19:09]
+Backtrace BEGIN:
+#0  __gnu_cxx::new_allocator<double>::new_allocator (this=0x7fffffffd5d0) at /usr/include/c++/7/ext/new_allocator.h:81
+#1  0x000055555555746d in std::allocator<double>::allocator (this=0x7fffffffd5d0, __a=...) at /usr/include/c++/7/bits/allocator.h:134
+#2  0x0000555555557241 in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::_Vector_impl (this=0x7fffffffd5d0, __a=...) at /usr/include/c++/7/bits/stl_vector.h:93
+#3  0x00005555555568a0 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd5d0, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:137
+#4  0x000055555555631f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5d0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#5  0x000055555555572b in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#6  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#7  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+76	      typedef std::true_type propagate_on_container_move_assignment;
+77	#endif
+78	
+79	      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+80	
+81	      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+82	
+83	      template<typename _Tp1>
+84		new_allocator(const new_allocator<_Tp1>&) _GLIBCXX_USE_NOEXCEPT { }
+85	
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772490
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x0c0x000x000x00
+frame name: std::_Vector_base<double, std::allocator<double> >::_Vector_impl::_Vector_impl
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd5d0
+value address: 0x7fffffffd4a8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 18:19:09]
+Fault Injection Successful after 2.896185874938965s
+[INFO -- 2018-11-24 18:19:11]
+event type: exit
+[EXCEPTION -- 2018-11-24 18:19:11]
+exit code: no exit code available

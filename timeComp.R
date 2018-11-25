@@ -12,7 +12,7 @@ dat <-data.frame(
 	len = c(2.677, 5.324, 3.125)
 )
 
-ggplot(data=dat, aes(x=dose, y=len)) + geom_bar() +ylab("Percentage") + xlab("Models")
+ggplot(data=dat, aes(x=dose, y=len)) + geom_bar() +ylab("Time") + xlab("Models")
 
 # Save plot to file
 ggsave(args[1])

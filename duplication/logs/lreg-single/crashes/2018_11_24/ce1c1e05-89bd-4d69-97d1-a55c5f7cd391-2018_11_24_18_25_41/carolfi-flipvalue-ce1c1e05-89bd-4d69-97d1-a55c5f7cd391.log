@@ -1,0 +1,58 @@
+[INFO -- 2018-11-24 18:25:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 18:25:35]
+Initialization strings:
+[INFO -- 2018-11-24 18:25:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 18:25:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 18:25:35]
+initSignal:0
+[INFO -- 2018-11-24 18:25:35]
+endSignal:6
+[INFO -- 2018-11-24 18:25:35]
+faultModel:0
+[EXCEPTION -- 2018-11-24 18:25:39]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 18:25:39]
+Backtrace BEGIN:
+#0  0x0000555555556102 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b180 <T>, __n=4294967297) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x0000555555555217 in predict (v=-9) at lreg.cpp:50
+#2  0x000055555555530a in meanSquaredError () at lreg.cpp:61
+#3  0x00005555555556b1 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd560
+address max offset: 8
+Memory content after  bitflip:0x460x5a0xb70xd40x390x4d0xf70x3e
+frame name: train
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 105
+value: 2.2222198181010595e-05
+value address: 0x7fffffffd560
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 18:25:39]
+Fault Injection Successful after 4.920246124267578s
+[INFO -- 2018-11-24 18:25:40]
+event type: exit
+[EXCEPTION -- 2018-11-24 18:25:40]
+exit code: no exit code available

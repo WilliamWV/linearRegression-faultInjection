@@ -1,0 +1,53 @@
+[INFO -- 2018-11-24 18:25:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 18:25:42]
+Initialization strings:
+[INFO -- 2018-11-24 18:25:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 18:25:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 18:25:42]
+initSignal:0
+[INFO -- 2018-11-24 18:25:42]
+endSignal:6
+[INFO -- 2018-11-24 18:25:42]
+faultModel:1
+[EXCEPTION -- 2018-11-24 18:25:45]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-24 18:25:45]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 18:25:46]
+Backtrace BEGIN:
+#0  0x00007ffff6f1dc01 in __GI___libc_free (mem=0x555555772669) at malloc.c:3123
+#1  0x0000555555557cda in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd590, __p=0x555555772669) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x00005555555574e9 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772669, __n=2) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x0000555555556b94 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd590, __p=0x555555772669, __n=2) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x00005555555565a0 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd590, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:210
+#5  0x0000555555555691 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:119
+#6  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#7  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+3118	malloc.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd688
+address max offset: 8
+Memory content after  bitflip:0x460x5a0x170xf40x390x4d0xf70x3e
+frame name: execute
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 143
+value: 2.2222199964472862e-05
+value address: 0x7fffffffd688
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 18:25:46]
+Fault Injection Successful after 4.179905891418457s
+[INFO -- 2018-11-24 18:25:46]
+event type: exit
+[EXCEPTION -- 2018-11-24 18:25:46]
+exit code: no exit code available

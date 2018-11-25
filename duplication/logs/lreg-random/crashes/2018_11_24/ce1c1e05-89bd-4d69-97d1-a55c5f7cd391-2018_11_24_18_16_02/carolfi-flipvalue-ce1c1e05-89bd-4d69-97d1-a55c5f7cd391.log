@@ -1,0 +1,54 @@
+[INFO -- 2018-11-24 18:15:57]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 18:15:57]
+Initialization strings:
+[INFO -- 2018-11-24 18:15:57]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 18:15:57]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 18:15:57]
+initSignal:0
+[INFO -- 2018-11-24 18:15:57]
+endSignal:6
+[INFO -- 2018-11-24 18:15:57]
+faultModel:2
+[EXCEPTION -- 2018-11-24 18:15:59]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-24 18:15:59]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 18:16:01]
+Backtrace BEGIN:
+#0  0x00007ffff6f1dc01 in __GI___libc_free (mem=0x555555772340) at malloc.c:3123
+#1  0x0000555555557cda in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd5b0, __p=0x555555772340) at /usr/include/c++/7/ext/new_allocator.h:125
+#2  0x00005555555574e9 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772340, __n=3) at /usr/include/c++/7/bits/alloc_traits.h:462
+#3  0x0000555555556b94 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd5b0, __p=0x555555772340, __n=3) at /usr/include/c++/7/bits/stl_vector.h:180
+#4  0x0000555555556851 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd5b0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#5  0x000055555555623d in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd5b0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#6  0x00005555555557b1 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:115
+#7  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#8  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+3118	malloc.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd688
+address max offset: 8
+Memory content after  bitflip:0x860x3f0x9f0x6c0x170x3e0x420xfa
+frame name: execute
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 143
+value: -8.2784951048012126e+280
+value address: 0x7fffffffd688
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 18:16:01]
+Fault Injection Successful after 4.142400503158569s
+[INFO -- 2018-11-24 18:16:01]
+event type: exit
+[EXCEPTION -- 2018-11-24 18:16:01]
+exit code: no exit code available

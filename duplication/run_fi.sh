@@ -2,7 +2,7 @@ FOLDER=duplication
 make > dump
 cd ../../carol-fi
 rm -rf logs
-./fault_injector.py -c ../linearRegression/$FOLDER/lreg.conf -i 500 -d /tmp/lreg/detected.log
+./fault_injector.py -c ../linearRegression/$FOLDER/lreg.conf -i 1000 -d /tmp/lreg/detected.log
 for i in $(ls logs); do
 	rsync -av logs/$i/* ../linearRegression/$FOLDER/logs/$i/ > dump
 done

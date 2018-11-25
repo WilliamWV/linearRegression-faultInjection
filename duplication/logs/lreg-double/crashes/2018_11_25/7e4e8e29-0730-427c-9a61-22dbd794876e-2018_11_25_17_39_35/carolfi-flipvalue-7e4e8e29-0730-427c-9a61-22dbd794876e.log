@@ -1,0 +1,63 @@
+[INFO -- 2018-11-25 17:39:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 17:39:21]
+Initialization strings:
+[INFO -- 2018-11-25 17:39:21]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 17:39:21]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 17:39:21]
+initSignal:0
+[INFO -- 2018-11-25 17:39:21]
+endSignal:6
+[INFO -- 2018-11-25 17:39:21]
+faultModel:1
+[EXCEPTION -- 2018-11-25 17:39:22]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-25 17:39:22]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-25 17:39:26]
+Backtrace BEGIN:
+#0  my_log2 (error=<synthetic pointer>, delta=<synthetic pointer>, x=17) at ../sysdeps/ieee754/dbl-64/e_pow.c:420
+#1  power1 (y=13, x=17) at ../sysdeps/ieee754/dbl-64/e_pow.c:227
+#2  __ieee754_pow_sse2 (x=17, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:116
+#3  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#4  0x00007ffff76bcb14 in __pow (x=-17, y=13) at w_pow_compat.c:30
+#5  0x000055555555621b in std::pow<double, int> (__x=-17, __y=13) at /usr/include/c++/7/cmath:418
+#6  0x0000555555555451 in partialDerivate (pos=13) at lreg.cpp:74
+#7  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#8  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#9  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#10 0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+415	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x2c0xfd0xff0xff0xff0xff0x970x42
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779f5b8 
+address max offset: 8
+Memory content after  bitflip:0x2c0xfd0xeb0xff0xff0xff0x970x42
+frame name: __ieee754_pow_sse2
+symbol name: bigu
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 52
+value: {i = {-1311444, 1117257727}, x = 6597069765375.293}
+value address: 0x7ffff779f5b8 <bigu>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-25 17:39:26]
+Fault Injection Successful after 5.035076856613159s
+[INFO -- 2018-11-25 17:39:34]
+event type: exit
+[EXCEPTION -- 2018-11-25 17:39:34]
+exit code: no exit code available

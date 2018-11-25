@@ -1,0 +1,62 @@
+[INFO -- 2018-11-25 14:33:09]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 14:33:09]
+Initialization strings:
+[INFO -- 2018-11-25 14:33:09]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 14:33:09]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 14:33:09]
+initSignal:0
+[INFO -- 2018-11-25 14:33:09]
+endSignal:6
+[INFO -- 2018-11-25 14:33:09]
+faultModel:2
+[EXCEPTION -- 2018-11-25 14:33:10]
+gdbException: Cannot access memory at address 0x24c53cd18698db0a
+[INFO -- 2018-11-25 14:33:10]
+Backtrace BEGIN:
+#0  0x0000555555556b99 in std::vector<double, std::allocator<double> >::begin (this=0x55555575b180 <T>) at /usr/include/c++/7/bits/stl_vector.h:573
+#1  0x00005555555566fb in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd590, __x=std::vector of length -331187125173368532, capacity -331187125173368532 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555691 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:119
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+568	       *  first element in the %vector.  Iteration is done in ordinary
+569	       *  element order.
+570	       */
+571	      const_iterator
+572	      begin() const _GLIBCXX_NOEXCEPT
+573	      { return const_iterator(this->_M_impl._M_start); }
+574	
+575	      /**
+576	       *  Returns a read/write iterator that points one past the last
+577	       *  element in the %vector.  Iteration is done in ordinary
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x580x230x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd5a0
+address max offset: 8
+Memory content after  bitflip:0xd50x9f0x240x0d0xf40x180x570xc6
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd590
+value address: 0x7fffffffd508
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 14:33:10]
+Fault Injection Successful after 1.7852089405059814s
+[INFO -- 2018-11-25 14:33:10]
+event type: exit
+[EXCEPTION -- 2018-11-25 14:33:10]
+exit code: no exit code available

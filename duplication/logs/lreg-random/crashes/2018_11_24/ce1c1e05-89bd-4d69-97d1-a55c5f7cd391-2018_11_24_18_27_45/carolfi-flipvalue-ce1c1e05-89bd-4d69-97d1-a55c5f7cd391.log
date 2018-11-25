@@ -1,0 +1,59 @@
+[INFO -- 2018-11-24 18:27:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 18:27:42]
+Initialization strings:
+[INFO -- 2018-11-24 18:27:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 18:27:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 18:27:42]
+initSignal:0
+[INFO -- 2018-11-24 18:27:42]
+endSignal:6
+[INFO -- 2018-11-24 18:27:42]
+faultModel:2
+[EXCEPTION -- 2018-11-24 18:27:43]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-24 18:27:43]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-24 18:27:45]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0f897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff703cb9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1690a in malloc_printerr (str=str@entry=0x7ffff703e870 "double free or corruption (out)") at malloc.c:5350
+#4  0x00007ffff6f1de75 in _int_free (have_lock=0, p=0x555555772650, av=0x7ffff7271c40 <main_arena>) at malloc.c:4278
+#5  __GI___libc_free (mem=0x555555772660) at malloc.c:3124
+#6  0x0000555555557cda in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd590, __p=0x555555772660) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x00005555555574e9 in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772660, __n=4) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x0000555555556b94 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd590, __p=0x555555772660, __n=4) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x0000555555556851 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd590, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#10 0x000055555555623d in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd590, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#11 0x00005555555557c0 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:114
+#12 0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#13 0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x080x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd674
+address max offset: 4
+Memory content after  bitflip:0x040x7e0x380x59
+frame name: execute
+symbol name: predictions
+symbol filename: lreg.cpp
+symbol line: 144
+value: 1496874500
+value address: 0x7fffffffd674
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-24 18:27:45]
+Fault Injection Successful after 3.3467094898223877s
+[INFO -- 2018-11-24 18:27:45]
+event type: exit
+[EXCEPTION -- 2018-11-24 18:27:45]
+exit code: no exit code available

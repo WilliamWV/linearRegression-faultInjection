@@ -1,0 +1,58 @@
+[INFO -- 2018-11-25 17:55:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 17:55:21]
+Initialization strings:
+[INFO -- 2018-11-25 17:55:21]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 17:55:21]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 17:55:21]
+initSignal:0
+[INFO -- 2018-11-25 17:55:21]
+endSignal:6
+[INFO -- 2018-11-25 17:55:21]
+faultModel:2
+[EXCEPTION -- 2018-11-25 17:55:24]
+gdbException: Cannot access memory at address 0x60659be945cab90c
+[INFO -- 2018-11-25 17:55:24]
+Backtrace BEGIN:
+#0  0x0000555555557606 in __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >::__normal_iterator (this=0x7fffffffd4e0, __i=@0x7fffffffd598: 0x555555772350) at /usr/include/c++/7/bits/stl_iterator.h:779
+#1  0x0000555555556da8 in std::vector<double, std::allocator<double> >::begin (this=0x7fffffffd590) at /usr/include/c++/7/bits/stl_vector.h:564
+#2  0x00005555555566dd in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd590, __x=std::vector of length -868254450186875541, capacity -868254450186875541 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x0000555555555691 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:119
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+774	
+775	      _GLIBCXX_CONSTEXPR __normal_iterator() _GLIBCXX_NOEXCEPT
+776	      : _M_current(_Iterator()) { }
+777	
+778	      explicit
+779	      __normal_iterator(const _Iterator& __i) _GLIBCXX_NOEXCEPT
+780	      : _M_current(__i) { }
+781	
+782	      // Allow iterator to const_iterator conversion
+783	      template<typename _Iter>
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x2a0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd560
+address max offset: 8
+Memory content after  bitflip:0x4e0xa40xf70x410xb10xff0x1b0x73
+frame name: train
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 105
+value: 3.0588336933892147e+246
+value address: 0x7fffffffd560
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 17:55:24]
+Fault Injection Successful after 3.391052722930908s
+[INFO -- 2018-11-25 17:55:24]
+event type: exit
+[EXCEPTION -- 2018-11-25 17:55:24]
+exit code: no exit code available

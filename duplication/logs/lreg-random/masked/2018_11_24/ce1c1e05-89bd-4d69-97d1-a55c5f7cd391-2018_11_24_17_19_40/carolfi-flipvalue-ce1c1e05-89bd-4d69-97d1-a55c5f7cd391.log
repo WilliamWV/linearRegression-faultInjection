@@ -1,0 +1,61 @@
+[INFO -- 2018-11-24 17:19:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 17:19:35]
+Initialization strings:
+[INFO -- 2018-11-24 17:19:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 17:19:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 17:19:35]
+initSignal:0
+[INFO -- 2018-11-24 17:19:35]
+endSignal:6
+[INFO -- 2018-11-24 17:19:35]
+faultModel:2
+[INFO -- 2018-11-24 17:19:36]
+Backtrace BEGIN:
+#0  0x0000555555557499 in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.52069074405560267, __last=4.6355706480287051e-310, __result=0x55555555728b <std::_Vector_base<double, std::allocator<double> >::_M_create_storage(unsigned long)+35>) at /usr/include/c++/7/bits/stl_uninitialized.h:115
+#1  0x0000555555556b4d in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=0.52069074405560267, __last=1.6304166312761136e-322, __result=0x555555772490) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#2  0x000055555555636d in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5d0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#3  0x000055555555572b in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+110	   *
+111	   *  Like copy(), but does not require an initialized output range.
+112	  */
+113	  template<typename _InputIterator, typename _ForwardIterator>
+114	    inline _ForwardIterator
+115	    uninitialized_copy(_InputIterator __first, _InputIterator __last,
+116			       _ForwardIterator __result)
+117	    {
+118	      typedef typename iterator_traits<_InputIterator>::value_type
+119		_ValueType1;
+
+Backtrace END
+Fliping value of field: _M_current
+Fliping a bit of the pointer
+Memory content before bitflip:0x680x240x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd4e0
+address max offset: 8
+Memory content after  bitflip:0x600x120x620xc30x250x480x130x98
+frame name: std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double>
+symbol name: __last
+symbol filename: /usr/include/c++/7/bits/stl_uninitialized.h
+symbol line: 287
+value: <error reading variable: Cannot access memory at address 0x98134825c3621260>
+value address: 0x7fffffffd4e0
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_current
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-24 17:19:36]
+Fault Injection Successful after 1.8180737495422363s
+[INFO -- 2018-11-24 17:19:39]
+event type: exit
+[INFO -- 2018-11-24 17:19:39]
+exit code: 0

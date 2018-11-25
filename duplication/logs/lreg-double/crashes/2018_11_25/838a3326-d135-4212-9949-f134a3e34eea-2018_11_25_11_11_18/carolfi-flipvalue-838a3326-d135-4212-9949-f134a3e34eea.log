@@ -1,0 +1,65 @@
+[INFO -- 2018-11-25 11:11:15]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 11:11:15]
+Initialization strings:
+[INFO -- 2018-11-25 11:11:15]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 11:11:15]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 11:11:15]
+initSignal:0
+[INFO -- 2018-11-25 11:11:15]
+endSignal:6
+[INFO -- 2018-11-25 11:11:15]
+faultModel:1
+[EXCEPTION -- 2018-11-25 11:11:16]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-25 11:11:16]
+Backtrace BEGIN:
+#0  0x00005555555561d4 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b180 <T>, __n=0) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x0000555555555217 in predict (v=6) at lreg.cpp:50
+#2  0x000055555555530a in meanSquaredError () at lreg.cpp:61
+#3  0x00005555555556b1 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x5555557723f0
+address max offset: 8
+Memory content after  bitflip:0x120x000x000x000x000x000x000x00
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 23, capacity 23 = {9.775796363198735e-150, -7.1054273576010019e-15, -2.4265018250827921e+83, 4.5481400735864895e-305, 9.775796363198735e-150, -8.2275227866060302e+62, 2.2842472628095706e-100, 4.5481401130676277e-305, 1.131959884853339e-72, 0, 0, 1.7939657984214311e-307, 1.7974424763253486e-307, 1.7887507815655549e-307, 1.5177100720513508e+82, 0, 4.5970025916758781e-305, 1.7939657984214311e-307, 1.7974424763253486e-307, 1.7887507815655549e-307, 4.5792020008078204e-305, 1.7991808152773074e-307, 4.574751853090806e-305, 8.9390990958654368e-221, 1.5177100720513508e+82, 0, 1.4916681462400413e-154, -5.4861240687936887e+303, 1.131959889070218e-72, 2.4703282292062327e-322, 0, 0, 0, 0, 9.775796363198735e-150, -8.2275227866060302e+62, 2.2842472628095706e-100, 4.5481401130676277e-305, 9.775796363198735e-150, -1.2882297539194267e-231, -4.7382947892745518e+226, 4.5481401525575087e-305, 9.775796363198735e-150, 0, 1.4287342391028437e-101, 4.5481401130676277e-305, 1.7573882009934361e+159, 8.4485225438853159e-322, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 11:11:16]
+Fault Injection Successful after 1.7322239875793457s
+[INFO -- 2018-11-25 11:11:16]
+event type: exit
+[EXCEPTION -- 2018-11-25 11:11:16]
+exit code: no exit code available

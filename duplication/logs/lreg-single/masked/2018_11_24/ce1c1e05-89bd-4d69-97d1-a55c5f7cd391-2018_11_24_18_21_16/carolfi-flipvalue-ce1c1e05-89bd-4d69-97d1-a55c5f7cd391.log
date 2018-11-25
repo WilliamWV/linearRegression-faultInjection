@@ -1,0 +1,57 @@
+[INFO -- 2018-11-24 18:21:11]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 18:21:11]
+Initialization strings:
+[INFO -- 2018-11-24 18:21:11]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 18:21:11]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 18:21:11]
+initSignal:0
+[INFO -- 2018-11-24 18:21:11]
+endSignal:6
+[INFO -- 2018-11-24 18:21:11]
+faultModel:0
+[INFO -- 2018-11-24 18:21:14]
+Backtrace BEGIN:
+#0  0x000055555555611d in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b180 <T>, __n=2) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x0000555555555217 in predict (v=7) at lreg.cpp:50
+#2  0x00005555555553fc in partialDerivate (pos=0) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Memory content before bitflip:0xf80xb50xd10x6b0xc90xab0x880x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd4d8
+address max offset: 8
+Memory content after  bitflip:0xf80xbd0xd10x6b0xc90xab0x880x40
+frame name: partialDerivate
+symbol name: pD
+symbol filename: lreg.cpp
+symbol line: 72
+value: 789.47335018025387
+value address: 0x7fffffffd4d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 18:21:14]
+Fault Injection Successful after 3.292931318283081s
+[INFO -- 2018-11-24 18:21:15]
+event type: exit
+[INFO -- 2018-11-24 18:21:15]
+exit code: 0

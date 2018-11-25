@@ -1,0 +1,52 @@
+[INFO -- 2018-11-25 11:48:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 11:48:54]
+Initialization strings:
+[INFO -- 2018-11-25 11:48:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 11:48:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 11:48:54]
+initSignal:0
+[INFO -- 2018-11-25 11:48:54]
+endSignal:6
+[INFO -- 2018-11-25 11:48:54]
+faultModel:2
+[EXCEPTION -- 2018-11-25 11:48:56]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-25 11:48:56]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:447
+#1  __ieee754_pow_sse2 (x=31, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:97
+#2  0x00007ffff76bcb14 in __pow (x=31, y=3) at w_pow_compat.c:30
+#3  0x000055555555621b in std::pow<double, int> (__x=31, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x0000555555555237 in predict (v=31) at lreg.cpp:50
+#5  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#6  0x00005555555556b1 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#7  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#8  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+442	in ../sysdeps/i386/fpu/fenv_private.h
+
+Backtrace END
+Memory content before bitflip:0x870x570x4b0xe20x3e0x540x2c0x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd528
+address max offset: 8
+Memory content after  bitflip:0x790x160x340x990x3d0xd40xae0x05
+frame name: meanSquaredError
+symbol name: error
+symbol filename: lreg.cpp
+symbol line: 59
+value: 2.6537158299795201e-281
+value address: 0x7fffffffd528
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 11:48:56]
+Fault Injection Successful after 2.235536813735962s
+[INFO -- 2018-11-25 11:48:57]
+event type: exit
+[EXCEPTION -- 2018-11-25 11:48:57]
+exit code: no exit code available

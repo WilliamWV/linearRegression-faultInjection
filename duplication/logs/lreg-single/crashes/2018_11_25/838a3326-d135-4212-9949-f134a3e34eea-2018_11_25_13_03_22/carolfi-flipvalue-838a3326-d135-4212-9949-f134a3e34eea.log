@@ -1,0 +1,62 @@
+[INFO -- 2018-11-25 13:03:20]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 13:03:20]
+Initialization strings:
+[INFO -- 2018-11-25 13:03:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 13:03:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 13:03:20]
+initSignal:0
+[INFO -- 2018-11-25 13:03:20]
+endSignal:6
+[INFO -- 2018-11-25 13:03:20]
+faultModel:0
+[INFO -- 2018-11-25 13:03:21]
+Backtrace BEGIN:
+#0  predict (v=-1) at lreg.cpp:52
+#1  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#2  0x00005555555556b1 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+55	/**
+56		Calculates the mean squared error of T
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x210x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772468
+address max offset: 8
+Memory content after  bitflip:0x210x000x010x000x000x000x000x00
+frame name: predict
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 3, capacity 3 = {1.7782242586774508, -0.019060778708401813, -2.9943289553942987}
+value address: 0x55555575b180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 13:03:21]
+Fault Injection Successful after 1.6472716331481934s
+[INFO -- 2018-11-25 13:03:21]
+event type: exit
+[EXCEPTION -- 2018-11-25 13:03:21]
+exit code: no exit code available

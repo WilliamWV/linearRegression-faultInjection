@@ -1,0 +1,61 @@
+[INFO -- 2018-11-25 19:19:20]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 19:19:20]
+Initialization strings:
+[INFO -- 2018-11-25 19:19:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 19:19:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 19:19:20]
+initSignal:0
+[INFO -- 2018-11-25 19:19:20]
+endSignal:6
+[INFO -- 2018-11-25 19:19:20]
+faultModel:1
+[EXCEPTION -- 2018-11-25 19:19:22]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-25 19:19:22]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0f897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff703cb9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1690a in malloc_printerr (str=str@entry=0x7ffff703e7a8 "munmap_chunk(): invalid pointer") at malloc.c:5350
+#4  0x00007ffff6f1decc in munmap_chunk (p=0x555555772384) at malloc.c:2846
+#5  __GI___libc_free (mem=0x555555772394) at malloc.c:3117
+#6  0x0000555555557dac in __gnu_cxx::new_allocator<double>::deallocate (this=0x55555575b180 <T>, __p=0x555555772394) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x00005555555575bb in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772394, __n=1) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x0000555555556c66 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x55555575b180 <T>, __p=0x555555772394, __n=1) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x0000555555556672 in std::vector<double, std::allocator<double> >::operator= (this=0x55555575b180 <T>, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:210
+#10 0x00005555555557a5 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:130
+#11 0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#12 0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: __val
+Fliping array at pos: 12
+Memory content before bitflip:0x010x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd0d0
+address max offset: 8
+Memory content after  bitflip:0x010x000x000x000x000x000x420x00
+frame name: __GI_raise
+symbol name: set
+symbol filename: ../sysdeps/unix/sysv/linux/raise.c
+symbol line: 39
+value: {__val = {0, 1, 0, 140737488343352, 15, 0, 5, 140737336121354, 16, 1, 140737488343360, 140737339918688, 18577348462903297, 0, 0, 140733193388038}}
+value address: 0x7fffffffd070
+Type: The type is a structure.
+Type sizeof: 128
+Field name: __val
+Field Type: The type is an array.
+Field Type sizeof: 128
+
+[INFO -- 2018-11-25 19:19:22]
+Fault Injection Successful after 2.843994140625s
+[INFO -- 2018-11-25 19:19:23]
+event type: exit
+[EXCEPTION -- 2018-11-25 19:19:23]
+exit code: no exit code available

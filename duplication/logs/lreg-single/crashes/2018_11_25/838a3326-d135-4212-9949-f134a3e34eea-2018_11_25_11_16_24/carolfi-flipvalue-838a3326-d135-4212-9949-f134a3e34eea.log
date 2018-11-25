@@ -1,0 +1,62 @@
+[INFO -- 2018-11-25 11:16:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 11:16:22]
+Initialization strings:
+[INFO -- 2018-11-25 11:16:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 11:16:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 11:16:22]
+initSignal:0
+[INFO -- 2018-11-25 11:16:22]
+endSignal:6
+[INFO -- 2018-11-25 11:16:22]
+faultModel:0
+[EXCEPTION -- 2018-11-25 11:16:23]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-25 11:16:23]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-25 11:16:23]
+Backtrace BEGIN:
+#0  _int_free (have_lock=0, p=0x555555772480, av=0x7ffff7271c40 <main_arena>) at malloc.c:4160
+#1  __GI___libc_free (mem=0x555555772490) at malloc.c:3124
+#2  0x0000555555557dac in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd5d0, __p=0x555555772490) at /usr/include/c++/7/ext/new_allocator.h:125
+#3  0x00005555555575bb in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772490, __n=2) at /usr/include/c++/7/bits/alloc_traits.h:462
+#4  0x0000555555556c66 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd5d0, __p=0x555555772490, __n=2) at /usr/include/c++/7/bits/stl_vector.h:180
+#5  0x0000555555556923 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd5d0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#6  0x000055555555630f in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd5d0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#7  0x0000555555555770 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#8  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#9  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+4155	malloc.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x230x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b188 
+address max offset: 8
+Memory content after  bitflip:0x500x230x770x550x550x450x000x00
+frame name: std::_Vector_base<double, std::allocator<double> >::~_Vector_base
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length -2199023255566, capacity -14 = {1.7974424763253486e-307, 1.7887507815655549e-307, 4.5792020008078204e-305, 1.7991808152773074e-307, 4.574751853090806e-305, 1.7974424763253486e-307, 1.5177100720513508e+82, 0, 1.4916681462400413e-154, -5.4861240687936887e+303, 1.131959889070218e-72, 2.4703282292062327e-322, 0, 0, 0, 0, 9.775796363198735e-150, -4.0917382598701773e+149, 3.2553190238898023e+237, 4.5480707899559466e-305, 9.775796363198735e-150, -2.9230032746618058e+48, 1.0248940417094834e-143, 4.5480708085825816e-305, 9.775796363198735e-150, -4.0917382598701773e+149, 3.2553190238898023e+237, 4.5480707899559466e-305, 1.7573882009934361e+159, 8.4485225438853159e-322, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 11:16:23]
+Fault Injection Successful after 1.3358662128448486s
+[INFO -- 2018-11-25 11:16:23]
+event type: exit
+[EXCEPTION -- 2018-11-25 11:16:23]
+exit code: no exit code available

@@ -1,0 +1,57 @@
+[INFO -- 2018-11-25 16:44:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 16:44:56]
+Initialization strings:
+[INFO -- 2018-11-25 16:44:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 16:44:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 16:44:56]
+initSignal:0
+[INFO -- 2018-11-25 16:44:56]
+endSignal:6
+[INFO -- 2018-11-25 16:44:56]
+faultModel:1
+[INFO -- 2018-11-25 16:44:59]
+Backtrace BEGIN:
+#0  0x00005555555561e3 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b180 <T>, __n=0) at /usr/include/c++/7/bits/stl_vector.h:798
+#1  0x0000555555555217 in predict (v=23) at lreg.cpp:50
+#2  0x000055555555530a in meanSquaredError () at lreg.cpp:61
+#3  0x00005555555556b1 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x800xb10x750x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd4a8
+address max offset: 8
+Memory content after  bitflip:0x800xb10x750x550x550x950x000x00
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x55555575b180 <T>
+value address: 0x7fffffffd4a8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 16:44:59]
+Fault Injection Successful after 3.0671498775482178s
+[INFO -- 2018-11-25 16:45:03]
+event type: exit
+[INFO -- 2018-11-25 16:45:03]
+exit code: 0

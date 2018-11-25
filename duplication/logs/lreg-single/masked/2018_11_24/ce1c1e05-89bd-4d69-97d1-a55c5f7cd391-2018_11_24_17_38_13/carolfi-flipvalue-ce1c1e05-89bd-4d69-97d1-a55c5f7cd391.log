@@ -1,0 +1,61 @@
+[INFO -- 2018-11-24 17:38:10]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 17:38:10]
+Initialization strings:
+[INFO -- 2018-11-24 17:38:10]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 17:38:10]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 17:38:10]
+initSignal:0
+[INFO -- 2018-11-24 17:38:10]
+endSignal:6
+[INFO -- 2018-11-24 17:38:10]
+faultModel:0
+[INFO -- 2018-11-24 17:38:10]
+Backtrace BEGIN:
+#0  malloc (n=22) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  0x00007ffff7decf73 in _dl_cache_libcmp (p1=p1@entry=0x5555555548f9 "libgcc_s.so.1", p2=0x7ffff7ff2a47 "libdw.so.1") at dl-cache.c:141
+#3  0x00007ffff7ded1c9 in _dl_load_cache_lookup (name=name@entry=0x5555555548f9 "libgcc_s.so.1") at dl-cache.c:285
+#4  0x00007ffff7dde383 in _dl_map_object (loader=0x7ffff7ffe170, name=0x5555555548f9 "libgcc_s.so.1", type=1, trace_mode=0, mode=<optimized out>, nsid=<optimized out>) at dl-load.c:2255
+#5  0x00007ffff7de3312 in openaux (a=a@entry=0x7fffffffdad0) at dl-deps.c:63
+#6  0x00007ffff7df0c6b in _dl_catch_exception (exception=exception@entry=0x7fffffffdab0, operate=operate@entry=0x7ffff7de32e0 <openaux>, args=args@entry=0x7fffffffdad0) at dl-error-skeleton.c:196
+#7  0x00007ffff7de3618 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe170, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:249
+#8  0x00007ffff7dd8ea6 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1726
+#9  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde40, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#10 0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde40) at rtld.c:414
+#11 _dl_start (arg=0x7fffffffde40) at rtld.c:521
+#12 0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#13 0x0000000000000004 in ?? ()
+#14 0x00007fffffffe1e3 in ?? ()
+#15 0x00007fffffffe1f2 in ?? ()
+#16 0x00007fffffffe206 in ?? ()
+#17 0x00007fffffffe217 in ?? ()
+#18 0x0000000000000000 in ?? ()
+
+45	dl-minimal.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff7ffe168 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x040x000x000x000x00
+frame name: _dl_start
+symbol name: audit_list_string
+symbol filename: rtld.c
+symbol line: 134
+value: 0x0
+value address: 0x7ffff7ffe168 <audit_list_string>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-24 17:38:10]
+Fault Injection Successful after 0.40436244010925293s
+[INFO -- 2018-11-24 17:38:13]
+event type: exit
+[INFO -- 2018-11-24 17:38:13]
+exit code: 0

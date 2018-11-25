@@ -15,7 +15,7 @@ dat3 = read.csv(args[3],sep=",")
 dat <- data.frame(
 	supp=rep(c("Original", "Duplication", "Selective Duplication"), each=15),
 	dose=rep(c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 1, 2, 3, 4, 5, 8, 10, 12, 15), 3),
-	len=rep(c(dat1$percentage, dat2$percentage, dat3$percentage))
+	len=c(dat1$percentage, dat2$percentage, dat3$percentage)
 )
 
 # Plot data

@@ -1,0 +1,56 @@
+[INFO -- 2018-11-25 12:02:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 12:02:32]
+Initialization strings:
+[INFO -- 2018-11-25 12:02:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 12:02:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 12:02:32]
+initSignal:0
+[INFO -- 2018-11-25 12:02:32]
+endSignal:6
+[INFO -- 2018-11-25 12:02:32]
+faultModel:1
+[INFO -- 2018-11-25 12:02:34]
+Backtrace BEGIN:
+#0  0x00005555555561bd in std::vector<double, std::allocator<double> >::size (this=0x55555575b180 <T>) at /usr/include/c++/7/bits/stl_vector.h:671
+#1  0x00005555555551f9 in predict (v=25) at lreg.cpp:49
+#2  0x000055555555530a in meanSquaredError () at lreg.cpp:61
+#3  0x00005555555556b1 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+675	      max_size() const _GLIBCXX_NOEXCEPT
+
+Backtrace END
+Memory content before bitflip:0xcf0x380x450xc80x000xfd0x090x41
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd588
+address max offset: 8
+Memory content after  bitflip:0x5f0x380x450xc80x000xfd0x090x41
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 212896.09778827705
+value address: 0x7fffffffd588
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 12:02:34]
+Fault Injection Successful after 2.347322463989258s
+[INFO -- 2018-11-25 12:02:35]
+event type: exit
+[INFO -- 2018-11-25 12:02:35]
+exit code: 0

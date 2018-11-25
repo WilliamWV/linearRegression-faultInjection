@@ -1,0 +1,62 @@
+[INFO -- 2018-11-25 13:04:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 13:04:03]
+Initialization strings:
+[INFO -- 2018-11-25 13:04:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 13:04:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 13:04:03]
+initSignal:0
+[INFO -- 2018-11-25 13:04:03]
+endSignal:6
+[INFO -- 2018-11-25 13:04:03]
+faultModel:2
+[INFO -- 2018-11-25 13:04:05]
+Backtrace BEGIN:
+#0  0x0000555555556be7 in std::vector<double, std::allocator<double> >::end (this=0x7fffffffd590) at /usr/include/c++/7/bits/stl_vector.h:591
+#1  0x000055555555641f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5f0, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#2  0x0000555555555713 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+586	       *  the last element in the %vector.  Iteration is done in
+587	       *  ordinary element order.
+588	       */
+589	      const_iterator
+590	      end() const _GLIBCXX_NOEXCEPT
+591	      { return const_iterator(this->_M_impl._M_finish); }
+592	
+593	      /**
+594	       *  Returns a read/write reverse iterator that points to the
+595	       *  last element in the %vector.  Iteration is done in reverse
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x5555557725c0
+address max offset: 8
+Memory content after  bitflip:0x190xa80x5c0x9f0x6d0x040xd10x74
+frame name: std::vector<double, std::allocator<double> >::end
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 16, capacity 16 = {13145, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 13:04:05]
+Fault Injection Successful after 2.560697555541992s
+[INFO -- 2018-11-25 13:04:05]
+event type: exit
+[INFO -- 2018-11-25 13:04:05]
+exit code: 0

@@ -1,0 +1,60 @@
+[INFO -- 2018-11-25 13:32:20]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 13:32:20]
+Initialization strings:
+[INFO -- 2018-11-25 13:32:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 13:32:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 13:32:20]
+initSignal:0
+[INFO -- 2018-11-25 13:32:20]
+endSignal:6
+[INFO -- 2018-11-25 13:32:20]
+faultModel:2
+[EXCEPTION -- 2018-11-25 13:32:21]
+gdbException: Cannot access memory at address 0x3b07046dfe8266eb
+[INFO -- 2018-11-25 13:32:22]
+Backtrace BEGIN:
+#0  0x00007ffff76b9990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76bcb14 in __pow (x=6, y=2) at w_pow_compat.c:30
+#2  0x000055555555621b in std::pow<double, int> (__x=6, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555451 in partialDerivate (pos=2) at lreg.cpp:74
+#4  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#5  0x00005555555556ac in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#7  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+177		4° Line : values y of the training set
+178		5° Line : set z of new inputs to predict*/
+179	
+180	
+181	int main(int argc, char* argv[]){
+182		
+183		if (argc != 4) {
+184			cout << "Wrong number of arguments" <<endl;
+185			cout <<"  Use as : " << endl; 
+186			cout <<'\t'<<argv[0]<<" <input file> "<<"<output file> "<<"<detected log file>"<<endl;
+
+Backtrace END
+Memory content before bitflip:0xaa0x1a0x090x710x350xf50x910x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd528
+address max offset: 8
+Memory content after  bitflip:0x2b0x6d0x2b0x4e0x060x160xb80xaf
+frame name: adjust
+symbol name: PD
+symbol filename: lreg.cpp
+symbol line: 85
+value: -8.1254315218978667e-79
+value address: 0x7fffffffd528
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 13:32:22]
+Fault Injection Successful after 2.0846216678619385s
+[INFO -- 2018-11-25 13:32:22]
+event type: exit
+[EXCEPTION -- 2018-11-25 13:32:22]
+exit code: no exit code available

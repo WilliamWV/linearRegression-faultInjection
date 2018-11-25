@@ -1,0 +1,60 @@
+[INFO -- 2018-11-25 11:59:05]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 11:59:05]
+Initialization strings:
+[INFO -- 2018-11-25 11:59:05]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 11:59:05]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 11:59:05]
+initSignal:0
+[INFO -- 2018-11-25 11:59:05]
+endSignal:6
+[INFO -- 2018-11-25 11:59:05]
+faultModel:1
+[INFO -- 2018-11-25 11:59:05]
+Backtrace BEGIN:
+#0  strcmp () at ../sysdeps/x86_64/strcmp.S:203
+#1  0x00007ffff7ddff5f in check_match (num_versions=<synthetic pointer>, versioned_sym=<synthetic pointer>, map=0x7ffff7fdd000, strtab=0x7ffff7a74f00 "", symidx=1088, sym=0x7ffff7a5acb0, type_class=0, flags=1, version=0x7ffff7fdb228, ref=0x7ffff7a5acb0, undef_name=0x7ffff7a93a15 "_ZNKSt7__cxx119money_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES4_bRSt8ios_basecRKNS_12basic_stringIcS3_SaIcEEE") at dl-lookup.c:121
+#2  do_lookup_x (undef_name=undef_name@entry=0x7ffff7a93a15 "_ZNKSt7__cxx119money_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES4_bRSt8ios_basecRKNS_12basic_stringIcS3_SaIcEEE", new_hash=new_hash@entry=1214312418, old_hash=old_hash@entry=0x7fffffffd980, ref=0x7ffff7a5acb0, result=result@entry=0x7fffffffd990, scope=<optimized out>, i=<optimized out>, version=0x7ffff7fdb228, flags=1, skip=0x0, type_class=0, undef_map=0x7ffff7fdd000) at dl-lookup.c:406
+#3  0x00007ffff7de01ef in _dl_lookup_symbol_x (undef_name=0x7ffff7a93a15 "_ZNKSt7__cxx119money_putIcSt19ostreambuf_iteratorIcSt11char_traitsIcEEE6do_putES4_bRSt8ios_basecRKNS_12basic_stringIcS3_SaIcEEE", undef_map=undef_map@entry=0x7ffff7fdd000, ref=ref@entry=0x7fffffffdab0, symbol_scope=symbol_scope@entry=0x7ffff7fdd358, version=0x7ffff7fdb228, type_class=0, flags=1, skip_map=<optimized out>) at dl-lookup.c:813
+#4  0x00007ffff7de1af9 in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x7ffff7dca908, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7aca988, map=0x7ffff7fdd000) at ../sysdeps/x86_64/dl-machine.h:308
+#5  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7fdd000) at do-rel.h:137
+#6  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#7  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#8  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde40, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#9  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde40) at rtld.c:414
+#10 _dl_start (arg=0x7fffffffde40) at rtld.c:521
+#11 0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#12 0x0000000000000004 in ?? ()
+#13 0x00007fffffffe1e2 in ?? ()
+#14 0x00007fffffffe1f1 in ?? ()
+#15 0x00007fffffffe205 in ?? ()
+#16 0x00007fffffffe216 in ?? ()
+#17 0x0000000000000000 in ?? ()
+
+198	../sysdeps/x86_64/strcmp.S: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x280xb20xfd0xf70xff0x7f0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd918
+address max offset: 8
+Memory content after  bitflip:0x280xb20xfd0xf70xff0x7f0x880x00
+frame name: check_match
+symbol name: version
+symbol filename: dl-lookup.c
+symbol line: 336
+value: 0x7ffff7fdb228
+value address: 0x7fffffffd918
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 11:59:05]
+Fault Injection Successful after 0.15231633186340332s
+[INFO -- 2018-11-25 11:59:07]
+event type: exit
+[INFO -- 2018-11-25 11:59:07]
+exit code: 0

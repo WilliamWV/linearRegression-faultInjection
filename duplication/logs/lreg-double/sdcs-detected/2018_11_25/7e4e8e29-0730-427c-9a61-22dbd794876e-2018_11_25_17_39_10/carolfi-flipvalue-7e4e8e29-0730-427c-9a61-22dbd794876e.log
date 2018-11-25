@@ -1,0 +1,57 @@
+[INFO -- 2018-11-25 17:39:06]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 17:39:06]
+Initialization strings:
+[INFO -- 2018-11-25 17:39:06]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 17:39:06]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 17:39:06]
+initSignal:0
+[INFO -- 2018-11-25 17:39:06]
+endSignal:6
+[INFO -- 2018-11-25 17:39:06]
+faultModel:1
+[INFO -- 2018-11-25 17:39:08]
+Backtrace BEGIN:
+#0  0x0000555555556211 in std::pow<double, int> (__x=-3, __y=0) at /usr/include/c++/7/cmath:418
+#1  0x0000555555555237 in predict (v=-3) at lreg.cpp:50
+#2  0x00005555555553fc in partialDerivate (pos=1) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd4cc
+address max offset: 4
+Memory content after  bitflip:0x010x000x480x00
+frame name: partialDerivate
+symbol name: pos
+symbol filename: lreg.cpp
+symbol line: 71
+value: 4718593
+value address: 0x7fffffffd4cc
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-25 17:39:08]
+Fault Injection Successful after 2.3034775257110596s
+[INFO -- 2018-11-25 17:39:09]
+event type: exit
+[INFO -- 2018-11-25 17:39:09]
+exit code: 0

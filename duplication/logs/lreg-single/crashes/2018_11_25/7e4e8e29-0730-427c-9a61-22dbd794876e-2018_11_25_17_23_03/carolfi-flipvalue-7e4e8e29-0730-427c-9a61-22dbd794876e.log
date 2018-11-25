@@ -1,0 +1,61 @@
+[INFO -- 2018-11-25 17:23:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 17:23:00]
+Initialization strings:
+[INFO -- 2018-11-25 17:23:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 17:23:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 17:23:00]
+initSignal:0
+[INFO -- 2018-11-25 17:23:00]
+endSignal:6
+[INFO -- 2018-11-25 17:23:00]
+faultModel:0
+[INFO -- 2018-11-25 17:23:02]
+Backtrace BEGIN:
+#0  0x00005555555563f1 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5f0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#1  0x0000555555555713 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#2  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#3  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+323	       *  The newly-created %vector uses a copy of the allocator object used
+324	       *  by @a __x (unless the allocator traits dictate a different object).
+325	       */
+326	      vector(const vector& __x)
+327	      : _Base(__x.size(),
+328		_Alloc_traits::_S_select_on_copy(__x._M_get_Tp_allocator()))
+329	      {
+330		this->_M_impl._M_finish =
+331		  std::__uninitialized_copy_a(__x.begin(), __x.end(),
+332					      this->_M_impl._M_start,
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x210x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772468
+address max offset: 8
+Memory content after  bitflip:0x210x000x000x000x000x000x020x00
+frame name: train
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 3, capacity 3 = {0.092224990254037228, -0.033507908777932652, -2.9902085744158371}
+value address: 0x55555575b180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 17:23:02]
+Fault Injection Successful after 2.625121593475342s
+[INFO -- 2018-11-25 17:23:03]
+event type: exit
+[EXCEPTION -- 2018-11-25 17:23:03]
+exit code: no exit code available

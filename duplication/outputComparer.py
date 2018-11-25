@@ -35,3 +35,6 @@ for out in outs:
 			print ("#ERR p: [" + str(pos) + "], r: " + str(float(line)) + ", e: "+ str(0.0))
 			pos+=1
 	sdcCounter+=1
+	while pos < len(goldenVals):
+		print ("#ERR p: [" + str(pos) + "], r: " + str(0.0) + ", e: "+ str(goldenVals[pos-1]))
+		pos+=1

@@ -1,0 +1,57 @@
+[INFO -- 2018-11-24 17:58:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 17:58:55]
+Initialization strings:
+[INFO -- 2018-11-24 17:58:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 17:58:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 17:58:55]
+initSignal:0
+[INFO -- 2018-11-24 17:58:55]
+endSignal:6
+[INFO -- 2018-11-24 17:58:55]
+faultModel:1
+[INFO -- 2018-11-24 17:58:56]
+Backtrace BEGIN:
+#0  0x00005555555560eb in std::vector<double, std::allocator<double> >::size (this=0x55555575b180 <T>) at /usr/include/c++/7/bits/stl_vector.h:671
+#1  0x00005555555551f9 in predict (v=23) at lreg.cpp:49
+#2  0x00005555555553fc in partialDerivate (pos=0) at lreg.cpp:74
+#3  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#4  0x00005555555556ac in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+675	      max_size() const _GLIBCXX_NOEXCEPT
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd55c
+address max offset: 1
+Memory content after  bitflip:0x49
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 105
+value: 73
+value address: 0x7fffffffd55c
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-24 17:58:56]
+Fault Injection Successful after 1.115654468536377s
+[INFO -- 2018-11-24 17:58:58]
+event type: exit
+[INFO -- 2018-11-24 17:58:58]
+exit code: 0

@@ -1,0 +1,70 @@
+[INFO -- 2018-11-25 16:07:02]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 16:07:02]
+Initialization strings:
+[INFO -- 2018-11-25 16:07:02]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 16:07:02]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 16:07:02]
+initSignal:0
+[INFO -- 2018-11-25 16:07:02]
+endSignal:6
+[INFO -- 2018-11-25 16:07:02]
+faultModel:1
+[EXCEPTION -- 2018-11-25 16:07:04]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-25 16:07:05]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-25 16:07:05]
+gdbException: Cannot access memory at address 0x5555dd7724b0
+[EXCEPTION -- 2018-11-25 16:07:05]
+gdbException: Cannot access memory at address 0x5555dd7724b0
+[INFO -- 2018-11-25 16:07:05]
+Backtrace BEGIN:
+#0  0x000055555555543b in partialDerivate (pos=1) at lreg.cpp:74
+#1  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x230x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b188 
+address max offset: 8
+Memory content after  bitflip:0xa00x230x770x650x550x550x000x00
+frame name: partialDerivate
+symbol name: T
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 33554436, capacity 4 = {-0.058344959405533046, -0.22986587580303991, -1.9391077526348159, -3.9713426760613841, 0, 4.001931731314097e-322, 4.635570648008152e-310, 1.5810100666919889e-322, 12.999771118164061, 2.9988444211833614e-310, -1078.8154304800657, -1078.8160145721722, -1722.5303976432911, -1319.1177772194476, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 1.124676287488633e-312, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 4.6355706480121045e-310, -0.018636480386081677, -2.9944537928979051, 1.6304166312761136e-322, 4.6355706480287051e-310, -0.018629603636086151, -2.9945863353366149, 1.6304166312761136e-322, 0, -0.018636480386081677, -2.9944537928979051, 7.1639518646980749e-322, -15, -9, -1, 29, 5, -18, 31, -16, -18, -28, 25, -14, 7, -2, -17, 21, -3.7857669957336791e-270, 7.1639518646980749e-322, 13145, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047, 0, 7.1639518646980749e-322, 9.9997448205173409, 10.999751207252501, 12.999763980722822, -7.0003637539803849, -1078.8160145721722, -1078.8160145721722, -1722.5303976432911, -1319.1177772194476, -1582.6669839552355, -584.82432114594803, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, -0.058097094821007007, -0.22986587580303991, -1.9391077526348159, -3.9713426760613841, 0, 2.4209216646221081e-322, -0.058380190813676222, -0.23256697553740513, -1.9485371755353631, -4.0459629729771711, 0, 2.4209216646221081e-322, 4.6355706480587443e-310, -0.23256697553740513, -1.9485371755353631, -4.0459629729771711, 0, 2.4209216646221081e-322, 0, -0.22986587580303991, -1.9391077526348159, -3.9713426760613841, 0, 2.1367845116988072e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b180 <T>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 16:07:05]
+Fault Injection Successful after 3.95041823387146s
+[INFO -- 2018-11-25 16:07:06]
+event type: exit
+[EXCEPTION -- 2018-11-25 16:07:06]
+exit code: no exit code available

@@ -1,0 +1,56 @@
+[INFO -- 2018-11-25 19:43:05]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 19:43:05]
+Initialization strings:
+[INFO -- 2018-11-25 19:43:05]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 19:43:05]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 19:43:05]
+initSignal:0
+[INFO -- 2018-11-25 19:43:05]
+endSignal:6
+[INFO -- 2018-11-25 19:43:05]
+faultModel:0
+[INFO -- 2018-11-25 19:43:06]
+Backtrace BEGIN:
+#0  0x00007ffff7b4df21 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x00007ffff7b5825c in std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#2  0x00007ffff7b5873e in std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7b49d0f in std::istream& std::istream::_M_extract<double>(double&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00005555555559cf in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:153
+#5  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+167		inp.close();
+168	}
+169	
+170	/*
+171	It must receive an input file formated as follows:
+172		1° Line : one integer T -> number of test cases
+173		2° to 5° repeat to all test case	
+174		2° Line : method parameters -> alpha, iterations, N, size of 
+175			      training set, predictions
+176		3° Line : inputs x of the training set
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x8c0x970xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd690
+address max offset: 8
+Memory content after  bitflip:0x020x000x000x000x000x8c0x970xc0
+frame name: execute
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 143
+value: -1507.0000000000005
+value address: 0x7fffffffd690
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 19:43:06]
+Fault Injection Successful after 1.605722188949585s
+[INFO -- 2018-11-25 19:43:08]
+event type: exit
+[INFO -- 2018-11-25 19:43:08]
+exit code: 0

@@ -1,0 +1,64 @@
+[INFO -- 2018-11-25 11:34:29]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 11:34:29]
+Initialization strings:
+[INFO -- 2018-11-25 11:34:29]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 11:34:29]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 11:34:29]
+initSignal:0
+[INFO -- 2018-11-25 11:34:29]
+endSignal:6
+[INFO -- 2018-11-25 11:34:29]
+faultModel:0
+[INFO -- 2018-11-25 11:34:30]
+Backtrace BEGIN:
+#0  std::allocator<double>::~allocator (this=0x7fffffffd5d0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/allocator.h:139
+#1  0x00005555555568c2 in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::~_Vector_impl (this=0x7fffffffd5d0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:81
+#2  0x000055555555692f in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd5d0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:163
+#3  0x000055555555630f in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd5d0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#4  0x0000555555555770 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+134	      : __allocator_base<_Tp>(__a) { }
+135	
+136	      template<typename _Tp1>
+137		allocator(const allocator<_Tp1>&) throw() { }
+138	
+139	      ~allocator() throw() { }
+140	
+141	      // Inherit everything else.
+142	    };
+143	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0xc00x250x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b170 
+address max offset: 8
+Memory content after  bitflip:0xc40x250x770x550x550x550x000x00
+frame name: main
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 16, capacity 16 = {13145, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 11:34:30]
+Fault Injection Successful after 1.5384461879730225s
+[INFO -- 2018-11-25 11:34:33]
+event type: exit
+[INFO -- 2018-11-25 11:34:33]
+exit code: 0

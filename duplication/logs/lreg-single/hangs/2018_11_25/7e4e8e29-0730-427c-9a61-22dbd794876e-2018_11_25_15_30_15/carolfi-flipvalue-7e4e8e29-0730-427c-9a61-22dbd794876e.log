@@ -1,0 +1,52 @@
+[INFO -- 2018-11-25 15:29:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 15:29:51]
+Initialization strings:
+[INFO -- 2018-11-25 15:29:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 15:29:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 15:29:51]
+initSignal:0
+[INFO -- 2018-11-25 15:29:51]
+endSignal:6
+[INFO -- 2018-11-25 15:29:51]
+faultModel:0
+[INFO -- 2018-11-25 15:29:52]
+Backtrace BEGIN:
+#0  0x000055555555762c in std::__miter_base<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > > > (__it=0) at /usr/include/c++/7/bits/cpp_type_traits.h:409
+#1  0x0000555555556de3 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.016310133650417703, __last=0, __result=0.0162760715833212) at /usr/include/c++/7/bits/stl_algobase.h:455
+#2  0x0000555555556709 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd5b0, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x00005555555556f2 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:124
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+404	  // Fallback implementation of the function in bits/stl_iterator.h used to
+405	  // remove the move_iterator wrapper.
+406	  template<typename _Iterator>
+407	    inline _Iterator
+408	    __miter_base(_Iterator __it)
+409	    { return __it; }
+410	
+411	_GLIBCXX_END_NAMESPACE_VERSION
+412	} // namespace
+413	} // extern "C++"
+
+Backtrace END
+Memory content before bitflip:0x300x750x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd56c
+address max offset: 4
+Memory content after  bitflip:0x300x750x000x10
+frame name: train
+symbol name: iterations
+symbol filename: lreg.cpp
+symbol line: 105
+value: 268465456
+value address: 0x7fffffffd56c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-25 15:29:52]
+Fault Injection Successful after 1.0028815269470215s

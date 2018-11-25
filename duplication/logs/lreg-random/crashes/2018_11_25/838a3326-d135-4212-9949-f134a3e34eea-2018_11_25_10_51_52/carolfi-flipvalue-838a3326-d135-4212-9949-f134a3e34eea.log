@@ -1,0 +1,64 @@
+[INFO -- 2018-11-25 10:51:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 10:51:48]
+Initialization strings:
+[INFO -- 2018-11-25 10:51:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 10:51:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 10:51:48]
+initSignal:0
+[INFO -- 2018-11-25 10:51:48]
+endSignal:6
+[INFO -- 2018-11-25 10:51:48]
+faultModel:2
+[EXCEPTION -- 2018-11-25 10:51:50]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-25 10:51:50]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-25 10:51:51]
+Backtrace BEGIN:
+#0  tcache_get (tc_idx=0) at malloc.c:2943
+#1  __GI___libc_malloc (bytes=24) at malloc.c:3050
+#2  0x00007ffff7adf1a8 in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x000055555555809a in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd5d0, __n=3) at /usr/include/c++/7/ext/new_allocator.h:111
+#4  0x0000555555557dd7 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=3) at /usr/include/c++/7/bits/alloc_traits.h:436
+#5  0x00005555555575f8 in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd5d0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#6  0x000055555555735d in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd5d0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#7  0x0000555555556985 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd5d0, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#8  0x00005555555563f1 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5d0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#9  0x000055555555572b in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#10 0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#11 0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+2938	malloc.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x460xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772540
+address max offset: 8
+Memory content after  bitflip:0x250xab0xcd0x410x2d0x650x1d0xfb
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_allocate
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 12, capacity 16 = {-1.092779796784212e+285, -23, -143, -8, 1, 1, -1319, -23, -1079, -503, -104, -1583}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 10:51:51]
+Fault Injection Successful after 3.1797807216644287s
+[INFO -- 2018-11-25 10:51:51]
+event type: exit
+[EXCEPTION -- 2018-11-25 10:51:51]
+exit code: no exit code available

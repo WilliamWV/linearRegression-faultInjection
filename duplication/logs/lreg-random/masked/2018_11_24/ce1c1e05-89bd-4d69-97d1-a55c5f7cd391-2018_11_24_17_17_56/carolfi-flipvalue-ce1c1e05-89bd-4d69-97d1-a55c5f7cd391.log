@@ -1,0 +1,60 @@
+[INFO -- 2018-11-24 17:17:52]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 17:17:52]
+Initialization strings:
+[INFO -- 2018-11-24 17:17:52]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 17:17:52]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 17:17:52]
+initSignal:0
+[INFO -- 2018-11-24 17:17:52]
+endSignal:6
+[INFO -- 2018-11-24 17:17:52]
+faultModel:2
+[INFO -- 2018-11-24 17:17:53]
+Backtrace BEGIN:
+#0  0x00007ffff76d5923 in __exp1 (x=<optimized out>, xx=<optimized out>, error=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_exp.c:266
+#1  0x00007ffff76da8dc in __ieee754_pow_sse2 (x=17, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-17, y=3) at w_pow_compat.c:30
+#4  0x0000555555556149 in std::pow<double, int> (__x=-17, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x0000555555555237 in predict (v=-17) at lreg.cpp:50
+#6  0x00005555555553fc in partialDerivate (pos=2) at lreg.cpp:74
+#7  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#8  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#9  0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#10 0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+261	../sysdeps/ieee754/dbl-64/e_exp.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0x000x000xf00xff
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5d4 
+address max offset: 4
+Memory content after  bitflip:0x410x360xd40xe1
+frame name: __ieee754_pow_sse2
+symbol name: nINF
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 49
+value: {i = {0, -506186175}, x = -1.8186345527575894e+163}
+value address: 0x7ffff779f5d0 <nINF>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-24 17:17:53]
+Fault Injection Successful after 1.3332362174987793s
+[INFO -- 2018-11-24 17:17:55]
+event type: exit
+[INFO -- 2018-11-24 17:17:55]
+exit code: 0

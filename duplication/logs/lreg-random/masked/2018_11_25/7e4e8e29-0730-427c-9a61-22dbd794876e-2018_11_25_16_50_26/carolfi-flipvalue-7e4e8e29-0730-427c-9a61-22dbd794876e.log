@@ -1,0 +1,65 @@
+[INFO -- 2018-11-25 16:50:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 16:50:19]
+Initialization strings:
+[INFO -- 2018-11-25 16:50:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 16:50:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 16:50:19]
+initSignal:0
+[INFO -- 2018-11-25 16:50:19]
+endSignal:6
+[INFO -- 2018-11-25 16:50:19]
+faultModel:2
+[EXCEPTION -- 2018-11-25 16:50:20]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-25 16:50:23]
+Backtrace BEGIN:
+#0  std::_Destroy<double*> (__first=0x5555557726c0, __last=0x5555557726e0) at /usr/include/c++/7/bits/stl_construct.h:137
+#1  0x0000555555556a25 in std::_Destroy<double*, double> (__first=0x5555557726c0, __last=0x5555557726e0) at /usr/include/c++/7/bits/stl_construct.h:206
+#2  0x0000555555556303 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd5f0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:434
+#3  0x0000555555555780 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+132	      // A deleted destructor is trivial, this ensures we reject such types:
+133	      static_assert(is_destructible<_Value_type>::value,
+134			    "value type is destructible");
+135	#endif
+136	      std::_Destroy_aux<__has_trivial_destructor(_Value_type)>::
+137		__destroy(__first, __last);
+138	    }
+139	
+140	  template<bool>
+141	    struct _Destroy_n_aux
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772650
+address max offset: 8
+Memory content after  bitflip:0xfd0x960x350x530x370xd70x840x03
+frame name: main
+symbol name: e2
+symbol filename: lreg.cpp
+symbol line: 196
+value: std::vector of length 10, capacity 16 = {9.9997448205173409, 10.999751207252501, 12.999763980722822, -7.0003637539803849, -1078.8160145721722, -1078.8160145721722, -1722.5303976432911, -1319.1177772194476, -1582.6669839552355, -584.82432114594803}
+value address: 0x7fffffffd920
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 16:50:23]
+Fault Injection Successful after 4.9623496532440186s
+[INFO -- 2018-11-25 16:50:26]
+event type: exit
+[INFO -- 2018-11-25 16:50:26]
+exit code: 0

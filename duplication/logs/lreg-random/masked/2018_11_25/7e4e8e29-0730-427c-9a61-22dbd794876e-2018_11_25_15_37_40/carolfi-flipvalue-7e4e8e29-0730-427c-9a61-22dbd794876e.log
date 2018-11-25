@@ -1,0 +1,57 @@
+[INFO -- 2018-11-25 15:37:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 15:37:32]
+Initialization strings:
+[INFO -- 2018-11-25 15:37:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 15:37:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 15:37:32]
+initSignal:0
+[INFO -- 2018-11-25 15:37:32]
+endSignal:6
+[INFO -- 2018-11-25 15:37:32]
+faultModel:2
+[INFO -- 2018-11-25 15:37:34]
+Backtrace BEGIN:
+#0  0x00005555555575f3 in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd5f0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#1  0x000055555555735d in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd5f0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#2  0x0000555555556985 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd5f0, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#3  0x00005555555563f1 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5f0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#4  0x0000555555555713 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+167	
+168	      pointer
+169	      _M_allocate(size_t __n)
+170	      {
+171		typedef __gnu_cxx::__alloc_traits<_Tp_alloc_type> _Tr;
+172		return __n != 0 ? _Tr::allocate(_M_impl, __n) : pointer();
+173	      }
+174	
+175	      void
+176	      _M_deallocate(pointer __p, size_t __n)
+
+Backtrace END
+Memory content before bitflip:0x0c0x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd670
+address max offset: 4
+Memory content after  bitflip:0x730x140x750x31
+frame name: execute
+symbol name: sizeOfTraining
+symbol filename: lreg.cpp
+symbol line: 144
+value: 829756531
+value address: 0x7fffffffd670
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-25 15:37:34]
+Fault Injection Successful after 2.3813347816467285s
+[INFO -- 2018-11-25 15:37:39]
+event type: exit
+[INFO -- 2018-11-25 15:37:39]
+exit code: 0

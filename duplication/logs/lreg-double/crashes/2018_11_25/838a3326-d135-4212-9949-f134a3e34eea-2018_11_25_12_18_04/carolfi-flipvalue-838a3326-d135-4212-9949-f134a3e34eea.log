@@ -1,0 +1,65 @@
+[INFO -- 2018-11-25 12:18:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 12:18:00]
+Initialization strings:
+[INFO -- 2018-11-25 12:18:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 12:18:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 12:18:00]
+initSignal:0
+[INFO -- 2018-11-25 12:18:00]
+endSignal:6
+[INFO -- 2018-11-25 12:18:00]
+faultModel:1
+[EXCEPTION -- 2018-11-25 12:18:02]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-25 12:18:03]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0f897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff703cb9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1690a in malloc_printerr (str=str@entry=0x7ffff703ada0 "free(): invalid size") at malloc.c:5350
+#4  0x00007ffff6f1de2c in _int_free (have_lock=0, p=0x555555772470, av=0x7ffff7271c40 <main_arena>) at malloc.c:4161
+#5  __GI___libc_free (mem=0x555555772480) at malloc.c:3124
+#6  0x0000555555557dac in __gnu_cxx::new_allocator<double>::deallocate (this=0x55555575b140 <x>, __p=0x555555772480) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x00005555555575bb in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772480, __n=22) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x0000555555556c66 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x55555575b140 <x>, __p=0x555555772480, __n=22) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x0000555555556923 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x55555575b140 <x>, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#10 0x000055555555630f in std::vector<double, std::allocator<double> >::~vector (this=0x55555575b140 <x>, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#11 0x00007ffff6ec9041 in __run_exit_handlers (status=0, listp=0x7ffff7271718 <__exit_funcs>, run_list_atexit=run_list_atexit@entry=true, run_dtors=run_dtors@entry=true) at exit.c:108
+#12 0x00007ffff6ec913a in __GI_exit (status=<optimized out>) at exit.c:139
+#13 0x00007ffff6ea7b9e in __libc_start_main (main=0x555555555b2d <main(int, char**)>, argc=4, argv=0x7fffffffde48, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7fffffffde38) at ../csu/libc-start.c:344
+#14 0x000055555555501a in _start ()
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0xd00x250x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772540
+address max offset: 8
+Memory content after  bitflip:0xd00x250x770x550xd70x550x000x00
+frame name: std::_Vector_base<double, std::allocator<double> >::~_Vector_base
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 0, capacity 16
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 12:18:03]
+Fault Injection Successful after 3.1297271251678467s
+[INFO -- 2018-11-25 12:18:03]
+event type: exit
+[EXCEPTION -- 2018-11-25 12:18:03]
+exit code: no exit code available

@@ -1,0 +1,60 @@
+[INFO -- 2018-11-25 15:26:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 15:26:43]
+Initialization strings:
+[INFO -- 2018-11-25 15:26:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 15:26:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 15:26:43]
+initSignal:0
+[INFO -- 2018-11-25 15:26:43]
+endSignal:6
+[INFO -- 2018-11-25 15:26:43]
+faultModel:2
+[INFO -- 2018-11-25 15:26:43]
+Backtrace BEGIN:
+#0  strcmp () at ../sysdeps/x86_64/strcmp.S:1072
+#1  0x00007ffff7ddf788 in check_match (num_versions=<synthetic pointer>, versioned_sym=<synthetic pointer>, map=0x7ffff7fddee0, strtab=0x7ffff7279f58 "", symidx=317, sym=0x7ffff7279cd0, type_class=4, flags=1, version=0x7ffff7fdba30, ref=0x7ffff6e8e688, undef_name=0x7ffff6e9b982 "_IO_funlockfile") at dl-lookup.c:93
+#2  do_lookup_x (undef_name=undef_name@entry=0x7ffff6e9b982 "_IO_funlockfile", new_hash=new_hash@entry=3268862605, old_hash=old_hash@entry=0x7fffffffd980, ref=0x7ffff6e8e688, result=result@entry=0x7fffffffd990, scope=<optimized out>, i=<optimized out>, version=0x7ffff7fdba30, flags=1, skip=0x0, type_class=4, undef_map=0x7ffff7fde3d0) at dl-lookup.c:406
+#3  0x00007ffff7de01ef in _dl_lookup_symbol_x (undef_name=0x7ffff6e9b982 "_IO_funlockfile", undef_map=undef_map@entry=0x7ffff7fde3d0, ref=ref@entry=0x7fffffffdab0, symbol_scope=symbol_scope@entry=0x7ffff7fde728, version=0x7ffff7fdba30, type_class=4, flags=1, skip_map=<optimized out>) at dl-lookup.c:813
+#4  0x00007ffff7de1af9 in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x7ffff7270f60, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff6ea6950, map=0x7ffff7fde3d0) at ../sysdeps/x86_64/dl-machine.h:308
+#5  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7fde3d0) at do-rel.h:137
+#6  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#7  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#8  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde40, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#9  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde40) at rtld.c:414
+#10 _dl_start (arg=0x7fffffffde40) at rtld.c:521
+#11 0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#12 0x0000000000000004 in ?? ()
+#13 0x00007fffffffe1e2 in ?? ()
+#14 0x00007fffffffe1f1 in ?? ()
+#15 0x00007fffffffe205 in ?? ()
+#16 0x00007fffffffe216 in ?? ()
+#17 0x0000000000000000 in ?? ()
+
+1067	../sysdeps/x86_64/strcmp.S: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffda50
+address max offset: 8
+Memory content after  bitflip:0x430x050x510x8a0x120x270x0a0xc0
+frame name: elf_dynamic_do_Rela
+symbol name: r2
+symbol filename: do-rel.h
+symbol line: 50
+value: 0x0
+value address: 0x7fffffffda50
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 15:26:43]
+Fault Injection Successful after 0.5618956089019775s
+[INFO -- 2018-11-25 15:26:46]
+event type: exit
+[INFO -- 2018-11-25 15:26:46]
+exit code: 0

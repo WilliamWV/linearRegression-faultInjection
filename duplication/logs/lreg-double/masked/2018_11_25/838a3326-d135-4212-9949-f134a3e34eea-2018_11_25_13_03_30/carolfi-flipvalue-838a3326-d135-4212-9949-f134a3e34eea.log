@@ -1,0 +1,56 @@
+[INFO -- 2018-11-25 13:03:25]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 13:03:25]
+Initialization strings:
+[INFO -- 2018-11-25 13:03:25]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 13:03:25]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 13:03:25]
+initSignal:0
+[INFO -- 2018-11-25 13:03:25]
+endSignal:6
+[INFO -- 2018-11-25 13:03:25]
+faultModel:1
+[INFO -- 2018-11-25 13:03:26]
+Backtrace BEGIN:
+#0  determine_info (symbolp=0x0, mapp=0x7fffffffdd60, info=0x7fffffffdd70, match=0x7ffff7fde3d0, addr=140737336407744) at dl-addr.c:50
+#1  __GI__dl_addr (address=address@entry=0x7ffff6f176c0 <ptmalloc_init>, info=info@entry=0x7fffffffdd70, mapp=mapp@entry=0x7fffffffdd60, symbolp=symbolp@entry=0x0) at dl-addr.c:137
+#2  0x00007ffff6f17691 in ptmalloc_init () at arena.c:303
+#3  0x00007ffff6f1cc15 in ptmalloc_init () at hooks.c:33
+#4  malloc_hook_ini (sz=72704, caller=<optimized out>) at hooks.c:31
+#5  0x00007ffff7adb376 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7de5733 in call_init (env=0x7fffffffde70, argv=0x7fffffffde48, argc=4, l=<optimized out>) at dl-init.c:72
+#7  _dl_init (main_map=0x7ffff7ffe170, argc=4, argv=0x7fffffffde48, env=0x7fffffffde70) at dl-init.c:119
+#8  0x00007ffff7dd60ca in _dl_start_user () from /lib64/ld-linux-x86-64.so.2
+#9  0x0000000000000004 in ?? ()
+#10 0x00007fffffffe1e2 in ?? ()
+#11 0x00007fffffffe1f1 in ?? ()
+#12 0x00007fffffffe205 in ?? ()
+#13 0x00007fffffffe216 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+45	dl-addr.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0xde0x5e0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff7270c18
+address max offset: 4
+Memory content after  bitflip:0xde0x5e0x050x00
+frame name: determine_info
+symbol name: strtabsize
+symbol filename: dl-addr.c
+symbol line: 42
+value: 351966
+value address: 0x7ffff7270c18
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-25 13:03:26]
+Fault Injection Successful after 1.402714729309082s
+[INFO -- 2018-11-25 13:03:29]
+event type: exit
+[INFO -- 2018-11-25 13:03:29]
+exit code: 0

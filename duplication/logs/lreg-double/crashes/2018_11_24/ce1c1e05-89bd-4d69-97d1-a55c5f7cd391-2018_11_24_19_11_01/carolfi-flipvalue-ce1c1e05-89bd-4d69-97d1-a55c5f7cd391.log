@@ -1,0 +1,68 @@
+[INFO -- 2018-11-24 19:10:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-24 19:10:58]
+Initialization strings:
+[INFO -- 2018-11-24 19:10:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-24 19:10:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-24 19:10:58]
+initSignal:0
+[INFO -- 2018-11-24 19:10:58]
+endSignal:6
+[INFO -- 2018-11-24 19:10:58]
+faultModel:1
+[EXCEPTION -- 2018-11-24 19:10:59]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-24 19:10:59]
+gdbException: Cannot access memory at address 0x555571772340
+[INFO -- 2018-11-24 19:10:59]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff7ad88b7 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7adea06 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7adea41 in std::terminate() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7adec74 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7b06ed2 in std::__throw_bad_alloc() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x0000555555557fb8 in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd5d0, __n=18446744073650831362) at /usr/include/c++/7/ext/new_allocator.h:102
+#8  0x0000555555557d05 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=18446744073650831362) at /usr/include/c++/7/bits/alloc_traits.h:436
+#9  0x0000555555557526 in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd5d0, __n=18446744073650831362) at /usr/include/c++/7/bits/stl_vector.h:172
+#10 0x000055555555728b in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd5d0, __n=18446744073650831362) at /usr/include/c++/7/bits/stl_vector.h:187
+#11 0x00005555555568b3 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd5d0, __n=18446744073650831362, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#12 0x000055555555631f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5d0, __x=std::vector of length -58720254, capacity -58720254 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#13 0x000055555555572b in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#14 0x0000555555555a1c in execute (input=0x7fffffffe1f2 "/tmp/lreg/randInput") at lreg.cpp:157
+#15 0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x280x40
+Fault Model: Double bit-flip
+base address to flip value: 0x5555557722f0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x480x000x000x280x40
+frame name: train
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 8, capacity 8 = {12.000002145767212, -6, -10, -3, 7, -12, 6, -10}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-24 19:10:59]
+Fault Injection Successful after 1.9403588771820068s
+[INFO -- 2018-11-24 19:11:00]
+event type: exit
+[EXCEPTION -- 2018-11-24 19:11:00]
+exit code: no exit code available

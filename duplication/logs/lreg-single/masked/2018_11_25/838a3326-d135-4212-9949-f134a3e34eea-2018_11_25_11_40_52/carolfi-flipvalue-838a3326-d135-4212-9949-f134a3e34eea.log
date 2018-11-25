@@ -1,0 +1,55 @@
+[INFO -- 2018-11-25 11:40:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 11:40:49]
+Initialization strings:
+[INFO -- 2018-11-25 11:40:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 11:40:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 11:40:49]
+initSignal:0
+[INFO -- 2018-11-25 11:40:49]
+endSignal:6
+[INFO -- 2018-11-25 11:40:49]
+faultModel:0
+[INFO -- 2018-11-25 11:40:51]
+Backtrace BEGIN:
+#0  0x0000555555556c20 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=1.4725754273024174, __last=2.4209216646221081e-322, __result=0x555555772490) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#1  0x000055555555643f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5d0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#2  0x000055555555572b in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+284	
+285	  template<typename _InputIterator, typename _ForwardIterator, typename _Tp>
+286	    inline _ForwardIterator
+287	    __uninitialized_copy_a(_InputIterator __first, _InputIterator __last,
+288				   _ForwardIterator __result, allocator<_Tp>&)
+289	    { return std::uninitialized_copy(__first, __last, __result); }
+290	
+291	  template<typename _InputIterator, typename _ForwardIterator,
+292		   typename _Allocator>
+293	    inline _ForwardIterator
+
+Backtrace END
+Memory content before bitflip:0x310x140x1c0x1c0x270x7a0x100x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd588
+address max offset: 8
+Memory content after  bitflip:0x310x160x1c0x1c0x270x7a0x100x40
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 4.119289817060733
+value address: 0x7fffffffd588
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 11:40:51]
+Fault Injection Successful after 2.092836856842041s
+[INFO -- 2018-11-25 11:40:51]
+event type: exit
+[INFO -- 2018-11-25 11:40:51]
+exit code: 0

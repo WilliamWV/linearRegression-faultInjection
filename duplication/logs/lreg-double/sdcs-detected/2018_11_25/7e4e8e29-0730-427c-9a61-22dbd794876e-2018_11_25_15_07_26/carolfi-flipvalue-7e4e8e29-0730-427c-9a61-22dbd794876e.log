@@ -1,0 +1,59 @@
+[INFO -- 2018-11-25 15:07:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 15:07:22]
+Initialization strings:
+[INFO -- 2018-11-25 15:07:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 15:07:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 15:07:22]
+initSignal:0
+[INFO -- 2018-11-25 15:07:22]
+endSignal:6
+[INFO -- 2018-11-25 15:07:22]
+faultModel:1
+[INFO -- 2018-11-25 15:07:25]
+Backtrace BEGIN:
+#0  0x00007ffff76da721 in log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=2) at ../sysdeps/ieee754/dbl-64/e_pow.c:284
+#1  __ieee754_pow_sse2 (x=2, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-2, y=3) at w_pow_compat.c:30
+#4  0x000055555555621b in std::pow<double, int> (__x=-2, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x0000555555555237 in predict (v=-2) at lreg.cpp:50
+#6  0x00005555555553fc in partialDerivate (pos=2) at lreg.cpp:74
+#7  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#8  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#9  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#10 0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+279	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x300x670xc70x930x570xf30x2e0x3d
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779f5c0 
+address max offset: 8
+Memory content after  bitflip:0x300x670xc70x930x570xf30x2e0xbf
+frame name: log1
+symbol name: ln2b
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 51
+value: {i = {-1815648464, -1087442089}, x = -0.0002361339956127805}
+value address: 0x7ffff779f5c0 <ln2b>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-25 15:07:25]
+Fault Injection Successful after 3.3395676612854004s
+[INFO -- 2018-11-25 15:07:25]
+event type: exit
+[INFO -- 2018-11-25 15:07:25]
+exit code: 0

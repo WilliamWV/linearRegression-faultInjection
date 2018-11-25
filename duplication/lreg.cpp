@@ -194,18 +194,27 @@ int main(int argc, char* argv[]){
 	x.clear();
 	y.clear();
 	vector<double> e2 = execute(argv[1]);
-	for(int i = 0; i<e1.size(); i++){
-		if(e1[i] != e2[i]){
-			//gerar entrada no log
+	if(e1.size()!=e2.size()){
+		//gerar entrada no log
 			ofstream fp (argv[3], std::ofstream::app);
-			fp << "["<<i<<"]"<<": "<<e1[i]<< " "<< e2[i]<<endl;
-            //fp.close();
-			out<<e1[i]<<endl; // coloca um deles como resposta
+			fp << "Vectors have different sizes"<<endl;
+			out<<"0.0"<<endl;
             
-		}
-		else{
-			out<<e1[i]<<endl;
-			
+	}
+	else{
+		for(int i = 0; i<e1.size(); i++){
+			if(e1[i] != e2[i]){
+				//gerar entrada no log
+				ofstream fp (argv[3], std::ofstream::app);
+				fp << "["<<i<<"]"<<": "<<e1[i]<< " "<< e2[i]<<endl;
+		        //fp.close();
+				out<<e1[i]<<endl; // coloca um deles como resposta
+		        
+			}
+			else{
+				out<<e1[i]<<endl;
+				
+			}
 		}
 	}
 

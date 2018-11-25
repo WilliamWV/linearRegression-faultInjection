@@ -1,0 +1,55 @@
+[INFO -- 2018-11-25 20:05:14]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 20:05:14]
+Initialization strings:
+[INFO -- 2018-11-25 20:05:14]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 20:05:14]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 20:05:14]
+initSignal:0
+[INFO -- 2018-11-25 20:05:14]
+endSignal:6
+[INFO -- 2018-11-25 20:05:14]
+faultModel:0
+[INFO -- 2018-11-25 20:05:15]
+Backtrace BEGIN:
+#0  0x0000555555556e0f in std::vector<double, std::allocator<double> >::end (this=0x7fffffffd5f0) at /usr/include/c++/7/bits/stl_vector.h:581
+#1  0x00005555555566ce in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd590, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555691 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:119
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+576	       *  Returns a read/write iterator that points one past the last
+577	       *  element in the %vector.  Iteration is done in ordinary
+578	       *  element order.
+579	       */
+580	      iterator
+581	      end() _GLIBCXX_NOEXCEPT
+582	      { return iterator(this->_M_impl._M_finish); }
+583	
+584	      /**
+585	       *  Returns a read-only (constant) iterator that points one past
+
+Backtrace END
+Memory content before bitflip:0x040x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd510
+address max offset: 8
+Memory content after  bitflip:0x040x010x000x000x000x000x000x00
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: __xlen
+symbol filename: /usr/include/c++/7/bits/vector.tcc
+symbol line: 203
+value: 260
+value address: 0x7fffffffd510
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 20:05:15]
+Fault Injection Successful after 1.8326008319854736s
+[INFO -- 2018-11-25 20:05:16]
+event type: exit
+[INFO -- 2018-11-25 20:05:16]
+exit code: 0

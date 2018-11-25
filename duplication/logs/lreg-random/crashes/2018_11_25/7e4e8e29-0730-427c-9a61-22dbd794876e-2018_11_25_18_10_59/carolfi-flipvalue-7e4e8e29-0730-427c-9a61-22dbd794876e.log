@@ -1,0 +1,66 @@
+[INFO -- 2018-11-25 18:10:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 18:10:54]
+Initialization strings:
+[INFO -- 2018-11-25 18:10:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 18:10:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 18:10:54]
+initSignal:0
+[INFO -- 2018-11-25 18:10:54]
+endSignal:6
+[INFO -- 2018-11-25 18:10:54]
+faultModel:2
+[EXCEPTION -- 2018-11-25 18:10:55]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-25 18:10:55]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-25 18:10:56]
+Backtrace BEGIN:
+#0  0x0000555555555241 in predict (v=4.8673151135518476e-308) at lreg.cpp:50
+#1  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#2  0x00005555555556b1 in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:121
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0xc00x250x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b170 
+address max offset: 8
+Memory content after  bitflip:0xd70x8b0x380x400xc60xa80xdb0xd4
+frame name: meanSquaredError
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 33
+value: std::vector of length 0, capacity -388599921666151224 = {4.086892141344171e-312, 4.0867937089222268e-312, 1.3637553027678181e-312, 1.3755449327793818e-312, 4.0930130433191059e-312, 7.8768483760630908e-310, 0, -1.2534856630475704e+186, -9.2309258783763704e-300, 3.8438382921657841e-165, 3.6990905724007154e+91, 3.699091991217348e+91, -6.1418000409496099e-235, -6.1451416973348513e-196, -5.151576830364141e+113, -1.3698170299808752e-80, 8.4320228703779132e-175, 2.2593190485888545e-23, -8.1074052845282576e+128, 1.7515194502848138e+51, -3.376056950279545e-61, -5.5336719879343929e+159, 1.3770243427765885e-312, 2.6618315201868376e-310, 9.0939677114474847e+265, 9.251511527650751e+254, -4.4257624063476149e+162, -8.4805432116597763e-270, 4.0755727722385245e-312, 2.6618315201868376e-310, 9.1695408503237796e+265, 9.251511527650751e+254, -4.4257624063476149e+162, -8.4805432116597763e-270, 4.0755727722385245e-312, 2.6618315201868376e-310, 9.2451139892000745e+265, 9.251511527650751e+254, -4.4257624063476149e+162, -8.4805432116597763e-270, 4.0755727722385245e-312, 2.6618315201868376e-310, 0, -1.112060638318007e+27, -4.096406958438073e+207, -4.1421549651329323e-108, 4.0755378959815429e-312, 1.4830204183898095e-309, -1.4046867755925053e-188, -1.2535522011760109e+186, -9.2309258783763704e-300, 3.8438382921657841e-165, 3.6990905724007154e+91, 3.699091991217348e+91, -6.1418000409496099e-235, -6.1451416973348513e-196, -5.151576830364141e+113, -1.3698170299808752e-80, 8.4320228703779132e-175, 2.2593190485888545e-23, -8.1074052845282576e+128, 1.7515194502848138e+51, -3.376056950279545e-61, -5.5336719879343929e+159, -1.5168662882635763e-213, 4.7914101025745093e-224, 4.0918030895167232e-312, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.7002345621318153e-305, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 18:10:56]
+Fault Injection Successful after 2.271456241607666s
+[INFO -- 2018-11-25 18:10:57]
+event type: exit
+[EXCEPTION -- 2018-11-25 18:10:57]
+exit code: no exit code available

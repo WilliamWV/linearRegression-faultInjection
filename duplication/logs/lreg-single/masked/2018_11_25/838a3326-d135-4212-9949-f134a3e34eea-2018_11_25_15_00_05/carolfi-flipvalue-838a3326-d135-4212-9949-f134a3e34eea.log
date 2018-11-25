@@ -1,0 +1,61 @@
+[INFO -- 2018-11-25 15:00:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 15:00:00]
+Initialization strings:
+[INFO -- 2018-11-25 15:00:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 15:00:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 15:00:00]
+initSignal:0
+[INFO -- 2018-11-25 15:00:00]
+endSignal:6
+[INFO -- 2018-11-25 15:00:00]
+faultModel:0
+[INFO -- 2018-11-25 15:00:02]
+Backtrace BEGIN:
+#0  malloc (n=10) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  tcache_put (tc_idx=1, chunk=0x5555557726b0) at malloc.c:2930
+#3  _int_free (have_lock=0, p=0x5555557726b0, av=0x7ffff7271c40 <main_arena>) at malloc.c:4173
+#4  __GI___libc_free (mem=0x5555557726c0) at malloc.c:3124
+#5  0x0000555555557dac in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd5f0, __p=0x5555557726c0) at /usr/include/c++/7/ext/new_allocator.h:125
+#6  0x00005555555575bb in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x5555557726c0, __n=4) at /usr/include/c++/7/bits/alloc_traits.h:462
+#7  0x0000555555556c66 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd5f0, __p=0x5555557726c0, __n=4) at /usr/include/c++/7/bits/stl_vector.h:180
+#8  0x0000555555556923 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd5f0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#9  0x000055555555630f in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd5f0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#10 0x0000555555555780 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#11 0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#12 0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+45	dl-minimal.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x300x250x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b150 
+address max offset: 8
+Memory content after  bitflip:0x300x250x770x550x450x550x000x00
+frame name: std::_Vector_base<double, std::allocator<double> >::~_Vector_base
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 16, capacity -8589934576 = {-15, -9, -1, 29, 5, -18, 31, -16, -18, -28, 25, -14, 7, -2, -17, 21}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 15:00:02]
+Fault Injection Successful after 2.9246528148651123s
+[INFO -- 2018-11-25 15:00:03]
+event type: exit
+[INFO -- 2018-11-25 15:00:03]
+exit code: 0
