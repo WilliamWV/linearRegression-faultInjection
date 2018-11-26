@@ -1,0 +1,64 @@
+[INFO -- 2018-11-25 21:26:27]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 21:26:27]
+Initialization strings:
+[INFO -- 2018-11-25 21:26:27]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 21:26:27]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 21:26:27]
+initSignal:0
+[INFO -- 2018-11-25 21:26:27]
+endSignal:6
+[INFO -- 2018-11-25 21:26:27]
+faultModel:0
+[INFO -- 2018-11-25 21:26:31]
+Backtrace BEGIN:
+#0  0x00007ffff7b1fa70 in std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x00007ffff7b2099b in std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#2  0x00007ffff7b20a54 in std::string::reserve(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7b58721 in std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7b49d0f in std::istream& std::istream::_M_extract<double>(double&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x0000555555555a4d in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:159
+#6  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+167		inp.close();
+168	}
+169	
+170	/*
+171	It must receive an input file formated as follows:
+172		1° Line : one integer T -> number of test cases
+173		2° to 5° repeat to all test case	
+174		2° Line : method parameters -> alpha, iterations, N, size of 
+175			      training set, predictions
+176		3° Line : inputs x of the training set
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x4b0xef0x980x8d0xde0xff0x230x40
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772380
+address max offset: 8
+Memory content after  bitflip:0x4b0xef0xd80x8d0xde0xff0x230x40
+frame name: main
+symbol name: e2
+symbol filename: lreg.cpp
+symbol line: 196
+value: std::vector of length 4, capacity 4 = {9.9997448279679215, 10.999751207252501, 12.999763980722822, -7.0003637539803849}
+value address: 0x7fffffffd920
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 21:26:31]
+Fault Injection Successful after 4.281472682952881s
+[INFO -- 2018-11-25 21:26:33]
+event type: exit
+[INFO -- 2018-11-25 21:26:33]
+exit code: 0

@@ -1,0 +1,52 @@
+[INFO -- 2018-11-25 21:00:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 21:00:48]
+Initialization strings:
+[INFO -- 2018-11-25 21:00:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 21:00:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 21:00:48]
+initSignal:0
+[INFO -- 2018-11-25 21:00:48]
+endSignal:6
+[INFO -- 2018-11-25 21:00:48]
+faultModel:0
+[INFO -- 2018-11-25 21:00:50]
+Backtrace BEGIN:
+#0  __GI___libc_malloc (bytes=24) at malloc.c:3048
+#1  0x00007ffff7adf1a8 in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#2  0x000055555555809a in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd5d0, __n=3) at /usr/include/c++/7/ext/new_allocator.h:111
+#3  0x0000555555557dd7 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=3) at /usr/include/c++/7/bits/alloc_traits.h:436
+#4  0x00005555555575f8 in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd5d0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#5  0x000055555555735d in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd5d0, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#6  0x0000555555556985 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd5d0, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#7  0x00005555555563f1 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5d0, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#8  0x000055555555572b in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:126
+#9  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#10 0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+3043	malloc.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000xbc0x980xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd690
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x040xbc0x980xc0
+frame name: execute
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 143
+value: -1583.00390625
+value address: 0x7fffffffd690
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 21:00:50]
+Fault Injection Successful after 2.5508527755737305s
+[INFO -- 2018-11-25 21:00:51]
+event type: exit
+[INFO -- 2018-11-25 21:00:51]
+exit code: 0

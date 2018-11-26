@@ -1,0 +1,53 @@
+[INFO -- 2018-11-25 20:35:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 20:35:23]
+Initialization strings:
+[INFO -- 2018-11-25 20:35:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 20:35:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 20:35:23]
+initSignal:0
+[INFO -- 2018-11-25 20:35:23]
+endSignal:6
+[INFO -- 2018-11-25 20:35:23]
+faultModel:2
+[EXCEPTION -- 2018-11-25 20:35:24]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-25 20:35:24]
+Backtrace BEGIN:
+#0  libc_feholdsetround_sse_ctx (r=0, ctx=<synthetic pointer>) at ../sysdeps/i386/fpu/fenv_private.h:450
+#1  __ieee754_pow_sse2 (x=5, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:97
+#2  0x00007ffff76bcb14 in __pow (x=5, y=3) at w_pow_compat.c:30
+#3  0x000055555555621b in std::pow<double, int> (__x=5, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x0000555555555237 in predict (v=5) at lreg.cpp:50
+#5  0x00005555555553fc in partialDerivate (pos=2) at lreg.cpp:74
+#6  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#7  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#8  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#9  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+445	in ../sysdeps/i386/fpu/fenv_private.h
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x080x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd418
+address max offset: 8
+Memory content after  bitflip:0x970x060x4c0xc90x770xf30xe80x5e
+frame name: __pow
+symbol name: y
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 1.5952054963817378e+149
+value address: 0x7fffffffd418
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 20:35:24]
+Fault Injection Successful after 1.4102842807769775s
+[INFO -- 2018-11-25 20:35:25]
+event type: exit
+[INFO -- 2018-11-25 20:35:25]
+exit code: 0

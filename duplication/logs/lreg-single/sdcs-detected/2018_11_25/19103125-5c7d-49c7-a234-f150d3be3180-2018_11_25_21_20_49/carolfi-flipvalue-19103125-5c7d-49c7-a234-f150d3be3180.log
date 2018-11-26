@@ -1,0 +1,56 @@
+[INFO -- 2018-11-25 21:20:45]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 21:20:45]
+Initialization strings:
+[INFO -- 2018-11-25 21:20:45]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 21:20:45]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 21:20:45]
+initSignal:0
+[INFO -- 2018-11-25 21:20:45]
+endSignal:6
+[INFO -- 2018-11-25 21:20:45]
+faultModel:0
+[INFO -- 2018-11-25 21:20:46]
+Backtrace BEGIN:
+#0  std::_Destroy<double*> (__first=0x5555555568c2 <std::_Vector_base<double, std::allocator<double> >::_Vector_impl::~_Vector_impl()+24>, __last=0x7fffffffd500) at /usr/include/c++/7/bits/stl_construct.h:127
+#1  0x0000555555556a25 in std::_Destroy<double*, double> (__first=0x555555772470, __last=0x555555772480) at /usr/include/c++/7/bits/stl_construct.h:206
+#2  0x0000555555556303 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd5f0, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:434
+#3  0x0000555555555780 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+122	   * a trivial destructor, the compiler should optimize all of this
+123	   * away, otherwise the objects' destructors must be invoked.
+124	   */
+125	  template<typename _ForwardIterator>
+126	    inline void
+127	    _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+128	    {
+129	      typedef typename iterator_traits<_ForwardIterator>::value_type
+130	                       _Value_type;
+131	#if __cplusplus >= 201103L
+
+Backtrace END
+Memory content before bitflip:0x100x270x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd56c
+address max offset: 4
+Memory content after  bitflip:0x000x270x000x00
+frame name: train
+symbol name: iterations
+symbol filename: lreg.cpp
+symbol line: 105
+value: 9984
+value address: 0x7fffffffd56c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-25 21:20:46]
+Fault Injection Successful after 1.382429838180542s
+[INFO -- 2018-11-25 21:20:48]
+event type: exit
+[INFO -- 2018-11-25 21:20:48]
+exit code: 0

@@ -1,0 +1,47 @@
+[INFO -- 2018-11-25 23:05:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 23:05:24]
+Initialization strings:
+[INFO -- 2018-11-25 23:05:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 23:05:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 23:05:24]
+initSignal:0
+[INFO -- 2018-11-25 23:05:24]
+endSignal:6
+[INFO -- 2018-11-25 23:05:24]
+faultModel:0
+[INFO -- 2018-11-25 23:05:27]
+Backtrace BEGIN:
+#0  0x00007ffff6ed0b01 in __GI_____strtod_l_internal (nptr=<optimized out>, endptr=0x7fffffffd540, group=<optimized out>, loc=<optimized out>) at strtod_l.c:1197
+#1  0x00007ffff7b001bc in void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#2  0x00007ffff7b5878a in std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7b49d0f in std::istream& std::istream::_M_extract<double>(double&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x0000555555555a4d in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:159
+#5  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+1192	strtod_l.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x040x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd8ec
+address max offset: 4
+Memory content after  bitflip:0x040x010x000x00
+frame name: main
+symbol name: argc
+symbol filename: lreg.cpp
+symbol line: 181
+value: 260
+value address: 0x7fffffffd8ec
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-25 23:05:27]
+Fault Injection Successful after 3.179776430130005s
+[INFO -- 2018-11-25 23:05:27]
+event type: exit
+[INFO -- 2018-11-25 23:05:27]
+exit code: 0

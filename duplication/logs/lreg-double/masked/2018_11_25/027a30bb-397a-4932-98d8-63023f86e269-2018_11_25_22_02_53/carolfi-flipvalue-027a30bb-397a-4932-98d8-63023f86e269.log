@@ -1,0 +1,65 @@
+[INFO -- 2018-11-25 22:02:50]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 22:02:50]
+Initialization strings:
+[INFO -- 2018-11-25 22:02:50]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 22:02:50]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 22:02:50]
+initSignal:0
+[INFO -- 2018-11-25 22:02:50]
+endSignal:6
+[INFO -- 2018-11-25 22:02:50]
+faultModel:1
+[INFO -- 2018-11-25 22:02:51]
+Backtrace BEGIN:
+#0  0x0000555555558059 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.029790820459533015, __last=0, __result=0x5555557726f0) at /usr/include/c++/7/bits/stl_algobase.h:457
+#1  0x0000555555557d8a in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.029790820459533015, __last=0, __result=0x5555557726f0) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#2  0x000055555555758e in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.029790820459533015, __last=0, __result=0x5555557726f0) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#3  0x0000555555556c1f in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=0.029790820459533015, __last=0, __result=0x5555557726f0) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#4  0x000055555555643f in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5d0, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#5  0x000055555555572b in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:126
+#6  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#7  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+452	      __glibcxx_requires_valid_range(__first, __last);
+453	
+454	      return (std::__copy_move_a2<__is_move_iterator<_II>::__value>
+455		      (std::__miter_base(__first), std::__miter_base(__last),
+456		       __result));
+457	    }
+458	
+459	#if __cplusplus >= 201103L
+460	  /**
+461	   *  @brief Moves the range [first,last) into result.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0xe80xc90xdc0xf70xff0x7f0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff7dd19c8 
+address max offset: 8
+Memory content after  bitflip:0xe80xc90x9d0xf70xff0x7f0x000x00
+frame name: main
+symbol name: e2
+symbol filename: lreg.cpp
+symbol line: 196
+value: std::vector of length 719, capacity -5229 = {6.953348858598931e-310, 2.9643938750474793e-323, 0, 2.0246810166574283e-320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.9525251667299724e-323, 6.9533490636006013e-310, 6.9533490639606764e-310, 0, 0, 6.9533490635116695e-310, 6.9533490638025754e-310, 6.9533490637970418e-310, 6.9533490637978323e-310, 0, 0, 6.9533490624508118e-310, 0, 6.953349062452788e-310, 2.9643938750474793e-323, 0, 2.0246810166574283e-320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.9525251667299724e-323, 6.9533490636152257e-310, 6.9533490639606764e-310, 6.953349063597044e-310, 0, 6.9533490635069265e-310, 6.9533490638025754e-310, 6.9533490637970418e-310, 6.9533490637978323e-310, 0, 6.9533490625804546e-310, 6.9533490625824308e-310, 2.9643938750474793e-323, 0, 2.0246810166574283e-320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.9525251667299724e-323, 6.9533490636290595e-310, 6.9533490639606764e-310, 0, 0, 6.9533490635543568e-310, 6.9533490638863689e-310, 6.9533490638808354e-310, 6.9533490638816259e-310, 0, 0, 6.9533490625804546e-310, 6.9533490625824308e-310, 2.9643938750474793e-323, 0, 6.07206678738892e-320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.9525251667299724e-323, 6.9533490636432886e-310, 6.9533490639606764e-310, 4.6355706433180856e-310, 0, 6.9533490635543568e-310, 6.9533490638863689e-310, 6.9533490638808354e-310, 6.9533490638816259e-310, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6.9533490624460687e-310, 0, 6.953349062448045e-310, 2.9643938750474793e-323, 0, 2.0246810166574283e-320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x7fffffffd920
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-25 22:02:51]
+Fault Injection Successful after 1.4766974449157715s
+[INFO -- 2018-11-25 22:02:53]
+event type: exit
+[INFO -- 2018-11-25 22:02:53]
+exit code: 0

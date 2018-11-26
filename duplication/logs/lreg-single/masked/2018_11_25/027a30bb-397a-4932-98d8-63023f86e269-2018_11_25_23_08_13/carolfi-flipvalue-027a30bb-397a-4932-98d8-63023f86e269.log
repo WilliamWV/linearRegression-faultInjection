@@ -1,0 +1,57 @@
+[INFO -- 2018-11-25 23:08:09]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 23:08:09]
+Initialization strings:
+[INFO -- 2018-11-25 23:08:09]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 23:08:09]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 23:08:09]
+initSignal:0
+[INFO -- 2018-11-25 23:08:09]
+endSignal:6
+[INFO -- 2018-11-25 23:08:09]
+faultModel:0
+[INFO -- 2018-11-25 23:08:11]
+Backtrace BEGIN:
+#0  0x00007ffff76da54d in __ieee754_pow_sse2 (x=7, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:72
+#1  0x00007ffff76bcb14 in __pow (x=7, y=0) at w_pow_compat.c:30
+#2  0x000055555555621b in std::pow<double, int> (__x=7, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555237 in predict (v=7) at lreg.cpp:50
+#4  0x00005555555553fc in partialDerivate (pos=3) at lreg.cpp:74
+#5  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#6  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#7  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#8  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+67	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x000x000x000x000x000x000x300x43
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff779f5a8 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x040x000x000x300x43
+frame name: __ieee754_pow_sse2
+symbol name: t52
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 54
+value: {i = {67108864, 1127219200}, x = 4503599694479360}
+value address: 0x7ffff779f5a8 <t52>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-25 23:08:11]
+Fault Injection Successful after 2.4073550701141357s
+[INFO -- 2018-11-25 23:08:12]
+event type: exit
+[INFO -- 2018-11-25 23:08:12]
+exit code: 0

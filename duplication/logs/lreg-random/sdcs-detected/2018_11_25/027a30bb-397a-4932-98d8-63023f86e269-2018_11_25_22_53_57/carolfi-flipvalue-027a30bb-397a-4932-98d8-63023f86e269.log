@@ -1,0 +1,58 @@
+[INFO -- 2018-11-25 22:53:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 22:53:53]
+Initialization strings:
+[INFO -- 2018-11-25 22:53:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 22:53:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 22:53:53]
+initSignal:0
+[INFO -- 2018-11-25 22:53:53]
+endSignal:6
+[INFO -- 2018-11-25 22:53:53]
+faultModel:2
+[INFO -- 2018-11-25 22:53:54]
+Backtrace BEGIN:
+#0  0x00007ffff76b9990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76bcb14 in __pow (x=31, y=2) at w_pow_compat.c:30
+#2  0x000055555555621b in std::pow<double, int> (__x=31, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555451 in partialDerivate (pos=2) at lreg.cpp:74
+#4  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#5  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#6  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#7  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+167		inp.close();
+168	}
+169	
+170	/*
+171	It must receive an input file formated as follows:
+172		1° Line : one integer T -> number of test cases
+173		2° to 5° repeat to all test case	
+174		2° Line : method parameters -> alpha, iterations, N, size of 
+175			      training set, predictions
+176		3° Line : inputs x of the training set
+
+Backtrace END
+Memory content before bitflip:0x650x4f0xa10xac0x8c0x060x0a0x41
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd580
+address max offset: 8
+Memory content after  bitflip:0xeb0xf80x960x1e0xde0xf50xbf0xd9
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: -2.1127626752742108e+124
+value address: 0x7fffffffd580
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 22:53:54]
+Fault Injection Successful after 1.1873610019683838s
+[INFO -- 2018-11-25 22:53:55]
+event type: exit
+[INFO -- 2018-11-25 22:53:55]
+exit code: 0

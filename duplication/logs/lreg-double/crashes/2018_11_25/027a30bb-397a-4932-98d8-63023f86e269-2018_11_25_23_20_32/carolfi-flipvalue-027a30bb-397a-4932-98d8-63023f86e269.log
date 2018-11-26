@@ -1,0 +1,60 @@
+[INFO -- 2018-11-25 23:20:25]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 23:20:25]
+Initialization strings:
+[INFO -- 2018-11-25 23:20:25]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 23:20:25]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 23:20:25]
+initSignal:0
+[INFO -- 2018-11-25 23:20:25]
+endSignal:6
+[INFO -- 2018-11-25 23:20:25]
+faultModel:1
+[EXCEPTION -- 2018-11-25 23:20:26]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-25 23:20:30]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-25 23:20:30]
+Backtrace BEGIN:
+#0  0x0000555555555217 in predict (v=-15) at lreg.cpp:50
+#1  0x00005555555553fc in partialDerivate (pos=3) at lreg.cpp:74
+#2  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#3  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#4  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#5  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+45		Predicts the value related to v using the Ts variables
+46	*/
+47	double predict(double v){
+48		double val = 0;
+49		for(int i = 0; i<T.size(); i++){
+50			val+= (T[i] * pow(v, i));
+51		}
+52		return val;
+53		
+54	}
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x2e0xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd478
+address max offset: 8
+Memory content after  bitflip:0x000x000x880x000x000x000x2e0xc0
+frame name: predict
+symbol name: v
+symbol filename: lreg.cpp
+symbol line: 47
+value: -15.000000015832484
+value address: 0x7fffffffd478
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 23:20:30]
+Fault Injection Successful after 5.909868240356445s
+[INFO -- 2018-11-25 23:20:31]
+event type: exit
+[EXCEPTION -- 2018-11-25 23:20:31]
+exit code: no exit code available

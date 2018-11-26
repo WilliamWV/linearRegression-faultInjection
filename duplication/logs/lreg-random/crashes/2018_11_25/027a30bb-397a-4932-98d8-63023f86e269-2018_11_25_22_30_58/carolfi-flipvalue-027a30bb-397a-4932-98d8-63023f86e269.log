@@ -1,0 +1,60 @@
+[INFO -- 2018-11-25 22:30:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-25 22:30:55]
+Initialization strings:
+[INFO -- 2018-11-25 22:30:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-25 22:30:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-25 22:30:55]
+initSignal:0
+[INFO -- 2018-11-25 22:30:55]
+endSignal:6
+[INFO -- 2018-11-25 22:30:55]
+faultModel:2
+[EXCEPTION -- 2018-11-25 22:30:56]
+gdbException: Cannot access memory at address 0xafaa15bc61eaa189
+[EXCEPTION -- 2018-11-25 22:30:56]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-25 22:30:56]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff7ad88b7 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7adea06 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7adea41 in std::terminate() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7adec74 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7adf1ec in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x000055555555809a in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd900, __n=1447221074296250504) at /usr/include/c++/7/ext/new_allocator.h:111
+#8  0x0000555555557dd7 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=1447221074296250504) at /usr/include/c++/7/bits/alloc_traits.h:436
+#9  0x00005555555575f8 in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd900, __n=1447221074296250504) at /usr/include/c++/7/bits/stl_vector.h:172
+#10 0x0000555555557a3a in std::vector<double, std::allocator<double> >::_M_realloc_insert<double> (this=0x7fffffffd900, __position=0, __args#0=@0x7fffffffd698: -1078.8160145721722) at /usr/include/c++/7/bits/vector.tcc:406
+#11 0x0000555555557264 in std::vector<double, std::allocator<double> >::emplace_back<double> (this=0x7fffffffd900, __args#0=@0x7fffffffd698: -1078.8160145721722) at /usr/include/c++/7/bits/vector.tcc:105
+#12 0x0000555555556880 in std::vector<double, std::allocator<double> >::push_back (this=0x7fffffffd900, __x=@0x7fffffffd698: -1078.8160145721722) at /usr/include/c++/7/bits/stl_vector.h:954
+#13 0x0000555555555a8d in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:160
+#14 0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x880x200xe30x3c0xe60x8f0x150x14
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd520
+address max offset: 8
+Memory content after  bitflip:0x4d0xb20x6d0x480x440xb30x280x06
+frame name: __gnu_cxx::new_allocator<double>::allocate
+symbol name: __n
+symbol filename: /usr/include/c++/7/ext/new_allocator.h
+symbol line: 99
+value: 443801669150290509
+value address: 0x7fffffffd520
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2018-11-25 22:30:56]
+Fault Injection Successful after 1.6602418422698975s
+[INFO -- 2018-11-25 22:30:56]
+event type: exit
+[EXCEPTION -- 2018-11-25 22:30:56]
+exit code: no exit code available
