@@ -1,0 +1,59 @@
+[INFO -- 2018-11-26 18:27:02]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:27:02]
+Initialization strings:
+[INFO -- 2018-11-26 18:27:02]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:27:02]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:27:02]
+initSignal:0
+[INFO -- 2018-11-26 18:27:02]
+endSignal:3
+[INFO -- 2018-11-26 18:27:02]
+faultModel:2
+[INFO -- 2018-11-26 18:27:03]
+Backtrace BEGIN:
+#0  0x00005555555573a8 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.86823552769776502, __last=0, __result=0.86794248351131553) at /usr/include/c++/7/bits/stl_algobase.h:455
+#1  0x0000555555556d13 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555f26 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:197
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+450	      __glibcxx_function_requires(_OutputIteratorConcept<_OI,
+451		    typename iterator_traits<_II>::value_type>)
+452	      __glibcxx_requires_valid_range(__first, __last);
+453	
+454	      return (std::__copy_move_a2<__is_move_iterator<_II>::__value>
+455		      (std::__miter_base(__first), std::__miter_base(__last),
+456		       __result));
+457	    }
+458	
+459	#if __cplusplus >= 201103L
+
+Backtrace END
+Fliping a bit of the value pointed by a reference
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x230x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b190 
+address max offset: 8
+Memory content after  bitflip:0xed0x770xe00x040x510xc70x7e0x35
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: __x
+symbol filename: /usr/include/c++/7/bits/vector.tcc
+symbol line: 180
+value: std::vector of length 2, capacity 481830457108671125 = {0.86823552769776502, -1.0293030748355418}
+value address: 0x55555575b180 <T1>
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 18:27:03]
+Fault Injection Successful after 1.0781168937683105s
+[INFO -- 2018-11-26 18:27:04]
+event type: exit
+[INFO -- 2018-11-26 18:27:04]
+exit code: 0

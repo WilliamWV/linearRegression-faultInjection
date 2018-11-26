@@ -1,0 +1,53 @@
+[INFO -- 2018-11-26 17:34:28]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:34:28]
+Initialization strings:
+[INFO -- 2018-11-26 17:34:28]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:34:28]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:34:28]
+initSignal:0
+[INFO -- 2018-11-26 17:34:28]
+endSignal:3
+[INFO -- 2018-11-26 17:34:28]
+faultModel:1
+[INFO -- 2018-11-26 17:34:30]
+Backtrace BEGIN:
+#0  0x0000555555556d08 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#1  0x0000555555555f26 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:197
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+213		      this->_M_impl._M_start = __tmp;
+214		      this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __xlen;
+215		    }
+216		  else if (size() >= __xlen)
+217		    {
+218		      std::_Destroy(std::copy(__x.begin(), __x.end(), begin()),
+219				    end(), _M_get_Tp_allocator());
+220		    }
+221		  else
+222		    {
+
+Backtrace END
+Memory content before bitflip:0x180x8b0xbf0x9a0x620x9e0x9f0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7f0
+address max offset: 8
+Memory content after  bitflip:0x180x8b0xbf0x9a0x620x9e0x9f0xbb
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 189
+value: -1.6738796215698837e-21
+value address: 0x7fffffffd7f0
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 17:34:30]
+Fault Injection Successful after 2.2698376178741455s
+[INFO -- 2018-11-26 17:34:33]
+event type: exit
+[INFO -- 2018-11-26 17:34:33]
+exit code: 0

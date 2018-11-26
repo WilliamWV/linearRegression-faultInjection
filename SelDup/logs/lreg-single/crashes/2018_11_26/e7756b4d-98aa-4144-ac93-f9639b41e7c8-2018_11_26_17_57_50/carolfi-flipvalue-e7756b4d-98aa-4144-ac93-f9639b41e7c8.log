@@ -1,0 +1,58 @@
+[INFO -- 2018-11-26 17:57:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:57:48]
+Initialization strings:
+[INFO -- 2018-11-26 17:57:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:57:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:57:48]
+initSignal:0
+[INFO -- 2018-11-26 17:57:48]
+endSignal:3
+[INFO -- 2018-11-26 17:57:48]
+faultModel:0
+[EXCEPTION -- 2018-11-26 17:57:49]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 17:57:49]
+Backtrace BEGIN:
+#0  0x000055555555523e in verifyDoubleDup (a=-0.026610549185870427, b=-0.026610549185870427) at lreg.cpp:70
+#1  0x00005555555557ea in predict (v=-1) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x200x4e0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd8dc
+address max offset: 4
+Memory content after  bitflip:0x200x4e0x000x08
+frame name: main
+symbol name: iterations
+symbol filename: lreg.cpp
+symbol line: 236
+value: 134237728
+value address: 0x7fffffffd8dc
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 17:57:49]
+Fault Injection Successful after 1.6827924251556396s
+[INFO -- 2018-11-26 17:57:49]
+event type: exit
+[EXCEPTION -- 2018-11-26 17:57:49]
+exit code: no exit code available

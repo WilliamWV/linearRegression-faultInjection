@@ -1,0 +1,57 @@
+[INFO -- 2018-11-26 19:18:12]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 19:18:12]
+Initialization strings:
+[INFO -- 2018-11-26 19:18:12]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 19:18:12]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 19:18:12]
+initSignal:0
+[INFO -- 2018-11-26 19:18:12]
+endSignal:3
+[INFO -- 2018-11-26 19:18:12]
+faultModel:2
+[EXCEPTION -- 2018-11-26 19:18:14]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-26 19:18:15]
+Backtrace BEGIN:
+#0  0x00005555555567e9 in std::pow<double, unsigned int> (__x=-3, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x0000555555555ace in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000xbc0x980xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd918
+address max offset: 8
+Memory content after  bitflip:0x3d0x1d0x530x470xc70xde0x890x0d
+frame name: main
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 233
+value: 1.8944091250847061e-243
+value address: 0x7fffffffd918
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 19:18:15]
+Fault Injection Successful after 3.6094746589660645s
+[INFO -- 2018-11-26 19:18:19]
+event type: exit
+[INFO -- 2018-11-26 19:18:19]
+exit code: 0

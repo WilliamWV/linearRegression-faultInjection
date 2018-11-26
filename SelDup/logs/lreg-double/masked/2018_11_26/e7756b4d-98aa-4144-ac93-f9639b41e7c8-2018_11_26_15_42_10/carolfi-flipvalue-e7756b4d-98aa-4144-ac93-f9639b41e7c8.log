@@ -1,0 +1,54 @@
+[INFO -- 2018-11-26 15:42:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:42:07]
+Initialization strings:
+[INFO -- 2018-11-26 15:42:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:42:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:42:07]
+initSignal:0
+[INFO -- 2018-11-26 15:42:07]
+endSignal:3
+[INFO -- 2018-11-26 15:42:07]
+faultModel:1
+[INFO -- 2018-11-26 15:42:08]
+Backtrace BEGIN:
+#0  0x00005555555570d5 in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:94
+#1  0x00005555555569da in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#2  0x0000555555555f47 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:199
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+89	    template<typename _Ptr>
+90	      static typename std::enable_if<__is_custom_pointer<_Ptr>::value>::type
+91	      destroy(_Alloc& __a, _Ptr __p)
+92	      { _Base_type::destroy(__a, std::addressof(*__p)); }
+93	
+94	    static _Alloc _S_select_on_copy(const _Alloc& __a)
+95	    { return _Base_type::select_on_container_copy_construction(__a); }
+96	
+97	    static void _S_on_swap(_Alloc& __a, _Alloc& __b)
+98	    { std::__alloc_on_swap(__a, __b); }
+
+Backtrace END
+Memory content before bitflip:0x4d0xff0xe20x530xb80x0b0x0a0x41
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0x4d0xff0xb20x530xb80x0b0x0a0x41
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 190
+value: 213367.04086875395
+value address: 0x7fffffffd7f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 15:42:08]
+Fault Injection Successful after 1.8144829273223877s
+[INFO -- 2018-11-26 15:42:10]
+event type: exit
+[INFO -- 2018-11-26 15:42:10]
+exit code: 0

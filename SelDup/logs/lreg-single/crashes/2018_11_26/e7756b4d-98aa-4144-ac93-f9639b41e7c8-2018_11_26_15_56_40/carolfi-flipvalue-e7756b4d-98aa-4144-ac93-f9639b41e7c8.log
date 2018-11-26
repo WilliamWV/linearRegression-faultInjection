@@ -1,0 +1,58 @@
+[INFO -- 2018-11-26 15:56:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:56:35]
+Initialization strings:
+[INFO -- 2018-11-26 15:56:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:56:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:56:35]
+initSignal:0
+[INFO -- 2018-11-26 15:56:35]
+endSignal:3
+[INFO -- 2018-11-26 15:56:35]
+faultModel:0
+[EXCEPTION -- 2018-11-26 15:56:36]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 15:56:36]
+Backtrace BEGIN:
+#0  0x000055555555511b in verifyUintDup (a=1, b=1) at lreg.cpp:61
+#1  0x000055555555576f in predict (v=-18) at lreg.cpp:115
+#2  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7d0
+address max offset: 1
+Memory content after  bitflip:0x21
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 177
+value: 33
+value address: 0x7fffffffd7d0
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-26 15:56:36]
+Fault Injection Successful after 1.477776288986206s
+[INFO -- 2018-11-26 15:56:39]
+event type: exit
+[EXCEPTION -- 2018-11-26 15:56:39]
+exit code: no exit code available

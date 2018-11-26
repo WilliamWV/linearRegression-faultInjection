@@ -1,0 +1,54 @@
+[INFO -- 2018-11-26 18:05:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:05:53]
+Initialization strings:
+[INFO -- 2018-11-26 18:05:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:05:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:05:53]
+initSignal:0
+[INFO -- 2018-11-26 18:05:53]
+endSignal:3
+[INFO -- 2018-11-26 18:05:53]
+faultModel:2
+[EXCEPTION -- 2018-11-26 18:05:53]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-26 18:05:54]
+Backtrace BEGIN:
+#0  0x0000555555555e97 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#1  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+188		vector<double> bestT = T1; 
+189		double bestMSE = meanSquaredError();
+190		double MSE;	
+191		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<verifyUintDup(iter1, iter2); i1++, i2++){
+192			prevT = T1; 	
+193			adjust(verifyDoubleDup(alpha1, alpha2), verifyDoubleDup(alpha1, alpha2));
+194			MSE = meanSquaredError();
+195			if (MSE < bestMSE){
+196				bestMSE = MSE;
+197				bestT = T1; 
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd910
+address max offset: 8
+Memory content after  bitflip:0xa50x130x610xda0x8d0x420xf30x76
+frame name: main
+symbol name: alpha
+symbol filename: lreg.cpp
+symbol line: 233
+value: 9.7035794466930507e+264
+value address: 0x7fffffffd910
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 18:05:54]
+Fault Injection Successful after 1.2561709880828857s
+[INFO -- 2018-11-26 18:05:55]
+event type: exit
+[INFO -- 2018-11-26 18:05:55]
+exit code: 0

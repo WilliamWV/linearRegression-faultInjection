@@ -1,0 +1,58 @@
+[INFO -- 2018-11-26 15:03:10]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:03:10]
+Initialization strings:
+[INFO -- 2018-11-26 15:03:10]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:03:10]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:03:10]
+initSignal:0
+[INFO -- 2018-11-26 15:03:10]
+endSignal:3
+[INFO -- 2018-11-26 15:03:10]
+faultModel:1
+[EXCEPTION -- 2018-11-26 15:03:11]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-26 15:03:12]
+Backtrace BEGIN:
+#0  __ieee754_pow_sse2 (x=23, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:76
+#1  0x00007ffff76bcb14 in __pow (x=23, y=0) at w_pow_compat.c:30
+#2  0x0000555555556826 in std::pow<double, unsigned int> (__x=23, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555814 in predict (v=23) at lreg.cpp:116
+#4  0x0000555555555928 in meanSquaredError () at lreg.cpp:128
+#5  0x0000555555555ee5 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+71	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 0
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff779f5d8 
+address max offset: 4
+Memory content after  bitflip:0x000x000x840x00
+frame name: __ieee754_pow_sse2
+symbol name: INF
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 48
+value: {i = {8650752, 2146435072}, x = nan(0x000840000)}
+value address: 0x7ffff779f5d8 <INF>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-26 15:03:12]
+Fault Injection Successful after 2.381345748901367s
+[INFO -- 2018-11-26 15:03:15]
+event type: exit
+[INFO -- 2018-11-26 15:03:15]
+exit code: 0

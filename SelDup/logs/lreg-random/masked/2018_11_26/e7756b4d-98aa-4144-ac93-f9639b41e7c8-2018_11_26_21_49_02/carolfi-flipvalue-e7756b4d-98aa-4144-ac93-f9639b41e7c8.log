@@ -1,0 +1,54 @@
+[INFO -- 2018-11-26 21:48:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 21:48:55]
+Initialization strings:
+[INFO -- 2018-11-26 21:48:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 21:48:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 21:48:55]
+initSignal:0
+[INFO -- 2018-11-26 21:48:55]
+endSignal:3
+[INFO -- 2018-11-26 21:48:55]
+faultModel:2
+[INFO -- 2018-11-26 21:48:57]
+Backtrace BEGIN:
+#0  0x000055555555739d in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.5283600001018347, __last=0, __result=4.6355706480121045e-310) at /usr/include/c++/7/bits/stl_algobase.h:446
+#1  0x0000555555556d13 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555f26 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:197
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+441	   *  Note that the end of the output range is permitted to be contained
+442	   *  within [first,last).
+443	  */
+444	  template<typename _II, typename _OI>
+445	    inline _OI
+446	    copy(_II __first, _II __last, _OI __result)
+447	    {
+448	      // concept requirements
+449	      __glibcxx_function_requires(_InputIteratorConcept<_II>)
+450	      __glibcxx_function_requires(_OutputIteratorConcept<_OI,
+
+Backtrace END
+Memory content before bitflip:0x290x390xbb0xb10xa00xff0xca0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0x2c0xa20x830x1d0x520x590x240x16
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 190
+value: 5.192231560613472e-202
+value address: 0x7fffffffd7f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 21:48:57]
+Fault Injection Successful after 2.1212711334228516s
+[INFO -- 2018-11-26 21:49:01]
+event type: exit
+[INFO -- 2018-11-26 21:49:01]
+exit code: 0

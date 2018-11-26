@@ -1,0 +1,62 @@
+[INFO -- 2018-11-26 18:23:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:23:00]
+Initialization strings:
+[INFO -- 2018-11-26 18:23:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:23:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:23:00]
+initSignal:0
+[INFO -- 2018-11-26 18:23:00]
+endSignal:3
+[INFO -- 2018-11-26 18:23:00]
+faultModel:2
+[INFO -- 2018-11-26 18:23:00]
+Backtrace BEGIN:
+#0  0x00005555555557ef in predict (v=-3) at lreg.cpp:116
+#1  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x250x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd830
+address max offset: 8
+Memory content after  bitflip:0xd50xc90xb90xfe0xc80x020xed0xbc
+frame name: train
+symbol name: bestT
+symbol filename: lreg.cpp
+symbol line: 188
+value: std::vector of length 2, capacity -604162198475352941 = {0.47368206865743229, -1.039520075392127}
+value address: 0x7fffffffd820
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 18:23:00]
+Fault Injection Successful after 0.6873228549957275s
+[INFO -- 2018-11-26 18:23:02]
+event type: exit
+[INFO -- 2018-11-26 18:23:02]
+exit code: 0

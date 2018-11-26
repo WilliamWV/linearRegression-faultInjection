@@ -1,0 +1,55 @@
+[INFO -- 2018-11-26 21:08:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 21:08:18]
+Initialization strings:
+[INFO -- 2018-11-26 21:08:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 21:08:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 21:08:18]
+initSignal:0
+[INFO -- 2018-11-26 21:08:18]
+endSignal:3
+[INFO -- 2018-11-26 21:08:18]
+faultModel:2
+[INFO -- 2018-11-26 21:08:20]
+Backtrace BEGIN:
+#0  0x000055555555510c in verifyUintDup (a=3, b=2) at lreg.cpp:61
+#1  0x000055555555576f in predict (v=25) at lreg.cpp:115
+#2  0x0000555555555928 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000xc00xf20xff0xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd928
+address max offset: 8
+Memory content after  bitflip:0xe80xb70x6e0x250x630xd40x8b0x6f
+frame name: main
+symbol name: yChecksum
+symbol filename: lreg.cpp
+symbol line: 233
+value: 2.1096687630014499e+229
+value address: 0x7fffffffd928
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 21:08:20]
+Fault Injection Successful after 2.4186720848083496s
+[INFO -- 2018-11-26 21:08:21]
+event type: exit
+[INFO -- 2018-11-26 21:08:21]
+exit code: 0

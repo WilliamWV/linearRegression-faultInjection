@@ -1,0 +1,58 @@
+[INFO -- 2018-11-26 15:06:08]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:06:08]
+Initialization strings:
+[INFO -- 2018-11-26 15:06:08]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:06:08]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:06:08]
+initSignal:0
+[INFO -- 2018-11-26 15:06:08]
+endSignal:3
+[INFO -- 2018-11-26 15:06:08]
+faultModel:1
+[EXCEPTION -- 2018-11-26 15:06:10]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-26 15:06:10]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 15:06:11]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0f897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff703cb9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1690a in malloc_printerr (str=str@entry=0x7ffff703e870 "double free or corruption (out)") at malloc.c:5350
+#4  0x00007ffff6f1de75 in _int_free (have_lock=0, p=0x555555772480, av=0x7ffff7271c40 <main_arena>) at malloc.c:4278
+#5  __GI___libc_free (mem=0x555555772490) at malloc.c:3124
+#6  0x0000555555558018 in __gnu_cxx::new_allocator<double>::deallocate (this=0x55555575b160 <y>, __p=0x555555772490) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x0000555555557add in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772490, __n=16) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x0000555555557230 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x55555575b160 <y>, __p=0x555555772490, __n=16) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x00005555555576b1 in std::vector<double, std::allocator<double> >::_M_realloc_insert<double const&> (this=0x55555575b160 <y>, __position=0, __args#0=@0x7fffffffd928: -130860) at /usr/include/c++/7/bits/vector.tcc:448
+#10 0x0000555555556e4a in std::vector<double, std::allocator<double> >::push_back (this=0x55555575b160 <y>, __x=@0x7fffffffd928: -130860) at /usr/include/c++/7/bits/stl_vector.h:948
+#11 0x0000555555556427 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:251
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff72738f0 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x110x000x000x00
+frame name: malloc_printerr
+symbol name: __malloc_initialize_hook
+symbol filename: malloc.c
+symbol line: 1859
+value: 0x0
+value address: 0x7ffff72738f0 <__malloc_initialize_hook>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 15:06:11]
+Fault Injection Successful after 3.0093603134155273s
+[INFO -- 2018-11-26 15:06:11]
+event type: exit
+[EXCEPTION -- 2018-11-26 15:06:11]
+exit code: no exit code available

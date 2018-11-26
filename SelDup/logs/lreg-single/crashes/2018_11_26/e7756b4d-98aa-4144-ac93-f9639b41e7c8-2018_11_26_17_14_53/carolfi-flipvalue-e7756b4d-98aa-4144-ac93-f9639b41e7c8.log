@@ -1,0 +1,54 @@
+[INFO -- 2018-11-26 17:14:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:14:48]
+Initialization strings:
+[INFO -- 2018-11-26 17:14:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:14:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:14:48]
+initSignal:0
+[INFO -- 2018-11-26 17:14:48]
+endSignal:3
+[INFO -- 2018-11-26 17:14:48]
+faultModel:0
+[INFO -- 2018-11-26 17:14:49]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb0a in __pow (x=-21, y=0) at w_pow_compat.c:30
+#1  0x0000555555556826 in std::pow<double, unsigned int> (__x=-21, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555814 in predict (v=-21) at lreg.cpp:116
+#3  0x0000555555555928 in meanSquaredError () at lreg.cpp:128
+#4  0x0000555555555ee5 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+25	w_pow_compat.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x310x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772378
+address max offset: 8
+Memory content after  bitflip:0x310x000x000x000x000x010x000x00
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 187
+value: std::vector of length 3, capacity 3 = {1.1488654325624632, -0.024449093955295553, -2.9928740771078131}
+value address: 0x7fffffffd800
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 17:14:49]
+Fault Injection Successful after 1.9648609161376953s
+[INFO -- 2018-11-26 17:14:52]
+event type: exit
+[EXCEPTION -- 2018-11-26 17:14:52]
+exit code: no exit code available

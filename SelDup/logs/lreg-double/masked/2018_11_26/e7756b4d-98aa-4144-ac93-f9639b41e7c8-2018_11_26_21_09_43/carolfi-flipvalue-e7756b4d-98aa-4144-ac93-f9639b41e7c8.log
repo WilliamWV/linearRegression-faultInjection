@@ -1,0 +1,61 @@
+[INFO -- 2018-11-26 21:09:39]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 21:09:39]
+Initialization strings:
+[INFO -- 2018-11-26 21:09:39]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 21:09:39]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 21:09:39]
+initSignal:0
+[INFO -- 2018-11-26 21:09:39]
+endSignal:3
+[INFO -- 2018-11-26 21:09:39]
+faultModel:1
+[INFO -- 2018-11-26 21:09:40]
+Backtrace BEGIN:
+#0  0x000055555555576f in predict (v=12) at lreg.cpp:115
+#1  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+110		Predicts the value related to v using the Ts variables
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x230x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b190 
+address max offset: 8
+Memory content after  bitflip:0x500x230x770x550x550x140x000x00
+frame name: main
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 2, capacity -8933531975678 = {0.87057851567812006, -1.0292424035220318}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 21:09:40]
+Fault Injection Successful after 1.5502827167510986s
+[INFO -- 2018-11-26 21:09:42]
+event type: exit
+[INFO -- 2018-11-26 21:09:42]
+exit code: 0

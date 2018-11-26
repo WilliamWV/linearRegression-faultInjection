@@ -1,0 +1,58 @@
+[INFO -- 2018-11-26 17:49:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:49:51]
+Initialization strings:
+[INFO -- 2018-11-26 17:49:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:49:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:49:51]
+initSignal:0
+[INFO -- 2018-11-26 17:49:51]
+endSignal:3
+[INFO -- 2018-11-26 17:49:51]
+faultModel:2
+[EXCEPTION -- 2018-11-26 17:49:54]
+gdbException: Cannot access memory at address 0x9b790f6869ae5746
+[EXCEPTION -- 2018-11-26 17:49:54]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 17:49:54]
+Backtrace BEGIN:
+#0  0x0000555555555abb in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#1  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#2  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+137	*/
+138	double partialDerivate(UINT pos1, UINT pos2){
+139		double pD = 0;
+140		
+141		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(x.size() - 1); i1++, i2++){
+142			pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
+143		}
+144		pD *= (2.0/(x.size() - 1));
+145		return pD;
+146	}
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd768
+address max offset: 8
+Memory content after  bitflip:0x900x5e0xb10x460x8a0xfa0xa50xfc
+frame name: adjust
+symbol name: alpha1
+symbol filename: lreg.cpp
+symbol line: 151
+value: -2.7416200236808433e+292
+value address: 0x7fffffffd768
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 17:49:54]
+Fault Injection Successful after 3.2603628635406494s
+[INFO -- 2018-11-26 17:49:54]
+event type: exit
+[EXCEPTION -- 2018-11-26 17:49:54]
+exit code: no exit code available

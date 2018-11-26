@@ -1,0 +1,51 @@
+[INFO -- 2018-11-26 17:48:45]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:48:45]
+Initialization strings:
+[INFO -- 2018-11-26 17:48:45]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:48:45]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:48:45]
+initSignal:0
+[INFO -- 2018-11-26 17:48:45]
+endSignal:3
+[INFO -- 2018-11-26 17:48:45]
+faultModel:2
+[INFO -- 2018-11-26 17:48:46]
+Backtrace BEGIN:
+#0  0x00007ffff6ed011b in __GI_____strtod_l_internal (nptr=<optimized out>, endptr=0x7fffffffd7b0, group=<optimized out>, loc=<optimized out>) at strtod_l.c:993
+#1  0x00007ffff7b001bc in void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#2  0x00007ffff7b5878a in std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7b49d0f in std::istream& std::istream::_M_extract<double>(double&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00005555555564c9 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:255
+
+988	strtod_l.c: No such file or directory.
+
+Backtrace END
+Fliping array at pos: 45
+Memory content before bitflip:0x030x000x000x000x030x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd518
+address max offset: 8
+Memory content after  bitflip:0x5d0xa90xe70xf50xf40x480x370x49
+frame name: __GI_____strtod_l_internal
+symbol name: num
+symbol filename: strtod_l.c
+symbol line: 509
+value: {1583, 0, 0, 140737351929539, 1, 0, 140737488345168, 140737339951032, 140737488344976, 140737351960330, 5, 0, 8, 34359738376, 5, 140737488344913, 140737337314624, 140737351960330, 1, 0, 8, 844420635172768, 140737488345536, 140737488344913, 13837297664606768595, 12884901891, 0, 140737351929539, 1, 844420635172768, 140737488346480, 14069146010931987456, 140737488344304, 140737488344304, 44, 51539607564, 140737488344672, 140737488345072, 13837297366147729803, 12884901891, 3327647953999200257, 140737488344928, 140737488344928, 140737488344928, 4542503522391573293, 5275765705422645597, 140737488344972, 0, 140737488344972, 51539607564, 0, 0, 0, 0, 4146537504, 140737339925536, 4542503522391573293, 85899345940000, 0}
+value address: 0x7fffffffd3b0
+Type: The type is an array.
+Type sizeof: 472
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0, 58)
+
+[INFO -- 2018-11-26 17:48:46]
+Fault Injection Successful after 1.5892667770385742s
+[INFO -- 2018-11-26 17:48:48]
+event type: exit
+[INFO -- 2018-11-26 17:48:48]
+exit code: 0

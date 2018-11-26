@@ -1,0 +1,64 @@
+[INFO -- 2018-11-26 21:48:25]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 21:48:25]
+Initialization strings:
+[INFO -- 2018-11-26 21:48:25]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 21:48:25]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 21:48:25]
+initSignal:0
+[INFO -- 2018-11-26 21:48:25]
+endSignal:3
+[INFO -- 2018-11-26 21:48:25]
+faultModel:1
+[EXCEPTION -- 2018-11-26 21:48:27]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-26 21:48:28]
+gdbException: A syntax error in expression, near `...'.
+[INFO -- 2018-11-26 21:48:28]
+Backtrace BEGIN:
+#0  malloc (n=10) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  malloc (n=10) at dl-minimal.c:50
+#3  <function called from gdb>
+#4  malloc (n=10) at dl-minimal.c:50
+#5  <function called from gdb>
+#6  malloc (n=10) at dl-minimal.c:50
+#7  <function called from gdb>
+#8  malloc (n=10) at dl-minimal.c:50
+#9  <function called from gdb>
+#10 0x00007ffff6f1d9f1 in _int_free (have_lock=0, p=0x555555772570, av=0x7ffff7271c40 <main_arena>) at malloc.c:4160
+#11 __GI___libc_free (mem=0x555555772580) at malloc.c:3124
+#12 0x0000555555558018 in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd840, __p=0x555555772580) at /usr/include/c++/7/ext/new_allocator.h:125
+#13 0x0000555555557add in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772580, __n=3) at /usr/include/c++/7/bits/alloc_traits.h:462
+#14 0x0000555555557230 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd840, __p=0x555555772580, __n=3) at /usr/include/c++/7/bits/stl_vector.h:180
+#15 0x0000555555556eed in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd840, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#16 0x0000555555556919 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd840, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#17 0x0000555555555fa4 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#18 0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+45	in dl-minimal.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff7273918 
+address max offset: 4
+Memory content after  bitflip:0x000x000x120x00
+frame name: __GI___libc_free
+symbol name: list_lock
+symbol filename: arena.c
+symbol line: 97
+value: 1179648
+value address: 0x7ffff7273918 <list_lock>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 21:48:28]
+Fault Injection Successful after 3.6842780113220215s
+[INFO -- 2018-11-26 21:48:32]
+event type: exit
+[INFO -- 2018-11-26 21:48:32]
+exit code: 0

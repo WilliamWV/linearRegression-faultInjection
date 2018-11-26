@@ -1,0 +1,58 @@
+[INFO -- 2018-11-26 18:21:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:21:35]
+Initialization strings:
+[INFO -- 2018-11-26 18:21:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:21:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:21:35]
+initSignal:0
+[INFO -- 2018-11-26 18:21:35]
+endSignal:3
+[INFO -- 2018-11-26 18:21:35]
+faultModel:2
+[INFO -- 2018-11-26 18:21:35]
+Backtrace BEGIN:
+#0  0x00005555555583eb in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=1.6799851832965393, __last=0, __result=0x555555772560) at /usr/include/c++/7/bits/stl_algobase.h:422
+#1  0x0000555555558273 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=1.6799851832965393, __last=0, __result=0x555555772560) at /usr/include/c++/7/bits/stl_algobase.h:456
+#2  0x0000555555557ff6 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=1.6799851832965393, __last=0, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#3  0x0000555555557ab0 in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=1.6799851832965393, __last=0, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#4  0x00005555555571e9 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=1.6799851832965393, __last=0, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#5  0x0000555555556a49 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#6  0x0000555555555f47 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:199
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+417	
+418	  template<bool _IsMove, typename _II, typename _OI>
+419	    inline _OI
+420	    __copy_move_a2(_II __first, _II __last, _OI __result)
+421	    {
+422	      return _OI(std::__copy_move_a<_IsMove>(std::__niter_base(__first),
+423						     std::__niter_base(__last),
+424						     std::__niter_base(__result)));
+425	    }
+426	
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 4
+Memory content after  bitflip:0x610xf90xb90x39
+frame name: std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*>
+symbol name: detected
+symbol filename: lreg.cpp
+symbol line: 58
+value: 968489313
+value address: 0x55555575b1b8 <detected>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 18:21:35]
+Fault Injection Successful after 0.9110860824584961s
+[INFO -- 2018-11-26 18:21:38]
+event type: exit
+[INFO -- 2018-11-26 18:21:38]
+exit code: 0

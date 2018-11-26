@@ -1,0 +1,57 @@
+[INFO -- 2018-11-26 14:59:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 14:59:47]
+Initialization strings:
+[INFO -- 2018-11-26 14:59:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 14:59:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 14:59:47]
+initSignal:0
+[INFO -- 2018-11-26 14:59:47]
+endSignal:3
+[INFO -- 2018-11-26 14:59:47]
+faultModel:0
+[INFO -- 2018-11-26 14:59:50]
+Backtrace BEGIN:
+#0  0x00007ffff76da549 in __ieee754_pow_sse2 (x=-18, y=0) at ../sysdeps/ieee754/dbl-64/e_pow.c:72
+#1  0x00007ffff76bcb14 in __pow (x=-18, y=0) at w_pow_compat.c:30
+#2  0x0000555555556826 in std::pow<double, unsigned int> (__x=-18, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555814 in predict (v=-18) at lreg.cpp:116
+#4  0x0000555555555a53 in partialDerivate (pos1=1, pos2=1) at lreg.cpp:142
+#5  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#6  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+67	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: i
+Fliping array at pos: 1
+Memory content before bitflip:0x000x000x300x43
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff779f5a4 
+address max offset: 4
+Memory content after  bitflip:0x000x000x300x53
+frame name: __ieee754_pow_sse2
+symbol name: two52e
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 55
+value: {i = {1023, 1395654656}, x = 5.2148120994174689e+92}
+value address: 0x7ffff779f5a0 <two52e>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-26 14:59:50]
+Fault Injection Successful after 3.208913803100586s
+[INFO -- 2018-11-26 14:59:55]
+event type: exit
+[INFO -- 2018-11-26 14:59:55]
+exit code: 0

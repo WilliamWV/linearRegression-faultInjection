@@ -1,0 +1,54 @@
+[INFO -- 2018-11-26 16:48:40]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 16:48:40]
+Initialization strings:
+[INFO -- 2018-11-26 16:48:40]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 16:48:40]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 16:48:40]
+initSignal:0
+[INFO -- 2018-11-26 16:48:40]
+endSignal:3
+[INFO -- 2018-11-26 16:48:40]
+faultModel:2
+[INFO -- 2018-11-26 16:48:41]
+Backtrace BEGIN:
+#0  0x000055555555717f in std::vector<double, std::allocator<double> >::end (this=0x55555575b180 <T1>) at /usr/include/c++/7/bits/stl_vector.h:590
+#1  0x0000555555556cf6 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555e7d in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:192
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+585	       *  Returns a read-only (constant) iterator that points one past
+586	       *  the last element in the %vector.  Iteration is done in
+587	       *  ordinary element order.
+588	       */
+589	      const_iterator
+590	      end() const _GLIBCXX_NOEXCEPT
+591	      { return const_iterator(this->_M_impl._M_finish); }
+592	
+593	      /**
+594	       *  Returns a read/write reverse iterator that points to the
+
+Backtrace END
+Memory content before bitflip:0x560x070x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7e8
+address max offset: 4
+Memory content after  bitflip:0xc30x9f0xe20x12
+frame name: train
+symbol name: i1
+symbol filename: lreg.cpp
+symbol line: 191
+value: 316841923
+value address: 0x7fffffffd7e8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 16:48:41]
+Fault Injection Successful after 1.636925220489502s
+[INFO -- 2018-11-26 16:48:43]
+event type: exit
+[INFO -- 2018-11-26 16:48:43]
+exit code: 0

@@ -1,0 +1,55 @@
+[INFO -- 2018-11-26 17:47:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:47:18]
+Initialization strings:
+[INFO -- 2018-11-26 17:47:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:47:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:47:18]
+initSignal:0
+[INFO -- 2018-11-26 17:47:18]
+endSignal:3
+[INFO -- 2018-11-26 17:47:18]
+faultModel:0
+[EXCEPTION -- 2018-11-26 17:47:18]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-26 17:47:18]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-26 17:47:19]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=10) at ../sysdeps/ieee754/dbl-64/e_pow.c:335
+#1  __ieee754_pow_sse2 (x=10, y=6) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76daf3f in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:178
+#3  0x00007ffff76bcb14 in __pow (x=-10, y=6) at w_pow_compat.c:30
+#4  0x0000555555556826 in std::pow<double, unsigned int> (__x=-10, __y=6) at /usr/include/c++/7/cmath:418
+#5  0x0000555555555814 in predict (v=-10) at lreg.cpp:116
+#6  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#7  0x0000555555555bbe in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:156
+#8  0x0000555555555ee0 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:193
+#9  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+330	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x040x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd8e8
+address max offset: 4
+Memory content after  bitflip:0x040x000x040x00
+frame name: main
+symbol name: predictions
+symbol filename: lreg.cpp
+symbol line: 236
+value: 262148
+value address: 0x7fffffffd8e8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 17:47:19]
+Fault Injection Successful after 1.3664085865020752s
+[INFO -- 2018-11-26 17:47:21]
+event type: exit
+[EXCEPTION -- 2018-11-26 17:47:21]
+exit code: no exit code available

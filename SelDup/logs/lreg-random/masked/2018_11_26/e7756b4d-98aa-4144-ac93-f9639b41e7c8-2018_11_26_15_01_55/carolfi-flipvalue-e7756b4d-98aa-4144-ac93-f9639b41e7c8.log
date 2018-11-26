@@ -1,0 +1,60 @@
+[INFO -- 2018-11-26 15:01:50]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:01:50]
+Initialization strings:
+[INFO -- 2018-11-26 15:01:50]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:01:50]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:01:50]
+initSignal:0
+[INFO -- 2018-11-26 15:01:50]
+endSignal:3
+[INFO -- 2018-11-26 15:01:50]
+faultModel:2
+[EXCEPTION -- 2018-11-26 15:01:51]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 15:01:51]
+Backtrace BEGIN:
+#0  0x00005555555583eb in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.018358261472389465, __last=2.4209216646221081e-322, __result=0x555555772560) at /usr/include/c++/7/bits/stl_algobase.h:422
+#1  0x0000555555558273 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.018358261472389465, __last=2.4209216646221081e-322, __result=0x555555772560) at /usr/include/c++/7/bits/stl_algobase.h:456
+#2  0x0000555555557ff6 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.018358261472389465, __last=2.4209216646221081e-322, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#3  0x0000555555557ab0 in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.018358261472389465, __last=2.4209216646221081e-322, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#4  0x00005555555571e9 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=0.018358261472389465, __last=2.4209216646221081e-322, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#5  0x0000555555556a49 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#6  0x0000555555555f47 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+417	
+418	  template<bool _IsMove, typename _II, typename _OI>
+419	    inline _OI
+420	    __copy_move_a2(_II __first, _II __last, _OI __result)
+421	    {
+422	      return _OI(std::__copy_move_a<_IsMove>(std::__niter_base(__first),
+423						     std::__niter_base(__last),
+424						     std::__niter_base(__result)));
+425	    }
+426	
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 4
+Memory content after  bitflip:0xed0xdf0x100xc3
+frame name: std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*>
+symbol name: detected
+symbol filename: lreg.cpp
+symbol line: 58
+value: -1022304275
+value address: 0x55555575b1b8 <detected>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 15:01:51]
+Fault Injection Successful after 1.9265110492706299s
+[INFO -- 2018-11-26 15:01:54]
+event type: exit
+[INFO -- 2018-11-26 15:01:54]
+exit code: 0

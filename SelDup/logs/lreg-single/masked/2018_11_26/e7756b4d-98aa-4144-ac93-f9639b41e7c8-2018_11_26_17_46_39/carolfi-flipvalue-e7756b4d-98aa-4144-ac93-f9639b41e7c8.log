@@ -1,0 +1,57 @@
+[INFO -- 2018-11-26 17:46:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:46:35]
+Initialization strings:
+[INFO -- 2018-11-26 17:46:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:46:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:46:35]
+initSignal:0
+[INFO -- 2018-11-26 17:46:35]
+endSignal:3
+[INFO -- 2018-11-26 17:46:35]
+faultModel:0
+[EXCEPTION -- 2018-11-26 17:46:36]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-26 17:46:36]
+Backtrace BEGIN:
+#0  malloc (n=14) at dl-minimal.c:50
+#1  <function called from gdb>
+#2  malloc (n=14) at dl-minimal.c:50
+#3  <function called from gdb>
+#4  0x00007ffff6f1d072 in __GI___libc_malloc (bytes=24) at malloc.c:3028
+#5  0x00007ffff7adf1a8 in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00005555555582ba in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd860, __n=3) at /usr/include/c++/7/ext/new_allocator.h:111
+#7  0x0000555555558043 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=3) at /usr/include/c++/7/bits/alloc_traits.h:436
+#8  0x0000555555557b1a in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd860, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#9  0x000055555555787f in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd860, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#10 0x0000555555556f4f in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd860, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#11 0x00005555555569fb in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#12 0x0000555555555f47 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#13 0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+45	in dl-minimal.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 4
+Memory content after  bitflip:0x000x000x800x00
+frame name: std::_Vector_base<double, std::allocator<double> >::_Vector_base
+symbol name: detected
+symbol filename: lreg.cpp
+symbol line: 58
+value: 8388608
+value address: 0x55555575b1b8 <detected>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 17:46:36]
+Fault Injection Successful after 1.6692256927490234s
+[INFO -- 2018-11-26 17:46:38]
+event type: exit
+[INFO -- 2018-11-26 17:46:38]
+exit code: 0

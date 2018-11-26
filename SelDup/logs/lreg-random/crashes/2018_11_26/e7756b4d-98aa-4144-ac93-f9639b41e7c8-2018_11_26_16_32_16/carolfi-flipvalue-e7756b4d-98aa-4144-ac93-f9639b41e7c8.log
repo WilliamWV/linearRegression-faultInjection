@@ -1,0 +1,61 @@
+[INFO -- 2018-11-26 16:32:14]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 16:32:14]
+Initialization strings:
+[INFO -- 2018-11-26 16:32:14]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 16:32:14]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 16:32:14]
+initSignal:0
+[INFO -- 2018-11-26 16:32:14]
+endSignal:3
+[INFO -- 2018-11-26 16:32:14]
+faultModel:2
+[INFO -- 2018-11-26 16:32:14]
+Backtrace BEGIN:
+#0  0x0000555555555a5b in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#1  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#2  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+137	*/
+138	double partialDerivate(UINT pos1, UINT pos2){
+139		double pD = 0;
+140		
+141		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(x.size() - 1); i1++, i2++){
+142			pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
+143		}
+144		pD *= (2.0/(x.size() - 1));
+145		return pD;
+146	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x210x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772538
+address max offset: 8
+Memory content after  bitflip:0x340x830x070x9a0xe20x5a0x4d0x97
+frame name: partialDerivate
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 3, capacity 3 = {0.2241048283242815, -0.03238486860973655, -2.9905409784072132}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 16:32:14]
+Fault Injection Successful after 0.8597795963287354s
+[INFO -- 2018-11-26 16:32:15]
+event type: exit
+[EXCEPTION -- 2018-11-26 16:32:15]
+exit code: no exit code available

@@ -1,0 +1,67 @@
+[INFO -- 2018-11-26 18:05:29]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:05:29]
+Initialization strings:
+[INFO -- 2018-11-26 18:05:30]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:05:30]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:05:30]
+initSignal:0
+[INFO -- 2018-11-26 18:05:30]
+endSignal:3
+[INFO -- 2018-11-26 18:05:30]
+faultModel:2
+[EXCEPTION -- 2018-11-26 18:05:31]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-26 18:05:32]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 18:05:32]
+Backtrace BEGIN:
+#0  0x0000555555555337 in verifyDoubleDup (a=-1.9481213133229591, b=-1.9481213133229591) at lreg.cpp:78
+#1  0x00005555555557ea in predict (v=25) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+75	        detected = 1;	
+76		}	
+77		return a;
+78	}
+79	
+80	
+81	void verifyChecksum(vector<double> vec){
+82		if(detected!=1){
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x200x280x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b170 
+address max offset: 8
+Memory content after  bitflip:0xeb0x0e0x380xb70xf00xda0x1c0x83
+frame name: verifyDoubleDup
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 13, capacity -1124896381623329546 = {1.5995355758636033e-314, 1.5957051125790723e-314, 5.3743645153416386e-315, 1.5997083802638928e-314, 5.3720780585831886e-315, 5.3743645153416386e-315, 5.3843496215693419e-315, 1.5992418795285643e-314, 5.3687263172418016e-315, 1.5964037925477448e-314, 5.3271691514367894e-315, 5.3732223936694603e-315, 1.5988332200465257e-314, 1.5997842134117416e-314, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.0397779375729834e-312, 1.2293071132550858e+237, 5.2868709109166403e-143, 357218.18728574598, 5.839912029131803e-210, 1.5920208704927562e-314, 1.0397779375729834e-312, 1.2293071132550858e+237, 5.2868709109166403e-143, 357218.18728574598, 5.839912029131803e-210, 1.5920208704927562e-314, 1.0397779375729834e-312, 1.2293071132550858e+237, 5.2868709109166403e-143, 357218.18728574598, 5.839912029131803e-210, 1.5920208704927562e-314, 1.0397779375729834e-312, 5.1872291376272715e+103, -9.0479501299072956e+145, -3.6931829098840994e-21, -5.2247324292331586e-42, 1.5920075030526424e-314, 1.0397779375729834e-312, 0, 5.2868679827742343e-143, 357218.18728574598, 5.839912029131803e-210, 1.5920208704927562e-314, 9.0687734118482843e-310, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 18:05:32]
+Fault Injection Successful after 2.536933183670044s
+[INFO -- 2018-11-26 18:05:36]
+event type: exit
+[EXCEPTION -- 2018-11-26 18:05:36]
+exit code: no exit code available

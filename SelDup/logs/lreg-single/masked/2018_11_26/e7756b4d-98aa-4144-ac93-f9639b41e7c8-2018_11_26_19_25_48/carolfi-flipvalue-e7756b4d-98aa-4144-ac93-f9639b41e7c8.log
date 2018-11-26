@@ -1,0 +1,55 @@
+[INFO -- 2018-11-26 19:25:44]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 19:25:44]
+Initialization strings:
+[INFO -- 2018-11-26 19:25:44]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 19:25:44]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 19:25:44]
+initSignal:0
+[INFO -- 2018-11-26 19:25:44]
+endSignal:3
+[INFO -- 2018-11-26 19:25:44]
+faultModel:0
+[INFO -- 2018-11-26 19:25:46]
+Backtrace BEGIN:
+#0  0x00007ffff6f95c8e in __libc_open64 (file=0x7fffffffe222 "/tmp/lreg/output", file@entry=0x4 <error: Cannot access memory at address 0x4>, oflag=577) at ../sysdeps/unix/sysv/linux/open64.c:47
+#1  0x00007ffff6f1258a in __GI__IO_file_open (is32not64=1, read_write=4, prot=438, posix_mode=<optimized out>, filename=0x4 <error: Cannot access memory at address 0x4>, fp=0x5555557700b0) at fileops.c:189
+#2  _IO_new_file_fopen (fp=fp@entry=0x5555557700b0, filename=filename@entry=0x7fffffffe222 "/tmp/lreg/output", mode=<optimized out>, mode@entry=0x7ffff7b8918d "w", is32not64=is32not64@entry=1) at fileops.c:281
+#3  0x00007ffff6f04eaa in __fopen_internal (is32=1, mode=0x7ffff7b8918d "w", filename=0x7fffffffe222 "/tmp/lreg/output") at iofopen.c:78
+#4  _IO_new_fopen (filename=0x7fffffffe222 "/tmp/lreg/output", mode=0x7ffff7b8918d "w") at iofopen.c:89
+#5  0x00007ffff7affd30 in std::__basic_file<char>::open(char const*, std::_Ios_Openmode, int) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7b4025a in std::basic_filebuf<char, std::char_traits<char> >::open(char const*, std::_Ios_Openmode) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x00007ffff7b40ed6 in std::basic_ofstream<char, std::char_traits<char> >::basic_ofstream(char const*, std::_Ios_Openmode) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#8  0x00005555555561e3 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:227
+
+42	../sysdeps/unix/sysv/linux/open64.c: No such file or directory.
+
+Backtrace END
+Fliping array at pos: 13
+Memory content before bitflip:0x66
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff704134d  
+address max offset: 1
+Memory content after  bitflip:0x64
+frame name: __GI__IO_file_open
+symbol name: __PRETTY_FUNCTION__
+symbol filename: fileops.c
+symbol line: 0
+value: "_IO_new_file_dopen"
+value address: 0x7ffff7041340 <__PRETTY_FUNCTION__.12302>
+Type: The type is an array.
+Type sizeof: 19
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0, 18)
+
+[INFO -- 2018-11-26 19:25:46]
+Fault Injection Successful after 2.2765514850616455s
+[INFO -- 2018-11-26 19:25:48]
+event type: exit
+[INFO -- 2018-11-26 19:25:48]
+exit code: 0

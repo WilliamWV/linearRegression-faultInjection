@@ -1,0 +1,61 @@
+[INFO -- 2018-11-26 16:55:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 16:55:41]
+Initialization strings:
+[INFO -- 2018-11-26 16:55:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 16:55:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 16:55:41]
+initSignal:0
+[INFO -- 2018-11-26 16:55:41]
+endSignal:3
+[INFO -- 2018-11-26 16:55:41]
+faultModel:1
+[EXCEPTION -- 2018-11-26 16:55:43]
+gdbException: Cannot access memory at address 0x2100555555772720
+[EXCEPTION -- 2018-11-26 16:55:43]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 16:55:43]
+Backtrace BEGIN:
+#0  0x00007ffff76b9990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76bcb14 in __pow (x=-28, y=2) at w_pow_compat.c:30
+#2  0x0000555555556826 in std::pow<double, unsigned int> (__x=-28, __y=2) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555814 in predict (v=-28) at lreg.cpp:116
+#4  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#5  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+223			return 1;
+224		}
+225		
+226		ifstream inp (argv[1]);
+227		ofstream out (argv[2]);
+228			
+229		UINT testCases;	
+230		inp >> testCases;
+231		
+232		for (UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<testCases; i1++, i2++){
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x40
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd6d8
+address max offset: 8
+Memory content after  bitflip:0x110x000x000x000x000x000x000x40
+frame name: __pow
+symbol name: y
+symbol filename: w_pow_compat.c
+symbol line: 28
+value: 2.0000000000000075
+value address: 0x7fffffffd6d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 16:55:43]
+Fault Injection Successful after 2.9018068313598633s
+[INFO -- 2018-11-26 16:55:44]
+event type: exit
+[EXCEPTION -- 2018-11-26 16:55:44]
+exit code: no exit code available

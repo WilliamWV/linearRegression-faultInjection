@@ -1,0 +1,62 @@
+[INFO -- 2018-11-26 19:44:10]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 19:44:10]
+Initialization strings:
+[INFO -- 2018-11-26 19:44:10]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 19:44:10]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 19:44:10]
+initSignal:0
+[INFO -- 2018-11-26 19:44:10]
+endSignal:3
+[INFO -- 2018-11-26 19:44:10]
+faultModel:1
+[INFO -- 2018-11-26 19:44:12]
+Backtrace BEGIN:
+#0  0x0000555555557b5a in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=<error reading variable: Cannot access memory at address 0x4000000000000000>, __last=<error reading variable: Cannot access memory at address 0x4037000000000000>, __result=1.6387665333028775e-308) at /usr/include/c++/7/bits/stl_algobase.h:420
+#1  0x00005555555573d1 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.6292167457502382, __last=1.6304166312761136e-322, __result=1.6291290596346197) at /usr/include/c++/7/bits/stl_algobase.h:456
+#2  0x0000555555556d13 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#3  0x0000555555555f26 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:197
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+415	    __copy_move_a2(istreambuf_iterator<_CharT, char_traits<_CharT> >,
+416			   istreambuf_iterator<_CharT, char_traits<_CharT> >, _CharT*);
+417	
+418	  template<bool _IsMove, typename _II, typename _OI>
+419	    inline _OI
+420	    __copy_move_a2(_II __first, _II __last, _OI __result)
+421	    {
+422	      return _OI(std::__copy_move_a<_IsMove>(std::__niter_base(__first),
+423						     std::__niter_base(__last),
+424						     std::__niter_base(__result)));
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x100xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772400
+address max offset: 8
+Memory content after  bitflip:0x420x000x000x000x000x000x100xc0
+frame name: std::vector<double, std::allocator<double> >::operator=
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 13, capacity 16 = {-4.0000000000000586, -3, -7, -2, -1, -1, -21, -3, -19, 13, 6, 23, -19}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 19:44:12]
+Fault Injection Successful after 2.4449524879455566s
+[INFO -- 2018-11-26 19:44:16]
+event type: exit
+[INFO -- 2018-11-26 19:44:16]
+exit code: 0

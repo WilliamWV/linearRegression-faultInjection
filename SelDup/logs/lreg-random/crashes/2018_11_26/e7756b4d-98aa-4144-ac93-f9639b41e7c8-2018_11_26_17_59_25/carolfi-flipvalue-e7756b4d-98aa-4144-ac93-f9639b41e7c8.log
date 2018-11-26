@@ -1,0 +1,67 @@
+[INFO -- 2018-11-26 17:59:21]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:59:21]
+Initialization strings:
+[INFO -- 2018-11-26 17:59:21]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:59:21]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:59:21]
+initSignal:0
+[INFO -- 2018-11-26 17:59:21]
+endSignal:3
+[INFO -- 2018-11-26 17:59:21]
+faultModel:2
+[EXCEPTION -- 2018-11-26 17:59:23]
+gdbException: Cannot access memory at address 0xd1b89a75ab3d93b1
+[EXCEPTION -- 2018-11-26 17:59:23]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 17:59:24]
+Backtrace BEGIN:
+#0  std::pow<double, unsigned int> (__x=0, __y=0) at /usr/include/c++/7/cmath:415
+#1  0x0000555555555814 in predict (v=-1) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+410	#endif
+411	
+412	  template<typename _Tp, typename _Up>
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x580x230x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b1a8 
+address max offset: 8
+Memory content after  bitflip:0xf80x7e0x5d0xe80x0b0x210x380xce
+frame name: std::pow<double, unsigned int>
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length -448396824146031753, capacity 3 = {1.5885644846377698, -0.020679290047980022, -2.9938502943690977, 1.6304166312761136e-322, 1.5884765643507581, -0.020687636518658289, -2.9938502943690977, 2.4209216646221081e-322, 0, 8, 12, 5, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 6.3482494834141768e-320, 0, 0, 0, 0, 0, 7.1639518646980749e-322, -4, -3, -7, -2, -1, -1, -21, -3, -19, 13, 6, 23, -19, 0, 0, 0, 0, 7.1639518646980749e-322, -44, -23, -143, -8, 1, 1, -1319, -23, -1079, -503, -104, -1583, -4827, 0, 0, 0, 0, 1.6304166312761136e-322, 1.5885644846377698, -0.020679290047980022, -2.9938502943690977, 1.6304166312761136e-322, 1.5884765643507581, -0.020687636518658289, -2.9938502943690977, 1.6304166312761136e-322, 4.6355706480405627e-310, -0.020680802046461416, -2.9939828254961038, 1.6304166312761136e-322, 0, -0.020687636518658289, -2.9938502943690977, 2.155756632499111e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 17:59:24]
+Fault Injection Successful after 3.073359966278076s
+[INFO -- 2018-11-26 17:59:24]
+event type: exit
+[EXCEPTION -- 2018-11-26 17:59:24]
+exit code: no exit code available

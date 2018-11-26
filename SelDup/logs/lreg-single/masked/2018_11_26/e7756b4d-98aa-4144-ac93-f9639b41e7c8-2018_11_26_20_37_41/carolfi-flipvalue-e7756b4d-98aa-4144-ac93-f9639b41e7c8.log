@@ -1,0 +1,56 @@
+[INFO -- 2018-11-26 20:37:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 20:37:37]
+Initialization strings:
+[INFO -- 2018-11-26 20:37:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 20:37:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 20:37:37]
+initSignal:0
+[INFO -- 2018-11-26 20:37:37]
+endSignal:3
+[INFO -- 2018-11-26 20:37:37]
+faultModel:0
+[EXCEPTION -- 2018-11-26 20:37:40]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 20:37:40]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::capacity (this=0x55555575b180 <T1>) at /usr/include/c++/7/bits/stl_vector.h:750
+#1  0x0000555555556bd7 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:204
+#2  0x0000555555555e7d in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:192
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+745	      /**
+746	       *  Returns the total number of elements that the %vector can
+747	       *  hold before needing to allocate more memory.
+748	       */
+749	      size_type
+750	      capacity() const _GLIBCXX_NOEXCEPT
+751	      { return size_type(this->_M_impl._M_end_of_storage
+752				 - this->_M_impl._M_start); }
+753	
+754	      /**
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 4
+Memory content after  bitflip:0x000x000x800x00
+frame name: std::vector<double, std::allocator<double> >::capacity
+symbol name: detected
+symbol filename: lreg.cpp
+symbol line: 58
+value: 8388608
+value address: 0x55555575b1b8 <detected>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 20:37:40]
+Fault Injection Successful after 3.4246346950531006s
+[INFO -- 2018-11-26 20:37:40]
+event type: exit
+[INFO -- 2018-11-26 20:37:40]
+exit code: 0

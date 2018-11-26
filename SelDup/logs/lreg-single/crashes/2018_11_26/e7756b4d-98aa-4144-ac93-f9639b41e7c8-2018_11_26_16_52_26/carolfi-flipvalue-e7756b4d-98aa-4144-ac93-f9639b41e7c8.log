@@ -1,0 +1,62 @@
+[INFO -- 2018-11-26 16:52:22]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 16:52:22]
+Initialization strings:
+[INFO -- 2018-11-26 16:52:22]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 16:52:22]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 16:52:22]
+initSignal:0
+[INFO -- 2018-11-26 16:52:22]
+endSignal:3
+[INFO -- 2018-11-26 16:52:22]
+faultModel:0
+[INFO -- 2018-11-26 16:52:24]
+Backtrace BEGIN:
+#0  0x000055555555522d in verifyDoubleDup (a=0.28425061006382807, b=-4.0444718251844467) at lreg.cpp:70
+#1  0x00005555555557ea in predict (v=-1) at lreg.cpp:116
+#2  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x230x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b188 
+address max offset: 8
+Memory content after  bitflip:0xa00x220x770x550x550x550x000x00
+frame name: verifyDoubleDup
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length -28, capacity 4 = {0.28425061006382807, -1.2326431411595238, -1.9572908980966197, -4.0444718251844467, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 6.3482494834141768e-320, 0, 0, 0, 0, 0, 7.1639518646980749e-322, 0, -9, -1, 29, 5, -18, 31, -16, -18, -28, 25, -14, 7, -2, -17, 21, 0, 7.1639518646980749e-322, 4.6355706480215905e-310, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047, 0, 1.6304166312761136e-322, 4.6355706480136855e-310, -0.018636480386081677, -2.9944537928979051, 1.6304166312761136e-322, 4.6355706480389816e-310, -0.018636480386081677, -2.9944537928979051, 1.6304166312761136e-322, 4.6355706480405627e-310, -0.018629603636086151, -2.9945863353366149, 1.6304166312761136e-322, 0, -0.018636480386081677, -2.9944537928979051, 5.5829417980060859e-322, 0, -23, -143, -8, 1, 1, -1319, -23, -1079, -503, -104, -1583, -4827, 1.3487992131466031e-321, -15, -9, -1, 29, 5, -18, 31, -16, -18, -28, 25, -14, 7, -2, -17, 21, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.3487992131466031e-321, 13145, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047, -130860, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, 0.28425061006382807, -1.2326431411595238, -1.9572908980966197, -4.0444718251844467, 0, 2.4209216646221081e-322, 0.2845012971046289, -1.229846780149064, -1.9478606427192831, -3.9698516702888562, 0, 2.4209216646221081e-322, 0.28422069741088679, -1.2325569264720078, -1.9572901427633911, -4.044471953739742, 0, 2.4209216646221081e-322, 4.6355706480840404e-310, -1.2325569264720078, -1.9572901427633911, -4.044471953739742, 0, 2.4209216646221081e-322, 0, -1.229846780149064, -1.9478606427192831, -3.9698516702888562, 0, 2.1114883506317354e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 16:52:24]
+Fault Injection Successful after 2.3180062770843506s
+[INFO -- 2018-11-26 16:52:24]
+event type: exit
+[EXCEPTION -- 2018-11-26 16:52:24]
+exit code: no exit code available

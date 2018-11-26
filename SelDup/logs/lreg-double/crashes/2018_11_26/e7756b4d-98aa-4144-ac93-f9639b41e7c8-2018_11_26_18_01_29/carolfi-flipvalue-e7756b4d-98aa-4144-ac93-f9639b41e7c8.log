@@ -1,0 +1,56 @@
+[INFO -- 2018-11-26 18:01:27]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:01:27]
+Initialization strings:
+[INFO -- 2018-11-26 18:01:27]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:01:27]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:01:27]
+initSignal:0
+[INFO -- 2018-11-26 18:01:27]
+endSignal:3
+[INFO -- 2018-11-26 18:01:27]
+faultModel:1
+[EXCEPTION -- 2018-11-26 18:01:29]
+gdbException: Cannot access memory at address 0x1100555555772380
+[INFO -- 2018-11-26 18:01:29]
+Backtrace BEGIN:
+#0  0x000055555555579f in predict (v=7) at lreg.cpp:116
+#1  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Memory content before bitflip:0xc70x5a0x810x8a0x0a0x080x0a0x41
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0xc70x5a0x810x8a0x0a0x890x0a0x41
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 190
+value: 217377.31762953682
+value address: 0x7fffffffd7f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 18:01:29]
+Fault Injection Successful after 2.171645402908325s
+[INFO -- 2018-11-26 18:01:29]
+event type: exit
+[EXCEPTION -- 2018-11-26 18:01:29]
+exit code: no exit code available

@@ -1,0 +1,57 @@
+[INFO -- 2018-11-26 20:50:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 20:50:24]
+Initialization strings:
+[INFO -- 2018-11-26 20:50:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 20:50:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 20:50:24]
+initSignal:0
+[INFO -- 2018-11-26 20:50:24]
+endSignal:3
+[INFO -- 2018-11-26 20:50:24]
+faultModel:2
+[EXCEPTION -- 2018-11-26 20:50:26]
+gdbException: Cannot access memory at address 0x9549378b878a7536
+[INFO -- 2018-11-26 20:50:26]
+Backtrace BEGIN:
+#0  0x000055555555510c in verifyUintDup (a=1, b=1) at lreg.cpp:61
+#1  0x000055555555579a in predict (v=5) at lreg.cpp:116
+#2  0x0000555555555928 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7c0
+address max offset: 8
+Memory content after  bitflip:0x810x410xc50x4a0xa80xe20xe10x9f
+frame name: train
+symbol name: alpha2
+symbol filename: lreg.cpp
+symbol line: 177
+value: -4.1686019180686268e-155
+value address: 0x7fffffffd7c0
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 20:50:26]
+Fault Injection Successful after 2.478534698486328s
+[INFO -- 2018-11-26 20:50:26]
+event type: exit
+[EXCEPTION -- 2018-11-26 20:50:26]
+exit code: no exit code available

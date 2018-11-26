@@ -1,0 +1,63 @@
+[INFO -- 2018-11-26 16:11:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 16:11:58]
+Initialization strings:
+[INFO -- 2018-11-26 16:11:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 16:11:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 16:11:58]
+initSignal:0
+[INFO -- 2018-11-26 16:11:58]
+endSignal:3
+[INFO -- 2018-11-26 16:11:58]
+faultModel:2
+[EXCEPTION -- 2018-11-26 16:11:59]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-26 16:11:59]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 16:12:00]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::capacity (this=0x7fffffffd820) at /usr/include/c++/7/bits/stl_vector.h:751
+#1  0x0000555555556bd7 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:204
+#2  0x0000555555555f26 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:197
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+746	       *  Returns the total number of elements that the %vector can
+747	       *  hold before needing to allocate more memory.
+748	       */
+749	      size_type
+750	      capacity() const _GLIBCXX_NOEXCEPT
+751	      { return size_type(this->_M_impl._M_end_of_storage
+752				 - this->_M_impl._M_start); }
+753	
+754	      /**
+755	       *  Returns true if the %vector is empty.  (Thus begin() would
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x210x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772558
+address max offset: 8
+Memory content after  bitflip:0xed0xa90xf60x020x5a0xab0xe60xfc
+frame name: std::vector<double, std::allocator<double> >::capacity
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd820
+value address: 0x7fffffffd748
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 16:12:00]
+Fault Injection Successful after 2.4171149730682373s
+[INFO -- 2018-11-26 16:12:00]
+event type: exit
+[EXCEPTION -- 2018-11-26 16:12:00]
+exit code: no exit code available

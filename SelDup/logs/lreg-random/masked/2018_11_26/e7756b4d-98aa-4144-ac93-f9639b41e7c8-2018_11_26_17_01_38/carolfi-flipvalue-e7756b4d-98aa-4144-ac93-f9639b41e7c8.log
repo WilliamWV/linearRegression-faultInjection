@@ -1,0 +1,58 @@
+[INFO -- 2018-11-26 17:01:33]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:01:33]
+Initialization strings:
+[INFO -- 2018-11-26 17:01:33]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:01:33]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:01:33]
+initSignal:0
+[INFO -- 2018-11-26 17:01:33]
+endSignal:3
+[INFO -- 2018-11-26 17:01:33]
+faultModel:2
+[EXCEPTION -- 2018-11-26 17:01:35]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-26 17:01:35]
+Backtrace BEGIN:
+#0  0x00005555555550fe in verifyUintDup (a=1, b=1) at lreg.cpp:61
+#1  0x000055555555576f in predict (v=-9) at lreg.cpp:115
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd478
+address max offset: 4
+Memory content after  bitflip:0x680xb50x5a0x64
+frame name: verifyUintDup
+symbol name: b
+symbol filename: lreg.cpp
+symbol line: 61
+value: 1683666280
+value address: 0x7fffffffd478
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 17:01:35]
+Fault Injection Successful after 2.603428840637207s
+[INFO -- 2018-11-26 17:01:37]
+event type: exit
+[INFO -- 2018-11-26 17:01:37]
+exit code: 0

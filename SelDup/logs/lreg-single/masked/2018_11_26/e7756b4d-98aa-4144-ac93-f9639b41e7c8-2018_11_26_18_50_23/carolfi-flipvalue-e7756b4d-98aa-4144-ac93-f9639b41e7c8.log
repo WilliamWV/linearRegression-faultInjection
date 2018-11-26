@@ -1,0 +1,62 @@
+[INFO -- 2018-11-26 18:50:20]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:50:20]
+Initialization strings:
+[INFO -- 2018-11-26 18:50:20]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:50:20]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:50:20]
+initSignal:0
+[INFO -- 2018-11-26 18:50:20]
+endSignal:3
+[INFO -- 2018-11-26 18:50:20]
+faultModel:0
+[INFO -- 2018-11-26 18:50:22]
+Backtrace BEGIN:
+#0  0x00005555555582d6 in std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<double> (__first=0x555555772380, __last=0x7fffffffffffffff, __result=0x4035000000000000) at /usr/include/c++/7/bits/stl_algobase.h:357
+#1  0x00005555555580ae in std::__copy_move_a<false, double const*, double*> (__first=0x555555772380, __last=0x5555557723a0, __result=0x555555772890) at /usr/include/c++/7/bits/stl_algobase.h:386
+#2  0x0000555555557bad in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.15226727327978568, __last=0, __result=0.15223532645205246) at /usr/include/c++/7/bits/stl_algobase.h:422
+#3  0x00005555555573d1 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.15226727327978568, __last=0, __result=0.15223532645205246) at /usr/include/c++/7/bits/stl_algobase.h:456
+#4  0x0000555555556d13 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#5  0x0000555555555f26 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:197
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+352	  template<bool _IsMove>
+353	    struct __copy_move<_IsMove, true, random_access_iterator_tag>
+354	    {
+355	      template<typename _Tp>
+356	        static _Tp*
+357	        __copy_m(const _Tp* __first, const _Tp* __last, _Tp* __result)
+358	        {
+359	#if __cplusplus >= 201103L
+360		  using __assignable = conditional<_IsMove,
+361						   is_move_assignable<_Tp>,
+
+Backtrace END
+Fliping value of field: _M_current
+Fliping a bit of the pointer
+Memory content before bitflip:0x900x280x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd6c8
+address max offset: 8
+Memory content after  bitflip:0xd00x280x770x550x550x550x000x00
+frame name: std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > >
+symbol name: __result
+symbol filename: /usr/include/c++/7/bits/stl_algobase.h
+symbol line: 420
+value: -1.9539412818429338
+value address: 0x7fffffffd6c8
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_current
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-26 18:50:22]
+Fault Injection Successful after 2.514456272125244s
+[INFO -- 2018-11-26 18:50:23]
+event type: exit
+[INFO -- 2018-11-26 18:50:23]
+exit code: 0

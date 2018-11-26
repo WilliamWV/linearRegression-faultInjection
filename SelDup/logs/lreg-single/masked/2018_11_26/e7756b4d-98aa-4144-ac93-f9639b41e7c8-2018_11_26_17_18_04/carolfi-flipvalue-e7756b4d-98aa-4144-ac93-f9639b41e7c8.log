@@ -1,0 +1,56 @@
+[INFO -- 2018-11-26 17:18:00]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:18:00]
+Initialization strings:
+[INFO -- 2018-11-26 17:18:00]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:18:00]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:18:00]
+initSignal:0
+[INFO -- 2018-11-26 17:18:00]
+endSignal:3
+[INFO -- 2018-11-26 17:18:00]
+faultModel:0
+[INFO -- 2018-11-26 17:18:01]
+Backtrace BEGIN:
+#0  std::allocator<double>::~allocator (this=0x7fffffffd840, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/allocator.h:139
+#1  0x0000555555556e8c in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::~_Vector_impl (this=0x7fffffffd840, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:81
+#2  0x0000555555556ef9 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd840, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:163
+#3  0x0000555555556919 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd840, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#4  0x0000555555555fa4 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+134	      : __allocator_base<_Tp>(__a) { }
+135	
+136	      template<typename _Tp1>
+137		allocator(const allocator<_Tp1>&) throw() { }
+138	
+139	      ~allocator() throw() { }
+140	
+141	      // Inherit everything else.
+142	    };
+143	
+
+Backtrace END
+Memory content before bitflip:0xc80x820x4b0x3b0x970xa00x1d0x40
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7f0
+address max offset: 8
+Memory content after  bitflip:0x880x820x4b0x3b0x970xa00x1d0x40
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 189
+value: 7.4068269028508738
+value address: 0x7fffffffd7f0
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 17:18:01]
+Fault Injection Successful after 1.864609718322754s
+[INFO -- 2018-11-26 17:18:03]
+event type: exit
+[INFO -- 2018-11-26 17:18:03]
+exit code: 0

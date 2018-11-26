@@ -1,0 +1,51 @@
+[INFO -- 2018-11-26 17:10:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:10:03]
+Initialization strings:
+[INFO -- 2018-11-26 17:10:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:10:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:10:03]
+initSignal:0
+[INFO -- 2018-11-26 17:10:03]
+endSignal:3
+[INFO -- 2018-11-26 17:10:03]
+faultModel:2
+[EXCEPTION -- 2018-11-26 17:10:05]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-26 17:10:06]
+Backtrace BEGIN:
+#0  0x00007ffff76d5951 in __exp1 (x=<optimized out>, xx=<optimized out>, error=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_exp.c:274
+#1  0x00007ffff76da8dc in __ieee754_pow_sse2 (x=25, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76bcb14 in __pow (x=25, y=3) at w_pow_compat.c:30
+#3  0x0000555555556826 in std::pow<double, unsigned int> (__x=25, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x0000555555555814 in predict (v=25) at lreg.cpp:116
+#5  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#6  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+269	in ../sysdeps/ieee754/dbl-64/e_exp.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000xe00x930xe20xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd918
+address max offset: 8
+Memory content after  bitflip:0xaa0x170x0c0xea0x910xde0x780xf6
+frame name: main
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 233
+value: -4.8944262398002958e+262
+value address: 0x7fffffffd918
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 17:10:06]
+Fault Injection Successful after 3.0384624004364014s
+[INFO -- 2018-11-26 17:10:06]
+event type: exit
+[INFO -- 2018-11-26 17:10:06]
+exit code: 0

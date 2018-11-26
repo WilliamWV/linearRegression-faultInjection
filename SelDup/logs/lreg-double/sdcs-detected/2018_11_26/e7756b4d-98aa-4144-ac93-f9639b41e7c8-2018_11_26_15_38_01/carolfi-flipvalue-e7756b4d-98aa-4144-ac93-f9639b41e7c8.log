@@ -1,0 +1,55 @@
+[INFO -- 2018-11-26 15:37:56]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:37:56]
+Initialization strings:
+[INFO -- 2018-11-26 15:37:56]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:37:56]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:37:56]
+initSignal:0
+[INFO -- 2018-11-26 15:37:56]
+endSignal:3
+[INFO -- 2018-11-26 15:37:56]
+faultModel:1
+[INFO -- 2018-11-26 15:37:57]
+Backtrace BEGIN:
+#0  std::allocator_traits<std::allocator<double> >::select_on_container_copy_construction (__rhs=...) at /usr/include/c++/7/bits/alloc_traits.h:505
+#1  0x00005555555570ea in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:95
+#2  0x00005555555569da in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x0000555555555f47 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:199
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+500	       *  @param  __rhs  An allocator.
+501	       *  @return @c __rhs
+502	      */
+503	      static allocator_type
+504	      select_on_container_copy_construction(const allocator_type& __rhs)
+505	      { return __rhs; }
+506	    };
+507	
+508	
+509	  template<typename _Alloc>
+
+Backtrace END
+Memory content before bitflip:0xf80x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7e8
+address max offset: 4
+Memory content after  bitflip:0xd90x000x000x00
+frame name: train
+symbol name: i1
+symbol filename: lreg.cpp
+symbol line: 191
+value: 217
+value address: 0x7fffffffd7e8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 15:37:57]
+Fault Injection Successful after 1.9581406116485596s
+[INFO -- 2018-11-26 15:38:00]
+event type: exit
+[INFO -- 2018-11-26 15:38:00]
+exit code: 0

@@ -1,0 +1,55 @@
+[INFO -- 2018-11-26 15:32:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:32:37]
+Initialization strings:
+[INFO -- 2018-11-26 15:32:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:32:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:32:37]
+initSignal:0
+[INFO -- 2018-11-26 15:32:37]
+endSignal:3
+[INFO -- 2018-11-26 15:32:37]
+faultModel:2
+[EXCEPTION -- 2018-11-26 15:32:38]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 15:32:38]
+Backtrace BEGIN:
+#0  0x0000555555556a2c in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd840, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#1  0x0000555555555f5f in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+326	      vector(const vector& __x)
+327	      : _Base(__x.size(),
+328		_Alloc_traits::_S_select_on_copy(__x._M_get_Tp_allocator()))
+329	      {
+330		this->_M_impl._M_finish =
+331		  std::__uninitialized_copy_a(__x.begin(), __x.end(),
+332					      this->_M_impl._M_start,
+333					      _M_get_Tp_allocator());
+334	      }
+335	
+
+Backtrace END
+Memory content before bitflip:0x060x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd90c
+address max offset: 4
+Memory content after  bitflip:0x260x4f0xaf0x51
+frame name: main
+symbol name: pred2
+symbol filename: lreg.cpp
+symbol line: 238
+value: 1370443558
+value address: 0x7fffffffd90c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 15:32:38]
+Fault Injection Successful after 1.9894936084747314s
+[INFO -- 2018-11-26 15:32:40]
+event type: exit
+[INFO -- 2018-11-26 15:32:40]
+exit code: 0

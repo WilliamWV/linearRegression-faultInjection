@@ -1,0 +1,57 @@
+[INFO -- 2018-11-26 17:35:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:35:51]
+Initialization strings:
+[INFO -- 2018-11-26 17:35:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:35:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:35:51]
+initSignal:0
+[INFO -- 2018-11-26 17:35:51]
+endSignal:3
+[INFO -- 2018-11-26 17:35:51]
+faultModel:0
+[INFO -- 2018-11-26 17:35:53]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::size (this=0x2) at /usr/include/c++/7/bits/stl_vector.h:670
+#1  0x000055555555577d in predict (v=-16) at lreg.cpp:115
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+665	#endif
+666	
+667	      // [23.2.4.2] capacity
+668	      /**  Returns the number of elements in the %vector.  */
+669	      size_type
+670	      size() const _GLIBCXX_NOEXCEPT
+671	      { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+672	
+673	      /**  Returns the size() of the largest possible %vector.  */
+674	      size_type
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x020x000x000x000x000x000x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd698
+address max offset: 8
+Memory content after  bitflip:0x020x000x000x000x000x000x000x40
+frame name: std::vector<double, std::allocator<double> >::size
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x2
+value address: 0x7fffffffd698
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 17:35:53]
+Fault Injection Successful after 2.220691680908203s
+[INFO -- 2018-11-26 17:35:55]
+event type: exit
+[INFO -- 2018-11-26 17:35:55]
+exit code: 0

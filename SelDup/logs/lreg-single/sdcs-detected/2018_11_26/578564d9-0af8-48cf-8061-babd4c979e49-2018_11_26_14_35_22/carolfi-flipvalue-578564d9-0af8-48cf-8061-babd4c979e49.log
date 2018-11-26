@@ -1,0 +1,62 @@
+[INFO -- 2018-11-26 14:35:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 14:35:19]
+Initialization strings:
+[INFO -- 2018-11-26 14:35:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 14:35:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 14:35:19]
+initSignal:0
+[INFO -- 2018-11-26 14:35:19]
+endSignal:3
+[INFO -- 2018-11-26 14:35:19]
+faultModel:0
+[INFO -- 2018-11-26 14:35:20]
+Backtrace BEGIN:
+#0  0x0000555555555254 in verifyDoubleDup (a=-2.9896150597032771, b=-2.9896150597032771) at lreg.cpp:71
+#1  0x00005555555557ea in predict (v=6) at lreg.cpp:116
+#2  0x0000555555555928 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+75	        detected = 1;	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x5d0x970x800x120x080x200xb10xbf
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772520
+address max offset: 8
+Memory content after  bitflip:0xdd0x970x800x120x080x200xb10xbf
+frame name: verifyDoubleDup
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 3, capacity 3 = {-0.066895012395064637, -0.016066143100577523, -2.9896150597032771}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 14:35:20]
+Fault Injection Successful after 1.5192079544067383s
+[INFO -- 2018-11-26 14:35:22]
+event type: exit
+[INFO -- 2018-11-26 14:35:22]
+exit code: 0

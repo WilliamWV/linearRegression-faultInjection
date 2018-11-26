@@ -1,0 +1,66 @@
+[INFO -- 2018-11-26 18:30:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:30:54]
+Initialization strings:
+[INFO -- 2018-11-26 18:30:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:30:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:30:54]
+initSignal:0
+[INFO -- 2018-11-26 18:30:54]
+endSignal:3
+[INFO -- 2018-11-26 18:30:54]
+faultModel:1
+[EXCEPTION -- 2018-11-26 18:30:55]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 18:30:55]
+Backtrace BEGIN:
+#0  0x00007ffff7adf1ae in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x00005555555582ba in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd860, __n=3) at /usr/include/c++/7/ext/new_allocator.h:111
+#2  0x0000555555558043 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=3) at /usr/include/c++/7/bits/alloc_traits.h:436
+#3  0x0000555555557b1a in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd860, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#4  0x000055555555787f in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd860, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#5  0x0000555555556f4f in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd860, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#6  0x00005555555569fb in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#7  0x0000555555555f47 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#8  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+213		4° Line : values y of the training set
+214		5° Line : set z of new inputs to predict*/
+215	
+216	
+217	int main(int argc, char* argv[]){
+218		
+219		if (argc != 3) {
+220			cout << "Wrong number of arguments" <<endl;
+221			cout <<"  Use as : " << endl; 
+222			cout <<'\t'<<argv[0]<<" <input file> "<<"<output file>"<<endl;
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd870
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x0c
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd860
+value address: 0x7fffffffd768
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 18:30:55]
+Fault Injection Successful after 1.1063404083251953s
+[INFO -- 2018-11-26 18:30:55]
+event type: exit
+[EXCEPTION -- 2018-11-26 18:30:55]
+exit code: no exit code available

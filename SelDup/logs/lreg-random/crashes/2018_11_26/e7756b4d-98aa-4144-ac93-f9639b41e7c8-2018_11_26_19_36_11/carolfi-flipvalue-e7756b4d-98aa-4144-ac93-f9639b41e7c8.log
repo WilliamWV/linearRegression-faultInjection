@@ -1,0 +1,56 @@
+[INFO -- 2018-11-26 19:36:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 19:36:07]
+Initialization strings:
+[INFO -- 2018-11-26 19:36:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 19:36:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 19:36:07]
+initSignal:0
+[INFO -- 2018-11-26 19:36:07]
+endSignal:3
+[INFO -- 2018-11-26 19:36:07]
+faultModel:2
+[EXCEPTION -- 2018-11-26 19:36:09]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 19:36:09]
+Backtrace BEGIN:
+#0  std::_Vector_base<double, std::allocator<double> >::_M_get_Tp_allocator (this=0x7fffffffd840) at /usr/include/c++/7/bits/stl_vector.h:115
+#1  0x00005555555568f0 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd860, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#2  0x0000555555555fb4 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:199
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+110	
+111	    public:
+112	      typedef _Alloc allocator_type;
+113	
+114	      _Tp_alloc_type&
+115	      _M_get_Tp_allocator() _GLIBCXX_NOEXCEPT
+116	      { return *static_cast<_Tp_alloc_type*>(&this->_M_impl); }
+117	
+118	      const _Tp_alloc_type&
+119	      _M_get_Tp_allocator() const _GLIBCXX_NOEXCEPT
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000xc00xf20xff0xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd928
+address max offset: 8
+Memory content after  bitflip:0x850xaa0xe00xe90x910xe60x510xcd
+frame name: main
+symbol name: yChecksum
+symbol filename: lreg.cpp
+symbol line: 233
+value: -2.9455624132833749e+64
+value address: 0x7fffffffd928
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 19:36:09]
+Fault Injection Successful after 2.979635238647461s
+[INFO -- 2018-11-26 19:36:10]
+event type: exit
+[EXCEPTION -- 2018-11-26 19:36:10]
+exit code: no exit code available

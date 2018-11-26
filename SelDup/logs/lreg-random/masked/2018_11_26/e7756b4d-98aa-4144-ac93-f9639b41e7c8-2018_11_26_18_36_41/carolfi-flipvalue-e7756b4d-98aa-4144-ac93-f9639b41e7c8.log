@@ -1,0 +1,56 @@
+[INFO -- 2018-11-26 18:36:38]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:36:38]
+Initialization strings:
+[INFO -- 2018-11-26 18:36:38]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:36:38]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:36:38]
+initSignal:0
+[INFO -- 2018-11-26 18:36:38]
+endSignal:3
+[INFO -- 2018-11-26 18:36:38]
+faultModel:2
+[EXCEPTION -- 2018-11-26 18:36:39]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-26 18:36:39]
+Backtrace BEGIN:
+#0  0x000055555555522d in verifyDoubleDup (a=5.0000000000000002e-05, b=5.0000000000000002e-05) at lreg.cpp:70
+#1  0x0000555555555be2 in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:158
+#2  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd510
+address max offset: 8
+Memory content after  bitflip:0x020x330xe00x460x880xf10xae0x86
+frame name: verifyDoubleDup
+symbol name: b
+symbol filename: lreg.cpp
+symbol line: 70
+value: -1.7455939469014271e-276
+value address: 0x7fffffffd510
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 18:36:39]
+Fault Injection Successful after 1.6614136695861816s
+[INFO -- 2018-11-26 18:36:41]
+event type: exit
+[INFO -- 2018-11-26 18:36:41]
+exit code: 0

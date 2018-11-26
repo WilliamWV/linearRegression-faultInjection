@@ -1,0 +1,56 @@
+[INFO -- 2018-11-26 21:02:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 21:02:37]
+Initialization strings:
+[INFO -- 2018-11-26 21:02:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 21:02:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 21:02:37]
+initSignal:0
+[INFO -- 2018-11-26 21:02:37]
+endSignal:3
+[INFO -- 2018-11-26 21:02:37]
+faultModel:1
+[EXCEPTION -- 2018-11-26 21:02:38]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 21:02:38]
+Backtrace BEGIN:
+#0  0x0000555555557143 in std::vector<double, std::allocator<double> >::begin (this=0x7fffffffd800) at /usr/include/c++/7/bits/stl_vector.h:573
+#1  0x0000555555556a38 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#2  0x0000555555555f47 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:199
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+568	       *  first element in the %vector.  Iteration is done in ordinary
+569	       *  element order.
+570	       */
+571	      const_iterator
+572	      begin() const _GLIBCXX_NOEXCEPT
+573	      { return const_iterator(this->_M_impl._M_start); }
+574	
+575	      /**
+576	       *  Returns a read/write iterator that points one past the last
+577	       *  element in the %vector.  Iteration is done in ordinary
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000xc00xf20xff0xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd928
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x090xc00xf20xff0xc0
+frame name: main
+symbol name: yChecksum
+symbol filename: lreg.cpp
+symbol line: 233
+value: -130860.00219726562
+value address: 0x7fffffffd928
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 21:02:38]
+Fault Injection Successful after 1.7319014072418213s
+[INFO -- 2018-11-26 21:02:40]
+event type: exit
+[EXCEPTION -- 2018-11-26 21:02:40]
+exit code: no exit code available

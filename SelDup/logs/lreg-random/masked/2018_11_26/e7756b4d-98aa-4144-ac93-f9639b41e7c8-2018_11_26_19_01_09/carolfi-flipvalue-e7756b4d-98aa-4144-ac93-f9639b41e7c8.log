@@ -1,0 +1,56 @@
+[INFO -- 2018-11-26 19:01:06]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 19:01:06]
+Initialization strings:
+[INFO -- 2018-11-26 19:01:06]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 19:01:06]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 19:01:06]
+initSignal:0
+[INFO -- 2018-11-26 19:01:06]
+endSignal:3
+[INFO -- 2018-11-26 19:01:06]
+faultModel:2
+[INFO -- 2018-11-26 19:01:07]
+Backtrace BEGIN:
+#0  0x0000555555554ed0 in pow@plt ()
+#1  0x0000555555556826 in std::pow<double, unsigned int> (__x=23, __y=0) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555814 in predict (v=23) at lreg.cpp:116
+#3  0x0000555555555928 in meanSquaredError () at lreg.cpp:128
+#4  0x0000555555555ee5 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+203		//T1 = bestT;
+204	}
+205	
+206	/*
+207	It must receive an input file formated as follows:
+208		1° Line : one integer T -> number of test cases
+209		2° to 5° repeat to all test case	
+210		2° Line : method parameters -> alpha, iterations, N, size of 
+211			      training set, predictions
+212		3° Line : inputs x of the training set
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd748
+address max offset: 8
+Memory content after  bitflip:0x400x5a0x800x510x870x870xdc0x6d
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 113
+value: 1.611348959260602e+221
+value address: 0x7fffffffd748
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 19:01:07]
+Fault Injection Successful after 1.7943785190582275s
+[INFO -- 2018-11-26 19:01:09]
+event type: exit
+[INFO -- 2018-11-26 19:01:09]
+exit code: 0

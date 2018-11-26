@@ -1,0 +1,62 @@
+[INFO -- 2018-11-26 21:27:02]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 21:27:02]
+Initialization strings:
+[INFO -- 2018-11-26 21:27:02]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 21:27:02]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 21:27:02]
+initSignal:0
+[INFO -- 2018-11-26 21:27:02]
+endSignal:3
+[INFO -- 2018-11-26 21:27:02]
+faultModel:2
+[INFO -- 2018-11-26 21:27:04]
+Backtrace BEGIN:
+#0  0x000055555555510c in verifyUintDup (a=2, b=2) at lreg.cpp:61
+#1  0x00005555555557c3 in predict (v=-19) at lreg.cpp:116
+#2  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x710xe60x6b0xb30xd20xd10xdd0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772520
+address max offset: 8
+Memory content after  bitflip:0x0e0x4d0x410xc40x040x4f0x5e0x2a
+frame name: predict
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 3, capacity 3 = {1.3215035872078287e-104, -0.030311666484828307, -2.9910185403518463}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 21:27:04]
+Fault Injection Successful after 2.6358230113983154s
+[INFO -- 2018-11-26 21:27:08]
+event type: exit
+[INFO -- 2018-11-26 21:27:08]
+exit code: 0

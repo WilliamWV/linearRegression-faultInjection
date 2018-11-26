@@ -1,0 +1,56 @@
+[INFO -- 2018-11-26 18:27:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:27:23]
+Initialization strings:
+[INFO -- 2018-11-26 18:27:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:27:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:27:23]
+initSignal:0
+[INFO -- 2018-11-26 18:27:23]
+endSignal:3
+[INFO -- 2018-11-26 18:27:23]
+faultModel:2
+[INFO -- 2018-11-26 18:27:24]
+Backtrace BEGIN:
+#0  verifyDoubleDup (a=-1.0006503222468786, b=-1.0006503222468786) at lreg.cpp:77
+#1  0x00005555555557ea in predict (v=-10) at lreg.cpp:116
+#2  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+75	        detected = 1;	
+76		}	
+77		return a;
+78	}
+79	
+80	
+81	void verifyChecksum(vector<double> vec){
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x580xde0xff0xff0xff0x7f0x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd8c0
+address max offset: 8
+Memory content after  bitflip:0xbf0x970xdc0x2d0x830x750x2b0x2d
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 217
+value: 0x7fffffffde58
+value address: 0x7fffffffd8c0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 18:27:24]
+Fault Injection Successful after 1.208817720413208s
+[INFO -- 2018-11-26 18:27:26]
+event type: exit
+[INFO -- 2018-11-26 18:27:26]
+exit code: 0

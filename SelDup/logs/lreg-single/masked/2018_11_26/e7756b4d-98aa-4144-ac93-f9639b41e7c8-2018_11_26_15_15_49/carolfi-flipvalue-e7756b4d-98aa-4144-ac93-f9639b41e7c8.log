@@ -1,0 +1,58 @@
+[INFO -- 2018-11-26 15:15:46]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:15:46]
+Initialization strings:
+[INFO -- 2018-11-26 15:15:46]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:15:46]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:15:46]
+initSignal:0
+[INFO -- 2018-11-26 15:15:46]
+endSignal:3
+[INFO -- 2018-11-26 15:15:46]
+faultModel:0
+[INFO -- 2018-11-26 15:15:46]
+Backtrace BEGIN:
+#0  std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=non-dereferenceable iterator for std::vector, __last=0, __result=0x5555555582ba <__gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*)+64>) at /usr/include/c++/7/bits/stl_algobase.h:446
+#1  0x0000555555557ff6 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.37761661980596878, __last=0, __result=0x555555772580) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#2  0x0000555555557ab0 in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.37761661980596878, __last=0, __result=0x555555772580) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#3  0x00005555555571e9 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=0.37761661980596878, __last=0, __result=0x555555772580) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#4  0x0000555555556a49 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd840, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#5  0x0000555555555f5f in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:199
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+441	   *  Note that the end of the output range is permitted to be contained
+442	   *  within [first,last).
+443	  */
+444	  template<typename _II, typename _OI>
+445	    inline _OI
+446	    copy(_II __first, _II __last, _OI __result)
+447	    {
+448	      // concept requirements
+449	      __glibcxx_function_requires(_InputIteratorConcept<_II>)
+450	      __glibcxx_function_requires(_OutputIteratorConcept<_OI,
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x580xde0xff0xff0xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd8c0
+address max offset: 8
+Memory content after  bitflip:0x5a0xde0xff0xff0xff0x7f0x000x00
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 217
+value: 0x7fffffffde58
+value address: 0x7fffffffd8c0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 15:15:46]
+Fault Injection Successful after 0.9870102405548096s
+[INFO -- 2018-11-26 15:15:48]
+event type: exit
+[INFO -- 2018-11-26 15:15:48]
+exit code: 0

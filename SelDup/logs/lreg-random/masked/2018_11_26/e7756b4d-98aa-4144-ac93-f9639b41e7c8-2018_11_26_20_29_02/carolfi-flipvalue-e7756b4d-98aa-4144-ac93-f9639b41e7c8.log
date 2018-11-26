@@ -1,0 +1,57 @@
+[INFO -- 2018-11-26 20:28:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 20:28:59]
+Initialization strings:
+[INFO -- 2018-11-26 20:28:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 20:28:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 20:28:59]
+initSignal:0
+[INFO -- 2018-11-26 20:28:59]
+endSignal:3
+[INFO -- 2018-11-26 20:28:59]
+faultModel:2
+[EXCEPTION -- 2018-11-26 20:29:00]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-26 20:29:00]
+Backtrace BEGIN:
+#0  0x00007ffff76bcb20 in __pow (x=-7, y=2) at w_pow_compat.c:31
+#1  0x0000555555556826 in std::pow<double, unsigned int> (__x=-7, __y=2) at /usr/include/c++/7/cmath:418
+#2  0x0000555555555814 in predict (v=-7) at lreg.cpp:116
+#3  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#4  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#5  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+26	in w_pow_compat.c
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x580x230x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b1b0 
+address max offset: 8
+Memory content after  bitflip:0x9d0x6c0x450x9b0x330x360xf40x08
+frame name: std::pow<double, unsigned int>
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 3, capacity 80638302112827691 = {0.80687268925183264, -0.027381128134479064, -2.9918783498953037}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 20:29:00]
+Fault Injection Successful after 1.122920274734497s
+[INFO -- 2018-11-26 20:29:01]
+event type: exit
+[INFO -- 2018-11-26 20:29:01]
+exit code: 0

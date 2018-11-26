@@ -1,0 +1,63 @@
+[INFO -- 2018-11-26 18:39:28]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:39:28]
+Initialization strings:
+[INFO -- 2018-11-26 18:39:28]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:39:28]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:39:28]
+initSignal:0
+[INFO -- 2018-11-26 18:39:28]
+endSignal:3
+[INFO -- 2018-11-26 18:39:28]
+faultModel:0
+[INFO -- 2018-11-26 18:39:29]
+Backtrace BEGIN:
+#0  0x000055555555807d in std::__niter_base<double*, std::vector<double, std::allocator<double> > > (__it=1.88731706340398) at /usr/include/c++/7/bits/stl_iterator.h:984
+#1  0x0000555555557b81 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.8874095192982701, __last=0, __result=1.88731706340398) at /usr/include/c++/7/bits/stl_algobase.h:422
+#2  0x00005555555573d1 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=1.8874095192982701, __last=0, __result=1.88731706340398) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x0000555555556d13 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#4  0x0000555555555f26 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:197
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+979	_GLIBCXX_BEGIN_NAMESPACE_VERSION
+980	
+981	  template<typename _Iterator, typename _Container>
+982	    _Iterator
+983	    __niter_base(__gnu_cxx::__normal_iterator<_Iterator, _Container> __it)
+984	    { return __it.base(); }
+985	
+986	_GLIBCXX_END_NAMESPACE_VERSION
+987	} // namespace
+988	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x600x230x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b1a0 
+address max offset: 8
+Memory content after  bitflip:0xe00x230x770x550x550x550x000x00
+frame name: std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > >
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length -14, capacity -14 = {0, 0, 0, 7.1639518646980749e-322, 12, -6, -10, -3, 7, -12, 6, -10, -16, 0, 0, 0, 0, 0, 0, 0, 0, 7.1639518646980749e-322, -10, 8, 12, 5, -5, 14, -4, 12, 32, 0, 0, 0, 0, 0, 0, 0, 0, 1.6304166312761136e-322, 1.88731706340398, -1.0029158908668743, 0, 1.6304166312761136e-322, 1.88731706340398, -1.0029158908668743, 0, 1.6304166312761136e-322, 4.6355706480405627e-310, -1.002918285308164, 0, 1.6304166312761136e-322, 0, -1.0029158908668743, 0, 2.155756632499111e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 18:39:29]
+Fault Injection Successful after 1.3074815273284912s
+[INFO -- 2018-11-26 18:39:29]
+event type: exit
+[EXCEPTION -- 2018-11-26 18:39:29]
+exit code: no exit code available

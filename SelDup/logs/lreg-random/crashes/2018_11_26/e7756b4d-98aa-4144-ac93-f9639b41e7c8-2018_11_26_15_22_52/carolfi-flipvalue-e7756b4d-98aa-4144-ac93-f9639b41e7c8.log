@@ -1,0 +1,58 @@
+[INFO -- 2018-11-26 15:22:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:22:48]
+Initialization strings:
+[INFO -- 2018-11-26 15:22:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:22:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:22:48]
+initSignal:0
+[INFO -- 2018-11-26 15:22:48]
+endSignal:3
+[INFO -- 2018-11-26 15:22:48]
+faultModel:2
+[EXCEPTION -- 2018-11-26 15:22:50]
+gdbException: Cannot access memory at address 0x4a51368819a2f688
+[INFO -- 2018-11-26 15:22:50]
+Backtrace BEGIN:
+#0  0x0000555555556814 in std::pow<double, unsigned int> (__x=-19, __y=0) at /usr/include/c++/7/cmath:418
+#1  0x0000555555555814 in predict (v=-19) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+413	    inline _GLIBCXX_CONSTEXPR
+414	    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+415	    pow(_Tp __x, _Up __y)
+416	    {
+417	      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+418	      return pow(__type(__x), __type(__y));
+419	    }
+420	
+421	  using ::sin;
+422	
+
+Backtrace END
+Memory content before bitflip:0x080x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd720
+address max offset: 4
+Memory content after  bitflip:0x6d0x590xdb0x30
+frame name: partialDerivate
+symbol name: i1
+symbol filename: lreg.cpp
+symbol line: 141
+value: 819681645
+value address: 0x7fffffffd720
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 15:22:50]
+Fault Injection Successful after 2.5761959552764893s
+[INFO -- 2018-11-26 15:22:51]
+event type: exit
+[EXCEPTION -- 2018-11-26 15:22:51]
+exit code: no exit code available

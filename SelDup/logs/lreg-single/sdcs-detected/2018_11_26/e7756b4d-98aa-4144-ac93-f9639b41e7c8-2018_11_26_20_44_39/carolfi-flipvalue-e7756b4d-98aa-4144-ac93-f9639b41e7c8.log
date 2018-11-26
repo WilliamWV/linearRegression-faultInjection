@@ -1,0 +1,56 @@
+[INFO -- 2018-11-26 20:44:29]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 20:44:29]
+Initialization strings:
+[INFO -- 2018-11-26 20:44:29]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 20:44:29]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 20:44:29]
+initSignal:0
+[INFO -- 2018-11-26 20:44:29]
+endSignal:3
+[INFO -- 2018-11-26 20:44:29]
+faultModel:0
+[INFO -- 2018-11-26 20:44:32]
+Backtrace BEGIN:
+#0  0x0000555555558060 in std::__niter_base<double const*, std::vector<double, std::allocator<double> > > (__it=1.6304166312761136e-322) at /usr/include/c++/7/bits/stl_iterator.h:984
+#1  0x0000555555557b90 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.40827001432404619, __last=1.6304166312761136e-322, __result=0.40816219327689074) at /usr/include/c++/7/bits/stl_algobase.h:422
+#2  0x00005555555573d1 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.40827001432404619, __last=1.6304166312761136e-322, __result=0.40816219327689074) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x0000555555556d13 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#4  0x0000555555555e7d in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:192
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+979	_GLIBCXX_BEGIN_NAMESPACE_VERSION
+980	
+981	  template<typename _Iterator, typename _Container>
+982	    _Iterator
+983	    __niter_base(__gnu_cxx::__normal_iterator<_Iterator, _Container> __it)
+984	    { return __it.base(); }
+985	
+986	_GLIBCXX_END_NAMESPACE_VERSION
+987	} // namespace
+988	
+
+Backtrace END
+Memory content before bitflip:0x200x4e0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7d8
+address max offset: 4
+Memory content after  bitflip:0x200x6e0x000x00
+frame name: train
+symbol name: iter2
+symbol filename: lreg.cpp
+symbol line: 177
+value: 28192
+value address: 0x7fffffffd7d8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 20:44:32]
+Fault Injection Successful after 3.5072872638702393s
+[INFO -- 2018-11-26 20:44:38]
+event type: exit
+[INFO -- 2018-11-26 20:44:38]
+exit code: 0

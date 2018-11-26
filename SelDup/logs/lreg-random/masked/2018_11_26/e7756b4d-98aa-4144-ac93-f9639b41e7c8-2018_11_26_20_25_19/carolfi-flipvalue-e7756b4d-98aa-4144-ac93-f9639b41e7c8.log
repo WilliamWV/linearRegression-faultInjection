@@ -1,0 +1,57 @@
+[INFO -- 2018-11-26 20:25:16]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 20:25:16]
+Initialization strings:
+[INFO -- 2018-11-26 20:25:16]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 20:25:16]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 20:25:16]
+initSignal:0
+[INFO -- 2018-11-26 20:25:16]
+endSignal:3
+[INFO -- 2018-11-26 20:25:16]
+faultModel:2
+[EXCEPTION -- 2018-11-26 20:25:17]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-26 20:25:18]
+Backtrace BEGIN:
+#0  0x0000555555555366 in verifyDoubleDup (a=0.03418701713119382, b=0.03418701713119382) at lreg.cpp:78
+#1  0x00005555555557ea in predict (v=21) at lreg.cpp:116
+#2  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+75	        detected = 1;	
+76		}	
+77		return a;
+78	}
+79	
+80	
+81	void verifyChecksum(vector<double> vec){
+82		if(detected!=1){
+
+Backtrace END
+Memory content before bitflip:0x280x730x0d0xf10xf50x800xa10x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd4e8
+address max offset: 8
+Memory content after  bitflip:0x260x870x3e0xe10xd40x340xa90xff
+frame name: verifyDoubleDup
+symbol name: a
+symbol filename: lreg.cpp
+symbol line: 70
+value: -8.8502586359775301e+306
+value address: 0x7fffffffd4e8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 20:25:18]
+Fault Injection Successful after 2.068657875061035s
+[INFO -- 2018-11-26 20:25:19]
+event type: exit
+[INFO -- 2018-11-26 20:25:19]
+exit code: 0

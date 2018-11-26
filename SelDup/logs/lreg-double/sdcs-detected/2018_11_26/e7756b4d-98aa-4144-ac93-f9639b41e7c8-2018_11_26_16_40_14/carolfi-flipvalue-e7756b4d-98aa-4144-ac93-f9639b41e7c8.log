@@ -1,0 +1,53 @@
+[INFO -- 2018-11-26 16:40:11]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 16:40:11]
+Initialization strings:
+[INFO -- 2018-11-26 16:40:11]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 16:40:11]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 16:40:11]
+initSignal:0
+[INFO -- 2018-11-26 16:40:11]
+endSignal:3
+[INFO -- 2018-11-26 16:40:11]
+faultModel:1
+[INFO -- 2018-11-26 16:40:13]
+Backtrace BEGIN:
+#0  0x0000555555556a62 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd840, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:334
+#1  0x0000555555555f5f in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:199
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+329	      {
+330		this->_M_impl._M_finish =
+331		  std::__uninitialized_copy_a(__x.begin(), __x.end(),
+332					      this->_M_impl._M_start,
+333					      _M_get_Tp_allocator());
+334	      }
+335	
+336	#if __cplusplus >= 201103L
+337	      /**
+338	       *  @brief  %Vector move constructor.
+
+Backtrace END
+Memory content before bitflip:0x960x020x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7ec
+address max offset: 4
+Memory content after  bitflip:0x960x070x000x00
+frame name: train
+symbol name: i2
+symbol filename: lreg.cpp
+symbol line: 191
+value: 1942
+value address: 0x7fffffffd7ec
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-26 16:40:13]
+Fault Injection Successful after 2.1427762508392334s
+[INFO -- 2018-11-26 16:40:14]
+event type: exit
+[INFO -- 2018-11-26 16:40:14]
+exit code: 0

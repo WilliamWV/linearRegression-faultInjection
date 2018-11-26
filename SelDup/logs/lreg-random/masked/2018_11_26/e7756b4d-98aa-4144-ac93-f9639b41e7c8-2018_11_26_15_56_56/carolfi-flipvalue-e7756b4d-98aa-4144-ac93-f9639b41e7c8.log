@@ -1,0 +1,61 @@
+[INFO -- 2018-11-26 15:56:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:56:53]
+Initialization strings:
+[INFO -- 2018-11-26 15:56:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:56:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:56:53]
+initSignal:0
+[INFO -- 2018-11-26 15:56:53]
+endSignal:3
+[INFO -- 2018-11-26 15:56:53]
+faultModel:2
+[INFO -- 2018-11-26 15:56:54]
+Backtrace BEGIN:
+#0  0x0000555555555800 in predict (v=-1) at lreg.cpp:116
+#1  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x130xd00xa70x250xc00x4b0xf20x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772540
+address max offset: 8
+Memory content after  bitflip:0xdb0x870x370xe50xd00x080x050x7a
+frame name: train
+symbol name: bestT
+symbol filename: lreg.cpp
+symbol line: 188
+value: std::vector of length 3, capacity 3 = {5.9659126679838377e+279, -0.024495147539846562, -2.9928605265036858}
+value address: 0x7fffffffd820
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 15:56:54]
+Fault Injection Successful after 1.2447056770324707s
+[INFO -- 2018-11-26 15:56:55]
+event type: exit
+[INFO -- 2018-11-26 15:56:55]
+exit code: 0

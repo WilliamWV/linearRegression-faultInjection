@@ -12,7 +12,7 @@ goldOutput = 'lastDataCreated/goldOutput'
 outs = [] # lista com diretórios que tem um arquivo output com sdc
 
 for dirName, subdirList, fileList in os.walk(rootDir):
-	if re.search("sdcs", dirName):
+	if re.search("sdcs", dirName) and not re.search("detected", dirName):
 		for file in fileList:
 			if file == 'output':
 				outs.append(dirName +'/output' )
@@ -35,3 +35,6 @@ for out in outs:
 			print ("#ERR p: [" + str(pos) + "], r: " + str(float(line)) + ", e: "+ str(0.0))
 			pos+=1
 	sdcCounter+=1
+	while pos < len(goldenVals):
+		print ("#ERR p: [" + str(pos) + "], r: " + str(0.0) + ", e: "+ str(goldenVals[pos-1]))
+		pos+=1

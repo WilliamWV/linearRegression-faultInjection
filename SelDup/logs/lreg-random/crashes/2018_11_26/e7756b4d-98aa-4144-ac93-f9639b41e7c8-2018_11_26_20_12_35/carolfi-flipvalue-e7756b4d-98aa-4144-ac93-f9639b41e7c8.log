@@ -1,0 +1,66 @@
+[INFO -- 2018-11-26 20:12:31]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 20:12:31]
+Initialization strings:
+[INFO -- 2018-11-26 20:12:31]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 20:12:31]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 20:12:31]
+initSignal:0
+[INFO -- 2018-11-26 20:12:31]
+endSignal:3
+[INFO -- 2018-11-26 20:12:31]
+faultModel:2
+[EXCEPTION -- 2018-11-26 20:12:32]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-26 20:12:32]
+Backtrace BEGIN:
+#0  0x0000555555558232 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=non-dereferenceable iterator for std::vector, __last=1.6304166312761136e-322, __result=0x5555555582ba <__gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*)+64>) at /usr/include/c++/7/bits/stl_algobase.h:446
+#1  0x0000555555557ff6 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.80088370224026284, __last=2.4209216646221081e-322, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#2  0x0000555555557ab0 in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=0.80088370224026284, __last=2.4209216646221081e-322, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#3  0x00005555555571e9 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=0.80088370224026284, __last=2.4209216646221081e-322, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#4  0x0000555555556a49 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#5  0x0000555555555f47 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+441	   *  Note that the end of the output range is permitted to be contained
+442	   *  within [first,last).
+443	  */
+444	  template<typename _II, typename _OI>
+445	    inline _OI
+446	    copy(_II __first, _II __last, _OI __result)
+447	    {
+448	      // concept requirements
+449	      __glibcxx_function_requires(_InputIteratorConcept<_II>)
+450	      __glibcxx_function_requires(_OutputIteratorConcept<_OI,
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x310x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772378
+address max offset: 8
+Memory content after  bitflip:0x450x640x5f0x130x260x070x270x4d
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 187
+value: std::vector of length 3, capacity 3 = {0.80088370224026284, -0.027440053298262452, -2.9918634973559626}
+value address: 0x7fffffffd800
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 20:12:32]
+Fault Injection Successful after 1.8688201904296875s
+[INFO -- 2018-11-26 20:12:34]
+event type: exit
+[EXCEPTION -- 2018-11-26 20:12:34]
+exit code: no exit code available

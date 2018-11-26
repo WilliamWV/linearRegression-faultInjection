@@ -1,0 +1,58 @@
+[INFO -- 2018-11-26 17:01:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 17:01:54]
+Initialization strings:
+[INFO -- 2018-11-26 17:01:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 17:01:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 17:01:54]
+initSignal:0
+[INFO -- 2018-11-26 17:01:54]
+endSignal:3
+[INFO -- 2018-11-26 17:01:54]
+faultModel:1
+[EXCEPTION -- 2018-11-26 17:01:55]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-26 17:01:55]
+gdbException: Cannot access memory at address 0x8400555555772490
+[INFO -- 2018-11-26 17:01:55]
+Backtrace BEGIN:
+#0  0x0000555555555a78 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#1  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#2  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+137	*/
+138	double partialDerivate(UINT pos1, UINT pos2){
+139		double pD = 0;
+140		
+141		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<(x.size() - 1); i1++, i2++){
+142			pD += ((predict(x[verifyUintDup(i1, i2)]) - y[verifyUintDup(i1, i2)])*pow(x[verifyUintDup(i1, i2)], verifyUintDup(pos1, pos2)));	
+143		}
+144		pD *= (2.0/(x.size() - 1));
+145		return pD;
+146	}
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7c0
+address max offset: 8
+Memory content after  bitflip:0x2d0x430x1c0xeb0xe20x220x0a0x3f
+frame name: train
+symbol name: alpha2
+symbol filename: lreg.cpp
+symbol line: 177
+value: 4.9850988388061526e-05
+value address: 0x7fffffffd7c0
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 17:01:55]
+Fault Injection Successful after 1.958498477935791s
+[INFO -- 2018-11-26 17:01:56]
+event type: exit
+[EXCEPTION -- 2018-11-26 17:01:56]
+exit code: no exit code available

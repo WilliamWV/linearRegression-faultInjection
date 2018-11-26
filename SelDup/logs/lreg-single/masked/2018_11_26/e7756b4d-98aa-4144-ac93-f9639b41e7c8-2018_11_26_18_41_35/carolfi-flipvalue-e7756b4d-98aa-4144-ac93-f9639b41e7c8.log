@@ -1,0 +1,57 @@
+[INFO -- 2018-11-26 18:41:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 18:41:32]
+Initialization strings:
+[INFO -- 2018-11-26 18:41:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 18:41:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 18:41:32]
+initSignal:0
+[INFO -- 2018-11-26 18:41:32]
+endSignal:3
+[INFO -- 2018-11-26 18:41:32]
+faultModel:0
+[EXCEPTION -- 2018-11-26 18:41:32]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-26 18:41:32]
+Backtrace BEGIN:
+#0  0x000055555555520f in verifyUintDup (a=0, b=0) at lreg.cpp:69
+#1  0x00005555555557fe in predict (v=7) at lreg.cpp:116
+#2  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7d0
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: train
+symbol name: stopsWhenStable
+symbol filename: lreg.cpp
+symbol line: 177
+value: false
+value address: 0x7fffffffd7d0
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-26 18:41:32]
+Fault Injection Successful after 0.8703515529632568s
+[INFO -- 2018-11-26 18:41:35]
+event type: exit
+[INFO -- 2018-11-26 18:41:35]
+exit code: 0

@@ -1,4 +1,5 @@
 Variable Name;Variable File;Variable Line;Fault Injection Time(s);Injection Time Interval;Fault Model;Detected
+input;lreg.cpp;134;2.3919901847839355;0-6;Single bit-flip;1
 iterations;lreg.cpp;105;1.3557238578796387;0-6;Single bit-flip;1
 alpha;lreg.cpp;83;2.4797892570495605;0-6;Single bit-flip;1
 i;lreg.cpp;86;1.499457597732544;0-6;Single bit-flip;1
@@ -384,6 +385,8 @@ two52e;../sysdeps/ieee754/dbl-64/upow.h;55;0.8714137077331543;0-6;Single bit-fli
 argv;lreg.cpp;181;0.851161003112793;0-6;Single bit-flip;0
 two52e;../sysdeps/ieee754/dbl-64/upow.h;55;0.841604471206665;0-6;Single bit-flip;0
 two52e;../sysdeps/ieee754/dbl-64/upow.h;55;1.540654182434082;0-6;Single bit-flip;0
+y;lreg.cpp;33;0.9482283592224121;0-6;Random bit-flip;1
+i;lreg.cpp;73;1.7974364757537842;0-6;Random bit-flip;1
 alpha;lreg.cpp;105;5.926620006561279;0-6;Random bit-flip;1
 y;lreg.cpp;33;2.9445996284484863;0-6;Random bit-flip;1
 testCases;lreg.cpp;139;1.9260880947113037;0-6;Random bit-flip;1
@@ -731,6 +734,7 @@ bigu;../sysdeps/ieee754/dbl-64/upow.h;52;4.263540744781494;0-6;Random bit-flip;1
 x;lreg.cpp;32;5.462660551071167;0-6;Random bit-flip;1
 T;lreg.cpp;34;1.7317545413970947;0-6;Random bit-flip;1
 two52e;../sysdeps/ieee754/dbl-64/upow.h;55;1.284938097000122;0-6;Random bit-flip;0
+T;lreg.cpp;34;1.8205375671386719;0-6;Double bit-flip;1
 y;lreg.cpp;33;1.4375114440917969;0-6;Double bit-flip;1
 x;lreg.cpp;32;0.7497477531433105;0-6;Double bit-flip;1
 y;lreg.cpp;33;0.9419128894805908;0-6;Double bit-flip;1

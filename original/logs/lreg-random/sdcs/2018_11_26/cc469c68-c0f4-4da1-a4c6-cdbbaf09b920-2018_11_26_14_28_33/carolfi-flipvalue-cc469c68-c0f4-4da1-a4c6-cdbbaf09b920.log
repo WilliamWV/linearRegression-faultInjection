@@ -1,0 +1,60 @@
+[INFO -- 2018-11-26 14:28:31]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 14:28:31]
+Initialization strings:
+[INFO -- 2018-11-26 14:28:31]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 14:28:31]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 14:28:31]
+initSignal:0
+[INFO -- 2018-11-26 14:28:31]
+endSignal:3
+[INFO -- 2018-11-26 14:28:31]
+faultModel:2
+[EXCEPTION -- 2018-11-26 14:28:31]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-26 14:28:31]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-26 14:28:32]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=29) at ../sysdeps/ieee754/dbl-64/e_pow.c:338
+#1  __ieee754_pow_sse2 (x=29, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76bcb14 in __pow (x=29, y=3) at w_pow_compat.c:30
+#3  0x0000555555555d5f in std::pow<double, int> (__x=29, __y=3) at /usr/include/c++/7/cmath:418
+#4  0x00005555555551e7 in predict (v=29) at lreg.cpp:50
+#5  0x00005555555552ba in meanSquaredError () at lreg.cpp:61
+#6  0x0000555555555661 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:121
+#7  0x0000555555555ab7 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:174
+
+333	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x2e0xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x5555557714b0
+address max offset: 8
+Memory content after  bitflip:0xde0x7e0x370xe70x060x070xdf0x22
+frame name: meanSquaredError
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 32
+value: std::vector of length 16, capacity 16 = {1.0177664007927931e-140, -9, -1, 29, 5, -18, 31, -16, -18, -28, 25, -14, 7, -2, -17, 21}
+value address: 0x55555575a140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-26 14:28:32]
+Fault Injection Successful after 1.0729668140411377s
+[INFO -- 2018-11-26 14:28:32]
+event type: exit
+[INFO -- 2018-11-26 14:28:32]
+exit code: 0

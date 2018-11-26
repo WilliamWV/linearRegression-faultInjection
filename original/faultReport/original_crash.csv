@@ -1,4 +1,6 @@
 Variable Name;Variable File;Variable Line;Fault Injection Time(s);Injection Time Interval;Fault Model
+T;lreg.cpp;34;2.4893808364868164;0-3;Single bit-flip
+alpha;lreg.cpp;160;1.7221033573150635;0-3;Single bit-flip
 _dl_skip_args;rtld.c;84;1.2591745853424072;0-2;Single bit-flip
 user_entry;../elf/dl-sysdep.c;91;2.0046746730804443;0-2;Single bit-flip
 x;lreg.cpp;32;2.024434804916382;0-2;Single bit-flip
@@ -1063,6 +1065,8 @@ i;lreg.cpp;60;1.6275520324707031;0-3;Random bit-flip
 i;lreg.cpp;86;1.4575932025909424;0-3;Random bit-flip
 user_entry;../elf/dl-sysdep.c;91;1.3856894969940186;0-3;Random bit-flip
 _dl_skip_args;rtld.c;84;1.267946481704712;0-3;Random bit-flip
+T;lreg.cpp;34;2.5247373580932617;0-3;Double bit-flip
+user_entry;../elf/dl-sysdep.c;91;1.0744237899780273;0-3;Double bit-flip
 user_entry;../elf/dl-sysdep.c;91;1.3972060680389404;0-2;Double bit-flip
 user_entry;../elf/dl-sysdep.c;91;1.4049723148345947;0-2;Double bit-flip
 user_entry;../elf/dl-sysdep.c;91;1.1817224025726318;0-2;Double bit-flip

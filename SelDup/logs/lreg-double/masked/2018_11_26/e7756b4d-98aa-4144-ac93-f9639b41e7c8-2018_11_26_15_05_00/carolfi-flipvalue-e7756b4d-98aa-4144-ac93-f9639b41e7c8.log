@@ -1,0 +1,53 @@
+[INFO -- 2018-11-26 15:04:57]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:04:57]
+Initialization strings:
+[INFO -- 2018-11-26 15:04:57]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:04:57]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:04:57]
+initSignal:0
+[INFO -- 2018-11-26 15:04:57]
+endSignal:3
+[INFO -- 2018-11-26 15:04:57]
+faultModel:1
+[INFO -- 2018-11-26 15:04:58]
+Backtrace BEGIN:
+#0  0x0000555555556ae0 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:185
+#1  0x0000555555555e7d in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:192
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+180	    operator=(const vector<_Tp, _Alloc>& __x)
+181	    {
+182	      if (&__x != this)
+183		{
+184	#if __cplusplus >= 201103L
+185		  if (_Alloc_traits::_S_propagate_on_copy_assign())
+186		    {
+187		      if (!_Alloc_traits::_S_always_equal()
+188		          && _M_get_Tp_allocator() != __x._M_get_Tp_allocator())
+189		        {
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000xdb0xb20xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd928
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x050x000xdb0xb20xc0
+frame name: main
+symbol name: yChecksum
+symbol filename: lreg.cpp
+symbol line: 233
+value: -4827.0000762939453
+value address: 0x7fffffffd928
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-26 15:04:58]
+Fault Injection Successful after 1.288844347000122s
+[INFO -- 2018-11-26 15:04:59]
+event type: exit
+[INFO -- 2018-11-26 15:04:59]
+exit code: 0

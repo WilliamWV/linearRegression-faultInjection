@@ -1,0 +1,70 @@
+[INFO -- 2018-11-26 15:20:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-26 15:20:55]
+Initialization strings:
+[INFO -- 2018-11-26 15:20:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-26 15:20:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-26 15:20:55]
+initSignal:0
+[INFO -- 2018-11-26 15:20:55]
+endSignal:3
+[INFO -- 2018-11-26 15:20:55]
+faultModel:0
+[INFO -- 2018-11-26 15:20:55]
+Backtrace BEGIN:
+#0  0x00007ffff76fd080 in ?? ()
+#1  0x00007ffff7de1b73 in elf_machine_lazy_rel (skip_ifunc=<optimized out>, reloc=0x7ffff76b95b0, l_addr=140737344364544, map=0x7ffff7fdd4f0) at ../sysdeps/x86_64/dl-machine.h:577
+#2  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7fdd4f0) at do-rel.h:77
+#3  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:258
+#4  0x00007ffff7dd9307 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2190
+#5  0x00007ffff7defdd0 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffde50, dl_main=dl_main@entry=0x7ffff7dd7660 <dl_main>) at ../elf/dl-sysdep.c:253
+#6  0x00007ffff7dd7128 in _dl_start_final (arg=0x7fffffffde50) at rtld.c:414
+#7  _dl_start (arg=0x7fffffffde50) at rtld.c:521
+#8  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#9  0x0000000000000003 in ?? ()
+#10 0x00007fffffffe1ff in ?? ()
+#11 0x00007fffffffe20e in ?? ()
+#12 0x00007fffffffe222 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+213		4° Line : values y of the training set
+214		5° Line : set z of new inputs to predict*/
+215	
+216	
+217	int main(int argc, char* argv[]){
+218		
+219		if (argc != 3) {
+220			cout << "Wrong number of arguments" <<endl;
+221			cout <<"  Use as : " << endl; 
+222			cout <<'\t'<<argv[0]<<" <input file> "<<"<output file>"<<endl;
+
+Backtrace END
+Fliping array at pos: 0
+Fliping value of field: start
+Memory content before bitflip:0x400x930x6b0xf70xff0x7f0x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffdad0
+address max offset: 8
+Memory content after  bitflip:0x400x9b0x6b0xf70xff0x7f0x000x00
+frame name: elf_dynamic_do_Rela
+symbol name: ranges
+symbol filename: dl-reloc.c
+symbol line: 258
+value: {{start = 140737344412480, size = 312, nrelative = 3, lazy = 0}, {start = 140737344410744, size = 888, nrelative = 0, lazy = 1}}
+value address: 0x7fffffffdad0
+Type: The type is an array.
+Type sizeof: 64
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0, 1)
+
+[INFO -- 2018-11-26 15:20:55]
+Fault Injection Successful after 0.943265438079834s
+[INFO -- 2018-11-26 15:21:01]
+event type: exit
+[INFO -- 2018-11-26 15:21:01]
+exit code: 0
