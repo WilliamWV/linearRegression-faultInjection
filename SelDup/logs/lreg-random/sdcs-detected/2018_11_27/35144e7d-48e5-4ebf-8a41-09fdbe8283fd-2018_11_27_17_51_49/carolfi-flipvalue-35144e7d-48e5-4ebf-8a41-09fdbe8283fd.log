@@ -1,0 +1,54 @@
+[INFO -- 2018-11-27 17:51:46]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 17:51:46]
+Initialization strings:
+[INFO -- 2018-11-27 17:51:46]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 17:51:46]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 17:51:46]
+initSignal:0
+[INFO -- 2018-11-27 17:51:46]
+endSignal:3
+[INFO -- 2018-11-27 17:51:46]
+faultModel:2
+[INFO -- 2018-11-27 17:51:48]
+Backtrace BEGIN:
+#0  0x000055555555578e in predict (v=5) at lreg.cpp:116
+#1  0x0000555555555928 in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Memory content before bitflip:0x4a0x720x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7ec
+address max offset: 4
+Memory content after  bitflip:0x910xb50x890x09
+frame name: train
+symbol name: i2
+symbol filename: lreg.cpp
+symbol line: 191
+value: 160019857
+value address: 0x7fffffffd7ec
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-27 17:51:48]
+Fault Injection Successful after 2.650329113006592s
+[INFO -- 2018-11-27 17:51:48]
+event type: exit
+[INFO -- 2018-11-27 17:51:48]
+exit code: 0

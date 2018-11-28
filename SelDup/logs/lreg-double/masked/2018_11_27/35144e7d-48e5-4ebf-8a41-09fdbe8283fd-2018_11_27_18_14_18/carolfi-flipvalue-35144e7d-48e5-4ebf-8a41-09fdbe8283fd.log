@@ -1,0 +1,58 @@
+[INFO -- 2018-11-27 18:14:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 18:14:13]
+Initialization strings:
+[INFO -- 2018-11-27 18:14:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 18:14:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 18:14:13]
+initSignal:0
+[INFO -- 2018-11-27 18:14:13]
+endSignal:3
+[INFO -- 2018-11-27 18:14:13]
+faultModel:1
+[EXCEPTION -- 2018-11-27 18:14:15]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-27 18:14:15]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-27 18:14:15]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 18:14:15]
+Backtrace BEGIN:
+#0  __GI___libc_malloc (bytes=24) at malloc.c:3028
+#1  0x00007ffff7adf1a8 in operator new(unsigned long) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#2  0x00005555555582ba in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd860, __n=3) at /usr/include/c++/7/ext/new_allocator.h:111
+#3  0x0000555555558043 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=3) at /usr/include/c++/7/bits/alloc_traits.h:436
+#4  0x0000555555557b1a in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd860, __n=3) at /usr/include/c++/7/bits/stl_vector.h:172
+#5  0x000055555555787f in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd860, __n=3) at /usr/include/c++/7/bits/stl_vector.h:187
+#6  0x0000555555556f4f in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd860, __n=3, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#7  0x00005555555569fb in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#8  0x0000555555555f47 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#9  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+3023	malloc.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x600xd80xff0xff0xff0x7f0x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd6e8
+address max offset: 8
+Memory content after  bitflip:0x600xd80xff0xf60xff0x7f0x000x00
+frame name: std::_Vector_base<double, std::allocator<double> >::_M_allocate
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x7fffffffd860
+value address: 0x7fffffffd6e8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 18:14:15]
+Fault Injection Successful after 2.7686331272125244s
+[INFO -- 2018-11-27 18:14:17]
+event type: exit
+[INFO -- 2018-11-27 18:14:17]
+exit code: 0

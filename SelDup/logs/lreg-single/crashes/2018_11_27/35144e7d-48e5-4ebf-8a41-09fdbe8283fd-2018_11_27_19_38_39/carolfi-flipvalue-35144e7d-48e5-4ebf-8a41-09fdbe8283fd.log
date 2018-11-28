@@ -1,0 +1,69 @@
+[INFO -- 2018-11-27 19:38:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 19:38:35]
+Initialization strings:
+[INFO -- 2018-11-27 19:38:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 19:38:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 19:38:35]
+initSignal:0
+[INFO -- 2018-11-27 19:38:35]
+endSignal:3
+[INFO -- 2018-11-27 19:38:35]
+faultModel:0
+[EXCEPTION -- 2018-11-27 19:38:37]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-27 19:38:37]
+gdbException: Cannot access memory at address 0x555557772490
+[EXCEPTION -- 2018-11-27 19:38:37]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 19:38:38]
+Backtrace BEGIN:
+#0  verifyUintDup (a=1073097516, b=1969196867) at lreg.cpp:61
+#1  0x00005555555557fe in predict (v=-2) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x800x240x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b150 
+address max offset: 8
+Memory content after  bitflip:0x800x240x770x550x550x550x000x80
+frame name: predict
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 13, capacity -1152921504606846960 = {-4, -3, -7, -2, -1, -1, -21, -3, -19, 13, 6, 23, -19}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 19:38:38]
+Fault Injection Successful after 3.091488838195801s
+[INFO -- 2018-11-27 19:38:38]
+event type: exit
+[EXCEPTION -- 2018-11-27 19:38:38]
+exit code: no exit code available

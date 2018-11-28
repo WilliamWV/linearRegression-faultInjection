@@ -1,0 +1,52 @@
+[INFO -- 2018-11-27 19:57:30]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 19:57:30]
+Initialization strings:
+[INFO -- 2018-11-27 19:57:30]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 19:57:30]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 19:57:30]
+initSignal:0
+[INFO -- 2018-11-27 19:57:30]
+endSignal:3
+[INFO -- 2018-11-27 19:57:30]
+faultModel:2
+[INFO -- 2018-11-27 19:57:32]
+Backtrace BEGIN:
+#0  0x0000555555555f01 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:195
+#1  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+190		double MSE;	
+191		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<verifyUintDup(iter1, iter2); i1++, i2++){
+192			prevT = T1; 	
+193			adjust(verifyDoubleDup(alpha1, alpha2), verifyDoubleDup(alpha1, alpha2));
+194			MSE = meanSquaredError();
+195			if (MSE < bestMSE){
+196				bestMSE = MSE;
+197				bestT = T1; 
+198			}
+199			if (equals(T1, prevT) && stopsWhenStable){ // implement equals
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x330xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd920
+address max offset: 8
+Memory content after  bitflip:0x2e0xf00xc20x520x0a0x1d0x250x32
+frame name: main
+symbol name: xChecksum
+symbol filename: lreg.cpp
+symbol line: 233
+value: 3.9157048475516392e-67
+value address: 0x7fffffffd920
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 19:57:32]
+Fault Injection Successful after 2.510730266571045s
+[INFO -- 2018-11-27 19:57:36]
+event type: exit
+[INFO -- 2018-11-27 19:57:36]
+exit code: 0

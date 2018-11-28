@@ -1,0 +1,57 @@
+[INFO -- 2018-11-27 21:03:03]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 21:03:03]
+Initialization strings:
+[INFO -- 2018-11-27 21:03:03]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 21:03:03]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 21:03:03]
+initSignal:0
+[INFO -- 2018-11-27 21:03:03]
+endSignal:3
+[INFO -- 2018-11-27 21:03:03]
+faultModel:0
+[EXCEPTION -- 2018-11-27 21:03:04]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-27 21:03:05]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 21:03:05]
+Backtrace BEGIN:
+#0  0x0000555555555bc3 in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:156
+#1  0x0000555555555ee0 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:193
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+151	void adjust(double alpha1, double alpha2){
+152		
+153		double PD;
+154		
+155		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+156			PD = partialDerivate(verifyUintDup(i1, i2), verifyUintDup(i1, i2));
+157			// alpha is different from the canonical version because this works better
+158			double diff = ((verifyDoubleDup(alpha1, alpha2) / (sqrt( fabs(PD) ))) * PD);
+159			T1[verifyUintDup(i1, i2)]= T1[verifyUintDup(i1, i2)] - diff;
+160			T2[verifyUintDup(i1, i2)]= T2[verifyUintDup(i1, i2)] - diff;
+
+Backtrace END
+Memory content before bitflip:0x5e0xb90xca0xc90xa10x820x300xbf
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0x5e0x390xca0xc90xa10x820x300xbf
+frame name: adjust
+symbol name: diff
+symbol filename: lreg.cpp
+symbol line: 158
+value: -0.0002519268980813084
+value address: 0x7fffffffd788
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 21:03:05]
+Fault Injection Successful after 2.312652111053467s
+[INFO -- 2018-11-27 21:03:09]
+event type: exit
+[INFO -- 2018-11-27 21:03:09]
+exit code: 0

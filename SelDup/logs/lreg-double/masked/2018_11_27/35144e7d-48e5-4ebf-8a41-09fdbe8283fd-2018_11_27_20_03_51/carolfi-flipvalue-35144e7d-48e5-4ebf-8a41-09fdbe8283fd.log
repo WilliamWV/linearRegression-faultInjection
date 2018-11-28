@@ -1,0 +1,56 @@
+[INFO -- 2018-11-27 20:03:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:03:48]
+Initialization strings:
+[INFO -- 2018-11-27 20:03:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:03:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:03:48]
+initSignal:0
+[INFO -- 2018-11-27 20:03:48]
+endSignal:3
+[INFO -- 2018-11-27 20:03:48]
+faultModel:1
+[INFO -- 2018-11-27 20:03:49]
+Backtrace BEGIN:
+#0  0x00005555555551e0 in verifyUintDup (a=1, b=1) at lreg.cpp:69
+#1  0x000055555555579a in predict (v=-3) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+
+Backtrace END
+Memory content before bitflip:0x740x0f0xcb0x0a0x1a0x060xf90x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd6d8
+address max offset: 8
+Memory content after  bitflip:0x550x0f0xcb0x0a0x1a0x060xf90x3f
+frame name: predict
+symbol name: val
+symbol filename: lreg.cpp
+symbol line: 113
+value: 1.5639896794900399
+value address: 0x7fffffffd6d8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 20:03:49]
+Fault Injection Successful after 1.2420074939727783s
+[INFO -- 2018-11-27 20:03:50]
+event type: exit
+[INFO -- 2018-11-27 20:03:50]
+exit code: 0

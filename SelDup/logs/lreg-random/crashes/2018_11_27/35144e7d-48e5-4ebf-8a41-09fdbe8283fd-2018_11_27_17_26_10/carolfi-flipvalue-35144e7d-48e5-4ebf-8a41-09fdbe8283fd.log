@@ -1,0 +1,63 @@
+[INFO -- 2018-11-27 17:26:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 17:26:07]
+Initialization strings:
+[INFO -- 2018-11-27 17:26:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 17:26:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 17:26:07]
+initSignal:0
+[INFO -- 2018-11-27 17:26:07]
+endSignal:3
+[INFO -- 2018-11-27 17:26:07]
+faultModel:2
+[EXCEPTION -- 2018-11-27 17:26:08]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 17:26:08]
+Backtrace BEGIN:
+#0  0x00005555555567db in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b160 <y>, __n=0) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x000055555555594d in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x5c0x390x7a0x8c0x650xf00xf80x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772360
+address max offset: 8
+Memory content after  bitflip:0xa50x920x260x430x460x8f0x370x80
+frame name: train
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 2, capacity 2 = {-1.3105499159360661e-307, -1.0114243809677008}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 17:26:08]
+Fault Injection Successful after 1.5160558223724365s
+[INFO -- 2018-11-27 17:26:09]
+event type: exit
+[EXCEPTION -- 2018-11-27 17:26:09]
+exit code: no exit code available

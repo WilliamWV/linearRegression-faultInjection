@@ -1,0 +1,56 @@
+[INFO -- 2018-11-27 20:59:50]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:59:50]
+Initialization strings:
+[INFO -- 2018-11-27 20:59:50]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:59:50]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:59:50]
+initSignal:0
+[INFO -- 2018-11-27 20:59:50]
+endSignal:3
+[INFO -- 2018-11-27 20:59:50]
+faultModel:2
+[EXCEPTION -- 2018-11-27 20:59:51]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-27 20:59:52]
+Backtrace BEGIN:
+#0  0x0000555555557434 in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=2.4209216646221081e-322, __last=2.4209216646221081e-322) at /usr/include/c++/7/bits/stl_construct.h:203
+#1  0x0000555555556d21 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555e7d in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:192
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+198		__traits::destroy(__alloc, std::__addressof(*__first));
+199	    }
+200	
+201	  template<typename _ForwardIterator, typename _Tp>
+202	    inline void
+203	    _Destroy(_ForwardIterator __first, _ForwardIterator __last,
+204		     allocator<_Tp>&)
+205	    {
+206	      _Destroy(__first, __last);
+207	    }
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 4
+Memory content after  bitflip:0x640xc40x940xe0
+frame name: std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double>
+symbol name: detected
+symbol filename: lreg.cpp
+symbol line: 58
+value: -527121308
+value address: 0x55555575b1b8 <detected>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-27 20:59:52]
+Fault Injection Successful after 2.1602790355682373s
+[INFO -- 2018-11-27 20:59:53]
+event type: exit
+[INFO -- 2018-11-27 20:59:53]
+exit code: 0

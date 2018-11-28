@@ -1,0 +1,58 @@
+[INFO -- 2018-11-27 17:19:59]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 17:19:59]
+Initialization strings:
+[INFO -- 2018-11-27 17:19:59]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 17:19:59]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 17:19:59]
+initSignal:0
+[INFO -- 2018-11-27 17:19:59]
+endSignal:3
+[INFO -- 2018-11-27 17:19:59]
+faultModel:2
+[EXCEPTION -- 2018-11-27 17:20:00]
+gdbException: Cannot access memory at address 0x69e4bc6b2d5b88b1
+[INFO -- 2018-11-27 17:20:00]
+Backtrace BEGIN:
+#0  0x0000555555555254 in verifyDoubleDup (a=-0.032208202599647517, b=-0.032208202599647517) at lreg.cpp:71
+#1  0x00005555555557ea in predict (v=-2) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+75	        detected = 1;	
+
+Backtrace END
+Memory content before bitflip:0x4b0xc50x8b0x390x6b0x320x220x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0xaf0xaa0x500x520xa80xeb0x850xe5
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 190
+value: -1.1369951263913307e+181
+value address: 0x7fffffffd7f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 17:20:00]
+Fault Injection Successful after 1.9292376041412354s
+[INFO -- 2018-11-27 17:20:01]
+event type: exit
+[EXCEPTION -- 2018-11-27 17:20:01]
+exit code: no exit code available

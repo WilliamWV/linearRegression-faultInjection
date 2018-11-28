@@ -1,0 +1,58 @@
+[INFO -- 2018-11-27 20:59:02]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:59:02]
+Initialization strings:
+[INFO -- 2018-11-27 20:59:02]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:59:02]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:59:02]
+initSignal:0
+[INFO -- 2018-11-27 20:59:02]
+endSignal:3
+[INFO -- 2018-11-27 20:59:02]
+faultModel:1
+[INFO -- 2018-11-27 20:59:03]
+Backtrace BEGIN:
+#0  0x00007ffff76b9990 in *ABS*+0x2d7c0@plt () from /lib/x86_64-linux-gnu/libm.so.6
+#1  0x00007ffff76bcb14 in __pow (x=-4, y=0) at w_pow_compat.c:30
+#2  0x0000555555556826 in std::pow<double, unsigned int> (__x=-4, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555814 in predict (v=-4) at lreg.cpp:116
+#4  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#5  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#6  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+203		//T1 = bestT;
+204	}
+205	
+206	/*
+207	It must receive an input file formated as follows:
+208		1° Line : one integer T -> number of test cases
+209		2° to 5° repeat to all test case	
+210		2° Line : method parameters -> alpha, iterations, N, size of 
+211			      training set, predictions
+212		3° Line : inputs x of the training set
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000xbc0x980xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd918
+address max offset: 8
+Memory content after  bitflip:0x000x810x000x000x000xbc0x980xc0
+frame name: main
+symbol name: temp
+symbol filename: lreg.cpp
+symbol line: 233
+value: -1583.0000000075088
+value address: 0x7fffffffd918
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 20:59:03]
+Fault Injection Successful after 1.6458406448364258s
+[INFO -- 2018-11-27 20:59:05]
+event type: exit
+[INFO -- 2018-11-27 20:59:05]
+exit code: 0

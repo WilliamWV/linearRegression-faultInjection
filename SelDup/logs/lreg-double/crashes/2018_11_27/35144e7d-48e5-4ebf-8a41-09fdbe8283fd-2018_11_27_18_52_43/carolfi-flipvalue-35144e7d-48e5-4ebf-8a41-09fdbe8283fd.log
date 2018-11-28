@@ -1,0 +1,64 @@
+[INFO -- 2018-11-27 18:52:36]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 18:52:36]
+Initialization strings:
+[INFO -- 2018-11-27 18:52:36]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 18:52:36]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 18:52:36]
+initSignal:0
+[INFO -- 2018-11-27 18:52:36]
+endSignal:3
+[INFO -- 2018-11-27 18:52:36]
+faultModel:1
+[EXCEPTION -- 2018-11-27 18:52:37]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-27 18:52:39]
+Backtrace BEGIN:
+#0  0x00005555555550fe in verifyUintDup (a=2, b=2) at lreg.cpp:61
+#1  0x000055555555576f in predict (v=-19) at lreg.cpp:115
+#2  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x900x240x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b160 
+address max offset: 8
+Memory content after  bitflip:0x840x240x770x550x550x550x000x00
+frame name: meanSquaredError
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 14, capacity 17 = {3.0768938968996449e-312, 0, 1.5937633792555639e-314, 1.5932776929630761e-314, 1.594665946282437e-314, 1.5925329739812615e-314, 5.2998088236266445e-315, 5.2998088236266445e-315, 1.5963086789821326e-314, 1.5932776929630761e-314, 1.5961872574090107e-314, 1.595623153017215e-314, 1.5944109609788809e-314, 1.5964422427125668e-314, 1.5972880198578443e-314, 0, 0, 0, 7.0025861101853986e-313, 2.9782106248526399e+144, 3.4538105978502747e-305, 1.609800889483651e+295, 7.1617615213458846e-313, 8.6126698750134086e+79, -4.6015358422815143e+301, -4.5703557842917946e+17, 7.1617615178874251e-313, 5.1842216678806949e+103, -1.4899594088999301e+165, 2.6590753882285036e-11, 7.1617615213458846e-313, 0, -4.6015348211358408e+301, -4.5703557842917946e+17, 9.2590634101264747e-310, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 18:52:39]
+Fault Injection Successful after 3.052565574645996s
+[INFO -- 2018-11-27 18:52:43]
+event type: exit
+[EXCEPTION -- 2018-11-27 18:52:43]
+exit code: no exit code available

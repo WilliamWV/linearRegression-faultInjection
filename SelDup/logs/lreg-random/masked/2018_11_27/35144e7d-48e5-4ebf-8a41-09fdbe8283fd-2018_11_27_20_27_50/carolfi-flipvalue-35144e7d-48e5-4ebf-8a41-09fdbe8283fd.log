@@ -1,0 +1,58 @@
+[INFO -- 2018-11-27 20:27:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:27:47]
+Initialization strings:
+[INFO -- 2018-11-27 20:27:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:27:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:27:47]
+initSignal:0
+[INFO -- 2018-11-27 20:27:47]
+endSignal:3
+[INFO -- 2018-11-27 20:27:47]
+faultModel:2
+[EXCEPTION -- 2018-11-27 20:27:47]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-27 20:27:48]
+Backtrace BEGIN:
+#0  0x0000555555555254 in verifyDoubleDup (a=-2.9919625953749156, b=-2.9919625953749156) at lreg.cpp:71
+#1  0x00005555555557ea in predict (v=-19) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+75	        detected = 1;	
+
+Backtrace END
+Memory content before bitflip:0x000xd20x6a0x780xdf0x6b0x8c0xe1
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0xcf0x9a0xc30x8a0x620x6c0x280xba
+frame name: adjust
+symbol name: diff
+symbol filename: lreg.cpp
+symbol line: 158
+value: -1.5413318861152852e-28
+value address: 0x7fffffffd788
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 20:27:48]
+Fault Injection Successful after 1.3577959537506104s
+[INFO -- 2018-11-27 20:27:50]
+event type: exit
+[INFO -- 2018-11-27 20:27:50]
+exit code: 0

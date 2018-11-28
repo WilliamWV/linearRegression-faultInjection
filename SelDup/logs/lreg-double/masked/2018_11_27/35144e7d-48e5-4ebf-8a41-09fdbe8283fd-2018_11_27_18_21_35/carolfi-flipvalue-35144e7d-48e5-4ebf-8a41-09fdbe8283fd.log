@@ -1,0 +1,45 @@
+[INFO -- 2018-11-27 18:21:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 18:21:32]
+Initialization strings:
+[INFO -- 2018-11-27 18:21:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 18:21:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 18:21:32]
+initSignal:0
+[INFO -- 2018-11-27 18:21:32]
+endSignal:3
+[INFO -- 2018-11-27 18:21:32]
+faultModel:1
+[INFO -- 2018-11-27 18:21:33]
+Backtrace BEGIN:
+#0  0x00007ffff76bceb4 in __sqrt (x=3.5681235798963993) at w_sqrt_compat.c:30
+#1  0x0000555555555bfd in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:158
+#2  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+25	w_sqrt_compat.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x5d0x680x280x3f0xf30xf10x130x40
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0x5d0x700x280x3f0xf30xf10x130x40
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 190
+value: 4.986279475062557
+value address: 0x7fffffffd7f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 18:21:33]
+Fault Injection Successful after 1.1923234462738037s
+[INFO -- 2018-11-27 18:21:34]
+event type: exit
+[INFO -- 2018-11-27 18:21:34]
+exit code: 0

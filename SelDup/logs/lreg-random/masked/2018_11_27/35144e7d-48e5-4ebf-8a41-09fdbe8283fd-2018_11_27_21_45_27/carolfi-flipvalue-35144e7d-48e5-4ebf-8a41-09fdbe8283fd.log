@@ -1,0 +1,60 @@
+[INFO -- 2018-11-27 21:45:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 21:45:24]
+Initialization strings:
+[INFO -- 2018-11-27 21:45:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 21:45:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 21:45:24]
+initSignal:0
+[INFO -- 2018-11-27 21:45:24]
+endSignal:3
+[INFO -- 2018-11-27 21:45:24]
+faultModel:2
+[INFO -- 2018-11-27 21:45:24]
+Backtrace BEGIN:
+#0  __GI___getrlimit64 (resource=resource@entry=RLIMIT_STACK, rlimits=rlimits@entry=0x7fffffffdd20) at ../sysdeps/unix/sysv/linux/getrlimit64.c:37
+#1  0x00007ffff727d058 in __pthread_initialize_minimal_internal () at nptl-init.c:417
+#2  0x00007ffff727c681 in _init () at ../sysdeps/x86_64/crti.S:72
+#3  0x0000000000000000 in ?? ()
+
+32	../sysdeps/unix/sysv/linux/getrlimit64.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: __sigaction_handler
+Fliping value of field name: sa_sigaction
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x83
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff727cd50 
+address max offset: 1
+Memory content after  bitflip:0x73
+frame name: __pthread_initialize_minimal_internal
+symbol name: sa
+symbol filename: nptl-init.c
+symbol line: 367
+value: {__sigaction_handler = {sa_handler = 0x7ffff727cd50 <sighandler_setxid>, sa_sigaction = 0x7ffff727cd50 <sighandler_setxid>}, sa_mask = {__val = {6442450944, 0 <repeats 15 times>}}, sa_flags = 268435460, sa_restorer = 0x7ffff7dd5480}
+value address: 0x7fffffffdd30
+Type: The type is a structure.
+Type sizeof: 152
+Field name: __sigaction_handler
+Field Type: The type is a union.
+Field Type sizeof: 8
+Field name: sa_mask
+Field Type: The type is a structure.
+Field Type sizeof: 128
+Field name: sa_flags
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: sa_restorer
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-27 21:45:24]
+Fault Injection Successful after 0.41789722442626953s
+[INFO -- 2018-11-27 21:45:26]
+event type: exit
+[INFO -- 2018-11-27 21:45:26]
+exit code: 0

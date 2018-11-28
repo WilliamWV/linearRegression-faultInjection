@@ -1,0 +1,58 @@
+[INFO -- 2018-11-27 18:44:14]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 18:44:14]
+Initialization strings:
+[INFO -- 2018-11-27 18:44:14]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 18:44:14]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 18:44:14]
+initSignal:0
+[INFO -- 2018-11-27 18:44:14]
+endSignal:3
+[INFO -- 2018-11-27 18:44:14]
+faultModel:0
+[INFO -- 2018-11-27 18:44:16]
+Backtrace BEGIN:
+#0  log1 (error=<synthetic pointer>, delta=<synthetic pointer>, x=1) at ../sysdeps/ieee754/dbl-64/e_pow.c:295
+#1  __ieee754_pow_sse2 (x=1, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:103
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-1, y=3) at w_pow_compat.c:30
+#4  0x0000555555556826 in std::pow<double, unsigned int> (__x=-1, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x0000555555555814 in predict (v=-1) at lreg.cpp:116
+#6  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#7  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#8  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#9  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+290	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x200x270x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b160 
+address max offset: 8
+Memory content after  bitflip:0x220x270x770x550x550x550x000x00
+frame name: predict
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 16, capacity 31 = {3.5194730053604125e-310, 3.5118980606198906e-310, 3.4855902862395563e-310, 1.0482716349979711e-309, 1.0457613025798208e-309, 3.5221435287742963e-310, 1.0483848840897448e-309, 3.5206450764730785e-310, 3.5221435287742963e-310, 3.5286873679916839e-310, 1.0480791581678399e-309, 3.5184484792675871e-310, 1.0462191894840901e-309, 3.4912135750856143e-310, 3.5213950279152175e-310, 1.0478113390896911e-309, 1.048434582101519e-309, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9.4565638986556059e-308, 2.843431875051044e+66, -3.0483419776940738e+249, -4.4280043853842439e-43, -1.6718320097415662e+66, 1.0433467456001167e-309, 9.4565638986556059e-308, 2.843431875051044e+66, -3.0483419776940738e+249, -4.4280043853842439e-43, -1.6718320097415662e+66, 1.0433467456001167e-309, 9.4565638986556059e-308, 2.843431875051044e+66, -3.0483419776940738e+249, -4.4280043853842439e-43, -1.6718320097415662e+66, 1.0433467456001167e-309, 9.4565638986556059e-308, 1.6632655625031839e-111, 8.4720433124924631e+220, 1.0001785942565746e+243, 5.2717107621527881e-261, 1.0433379332074736e-309, 9.4565638986556059e-308, 0, -3.0205093976516561e+249, -4.4280043853842439e-43, -1.6718320097415662e+66, 1.0433467456001167e-309, -4.1146289095274007e-121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 18:44:16]
+Fault Injection Successful after 2.033371686935425s
+[INFO -- 2018-11-27 18:44:17]
+event type: exit
+[EXCEPTION -- 2018-11-27 18:44:17]
+exit code: no exit code available

@@ -1,0 +1,61 @@
+[INFO -- 2018-11-27 16:20:17]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 16:20:17]
+Initialization strings:
+[INFO -- 2018-11-27 16:20:17]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 16:20:17]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 16:20:17]
+initSignal:0
+[INFO -- 2018-11-27 16:20:17]
+endSignal:3
+[INFO -- 2018-11-27 16:20:17]
+faultModel:2
+[EXCEPTION -- 2018-11-27 16:20:19]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2018-11-27 16:20:19]
+Backtrace BEGIN:
+#0  std::__niter_base<double*> (__it=0x555555772560) at /usr/include/c++/7/bits/stl_algobase.h:278
+#1  0x00005555555583f0 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=1.9395469469913564, __last=0, __result=0x555555772560) at /usr/include/c++/7/bits/stl_algobase.h:422
+#2  0x0000555555558273 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=1.9395469469913564, __last=0, __result=0x555555772560) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x0000555555557ff6 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=1.9395469469913564, __last=0, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#4  0x0000555555557ab0 in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=1.9395469469913564, __last=0, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#5  0x00005555555571e9 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=1.9395469469913564, __last=0, __result=0x555555772560) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#6  0x0000555555556a49 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#7  0x0000555555555f47 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:199
+#8  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+273	  // Fallback implementation of the function in bits/stl_iterator.h used to
+274	  // remove the __normal_iterator wrapper. See copy, fill, ...
+275	  template<typename _Iterator>
+276	    inline _Iterator
+277	    __niter_base(_Iterator __it)
+278	    { return __it; }
+279	
+280	  // All of these auxiliary structs serve two purposes.  (1) Replace
+281	  // calls to copy with memmove whenever possible.  (Memmove, not memcpy,
+282	  // because the input and output ranges are permitted to overlap.)
+
+Backtrace END
+Memory content before bitflip:0xb40x420xb00x790x110x530x6c0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0x580x670x3a0x110x820xf30xd20x63
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 190
+value: 7.3237636720817804e+172
+value address: 0x7fffffffd7f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 16:20:19]
+Fault Injection Successful after 2.991095781326294s
+[INFO -- 2018-11-27 16:20:24]
+event type: exit
+[INFO -- 2018-11-27 16:20:24]
+exit code: 0

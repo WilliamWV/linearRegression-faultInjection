@@ -1,0 +1,64 @@
+[INFO -- 2018-11-27 17:38:10]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 17:38:10]
+Initialization strings:
+[INFO -- 2018-11-27 17:38:10]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 17:38:10]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 17:38:10]
+initSignal:0
+[INFO -- 2018-11-27 17:38:10]
+endSignal:3
+[INFO -- 2018-11-27 17:38:10]
+faultModel:2
+[INFO -- 2018-11-27 17:38:11]
+Backtrace BEGIN:
+#0  __gnu_cxx::new_allocator<double>::~new_allocator (this=0x7fffffffd840, __in_chrg=<optimized out>) at /usr/include/c++/7/ext/new_allocator.h:86
+#1  0x000055555555686a in std::allocator<double>::~allocator (this=0x7fffffffd840, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/allocator.h:139
+#2  0x0000555555556e8c in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::~_Vector_impl (this=0x7fffffffd840, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:81
+#3  0x0000555555556ef9 in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd840, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:163
+#4  0x0000555555556919 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd840, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#5  0x0000555555555fa4 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+81	      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+82	
+83	      template<typename _Tp1>
+84		new_allocator(const new_allocator<_Tp1>&) _GLIBCXX_USE_NOEXCEPT { }
+85	
+86	      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+87	
+88	      pointer
+89	      address(reference __x) const _GLIBCXX_NOEXCEPT
+90	      { return std::__addressof(__x); }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x460xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772490
+address max offset: 8
+Memory content after  bitflip:0x660x3c0x0e0xb40x380x830xd20x4b
+frame name: std::vector<double, std::allocator<double> >::~vector
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 13, capacity 16 = {1.815708952997023e+57, -23, -143, -8, 1, 1, -1319, -23, -1079, -503, -104, -1583, -4827}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 17:38:11]
+Fault Injection Successful after 1.4247732162475586s
+[INFO -- 2018-11-27 17:38:14]
+event type: exit
+[INFO -- 2018-11-27 17:38:14]
+exit code: 0

@@ -1,0 +1,61 @@
+[INFO -- 2018-11-27 17:03:25]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 17:03:25]
+Initialization strings:
+[INFO -- 2018-11-27 17:03:25]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 17:03:25]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 17:03:25]
+initSignal:0
+[INFO -- 2018-11-27 17:03:25]
+endSignal:3
+[INFO -- 2018-11-27 17:03:25]
+faultModel:0
+[INFO -- 2018-11-27 17:03:27]
+Backtrace BEGIN:
+#0  verifyUintDup (a=2, b=2) at lreg.cpp:68
+#1  0x0000555555555ba4 in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#2  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x200x270x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b160 
+address max offset: 8
+Memory content after  bitflip:0xa00x270x770x550x550x550x000x00
+frame name: adjust
+symbol name: y
+symbol filename: lreg.cpp
+symbol line: 35
+value: std::vector of length 1, capacity 16 = {-130860}
+value address: 0x55555575b160 <y>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 17:03:27]
+Fault Injection Successful after 2.170668601989746s
+[INFO -- 2018-11-27 17:03:29]
+event type: exit
+[EXCEPTION -- 2018-11-27 17:03:29]
+exit code: no exit code available

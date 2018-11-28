@@ -1,0 +1,56 @@
+[INFO -- 2018-11-27 20:21:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:21:53]
+Initialization strings:
+[INFO -- 2018-11-27 20:21:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:21:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:21:53]
+initSignal:0
+[INFO -- 2018-11-27 20:21:53]
+endSignal:3
+[INFO -- 2018-11-27 20:21:53]
+faultModel:0
+[EXCEPTION -- 2018-11-27 20:21:54]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-27 20:21:54]
+Backtrace BEGIN:
+#0  verifyUintDup (a=9, b=9) at lreg.cpp:61
+#1  0x000055555555589e in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Memory content before bitflip:0x2d0x430x1c0xeb0xe20x360x0a0x3f
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7c0
+address max offset: 8
+Memory content after  bitflip:0x6d0x430x1c0xeb0xe20x360x0a0x3f
+frame name: train
+symbol name: alpha2
+symbol filename: lreg.cpp
+symbol line: 177
+value: 5.0000000000000436e-05
+value address: 0x7fffffffd7c0
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 20:21:54]
+Fault Injection Successful after 1.6158928871154785s
+[INFO -- 2018-11-27 20:21:56]
+event type: exit
+[INFO -- 2018-11-27 20:21:56]
+exit code: 0

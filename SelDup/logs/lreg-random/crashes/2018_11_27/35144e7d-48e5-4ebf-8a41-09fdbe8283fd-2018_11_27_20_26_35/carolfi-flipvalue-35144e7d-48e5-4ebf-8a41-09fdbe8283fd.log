@@ -1,0 +1,65 @@
+[INFO -- 2018-11-27 20:26:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:26:32]
+Initialization strings:
+[INFO -- 2018-11-27 20:26:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:26:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:26:32]
+initSignal:0
+[INFO -- 2018-11-27 20:26:32]
+endSignal:3
+[INFO -- 2018-11-27 20:26:32]
+faultModel:2
+[EXCEPTION -- 2018-11-27 20:26:34]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 20:26:34]
+Backtrace BEGIN:
+#0  0x00005555555567cf in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b180 <T1>, __n=1) at /usr/include/c++/7/bits/stl_vector.h:798
+#1  0x00005555555557d4 in predict (v=5) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=3, pos2=3) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x230x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b188 
+address max offset: 8
+Memory content after  bitflip:0x4b0xce0x0f0xb20xe30x6e0xb70xc8
+frame name: predict
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length -497960905769544358, capacity 4 = {-0.074396799025325783, -0.18172490951166873, -1.9386727801679504, -4.0460349720899291, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322, 2.1219957904712067e-314, 6.3482494834141768e-320, 0, 0, 0, 0, 0, 7.1639518646980749e-322, 0, -9, -1, 29, 5, -18, 31, -16, -18, -28, 25, -14, 7, -2, -17, 21, 0, 7.1639518646980749e-322, 4.6355706480215905e-310, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047, 0, 1.6304166312761136e-322, 4.6355706480136855e-310, -0.018636480386081677, -2.9944537928979051, 1.6304166312761136e-322, 4.6355706480389816e-310, -0.018636480386081677, -2.9944537928979051, 1.6304166312761136e-322, 4.6355706480405627e-310, -0.018629603636086151, -2.9945863353366149, 1.6304166312761136e-322, 0, -0.018636480386081677, -2.9944537928979051, 5.5829417980060859e-322, 0, -23, -143, -8, 1, 1, -1319, -23, -1079, -503, -104, -1583, -4827, 1.3487992131466031e-321, -15, -9, -1, 29, 5, -18, 31, -16, -18, -28, 25, -14, 7, -2, -17, 21, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.3487992131466031e-321, 13145, 2813, 13, -99407, -575, 22793, -121267, 15973, 22793, 86413, -63895, 10673, -1507, 41, 19181, -38047, -130860, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.4209216646221081e-322, -0.074396799025325783, -0.18172490951166873, -1.9386727801679504, -4.0460349720899291, 0, 2.4209216646221081e-322, -0.074680006907519331, -0.18442557651160391, -1.9481020756296608, -4.0460349720899291, 0, 2.4209216646221081e-322, -0.074680006907519331, -0.18442557651160391, -1.9481020756296608, -4.0460349720899291, 0, 2.4209216646221081e-322, 4.6355706480840404e-310, -0.18162005868997264, -1.9386716145385667, -3.9714148328285113, 0, 2.4209216646221081e-322, 0, -0.18442557651160391, -1.9481020756296608, -4.0460349720899291, 0, 2.1114883506317354e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 20:26:34]
+Fault Injection Successful after 2.5944435596466064s
+[INFO -- 2018-11-27 20:26:34]
+event type: exit
+[EXCEPTION -- 2018-11-27 20:26:34]
+exit code: no exit code available

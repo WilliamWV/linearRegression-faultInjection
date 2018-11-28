@@ -1,0 +1,59 @@
+[INFO -- 2018-11-27 19:46:04]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 19:46:04]
+Initialization strings:
+[INFO -- 2018-11-27 19:46:04]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 19:46:04]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 19:46:04]
+initSignal:0
+[INFO -- 2018-11-27 19:46:04]
+endSignal:3
+[INFO -- 2018-11-27 19:46:04]
+faultModel:2
+[EXCEPTION -- 2018-11-27 19:46:05]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-27 19:46:06]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 19:46:07]
+Backtrace BEGIN:
+#0  0x00005555555567c0 in std::vector<double, std::allocator<double> >::operator[] (this=0x2, __n=12) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x0000555555555abb in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Memory content before bitflip:0x020x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd718
+address max offset: 4
+Memory content after  bitflip:0x6e0xbb0x040x2e
+frame name: partialDerivate
+symbol name: pos2
+symbol filename: lreg.cpp
+symbol line: 138
+value: 772062062
+value address: 0x7fffffffd718
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-27 19:46:07]
+Fault Injection Successful after 3.088644504547119s
+[INFO -- 2018-11-27 19:46:07]
+event type: exit
+[EXCEPTION -- 2018-11-27 19:46:07]
+exit code: no exit code available

@@ -1,0 +1,45 @@
+[INFO -- 2018-11-27 19:40:33]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 19:40:33]
+Initialization strings:
+[INFO -- 2018-11-27 19:40:33]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 19:40:33]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 19:40:33]
+initSignal:0
+[INFO -- 2018-11-27 19:40:33]
+endSignal:3
+[INFO -- 2018-11-27 19:40:33]
+faultModel:2
+[INFO -- 2018-11-27 19:40:34]
+Backtrace BEGIN:
+#0  __sqrt (x=<optimized out>) at w_sqrt_compat.c:34
+#1  0x0000555555555bfd in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:158
+#2  0x0000555555555ee0 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+29	w_sqrt_compat.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x100x270x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7d8
+address max offset: 4
+Memory content after  bitflip:0x2a0xb80xa10xcd
+frame name: train
+symbol name: iter2
+symbol filename: lreg.cpp
+symbol line: 177
+value: 3449927722
+value address: 0x7fffffffd7d8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-27 19:40:34]
+Fault Injection Successful after 1.8948981761932373s
+[INFO -- 2018-11-27 19:40:39]
+event type: exit
+[INFO -- 2018-11-27 19:40:39]
+exit code: 0

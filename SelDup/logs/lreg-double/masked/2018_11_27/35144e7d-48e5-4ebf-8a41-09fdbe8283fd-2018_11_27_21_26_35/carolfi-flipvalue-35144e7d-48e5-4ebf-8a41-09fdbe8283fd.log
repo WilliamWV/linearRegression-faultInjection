@@ -1,0 +1,55 @@
+[INFO -- 2018-11-27 21:26:32]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 21:26:32]
+Initialization strings:
+[INFO -- 2018-11-27 21:26:32]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 21:26:32]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 21:26:32]
+initSignal:0
+[INFO -- 2018-11-27 21:26:32]
+endSignal:3
+[INFO -- 2018-11-27 21:26:32]
+faultModel:1
+[INFO -- 2018-11-27 21:26:33]
+Backtrace BEGIN:
+#0  0x00005555555567db in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b140 <x>, __n=5) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x0000555555555abb in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Memory content before bitflip:0xc00xcc0x8f0x010x330x600x880x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0xc00xcc0x860x010x330x600x880x3f
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 190
+value: 0.011902235492789237
+value address: 0x7fffffffd7f8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 21:26:33]
+Fault Injection Successful after 1.3175504207611084s
+[INFO -- 2018-11-27 21:26:35]
+event type: exit
+[INFO -- 2018-11-27 21:26:35]
+exit code: 0

@@ -1,0 +1,64 @@
+[INFO -- 2018-11-27 20:25:48]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:25:48]
+Initialization strings:
+[INFO -- 2018-11-27 20:25:48]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:25:48]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:25:48]
+initSignal:0
+[INFO -- 2018-11-27 20:25:48]
+endSignal:3
+[INFO -- 2018-11-27 20:25:48]
+faultModel:1
+[EXCEPTION -- 2018-11-27 20:25:49]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-27 20:25:50]
+Backtrace BEGIN:
+#0  0x000055555555512d in verifyUintDup (a=1, b=1) at lreg.cpp:62
+#1  0x000055555555579a in predict (v=-28) at lreg.cpp:116
+#2  0x0000555555555928 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x0f0x4f0xe60x370xb90x500xcc0x3f
+Fault Model: Double bit-flip
+base address to flip value: 0x555555772890
+address max offset: 8
+Memory content after  bitflip:0x0f0x4f0xe60x370xb90xd40xcc0x3f
+frame name: train
+symbol name: bestT
+symbol filename: lreg.cpp
+symbol line: 188
+value: std::vector of length 4, capacity 4 = {0.225241806311367, -1.050496465748491, -1.9556953920282596, -4.044743422645932}
+value address: 0x7fffffffd820
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 20:25:50]
+Fault Injection Successful after 2.0908124446868896s
+[INFO -- 2018-11-27 20:25:50]
+event type: exit
+[INFO -- 2018-11-27 20:25:50]
+exit code: 0

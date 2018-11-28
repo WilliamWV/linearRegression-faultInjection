@@ -1,0 +1,63 @@
+[INFO -- 2018-11-27 21:33:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 21:33:49]
+Initialization strings:
+[INFO -- 2018-11-27 21:33:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 21:33:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 21:33:49]
+initSignal:0
+[INFO -- 2018-11-27 21:33:49]
+endSignal:3
+[INFO -- 2018-11-27 21:33:49]
+faultModel:2
+[EXCEPTION -- 2018-11-27 21:33:49]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 21:33:50]
+Backtrace BEGIN:
+#0  0x0000555555555106 in verifyUintDup (a=9, b=9) at lreg.cpp:61
+#1  0x000055555555593c in meanSquaredError () at lreg.cpp:128
+#2  0x0000555555555ee5 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x800x240x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b150 
+address max offset: 8
+Memory content after  bitflip:0x9c0x100x3e0x8b0x5f0x530x310xc6
+frame name: train
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 13, capacity -520693791939043948 = {-4, -3, -7, -2, -1, -1, -21, -3, -19, 13, 6, 23, -19}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 21:33:50]
+Fault Injection Successful after 1.0714256763458252s
+[INFO -- 2018-11-27 21:33:50]
+event type: exit
+[EXCEPTION -- 2018-11-27 21:33:50]
+exit code: no exit code available

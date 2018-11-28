@@ -1,0 +1,68 @@
+[INFO -- 2018-11-27 21:09:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 21:09:13]
+Initialization strings:
+[INFO -- 2018-11-27 21:09:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 21:09:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 21:09:13]
+initSignal:0
+[INFO -- 2018-11-27 21:09:13]
+endSignal:3
+[INFO -- 2018-11-27 21:09:13]
+faultModel:1
+[EXCEPTION -- 2018-11-27 21:09:14]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-27 21:09:15]
+gdbException: Cannot access memory at address 0x4200555555772360
+[EXCEPTION -- 2018-11-27 21:09:15]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 21:09:15]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff7ad88b7 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7adea06 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7adea41 in std::terminate() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7adec74 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7b06ed2 in std::__throw_bad_alloc() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x00005555555582aa in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd800, __n=18446744073709551613) at /usr/include/c++/7/ext/new_allocator.h:102
+#8  0x0000555555558043 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=18446744073709551613) at /usr/include/c++/7/bits/alloc_traits.h:436
+#9  0x0000555555557b1a in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd800, __n=18446744073709551613) at /usr/include/c++/7/bits/stl_vector.h:172
+#10 0x00005555555572d8 in std::vector<double, std::allocator<double> >::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > > > (this=0x7fffffffd800, __n=18446744073709551613, __first=5.6444765446131767e+132, __last=0) at /usr/include/c++/7/bits/stl_vector.h:1260
+#11 0x0000555555556c17 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length -2, capacity -2 = {...}) at /usr/include/c++/7/bits/vector.tcc:206
+#12 0x0000555555555e7d in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:192
+#13 0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x500x230x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b190 
+address max offset: 8
+Memory content after  bitflip:0x500x230x770x550x550x550x000x42
+frame name: __gnu_cxx::new_allocator<double>::allocate
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length -2, capacity 594475150812905469 = {5.6444765446131767e+132, 1.5909897510432947e-314, 1.0397779375729834e-312, 0, 0, 5.3153507849862534e-315, 5.3179411118795216e-315, 5.3114652946463512e-315, 1.7188165906818706e-312, 0, 6.7903865310888714e-313, -nan(0xfffff00000000), 2.7265523918112784e-310, 0, 0, 0, 0, 0, 3.0768938968996449e-312, 0, 5.3179411118795216e-315, 1.5922739412919347e-314, 1.5926624903259249e-314, 1.5917558759132811e-314, 5.3140556215396193e-315, 1.5927920066705883e-314, 5.3127604580929853e-315, 1.5926624903259249e-314, 1.5930510393599151e-314, 0, 0, 0, 0, 0, 0, 0, 3.0768938968996449e-312, 0, 1.5926624903259249e-314, 5.3153507849862534e-315, 5.3179411118795216e-315, 5.3114652946463512e-315, 1.5921444249472713e-314, 5.3192362753261556e-315, 1.5920149086026079e-314, 5.3179411118795216e-315, 5.325712092559326e-315, 0, 0, 0, 0, 0, 0, 0, 7.0025861101853986e-313, 8.7850422369416517e-94, 1.5770851888420507e-157, 1.5909897545017543e-314, 7.0025861101853986e-313, 5.7980886993380087e+228, 5.6444765446131767e+132, 1.5909897510432947e-314, 7.0025861101853986e-313, 5.1842216678806949e+103, 1.9108419664205328e+214, 1.583220373606511e-314, 7.0025861101853986e-313, 0, 5.6444758682326897e+132, 1.5909897510432947e-314, 3.0768938968996449e-312, 2.1219957909652723e-314, 0, -2.3443593792908021e+269, -3.0756252239068768e+268, -3.0866840932291079e+268, -3.0995819089306622e+268, 1.6189049017280126e-319, 2.1219957909652723e-314, -5.7560375691553603e+268, -5.7559777404444392e+268, -3.0472585313415808e+268, 5.1847684805879639e+103, 3823551685601962.5, -3.0872639258248948e+268, 1.6189049017280126e-319, -nan(0xfd62000000000), -2.3444097613929956e+269, 9.2283474969477777e-310, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 21:09:15]
+Fault Injection Successful after 2.8799431324005127s
+[INFO -- 2018-11-27 21:09:16]
+event type: exit
+[EXCEPTION -- 2018-11-27 21:09:16]
+exit code: no exit code available

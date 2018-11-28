@@ -1,0 +1,57 @@
+[INFO -- 2018-11-27 17:58:26]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 17:58:26]
+Initialization strings:
+[INFO -- 2018-11-27 17:58:26]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 17:58:26]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 17:58:26]
+initSignal:0
+[INFO -- 2018-11-27 17:58:26]
+endSignal:3
+[INFO -- 2018-11-27 17:58:26]
+faultModel:2
+[EXCEPTION -- 2018-11-27 17:58:29]
+gdbException: Cannot access memory at address 0x79071d0d4646cb79
+[INFO -- 2018-11-27 17:58:29]
+Backtrace BEGIN:
+#0  0x00005555555557cf in predict (v=21) at lreg.cpp:116
+#1  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Memory content before bitflip:0x0f0x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd720
+address max offset: 4
+Memory content after  bitflip:0xfc0x3e0x2f0x35
+frame name: partialDerivate
+symbol name: i1
+symbol filename: lreg.cpp
+symbol line: 141
+value: 892288764
+value address: 0x7fffffffd720
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-27 17:58:29]
+Fault Injection Successful after 3.7643916606903076s
+[INFO -- 2018-11-27 17:58:30]
+event type: exit
+[EXCEPTION -- 2018-11-27 17:58:30]
+exit code: no exit code available

@@ -1,0 +1,60 @@
+[INFO -- 2018-11-27 21:21:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 21:21:19]
+Initialization strings:
+[INFO -- 2018-11-27 21:21:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 21:21:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 21:21:19]
+initSignal:0
+[INFO -- 2018-11-27 21:21:19]
+endSignal:3
+[INFO -- 2018-11-27 21:21:19]
+faultModel:2
+[INFO -- 2018-11-27 21:21:20]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:230
+#1  0x0000555555555e7d in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:192
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+225		      std::__uninitialized_copy_a(__x._M_impl._M_start + size(),
+226						  __x._M_impl._M_finish,
+227						  this->_M_impl._M_finish,
+228						  _M_get_Tp_allocator());
+229		    }
+230		  this->_M_impl._M_finish = this->_M_impl._M_start + __xlen;
+231		}
+232	      return *this;
+233	    }
+234	
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x310x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772378
+address max offset: 8
+Memory content after  bitflip:0x5f0x670x270x5c0x1d0x9f0x2e0xb3
+frame name: train
+symbol name: prevT
+symbol filename: lreg.cpp
+symbol line: 187
+value: std::vector of length 3, capacity 3 = {0.92677281472874284, -0.026360767137625484, -2.992181067741039}
+value address: 0x7fffffffd800
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 21:21:20]
+Fault Injection Successful after 1.5907247066497803s
+[INFO -- 2018-11-27 21:21:22]
+event type: exit
+[EXCEPTION -- 2018-11-27 21:21:22]
+exit code: no exit code available

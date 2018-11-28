@@ -1,0 +1,63 @@
+[INFO -- 2018-11-27 20:12:19]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:12:19]
+Initialization strings:
+[INFO -- 2018-11-27 20:12:19]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:12:19]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:12:19]
+initSignal:0
+[INFO -- 2018-11-27 20:12:19]
+endSignal:3
+[INFO -- 2018-11-27 20:12:19]
+faultModel:1
+[INFO -- 2018-11-27 20:12:22]
+Backtrace BEGIN:
+#0  0x00005555555567c4 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b180 <T1>, __n=0) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x00005555555557d4 in predict (v=-18) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x230x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b188 
+address max offset: 8
+Memory content after  bitflip:0xc00x230x770x550x550x550x000x00
+frame name: predict
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 8, capacity 4 = {0.27312146271152793, -1.2005520099929796, -1.9570097546336629, -4.0445196764000295, 0, 4.001931731314097e-322, 0, 1.5810100666919889e-322}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 20:12:22]
+Fault Injection Successful after 3.737684726715088s
+[INFO -- 2018-11-27 20:12:23]
+event type: exit
+[EXCEPTION -- 2018-11-27 20:12:23]
+exit code: no exit code available

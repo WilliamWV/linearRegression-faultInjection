@@ -1,0 +1,57 @@
+[INFO -- 2018-11-27 18:07:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 18:07:49]
+Initialization strings:
+[INFO -- 2018-11-27 18:07:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 18:07:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 18:07:49]
+initSignal:0
+[INFO -- 2018-11-27 18:07:49]
+endSignal:3
+[INFO -- 2018-11-27 18:07:49]
+faultModel:0
+[INFO -- 2018-11-27 18:07:50]
+Backtrace BEGIN:
+#0  0x00005555555567c4 in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b180 <T1>, __n=2) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x00005555555557d4 in predict (v=13) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x800xb10x750x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd698
+address max offset: 8
+Memory content after  bitflip:0x800xb10x750x550x550x550x000x01
+frame name: std::vector<double, std::allocator<double> >::operator[]
+symbol name: this
+symbol filename: lreg.cpp
+symbol line: 0
+value: 0x55555575b180 <T1>
+value address: 0x7fffffffd698
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 18:07:50]
+Fault Injection Successful after 1.6832706928253174s
+[INFO -- 2018-11-27 18:07:50]
+event type: exit
+[EXCEPTION -- 2018-11-27 18:07:50]
+exit code: no exit code available

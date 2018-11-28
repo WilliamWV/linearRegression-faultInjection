@@ -1,0 +1,65 @@
+[INFO -- 2018-11-27 19:00:51]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 19:00:51]
+Initialization strings:
+[INFO -- 2018-11-27 19:00:51]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 19:00:51]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 19:00:51]
+initSignal:0
+[INFO -- 2018-11-27 19:00:51]
+endSignal:3
+[INFO -- 2018-11-27 19:00:51]
+faultModel:0
+[EXCEPTION -- 2018-11-27 19:00:53]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-27 19:00:53]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-27 19:00:54]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-27 19:00:55]
+gdbException: A syntax error in expression, near `...'.
+[EXCEPTION -- 2018-11-27 19:00:55]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 19:00:55]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0f897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff703cb9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1690a in malloc_printerr (str=str@entry=0x7ffff703e7a8 "munmap_chunk(): invalid pointer") at malloc.c:5350
+#4  0x00007ffff6f1decc in munmap_chunk (p=0x555555772350) at malloc.c:2846
+#5  __GI___libc_free (mem=0x555555772360) at malloc.c:3117
+#6  0x0000555555558018 in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd800, __p=0x555555772360) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x0000555555557add in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772360, __n=3) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x0000555555557230 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd800, __p=0x555555772360, __n=3) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x0000555555556eed in std::_Vector_base<double, std::allocator<double> >::~_Vector_base (this=0x7fffffffd800, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:162
+#10 0x0000555555556919 in std::vector<double, std::allocator<double> >::~vector (this=0x7fffffffd800, __in_chrg=<optimized out>) at /usr/include/c++/7/bits/stl_vector.h:435
+#11 0x0000555555555fe8 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:187
+#12 0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x600x230x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd720
+address max offset: 8
+Memory content after  bitflip:0x600x230x770x550x550x550x400x00
+frame name: std::allocator_traits<std::allocator<double> >::deallocate
+symbol name: __p
+symbol filename: /usr/include/c++/7/bits/alloc_traits.h
+symbol line: 461
+value: 0x555555772360
+value address: 0x7fffffffd720
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 19:00:55]
+Fault Injection Successful after 4.983851432800293s
+[INFO -- 2018-11-27 19:00:56]
+event type: exit
+[EXCEPTION -- 2018-11-27 19:00:56]
+exit code: no exit code available

@@ -1,0 +1,63 @@
+[INFO -- 2018-11-27 21:39:55]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 21:39:55]
+Initialization strings:
+[INFO -- 2018-11-27 21:39:55]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 21:39:55]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 21:39:55]
+initSignal:0
+[INFO -- 2018-11-27 21:39:55]
+endSignal:3
+[INFO -- 2018-11-27 21:39:55]
+faultModel:0
+[EXCEPTION -- 2018-11-27 21:39:55]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-27 21:39:55]
+gdbException: Cannot access memory at address 0x555554772520
+[EXCEPTION -- 2018-11-27 21:39:56]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-27 21:39:56]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-27 21:39:56]
+Backtrace BEGIN:
+#0  0x00005555555557d4 in predict (v=1.0426638518486962e-309) at lreg.cpp:116
+#1  0x0000555555555a53 in partialDerivate (pos1=1, pos2=1) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Memory content before bitflip:0x8b0x3f0x3e0x110x8f0xc40x1b0xbf
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd788
+address max offset: 8
+Memory content after  bitflip:0x890x3f0x3e0x110x8f0xc40x1b0xbf
+frame name: adjust
+symbol name: diff
+symbol filename: lreg.cpp
+symbol line: 158
+value: -0.00010592578138201974
+value address: 0x7fffffffd788
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 21:39:56]
+Fault Injection Successful after 1.2538211345672607s
+[INFO -- 2018-11-27 21:39:56]
+event type: exit
+[EXCEPTION -- 2018-11-27 21:39:56]
+exit code: no exit code available

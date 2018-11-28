@@ -1,0 +1,68 @@
+[INFO -- 2018-11-27 20:06:02]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:06:02]
+Initialization strings:
+[INFO -- 2018-11-27 20:06:02]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:06:02]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:06:02]
+initSignal:0
+[INFO -- 2018-11-27 20:06:02]
+endSignal:3
+[INFO -- 2018-11-27 20:06:02]
+faultModel:0
+[EXCEPTION -- 2018-11-27 20:06:03]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 20:06:03]
+Backtrace BEGIN:
+#0  std::__copy_move_a<false, double const*, double*> (__first=0x555555772380, __last=0x5555557723a0, __result=0x5555557728f0) at /usr/include/c++/7/bits/stl_algobase.h:386
+#1  0x000055555555841c in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-0.018884535201759166, __last=0, __result=0x5555557728f0) at /usr/include/c++/7/bits/stl_algobase.h:424
+#2  0x0000555555558273 in std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-0.018884535201759166, __last=0, __result=0x5555557728f0) at /usr/include/c++/7/bits/stl_algobase.h:456
+#3  0x0000555555557ff6 in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-0.018884535201759166, __last=0, __result=0x5555557728f0) at /usr/include/c++/7/bits/stl_uninitialized.h:101
+#4  0x0000555555557ab0 in std::uninitialized_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*> (__first=-0.018884535201759166, __last=0, __result=0x5555557728f0) at /usr/include/c++/7/bits/stl_uninitialized.h:134
+#5  0x00005555555571e9 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double> (__first=-0.018884535201759166, __last=0, __result=0x5555557728f0) at /usr/include/c++/7/bits/stl_uninitialized.h:289
+#6  0x0000555555556a49 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd840, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:331
+#7  0x0000555555555f5f in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:199
+#8  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+381		                     && __is_pointer<_II>::__value
+382		                     && __is_pointer<_OI>::__value
+383				     && __are_same<_ValueTypeI, _ValueTypeO>::__value);
+384	
+385	      return std::__copy_move<_IsMove, __simple,
+386		                      _Category>::__copy_m(__first, __last, __result);
+387	    }
+388	
+389	  // Helpers for streambuf iterators (either istream or ostream).
+390	  // NB: avoid including <iosfwd>, relatively large.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0xe60xea0x5d0xb40x770x560x930xbf
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772380
+address max offset: 8
+Memory content after  bitflip:0xe60xea0x5d0xb40x770x560x930xbd
+frame name: std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, double*, double>
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length 4, capacity 4 = {-4.3968984861297453e-12, -0.34901749640890878, -1.9495557380084014, -4.0457893478875837}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 20:06:03]
+Fault Injection Successful after 1.9844839572906494s
+[INFO -- 2018-11-27 20:06:05]
+event type: exit
+[EXCEPTION -- 2018-11-27 20:06:05]
+exit code: no exit code available

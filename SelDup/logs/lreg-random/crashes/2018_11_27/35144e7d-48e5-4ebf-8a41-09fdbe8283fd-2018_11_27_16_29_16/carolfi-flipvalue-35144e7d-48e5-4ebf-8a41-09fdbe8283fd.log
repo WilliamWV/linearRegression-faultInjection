@@ -1,0 +1,59 @@
+[INFO -- 2018-11-27 16:29:12]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 16:29:12]
+Initialization strings:
+[INFO -- 2018-11-27 16:29:12]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 16:29:12]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 16:29:12]
+initSignal:0
+[INFO -- 2018-11-27 16:29:12]
+endSignal:3
+[INFO -- 2018-11-27 16:29:12]
+faultModel:2
+[EXCEPTION -- 2018-11-27 16:29:12]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-27 16:29:14]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 16:29:14]
+Backtrace BEGIN:
+#0  0x0000555555555814 in predict (v=-28) at lreg.cpp:116
+#1  0x0000555555555a53 in partialDerivate (pos1=1, pos2=1) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+111	*/
+112	double predict(double v){
+113		double val = 0;
+114		
+115		for(UINT i1 = 0, i2 = 0; verifyUintDup(i1, i2)<T1.size(); i1++, i2++){
+116			val+= (verifyDoubleDup(T1[verifyUintDup(i1, i2)], T2[verifyUintDup(i1, i2)]) * pow(v, verifyUintDup(i1, i2)));
+117		}
+118		return val;
+119		
+120	}
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd7c0
+address max offset: 8
+Memory content after  bitflip:0xca0xb70x3d0xcb0x2b0xd00xd50x6e
+frame name: train
+symbol name: alpha2
+symbol filename: lreg.cpp
+symbol line: 177
+value: 8.0741258492875284e+225
+value address: 0x7fffffffd7c0
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 16:29:14]
+Fault Injection Successful after 2.8489160537719727s
+[INFO -- 2018-11-27 16:29:16]
+event type: exit
+[EXCEPTION -- 2018-11-27 16:29:16]
+exit code: no exit code available

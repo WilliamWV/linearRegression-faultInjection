@@ -1,0 +1,60 @@
+[INFO -- 2018-11-27 16:27:18]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 16:27:18]
+Initialization strings:
+[INFO -- 2018-11-27 16:27:18]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 16:27:18]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 16:27:18]
+initSignal:0
+[INFO -- 2018-11-27 16:27:18]
+endSignal:3
+[INFO -- 2018-11-27 16:27:18]
+faultModel:2
+[INFO -- 2018-11-27 16:27:18]
+Backtrace BEGIN:
+#0  0x0000555555556bdb in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/vector.tcc:204
+#1  0x0000555555555f26 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:197
+#2  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+199		      std::__alloc_on_copy(_M_get_Tp_allocator(),
+200					   __x._M_get_Tp_allocator());
+201		    }
+202	#endif
+203		  const size_type __xlen = __x.size();
+204		  if (__xlen > capacity())
+205		    {
+206		      pointer __tmp = _M_allocate_and_copy(__xlen, __x.begin(),
+207							   __x.end());
+208		      std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772550
+address max offset: 8
+Memory content after  bitflip:0xad0x4c0x8e0x740xba0xc30x470xef
+frame name: train
+symbol name: bestT
+symbol filename: lreg.cpp
+symbol line: 188
+value: std::vector of length 2, capacity 2 = {1.9953389579239815, -1.000119156214647}
+value address: 0x7fffffffd820
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 16:27:18]
+Fault Injection Successful after 0.9142394065856934s
+[INFO -- 2018-11-27 16:27:20]
+event type: exit
+[INFO -- 2018-11-27 16:27:20]
+exit code: 0

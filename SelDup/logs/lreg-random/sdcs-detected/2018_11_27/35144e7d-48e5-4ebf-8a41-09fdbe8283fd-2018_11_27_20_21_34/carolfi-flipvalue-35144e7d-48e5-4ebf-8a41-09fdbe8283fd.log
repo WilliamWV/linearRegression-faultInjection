@@ -1,0 +1,60 @@
+[INFO -- 2018-11-27 20:21:31]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:21:31]
+Initialization strings:
+[INFO -- 2018-11-27 20:21:31]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:21:31]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:21:31]
+initSignal:0
+[INFO -- 2018-11-27 20:21:31]
+endSignal:3
+[INFO -- 2018-11-27 20:21:31]
+faultModel:2
+[EXCEPTION -- 2018-11-27 20:21:32]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-27 20:21:33]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-27 20:21:33]
+Backtrace BEGIN:
+#0  0x000055555555520f in verifyUintDup (a=0, b=0) at lreg.cpp:69
+#1  0x000055555555576f in predict (v=5) at lreg.cpp:115
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+
+Backtrace END
+Memory content before bitflip:0x020x000x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd8ec
+address max offset: 4
+Memory content after  bitflip:0x800x520xd40xef
+frame name: main
+symbol name: i1
+symbol filename: lreg.cpp
+symbol line: 232
+value: 4023669376
+value address: 0x7fffffffd8ec
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-27 20:21:33]
+Fault Injection Successful after 2.936521053314209s
+[INFO -- 2018-11-27 20:21:34]
+event type: exit
+[INFO -- 2018-11-27 20:21:34]
+exit code: 0

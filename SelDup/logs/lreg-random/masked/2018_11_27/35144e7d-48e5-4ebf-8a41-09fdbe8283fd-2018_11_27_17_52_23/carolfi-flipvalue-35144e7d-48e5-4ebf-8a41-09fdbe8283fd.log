@@ -1,0 +1,57 @@
+[INFO -- 2018-11-27 17:52:16]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 17:52:16]
+Initialization strings:
+[INFO -- 2018-11-27 17:52:17]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 17:52:17]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 17:52:17]
+initSignal:0
+[INFO -- 2018-11-27 17:52:17]
+endSignal:3
+[INFO -- 2018-11-27 17:52:17]
+faultModel:2
+[EXCEPTION -- 2018-11-27 17:52:19]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-27 17:52:20]
+Backtrace BEGIN:
+#0  0x0000555555557839 in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::_Vector_impl (this=0x7fffffffd860, __a=...) at /usr/include/c++/7/bits/stl_vector.h:93
+#1  0x0000555555556f3c in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd860, __n=4, __a=...) at /usr/include/c++/7/bits/stl_vector.h:137
+#2  0x00005555555569fb in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd860, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#3  0x0000555555555f47 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:199
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+88		_Vector_impl()
+89		: _Tp_alloc_type(), _M_start(), _M_finish(), _M_end_of_storage()
+90		{ }
+91	
+92		_Vector_impl(_Tp_alloc_type const& __a) _GLIBCXX_NOEXCEPT
+93		: _Tp_alloc_type(__a), _M_start(), _M_finish(), _M_end_of_storage()
+94		{ }
+95	
+96	#if __cplusplus >= 201103L
+97		_Vector_impl(_Tp_alloc_type&& __a) noexcept
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x340xc0
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd920
+address max offset: 8
+Memory content after  bitflip:0x550x6d0xc90xf10x420x790xf90x69
+frame name: main
+symbol name: xChecksum
+symbol filename: lreg.cpp
+symbol line: 233
+value: 3.1198143687464381e+202
+value address: 0x7fffffffd920
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 17:52:20]
+Fault Injection Successful after 3.03515887260437s
+[INFO -- 2018-11-27 17:52:21]
+event type: exit
+[INFO -- 2018-11-27 17:52:21]
+exit code: 0

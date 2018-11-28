@@ -1,0 +1,64 @@
+[INFO -- 2018-11-27 17:14:53]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 17:14:53]
+Initialization strings:
+[INFO -- 2018-11-27 17:14:53]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 17:14:53]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 17:14:53]
+initSignal:0
+[INFO -- 2018-11-27 17:14:53]
+endSignal:3
+[INFO -- 2018-11-27 17:14:53]
+faultModel:2
+[EXCEPTION -- 2018-11-27 17:14:55]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-27 17:14:55]
+Backtrace BEGIN:
+#0  std::vector<double, std::allocator<double> >::operator[] (this=0x3, __n=3) at /usr/include/c++/7/bits/stl_vector.h:795
+#1  0x0000555555555a78 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#2  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#3  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+790	       *  Note that data access with this operator is unchecked and
+791	       *  out_of_range lookups are not defined. (For checked lookups
+792	       *  see at().)
+793	       */
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x380x250x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b188 
+address max offset: 8
+Memory content after  bitflip:0xc50x290x5e0x580x350x910x2e0x9b
+frame name: partialDerivate
+symbol name: T1
+symbol filename: lreg.cpp
+symbol line: 36
+value: std::vector of length -908100414449327979, capacity 3 = {1.5668247791819532, -0.020865680509765908, -2.9939284293770134, 1.6304166312761136e-322, 1.5668247791819532, -0.020865680509765908, -2.9939284293770134, 1.6304166312761136e-322, 4.6355706480405627e-310, -0.02087403003250779, -2.993795452379532, 1.6304166312761136e-322, 0, -0.020865680509765908, -2.9939284293770134, 2.155756632499111e-319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b180 <T1>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 17:14:55]
+Fault Injection Successful after 2.8517675399780273s
+[INFO -- 2018-11-27 17:14:56]
+event type: exit
+[EXCEPTION -- 2018-11-27 17:14:56]
+exit code: no exit code available

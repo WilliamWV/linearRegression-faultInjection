@@ -1,0 +1,55 @@
+[INFO -- 2018-11-27 16:34:07]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 16:34:07]
+Initialization strings:
+[INFO -- 2018-11-27 16:34:07]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 16:34:07]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 16:34:07]
+initSignal:0
+[INFO -- 2018-11-27 16:34:07]
+endSignal:3
+[INFO -- 2018-11-27 16:34:07]
+faultModel:0
+[EXCEPTION -- 2018-11-27 16:34:08]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 16:34:09]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff6f0f897 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff703cb9a "%s\n") at ../sysdeps/posix/libc_fatal.c:181
+#3  0x00007ffff6f1690a in malloc_printerr (str=str@entry=0x7ffff703ad88 "free(): invalid pointer") at malloc.c:5350
+#4  0x00007ffff6f1de1c in _int_free (have_lock=0, p=0x555555772851, av=0x7ffff7271c40 <main_arena>) at malloc.c:4157
+#5  __GI___libc_free (mem=0x555555772861) at malloc.c:3124
+#6  0x0000555555558018 in __gnu_cxx::new_allocator<double>::deallocate (this=0x7fffffffd800, __p=0x555555772861) at /usr/include/c++/7/ext/new_allocator.h:125
+#7  0x0000555555557add in std::allocator_traits<std::allocator<double> >::deallocate (__a=..., __p=0x555555772861, __n=3) at /usr/include/c++/7/bits/alloc_traits.h:462
+#8  0x0000555555557230 in std::_Vector_base<double, std::allocator<double> >::_M_deallocate (this=0x7fffffffd800, __p=0x555555772861, __n=3) at /usr/include/c++/7/bits/stl_vector.h:180
+#9  0x0000555555556c7c in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd800, __x=std::vector of length 4, capacity 4 = {...}) at /usr/include/c++/7/bits/vector.tcc:210
+#10 0x0000555555555e7d in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:192
+#11 0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x300x750x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7d8
+address max offset: 4
+Memory content after  bitflip:0x300x740x000x00
+frame name: train
+symbol name: iter2
+symbol filename: lreg.cpp
+symbol line: 177
+value: 29744
+value address: 0x7fffffffd7d8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-27 16:34:09]
+Fault Injection Successful after 2.155332326889038s
+[INFO -- 2018-11-27 16:34:09]
+event type: exit
+[EXCEPTION -- 2018-11-27 16:34:09]
+exit code: no exit code available

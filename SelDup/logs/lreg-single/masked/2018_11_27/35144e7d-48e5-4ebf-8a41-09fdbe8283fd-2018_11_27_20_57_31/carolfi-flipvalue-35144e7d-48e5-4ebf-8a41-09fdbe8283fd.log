@@ -1,0 +1,63 @@
+[INFO -- 2018-11-27 20:57:27]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:57:27]
+Initialization strings:
+[INFO -- 2018-11-27 20:57:27]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:57:27]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:57:27]
+initSignal:0
+[INFO -- 2018-11-27 20:57:27]
+endSignal:3
+[INFO -- 2018-11-27 20:57:27]
+faultModel:0
+[INFO -- 2018-11-27 20:57:28]
+Backtrace BEGIN:
+#0  0x00005555555550fe in verifyUintDup (a=0, b=0) at lreg.cpp:61
+#1  0x000055555555576f in predict (v=12) at lreg.cpp:115
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=0.00020000000000000001, alpha2=0.00020000000000000001) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=10000, iter2=10000, N=2, alpha1=0.00020000000000000001, alpha2=0.00020000000000000001, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_end_of_storage
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x230x770x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x55555575b1b0 
+address max offset: 8
+Memory content after  bitflip:0x700x2b0x770x550x550x550x000x00
+frame name: main
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 2, capacity 258 = {1.7224197627852853, -1.0071850705798226}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 20:57:28]
+Fault Injection Successful after 1.470384120941162s
+[INFO -- 2018-11-27 20:57:30]
+event type: exit
+[INFO -- 2018-11-27 20:57:30]
+exit code: 0

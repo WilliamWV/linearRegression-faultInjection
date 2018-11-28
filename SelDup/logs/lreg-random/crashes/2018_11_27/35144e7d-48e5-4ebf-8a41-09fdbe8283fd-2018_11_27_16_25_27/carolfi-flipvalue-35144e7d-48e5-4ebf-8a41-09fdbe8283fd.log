@@ -1,0 +1,60 @@
+[INFO -- 2018-11-27 16:25:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 16:25:24]
+Initialization strings:
+[INFO -- 2018-11-27 16:25:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 16:25:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 16:25:24]
+initSignal:0
+[INFO -- 2018-11-27 16:25:24]
+endSignal:3
+[INFO -- 2018-11-27 16:25:24]
+faultModel:2
+[EXCEPTION -- 2018-11-27 16:25:25]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-27 16:25:26]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 16:25:26]
+Backtrace BEGIN:
+#0  0x00007ffff76daa31 in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:215
+#1  0x00007ffff76bcb14 in __pow (x=-2, y=0) at w_pow_compat.c:30
+#2  0x0000555555556826 in std::pow<double, unsigned int> (__x=-2, __y=0) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555814 in predict (v=-2) at lreg.cpp:116
+#4  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#5  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#6  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#7  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+210	in ../sysdeps/ieee754/dbl-64/e_pow.c
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x2c0xfd0xff0xff0xff0xff0x970x42
+Fault Model: Random bit-flip
+base address to flip value: 0x7ffff779f5b8 
+address max offset: 8
+Memory content after  bitflip:0xcd0x0a0x530x870xb00x140x780x0f
+frame name: __ieee754_pow_sse2
+symbol name: bigu
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 52
+value: {i = {-2024600883, 259527856}, x = 3.7868197065177142e-234}
+value address: 0x7ffff779f5b8 <bigu>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-27 16:25:26]
+Fault Injection Successful after 2.762845754623413s
+[INFO -- 2018-11-27 16:25:26]
+event type: exit
+[EXCEPTION -- 2018-11-27 16:25:26]
+exit code: no exit code available

@@ -1,0 +1,54 @@
+[INFO -- 2018-11-27 20:42:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:42:43]
+Initialization strings:
+[INFO -- 2018-11-27 20:42:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:42:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:42:43]
+initSignal:0
+[INFO -- 2018-11-27 20:42:43]
+endSignal:3
+[INFO -- 2018-11-27 20:42:43]
+faultModel:1
+[INFO -- 2018-11-27 20:42:45]
+Backtrace BEGIN:
+#0  0x0000555555557443 in std::_Destroy<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double> (__first=1.6304166312761136e-322, __last=1.6304166312761136e-322) at /usr/include/c++/7/bits/stl_construct.h:206
+#1  0x0000555555556d21 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd820, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555f26 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:197
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+201	  template<typename _ForwardIterator, typename _Tp>
+202	    inline void
+203	    _Destroy(_ForwardIterator __first, _ForwardIterator __last,
+204		     allocator<_Tp>&)
+205	    {
+206	      _Destroy(__first, __last);
+207	    }
+208	
+209	#if __cplusplus > 201402L
+210	  template <typename _Tp>
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b1b8 
+address max offset: 4
+Memory content after  bitflip:0x0a0x000x000x00
+frame name: main
+symbol name: detected
+symbol filename: lreg.cpp
+symbol line: 58
+value: 10
+value address: 0x55555575b1b8 <detected>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2018-11-27 20:42:45]
+Fault Injection Successful after 2.026801109313965s
+[INFO -- 2018-11-27 20:42:48]
+event type: exit
+[INFO -- 2018-11-27 20:42:48]
+exit code: 0

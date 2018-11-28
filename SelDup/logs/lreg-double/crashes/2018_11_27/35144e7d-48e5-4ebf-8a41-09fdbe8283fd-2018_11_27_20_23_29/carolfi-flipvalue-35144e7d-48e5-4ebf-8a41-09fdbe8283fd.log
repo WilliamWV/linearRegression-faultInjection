@@ -1,0 +1,67 @@
+[INFO -- 2018-11-27 20:23:23]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:23:23]
+Initialization strings:
+[INFO -- 2018-11-27 20:23:23]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:23:23]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:23:23]
+initSignal:0
+[INFO -- 2018-11-27 20:23:23]
+endSignal:3
+[INFO -- 2018-11-27 20:23:23]
+faultModel:1
+[EXCEPTION -- 2018-11-27 20:23:23]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2018-11-27 20:23:24]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[INFO -- 2018-11-27 20:23:24]
+Backtrace BEGIN:
+#0  verifyUintDup (a=3, b=3) at lreg.cpp:61
+#1  0x000055555555576f in predict (v=5) at lreg.cpp:115
+#2  0x0000555555555a53 in partialDerivate (pos1=3, pos2=3) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x100x260x770x550x550x550x000x00
+Fault Model: Double bit-flip
+base address to flip value: 0x55555575b140 
+address max offset: 8
+Memory content after  bitflip:0x150x260x770x550x550x550x000x00
+frame name: main
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 16, capacity 31 = {6.2226026608889978e-317, 6.2210848912249734e-317, 6.2147608509582055e-317, 2.0799768437399807e-317, 2.0747911307212309e-317, 6.2231085841103392e-317, 2.0802298053506514e-317, 6.2228556224996685e-317, 6.2231085841103392e-317, 6.2243733921636928e-317, 2.0794709205186392e-317, 6.222349699278327e-317, 2.0758029771639138e-317, 6.2167845438435712e-317, 6.2229821033050038e-317, 2.0789649972972978e-317, 6.2233615457210099e-317, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.2629095739590599e-314, -0, 2.0977691357780156e-317, 2.0932543639063183e-317, -3.1050361875006212e+231, 6.2481853800306575e-317, 2.0000000056027112, 1.7272337126485369e-77, -6.2488607677685225e-317, 2.0000000018862005, -2.3158417869313246e+77, -2.6815615885232777e+154, -6.2470381596010141e-317, 2.0971584706397558e-317, 6.2359523146396282e-317, 2.0000000018704327, -2.6815615885180397e+154, -2.000000005613694, 6.2491567130903814e-317, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4.0616325686444665e-315, -1.8524835201233409e-193, -1.1165747465873323e+102, -2.013618760416195e+131, -3.8810942542213199e-217, 6.2187790868558323e-317, 4.0616325686444665e-315, 2.2631479711243614e+82, -5.2628675552164217e+188, 6.7849731863599056e-77, -3.8810942542212893e-217, 6.2187790868558323e-317, 4.0616325686444665e-315, -4.7674529372776496e+111, 1.2643227666291995e+185, -3.8362751581391545e+23, 5.8516096503782841e-64, 6.2188314578142915e-317, 4.0616325686444665e-315, 1.2019292500559783e+103, 1.2643227647325989e+185, -3.8362751581391545e+23, 5.8516096503782841e-64, 6.2188314578142915e-317, 4.0616325686444665e-315, 0, -5.2628675474479043e+188, 6.7849731863599056e-77, -3.8810942542212893e-217, 6.2187790868558323e-317, 3.5424896140032361e-312, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 20:23:24]
+Fault Injection Successful after 1.8056325912475586s
+[INFO -- 2018-11-27 20:23:28]
+event type: exit
+[EXCEPTION -- 2018-11-27 20:23:28]
+exit code: no exit code available

@@ -1,0 +1,56 @@
+[INFO -- 2018-11-27 20:37:49]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:37:49]
+Initialization strings:
+[INFO -- 2018-11-27 20:37:49]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:37:49]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:37:49]
+initSignal:0
+[INFO -- 2018-11-27 20:37:49]
+endSignal:3
+[INFO -- 2018-11-27 20:37:49]
+faultModel:2
+[EXCEPTION -- 2018-11-27 20:37:50]
+gdbException: Cannot access memory at address 0xf02ffc7f549965dd
+[INFO -- 2018-11-27 20:37:50]
+Backtrace BEGIN:
+#0  0x00005555555551e0 in verifyUintDup (a=2, b=2) at lreg.cpp:69
+#1  0x0000555555555bb5 in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#2  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#3  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd760
+address max offset: 8
+Memory content after  bitflip:0xc20x8b0x3c0x6f0x9c0x3d0xcf0x8d
+frame name: adjust
+symbol name: alpha2
+symbol filename: lreg.cpp
+symbol line: 151
+value: -3.6602758312855002e-242
+value address: 0x7fffffffd760
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 20:37:50]
+Fault Injection Successful after 1.5948059558868408s
+[INFO -- 2018-11-27 20:37:50]
+event type: exit
+[EXCEPTION -- 2018-11-27 20:37:50]
+exit code: no exit code available

@@ -1,0 +1,55 @@
+[INFO -- 2018-11-27 20:25:04]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:25:04]
+Initialization strings:
+[INFO -- 2018-11-27 20:25:04]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:25:04]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:25:04]
+initSignal:0
+[INFO -- 2018-11-27 20:25:04]
+endSignal:3
+[INFO -- 2018-11-27 20:25:04]
+faultModel:2
+[INFO -- 2018-11-27 20:25:07]
+Backtrace BEGIN:
+#0  0x00007ffff76da5f0 in __ieee754_pow_sse2 (x=-18, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:85
+#1  0x00007ffff76bcb14 in __pow (x=-18, y=3) at w_pow_compat.c:30
+#2  0x0000555555556826 in std::pow<double, unsigned int> (__x=-18, __y=3) at /usr/include/c++/7/cmath:418
+#3  0x0000555555555814 in predict (v=-18) at lreg.cpp:116
+#4  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#5  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#6  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+80	../sysdeps/ieee754/dbl-64/e_pow.c: No such file or directory.
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x1a0xbc0x620x390x630x920xc70x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x555555772830
+address max offset: 8
+Memory content after  bitflip:0xcf0xe60xfa0xd50x760xd10xef0x0e
+frame name: std::pow<double, unsigned int>
+symbol name: T2
+symbol filename: lreg.cpp
+symbol line: 37
+value: std::vector of length 4, capacity 4 = {9.7725813698444795e-237, -0.93947350886352543, -1.945317398700577, -3.9702846411444672}
+value address: 0x55555575b1a0 <T2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 20:25:07]
+Fault Injection Successful after 3.000195264816284s
+[INFO -- 2018-11-27 20:25:07]
+event type: exit
+[INFO -- 2018-11-27 20:25:07]
+exit code: 0

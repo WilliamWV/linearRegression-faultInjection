@@ -1,0 +1,58 @@
+[INFO -- 2018-11-27 16:21:39]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 16:21:39]
+Initialization strings:
+[INFO -- 2018-11-27 16:21:39]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 16:21:39]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 16:21:39]
+initSignal:0
+[INFO -- 2018-11-27 16:21:39]
+endSignal:3
+[INFO -- 2018-11-27 16:21:39]
+faultModel:0
+[EXCEPTION -- 2018-11-27 16:21:40]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 16:21:41]
+Backtrace BEGIN:
+#0  0x00005555555567db in std::vector<double, std::allocator<double> >::operator[] (this=0x55555575b1a0 <T2>, __n=3) at /usr/include/c++/7/bits/stl_vector.h:799
+#1  0x00005555555557ab in predict (v=-17) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=2, pos2=2) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+794	      reference
+795	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+796	      {
+797		__glibcxx_requires_subscript(__n);
+798		return *(this->_M_impl._M_start + __n);
+799	      }
+800	
+801	      /**
+802	       *  @brief  Subscript access to the data contained in the %vector.
+803	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Memory content before bitflip:0x460x5a0xb70xf40x390x4d0xf70x3e
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd768
+address max offset: 8
+Memory content after  bitflip:0xc60x5a0xb70xf40x390x4d0xf70x3e
+frame name: adjust
+symbol name: alpha1
+symbol filename: lreg.cpp
+symbol line: 151
+value: 2.2222200000000432e-05
+value address: 0x7fffffffd768
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 16:21:41]
+Fault Injection Successful after 2.191873073577881s
+[INFO -- 2018-11-27 16:21:43]
+event type: exit
+[EXCEPTION -- 2018-11-27 16:21:43]
+exit code: no exit code available

@@ -1,0 +1,54 @@
+[INFO -- 2018-11-27 21:29:54]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 21:29:54]
+Initialization strings:
+[INFO -- 2018-11-27 21:29:54]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 21:29:54]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 21:29:54]
+initSignal:0
+[INFO -- 2018-11-27 21:29:54]
+endSignal:3
+[INFO -- 2018-11-27 21:29:54]
+faultModel:1
+[INFO -- 2018-11-27 21:29:54]
+Backtrace BEGIN:
+#0  0x00007ffff7b0019d in void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x00007ffff7b5878a in std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#2  0x00007ffff7b49d0f in std::istream& std::istream::_M_extract<double>(double&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00005555555563cc in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:247
+
+203		//T1 = bestT;
+204	}
+205	
+206	/*
+207	It must receive an input file formated as follows:
+208		1° Line : one integer T -> number of test cases
+209		2° to 5° repeat to all test case	
+210		2° Line : method parameters -> alpha, iterations, N, size of 
+211			      training set, predictions
+212		3° Line : inputs x of the training set
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x300xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd920
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x240xc0
+frame name: main
+symbol name: xChecksum
+symbol filename: lreg.cpp
+symbol line: 233
+value: -10
+value address: 0x7fffffffd920
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 21:29:54]
+Fault Injection Successful after 0.8891878128051758s
+[INFO -- 2018-11-27 21:29:57]
+event type: exit
+[INFO -- 2018-11-27 21:29:57]
+exit code: 0

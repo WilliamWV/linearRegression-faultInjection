@@ -1,0 +1,57 @@
+[INFO -- 2018-11-27 20:38:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:38:42]
+Initialization strings:
+[INFO -- 2018-11-27 20:38:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:38:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:38:42]
+initSignal:0
+[INFO -- 2018-11-27 20:38:42]
+endSignal:3
+[INFO -- 2018-11-27 20:38:42]
+faultModel:0
+[INFO -- 2018-11-27 20:38:43]
+Backtrace BEGIN:
+#0  0x0000555555557a46 in std::allocator<double>::allocator (this=0x555555772560, __a=...) at /usr/include/c++/7/bits/allocator.h:133
+#1  0x0000555555557a37 in std::allocator_traits<std::allocator<double> >::select_on_container_copy_construction (__rhs=...) at /usr/include/c++/7/bits/alloc_traits.h:505
+#2  0x00005555555570ea in __gnu_cxx::__alloc_traits<std::allocator<double> >::_S_select_on_copy (__a=...) at /usr/include/c++/7/ext/alloc_traits.h:95
+#3  0x00005555555569da in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd840, __x=std::vector of length 3, capacity 3 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#4  0x0000555555555f5f in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:199
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+128	      typedef true_type is_always_equal;
+129	#endif
+130	
+131	      allocator() throw() { }
+132	
+133	      allocator(const allocator& __a) throw()
+134	      : __allocator_base<_Tp>(__a) { }
+135	
+136	      template<typename _Tp1>
+137		allocator(const allocator<_Tp1>&) throw() { }
+
+Backtrace END
+Fliping a bit of the reference
+Memory content before bitflip:0x800xb10x750x550x550x550x000x00
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd710
+address max offset: 8
+Memory content after  bitflip:0x800xb10x750x570x550x550x000x00
+frame name: std::allocator<double>::allocator
+symbol name: __a
+symbol filename: /usr/include/c++/7/bits/allocator.h
+symbol line: 133
+value: @0x7fffffffd710
+value address: 0x7fffffffd710
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 20:38:43]
+Fault Injection Successful after 1.8252382278442383s
+[INFO -- 2018-11-27 20:38:45]
+event type: exit
+[INFO -- 2018-11-27 20:38:45]
+exit code: 0

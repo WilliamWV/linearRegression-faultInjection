@@ -1,0 +1,66 @@
+[INFO -- 2018-11-27 20:58:40]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:58:40]
+Initialization strings:
+[INFO -- 2018-11-27 20:58:40]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:58:40]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:58:40]
+initSignal:0
+[INFO -- 2018-11-27 20:58:40]
+endSignal:3
+[INFO -- 2018-11-27 20:58:40]
+faultModel:2
+[EXCEPTION -- 2018-11-27 20:58:41]
+pythonException: Unable to exit loop in struct fields; Exiting wihtout making a bit flip
+[EXCEPTION -- 2018-11-27 20:58:41]
+pythonException: empty range for randrange() (0,0, 0)
+[EXCEPTION -- 2018-11-27 20:58:41]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 20:58:42]
+Backtrace BEGIN:
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+#1  0x00007ffff6ec6801 in __GI_abort () at abort.c:79
+#2  0x00007ffff7ad88b7 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#3  0x00007ffff7adea06 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00007ffff7adea41 in std::terminate() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff7adec74 in __cxa_throw () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#6  0x00007ffff7b06ed2 in std::__throw_bad_alloc() () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#7  0x00005555555582aa in __gnu_cxx::new_allocator<double>::allocate (this=0x7fffffffd930, __n=18446744073709551614) at /usr/include/c++/7/ext/new_allocator.h:102
+#8  0x0000555555558043 in std::allocator_traits<std::allocator<double> >::allocate (__a=..., __n=18446744073709551614) at /usr/include/c++/7/bits/alloc_traits.h:436
+#9  0x0000555555557b1a in std::_Vector_base<double, std::allocator<double> >::_M_allocate (this=0x7fffffffd930, __n=18446744073709551614) at /usr/include/c++/7/bits/stl_vector.h:172
+#10 0x000055555555787f in std::_Vector_base<double, std::allocator<double> >::_M_create_storage (this=0x7fffffffd930, __n=18446744073709551614) at /usr/include/c++/7/bits/stl_vector.h:187
+#11 0x0000555555556f4f in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd930, __n=18446744073709551614, __a=...) at /usr/include/c++/7/bits/stl_vector.h:138
+#12 0x00005555555569fb in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd930, __x=std::vector of length -1, capacity 13 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#13 0x0000555555556565 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:259
+
+46	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Backtrace END
+Fliping a bit of the value pointed by a reference
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0xa80x270x770x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x55555575b168 
+address max offset: 8
+Memory content after  bitflip:0xdf0x6a0xbf0xf40x4f0x3c0xce0x6f
+frame name: std::vector<double, std::allocator<double> >::vector
+symbol name: __x
+symbol filename: /usr/include/c++/7/bits/stl_vector.h
+symbol line: 326
+value: std::vector of length 1007043659065526373, capacity 13 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.5865752221267447e-317, -4.8337092303918841e-234, 2.5069372619302477e+178, -2.7163894106063943e+182, 2.9581903565815011e+200, 2.6970549540827808e-319, 1.5865752221267447e-317, 1.1945594291634347e+103, 2.622273024403331e+175, -8.2783845930911461e+179, 2.9581903565815011e+200, 2.6970549540827808e-319, 1.5865752221267447e-317, 1.1945594297892122e+103, 3.8206427492539415e-149, 3.9520737245248529e+37, 1.9851325815638944e-87, 2.429221967472241e-319, 1.5865752221267447e-317, 1.1945594304149897e+103, 2.622273024403331e+175, -8.2783845930911461e+179, 2.9581903565815011e+200, 2.6970549540827808e-319, 1.5865752221267447e-317, 0, 2.5069372619106386e+178, -2.7163894106063943e+182, 2.9581903565815011e+200, 2.6970549540827808e-319, 1.3837850054700141e-314, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...}
+value address: 0x55555575b160 <y>
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 20:58:42]
+Fault Injection Successful after 2.4927608966827393s
+[INFO -- 2018-11-27 20:58:42]
+event type: exit
+[EXCEPTION -- 2018-11-27 20:58:42]
+exit code: no exit code available

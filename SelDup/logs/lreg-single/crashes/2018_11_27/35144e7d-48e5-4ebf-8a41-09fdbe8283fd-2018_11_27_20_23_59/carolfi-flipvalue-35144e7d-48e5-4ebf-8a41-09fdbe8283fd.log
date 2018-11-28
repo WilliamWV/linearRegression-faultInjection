@@ -1,0 +1,64 @@
+[INFO -- 2018-11-27 20:23:58]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 20:23:58]
+Initialization strings:
+[INFO -- 2018-11-27 20:23:58]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 20:23:58]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 20:23:58]
+initSignal:0
+[INFO -- 2018-11-27 20:23:58]
+endSignal:3
+[INFO -- 2018-11-27 20:23:58]
+faultModel:0
+[EXCEPTION -- 2018-11-27 20:23:59]
+gdbException: Cannot access memory at address 0x1000555555772490
+[INFO -- 2018-11-27 20:23:59]
+Backtrace BEGIN:
+#0  verifyUintDup (a=0, b=0) at lreg.cpp:61
+#1  0x000055555555576f in predict (v=-3) at lreg.cpp:115
+#2  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+56	*/
+57	
+58	int detected = 0;
+59	
+60	
+61	UINT verifyUintDup(UINT a, UINT b){
+62		if (a != b && detected != 1){
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<double, std::allocator<double> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x100xc0
+Fault Model: Single bit-flip
+base address to flip value: 0x555555772400
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x080x000x100xc0
+frame name: predict
+symbol name: x
+symbol filename: lreg.cpp
+symbol line: 34
+value: std::vector of length 13, capacity 16 = {-4.000030517578125, -3, -7, -2, -1, -1, -21, -3, -19, 13, 6, 23, -19}
+value address: 0x55555575b140 <x>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<double, std::allocator<double> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2018-11-27 20:23:59]
+Fault Injection Successful after 1.2849056720733643s
+[INFO -- 2018-11-27 20:23:59]
+event type: exit
+[EXCEPTION -- 2018-11-27 20:23:59]
+exit code: no exit code available

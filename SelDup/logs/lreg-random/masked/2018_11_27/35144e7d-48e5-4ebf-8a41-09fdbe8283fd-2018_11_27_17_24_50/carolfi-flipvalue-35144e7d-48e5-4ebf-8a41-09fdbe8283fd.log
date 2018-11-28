@@ -1,0 +1,57 @@
+[INFO -- 2018-11-27 17:24:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 17:24:47]
+Initialization strings:
+[INFO -- 2018-11-27 17:24:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 17:24:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 17:24:47]
+initSignal:0
+[INFO -- 2018-11-27 17:24:47]
+endSignal:3
+[INFO -- 2018-11-27 17:24:47]
+faultModel:2
+[INFO -- 2018-11-27 17:24:48]
+Backtrace BEGIN:
+#0  verifyDoubleDup (a=-2.9925799286620047, b=-2.9925799286620047) at lreg.cpp:70
+#1  0x00005555555557ea in predict (v=23) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x580xde0xff0xff0xff0x7f0x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd8c0
+address max offset: 8
+Memory content after  bitflip:0x3b0x4a0xf10x290x750x0e0x930xb4
+frame name: main
+symbol name: argv
+symbol filename: lreg.cpp
+symbol line: 217
+value: 0x7fffffffde58
+value address: 0x7fffffffd8c0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 17:24:48]
+Fault Injection Successful after 1.5902230739593506s
+[INFO -- 2018-11-27 17:24:50]
+event type: exit
+[INFO -- 2018-11-27 17:24:50]
+exit code: 0

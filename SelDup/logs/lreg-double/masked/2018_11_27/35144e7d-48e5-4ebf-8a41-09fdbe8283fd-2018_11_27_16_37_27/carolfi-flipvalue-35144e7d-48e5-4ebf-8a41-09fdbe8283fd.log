@@ -1,0 +1,56 @@
+[INFO -- 2018-11-27 16:37:24]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 16:37:24]
+Initialization strings:
+[INFO -- 2018-11-27 16:37:24]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 16:37:24]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 16:37:24]
+initSignal:0
+[INFO -- 2018-11-27 16:37:24]
+endSignal:3
+[INFO -- 2018-11-27 16:37:24]
+faultModel:1
+[INFO -- 2018-11-27 16:37:25]
+Backtrace BEGIN:
+#0  0x0000555555555337 in verifyDoubleDup (a=-2.9910267262067838, b=-2.9910267262067838) at lreg.cpp:78
+#1  0x00005555555557ea in predict (v=6) at lreg.cpp:116
+#2  0x0000555555555a53 in partialDerivate (pos1=0, pos2=0) at lreg.cpp:142
+#3  0x0000555555555bbe in adjust (alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05) at lreg.cpp:156
+#4  0x0000555555555ee0 in train (iter1=20000, iter2=20000, N=3, alpha1=5.0000000000000002e-05, alpha2=5.0000000000000002e-05, stopsWhenStable=true) at lreg.cpp:193
+#5  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+73			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+74			fp << "verifyDouble: a = "<<a<<"; b = "<<b<<endl;
+75	        detected = 1;	
+76		}	
+77		return a;
+78	}
+79	
+80	
+81	void verifyChecksum(vector<double> vec){
+82		if(detected!=1){
+
+Backtrace END
+Memory content before bitflip:0x210x290x940x6b0x9f0xed0x070xc0
+Fault Model: Double bit-flip
+base address to flip value: 0x7fffffffd478
+address max offset: 8
+Memory content after  bitflip:0x210x230x940x6b0x9f0xed0x070xc0
+frame name: verifyDoubleDup
+symbol name: a
+symbol filename: lreg.cpp
+symbol line: 70
+value: -2.9910267262061017
+value address: 0x7fffffffd478
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 16:37:25]
+Fault Injection Successful after 1.6475446224212646s
+[INFO -- 2018-11-27 16:37:27]
+event type: exit
+[INFO -- 2018-11-27 16:37:27]
+exit code: 0

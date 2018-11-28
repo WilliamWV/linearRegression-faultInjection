@@ -1,0 +1,57 @@
+[INFO -- 2018-11-27 17:25:41]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 17:25:41]
+Initialization strings:
+[INFO -- 2018-11-27 17:25:41]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 17:25:41]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 17:25:41]
+initSignal:0
+[INFO -- 2018-11-27 17:25:41]
+endSignal:3
+[INFO -- 2018-11-27 17:25:41]
+faultModel:0
+[EXCEPTION -- 2018-11-27 17:25:42]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-27 17:25:42]
+Backtrace BEGIN:
+#0  verifyUintDup (a=1, b=1) at lreg.cpp:68
+#1  0x00005555555557fe in predict (v=7) at lreg.cpp:116
+#2  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#3  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#4  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+63			//gerar entrada no log
+64			ofstream fp ("/tmp/lreg/detected.log", std::ofstream::app);
+65			fp << "verifyUint: a = "<<a<<"; b = "<<b<<endl;
+66	        detected = 1;	
+67		}
+68		return a;
+69	}
+70	double verifyDoubleDup(double a, double b){
+71		if (a != b && detected != 1){
+72			//gerar entrada no log
+
+Backtrace END
+Memory content before bitflip:0x830x210x230xfd0xad0x0a0x0a0x41
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd7f0
+address max offset: 8
+Memory content after  bitflip:0x830x210x230xdd0xad0x0a0x0a0x41
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 189
+value: 213333.73297716313
+value address: 0x7fffffffd7f0
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-27 17:25:42]
+Fault Injection Successful after 1.4261913299560547s
+[INFO -- 2018-11-27 17:25:44]
+event type: exit
+[EXCEPTION -- 2018-11-27 17:25:44]
+exit code: no exit code available

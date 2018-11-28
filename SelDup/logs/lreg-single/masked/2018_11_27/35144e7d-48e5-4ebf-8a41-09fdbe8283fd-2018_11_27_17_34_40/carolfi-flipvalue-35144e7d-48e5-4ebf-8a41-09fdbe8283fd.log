@@ -1,0 +1,57 @@
+[INFO -- 2018-11-27 17:34:37]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-27 17:34:37]
+Initialization strings:
+[INFO -- 2018-11-27 17:34:37]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-27 17:34:37]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output
+[INFO -- 2018-11-27 17:34:37]
+initSignal:0
+[INFO -- 2018-11-27 17:34:37]
+endSignal:3
+[INFO -- 2018-11-27 17:34:37]
+faultModel:0
+[INFO -- 2018-11-27 17:34:40]
+Backtrace BEGIN:
+#0  0x00007ffff76d58cd in __exp1 (x=<optimized out>, xx=<optimized out>, error=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_exp.c:270
+#1  0x00007ffff76da8dc in __ieee754_pow_sse2 (x=16, y=3) at ../sysdeps/ieee754/dbl-64/e_pow.c:115
+#2  0x00007ffff76db6be in __ieee754_pow_sse2 (x=<optimized out>, y=<optimized out>) at ../sysdeps/ieee754/dbl-64/e_pow.c:184
+#3  0x00007ffff76bcb14 in __pow (x=-16, y=3) at w_pow_compat.c:30
+#4  0x0000555555556826 in std::pow<double, unsigned int> (__x=-16, __y=3) at /usr/include/c++/7/cmath:418
+#5  0x0000555555555814 in predict (v=-16) at lreg.cpp:116
+#6  0x00005555555558c0 in meanSquaredError () at lreg.cpp:128
+#7  0x0000555555555ee5 in train (iter1=30000, iter2=30000, N=4, alpha1=2.2222199999999999e-05, alpha2=2.2222199999999999e-05, stopsWhenStable=true) at lreg.cpp:194
+#8  0x0000555555556467 in main (argc=3, argv=0x7fffffffde58) at lreg.cpp:253
+
+265	../sysdeps/ieee754/dbl-64/e_exp.c: No such file or directory.
+
+Backtrace END
+Fliping value of field name: x
+Memory content before bitflip:0x300x670xc70x930x570xf30x2e0x3d
+Fault Model: Single bit-flip
+base address to flip value: 0x7ffff779f5c0 
+address max offset: 8
+Memory content after  bitflip:0x300x670xc60x930x570xf30x2e0x3d
+frame name: __ieee754_pow_sse2
+symbol name: ln2b
+symbol filename: ../sysdeps/ieee754/dbl-64/upow.h
+symbol line: 51
+value: {i = {-1815714000, 1026487127}, x = 5.4979230186670121e-14}
+value address: 0x7ffff779f5c0 <ln2b>
+Type: The type is a union.
+Type sizeof: 8
+Field name: i
+Field Type: The type is an array.
+Field Type sizeof: 8
+Field name: x
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-27 17:34:40]
+Fault Injection Successful after 3.145674467086792s
+[INFO -- 2018-11-27 17:34:40]
+event type: exit
+[INFO -- 2018-11-27 17:34:40]
+exit code: 0
