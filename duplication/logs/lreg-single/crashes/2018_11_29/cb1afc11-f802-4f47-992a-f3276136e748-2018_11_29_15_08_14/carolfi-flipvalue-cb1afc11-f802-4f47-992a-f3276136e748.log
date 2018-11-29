@@ -1,0 +1,49 @@
+[INFO -- 2018-11-29 15:08:08]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-29 15:08:08]
+Initialization strings:
+[INFO -- 2018-11-29 15:08:08]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-29 15:08:08]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-29 15:08:08]
+initSignal:0
+[INFO -- 2018-11-29 15:08:08]
+endSignal:6
+[INFO -- 2018-11-29 15:08:08]
+faultModel:0
+[EXCEPTION -- 2018-11-29 15:08:11]
+gdbException: Cannot access memory at address 0x8555555772450
+[INFO -- 2018-11-29 15:08:12]
+Backtrace BEGIN:
+#0  0x00007ffff76bceb8 in __sqrt (x=0.0015944776473952871) at w_sqrt_compat.c:30
+#1  0x000055555555553f in adjust (alpha=0.00020000000000000001) at lreg.cpp:89
+#2  0x00005555555556ac in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+25	in w_sqrt_compat.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffe1f1 
+address max offset: 1
+Memory content after  bitflip:0x6f
+frame name: execute
+symbol name: input
+symbol filename: lreg.cpp
+symbol line: 134
+value: 0x7fffffffe1f1 "otmp/lreg/randInput"
+value address: 0x7fffffffd650
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2018-11-29 15:08:12]
+Fault Injection Successful after 4.220465660095215s
+[INFO -- 2018-11-29 15:08:12]
+event type: exit
+[EXCEPTION -- 2018-11-29 15:08:12]
+exit code: no exit code available

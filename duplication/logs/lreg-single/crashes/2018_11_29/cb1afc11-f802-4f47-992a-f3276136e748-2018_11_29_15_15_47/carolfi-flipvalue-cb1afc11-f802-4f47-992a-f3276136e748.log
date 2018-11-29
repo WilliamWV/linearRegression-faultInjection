@@ -1,0 +1,59 @@
+[INFO -- 2018-11-29 15:15:43]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-29 15:15:43]
+Initialization strings:
+[INFO -- 2018-11-29 15:15:43]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-29 15:15:43]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-29 15:15:43]
+initSignal:0
+[INFO -- 2018-11-29 15:15:43]
+endSignal:6
+[INFO -- 2018-11-29 15:15:43]
+faultModel:0
+[EXCEPTION -- 2018-11-29 15:15:45]
+gdbException: Cannot access memory at address 0x5555556724b0
+[EXCEPTION -- 2018-11-29 15:15:46]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-29 15:15:46]
+Backtrace BEGIN:
+#0  0x000055555555543b in partialDerivate (pos=3) at lreg.cpp:74
+#1  0x0000555555555503 in adjust (alpha=2.2222199999999999e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555cb0 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:196
+
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+78	}
+
+Backtrace END
+Memory content before bitflip:0x970x1a0xe80x7e0xa40xfa0x050xc1
+Fault Model: Single bit-flip
+base address to flip value: 0x7fffffffd528
+address max offset: 8
+Memory content after  bitflip:0x970x1a0xe80x7e0xa40xfa0x050xc0
+frame name: adjust
+symbol name: PD
+symbol filename: lreg.cpp
+symbol line: 85
+value: -2.747384063204048
+value address: 0x7fffffffd528
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-29 15:15:46]
+Fault Injection Successful after 3.3045308589935303s
+[INFO -- 2018-11-29 15:15:46]
+event type: exit
+[EXCEPTION -- 2018-11-29 15:15:46]
+exit code: no exit code available

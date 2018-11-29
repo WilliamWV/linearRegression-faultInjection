@@ -1,0 +1,62 @@
+[INFO -- 2018-11-29 14:34:35]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-29 14:34:35]
+Initialization strings:
+[INFO -- 2018-11-29 14:34:35]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-29 14:34:35]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-29 14:34:35]
+initSignal:0
+[INFO -- 2018-11-29 14:34:35]
+endSignal:6
+[INFO -- 2018-11-29 14:34:35]
+faultModel:2
+[EXCEPTION -- 2018-11-29 14:34:37]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2018-11-29 14:34:37]
+Backtrace BEGIN:
+#0  std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > > (__first=0.34150420384171326, __last=4.6355706433354767e-310, __result=4.635570648018972e-310) at /usr/include/c++/7/bits/stl_algobase.h:446
+#1  0x0000555555556709 in std::vector<double, std::allocator<double> >::operator= (this=0x7fffffffd590, __x=std::vector of length -5, capacity -5 = {...}) at /usr/include/c++/7/bits/vector.tcc:218
+#2  0x0000555555555691 in train (iterations=30000, alpha=2.2222199999999999e-05, N=4, stopsWhenStable=true) at lreg.cpp:119
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+441	   *  Note that the end of the output range is permitted to be contained
+442	   *  within [first,last).
+443	  */
+444	  template<typename _II, typename _OI>
+445	    inline _OI
+446	    copy(_II __first, _II __last, _OI __result)
+447	    {
+448	      // concept requirements
+449	      __glibcxx_function_requires(_InputIteratorConcept<_II>)
+450	      __glibcxx_function_requires(_OutputIteratorConcept<_OI,
+
+Backtrace END
+Fliping value of field: _M_current
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x800xb10x750x550x550x550x000x00
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd500
+address max offset: 8
+Memory content after  bitflip:0x8f0x740xa50x340xa90x3b0x570x36
+frame name: std::copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > > >
+symbol name: __last
+symbol filename: /usr/include/c++/7/bits/stl_algobase.h
+symbol line: 446
+value: 6.358679328131575e-47
+value address: 0x7fffffffd4d0
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_current
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2018-11-29 14:34:37]
+Fault Injection Successful after 2.857757329940796s
+[INFO -- 2018-11-29 14:34:38]
+event type: exit
+[EXCEPTION -- 2018-11-29 14:34:38]
+exit code: no exit code available

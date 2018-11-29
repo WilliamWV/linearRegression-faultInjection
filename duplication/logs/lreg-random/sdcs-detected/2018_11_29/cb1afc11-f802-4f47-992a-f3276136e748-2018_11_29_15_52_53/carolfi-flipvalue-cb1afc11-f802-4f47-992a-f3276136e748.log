@@ -1,0 +1,57 @@
+[INFO -- 2018-11-29 15:52:47]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-29 15:52:47]
+Initialization strings:
+[INFO -- 2018-11-29 15:52:47]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-29 15:52:47]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-29 15:52:47]
+initSignal:0
+[INFO -- 2018-11-29 15:52:47]
+endSignal:6
+[INFO -- 2018-11-29 15:52:47]
+faultModel:2
+[INFO -- 2018-11-29 15:52:48]
+Backtrace BEGIN:
+#0  std::allocator<double>::allocator (this=0x7fffffffd5f0, __a=...) at /usr/include/c++/7/bits/allocator.h:134
+#1  0x0000555555557313 in std::_Vector_base<double, std::allocator<double> >::_Vector_impl::_Vector_impl (this=0x7fffffffd5f0, __a=...) at /usr/include/c++/7/bits/stl_vector.h:93
+#2  0x0000555555556972 in std::_Vector_base<double, std::allocator<double> >::_Vector_base (this=0x7fffffffd5f0, __n=2, __a=...) at /usr/include/c++/7/bits/stl_vector.h:137
+#3  0x00005555555563f1 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffd5f0, __x=std::vector of length 2, capacity 2 = {...}) at /usr/include/c++/7/bits/stl_vector.h:328
+#4  0x0000555555555713 in train (iterations=10000, alpha=0.00020000000000000001, N=2, stopsWhenStable=true) at lreg.cpp:126
+#5  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#6  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+129	#endif
+130	
+131	      allocator() throw() { }
+132	
+133	      allocator(const allocator& __a) throw()
+134	      : __allocator_base<_Tp>(__a) { }
+135	
+136	      template<typename _Tp1>
+137		allocator(const allocator<_Tp1>&) throw() { }
+138	
+
+Backtrace END
+Memory content before bitflip:0xa60x4c0x060x7b0x400xdd0xcc0x3f
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd580
+address max offset: 8
+Memory content after  bitflip:0x150x310x410x1f0xa30xeb0xf70x95
+frame name: train
+symbol name: bestMSE
+symbol filename: lreg.cpp
+symbol line: 116
+value: -7.6294357173646981e-203
+value address: 0x7fffffffd580
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-29 15:52:48]
+Fault Injection Successful after 1.833967924118042s
+[INFO -- 2018-11-29 15:52:52]
+event type: exit
+[INFO -- 2018-11-29 15:52:52]
+exit code: 0

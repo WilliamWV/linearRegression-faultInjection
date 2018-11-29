@@ -1,0 +1,57 @@
+[INFO -- 2018-11-29 13:54:13]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-29 13:54:13]
+Initialization strings:
+[INFO -- 2018-11-29 13:54:13]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-29 13:54:13]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-29 13:54:13]
+initSignal:0
+[INFO -- 2018-11-29 13:54:13]
+endSignal:6
+[INFO -- 2018-11-29 13:54:13]
+faultModel:2
+[EXCEPTION -- 2018-11-29 13:54:15]
+gdbException: Cannot access memory at address 0x3c4d74a4b252be4
+[INFO -- 2018-11-29 13:54:15]
+Backtrace BEGIN:
+#0  0x00005555555553ba in partialDerivate (pos=2) at lreg.cpp:73
+#1  0x0000555555555503 in adjust (alpha=5.0000000000000002e-05) at lreg.cpp:87
+#2  0x00005555555556ac in train (iterations=20000, alpha=5.0000000000000002e-05, N=3, stopsWhenStable=true) at lreg.cpp:120
+#3  0x0000555555555a1c in execute (input=0x7fffffffe1f1 "/tmp/lreg/randInput") at lreg.cpp:157
+#4  0x0000555555555c78 in main (argc=4, argv=0x7fffffffde48) at lreg.cpp:193
+
+68		Calculates the partial derivate of the meanSquaredError function 
+69		to the adjustment variable whose position in T is passed in pos
+70	*/
+71	double partialDerivate(int pos){
+72		double pD = 0;
+73		for(int i = 0; i<x.size(); i++){
+74			pD += ((predict(x[i]) - y[i])*pow(x[i], pos));	
+75		}
+76		pD *= (2.0/x.size());
+77		return pD;
+
+Backtrace END
+Memory content before bitflip:0x8b0x180xbe0xf00x290xdb0x220x40
+Fault Model: Random bit-flip
+base address to flip value: 0x7fffffffd588
+address max offset: 8
+Memory content after  bitflip:0x740xf00x810x160xc70x4f0x250x77
+frame name: train
+symbol name: MSE
+symbol filename: lreg.cpp
+symbol line: 117
+value: 8.5897967673349083e+265
+value address: 0x7fffffffd588
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2018-11-29 13:54:15]
+Fault Injection Successful after 2.605530023574829s
+[INFO -- 2018-11-29 13:54:16]
+event type: exit
+[EXCEPTION -- 2018-11-29 13:54:16]
+exit code: no exit code available

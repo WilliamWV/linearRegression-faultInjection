@@ -1,0 +1,49 @@
+[INFO -- 2018-11-29 13:26:42]
+Starting flip_value script
+version: 1.1
+[INFO -- 2018-11-29 13:26:42]
+Initialization strings:
+[INFO -- 2018-11-29 13:26:42]
+(1) file /tmp/lreg/lreg
+[INFO -- 2018-11-29 13:26:42]
+(2) set args /tmp/lreg/randInput /tmp/lreg/output /tmp/lreg/detected.log
+[INFO -- 2018-11-29 13:26:42]
+initSignal:0
+[INFO -- 2018-11-29 13:26:42]
+endSignal:6
+[INFO -- 2018-11-29 13:26:42]
+faultModel:1
+[INFO -- 2018-11-29 13:26:42]
+Backtrace BEGIN:
+#0  _dl_start (arg=0x7fffffffde40) at rtld.c:463
+#1  0x00007ffff7dd6098 in _start () from /lib64/ld-linux-x86-64.so.2
+#2  0x0000000000000004 in ?? ()
+#3  0x00007fffffffe1e2 in ?? ()
+#4  0x00007fffffffe1f1 in ?? ()
+#5  0x00007fffffffe205 in ?? ()
+#6  0x00007fffffffe216 in ?? ()
+#7  0x0000000000000000 in ?? ()
+
+458	rtld.c: No such file or directory.
+
+Backtrace END
+Memory content before bitflip:0x00
+Fault Model: Double bit-flip
+base address to flip value: 0x7ffff7ffdff8 
+address max offset: 1
+Memory content after  bitflip:0xc0
+frame name: _dl_start
+symbol name: tls_init_tp_called
+symbol filename: rtld.c
+symbol line: 677
+value: 192
+value address: 0x7ffff7ffdff8 <tls_init_tp_called>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2018-11-29 13:26:42]
+Fault Injection Successful after 0.6672573089599609s
+[INFO -- 2018-11-29 13:26:48]
+event type: exit
+[INFO -- 2018-11-29 13:26:48]
+exit code: 0
