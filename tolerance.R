@@ -1,16 +1,12 @@
 #!/usr/bin/env Rscript
 
 library(ggplot2)
-args = commandArgs(trailingOnly=TRUE)
 
-if (length(args)<4) {
-  stop("At least four argument must be supplied, three input file (CSV file) and one outputfile (PDF name to be created)", call.=FALSE)
-}
 
 # Read csv file with plot data
-dat1 = read.csv(args[1],sep=",")
-dat2 = read.csv(args[2],sep=",")
-dat3 = read.csv(args[3],sep=",")
+dat1 = read.csv("C:\\Users\\ACEW\\Documents\\UFRGS\\lreg\\original\\errLimit_lreg.csv",sep=",")
+dat2 = read.csv("C:\\Users\\ACEW\\Documents\\UFRGS\\lreg\\duplication\\errLimit_lreg.csv",sep=",")
+dat3 = read.csv("C:\\Users\\ACEW\\Documents\\UFRGS\\lreg\\SelDup\\errLimit_lreg.csv",sep=",")
 
 dat <- data.frame(
 	supp=rep(c("Original", "Duplication", "Selective Duplication"), each=15),
@@ -19,11 +15,11 @@ dat <- data.frame(
 )
 
 # Plot data
-ggplot(dat, aes(x=dose, y=len, groups=supp), method = "lm", formula = y ~ poly(x, 10)) +
+ggplot(dat, aes(x=dose, y=len, group=supp), method = "lm", formula = y ~ poly(x, 10)) +
 ylim(0,100)+
-geom_line(size=1.1) +
+geom_line(aes(color=supp),size=1) +
 labs(x = "Tolerated Relative Error [%]", y = "PVF/AVF rate [%]", color="Benchmark") +
 theme(legend.position="bottom",axis.text.x=element_text(size=14) , axis.text.y=element_text(size=14) , text = element_text(size = 14)) 
 
 # Save plot to file
-ggsave(args[4])
+ggsave("C:\\Users\\ACEW\\Documents\\UFRGS\\lreg\\tolerance.pdf", width = 8, height = 6)
